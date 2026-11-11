@@ -172,7 +172,7 @@ Rules for every task:
     - **Property 9: Debt formatting picks the unit by magnitude**
     - **Validates: Requirements 12.7**
 
-- [-] 10. Checkpoint - Ensure all tests pass
+- [x] 10. Checkpoint - Ensure all tests pass
   - Run `pnpm test`, `pnpm lint`, `pnpm typecheck` in `web`. Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 11. HUD, Settings menu, Table view and Error screen
