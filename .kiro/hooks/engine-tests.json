@@ -5,7 +5,7 @@
       "name": "engine-tests",
       "trigger": "PostFileSave",
       "description": "Run rescue-engine tests when engine files are saved",
-      "matcher": "web[\\/]src[\\/]engine[\\/]",
+      "matcher": "web[\\\\/]src[\\\\/]engine[\\\\/]",
       "action": {
         "type": "command",
         "command": "node tools/run-engine-tests.mjs",
