@@ -30,10 +30,13 @@ function arbInvalidFor(field: Field): fc.Arbitrary<unknown> {
 describe('Property 6: Settings parsing never throws and falls back per field', () => {
   it('never throws on arbitrary strings and null', () => {
     fc.assert(
-      fc.property(fc.oneof(fc.string(), fc.constant(null), fc.string({ unit: 'binary' })), (raw) => {
-        const result = parseSettings(raw);
-        expect(FIELDS.every((f) => f in result)).toBe(true);
-      }),
+      fc.property(
+        fc.oneof(fc.string(), fc.constant(null), fc.string({ unit: 'binary' })),
+        (raw) => {
+          const result = parseSettings(raw);
+          expect(FIELDS.every((f) => f in result)).toBe(true);
+        },
+      ),
       { numRuns: 200 },
     );
   });
@@ -73,7 +76,9 @@ describe('Property 6: Settings parsing never throws and falls back per field', (
           reducedMotion: arbInvalidFor('reducedMotion'),
         }),
         fc.dictionary(
-          fc.string().filter((k) => !(FIELDS as readonly string[]).includes(k) && k !== '__proto__'),
+          fc
+            .string()
+            .filter((k) => !(FIELDS as readonly string[]).includes(k) && k !== '__proto__'),
           fc.jsonValue(),
           { maxKeys: 3 },
         ),

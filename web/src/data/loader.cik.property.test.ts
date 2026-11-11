@@ -7,7 +7,10 @@ import { fixtureBundle } from '../dev/fixtures';
 const listed = new Set(fixtureBundle.index.firms.map((f) => f.cik));
 
 const json = (body: unknown): Response =>
-  new Response(JSON.stringify(body), { status: 200, headers: { 'Content-Type': 'application/json' } });
+  new Response(JSON.stringify(body), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
 
 /** Mock fetch that serves only the index and macro; counts every request. */
 function makeFetch() {
@@ -41,7 +44,9 @@ const arbBadCik: fc.Arbitrary<string> = fc
     fc.string({ maxLength: 40 }),
     fc.string({ unit: 'grapheme', maxLength: 20 }),
     traversal,
-    fc.tuple(fc.string({ maxLength: 8 }), traversal, fc.string({ maxLength: 8 })).map((p) => p.join('')),
+    fc
+      .tuple(fc.string({ maxLength: 8 }), traversal, fc.string({ maxLength: 8 }))
+      .map((p) => p.join('')),
     fc.stringMatching(/^\d{10}$/), // well formed but usually not listed
     fc.stringMatching(/^\d{1,9}$/),
     fc.stringMatching(/^\d{11,14}$/),

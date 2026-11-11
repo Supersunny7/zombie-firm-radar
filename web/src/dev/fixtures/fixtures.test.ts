@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { guardFirm, guardFirmsIndex, guardMacro } from '../../data/guards';
-import { ashgroveWorks, fixtureBundle, fixtureFirms, fixtureIndex, fixtureMacro, indexEntryFrom } from '.';
+import {
+  ashgroveWorks,
+  fixtureBundle,
+  fixtureFirms,
+  fixtureIndex,
+  fixtureMacro,
+  indexEntryFrom,
+} from '.';
 
 describe('dev fixture', () => {
   it('passes the data guards after a JSON round trip', () => {
@@ -30,13 +37,17 @@ describe('dev fixture', () => {
     });
     expect(latest.icr).toBeCloseTo(38 / 61, 10);
     expect(ashgroveWorks.years.map((y) => y.fy)).toEqual([2020, 2021, 2022, 2023, 2024]);
-    expect(ashgroveWorks.years.filter((y) => y.fy >= 2022).every((y) => (y.icr ?? 1) < 1)).toBe(true);
+    expect(ashgroveWorks.years.filter((y) => y.fy >= 2022).every((y) => (y.icr ?? 1) < 1)).toBe(
+      true,
+    );
     expect(ashgroveWorks.rescue_inputs).toMatchObject({
       margin_mean: 0.035,
       margin_change_sd: 0.018,
       revenue_growth_median: 0.01,
     });
-    expect(fixtureIndex.firms.find((f) => f.cik === ashgroveWorks.cik)!.age_years).toBeGreaterThanOrEqual(10);
+    expect(
+      fixtureIndex.firms.find((f) => f.cik === ashgroveWorks.cik)!.age_years,
+    ).toBeGreaterThanOrEqual(10);
   });
 
   it('has dgs10 of 0.042', () => {
@@ -51,7 +62,12 @@ describe('dev fixture', () => {
       expect(entry.latest_icr).toBe(f.years[f.years.length - 1]!.icr);
       expect(fixtureBundle.firms[f.cik]).toBe(f);
     }
-    expect(fixtureIndex.meta.counts).toEqual({ zombie: 1, endangered: 1, healthy: 1, insufficient_data: 0 });
+    expect(fixtureIndex.meta.counts).toEqual({
+      zombie: 1,
+      endangered: 1,
+      healthy: 1,
+      insufficient_data: 0,
+    });
   });
 
   it('matches the stated status per the zombie definition', () => {

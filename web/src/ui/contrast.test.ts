@@ -102,7 +102,9 @@ describe('ThemeSync', () => {
 
   it('sets and updates data-lights and data-reduced-motion', () => {
     const root = document.documentElement;
-    const { rerender } = render(createElement(ThemeSync, { lightsOn: false, reducedMotion: false }));
+    const { rerender } = render(
+      createElement(ThemeSync, { lightsOn: false, reducedMotion: false }),
+    );
     expect(root.getAttribute('data-lights')).toBe('off');
     expect(root.getAttribute('data-reduced-motion')).toBe('false');
 

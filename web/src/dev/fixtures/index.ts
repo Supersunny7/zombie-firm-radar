@@ -1,7 +1,14 @@
 /**
  * Dev fixture bundle. DEV only: import behind `import.meta.env.DEV`.
  */
-import type { Firm, FirmIndexEntry, FirmsIndex, FirmsIndexMeta, FirmStatus, Macro } from '../../types/data';
+import type {
+  Firm,
+  FirmIndexEntry,
+  FirmsIndex,
+  FirmsIndexMeta,
+  FirmStatus,
+  Macro,
+} from '../../types/data';
 import { fixtureFirms, fixtureFirstFilingYear } from './firms';
 import { fixtureMacro } from './macro';
 
@@ -15,7 +22,10 @@ export interface FixtureBundle {
 }
 
 /** Build the index entry for a firm from its firm file, so the two agree by construction. */
-export function indexEntryFrom(firm: Firm, meta: Pick<FirmsIndexMeta, 'fiscal_years'>): FirmIndexEntry {
+export function indexEntryFrom(
+  firm: Firm,
+  meta: Pick<FirmsIndexMeta, 'fiscal_years'>,
+): FirmIndexEntry {
   const latest = firm.years[firm.years.length - 1];
   const firstFilingYear = fixtureFirstFilingYear[firm.cik] ?? firm.years[0]?.fy ?? 0;
   const latestFy = meta.fiscal_years[meta.fiscal_years.length - 1] ?? firm.as_of_filing.fiscal_year;
@@ -40,7 +50,12 @@ export function indexEntryFrom(firm: Firm, meta: Pick<FirmsIndexMeta, 'fiscal_ye
 }
 
 function buildIndex(firms: Firm[]): FirmsIndex {
-  const counts: Record<FirmStatus, number> = { zombie: 0, endangered: 0, healthy: 0, insufficient_data: 0 };
+  const counts: Record<FirmStatus, number> = {
+    zombie: 0,
+    endangered: 0,
+    healthy: 0,
+    insufficient_data: 0,
+  };
   for (const f of firms) counts[f.status] += 1;
   const meta: FirmsIndexMeta = {
     generated_at: '2025-03-10T00:00:00Z',

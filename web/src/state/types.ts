@@ -52,5 +52,4 @@ export interface Rejection {
 }
 
 export type TransitionOutcome =
-  | { ok: true; machine: Machine }
-  | { ok: false; machine: Machine; rejected: Rejection };
+  { ok: true; machine: Machine } | { ok: false; machine: Machine; rejected: Rejection };

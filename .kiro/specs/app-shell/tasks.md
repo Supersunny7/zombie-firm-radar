@@ -126,17 +126,17 @@ Rules for every task:
     - Sources `mock`, `fixture`, `real`; production missing index with mock fallback (Data_Source `mock`); production with neither; non-2xx; network error; invalid JSON; cache hit makes one request; failure not cached; no `/data/mock/` request in `real`; `keeper_log.json` never requested; retry
     - _Requirements: 6.3, 6.4, 6.5, 6.6, 6.8, 6.9, 6.10, 6.11, 6.14, 6.15, 7.8_
 
-- [ ] 7. Vite data plugin
-  - [ ] 7.1 Implement `web/plugins/dataPlugin.ts` and wire it in `vite.config.ts`
+- [x] 7. Vite data plugin
+  - [x] 7.1 Implement `web/plugins/dataPlugin.ts` and wire it in `vite.config.ts`
     - `resolveInsideData`, `planCopy`, dev middleware for `/data/` (404 outside the folder), `closeBundle` copy (real: all except `schema` and `mock`; else `mock` only; neither: warn), log file count, `Cache-Control: no-cache`
     - Read `../data` in place; write nothing under `/web` except `dist`
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6_
 
-  - [ ] 7.2 Write property test for path containment
+  - [x] 7.2 Write property test for path containment
     - **Property 10: Data path resolution never escapes the data folder**
     - **Validates: Requirements 5.1, 5.5**
 
-  - [ ] 7.3 Write plugin copy tests
+  - [x] 7.3 Write plugin copy tests
     - Temporary-directory runs for real, mock-only and neither; `schema` always excluded; log message with count
     - _Requirements: 5.2, 5.3, 5.6, 17.11_
 
