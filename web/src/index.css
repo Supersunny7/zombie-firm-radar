@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@custom-variant lights-on (&:where([data-lights="on"], [data-lights="on"] *));
+
+@theme {
+  --color-ink: #05070a;
+  --color-text: #e6e2d6;
+  --color-text-2: #a9b4bf;
+  --color-rec: #e0473b;
+  --color-status-healthy: #8cc2a5;
+  --color-status-endangered: #e8b85c;
+  --color-status-zombie: #e8665a;
+  --color-status-insufficient: #a9b4bf;
+  --color-panel: rgba(6, 8, 11, 0.78);
+  --color-panel-border: rgba(230, 226, 214, 0.2);
+  --radius-panel: 6px;
+  --font-display: "Cormorant Garamond", serif;
+  --font-ui: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* Brighter token set; status colors and REC red stay identical. */
+:root[data-lights="on"] {
+  --color-ink: #0d1319;
+  --color-text: #f4f1e8;
+  --color-text-2: #c9d3dc;
+  --color-panel: rgba(14, 20, 28, 0.88);
+}
+
+:root[data-reduced-motion="true"] *:not(.clock-text) {
+  transition: none !important;
+  animation: none !important;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-text);
+  font-family: var(--font-ui);
+}

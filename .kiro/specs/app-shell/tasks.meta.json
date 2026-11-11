@@ -26,6 +26,44 @@
         "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
         "timestamp": 1794424693904
       }
+    ],
+    "2.1 Implement `src/index.css`, `src/main.tsx` font imports and theme sync helpers": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425188601
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425235900
+      }
+    ],
+    "2. Design tokens, fonts and theme attributes": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425235989
+      }
+    ],
+    "2.2 Write contrast and theme tests": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425240699
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425346296
+      }
+    ],
+    "3.1 Implement `src/state/types.ts` and `src/state/machine.ts`": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425349240
+      }
     ]
   }
 }

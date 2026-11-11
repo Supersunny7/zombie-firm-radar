@@ -29,20 +29,20 @@ Rules for every task:
     - Verify with `git check-ignore web/dist` in PowerShell
     - _Requirements: 1.11_
 
-- [ ] 2. Design tokens, fonts and theme attributes
-  - [ ] 2.1 Implement `src/index.css`, `src/main.tsx` font imports and theme sync helpers
+- [x] 2. Design tokens, fonts and theme attributes
+  - [x] 2.1 Implement `src/index.css`, `src/main.tsx` font imports and theme sync helpers
     - Tailwind v4 `@import "tailwindcss"`, `@custom-variant lights-on`, `@theme` tokens (colors, panel, radius, three font families), `:root[data-lights="on"]` brighter set, `:root[data-reduced-motion="true"]` rule that disables transitions and animations except `.clock-text`
     - Import latin per-weight @fontsource CSS (Inter 400/500/600, Cormorant Garamond 500/600, JetBrains Mono 400/500) in `main.tsx` with a minimal render so the project builds
     - Export a `ThemeSync` component (`useLayoutEffect` sets `data-lights` and `data-reduced-motion` on `document.documentElement`) from `src/ui/ThemeSync.tsx`
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 9.12_
 
-  - [ ]* 2.2 Write contrast and theme tests
+  - [x]* 2.2 Write contrast and theme tests
     - `src/ui/contrast.test.ts`: WCAG luminance function over token hex values, assert at least 4.5:1 for each HUD and Table pair in both lights modes
     - Test that `ThemeSync` sets and updates `data-lights` and `data-reduced-motion`
     - _Requirements: 2.6, 2.7, 2.9, 9.12_
 
 - [ ] 3. Game-flow machine
-  - [ ] 3.1 Implement `src/state/types.ts` and `src/state/machine.ts`
+  - [-] 3.1 Implement `src/state/types.ts` and `src/state/machine.ts`
     - Branded `Cik` and `RateShock`, `Treatment`, `ToolChoice`, `Result`, `GameContext`, `GameState`, `GameEvent`, `Machine` (with `history` map), `TransitionOutcome`
     - `parseCik`, `parseRateShock` (finite check before range), `parseTreatment` (0 to 3 tools), `parseResult` run inside `transition`
     - Implement `initialMachine` and `transition` for `selectFirm`, `captureDone`, `pullSwitch`, `continue`, `cancel`, `setRateShock`, `setTreatment`, `setResult`; invalid events return `ok: false` with the same machine reference and a reason
