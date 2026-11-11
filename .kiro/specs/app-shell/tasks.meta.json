@@ -1,0 +1,31 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Create the Vite + React 19 + TypeScript project and tooling": [
+      {
+        "executionId": "36e01ff5-28db-427d-b4df-0ed5330028db",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794423645136
+      },
+      {
+        "executionId": "36e01ff5-28db-427d-b4df-0ed5330028db",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794424681564
+      }
+    ],
+    "1.2 Add the `web/dist` entry to `.gitignore`": [
+      {
+        "executionId": "36e01ff5-28db-427d-b4df-0ed5330028db",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794424693799
+      }
+    ],
+    "1. Scaffold the `/web` project": [
+      {
+        "executionId": "36e01ff5-28db-427d-b4df-0ed5330028db",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794424693904
+      }
+    ]
+  }
+}

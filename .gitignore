@@ -20,3 +20,7 @@ Thumbs.db
 
 # Never ignore .kiro - required by the hackathon rules
 !.kiro/
+
+# Web build output
+web/dist
+*.tsbuildinfo

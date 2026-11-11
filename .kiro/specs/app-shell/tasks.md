@@ -16,15 +16,15 @@ Rules for every task:
 
 ## Tasks
 
-- [ ] 1. Scaffold the `/web` project
-  - [ ] 1.1 Create the Vite + React 19 + TypeScript project and tooling
+- [x] 1. Scaffold the `/web` project
+  - [x] 1.1 Create the Vite + React 19 + TypeScript project and tooling
     - Create `web/package.json` (scripts `dev`, `build`, `preview`, `test`, `lint`, `format`, `typecheck`; `packageManager: "pnpm@12.18.0"`; `engines.node: ">=22"`), `.npmrc` (`save-exact=true`), `tsconfig.json`, `tsconfig.node.json` (strict, `noUncheckedIndexedAccess`, bundler resolution, `react-jsx`), `vite.config.ts` (react, `@tailwindcss/vite`, `build.manifest: true`), `vitest.config.ts` (jsdom, `setupFiles`, `globals: false`, `css: false`), `eslint.config.js` (flat config, react-hooks, restricted imports for `src/engine/**`, `src/state/machine.ts`, `src/state/types.ts`, `src/data/**`, `src/state/settingsStorage.ts`), `.prettierrc.json`, `index.html`
     - Install pinned dependencies: react 19, react-dom 19, @react-three/fiber 9, matching `three`, zustand, three @fontsource packages; dev: vite, @vitejs/plugin-react, typescript, tailwindcss, @tailwindcss/vite, vitest, jsdom, Testing Library, vitest-axe, fast-check, ajv, ajv-formats, eslint, typescript-eslint, eslint-plugin-react-hooks, prettier, @types/*. Do not install drei, fiber 8, drei 9 or @theatre/studio
     - Create `src/test/setup.ts` (jest-dom, vitest-axe matchers, `matchMedia` and `localStorage` stubs) and `src/engine/.gitkeep`
     - Run `pnpm install` in `web` and commit `pnpm-lock.yaml`
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.8, 1.9, 1.10, 17.1, 17.7_
 
-  - [ ] 1.2 Add the `web/dist` entry to `.gitignore`
+  - [x] 1.2 Add the `web/dist` entry to `.gitignore`
     - Append `web/dist` to the root `.gitignore` if missing; keep `node_modules` and local tool output ignored; never ignore `/.kiro`, `/data` or `/data/mock`
     - Verify with `git check-ignore web/dist` in PowerShell
     - _Requirements: 1.11_
