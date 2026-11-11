@@ -155,24 +155,24 @@ Rules for every task:
     - Overlay toggle keeps the `machine` reference; actions route through `transition`; reduced-motion follows the media query until set explicitly; settings persist
     - _Requirements: 4.2, 4.4, 4.5, 9.3, 9.4, 9.5_
 
-- [ ] 9. Table helpers
-  - [ ] 9.1 Implement `src/ui/table/sort.ts`, `format.ts` and `StatusLabel.tsx`
+- [x] 9. Table helpers
+  - [x] 9.1 Implement `src/ui/table/sort.ts`, `format.ts` and `StatusLabel.tsx`
     - `nextSort`, `sortRows` (nulls last in both directions, stable, tie-break by name ascending case-insensitive, new array), `formatIcr` (no `-0.00`), `formatDebt` (unit chosen after rounding, negatives), `statusLabel` with glyphs and text
     - _Requirements: 12.5, 12.6, 12.7, 12.9, 12.10, 12.12, 12.13, 12.14_
 
-  - [ ] 9.2 Write property test for sorting
+  - [x] 9.2 Write property test for sorting
     - **Property 7: Table sorting is a correctly ordered permutation**
     - **Validates: Requirements 12.9, 12.12, 12.13, 12.14, 12.15, 12.26**
 
-  - [ ] 9.3 Write property test for ICR formatting
+  - [x] 9.3 Write property test for ICR formatting
     - **Property 8: ICR formatting**
     - **Validates: Requirements 12.6**
 
-  - [ ] 9.4 Write property test for debt formatting
+  - [x] 9.4 Write property test for debt formatting
     - **Property 9: Debt formatting picks the unit by magnitude**
     - **Validates: Requirements 12.7**
 
-- [ ] 10. Checkpoint - Ensure all tests pass
+- [-] 10. Checkpoint - Ensure all tests pass
   - Run `pnpm test`, `pnpm lint`, `pnpm typecheck` in `web`. Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 11. HUD, Settings menu, Table view and Error screen

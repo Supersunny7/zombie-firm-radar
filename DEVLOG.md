@@ -26,3 +26,7 @@
 2026-11-11 | app-shell | 8.1 | Implemented zustand store routing machine events, settings persistence and debug bar defaults | web/src/state/store.ts
 2026-11-11 | app-shell | 8.2 | Added debug bar default visibility property test | web/src/state/debugBar.property.test.ts
 2026-11-11 | app-shell | 8.3 | Added store unit tests for overlay, routing, reduced motion and persistence | web/src/state/store.unit.test.ts
+2026-11-11 | app-shell | 9.1 | Implemented table sort, ICR and debt formatting and status label helpers | web/src/ui/table/sort.ts, format.ts, StatusLabel.tsx
+2026-11-11 | app-shell | 9.2 | Added table sorting property test | web/src/ui/table/sort.property.test.ts
+2026-11-11 | app-shell | 9.3 | Added ICR formatting property test and fixed exponent output for huge values | web/src/ui/table/formatIcr.property.test.ts, format.ts
+2026-11-11 | app-shell | 9.4 | Added debt formatting property test | web/src/ui/table/formatDebt.property.test.ts
