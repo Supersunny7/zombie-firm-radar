@@ -7,6 +7,10 @@
     "3.3 Write property test for rejected events": {
       "status": "passed",
       "lastRunTimestamp": 1794425523560
+    },
+    "4.2 Write property test for the settings round trip": {
+      "status": "passed",
+      "lastRunTimestamp": 1794425631988
     }
   },
   "executionHistory": {
@@ -96,6 +100,16 @@
         "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
         "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
         "timestamp": 1794425444504
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425557646
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425594578
       }
     ],
     "5.1 Implement `src/data/guards.ts`": [
@@ -168,6 +182,49 @@
         "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
         "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
         "timestamp": 1794425547326
+      }
+    ],
+    "4. Settings and persistence": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425594683
+      }
+    ],
+    "4.2 Write property test for the settings round trip": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425596189
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425639883
+      }
+    ],
+    "4.3 Write property test for tolerant settings parsing": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425640501
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425705618
+      }
+    ],
+    "4.4 Write unit tests for settings": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425641139
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425706394
       }
     ]
   }

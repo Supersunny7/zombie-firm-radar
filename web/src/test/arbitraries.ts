@@ -4,6 +4,7 @@
  * (arbStatus, arbFirmIndexEntry, arbFirmsIndex, arbFirm, arbMacro, arbSettings, arbCorruption).
  */
 import fc from 'fast-check';
+import type { Settings } from '../state/settings';
 import type { GameEvent } from '../state/types';
 
 /** Valid 10-digit zero-padded CIK string. */
@@ -81,3 +82,11 @@ export const arbBadEvent: fc.Arbitrary<GameEvent> = fc.oneof(
   arbJunk.map((treatment): GameEvent => ({ type: 'setTreatment', treatment })),
   arbJunk.map((result): GameEvent => ({ type: 'setResult', result })),
 );
+
+/** Valid Settings value (every field in its allowed domain, including reducedMotion: null). */
+export const arbSettings: fc.Arbitrary<Settings> = fc.record({
+  lights: fc.constantFrom<'off' | 'on'>('off', 'on'),
+  sound: fc.boolean(),
+  lowQuality: fc.boolean(),
+  reducedMotion: fc.constantFrom<boolean | null>(true, false, null),
+});

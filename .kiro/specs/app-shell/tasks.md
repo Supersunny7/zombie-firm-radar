@@ -63,21 +63,21 @@ Rules for every task:
     - Table-driven test for each valid transition, every invalid state and event pair, `history` update on `continue`, and `expectTypeOf` test that `captureDone` from `graveyard` is `never`
     - _Requirements: 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.16_
 
-- [ ] 4. Settings and persistence
-  - [ ] 4.1 Implement `src/state/settings.ts` and `src/state/settingsStorage.ts`
+- [x] 4. Settings and persistence
+  - [x] 4.1 Implement `src/state/settings.ts` and `src/state/settingsStorage.ts`
     - `Settings`, `DEFAULT_SETTINGS`, `serializeSettings`, `parseSettings` (per-field fallback, never throws), `readSettings`, `writeSettings` (try/catch, returns false on failure), storage key `zfr.settings.v1`
     - `sound` is a flag only; create no `AudioContext`
     - _Requirements: 9.1, 9.2, 9.5, 9.6, 9.7, 9.8, 9.9, 9.10_
 
-  - [ ]* 4.2 Write property test for the settings round trip
+  - [x]* 4.2 Write property test for the settings round trip
     - **Property 5: Settings round trip**
     - **Validates: Requirements 9.5, 9.6, 9.11**
 
-  - [ ]* 4.3 Write property test for tolerant settings parsing
+  - [x]* 4.3 Write property test for tolerant settings parsing
     - **Property 6: Settings parsing never throws and falls back per field**
     - **Validates: Requirements 9.2, 9.8**
 
-  - [ ]* 4.4 Write unit tests for settings
+  - [x]* 4.4 Write unit tests for settings
     - Defaults, throwing `localStorage` on read and write, no `AudioContext` created, media-query follow versus explicit override (store level once 8.1 exists is covered in 8.3)
     - _Requirements: 9.2, 9.7, 9.9_
 
