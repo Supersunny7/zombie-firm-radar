@@ -31,3 +31,9 @@
 2026-11-11 | app-shell | 9.3 | Added ICR formatting property test and fixed exponent output for huge values | web/src/ui/table/formatIcr.property.test.ts, format.ts
 2026-11-11 | app-shell | 9.4 | Added debt formatting property test | web/src/ui/table/formatDebt.property.test.ts
 2026-11-11 | app-shell | 10 | Checkpoint passed: 202 tests, lint, typecheck and format clean | none
+2026-11-11 | app-shell | 11.1 | Implemented HUD frame with clock, skip slot, skip link, mock label and footer | web/src/ui/Hud.tsx, Clock.tsx, SkipSlot.tsx, SkipLink.tsx, useFocusTrap.ts
+2026-11-11 | app-shell | 11.2 | Implemented Error screen with alert, focused Retry and tests | web/src/ui/ErrorScreen.tsx, ErrorScreen.test.tsx
+2026-11-11 | app-shell | 11.3 | Added HUD timestamp format property test | web/src/ui/clock.property.test.ts
+2026-11-11 | app-shell | 11.4 | Implemented accessible Settings menu with four toggles and focus handling | web/src/ui/SettingsMenu.tsx, Hud.tsx
+2026-11-11 | app-shell | 11.5 | Implemented accessible Table view modal with sorting and gated Select | web/src/ui/table/TableView.tsx
+2026-11-11 | app-shell | 11.6 | Added component and axe tests for HUD, Settings menu, Table view and Error screen | web/src/ui/*.test.tsx, web/src/ui/table/TableView.test.tsx

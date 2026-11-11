@@ -509,6 +509,95 @@
         "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
         "timestamp": 1794426704158
       }
+    ],
+    "11.1 Implement the HUD frame": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428305524
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428369820
+      }
+    ],
+    "11.2 Implement `src/ui/ErrorScreen.tsx`": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428305662
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428369993
+      }
+    ],
+    "11.3 Write property test for the timestamp format": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428371128
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428429146
+      }
+    ],
+    "11.4 Implement `src/ui/SettingsMenu.tsx`": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428372164
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428429837
+      }
+    ],
+    "11.5 Implement `src/ui/table/TableView.tsx`": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428372919
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428430088
+      }
+    ],
+    "11. HUD, Settings menu, Table view and Error screen": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428430178
+      }
+    ],
+    "11.6 Write component and axe tests for HUD, Settings menu, Table view and Error screen": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428432089
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428548578
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428551342
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428614516
+      }
     ]
   }
 }

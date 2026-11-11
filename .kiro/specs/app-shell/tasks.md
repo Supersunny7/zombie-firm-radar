@@ -175,29 +175,29 @@ Rules for every task:
 - [x] 10. Checkpoint - Ensure all tests pass
   - Run `pnpm test`, `pnpm lint`, `pnpm typecheck` in `web`. Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 11. HUD, Settings menu, Table view and Error screen
-  - [ ] 11.1 Implement the HUD frame
+- [x] 11. HUD, Settings menu, Table view and Error screen
+  - [x] 11.1 Implement the HUD frame
     - `src/ui/useFocusTrap.ts`, `Hud.tsx`, `Clock.tsx` (with pure `formatTimestamp`, `clock-text` class, 1 s interval), `SkipSlot.tsx` (hidden or `aria-disabled` without handler, Esc calls handler once), `SkipLink.tsx` (first focusable, "Skip to table view"), Mock data label (hidden until Data_Source known), "Table view" button
     - Footer "Data: SEC EDGAR. Not investment advice." rendered outside any conditional; panels on right and bottom, stacked below 900px; red dot `aria-hidden`
     - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 10.10, 10.11, 10.12, 10.13, 10.14, 12.1, 13.15_
 
-  - [ ] 11.2 Implement `src/ui/ErrorScreen.tsx`
+  - [x] 11.2 Implement `src/ui/ErrorScreen.tsx`
     - Title, file path, reason in `role="alert"`, Retry button focused on mount that calls `loader.retry()` and reruns startup; footer stays visible
     - _Requirements: 7.5, 7.6, 7.7, 7.8_
 
-  - [ ]* 11.3 Write property test for the timestamp format
+  - [x]* 11.3 Write property test for the timestamp format
     - **Property 13: HUD timestamp format**
     - **Validates: Requirements 10.2**
 
-  - [ ] 11.4 Implement `src/ui/SettingsMenu.tsx`
+  - [x] 11.4 Implement `src/ui/SettingsMenu.tsx`
     - Button "Settings" with `aria-expanded`, `aria-controls`, `role="dialog"` panel, four checkboxes labelled "Lights on", "Sound", "Low quality", "Reduced motion", On/Off text, "Follow system" note, focus trap, Esc closes and restores focus, visible focus outline
     - _Requirements: 11.1, 11.2, 11.3, 11.4, 11.5, 11.6, 11.7, 11.8, 11.9_
 
-  - [ ] 11.5 Implement `src/ui/table/TableView.tsx`
+  - [x] 11.5 Implement `src/ui/table/TableView.tsx`
     - Modal dialog with native `<table>`, caption, column header buttons in `th scope="col"`, `aria-sort`, Status_Label, ICR and debt formatting, "Select" button only when `rescue_eligible` with accessible name including the firm name, graveyard-only selection with `role="status"` message otherwise, empty-state row, focus on open, trap, Esc and Close restore focus to the "Table view" button, sort state local and reset on open, no machine change from open, sort or close
     - _Requirements: 12.2, 12.3, 12.4, 12.5, 12.8, 12.9, 12.10, 12.11, 12.15, 12.16, 12.17, 12.18, 12.19, 12.20, 12.21, 12.22, 12.23_
 
-  - [ ]* 11.6 Write component and axe tests for HUD, Settings menu, Table view and Error screen
+  - [x]* 11.6 Write component and axe tests for HUD, Settings menu, Table view and Error screen
     - HUD: REC text, footer in every game state and with Table open, Mock data label for `mock` and `fixture` only, Skip slot states, Esc handler once; Settings menu: labels, state text, focus behaviour, persistence, vitest-axe with menu open; Table view: columns, rows, Tab reachability, Enter and Space sorting, `aria-sort`, Select gating, empty state, vitest-axe with the fixture; Error screen: `role="alert"`, Retry, shown for invalid file and for production with no index
     - _Requirements: 10.4, 10.9, 10.10, 11.x, 12.24, 12.25, 17.2, 17.3, 17.4, 17.5_
 
