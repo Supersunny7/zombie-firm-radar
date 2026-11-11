@@ -112,17 +112,17 @@ Rules for every task:
     - Assert Ashgrove numbers, macro 0.042, three statuses, index and firm consistency, fictional names
     - _Requirements: 7.10, 7.11, 7.12, 8.7, 17.2_
 
-- [ ] 6. Data loader
-  - [ ] 6.1 Implement `src/data/errors.ts`, `src/data/source.ts` and `src/data/loader.ts`
+- [x] 6. Data loader
+  - [x] 6.1 Implement `src/data/errors.ts`, `src/data/source.ts` and `src/data/loader.ts`
     - `createLoader({ fetch, isDev, loadFixture })` with `loadStartup`, `loadFirm`, `retry`; `formatLoadError`
     - DEV: probe `/data/mock/firms_index.json`, else fixture via `import.meta.env.DEV`-gated dynamic import; PROD: `/data/` then `/data/mock/` then error; reuse the probe response; parse text with try/catch for invalid JSON; cache only validated values; reject bad or unlisted CIK before any fetch; never fetch `keeper_log.json`
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 6.11, 6.12_
 
-  - [ ] 6.2 Write property test for unknown CIKs
+  - [x] 6.2 Write property test for unknown CIKs
     - **Property 11: Unknown or malformed CIKs never reach the network**
     - **Validates: Requirements 6.2, 6.12**
 
-  - [ ] 6.3 Write loader unit tests with mocked `fetch`
+  - [x] 6.3 Write loader unit tests with mocked `fetch`
     - Sources `mock`, `fixture`, `real`; production missing index with mock fallback (Data_Source `mock`); production with neither; non-2xx; network error; invalid JSON; cache hit makes one request; failure not cached; no `/data/mock/` request in `real`; `keeper_log.json` never requested; retry
     - _Requirements: 6.3, 6.4, 6.5, 6.6, 6.8, 6.9, 6.10, 6.11, 6.14, 6.15, 7.8_
 
