@@ -41,25 +41,25 @@ Rules for every task:
     - Test that `ThemeSync` sets and updates `data-lights` and `data-reduced-motion`
     - _Requirements: 2.6, 2.7, 2.9, 9.12_
 
-- [ ] 3. Game-flow machine
-  - [-] 3.1 Implement `src/state/types.ts` and `src/state/machine.ts`
+- [x] 3. Game-flow machine
+  - [x] 3.1 Implement `src/state/types.ts` and `src/state/machine.ts`
     - Branded `Cik` and `RateShock`, `Treatment`, `ToolChoice`, `Result`, `GameContext`, `GameState`, `GameEvent`, `Machine` (with `history` map), `TransitionOutcome`
     - `parseCik`, `parseRateShock` (finite check before range), `parseTreatment` (0 to 3 tools), `parseResult` run inside `transition`
     - Implement `initialMachine` and `transition` for `selectFirm`, `captureDone`, `pullSwitch`, `continue`, `cancel`, `setRateShock`, `setTreatment`, `setResult`; invalid events return `ok: false` with the same machine reference and a reason
     - Typed `Allowed` table and exhaustive `switch` so an unlisted transition fails to compile; no React or three imports
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13, 3.14, 3.15_
 
-  - [ ]* 3.2 Write property test for machine invariants
+  - [x]* 3.2 Write property test for machine invariants
     - **Property 1: Machine invariants hold for any event sequence**
     - 0 to 100 events from `arbEvent`/`arbBadEvent`, 200 runs; header comment `// Feature: app-shell, Property 1: ...`
     - **Validates: Requirements 3.1, 3.11, 3.12, 3.17**
 
-  - [ ]* 3.3 Write property test for rejected events
+  - [x]* 3.3 Write property test for rejected events
     - **Property 2: Invalid events and invalid values leave the machine unchanged**
     - Assert `ok: false`, same reference, deep-equal, reject info with non-empty reason
     - **Validates: Requirements 3.9, 3.14**
 
-  - [ ]* 3.4 Write unit and type tests for the machine
+  - [x]* 3.4 Write unit and type tests for the machine
     - Table-driven test for each valid transition, every invalid state and event pair, `history` update on `continue`, and `expectTypeOf` test that `captureDone` from `graveyard` is `never`
     - _Requirements: 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.16_
 
