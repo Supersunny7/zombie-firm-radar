@@ -201,20 +201,20 @@ Rules for every task:
     - HUD: REC text, footer in every game state and with Table open, Mock data label for `mock` and `fixture` only, Skip slot states, Esc handler once; Settings menu: labels, state text, focus behaviour, persistence, vitest-axe with menu open; Table view: columns, rows, Tab reachability, Enter and Space sorting, `aria-sort`, Select gating, empty state, vitest-axe with the fixture; Error screen: `role="alert"`, Retry, shown for invalid file and for production with no index
     - _Requirements: 10.4, 10.9, 10.10, 11.x, 12.24, 12.25, 17.2, 17.3, 17.4, 17.5_
 
-- [ ] 12. Lazy scenes
-  - [ ] 12.1 Implement `src/scenes/*`
+- [x] 12. Lazy scenes
+  - [x] 12.1 Implement `src/scenes/*`
     - Look up the R3F 9 `Canvas` API with context7 first
     - `webgl.ts` (`hasWebGL`), `ScenePlaceholder.tsx`, `graveyard/GraveyardScene.tsx`, `lab/LabScene.tsx` (empty `<Canvas frameloop="demand">`, background `#05070A`, HTML label outside the canvas, "Low quality" suffix, "3D view unavailable. Use Table view." when no WebGL, data from the store only)
     - `SceneHost.tsx` with `lazyWithRetry`, `Suspense` fallback "Loading feed…", error boundary with Retry, keyed remount per scene, `preloadLab()` on first `capture` and never at start
     - Report that no `/reference` screenshot applies to these empty canvases and offer a scene-critic check
     - _Requirements: 13.1, 13.2, 13.3, 13.4, 13.5, 13.6, 13.7, 13.8, 13.9, 13.10, 13.11, 13.12, 13.13, 13.14_
 
-  - [ ]* 12.2 Write scene tests
+  - [x]* 12.2 Write scene tests
     - Mock `@react-three/fiber` `Canvas`; scene selected per state, exactly one canvas, fallback text, lab preload only after first `capture`, chunk failure with Retry, WebGL-unavailable message, Low quality label
     - _Requirements: 13.1, 13.2, 13.3, 13.4, 13.5, 13.6, 13.11, 13.12, 13.13_
 
 - [ ] 13. Debug bar
-  - [ ] 13.1 Implement `src/ui/DebugBar.tsx`
+  - [-] 13.1 Implement `src/ui/DebugBar.tsx`
     - Lazy-loaded; firm `<select>`, buttons Capture / Lab / Outcome / Graveyard with pure `debugButtonStates(state)`, Rate_Shock number input 0 to 0.05, Result select; docked at the bottom above the footer; native labelled controls; DEV-only helpers imported behind `import.meta.env.DEV`
     - _Requirements: 14.5, 14.6, 14.7, 14.8, 14.9, 14.10_
 

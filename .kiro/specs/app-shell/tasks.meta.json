@@ -598,6 +598,44 @@
         "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
         "timestamp": 1794428614516
       }
+    ],
+    "12.1 Implement `src/scenes/*`": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428632187
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428730338
+      }
+    ],
+    "12. Lazy scenes": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428730461
+      }
+    ],
+    "12.2 Write scene tests": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428731412
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428866388
+      }
+    ],
+    "13.1 Implement `src/ui/DebugBar.tsx`": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794428867800
+      }
     ]
   }
 }
