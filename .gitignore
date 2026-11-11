@@ -1,4 +1,3 @@
-@'
 # Node / Vite
 node_modules/
 dist/
@@ -21,4 +20,3 @@ Thumbs.db
 
 # Never ignore .kiro - required by the hackathon rules
 !.kiro/
-'@ | Set-Content -Path .gitignore -Encoding utf8
