@@ -222,12 +222,12 @@ Rules for every task:
     - Button enablement per state, shock input range, result picker, vitest-axe clean, hidden in production mode without `debug=1`
     - _Requirements: 14.3, 14.6, 14.7, 14.8, 14.9_
 
-- [ ] 14. Wire the App
-  - [ ] 14.1 Implement `src/App.tsx` and finish `src/main.tsx`
+- [x] 14. Wire the App
+  - [x] 14.1 Implement `src/App.tsx` and finish `src/main.tsx`
     - Startup load with "Loading feed…", `setData`, Error screen on failure, `ThemeSync`, `matchMedia` subscription for `systemReducedMotion`, firm load on entering `lab`, HUD, SceneHost, TableView overlay, lazy DebugBar when `debugBar` is true
     - _Requirements: 4.1, 6.1, 6.2, 6.13, 7.5, 9.3, 10.9, 13.15_
 
-  - [ ]* 14.2 Write App integration tests
+  - [x]* 14.2 Write App integration tests
     - Mocked `fetch`: loading text, successful render with each source, Error screen instead of any Scene, walk the flow through the Debug bar, footer always present
     - _Requirements: 6.13, 7.5, 10.4, 17.3, 17.4_
 

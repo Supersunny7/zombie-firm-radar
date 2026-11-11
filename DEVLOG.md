@@ -41,3 +41,5 @@
 2026-11-11 | app-shell | 12.2 | Added scene selection, preload, chunk failure and WebGL fallback tests | web/src/scenes/scenes.test.tsx
 2026-11-11 | app-shell | 13.1 | Implemented lazy Debug bar with firm select, state buttons, rate shock and result controls | web/src/ui/DebugBar.tsx
 2026-11-11 | app-shell | 13.2 | Added Debug bar tests for button states, rate shock input, result picker and axe | web/src/ui/DebugBar.test.tsx
+2026-11-11 | app-shell | 14.1 | Wired App with startup loader, error screen, theme sync, scenes, table overlay and lazy debug bar | web/src/App.tsx, main.tsx, ui/Hud.tsx
+2026-11-11 | app-shell | 14.2 | Added App integration tests and fixed corrupted loading string | web/src/App.test.tsx, web/src/App.tsx

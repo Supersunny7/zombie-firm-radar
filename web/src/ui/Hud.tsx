@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { useStore } from '../state/store';
 import { Clock } from './Clock';
 import { SettingsMenu } from './SettingsMenu';
@@ -14,7 +15,7 @@ export const FOOTER_TEXT = 'Data: SEC EDGAR. Not investment advice.';
  * Frame around the stage. Panels dock to the top-left, right and bottom edges and
  * never cover the center; below 900px they stack under the stage.
  */
-export function Hud() {
+export function Hud({ children }: { children?: ReactNode }) {
   const source = useStore((s) => s.data?.source ?? null);
   const toggleOverlay = useStore((s) => s.toggleOverlay);
   const showMock = source === 'mock' || source === 'fixture';
@@ -32,7 +33,9 @@ export function Hud() {
       </header>
 
       {/* Stage spacer: keeps the center free; stage sits behind on desktop. */}
-      <div className="flex-1 max-[900px]:h-[60vh] max-[900px]:flex-none" />
+      <div className="flex-1 max-[900px]:h-[60vh] max-[900px]:flex-none">
+        {children && <div className="pointer-events-auto">{children}</div>}
+      </div>
 
       <aside
         aria-label="Controls"
