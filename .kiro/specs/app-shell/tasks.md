@@ -140,18 +140,18 @@ Rules for every task:
     - Temporary-directory runs for real, mock-only and neither; `schema` always excluded; log message with count
     - _Requirements: 5.2, 5.3, 5.6, 17.11_
 
-- [ ] 8. Zustand store
-  - [ ] 8.1 Implement `src/state/store.ts`
+- [x] 8. Zustand store
+  - [x] 8.1 Implement `src/state/store.ts`
     - State: `machine`, `settings`, `overlay`, `debugBar`, `data`, `firm`, `skipHandler`, `lastRejection`, `systemReducedMotion`
     - Actions: `send` (only way to change machine), `selectFirm`, `setRateShock`, `setTreatment`, `setResult`, `setSetting`, `toggleOverlay`, `closeOverlay`, `toggleDebugBar`, `setData`, `setFirm`, `registerSkip`
     - Pure `initialDebugBar(isDev, search)`; `effectiveReducedMotion` selector; persist settings on change through `writeSettings`; `console.warn` rejections in DEV only
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 9.3, 9.4, 14.1, 14.2, 14.3, 14.4_
 
-  - [ ] 8.2 Write property test for debug bar visibility
+  - [x] 8.2 Write property test for debug bar visibility
     - **Property 12: Debug bar default visibility**
     - **Validates: Requirements 14.1, 14.2, 14.3**
 
-  - [ ] 8.3 Write store unit tests
+  - [x] 8.3 Write store unit tests
     - Overlay toggle keeps the `machine` reference; actions route through `transition`; reduced-motion follows the media query until set explicitly; settings persist
     - _Requirements: 4.2, 4.4, 4.5, 9.3, 9.4, 9.5_
 

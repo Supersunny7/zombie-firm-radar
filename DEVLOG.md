@@ -23,3 +23,6 @@
 2026-11-11 | app-shell | 7.1 | Implemented Vite data plugin with safe path resolution, dev middleware and build copy | web/plugins/dataPlugin.ts, web/vite.config.ts
 2026-11-11 | app-shell | 7.2 | Added data path containment property test | web/plugins/dataPlugin.path.property.test.ts
 2026-11-11 | app-shell | 7.3 | Added data plugin copy tests and testable copyDataAndLog | web/plugins/dataPlugin.copy.test.ts, web/plugins/dataPlugin.ts
+2026-11-11 | app-shell | 8.1 | Implemented zustand store routing machine events, settings persistence and debug bar defaults | web/src/state/store.ts
+2026-11-11 | app-shell | 8.2 | Added debug bar default visibility property test | web/src/state/debugBar.property.test.ts
+2026-11-11 | app-shell | 8.3 | Added store unit tests for overlay, routing, reduced motion and persistence | web/src/state/store.unit.test.ts

@@ -397,6 +397,49 @@
         "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
         "timestamp": 1794426395314
       }
+    ],
+    "8.1 Implement `src/state/store.ts`": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426421313
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426470085
+      }
+    ],
+    "8.2 Write property test for debug bar visibility": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426470848
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426513441
+      }
+    ],
+    "8.3 Write store unit tests": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426471196
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426514250
+      }
+    ],
+    "8. Zustand store": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426514330
+      }
     ]
   }
 }
