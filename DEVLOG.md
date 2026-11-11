@@ -39,3 +39,5 @@
 2026-11-11 | app-shell | 11.6 | Added component and axe tests for HUD, Settings menu, Table view and Error screen | web/src/ui/*.test.tsx, web/src/ui/table/TableView.test.tsx
 2026-11-11 | app-shell | 12.1 | Implemented lazy empty graveyard and lab scenes with host, WebGL fallback and lab preload | web/src/scenes/*
 2026-11-11 | app-shell | 12.2 | Added scene selection, preload, chunk failure and WebGL fallback tests | web/src/scenes/scenes.test.tsx
+2026-11-11 | app-shell | 13.1 | Implemented lazy Debug bar with firm select, state buttons, rate shock and result controls | web/src/ui/DebugBar.tsx
+2026-11-11 | app-shell | 13.2 | Added Debug bar tests for button states, rate shock input, result picker and axe | web/src/ui/DebugBar.test.tsx

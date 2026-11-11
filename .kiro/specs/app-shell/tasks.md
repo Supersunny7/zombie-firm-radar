@@ -213,12 +213,12 @@ Rules for every task:
     - Mock `@react-three/fiber` `Canvas`; scene selected per state, exactly one canvas, fallback text, lab preload only after first `capture`, chunk failure with Retry, WebGL-unavailable message, Low quality label
     - _Requirements: 13.1, 13.2, 13.3, 13.4, 13.5, 13.6, 13.11, 13.12, 13.13_
 
-- [ ] 13. Debug bar
-  - [-] 13.1 Implement `src/ui/DebugBar.tsx`
+- [x] 13. Debug bar
+  - [x] 13.1 Implement `src/ui/DebugBar.tsx`
     - Lazy-loaded; firm `<select>`, buttons Capture / Lab / Outcome / Graveyard with pure `debugButtonStates(state)`, Rate_Shock number input 0 to 0.05, Result select; docked at the bottom above the footer; native labelled controls; DEV-only helpers imported behind `import.meta.env.DEV`
     - _Requirements: 14.5, 14.6, 14.7, 14.8, 14.9, 14.10_
 
-  - [ ]* 13.2 Write debug bar tests
+  - [x]* 13.2 Write debug bar tests
     - Button enablement per state, shock input range, result picker, vitest-axe clean, hidden in production mode without `debug=1`
     - _Requirements: 14.3, 14.6, 14.7, 14.8, 14.9_
 
