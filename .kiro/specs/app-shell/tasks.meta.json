@@ -11,6 +11,14 @@
     "4.2 Write property test for the settings round trip": {
       "status": "passed",
       "lastRunTimestamp": 1794425631988
+    },
+    "5.4 Write property test for guard round trip": {
+      "status": "passed",
+      "lastRunTimestamp": 1794426047177
+    },
+    "5.5 Write property test for single-field corruption": {
+      "status": "passed",
+      "lastRunTimestamp": 1794426048375
     }
   },
   "executionHistory": {
@@ -122,6 +130,16 @@
         "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
         "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
         "timestamp": 1794425444383
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425716168
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425828357
       }
     ],
     "9.1 Implement `src/ui/table/sort.ts`, `format.ts` and `StatusLabel.tsx`": [
@@ -225,6 +243,73 @@
         "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
         "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
         "timestamp": 1794425706394
+      }
+    ],
+    "5.2 Implement the dev fixture in `src/dev/fixtures/`": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425828502
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425907576
+      }
+    ],
+    "5.3 Create shared arbitraries in `src/test/arbitraries.ts`": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794425911357
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426010237
+      }
+    ],
+    "5.4 Write property test for guard round trip": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426013744
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426098503
+      }
+    ],
+    "5.5 Write property test for single-field corruption": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426014551
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426099308
+      }
+    ],
+    "5.6 Write ajv agreement and fixture tests": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426015135
+      },
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426099863
+      }
+    ],
+    "5. Data guards and dev fixture": [
+      {
+        "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794426099954
       }
     ]
   }

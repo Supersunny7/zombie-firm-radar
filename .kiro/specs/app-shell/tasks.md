@@ -36,7 +36,7 @@ Rules for every task:
     - Export a `ThemeSync` component (`useLayoutEffect` sets `data-lights` and `data-reduced-motion` on `document.documentElement`) from `src/ui/ThemeSync.tsx`
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 9.12_
 
-  - [x]* 2.2 Write contrast and theme tests
+  - [x] 2.2 Write contrast and theme tests
     - `src/ui/contrast.test.ts`: WCAG luminance function over token hex values, assert at least 4.5:1 for each HUD and Table pair in both lights modes
     - Test that `ThemeSync` sets and updates `data-lights` and `data-reduced-motion`
     - _Requirements: 2.6, 2.7, 2.9, 9.12_
@@ -49,17 +49,17 @@ Rules for every task:
     - Typed `Allowed` table and exhaustive `switch` so an unlisted transition fails to compile; no React or three imports
     - _Requirements: 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13, 3.14, 3.15_
 
-  - [x]* 3.2 Write property test for machine invariants
+  - [x] 3.2 Write property test for machine invariants
     - **Property 1: Machine invariants hold for any event sequence**
     - 0 to 100 events from `arbEvent`/`arbBadEvent`, 200 runs; header comment `// Feature: app-shell, Property 1: ...`
     - **Validates: Requirements 3.1, 3.11, 3.12, 3.17**
 
-  - [x]* 3.3 Write property test for rejected events
+  - [x] 3.3 Write property test for rejected events
     - **Property 2: Invalid events and invalid values leave the machine unchanged**
     - Assert `ok: false`, same reference, deep-equal, reject info with non-empty reason
     - **Validates: Requirements 3.9, 3.14**
 
-  - [x]* 3.4 Write unit and type tests for the machine
+  - [x] 3.4 Write unit and type tests for the machine
     - Table-driven test for each valid transition, every invalid state and event pair, `history` update on `continue`, and `expectTypeOf` test that `captureDone` from `graveyard` is `never`
     - _Requirements: 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.16_
 
@@ -69,45 +69,45 @@ Rules for every task:
     - `sound` is a flag only; create no `AudioContext`
     - _Requirements: 9.1, 9.2, 9.5, 9.6, 9.7, 9.8, 9.9, 9.10_
 
-  - [x]* 4.2 Write property test for the settings round trip
+  - [x] 4.2 Write property test for the settings round trip
     - **Property 5: Settings round trip**
     - **Validates: Requirements 9.5, 9.6, 9.11**
 
-  - [x]* 4.3 Write property test for tolerant settings parsing
+  - [x] 4.3 Write property test for tolerant settings parsing
     - **Property 6: Settings parsing never throws and falls back per field**
     - **Validates: Requirements 9.2, 9.8**
 
-  - [x]* 4.4 Write unit tests for settings
+  - [x] 4.4 Write unit tests for settings
     - Defaults, throwing `localStorage` on read and write, no `AudioContext` created, media-query follow versus explicit override (store level once 8.1 exists is covered in 8.3)
     - _Requirements: 9.2, 9.7, 9.9_
 
-- [ ] 5. Data guards and dev fixture
-  - [ ] 5.1 Implement `src/data/guards.ts`
+- [x] 5. Data guards and dev fixture
+  - [x] 5.1 Implement `src/data/guards.ts`
     - Combinators (`obj`, `str`, `num`, `nullable`, `arrayOf`, `oneOf`, `cik`, `ascending`), `GuardResult<T>` with JSON path, expected and actual
     - Public `guardFirmsIndex`, `guardFirm`, `guardMacro`; missing key is invalid, `null` is valid for nullable fields; `Number.isFinite` for numbers; follow the schemas on `additionalProperties`
     - No React or three imports; do not change `src/types/data.ts`
     - _Requirements: 7.1, 7.2, 7.3, 7.4_
 
-  - [ ] 5.2 Implement the dev fixture in `src/dev/fixtures/`
+  - [x] 5.2 Implement the dev fixture in `src/dev/fixtures/`
     - `firms.ts`, `macro.ts`, `index.ts`, `indexEntryFrom(firm, meta)` helper; three fictional firms (zombie "Ashgrove Works", endangered, healthy) with fictional CIKs `9000000001` to `9000000003`, all `rescue_eligible`
     - Ashgrove values: revenue 1.20e9, EBIT 38e6, interest 61e6, debt 1.05e9, assets 1.60e9, equity 140e6, five ascending years with ICR below 1 in 2022 to 2024, age at least 10; rescue_inputs 0.035 / 0.018 / 0.01; `dgs10.value` 0.042
     - Check chosen names against listed company names during implementation
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6_
 
-  - [ ] 5.3 Create shared arbitraries in `src/test/arbitraries.ts`
+  - [x] 5.3 Create shared arbitraries in `src/test/arbitraries.ts`
     - `arbCik`, `arbStatus`, `arbFirmIndexEntry`, `arbFirmsIndex`, `arbFirm` (ascending `fy`, nullable fields), `arbMacro`, `arbSettings`, `arbEvent`, `arbBadEvent`, `arbCorruption(value)`
     - Build from types in `web/src/types/data.ts`
     - _Requirements: 3.17, 7.9, 9.11, 12.26_
 
-  - [ ]* 5.4 Write property test for guard round trip
+  - [x] 5.4 Write property test for guard round trip
     - **Property 3: Data guards accept every JSON round trip of a valid value**
     - **Validates: Requirements 7.1, 7.2, 7.3, 7.9**
 
-  - [ ]* 5.5 Write property test for single-field corruption
+  - [x] 5.5 Write property test for single-field corruption
     - **Property 4: Data guards reject any single-field corruption and name its path**
     - **Validates: Requirements 7.2, 7.3, 7.4**
 
-  - [ ]* 5.6 Write ajv agreement and fixture tests
+  - [x] 5.6 Write ajv agreement and fixture tests
     - Load `/data/schema/*.json` with ajv and ajv-formats (test-only); fixture and every file in `/data/mock` (when present) pass ajv and guards; invalid samples fail both
     - Assert Ashgrove numbers, macro 0.042, three statuses, index and firm consistency, fictional names
     - _Requirements: 7.10, 7.11, 7.12, 8.7, 17.2_
@@ -118,11 +118,11 @@ Rules for every task:
     - DEV: probe `/data/mock/firms_index.json`, else fixture via `import.meta.env.DEV`-gated dynamic import; PROD: `/data/` then `/data/mock/` then error; reuse the probe response; parse text with try/catch for invalid JSON; cache only validated values; reject bad or unlisted CIK before any fetch; never fetch `keeper_log.json`
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 6.11, 6.12_
 
-  - [ ]* 6.2 Write property test for unknown CIKs
+  - [ ] 6.2 Write property test for unknown CIKs
     - **Property 11: Unknown or malformed CIKs never reach the network**
     - **Validates: Requirements 6.2, 6.12**
 
-  - [ ]* 6.3 Write loader unit tests with mocked `fetch`
+  - [ ] 6.3 Write loader unit tests with mocked `fetch`
     - Sources `mock`, `fixture`, `real`; production missing index with mock fallback (Data_Source `mock`); production with neither; non-2xx; network error; invalid JSON; cache hit makes one request; failure not cached; no `/data/mock/` request in `real`; `keeper_log.json` never requested; retry
     - _Requirements: 6.3, 6.4, 6.5, 6.6, 6.8, 6.9, 6.10, 6.11, 6.14, 6.15, 7.8_
 
@@ -132,11 +132,11 @@ Rules for every task:
     - Read `../data` in place; write nothing under `/web` except `dist`
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6_
 
-  - [ ]* 7.2 Write property test for path containment
+  - [ ] 7.2 Write property test for path containment
     - **Property 10: Data path resolution never escapes the data folder**
     - **Validates: Requirements 5.1, 5.5**
 
-  - [ ]* 7.3 Write plugin copy tests
+  - [ ] 7.3 Write plugin copy tests
     - Temporary-directory runs for real, mock-only and neither; `schema` always excluded; log message with count
     - _Requirements: 5.2, 5.3, 5.6, 17.11_
 
@@ -147,11 +147,11 @@ Rules for every task:
     - Pure `initialDebugBar(isDev, search)`; `effectiveReducedMotion` selector; persist settings on change through `writeSettings`; `console.warn` rejections in DEV only
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 9.3, 9.4, 14.1, 14.2, 14.3, 14.4_
 
-  - [ ]* 8.2 Write property test for debug bar visibility
+  - [ ] 8.2 Write property test for debug bar visibility
     - **Property 12: Debug bar default visibility**
     - **Validates: Requirements 14.1, 14.2, 14.3**
 
-  - [ ]* 8.3 Write store unit tests
+  - [ ] 8.3 Write store unit tests
     - Overlay toggle keeps the `machine` reference; actions route through `transition`; reduced-motion follows the media query until set explicitly; settings persist
     - _Requirements: 4.2, 4.4, 4.5, 9.3, 9.4, 9.5_
 
@@ -160,15 +160,15 @@ Rules for every task:
     - `nextSort`, `sortRows` (nulls last in both directions, stable, tie-break by name ascending case-insensitive, new array), `formatIcr` (no `-0.00`), `formatDebt` (unit chosen after rounding, negatives), `statusLabel` with glyphs and text
     - _Requirements: 12.5, 12.6, 12.7, 12.9, 12.10, 12.12, 12.13, 12.14_
 
-  - [ ]* 9.2 Write property test for sorting
+  - [ ] 9.2 Write property test for sorting
     - **Property 7: Table sorting is a correctly ordered permutation**
     - **Validates: Requirements 12.9, 12.12, 12.13, 12.14, 12.15, 12.26**
 
-  - [ ]* 9.3 Write property test for ICR formatting
+  - [ ] 9.3 Write property test for ICR formatting
     - **Property 8: ICR formatting**
     - **Validates: Requirements 12.6**
 
-  - [ ]* 9.4 Write property test for debt formatting
+  - [ ] 9.4 Write property test for debt formatting
     - **Property 9: Debt formatting picks the unit by magnitude**
     - **Validates: Requirements 12.7**
 
