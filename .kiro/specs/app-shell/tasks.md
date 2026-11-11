@@ -256,7 +256,7 @@ Rules for every task:
     - Read `web/package.json`: exact pins (no `^`, `~`, `*`, ranges), scripts, `packageManager`, `engines`, react 19, fiber 9, no drei 9 or fiber 8; read `vercel.json`: fields, no functions or rewrites; ESLint fixture test that `src/engine` importing `react` is an error
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.10, 16.1, 16.2, 16.5_
 
-- [-] 16. Final checkpoint - Ensure all tests pass
+- [x] 16. Final checkpoint - Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes
