@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "guard-ownership",
+      "trigger": "PreToolUse",
+      "description": "Ask before touching pipeline/, ignoring .kiro, or writing .env",
+      "matcher": "fs_write|fs_append|str_replace|delete_file|smart_relocate|semantic_rename|execute_pwsh|control_pwsh_process",
+      "action": {
+        "type": "command",
+        "command": "node tools/guard-ownership.mjs",
+        "timeout": 10
+      }
+    }
+  ]
+}

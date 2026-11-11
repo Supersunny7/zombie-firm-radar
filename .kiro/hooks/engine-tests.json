@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "engine-tests",
+      "trigger": "PostFileSave",
+      "description": "Run rescue-engine tests when engine files are saved",
+      "matcher": "web[\\/]src[\\/]engine[\\/]",
+      "action": {
+        "type": "command",
+        "command": "node tools/run-engine-tests.mjs",
+        "timeout": 120
+      }
+    }
+  ]
+}

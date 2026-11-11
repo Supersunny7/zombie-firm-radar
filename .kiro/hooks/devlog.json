@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "devlog",
+      "trigger": "PostTaskExec",
+      "description": "Append a one-line entry to DEVLOG.md after each spec task",
+      "action": {
+        "type": "agent",
+        "prompt": "A spec task just completed. Append exactly one line to DEVLOG.md at the repo root in the form: YYYY-MM-DD | <spec> | <task id> | <one-sentence summary> | <files changed>. Keep the whole line under 30 words. If DEVLOG.md does not exist, create it first with the single header line \"# Devlog\". Do nothing else."
+      }
+    }
+  ]
+}

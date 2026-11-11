@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "data-schema-check",
+      "trigger": "PostFileSave",
+      "description": "Validate saved data JSON against its schema",
+      "matcher": "(^|[\\\\/])data[\\\\/].*\\.json$",
+      "action": {
+        "type": "command",
+        "command": "node tools/validate-data.mjs",
+        "timeout": 30
+      }
+    }
+  ]
+}

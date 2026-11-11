@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "asset-credits-check",
+      "trigger": "PostFileCreate",
+      "description": "Audit new assets and propose missing CREDITS.md rows",
+      "matcher": "web[\\\\/]public[\\\\/]assets[\\\\/]",
+      "action": {
+        "type": "agent",
+        "prompt": "A new file was created under web/public/assets. Invoke the asset-auditor agent to check only that file against CREDITS.md and asset-licensing.md (license allowed, size under 5 MB). If it has no CREDITS.md row, propose the row (Path, Title, Author, Source URL, License, Changes we made) and ask me to confirm the missing details before adding it. Do not add the row with guessed licence or author data."
+      }
+    }
+  ]
+}
