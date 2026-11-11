@@ -115,8 +115,8 @@ Constraints from steering: the data contract is v2 draft and stays unchanged; `/
 #### Acceptance Criteria
 
 1. WHILE the dev server runs, THE Data_Plugin SHALL serve files from the repo-root `/data` folder under the URL path `/data/`.
-2. WHEN `pnpm build` runs, THE Data_Plugin SHALL copy `/data` into `web/dist/data`, excluding `/data/schema`.
-3. WHEN `pnpm build` runs, THE Data_Plugin SHALL exclude `/data/mock` from `web/dist/data`, whether or not `/data/firms_index.json` exists.
+2. WHEN `pnpm build` runs, THE Data_Plugin SHALL copy `/data` into `web/dist/data`, excluding `/data/schema`, subject to criterion 3.
+3. WHEN `pnpm build` runs and `/data/firms_index.json` exists, THE Data_Plugin SHALL copy `/data` into `web/dist/data`, excluding `/data/schema` and `/data/mock`. WHEN `pnpm build` runs and `/data/firms_index.json` does not exist, THE Data_Plugin SHALL copy `/data/mock` into `web/dist/data/mock`, excluding `/data/schema`.
 4. THE Data_Plugin SHALL read `/data` in place and SHALL NOT create a copy of `/data` under `/web` in git.
 5. IF a requested path resolves outside the `/data` folder, THEN THE Data_Plugin SHALL respond with HTTP 404.
 6. WHEN the copy completes, THE Data_Plugin SHALL log the number of files copied during the build.
@@ -131,8 +131,8 @@ Constraints from steering: the data contract is v2 draft and stays unchanged; `/
 2. WHEN a firm enters the `lab` state, THE Data_Loader SHALL fetch `/data/firms/{cik}.json` for the chosen 10-digit CIK and validate it with the Data_Guards.
 3. WHILE the App runs in development (`import.meta.env.DEV`), THE Data_Loader SHALL request `/data/mock/firms_index.json` once at startup, and IF that request returns a 2xx status, THEN THE Data_Loader SHALL read `firms_index.json`, `macro.json` and `firms/{cik}.json` from `/data/mock/` and set the Data_Source to `mock`.
 4. WHILE the App runs in development and the request for `/data/mock/firms_index.json` returns a non-2xx status or a network error, THE Data_Loader SHALL use the Dev_Fixture for all three file types and set the Data_Source to `fixture`.
-5. WHILE the App runs in a production build, THE Data_Loader SHALL read only from `/data/`, SHALL NOT request any path under `/data/mock/`, and SHALL set the Data_Source to `real`.
-6. IF `firms_index.json` is missing in a production build, THEN THE App SHALL show the Error_Screen and SHALL NOT use the Dev_Fixture or mock files.
+5. WHILE the App runs in a production build, THE Data_Loader SHALL probe `/data/firms_index.json`; IF it exists, THEN THE Data_Loader SHALL read only from `/data/`, set the Data_Source to `real` and request no path under `/data/mock/`.
+6. IF `/data/firms_index.json` is missing in a production build, THEN THE Data_Loader SHALL read `firms_index.json`, `macro.json` and `firms/{cik}.json` from `/data/mock/` and set the Data_Source to `mock`, so that the HUD shows the "Mock data" label (Requirement 10). IF `/data/mock/firms_index.json` is also missing, THEN THE App SHALL show the Error_Screen. The Dev_Fixture SHALL NOT be used in a production build.
 7. THE Dev_Fixture SHALL be imported only behind an `import.meta.env.DEV` check, so that the production bundle contains no fixture content.
 8. IF a fetch fails with a network error or a non-2xx status, THEN THE Data_Loader SHALL return an error that contains the file path and the HTTP status (or the text "network error" when no status exists), SHALL NOT cache the failure as a success, and SHALL leave previously cached files unchanged.
 9. IF a fetched file is not valid JSON, THEN THE Data_Loader SHALL return an error that contains the file path and SHALL NOT pass the content to the Data_Guards.
@@ -140,7 +140,8 @@ Constraints from steering: the data contract is v2 draft and stays unchanged; `/
 11. THE Data_Loader SHALL fetch only `firms_index.json`, `macro.json` and `firms/{cik}.json` files and SHALL NOT fetch `keeper_log.json`.
 12. IF a requested firm CIK is not a 10-digit zero-padded string or is not listed in the loaded `firms_index.json`, THEN THE Data_Loader SHALL return an error naming the CIK and SHALL NOT send a network request for it.
 13. WHILE a required file request is pending, THE App SHALL show the text "Loading feed…" and SHALL NOT render the HUD "Mock data" label until the Data_Source is known.
-14. THE tests SHALL cover the sources `mock`, `fixture` and `real`, the production missing-index case, the non-2xx and invalid-JSON errors, and the cache behavior, using a mocked `fetch` and no network access.
+14. THE tests SHALL cover the sources `mock`, `fixture` and `real`, the production missing-index case (both the mock fallback and the Error_Screen case when `/data/mock/firms_index.json` is also missing), the non-2xx and invalid-JSON errors, and the cache behavior, using a mocked `fetch` and no network access.
+15. THE tests SHALL assert, with a mocked `fetch` in production mode where `/data/firms_index.json` returns 404 and `/data/mock/*` succeeds, that the Data_Source is `mock` and the HUD shows the "Mock data" label.
 
 ### Requirement 7: Runtime validation of loaded data
 
@@ -313,7 +314,7 @@ Constraints from steering: the data contract is v2 draft and stays unchanged; `/
 2. WHEN `pnpm build` runs, THE Build_Tooling SHALL print the Initial_JS gzipped size in KB.
 3. WHEN `pnpm build` runs, THE Build_Tooling SHALL print the total gzipped JS size after the graveyard Scene loads (Initial_JS plus the graveyard chunk and its dependencies).
 4. IF the Initial_JS exceeds 400 KB gzipped, THEN THE Build_Tooling SHALL fail the size check with a non-zero exit code.
-5. THE production bundle SHALL contain no Dev_Fixture, Debug_Bar development-only code, `@theatre/studio` or ajv.
+5. THE production bundle SHALL contain no Dev_Fixture, Debug_Bar development-only code, `@theatre/studio` or ajv, and THE Build_Tooling SHALL NOT bundle the mock JSON files into JavaScript; the mock JSON files exist only as static files under `web/dist/data/mock` when real data is missing.
 6. THE Build_Tooling SHALL exclude the lab Scene chunk from the Initial_JS.
 7. THE final report for this spec SHALL state the measured Initial_JS and total numbers.
 
@@ -323,12 +324,13 @@ Constraints from steering: the data contract is v2 draft and stays unchanged; `/
 
 #### Acceptance Criteria
 
-1. THE repository SHALL contain a `vercel.json` that sets the install command to `pnpm install --frozen-lockfile`, the build command to `pnpm --filter ./web build` or an equivalent, and the output directory to `web/dist`.
+1. THE repository SHALL contain a `vercel.json` that sets `installCommand` to `corepack enable && pnpm --dir web install --frozen-lockfile`, `buildCommand` to `pnpm --dir web build` and `outputDirectory` to `web/dist`.
 2. THE `vercel.json` SHALL NOT define any server function or rewrite that requires a server runtime.
-3. WHEN the build output is served by a static file server, THE App SHALL load `/data/macro.json` and `/data/firms_index.json` from the deployed `web/dist/data` folder.
+3. WHEN the build output is served by a static file server, THE App SHALL load `firms_index.json` and `macro.json` from `web/dist/data` when real data was present at build time, or from `web/dist/data/mock` when it was not.
 4. THE Build_Tooling SHALL include `web/dist/data` in the output only from `/data` as defined in Requirement 5.
 5. THE `vercel.json` SHALL set long-lived immutable cache headers for hashed files under `/assets/` and `no-cache` for `/data/*`.
 6. THE repository SHALL contain no secrets, tokens or keys.
+7. THE deploy SHALL use the exact pnpm version from the `packageManager` field in `web/package.json` via corepack, because the lockfile is written by pnpm 12.
 
 ### Requirement 17: Verification and reporting
 
@@ -339,10 +341,11 @@ Constraints from steering: the data contract is v2 draft and stays unchanged; `/
 1. WHEN `pnpm test` runs in `/web`, THE Build_Tooling SHALL run Vitest with jsdom and vitest-axe.
 2. THE tests SHALL include: Game_Machine transitions, Data_Guards, ajv schema agreement, Settings persistence, Table_View behavior and axe checks, and the Ashgrove_Works fixture values.
 3. THE tests SHALL assert that the HUD renders the footer text "Data: SEC EDGAR. Not investment advice." and, for `mock` and `fixture` sources, the "Mock data" label.
-4. THE tests SHALL assert that the Error_Screen renders for an invalid file and for a missing `firms_index.json` in production mode.
+4. THE tests SHALL assert that the Error_Screen renders for an invalid file and, in production mode, when neither `/data/firms_index.json` nor `/data/mock/firms_index.json` is available.
 5. THE tests SHALL run vitest-axe on the HUD with the Settings_Menu open and report zero violations.
 6. WHERE jsdom cannot compute color contrast, THE contrast check SHALL be performed manually with Playwright MCP against the running app in both lights modes and recorded in `/docs`.
 7. THE `pnpm test` command SHALL NOT depend on network access or a running dev server.
 8. THE spec SHALL change none of `data-contract.md`, `/data/schema`, `/pipeline` or the data-generation code.
 9. THE new `README` section or `web/README.md` SHALL document the pnpm commands, the `?debug=1` parameter and the data-source rules, and THE steering file `tech.md` "Common commands" SHALL be updated with them.
 10. THE spec SHALL update `structure.md` if top-level folders change.
+11. THE tests SHALL assert that the Data_Plugin copies `/data/mock` to `web/dist/data/mock` only when `/data/firms_index.json` is absent.
