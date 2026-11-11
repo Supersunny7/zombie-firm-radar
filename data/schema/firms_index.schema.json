@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "firms_index.schema.json",
+  "title": "firms_index.json (data contract v2 draft)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["meta", "firms"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generated_at", "source", "definition_version", "fiscal_years", "counts"],
+      "properties": {
+        "generated_at": { "type": "string", "format": "date-time" },
+        "source": { "type": "string" },
+        "definition_version": { "type": "string" },
+        "fiscal_years": {
+          "type": "array",
+          "description": "Sorted ascending.",
+          "items": { "type": "integer" }
+        },
+        "counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["zombie", "endangered", "healthy", "insufficient_data"],
+          "properties": {
+            "zombie": { "type": "integer", "minimum": 0 },
+            "endangered": { "type": "integer", "minimum": 0 },
+            "healthy": { "type": "integer", "minimum": 0 },
+            "insufficient_data": { "type": "integer", "minimum": 0 }
+          }
+        }
+      }
+    },
+    "firms": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "cik", "ticker", "name", "sector", "sic", "first_filing_year", "age_years",
+          "status", "latest_icr", "total_debt_usd", "implied_rate", "shock_eligible", "rescue_eligible"
+        ],
+        "properties": {
+          "cik": { "type": "string", "pattern": "^[0-9]{10}$" },
+          "ticker": { "type": ["string", "null"] },
+          "name": { "type": "string" },
+          "sector": { "type": "string", "description": "SIC division name." },
+          "sic": { "type": "string" },
+          "first_filing_year": { "type": "integer" },
+          "age_years": { "type": "integer", "minimum": 0 },
+          "status": { "enum": ["zombie", "endangered", "healthy", "insufficient_data"] },
+          "latest_icr": { "type": ["number", "null"] },
+          "total_debt_usd": { "type": ["number", "null"] },
+          "implied_rate": { "type": ["number", "null"], "description": "Decimal, 0.06 = 6%." },
+          "shock_eligible": { "type": "boolean" },
+          "rescue_eligible": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

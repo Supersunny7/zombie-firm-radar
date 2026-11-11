@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "firm.schema.json",
+  "title": "firms/{cik}.json (data contract v2 draft)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["cik", "name", "ticker", "sector", "status", "reasons", "as_of_filing", "years", "rescue_inputs"],
+  "properties": {
+    "cik": { "type": "string", "pattern": "^[0-9]{10}$" },
+    "name": { "type": "string" },
+    "ticker": { "type": ["string", "null"] },
+    "sector": { "type": "string" },
+    "status": { "enum": ["zombie", "endangered", "healthy", "insufficient_data"] },
+    "reasons": { "type": "array", "items": { "type": "string" } },
+    "as_of_filing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fiscal_year", "filed", "form"],
+      "properties": {
+        "fiscal_year": { "type": "integer" },
+        "filed": { "type": "string", "format": "date" },
+        "form": { "type": "string" }
+      }
+    },
+    "years": {
+      "type": "array",
+      "description": "Sorted ascending by fy.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fy", "revenue_usd", "ebit_usd", "interest_expense_usd", "total_debt_usd",
+          "total_assets_usd", "equity_usd", "icr", "ebit_tag", "revenue_tag", "debt_tags"
+        ],
+        "properties": {
+          "fy": { "type": "integer" },
+          "revenue_usd": { "type": ["number", "null"] },
+          "ebit_usd": { "type": ["number", "null"] },
+          "interest_expense_usd": { "type": ["number", "null"] },
+          "total_debt_usd": { "type": ["number", "null"] },
+          "total_assets_usd": { "type": ["number", "null"] },
+          "equity_usd": { "type": ["number", "null"] },
+          "icr": { "type": ["number", "null"] },
+          "ebit_tag": { "type": ["string", "null"] },
+          "revenue_tag": { "type": ["string", "null"] },
+          "debt_tags": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "rescue_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "margin_mean", "margin_change_mean", "margin_change_sd",
+        "revenue_growth_median", "history_years", "used_sector_fallback"
+      ],
+      "properties": {
+        "margin_mean": { "type": "number" },
+        "margin_change_mean": { "type": "number" },
+        "margin_change_sd": { "type": "number", "minimum": 0 },
+        "revenue_growth_median": { "type": "number" },
+        "history_years": { "type": "integer", "minimum": 0 },
+        "used_sector_fallback": { "type": "boolean" }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "keeper_log.schema.json",
+  "title": "keeper_log.json (data contract v2 draft)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["entries"],
+  "properties": {
+    "entries": {
+      "type": "array",
+      "description": "Newest first.",
+      "maxItems": 60,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["date", "new_zombies", "revived", "filings_read", "summary"],
+        "properties": {
+          "date": { "type": "string", "format": "date" },
+          "new_zombies": { "type": "array", "items": { "type": "string", "pattern": "^[0-9]{10}$" } },
+          "revived": { "type": "array", "items": { "type": "string", "pattern": "^[0-9]{10}$" } },
+          "filings_read": { "type": "integer", "minimum": 0 },
+          "summary": { "type": "string" }
+        }
+      }
+    }
+  }
+}
