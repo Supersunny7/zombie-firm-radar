@@ -1,8 +1,8 @@
 ---
 name: scene-critic
 description: Visual reviewer for the 3D scenes (graveyard, lab). Use after any change under web/src/scenes/** or web/src/fx/**, or when asked to check a scene against /reference. Opens the already-running dev server with Playwright, screenshots the scene in lights-off and lights-on at 1440x900 and 390x844, compares with /reference images and the design-system and scene-reference steering files, and returns differences ranked by visual impact with file and value to change. Does not edit code or start the dev server.
-tools: ["read", "@playwright"]
-includeMcpJson: false
+tools: ["read", "@playwright/browser_navigate", "@playwright/browser_take_screenshot", "@playwright/browser_resize", "@playwright/browser_snapshot", "@playwright/browser_click", "@playwright/browser_press_key", "@playwright/browser_wait_for"]
+includeMcpJson: true
 includePowers: false
 ---
 
