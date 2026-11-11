@@ -1,22 +1,24 @@
-   # Node / Vite
-   node_modules/
-   dist/
-   .vite/
-   *.log
+@'
+# Node / Vite
+node_modules/
+dist/
+.vite/
+*.log
 
-   # Python
-   __pycache__/
-   .venv/
-   .pytest_cache/
+# Python
+__pycache__/
+.venv/
+.pytest_cache/
 
-   # Local tool output
-   .playwright-mcp/
-   .env
-   .env.*
+# Local tool output
+.playwright-mcp/
+.env
+.env.*
 
-   # OS / editor
-   .DS_Store
-   Thumbs.db
+# OS / editor
+.DS_Store
+Thumbs.db
 
-   # Never ignore .kiro — required by the hackathon rules
-   !.kiro/
+# Never ignore .kiro - required by the hackathon rules
+!.kiro/
+'@ | Set-Content -Path .gitignore -Encoding utf8
