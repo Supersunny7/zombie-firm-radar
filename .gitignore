@@ -1,0 +1,22 @@
+   # Node / Vite
+   node_modules/
+   dist/
+   .vite/
+   *.log
+
+   # Python
+   __pycache__/
+   .venv/
+   .pytest_cache/
+
+   # Local tool output
+   .playwright-mcp/
+   .env
+   .env.*
+
+   # OS / editor
+   .DS_Store
+   Thumbs.db
+
+   # Never ignore .kiro — required by the hackathon rules
+   !.kiro/
