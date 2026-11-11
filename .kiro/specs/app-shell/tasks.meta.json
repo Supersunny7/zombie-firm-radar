@@ -178,6 +178,16 @@
         "executionId": "8c9f93d8-3da6-4510-82a9-c9c111dc832e",
         "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
         "timestamp": 1794425444111
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794429312069
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794429327383
       }
     ],
     "3.2 Write property test for machine invariants": [
@@ -690,6 +700,68 @@
         "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
         "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
         "timestamp": 1794429220960
+      }
+    ],
+    "15.1 Implement `web/scripts/check-bundle.mjs` and update the `build` script": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794429238602
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794429311480
+      }
+    ],
+    "15.3 Write docs and update `tech.md`": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794429328835
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794429363866
+      }
+    ],
+    "15.4 Run the full build and write the report": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794429364116
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794429480945
+      }
+    ],
+    "15. Bundle check, deploy config, docs and report": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794429481233
+      }
+    ],
+    "15.5 Write config smoke tests": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794429481500
+      },
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794429540119
+      }
+    ],
+    "16. Final checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "915a67e1-d82d-409b-b32e-dd9965781282",
+        "chatSessionId": "sess_d2b02ab1-86e5-4ffa-917f-06723d3cf407",
+        "timestamp": 1794429545757
       }
     ]
   }

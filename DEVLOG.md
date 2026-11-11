@@ -43,3 +43,8 @@
 2026-11-11 | app-shell | 13.2 | Added Debug bar tests for button states, rate shock input, result picker and axe | web/src/ui/DebugBar.test.tsx
 2026-11-11 | app-shell | 14.1 | Wired App with startup loader, error screen, theme sync, scenes, table overlay and lazy debug bar | web/src/App.tsx, main.tsx, ui/Hud.tsx
 2026-11-11 | app-shell | 14.2 | Added App integration tests and fixed corrupted loading string | web/src/App.test.tsx, web/src/App.tsx
+2026-11-11 | app-shell | 15.1 | Added bundle size and leak check script; initial JS 76.0 KB gzipped | web/scripts/check-bundle.mjs
+2026-11-11 | app-shell | 15.2 | Added vercel.json with install, build, output and cache headers | vercel.json
+2026-11-11 | app-shell | 15.3 | Wrote web README and replaced tech.md common commands with PowerShell commands | web/README.md, .kiro/steering/tech.md
+2026-11-11 | app-shell | 15.4 | Ran full build and checks, Playwright contrast audit in both lights modes, wrote report | .kiro/specs/app-shell/report.md, docs/app-shell-contrast*
+2026-11-11 | app-shell | 15.5 | Added config smoke tests for package pins, vercel.json and engine import lint rule | web/src/config.smoke.test.ts

@@ -38,4 +38,18 @@ Vercel (static).
 - Developers use Windows with PowerShell. Write commands in PowerShell syntax and chain with `;`, not `&&`.
 
 ## Common commands
-None yet. Add install, build, test, and dev commands here once tooling exists.
+Run from `web` (pnpm 12, Node 22+). Chain with `;`.
+
+```powershell
+Set-Location web
+pnpm install --frozen-lockfile   # install
+pnpm dev                         # dev server
+pnpm build                       # tsc -b, vite build, bundle check
+pnpm test                        # vitest run (unit + property tests)
+pnpm lint                        # eslint
+pnpm format                      # prettier --check (pnpm format:write fixes)
+pnpm typecheck                   # tsc -b --noEmit
+```
+
+Full check before a commit: `pnpm typecheck; pnpm lint; pnpm format; pnpm test; pnpm build`.
+See `web/README.md` for data sources and deploy notes.

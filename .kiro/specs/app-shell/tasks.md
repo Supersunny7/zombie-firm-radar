@@ -231,32 +231,32 @@ Rules for every task:
     - Mocked `fetch`: loading text, successful render with each source, Error screen instead of any Scene, walk the flow through the Debug bar, footer always present
     - _Requirements: 6.13, 7.5, 10.4, 17.3, 17.4_
 
-- [ ] 15. Bundle check, deploy config, docs and report
-  - [ ] 15.1 Implement `web/scripts/check-bundle.mjs` and update the `build` script
+- [x] 15. Bundle check, deploy config, docs and report
+  - [x] 15.1 Implement `web/scripts/check-bundle.mjs` and update the `build` script
     - Read `dist/.vite/manifest.json`, compute the initial closure excluding dynamic imports, gzip with `node:zlib`, print "Initial JS: X KB gzipped" and the total after the graveyard scene; exit 1 above 400 KB; fail on `Ashgrove Works`, `@theatre/studio` or ajv strings in built JS; verify the lab chunk is outside the initial closure
     - `build` = `tsc -b && vite build && node scripts/check-bundle.mjs`
     - _Requirements: 15.1, 15.2, 15.3, 15.4, 15.5, 15.6_
 
-  - [ ] 15.2 Create `vercel.json` at the repo root
+  - [x] 15.2 Create `vercel.json` at the repo root
     - `installCommand` `corepack enable && pnpm --dir web install --frozen-lockfile`, `buildCommand` `pnpm --dir web build`, `outputDirectory` `web/dist`, immutable cache for `/assets/(.*)`, `no-cache` for `/data/(.*)`; no functions or rewrites; no secrets
     - _Requirements: 16.1, 16.2, 16.5, 16.6, 16.7_
 
-  - [ ] 15.3 Write docs and update `tech.md`
+  - [x] 15.3 Write docs and update `tech.md`
     - Create `web/README.md` with pnpm commands, `?debug=1`, data-source rules, and the Vercel note that the project root must stay at the repository root
     - Replace "Common commands" in `.kiro/steering/tech.md` with install, dev, build, test, lint, format, typecheck in PowerShell syntax; update `structure.md` only if top-level folders changed (they do not)
     - _Requirements: 17.9, 17.10_
 
-  - [ ] 15.4 Run the full build and write the report
+  - [x] 15.4 Run the full build and write the report
     - Run `pnpm build`, `pnpm test`, `pnpm lint`, `pnpm format`, `pnpm typecheck` in `web`; fix failures
     - Run the Playwright MCP contrast check in both lights modes against the running app (the user starts `pnpm dev`) and save notes under `/docs`
     - Write `.kiro/specs/app-shell/report.md` with the measured Initial JS and total gzipped numbers
     - _Requirements: 1.6, 1.7, 1.8, 15.7, 17.6_
 
-  - [ ]* 15.5 Write config smoke tests
+  - [x]* 15.5 Write config smoke tests
     - Read `web/package.json`: exact pins (no `^`, `~`, `*`, ranges), scripts, `packageManager`, `engines`, react 19, fiber 9, no drei 9 or fiber 8; read `vercel.json`: fields, no functions or rewrites; ESLint fixture test that `src/engine` importing `react` is an error
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.10, 16.1, 16.2, 16.5_
 
-- [ ] 16. Final checkpoint - Ensure all tests pass
+- [-] 16. Final checkpoint - Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes
