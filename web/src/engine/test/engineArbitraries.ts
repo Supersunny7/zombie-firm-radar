@@ -744,3 +744,76 @@ export const arbBadDate: fc.Arbitrary<BadDate> = fc
       .map(([y, m]) => `${y}-${pad(m, 2)}-01`),
   )
   .map((date) => ({ date, code: 'invalid_date' as const }));
+
+// --- Worker client operations (Properties 27 and 28) ---
+
+/**
+ * One step against a simulation client. Plain data.
+ * - `request`: a new simulate call on `channel`, with or without an AbortSignal.
+ * - `respond`: the fake worker answers the oldest posted, unanswered request on `channel`.
+ * - `abort`: aborts the signal number `index % n` (signals numbered in creation order); no-op if none.
+ * - `dispose`: `client.dispose()`.
+ * - `requestAfterDispose`: a request that only appears after a `dispose`.
+ */
+export type WorkerOp =
+  | { readonly kind: 'request'; readonly channel: string; readonly signal: boolean }
+  | { readonly kind: 'respond'; readonly channel: string; readonly outcome: 'ok' | 'error' }
+  | { readonly kind: 'abort'; readonly index: number }
+  | { readonly kind: 'dispose' }
+  | { readonly kind: 'requestAfterDispose'; readonly channel: string; readonly signal: boolean };
+
+export interface WorkerOpsOptions {
+  /** Channels used by requests and responses. Default `['default']`. */
+  readonly channels?: readonly string[];
+  /** Allow `dispose` and `requestAfterDispose`. Default true; use false for Property 28. */
+  readonly allowDispose?: boolean;
+}
+
+/** 1 to 30 operations; a `requestAfterDispose` before any `dispose` becomes a plain `request`. */
+export function arbWorkerOps(opts: WorkerOpsOptions = {}): fc.Arbitrary<WorkerOp[]> {
+  const channels = opts.channels ?? ['default'];
+  const allowDispose = opts.allowDispose ?? true;
+  const arbChannel = fc.constantFrom(...channels);
+  const request = fc.record({
+    kind: fc.constant('request' as const),
+    channel: arbChannel,
+    signal: fc.boolean(),
+  });
+  const respond = fc.record({
+    kind: fc.constant('respond' as const),
+    channel: arbChannel,
+    outcome: fc.constantFrom('ok' as const, 'error' as const),
+  });
+  const abort = fc.record({
+    kind: fc.constant('abort' as const),
+    index: fc.nat({ max: 29 }),
+  });
+  const options: { weight: number; arbitrary: fc.Arbitrary<WorkerOp> }[] = [
+    { weight: 4, arbitrary: request },
+    { weight: 4, arbitrary: respond },
+    { weight: 2, arbitrary: abort },
+  ];
+  if (allowDispose) {
+    options.push(
+      { weight: 1, arbitrary: fc.constant<WorkerOp>({ kind: 'dispose' }) },
+      {
+        weight: 2,
+        arbitrary: fc.record({
+          kind: fc.constant('requestAfterDispose' as const),
+          channel: arbChannel,
+          signal: fc.boolean(),
+        }),
+      },
+    );
+  }
+  return fc.array(fc.oneof(...options), { minLength: 1, maxLength: 30 }).map((ops) => {
+    let disposed = false;
+    return ops.map((op): WorkerOp => {
+      if (op.kind === 'dispose') disposed = true;
+      if (op.kind === 'requestAfterDispose' && !disposed) {
+        return { kind: 'request', channel: op.channel, signal: op.signal };
+      }
+      return op;
+    });
+  });
+}

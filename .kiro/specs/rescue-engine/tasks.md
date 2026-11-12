@@ -327,7 +327,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Walk every number in `Diagnosis`, `PostState`, `SimulationResult` and `Outcome` and require it to be finite; `CoverageView.icr === null` exactly when `debtFree`; D' = 0 gives every year covered, `debtFree` true and `coverageText` "debt-free"; `numRuns >= 100`
     - **Validates: Requirements 8.8, 8.14, 14.1, 14.5, 14.9**
 
-- [ ] 13. Web Worker wrapper
+- [x] 13. Web Worker wrapper
   - [x] 13.1 Implement `web/src/engine/worker/protocol.ts` and `web/src/engine/worker/simulate.worker.ts`
     - `SimulateArgs`, `WorkerRequest`, `WorkerResponse` as in the design
     - The worker entry imports only `../simulate` and `./protocol`, runs `simulate` and posts `{ id, ok, result }` or `{ id, ok: false, error }`
@@ -340,13 +340,13 @@ All commands run from `web` in PowerShell, chained with `;`.
     - `dispose()` terminates once and rejects all pending requests with `worker_disposed`; later requests reject with `worker_disposed` without calling the factory; a worker `error` event behaves like `dispose()`; each promise settles exactly once
     - _Requirements: 12.1, 12.2, 12.3, 12.4, 12.5, 12.6, 12.7, 12.8, 12.11, 12.12, 12.13, 12.14, 12.15_
 
-  - [-] 13.3 Create the fake worker, reference model and `arbWorkerOps`: `web/src/engine/test/fakeWorker.ts`, `web/src/engine/test/workerModel.ts` and `web/src/engine/test/engineArbitraries.ts`
+  - [x] 13.3 Create the fake worker, reference model and `arbWorkerOps`: `web/src/engine/test/fakeWorker.ts`, `web/src/engine/test/workerModel.ts` and `web/src/engine/test/engineArbitraries.ts`
     - `fakeWorker.ts`: an in-process `WorkerLike` that records posted messages and `terminate` calls, lets the test answer by id (ok, error, unknown id), and optionally runs `simulate` through `structuredClone`
     - `workerModel.ts`: a small reference model of the latest-wins rules for Properties 27 and 28
     - `arbWorkerOps` in `engineArbitraries.ts`: 1 to 30 operations (`request` with optional signal, `respond` ok or error for the oldest posted unanswered request, `abort(i)`, `dispose`, `requestAfterDispose`)
     - _Requirements: 12.2, 15.7_
 
-  - [~] 13.4 Write unit tests for the worker client in `web/src/engine/worker/client.unit.test.ts`
+  - [x] 13.4 Write unit tests for the worker client in `web/src/engine/worker/client.unit.test.ts`
     - With the fake worker and no real Worker: a request is posted; a response resolves the matching promise; an error response rejects only its promise with the carried EngineError; an unknown id is ignored and leaves pending requests unchanged
     - Superseded: the latest-wins sequence from the design diagram (B rejected `superseded`, A rejected `superseded`, C2 posted next and resolved)
     - Aborted: a queued request is never posted; an in-flight request rejects at once, its later response is ignored and the queued request is then posted; an already-aborted signal rejects without posting
@@ -354,33 +354,33 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Dispose: rejects in-flight and queued requests on every Channel with `worker_disposed` and calls `terminate` once; a later request rejects with `worker_disposed` and does not call the factory; creating a client without a request constructs no worker
     - _Requirements: 12.2, 12.3, 12.4, 12.5, 12.6, 12.7, 12.8, 12.12, 12.13, 12.14, 12.15, 15.7_
 
-  - [~] 13.5 Write property test for id matching in `web/src/engine/worker/client.ids.property.test.ts`
+  - [x] 13.5 Write property test for id matching in `web/src/engine/worker/client.ids.property.test.ts`
     - **Property 25: Worker responses are matched by id**
     - Requests on distinct channels, any permutation of ok or error responses, unknown ids inserted anywhere; each promise settles exactly once with its own response; `numRuns >= 100`
     - **Validates: Requirements 12.4, 12.5, 12.6**
 
-  - [~] 13.6 Write property test for worker equivalence in `web/src/engine/worker/client.equivalence.property.test.ts`
+  - [x] 13.6 Write property test for worker equivalence in `web/src/engine/worker/client.equivalence.property.test.ts`
     - **Property 26: The worker gives the same result as a direct call**
     - `paths` in [1, 200]; fake worker passing messages through `structuredClone`; deep equality with a direct `simulate` call; `numRuns >= 100`
     - **Validates: Requirements 12.10**
 
-  - [~] 13.7 Write property test for latest-wins in `web/src/engine/worker/client.latestWins.property.test.ts`
+  - [x] 13.7 Write property test for latest-wins in `web/src/engine/worker/client.latestWins.property.test.ts`
     - **Property 27: Latest-wins per Channel matches a reference model**
     - Run `arbWorkerOps` against the client and `workerModel`; after every step check the six statements of the design (at most one in flight and one queued, supersede rules, abort rules, dispose rules, settle-once and equal settlement); `numRuns >= 100`
     - **Validates: Requirements 12.1, 12.7, 12.8, 12.11, 12.12, 12.13, 12.14**
 
-  - [~] 13.8 Write property test for Channel independence in `web/src/engine/worker/client.channels.property.test.ts`
+  - [x] 13.8 Write property test for Channel independence in `web/src/engine/worker/client.channels.property.test.ts`
     - **Property 28: Channels are independent**
     - Two `arbWorkerOps` sequences on "a" and "b", any interleaving without `dispose()`; each Channel's settlements and posted flags equal those of the sequence run alone on a fresh client; `numRuns >= 100`
     - **Validates: Requirements 12.15**
 
 - [ ] 14. Public entry, purity, error codes and benchmark
-  - [~] 14.1 Create `web/src/engine/index.ts` with the exact export list
+  - [x] 14.1 Create `web/src/engine/index.ts` with the exact export list
     - Runtime exports exactly: `icr`, `diagnose`, `applyTreatment`, `simulate`, `drawOutcome`, `score`, `seedFrom`, `parseTreatment`, `liquidationRecovery`, `createSimulationClient`; `export type * from './types'`; `export type { EngineError, EngineErrorCode, EngineResult } from './errors'`
     - Delete `web/src/engine/.gitkeep`; point `web/src/state/types.ts` and `machine.ts` at `'../engine'` if task 3.1 used a deeper path
     - _Requirements: 2.1, 2.5, 3.1_
 
-  - [~] 14.2 Write the export unit test in `web/src/engine/index.exports.unit.test.ts`
+  - [-] 14.2 Write the export unit test in `web/src/engine/index.exports.unit.test.ts`
     - `Object.keys(await import('./index')).sort()` equals the sorted expected list, and each symbol resolves without error
     - _Requirements: 2.1_
 

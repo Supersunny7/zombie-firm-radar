@@ -99,6 +99,22 @@
     "12.6 Write property test for display safety in `web/src/engine/displaySafety.property.test.ts`": {
       "status": "passed",
       "lastRunTimestamp": 1794462624093
+    },
+    "13.5 Write property test for id matching in `web/src/engine/worker/client.ids.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794462935135
+    },
+    "13.6 Write property test for worker equivalence in `web/src/engine/worker/client.equivalence.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794462949437
+    },
+    "13.8 Write property test for Channel independence in `web/src/engine/worker/client.channels.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794462968409
+    },
+    "13.7 Write property test for latest-wins in `web/src/engine/worker/client.latestWins.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794462988309
     }
   },
   "executionHistory": {
@@ -1115,6 +1131,11 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794462653340
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794462854000
       }
     ],
     "13.4 Write unit tests for the worker client in `web/src/engine/worker/client.unit.test.ts`": [
@@ -1122,6 +1143,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459043975
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794462861948
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794463021104
       }
     ],
     "13.5 Write property test for id matching in `web/src/engine/worker/client.ids.property.test.ts`": [
@@ -1129,6 +1160,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459044035
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794462863700
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794463021330
       }
     ],
     "13.6 Write property test for worker equivalence in `web/src/engine/worker/client.equivalence.property.test.ts`": [
@@ -1136,6 +1177,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459044089
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794462864396
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794463021928
       }
     ],
     "13.7 Write property test for latest-wins in `web/src/engine/worker/client.latestWins.property.test.ts`": [
@@ -1143,6 +1194,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459044161
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794462865506
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794463023115
       }
     ],
     "13.8 Write property test for Channel independence in `web/src/engine/worker/client.channels.property.test.ts`": [
@@ -1150,6 +1211,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459044258
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794462866763
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794463024226
       }
     ],
     "14.1 Create `web/src/engine/index.ts` with the exact export list": [
@@ -1157,6 +1228,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459044315
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794462654227
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794462854911
       }
     ],
     "14.2 Write the export unit test in `web/src/engine/index.exports.unit.test.ts`": [
@@ -1164,6 +1245,11 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459044372
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794463032698
       }
     ],
     "14.3 Write the purity scan in `web/src/engine/purity.test.ts`": [
@@ -1290,6 +1376,13 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794462644447
+      }
+    ],
+    "13. Web Worker wrapper": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794463024315
       }
     ]
   }
