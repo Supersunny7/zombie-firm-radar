@@ -452,34 +452,34 @@ Working rules for every task:
     - **Property 15: Manual README lists every manual pick**
     - **Validates: Requirements 15.1, 40.1, 40.2, 40.3, 40.5, 40.6**
 
-- [ ] 21. Orchestrator and CLI
-  - [~] 21.1 Implement `runFetch`, `report.mjs` and `tools/fetch-assets.mjs`
+- [x] 21. Orchestrator and CLI
+  - [x] 21.1 Implement `runFetch`, `report.mjs` and `tools/fetch-assets.mjs`
     - Run `git pull --no-edit` first
     - Pipeline per pick: validate and license check, download or read manual cache or run generator or derivation, convert (with edits) into `tools/cache/work/<id>-<pid>`, atomic rename into `web/public/assets/<typeDir>/<id>/`, then budgets, manifest, credits, manual README; fail-soft per pick; exit code 1 on any failed, refused or missing-manual pick, exceeded budget or unreadable size; inputs hash and recipe hash skip a pick whose outputs are unchanged; `--only` and `--dry-run`; injected `Env` (fs, http, converters) and shared fakes in `tools/asset-lib/test-helpers/fakes.mjs`
     - Only write inside `web/public/assets`, `tools/cache`, `CREDITS.md` and `tools/cache/manual/README.md` (path guard)
     - _Requirements: 14.1, 14.2, 14.3, 14.4, 14.5, 14.9, 16.9, 17.4, 17.5, 18.9, 35.4, 35.5, 40.5_
 
-  - [~] 21.2 Wire edits, generators and the derived headstone into the pipeline
+  - [x] 21.2 Wire edits, generators and the derived headstone into the pipeline
     - Apply each pick's Edit_List in `convert-model.mjs` and texture conversion, run `gen-decals` and `make-cracked-headstone` for `generated` and `derived` picks (derived after its source pick), stop a pick on `SplitImpossible` and report it without blocking the others, and set the group of each output from the pick
     - _Requirements: 35.5, 36.2, 36.8, 37.3, 37.4, 38.8, 39.1, 39.7_
 
-  - [~] 21.3 Write property test for re-run idempotence
+  - [x] 21.3 Write property test for re-run idempotence
     - **Property 1: Re-run idempotence**
     - **Validates: Requirements 14.3, 18.4**
 
-  - [~] 21.4 Write property test for refused picks
+  - [x] 21.4 Write property test for refused picks
     - **Property 8: Refused picks leave no trace and fail the run**
     - **Validates: Requirements 18.7, 18.8, 18.9**
 
-  - [~] 21.5 Write property test for bounded retries and failure isolation
+  - [x] 21.5 Write property test for bounded retries and failure isolation
     - **Property 10: Retries are bounded and failures are isolated**
     - **Validates: Requirements 14.5**
 
-  - [~] 21.6 Write property test for conversion failures
+  - [x] 21.6 Write property test for conversion failures
     - **Property 11: Conversion failure leaves no partial output**
     - **Validates: Requirements 16.9**
 
-  - [~] 21.7 Write property test for network discipline
+  - [x] 21.7 Write property test for network discipline
     - **Property 12: Network discipline**
     - **Validates: Requirements 14.6, 14.8, 14.9**
 

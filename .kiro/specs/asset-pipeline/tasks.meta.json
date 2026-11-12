@@ -71,6 +71,26 @@
     "18.5 Write property test for edit idempotence": {
       "status": "passed",
       "lastRunTimestamp": 1794487930487
+    },
+    "21.3 Write property test for re-run idempotence": {
+      "status": "passed",
+      "lastRunTimestamp": 1794488526564
+    },
+    "21.5 Write property test for bounded retries and failure isolation": {
+      "status": "passed",
+      "lastRunTimestamp": 1794488546883
+    },
+    "21.6 Write property test for conversion failures": {
+      "status": "passed",
+      "lastRunTimestamp": 1794488550345
+    },
+    "21.4 Write property test for refused picks": {
+      "status": "passed",
+      "lastRunTimestamp": 1794488553617
+    },
+    "21.7 Write property test for network discipline": {
+      "status": "passed",
+      "lastRunTimestamp": 1794488556727
     }
   },
   "executionHistory": {
@@ -1417,6 +1437,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470515587
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794487973572
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488289961
       }
     ],
     "21.2 Wire edits, generators and the derived headstone into the pipeline": [
@@ -1424,6 +1454,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470515691
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488296376
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488466549
       }
     ],
     "21.3 Write property test for re-run idempotence": [
@@ -1431,6 +1471,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470515808
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488472767
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488567393
       }
     ],
     "21.4 Write property test for refused picks": [
@@ -1438,6 +1488,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470515916
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488473203
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488568494
       }
     ],
     "21.5 Write property test for bounded retries and failure isolation": [
@@ -1445,6 +1505,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470516015
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488475568
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488569436
       }
     ],
     "21.6 Write property test for conversion failures": [
@@ -1452,6 +1522,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470516120
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488475746
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488570419
       }
     ],
     "21.7 Write property test for network discipline": [
@@ -1459,6 +1539,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470516241
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488475899
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488571417
       }
     ],
     "22. Checkpoint - Ensure all tests pass": [
@@ -1543,6 +1633,13 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794487951781
+      }
+    ],
+    "21. Orchestrator and CLI": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794488571526
       }
     ]
   }
