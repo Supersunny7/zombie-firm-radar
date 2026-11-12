@@ -14,12 +14,6 @@
     "fetch-assets": "node fetch-assets.mjs",
     "test": "vitest run"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "ffmpeg-static",
-      "sharp"
-    ]
-  },
   "dependencies": {
     "@gltf-transform/core": "4.5.1",
     "@gltf-transform/extensions": "4.5.1",

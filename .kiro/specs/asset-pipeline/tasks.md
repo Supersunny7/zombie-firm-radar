@@ -502,8 +502,8 @@ Working rules for every task:
     - Invoke the `asset-auditor` agent; fix every missing row, forbidden license, missing attribution or file over 5 MB in the Owned_Paths only (by correcting picks and re-running the script, not by hand-editing outputs); invoke it again until it reports no findings; if the same finding survives two fixes, stop and ask the user
     - _Requirements: 20.1, 20.2, 20.3, 41.5, 41.6_
 
-- [ ] 25. Final report and stop gate
-  - [~] 25.1 Write the final report and stop
+- [x] 25. Final report and stop gate
+  - [x] 25.1 Write the final report and stop
     - Report converted assets, Manual_Picks still missing, picks dropped or stopped (hook, avatars, split), which headstone states are real and which fall back to procedural, the three budgets, the packages installed, and the files changed in the Owned_Paths
     - Do not commit and do not push; commit only if the user asks in a later request, staging by explicit path inside the Owned_Paths (`tools`, `web/public/assets`, `CREDITS.md`, `.gitignore`, `reference/candidates`, `.kiro/specs/asset-pipeline`), never `-A`, `.` or `-f`, with a message such as `feat(asset-pipeline): add fetch script and converted assets`
     - Leave `web/src`, `/pipeline`, `/data` and `DEVLOG.md` unchanged and unstaged; then stop
