@@ -36,6 +36,7 @@ The tasks document lists Phase 1 only. Phase 2 tasks are added when the user ask
 - **Asset_Auditor**: The `asset-auditor` custom agent that checks assets against `CREDITS.md` and `asset-licensing.md`.
 - **Prebuilt_Binary_Package**: An npm package that downloads a prebuilt binary on install, such as sharp, ffmpeg-static or fbx2gltf.
 - **Owned_Paths**: The only paths the Asset_Pipeline may stage and commit: `tools/`, `web/public/assets`, `reference/candidates`, `CREDITS.md`, `.gitignore`, `.kiro/specs/asset-pipeline`.
+- **Visible_In_App_Note**: The note at the top of the Credits_File headed "Visible in app", stating that the Credits_File content is shown in the Credits button of the Settings menu in the app.
 - **Parallel_Chat**: A concurrent working session that edits `web/src/engine` and `web/src/state` and holds uncommitted work.
 
 ## Requirements
@@ -217,7 +218,9 @@ The tasks document lists Phase 1 only. Phase 2 tasks are added when the user ask
 #### Acceptance Criteria
 
 1. THE Asset_Pipeline SHALL provide `tools/cache/manual/README.md` listing, for each Manual_Pick, the exact expected file name and the source page URL.
-2. THE Asset_Pipeline SHALL exclude the content of the Manual_Cache from git while keeping `tools/cache/manual/README.md` tracked.
+2. THE Asset_Pipeline SHALL use the following `.gitignore` entries, in this order, so that the content of the Manual_Cache is excluded from git while `tools/cache/manual/README.md` stays tracked: `tools/cache/*`, `!tools/cache/manual/`, `tools/cache/manual/*`, `!tools/cache/manual/README.md`.
+3. WHEN the `.gitignore` entries in criterion 2 are written, THE Asset_Pipeline SHALL verify with `git check-ignore` that `tools/cache/manual/README.md` is not ignored and that a downloaded file under `tools/cache/` and a file under `tools/cache/manual/<name>/` are ignored.
+4. THE Asset_Pipeline SHALL track `tools/cache/manual/README.md` without running `git add -f` or `git add --force`.
 
 ### Requirement 16: Format conversion
 
@@ -278,6 +281,7 @@ The tasks document lists Phase 1 only. Phase 2 tasks are added when the user ask
 5. IF a binary is available only from outside npm, THEN THE Asset_Pipeline SHALL ask the user for another approach instead of running that binary.
 6. THE Asset_Pipeline SHALL keep secrets and API keys out of the repository and read them from environment variables.
 7. WHEN the Scout_Agent needs to use the Poly Haven API, gltf-transform or an FBX-to-glTF converter, THE Scout_Agent SHALL look up the current documentation through context7 or the web before writing code.
+8. THE Asset_Pipeline SHALL declare all Fetch_Script dependencies in a separate `tools/package.json` with its own lockfile in `tools/`, and SHALL NOT add any Fetch_Script dependency to `web/package.json` or the `web/` lockfile.
 
 ### Requirement 20: Final audit
 
@@ -301,6 +305,18 @@ The tasks document lists Phase 1 only. Phase 2 tasks are added when the user ask
 4. WHEN the Scout_Agent commits, THE Scout_Agent SHALL use a conventional commit message of the form `<type>(asset-pipeline): <description>`, where `<type>` is one of feat, fix, test, chore or docs and the subject line is at most 72 characters.
 5. IF the user has not explicitly asked for a commit in the current request, THEN THE Scout_Agent SHALL NOT run `git commit` and SHALL report the files that are staged or modified and awaiting a commit.
 6. IF `git status` shows staged files outside the Owned_Paths before a commit, THEN THE Scout_Agent SHALL unstage only those files with `git restore --staged <path>`, leave their working-tree content unchanged, and report each unstaged path to the user before committing.
-7. THE Scout_Agent SHALL ensure `.gitignore` contains entries for `tools/cache/` and for local tool output, and SHALL NOT add any entry that ignores `.kiro`, so that `.kiro` files remain tracked.
+7. THE Scout_Agent SHALL ensure `.gitignore` contains the entries `tools/cache/*`, `!tools/cache/manual/`, `tools/cache/manual/*` and `!tools/cache/manual/README.md` in this order, plus an entry for local tool output, SHALL verify with `git check-ignore` that `tools/cache/manual/README.md` is not ignored and that downloaded cache files are ignored, SHALL NOT use `git add -f` or `git add --force`, and SHALL NOT add any entry that ignores `.kiro`, so that `.kiro` files remain tracked.
 8. THE Scout_Agent SHALL leave all files under `/pipeline` and all `/data` generation code unmodified.
 9. IF a Scout_Agent action would require modifying, staging or discarding a file outside the Owned_Paths, THEN THE Scout_Agent SHALL NOT perform the action, SHALL leave the file unchanged, and SHALL report the file path and the blocked action to the user.
+
+### Requirement 22: Visible credits note
+
+**User Story:** As the project owner, I want `CREDITS.md` to state that its content is shown inside the app, so that the visible-credit condition in Poly Haven's terms is met and nobody removes the note by accident.
+
+#### Acceptance Criteria
+
+1. THE Credits_File SHALL begin with the Visible_In_App_Note as its first section, before any table row.
+2. THE Visible_In_App_Note SHALL state that the Credits_File content is shown in the app's Credits button in the Settings menu, that the UI is delivered by the graveyard-scene spec, and that the note is required because Poly Haven's terms need a visible credit.
+3. WHEN the Fetch_Script writes or updates the Credits_File, THE Fetch_Script SHALL preserve the Visible_In_App_Note unchanged at the top of the file.
+4. WHEN the Fetch_Script runs a second time with unchanged inputs, THE Fetch_Script SHALL leave exactly one Visible_In_App_Note in the Credits_File.
+5. IF the Credits_File has no Visible_In_App_Note when the Fetch_Script writes it, THEN THE Fetch_Script SHALL insert the Visible_In_App_Note at the top of the file once.
