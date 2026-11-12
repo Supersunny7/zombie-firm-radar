@@ -93,7 +93,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Inputs: valid treatments, corrupted treatments and arbitrary junk; the machine returns `ok: true` with the engine value exactly when the engine accepts, else `ok: false` with `reason` equal to the engine error message; `numRuns >= 100`
     - **Validates: Requirements 3.2**
 
-- [~] 4. Checkpoint: parser and state integration
+- [x] 4. Checkpoint: parser and state integration
   - From `web`, run `pnpm typecheck; pnpm lint; pnpm format; pnpm test`. All existing state-machine tests must pass with unchanged assertions. Ensure all tests pass, ask the user if questions arise.
 
 - [x] 5. Input validation and diagnosis
