@@ -43,6 +43,22 @@
     "7.6 Write property test for seedFrom in `web/src/engine/hash.seedFrom.property.test.ts`": {
       "status": "passed",
       "lastRunTimestamp": 1794460903433
+    },
+    "8.4 Write property test for RR-1 in `web/src/engine/rr1.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794461016086
+    },
+    "8.5 Write property test for RR-2 in `web/src/engine/rr2.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794461018161
+    },
+    "8.6 Write property test for RR-4 in `web/src/engine/rr4.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794461038701
+    },
+    "8.7 Write property test for the fixed random block in `web/src/engine/rng.block.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794461047172
     }
   },
   "executionHistory": {
@@ -651,6 +667,11 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794460962848
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461082629
       }
     ],
     "8.5 Write property test for RR-2 in `web/src/engine/rr2.property.test.ts`": [
@@ -658,6 +679,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459042542
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460964130
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461083259
       }
     ],
     "8.6 Write property test for RR-4 in `web/src/engine/rr4.property.test.ts`": [
@@ -665,6 +696,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459042600
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460965249
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461084797
       }
     ],
     "8.7 Write property test for the fixed random block in `web/src/engine/rng.block.property.test.ts`": [
@@ -672,6 +713,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459042656
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460966504
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461085255
       }
     ],
     "8.8 Write unit tests for simulate and the named counterexamples in `web/src/engine/simulate.unit.test.ts` and `web/src/engine/rr.counterexamples.unit.test.ts`": [
@@ -679,6 +730,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459042712
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460967575
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461086555
       }
     ],
     "9. Checkpoint: core maths and simulation": [
@@ -686,6 +747,11 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459042768
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461095993
       }
     ],
     "10.1 Implement `web/src/engine/outcome.ts`": [
@@ -1013,6 +1079,13 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794460952979
+      }
+    ],
+    "8. Path projection and Monte Carlo simulation": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461086631
       }
     ]
   }

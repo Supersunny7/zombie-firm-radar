@@ -198,7 +198,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Valid inputs equal `fnv1a32(cik + "|" + serialiseTreatment(t) + "|" + date)` and lie in [0, 4294967295]; bad dates give `invalid_date`, bad ciks give `invalid_cik`, and several defects follow treatment, cik, isoDate; `numRuns >= 100`
     - **Validates: Requirements 10.1, 10.2, 10.4, 10.5, 10.9**
 
-- [ ] 8. Path projection and Monte Carlo simulation
+- [x] 8. Path projection and Monte Carlo simulation
   - [x] 8.1 Implement `projectPath` in `web/src/engine/project.ts`
     - `m_0 = E' / R'`; for t = 1..3 the margin recursion with kappa and sigma; `R_t = R_{t-1} * (1 + g - growthCut)`; `EBIT_t = m_t * R_t`; `ICR_t = post.debtFree ? Infinity : icr(EBIT_t, post.interest)`; debt constant
     - _Requirements: 8.5, 8.6, 8.7, 8.8_
@@ -212,34 +212,34 @@ All commands run from `web` in PowerShell, chained with `;`.
     - The RR-2 domain of Req 13.3: firm, macro, delta, block with eps in [-4, 4], and a base treatment drawn from sell_assets, debt_for_equity and refinance (its cut_costs is set by the property)
     - _Requirements: 13.3_
 
-  - [-] 8.4 Write property test for RR-1 in `web/src/engine/rr1.property.test.ts`
+  - [x] 8.4 Write property test for RR-1 in `web/src/engine/rr1.property.test.ts`
     - **Property 11: Debt-for-equity never worsens coverage on the same path (RR-1, amended)**
     - Base T without debt_for_equity (cut_costs, sell_assets and refinance allowed; refinance never filtered out), `with = T + debt_for_equity(w)`, same `arbBlock` object for both; part 1 exact `>=` for years with EBIT_t >= 0; part 2 a Covered_Year stays covered for any sign; `numRuns >= 100`
     - If fast-check finds a counterexample, stop and report it to the user with seed and shrunk inputs; do not weaken the property or exclude refinance
     - **Validates: Requirements 13.1, 13.2, 13.11**
 
-  - [~] 8.5 Write property test for RR-2 in `web/src/engine/rr2.property.test.ts`
+  - [x] 8.5 Write property test for RR-2 in `web/src/engine/rr2.property.test.ts`
     - **Property 12: A larger cost cut never lowers year-1 coverage (RR-2, on the RR-2 domain)**
     - Use `arbRr2Case` and 0 <= c1 <= c2 <= 0.08 on the same block; assert the precondition `0.7 * (1 - m_b) * (1 + g - 0.04) >= 0.5 * m_1(c = 0.08)` with `expect(...).toBe(true)` for every case (never a filter); `geq(EBIT_1(c2), EBIT_1(c1), 1e-12)`; when `EBIT_1(c1) >= 0`, `geq(ICR_1(c2), ICR_1(c1), 1e-12)`; `numRuns >= 100`; apply the counterexample rule
     - **Validates: Requirements 13.3**
 
-  - [~] 8.6 Write property test for RR-4 in `web/src/engine/rr4.property.test.ts`
+  - [x] 8.6 Write property test for RR-4 in `web/src/engine/rr4.property.test.ts`
     - **Property 13: A higher rate shock never gives higher survival odds (RR-4)**
     - Any valid firm, Treatment (refinance included, never filtered), seed, `paths` in [1, 200], 0 <= d1 <= d2 <= 0.05; exact `<=`; `numRuns >= 100`
     - If fast-check finds a counterexample, stop and report it to the user with seed and shrunk inputs; do not weaken the property or exclude refinance
     - **Validates: Requirements 13.5**
 
-  - [~] 8.7 Write property test for the fixed random block in `web/src/engine/rng.block.property.test.ts`
+  - [x] 8.7 Write property test for the fixed random block in `web/src/engine/rng.block.property.test.ts`
     - **Property 19: Fixed random block per path**
     - `blocksFor(seed, n)` deeply equals the first n entries of `blocksFor(seed, n + m)` for n, m in [1, 50]; `drawBlock` calls `next` 6 times; `simulate` with any Treatment and `paths = n` consumes exactly 6n uniforms, counted through the test-only seam; `numRuns >= 100`
     - **Validates: Requirements 8.2, 8.4**
 
-  - [~] 8.8 Write unit tests for simulate and the named counterexamples in `web/src/engine/simulate.unit.test.ts` and `web/src/engine/rr.counterexamples.unit.test.ts`
+  - [x] 8.8 Write unit tests for simulate and the named counterexamples in `web/src/engine/simulate.unit.test.ts` and `web/src/engine/rr.counterexamples.unit.test.ts`
     - `simulate.unit.test.ts`: omitted `paths` runs exactly 1000 paths; `constantDebtNote` present; the reuse-post optimisation equals a naive per-block recompute for treatments with and without sell_assets; median of [1, 3, 2, 10] = 2.5 and of [1, Infinity] = Infinity; `invalid_paths` for 0, 1.5, 100001; `invalid_seed` for -1, 1.5, 4294967296 and a string with no coercion; a debt-free treatment gives `debtFree` true and survival odds 1
     - `rr.counterexamples.unit.test.ts`: a test named exactly "RR-1 negative-EBIT counterexample" (EBIT_t = -10, interest 100 → 50, ICR_t -0.1 → -0.2 via `icr`), and a test named exactly "RR-2 high-margin trade-off" (E/R = 0.9, margin_mean = 0.9, eps1 = 0, g = 0.01, no other tools; year-1 EBIT `0.909 * R` at c = 0 and `0.878432 * R` at c = 0.08, relative tolerance 1e-9)
     - _Requirements: 8.1, 8.8, 8.10, 8.13, 8.15, 8.16, 13.12, 13.13, 14.9, 15.5_
 
-- [~] 9. Checkpoint: core maths and simulation
+- [-] 9. Checkpoint: core maths and simulation
   - From `web`, run `pnpm typecheck; pnpm lint; pnpm format; pnpm test`. Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 10. Drawn outcome, failure message and hint
