@@ -549,7 +549,7 @@ Working rules for every task:
     - Commit with a conventional message of at most 72 characters, for example `fix(asset-pipeline): rework cracked headstone and ruella hand`; do not push; then stop
     - _Requirements: 44.6, 41.8, 41.9, 21.1, 21.2, 21.4, 21.5_
 
-- [ ] 27. Avatar fixes
+- [x] 27. Avatar fixes
   - [x] 27.1 Drop rocketbox-female-adult-06 and add prune support
     - Run `git pull --no-edit` first; stop and report on non-zero exit or conflict. May run once 26.1 is done
     - Remove the `rocketbox-female-adult-06` pick from `tools/picks.json`
@@ -575,7 +575,7 @@ Working rules for every task:
     - Report that `reference/progress/` is outside the Owned_Paths and its PNGs are not committed unless the user asks
     - _Requirements: 46.8, 44.1, 44.4, 44.5, 44.6_
 
-  - [-] 27.4 Full checks, audit, commit only Owned_Paths and stop
+  - [x] 27.4 Full checks, audit, commit only Owned_Paths and stop
     - Run `git pull --no-edit` first
     - Run `pnpm --dir tools test`; run `node tools/fetch-assets.mjs` twice and require equal SHA-256 hashes for all outputs, the Manifest and `CREDITS.md`; invoke the `asset-auditor` agent and fix findings until clean (stop and ask if one survives two fixes)
     - Run `git status --short`; unstage only files outside the Owned_Paths with `git restore --staged <path>` and report each

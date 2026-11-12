@@ -245,3 +245,12 @@
 2026-11-12 | avatar-textures-missing-fix | 5 | Rendered textured avatar with Playwright and saved screenshot. | reference/progress/avatar-textures-fixed.png
 2026-11-12 | avatar-textures-missing-fix | 6 | Checkpoint passed: 317 tools tests green. | none
 2026-11-12 | avatar-textures-missing-fix | 7 | Committed avatar texture fix as 70e7d3d. | tools, avatars, asset-auditor, spec, reference/progress
+2026-11-12 | asset-pipeline | 26.1 | Built local preview page and server; captured seven before renders | tools/preview/, reference/progress/
+2026-11-12 | asset-pipeline | 26.2 | Cracked headstone now plane-fractured with chipped corner and 2.8 cm offset; silhouette XOR 10.7% | tools/make-cracked-headstone.mjs, asset-lib/fracture.mjs
+2026-11-12 | asset-pipeline | 26.3 | Ruella hand: forearm removed by vertex colour, ragged capped wrist cut, grey-green tint at mean value 0.50 | tools/asset-lib/edits/, picks.json
+2026-11-12 | asset-pipeline | 26.4 | Rendered after images; fixed hand pinholes via joinMeshes, torn wrist, olive-green tint; textured headstone caps | tools/asset-lib/edits/, fracture.mjs
+2026-11-12 | asset-pipeline | 26.5 | Committed headstone and Ruella hand visual fixes | tools/, web/public/assets, CREDITS.md
+2026-11-12 | asset-pipeline | 27.1 | Dropped rocketbox-female-adult-06 and added safe manifest-driven prune | tools/asset-lib/prune.mjs, picks.json, CREDITS.md
+2026-11-12 | asset-pipeline | 27.2 | Construction male face box is a separate wire face-shield primitive; removed via removeNode material target | tools/asset-lib/edits/remove-node.mjs, picks.json
+2026-11-12 | asset-pipeline | 27.3 | Rendered construction male head after face-shield removal; face clear, helmet intact | reference/progress/
+2026-11-12 | asset-pipeline | 27.4 | 352 tests pass, idempotent rerun, auditor clean; committed avatar fixes as 8368a1e | tools/, web/public/assets, CREDITS.md
