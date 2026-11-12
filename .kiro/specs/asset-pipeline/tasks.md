@@ -268,7 +268,7 @@ Working rules for every task:
     - Report to the user the packages Phase 2 will install and that nothing has been installed: `sharp` (prebuilt libvips via optional dependency), `ffmpeg-static` (downloads an ffmpeg binary at install), `fbx2gltf` (FBX2glTF executables inside the tarball), `meshoptimizer` (WebAssembly only), plus pure JavaScript packages (gltf-transform, fflate, vitest, fast-check); then stop
     - _Requirements: 32.8, 32.9, 21.1, 21.2, 21.4, 21.6, 19.3, 41.2_
 
-- [ ] 14. Tools package (no install before approval)
+- [x] 14. Tools package (no install before approval)
   - [x] 14.1 Create `tools/package.json` with exact pins
     - Run `git pull --no-edit` first
     - Look up current versions with `npm view <pkg> version` and the current docs (context7 or web) for gltf-transform, sharp, fbx2gltf and ffmpeg-static before writing code (Requirement 19.7)
@@ -276,25 +276,25 @@ Working rules for every task:
     - Do not run any install command. Do not touch `web/package.json` or the `web/` lockfile
     - _Requirements: 19.1, 19.2, 19.7, 19.8, 14.1_
 
-  - [-] 14.2 Stop gate: list the binary-fetching packages and wait for approval, then install
+  - [x] 14.2 Stop gate: list the binary-fetching packages and wait for approval, then install
     - Tell the user, in the reply, the exact list with pinned versions: `sharp` (prebuilt libvips from `@img/sharp-win32-x64`), `ffmpeg-static` (install script downloads ffmpeg from GitHub releases; needs build-script approval in pnpm), `fbx2gltf` (FBX2glTF executables inside the npm package), `meshoptimizer` (WebAssembly, no native binary). Then stop and wait for the user's approval. Run no install command and no script needing these packages until the user approves
     - After approval: run `pnpm install` with `--dir tools` (PowerShell, `;` chaining) to create `tools/pnpm-lock.yaml`; check that every version in `tools/package.json` is exact, that `git status --short web` shows no change, and that `.gitignore` ignores `tools/node_modules`
     - If `fbx2gltf` cannot be installed or run, ask the user for another approach (for example `@cocos/fbx2gltf`) and do not fetch a binary from outside npm
     - _Requirements: 19.3, 19.4, 19.5, 19.8, 41.2, 41.3_
 
-- [ ] 15. Recipe and validation modules
-  - [~] 15.1 Implement `tools/asset-lib/picks.mjs` (picks version 2)
+- [x] 15. Recipe and validation modules
+  - [x] 15.1 Implement `tools/asset-lib/picks.mjs` (picks version 2)
     - Run `git pull --no-edit` first
     - `loadPicks(path)` and `validatePick(p)` for the recipe fields `id`, `kind`, `category`, `group`, `source` (polyhaven, url, manual, generated, derived), `manual`, `expectedFile`, `targetFolder`, `edits`, `credits`, `role`; reject unknown keys, a `manual` flag that disagrees with `source.type`, a duplicate `id`, a `derived.from` that is not an `id` in the file, and any edit not defined in the edit table; return typed errors by `id`
     - Order derived picks after the picks they derive from
     - _Requirements: 35.1, 35.2, 35.3, 35.5, 35.6, 14.1_
 
-  - [~] 15.2 Implement `licenses.mjs` and `paths.mjs`
+  - [x] 15.2 Implement `licenses.mjs` and `paths.mjs`
     - `checkLicense(pick)` with the alias table, NC / non-commercial token rejection and forbidden hosts; empty `sourceUrl`, `author` or `license` refused with the field name
     - `planOutputs(pick, produced)` and `safeJoin(root, ...parts)` as in the design; output folders per `kind`
     - _Requirements: 18.7, 18.8, 14.4, 21.1, 21.9_
 
-  - [~] 15.3 Write `tools/picks.json` from the README Picks
+  - [x] 15.3 Write `tools/picks.json` from the README Picks
     - Run `git pull --no-edit` first
     - One entry per Pick in `reference/candidates/README.md` that is not rejected or dropped, with `credits` copied from the README rows (exact license text mapped to the allowed alias, author, source URL), `group` graveyard or lab, `source` per kind (Poly Haven id and resolution, Rocketbox GitHub raw URL at the pinned SHA, manual page URL and download option, generated and derived entries for the decals and the cracked headstone), and `expectedFile` and `targetFolder` equal to the Manual README
     - Edits per pick: craggle hand `desaturate`; skull `darken` and `grime`; morgue refrigerator `decimate` 30000; strap kit `darken` (black webbing); knife switch `selectVariant` (grey) and `splitMesh` (handle, blade, rest); `sketchfab-crutch-and-iv-drip` `removeNode` (crutch); any blue-sleeve removal recorded in the Picks; headstones `decimate` 20000; Greenall corpse credits `changes` includes "provenance accepted on the author's statement"
@@ -302,11 +302,11 @@ Working rules for every task:
     - Validate with `loadPicks` and fix findings; no download yet
     - _Requirements: 35.1, 35.2, 35.3, 35.5, 35.7, 32.5, 38.9, 39.6_
 
-  - [~] 15.4 Write property test for the license allow-list
+  - [x] 15.4 Write property test for the license allow-list
     - **Property 7: License allow-list is exact**
     - **Validates: Requirements 18.7**
 
-  - [~] 15.5 Write property test for output paths
+  - [x] 15.5 Write property test for output paths
     - **Property 9: Output paths follow kind and name and never escape**
     - **Validates: Requirements 14.4, 21.1, 21.9**
 

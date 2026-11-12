@@ -1,0 +1,1475 @@
+{
+  "version": 2,
+  "picks": [
+    {
+      "id": "freesound-bigkahuna360-electrical-shock-zap",
+      "kind": "audio",
+      "category": 10,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/BigKahuna360/sounds/160421/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required."
+      },
+      "manual": true,
+      "expectedFile": "freesound-bigkahuna360-electrical-shock-zap.wav",
+      "targetFolder": "tools/cache/manual/freesound-bigkahuna360-electrical-shock-zap",
+      "edits": [],
+      "credits": {
+        "title": "Electrical shock zap",
+        "author": "BigKahuna360",
+        "sourceUrl": "https://freesound.org/people/BigKahuna360/sounds/160421/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "freesound-giddster-crows-cawing",
+      "kind": "audio",
+      "category": 10,
+      "group": "graveyard",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/giddster/sounds/437345/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required."
+      },
+      "manual": true,
+      "expectedFile": "freesound-giddster-crows-cawing.wav",
+      "targetFolder": "tools/cache/manual/freesound-giddster-crows-cawing",
+      "edits": [],
+      "credits": {
+        "title": "Crows cawing",
+        "author": "giddster",
+        "sourceUrl": "https://freesound.org/people/giddster/sounds/437345/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "freesound-guyburns-digging-with-shovel",
+      "kind": "audio",
+      "category": 10,
+      "group": "graveyard",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/guyburns/sounds/558413/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required.",
+        "note": "The original is M4A; keep it as is."
+      },
+      "manual": true,
+      "expectedFile": "freesound-guyburns-digging-with-shovel.m4a",
+      "targetFolder": "tools/cache/manual/freesound-guyburns-digging-with-shovel",
+      "edits": [],
+      "credits": {
+        "title": "Digging with shovel",
+        "author": "guyburns",
+        "sourceUrl": "https://freesound.org/people/guyburns/sounds/558413/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "freesound-indieground-pas-zombie-route",
+      "kind": "audio",
+      "category": 10,
+      "group": "graveyard",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/indieground/sounds/223815/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required."
+      },
+      "manual": true,
+      "expectedFile": "freesound-indieground-pas-zombie-route.wav",
+      "targetFolder": "tools/cache/manual/freesound-indieground-pas-zombie-route",
+      "edits": [],
+      "credits": {
+        "title": "Zombie route (shambling footsteps)",
+        "author": "indieground",
+        "sourceUrl": "https://freesound.org/people/indieground/sounds/223815/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "freesound-joelaudio-electric-zap-001",
+      "kind": "audio",
+      "category": 7,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/JoelAudio/sounds/136542/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required."
+      },
+      "manual": true,
+      "expectedFile": "freesound-joelaudio-electric-zap-001.wav",
+      "targetFolder": "tools/cache/manual/freesound-joelaudio-electric-zap-001",
+      "edits": [],
+      "credits": {
+        "title": "Electric zap 001",
+        "author": "JoelAudio",
+        "sourceUrl": "https://freesound.org/people/JoelAudio/sounds/136542/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "freesound-launemax-open-close-iron-gate",
+      "kind": "audio",
+      "category": 7,
+      "group": "graveyard",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/launemax/sounds/274767/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required."
+      },
+      "manual": true,
+      "expectedFile": "freesound-launemax-open-close-iron-gate.wav",
+      "targetFolder": "tools/cache/manual/freesound-launemax-open-close-iron-gate",
+      "edits": [],
+      "credits": {
+        "title": "Open and close iron gate",
+        "author": "launemax",
+        "sourceUrl": "https://freesound.org/people/launemax/sounds/274767/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "freesound-lennartgreen-low-rumble-loopable",
+      "kind": "audio",
+      "category": 7,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/lennartgreen/sounds/638914/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required."
+      },
+      "manual": true,
+      "expectedFile": "freesound-lennartgreen-low-rumble-loopable.wav",
+      "targetFolder": "tools/cache/manual/freesound-lennartgreen-low-rumble-loopable",
+      "edits": [],
+      "credits": {
+        "title": "Low rumble (loopable)",
+        "author": "lennartgreen",
+        "sourceUrl": "https://freesound.org/people/lennartgreen/sounds/638914/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "freesound-qubodup-vibrating-jumpscare",
+      "kind": "audio",
+      "category": 10,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/qubodup/sounds/814056/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required."
+      },
+      "manual": true,
+      "expectedFile": "freesound-qubodup-vibrating-jumpscare.wav",
+      "targetFolder": "tools/cache/manual/freesound-qubodup-vibrating-jumpscare",
+      "edits": [],
+      "credits": {
+        "title": "Vibrating jumpscare",
+        "author": "qubodup",
+        "sourceUrl": "https://freesound.org/people/qubodup/sounds/814056/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "freesound-sidequesting-steady-heart-rate-monitor-loop",
+      "kind": "audio",
+      "category": 7,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/sidequesting/sounds/534998/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required.",
+        "note": "Trim to a few beats and loop to save size."
+      },
+      "manual": true,
+      "expectedFile": "freesound-sidequesting-steady-heart-rate-monitor-loop.wav",
+      "targetFolder": "tools/cache/manual/freesound-sidequesting-steady-heart-rate-monitor-loop",
+      "edits": [],
+      "credits": {
+        "title": "Steady heart rate monitor loop",
+        "author": "sidequesting",
+        "sourceUrl": "https://freesound.org/people/sidequesting/sounds/534998/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "freesound-smice-6-hum-loop",
+      "kind": "audio",
+      "category": 10,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/Smice_6/sounds/536527/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required.",
+        "note": "Use only the hum section."
+      },
+      "manual": true,
+      "expectedFile": "freesound-smice-6-hum-loop.wav",
+      "targetFolder": "tools/cache/manual/freesound-smice-6-hum-loop",
+      "edits": [],
+      "credits": {
+        "title": "Hum loop",
+        "author": "Smice_6",
+        "sourceUrl": "https://freesound.org/people/Smice_6/sounds/536527/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "freesound-thegreatperson-heart-rate-cardiac-arrest-flatline",
+      "kind": "audio",
+      "category": 7,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/thegreatperson/sounds/210793/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required.",
+        "note": "Cut the arrest sequence and the flatline tone from the one take."
+      },
+      "manual": true,
+      "expectedFile": "freesound-thegreatperson-heart-rate-cardiac-arrest-flatline.mp3",
+      "targetFolder": "tools/cache/manual/freesound-thegreatperson-heart-rate-cardiac-arrest-flatline",
+      "edits": [],
+      "credits": {
+        "title": "Heart rate, cardiac arrest, flatline",
+        "author": "thegreatperson",
+        "sourceUrl": "https://freesound.org/people/thegreatperson/sounds/210793/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "freesound-tomhannen-howling-wind-tower",
+      "kind": "audio",
+      "category": 7,
+      "group": "graveyard",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/tomhannen/sounds/486599/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required.",
+        "note": "The original is M4A; keep it as is. Needs a crossfade loop."
+      },
+      "manual": true,
+      "expectedFile": "freesound-tomhannen-howling-wind-tower.m4a",
+      "targetFolder": "tools/cache/manual/freesound-tomhannen-howling-wind-tower",
+      "edits": [],
+      "credits": {
+        "title": "Howling wind, tower",
+        "author": "tomhannen",
+        "sourceUrl": "https://freesound.org/people/tomhannen/sounds/486599/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "freesound-zazz-cloth-rustle-8",
+      "kind": "audio",
+      "category": 10,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/zazz.sound.design/sounds/435296/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required.",
+        "note": "Cut individual rustles as needed."
+      },
+      "manual": true,
+      "expectedFile": "freesound-zazz-cloth-rustle-8.wav",
+      "targetFolder": "tools/cache/manual/freesound-zazz-cloth-rustle-8",
+      "edits": [],
+      "credits": {
+        "title": "Cloth rustle 8",
+        "author": "zazz.sound.design",
+        "sourceUrl": "https://freesound.org/people/zazz.sound.design/sounds/435296/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "freesound-zhro-heartbeat-loopable",
+      "kind": "audio",
+      "category": 7,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/ZHR%C3%98/sounds/551437/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required."
+      },
+      "manual": true,
+      "expectedFile": "freesound-zhro-heartbeat-loopable.mp3",
+      "targetFolder": "tools/cache/manual/freesound-zhro-heartbeat-loopable",
+      "edits": [],
+      "credits": {
+        "title": "Heartbeat (loopable)",
+        "author": "ZHRØ",
+        "sourceUrl": "https://freesound.org/people/ZHR%C3%98/sounds/551437/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
+      "id": "oga-blood-splatter-exilegl",
+      "kind": "texture",
+      "category": 8,
+      "group": "lab",
+      "source": {
+        "type": "url",
+        "url": "https://opengameart.org/sites/default/files/blood_0.png"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Blood splatter",
+        "author": "ExileGL",
+        "sourceUrl": "https://opengameart.org/content/blood-splatter",
+        "license": "CC0",
+        "changes": "Resized to 1k, encoded as WebP with alpha"
+      }
+    },
+    {
+      "id": "own-drag-mark-decal",
+      "kind": "texture",
+      "category": 8,
+      "group": "graveyard",
+      "source": {
+        "type": "generated",
+        "generator": "decals",
+        "decal": "drag-mark",
+        "variants": 3
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Drag-mark decals",
+        "author": "Zombie Firm Radar team",
+        "sourceUrl": "https://github.com/Supersunny7/zombie-firm-radar/tree/main/tools/gen-decals.mjs",
+        "license": "Own work",
+        "changes": "Procedurally generated, 512 px RGBA PNG converted to WebP"
+      }
+    },
+    {
+      "id": "own-handprint-decal",
+      "kind": "texture",
+      "category": 8,
+      "group": "graveyard",
+      "source": {
+        "type": "generated",
+        "generator": "decals",
+        "decal": "handprint",
+        "variants": 3
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Handprint decals",
+        "author": "Zombie Firm Radar team",
+        "sourceUrl": "https://github.com/Supersunny7/zombie-firm-radar/tree/main/tools/gen-decals.mjs",
+        "license": "Own work",
+        "changes": "Procedurally generated, 512 px RGBA PNG converted to WebP"
+      }
+    },
+    {
+      "id": "own-headstone-cracked",
+      "kind": "model",
+      "category": 8,
+      "group": "graveyard",
+      "source": {
+        "type": "derived",
+        "script": "cracked-headstone",
+        "from": "sketchfab-small-gravestone-drydoctoregg",
+        "seed": 20260101
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Cracked headstone (derived)",
+        "author": "Peter Tilley (drydoctoregg)",
+        "sourceUrl": "https://sketchfab.com/3d-models/small-gravestone-a6b9ef8756bf453e9d8b22a40d1e905a",
+        "license": "CC BY 4.0",
+        "changes": "Derived by our script from the intact scan: displaced crack normal map and chipped edge, decimated to at most 20,000 triangles, Meshopt-compressed"
+      }
+    },
+    {
+      "id": "polyhaven-dark-brick-wall",
+      "kind": "texture",
+      "category": 9,
+      "group": "lab",
+      "source": {
+        "type": "polyhaven",
+        "id": "dark_brick_wall",
+        "resolution": "1k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "dark brick wall",
+        "author": "Dario Barresi (processing), Dimitrios Savva (photography)",
+        "sourceUrl": "https://polyhaven.com/a/dark_brick_wall",
+        "license": "CC0",
+        "changes": "Converted to WebP, longest side limited to 1024 px"
+      }
+    },
+    {
+      "id": "polyhaven-dead-tree-trunk",
+      "kind": "model",
+      "category": 3,
+      "group": "graveyard",
+      "source": {
+        "type": "polyhaven",
+        "id": "dead_tree_trunk",
+        "resolution": "1k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [
+        {
+          "op": "decimate",
+          "triangles": 30000
+        }
+      ],
+      "credits": {
+        "title": "dead tree trunk",
+        "author": "Rob Tuytel",
+        "sourceUrl": "https://polyhaven.com/a/dead_tree_trunk",
+        "license": "CC0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; single self-contained glb; decimated to about 30,000 triangles"
+      }
+    },
+    {
+      "id": "polyhaven-excavated-soil-wall",
+      "kind": "texture",
+      "category": 1,
+      "group": "graveyard",
+      "source": {
+        "type": "polyhaven",
+        "id": "excavated_soil_wall",
+        "resolution": "2k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "excavated soil wall",
+        "author": "Amal Kumar",
+        "sourceUrl": "https://polyhaven.com/a/excavated_soil_wall",
+        "license": "CC0",
+        "changes": "Converted to WebP, longest side limited to 2048 px"
+      },
+      "role": "ground-main"
+    },
+    {
+      "id": "polyhaven-gothic-statue",
+      "kind": "model",
+      "category": 3,
+      "group": "graveyard",
+      "source": {
+        "type": "polyhaven",
+        "id": "gothic_statue",
+        "resolution": "1k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "gothic statue",
+        "author": "Benny Weimer",
+        "sourceUrl": "https://polyhaven.com/a/gothic_statue",
+        "license": "CC0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; single self-contained glb"
+      }
+    },
+    {
+      "id": "polyhaven-hessian-230",
+      "kind": "texture",
+      "category": 8,
+      "group": "lab",
+      "source": {
+        "type": "polyhaven",
+        "id": "hessian_230",
+        "resolution": "1k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "hessian 230",
+        "author": "Rico Cilliers and colormass",
+        "sourceUrl": "https://polyhaven.com/a/hessian_230",
+        "license": "CC0",
+        "changes": "Converted to WebP, longest side limited to 1024 px"
+      }
+    },
+    {
+      "id": "polyhaven-lantern-01",
+      "kind": "model",
+      "category": 3,
+      "group": "graveyard",
+      "source": {
+        "type": "polyhaven",
+        "id": "Lantern_01",
+        "resolution": "1k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "lantern 01",
+        "author": "Rajil Jose Macatangay",
+        "sourceUrl": "https://polyhaven.com/a/Lantern_01",
+        "license": "CC0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; single self-contained glb"
+      }
+    },
+    {
+      "id": "polyhaven-large-castle-door",
+      "kind": "model",
+      "category": 9,
+      "group": "lab",
+      "source": {
+        "type": "polyhaven",
+        "id": "large_castle_door",
+        "resolution": "1k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "large castle door",
+        "author": "Tina",
+        "sourceUrl": "https://polyhaven.com/a/large_castle_door",
+        "license": "CC0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; single self-contained glb"
+      }
+    },
+    {
+      "id": "polyhaven-large-iron-gate",
+      "kind": "model",
+      "category": 3,
+      "group": "graveyard",
+      "source": {
+        "type": "polyhaven",
+        "id": "large_iron_gate",
+        "resolution": "1k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "large iron gate",
+        "author": "Josh Dean",
+        "sourceUrl": "https://polyhaven.com/a/large_iron_gate",
+        "license": "CC0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; single self-contained glb"
+      }
+    },
+    {
+      "id": "polyhaven-lichen-rock",
+      "kind": "texture",
+      "category": 1,
+      "group": "graveyard",
+      "source": {
+        "type": "polyhaven",
+        "id": "lichen_rock",
+        "resolution": "1k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "lichen rock",
+        "author": "Rico Cilliers",
+        "sourceUrl": "https://polyhaven.com/a/lichen_rock",
+        "license": "CC0",
+        "changes": "Converted to WebP, longest side limited to 1024 px"
+      }
+    },
+    {
+      "id": "polyhaven-moonlit-golf",
+      "kind": "hdri",
+      "category": 2,
+      "group": "graveyard",
+      "source": {
+        "type": "polyhaven",
+        "id": "moonlit_golf",
+        "resolution": "2k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "moonlit golf",
+        "author": "Greg Zaal",
+        "sourceUrl": "https://polyhaven.com/a/moonlit_golf",
+        "license": "CC0",
+        "changes": "Used as the 2k background sky; width limited to 2048 px"
+      },
+      "role": "background"
+    },
+    {
+      "id": "polyhaven-moonlit-golf-environment",
+      "kind": "hdri",
+      "category": 2,
+      "group": "graveyard",
+      "source": {
+        "type": "polyhaven",
+        "id": "moonlit_golf",
+        "resolution": "1k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "moonlit golf environment",
+        "author": "Greg Zaal",
+        "sourceUrl": "https://polyhaven.com/a/moonlit_golf",
+        "license": "CC0",
+        "changes": "Used as the 1k environment lighting; width limited to 1024 px"
+      },
+      "role": "environment"
+    },
+    {
+      "id": "polyhaven-slate-floor",
+      "kind": "texture",
+      "category": 9,
+      "group": "lab",
+      "source": {
+        "type": "polyhaven",
+        "id": "slate_floor",
+        "resolution": "1k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "slate floor",
+        "author": "Dimitrios Savva",
+        "sourceUrl": "https://polyhaven.com/a/slate_floor",
+        "license": "CC0",
+        "changes": "Converted to WebP, longest side limited to 1024 px"
+      }
+    },
+    {
+      "id": "polyhaven-tree-stump-01",
+      "kind": "model",
+      "category": 3,
+      "group": "graveyard",
+      "source": {
+        "type": "polyhaven",
+        "id": "tree_stump_01",
+        "resolution": "1k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "tree stump 01",
+        "author": "Rob Tuytel",
+        "sourceUrl": "https://polyhaven.com/a/tree_stump_01",
+        "license": "CC0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; single self-contained glb"
+      }
+    },
+    {
+      "id": "polyhaven-tree-stump-02",
+      "kind": "model",
+      "category": 3,
+      "group": "graveyard",
+      "source": {
+        "type": "polyhaven",
+        "id": "tree_stump_02",
+        "resolution": "1k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "tree stump 02",
+        "author": "Rob Tuytel",
+        "sourceUrl": "https://polyhaven.com/a/tree_stump_02",
+        "license": "CC0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; single self-contained glb"
+      }
+    },
+    {
+      "id": "rocketbox-business-female-01",
+      "kind": "avatar",
+      "category": 5,
+      "group": "lab",
+      "source": {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Business_Female_01/Export/Business_Female_01.fbx"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Rocketbox Business_Female_01",
+        "author": "Microsoft (Rocketbox)",
+        "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Business_Female_01",
+        "license": "MIT",
+        "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept"
+      }
+    },
+    {
+      "id": "rocketbox-business-male-02",
+      "kind": "avatar",
+      "category": 5,
+      "group": "lab",
+      "source": {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Business_Male_02/Export/Business_Male_02.fbx"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Rocketbox Business_Male_02",
+        "author": "Microsoft (Rocketbox)",
+        "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Business_Male_02",
+        "license": "MIT",
+        "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept"
+      }
+    },
+    {
+      "id": "rocketbox-construction-female-01",
+      "kind": "avatar",
+      "category": 5,
+      "group": "lab",
+      "source": {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Construction_Female_01/Export/Construction_Female_01.fbx"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Rocketbox Construction_Female_01",
+        "author": "Microsoft (Rocketbox)",
+        "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Construction_Female_01",
+        "license": "MIT",
+        "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept"
+      }
+    },
+    {
+      "id": "rocketbox-construction-male-01",
+      "kind": "avatar",
+      "category": 5,
+      "group": "lab",
+      "source": {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Construction_Male_01/Export/Construction_Male_01.fbx"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Rocketbox Construction_Male_01",
+        "author": "Microsoft (Rocketbox)",
+        "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Construction_Male_01",
+        "license": "MIT",
+        "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept"
+      }
+    },
+    {
+      "id": "rocketbox-female-adult-06",
+      "kind": "avatar",
+      "category": 5,
+      "group": "lab",
+      "source": {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Adults/Female_Adult_06/Export/Female_Adult_06.fbx"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Rocketbox Female_Adult_06",
+        "author": "Microsoft (Rocketbox)",
+        "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Adults/Female_Adult_06",
+        "license": "MIT",
+        "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept"
+      }
+    },
+    {
+      "id": "rocketbox-gardener-male-01",
+      "kind": "avatar",
+      "category": 5,
+      "group": "lab",
+      "source": {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Gardener_Male_01/Export/Gardener_Male_01.fbx"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Rocketbox Gardener_Male_01",
+        "author": "Microsoft (Rocketbox)",
+        "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Gardener_Male_01",
+        "license": "MIT",
+        "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept"
+      }
+    },
+    {
+      "id": "rocketbox-m-idle-breathe-01",
+      "kind": "animation",
+      "category": 5,
+      "group": "lab",
+      "source": {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Animations/all_animations_max_motextr_static/m_idle_breathe_01.max.fbx"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Rocketbox animation m_idle_breathe_01",
+        "author": "Microsoft (Rocketbox)",
+        "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Animations/all_animations_max_motextr_static",
+        "license": "MIT",
+        "changes": "FBX converted to a Meshopt-compressed glb animation clip, resampled"
+      }
+    },
+    {
+      "id": "rocketbox-m-walk-bruised",
+      "kind": "animation",
+      "category": 5,
+      "group": "lab",
+      "source": {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Animations/all_animations_max_motextr_xy/m_walk_bruised.max.fbx"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Rocketbox animation m_walk_bruised",
+        "author": "Microsoft (Rocketbox)",
+        "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Animations/all_animations_max_motextr_xy",
+        "license": "MIT",
+        "changes": "FBX converted to a Meshopt-compressed glb animation clip, resampled"
+      }
+    },
+    {
+      "id": "rocketbox-m-walk-drunk",
+      "kind": "animation",
+      "category": 5,
+      "group": "lab",
+      "source": {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Animations/all_animations_max_motextr_xy/m_walk_drunk.max.fbx"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Rocketbox animation m_walk_drunk",
+        "author": "Microsoft (Rocketbox)",
+        "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Animations/all_animations_max_motextr_xy",
+        "license": "MIT",
+        "changes": "FBX converted to a Meshopt-compressed glb animation clip, resampled"
+      }
+    },
+    {
+      "id": "rocketbox-m-walk-neutral-01",
+      "kind": "animation",
+      "category": 5,
+      "group": "lab",
+      "source": {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Animations/all_animations_max_motextr_xy/m_walk_neutral_01.max.fbx"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Rocketbox animation m_walk_neutral_01",
+        "author": "Microsoft (Rocketbox)",
+        "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Animations/all_animations_max_motextr_xy",
+        "license": "MIT",
+        "changes": "FBX converted to a Meshopt-compressed glb animation clip, resampled"
+      }
+    },
+    {
+      "id": "rocketbox-male-adult-05",
+      "kind": "avatar",
+      "category": 5,
+      "group": "lab",
+      "source": {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Adults/Male_Adult_05/Export/Male_Adult_05.fbx"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Rocketbox Male_Adult_05",
+        "author": "Microsoft (Rocketbox)",
+        "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Adults/Male_Adult_05",
+        "license": "MIT",
+        "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept"
+      }
+    },
+    {
+      "id": "rocketbox-medical-female-01",
+      "kind": "avatar",
+      "category": 5,
+      "group": "lab",
+      "source": {
+        "type": "url",
+        "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Medical_Female_01/Export/Medical_Female_01.fbx"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "Rocketbox Medical_Female_01",
+        "author": "Microsoft (Rocketbox)",
+        "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Medical_Female_01",
+        "license": "MIT",
+        "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept"
+      }
+    },
+    {
+      "id": "sketchfab-autopsy-lab-assets",
+      "kind": "model",
+      "category": 4,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/autopsy-lab-assets-5ceaaa4482a84774b9922366cfb228e7",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Pack covers several Sub_Items; the pick script splits the parts.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-autopsy-lab-assets.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-autopsy-lab-assets",
+      "edits": [],
+      "credits": {
+        "title": "Autopsy lab assets",
+        "author": "Evan Petrov",
+        "sourceUrl": "https://sketchfab.com/3d-models/autopsy-lab-assets-5ceaaa4482a84774b9922366cfb228e7",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; whole pack kept as one model"
+      }
+    },
+    {
+      "id": "sketchfab-cobwebs-asset-pack-emarshall",
+      "kind": "model",
+      "category": 8,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/cobwebs-asset-pack-2dd4798676d84bc7af5d2a8f5834563a",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "No edits planned beyond picking the web meshes.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-cobwebs-asset-pack-emarshall.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-cobwebs-asset-pack-emarshall",
+      "edits": [],
+      "credits": {
+        "title": "Cobwebs asset pack",
+        "author": "Em Marshall (emarshall)",
+        "sourceUrl": "https://sketchfab.com/3d-models/cobwebs-asset-pack-2dd4798676d84bc7af5d2a8f5834563a",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; web meshes picked from the pack"
+      }
+    },
+    {
+      "id": "sketchfab-crutch-and-iv-drip",
+      "kind": "model",
+      "category": 4,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/crutch-and-iv-drip-5cc65c6aed374220b67f7d60e679153e",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Delete the crutch from the model.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-crutch-and-iv-drip.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-crutch-and-iv-drip",
+      "edits": [
+        {
+          "op": "removeNode",
+          "node": "Crutch"
+        }
+      ],
+      "credits": {
+        "title": "Crutch and IV drip",
+        "author": "Matt LeMoine",
+        "sourceUrl": "https://sketchfab.com/3d-models/crutch-and-iv-drip-5cc65c6aed374220b67f7d60e679153e",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; crutch removed, IV drip kept"
+      }
+    },
+    {
+      "id": "sketchfab-damaged-tombstone-drydoctoregg",
+      "kind": "model",
+      "category": 8,
+      "group": "graveyard",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/damaged-tombstone-0cefd7412d36424c844b64cca189aba5",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Decimate to at most 20,000 triangles if needed. Check the stone face is blank.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-damaged-tombstone-drydoctoregg.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-damaged-tombstone-drydoctoregg",
+      "edits": [
+        {
+          "op": "decimate",
+          "triangles": 20000
+        }
+      ],
+      "credits": {
+        "title": "Damaged tombstone",
+        "author": "Peter Tilley (drydoctoregg)",
+        "sourceUrl": "https://sketchfab.com/3d-models/damaged-tombstone-0cefd7412d36424c844b64cca189aba5",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; decimated to at most 20,000 triangles"
+      }
+    },
+    {
+      "id": "sketchfab-human-skull-danieledefilippis",
+      "kind": "model",
+      "category": 8,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/human-skull-0f46e7f845a145208e4922e94cd0c1b6",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Darken and add grime. Bones: none.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-human-skull-danieledefilippis.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-human-skull-danieledefilippis",
+      "edits": [
+        {
+          "op": "darken",
+          "texture": "material_0_baseColor",
+          "maxValue": 150
+        },
+        {
+          "op": "grime",
+          "texture": "material_0_baseColor",
+          "seed": 20260101,
+          "floor": 100
+        }
+      ],
+      "credits": {
+        "title": "Human skull",
+        "author": "danieledefilippis",
+        "sourceUrl": "https://sketchfab.com/3d-models/human-skull-0f46e7f845a145208e4922e94cd0c1b6",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; base colour darkened and grime added"
+      }
+    },
+    {
+      "id": "sketchfab-knife-switch-type-d",
+      "kind": "model",
+      "category": 9,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/early-1900s-knife-switches-type-d-dba93ad080ee4f8ca922e0df84ec9b4b",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Use the grey variant. If the variants are separate downloads or separate files in the zip, take the grey one. Handle and blade are split from the base later so the pull can be animated.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-knife-switch-type-d.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-knife-switch-type-d",
+      "edits": [
+        {
+          "op": "selectVariant",
+          "variant": "Early_1900s_Knife_Switch_Type_D_Standard"
+        },
+        {
+          "op": "splitMesh",
+          "mesh": "Object_1",
+          "by": "components",
+          "parts": [
+            {
+              "name": "handle",
+              "components": [
+                158
+              ]
+            },
+            {
+              "name": "blade",
+              "components": [
+                157,
+                159
+              ]
+            },
+            {
+              "name": "base",
+              "rest": true
+            }
+          ]
+        }
+      ],
+      "credits": {
+        "title": "Early 1900s knife switches, type D",
+        "author": "Mad_Lobster_Workshop",
+        "sourceUrl": "https://sketchfab.com/3d-models/early-1900s-knife-switches-type-d-dba93ad080ee4f8ca922e0df84ec9b4b",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; grey (Standard) variant kept; handle and blade split from the base for animation"
+      }
+    },
+    {
+      "id": "sketchfab-medical-props-cart",
+      "kind": "model",
+      "category": 4,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/medical-props-4b2e1a4c3f13432b9a0bc15355b27632",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Decimate to about 60K faces.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-medical-props-cart.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-medical-props-cart",
+      "edits": [
+        {
+          "op": "decimate",
+          "triangles": 60000
+        }
+      ],
+      "credits": {
+        "title": "Medical props",
+        "author": "coa white",
+        "sourceUrl": "https://sketchfab.com/3d-models/medical-props-4b2e1a4c3f13432b9a0bc15355b27632",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; decimated to about 60,000 triangles"
+      }
+    },
+    {
+      "id": "sketchfab-morgue-refrigerator-porteous",
+      "kind": "model",
+      "category": 8,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/morgue-refrigerator-d895d249fbda465faa22958ab1a63158",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Decimate to about 30K triangles. The author asks for credit.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-morgue-refrigerator-porteous.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-morgue-refrigerator-porteous",
+      "edits": [
+        {
+          "op": "decimate",
+          "triangles": 30000
+        }
+      ],
+      "credits": {
+        "title": "Morgue refrigerator",
+        "author": "RyanPorteous",
+        "sourceUrl": "https://sketchfab.com/3d-models/morgue-refrigerator-d895d249fbda465faa22958ab1a63158",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; decimated to about 30,000 triangles"
+      }
+    },
+    {
+      "id": "sketchfab-rusty-chains-amanda98",
+      "kind": "model",
+      "category": 8,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/rusty-chains-be9648f8e0324bbd967c10b44007bee1",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-rusty-chains-amanda98.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-rusty-chains-amanda98",
+      "edits": [],
+      "credits": {
+        "title": "Rusty chains",
+        "author": "amanda_98",
+        "sourceUrl": "https://sketchfab.com/3d-models/rusty-chains-be9648f8e0324bbd967c10b44007bee1",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP"
+      }
+    },
+    {
+      "id": "sketchfab-small-destroyed-tombstone-04",
+      "kind": "model",
+      "category": 3,
+      "group": "graveyard",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/small-destroyed-tombstone-04-ba7786989b414adf91a5763e71e9854c",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Resize the 8K textures to 1k.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-small-destroyed-tombstone-04.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-small-destroyed-tombstone-04",
+      "edits": [
+        {
+          "op": "decimate",
+          "triangles": 20000
+        }
+      ],
+      "credits": {
+        "title": "Small destroyed tombstone 04",
+        "author": "archiwum_xyz",
+        "sourceUrl": "https://sketchfab.com/3d-models/small-destroyed-tombstone-04-ba7786989b414adf91a5763e71e9854c",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; decimated to at most 20,000 triangles"
+      }
+    },
+    {
+      "id": "sketchfab-small-gravestone-drydoctoregg",
+      "kind": "model",
+      "category": 8,
+      "group": "graveyard",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/small-gravestone-a6b9ef8756bf453e9d8b22a40d1e905a",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "The cracked headstone needs no download: our script derives it from this intact scan (displaced crack normal map and chipped edge), recorded as a modified CC BY work with the drydoctoregg credit. If this file is missing, the cracked state is skipped too.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-small-gravestone-drydoctoregg.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-small-gravestone-drydoctoregg",
+      "edits": [
+        {
+          "op": "decimate",
+          "triangles": 20000
+        }
+      ],
+      "credits": {
+        "title": "Small gravestone",
+        "author": "Peter Tilley (drydoctoregg)",
+        "sourceUrl": "https://sketchfab.com/3d-models/small-gravestone-a6b9ef8756bf453e9d8b22a40d1e905a",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; decimated to at most 20,000 triangles"
+      }
+    },
+    {
+      "id": "sketchfab-smartinius-body-bag",
+      "kind": "model",
+      "category": 8,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/smartinius-body-bag-3d-asset-48d33832605545828f8297b64ddf599d",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-smartinius-body-bag.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-smartinius-body-bag",
+      "edits": [],
+      "credits": {
+        "title": "Smartinius body bag 3D asset",
+        "author": "smartinius",
+        "sourceUrl": "https://sketchfab.com/3d-models/smartinius-body-bag-3d-asset-48d33832605545828f8297b64ddf599d",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP"
+      }
+    },
+    {
+      "id": "sketchfab-strap-buckles-kit-dmigul",
+      "kind": "model",
+      "category": 8,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/strap-buckles-kit-86c045c8ba854e0da825ac8324495b28",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Black webbing (re-tint).",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-strap-buckles-kit-dmigul.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-strap-buckles-kit-dmigul",
+      "edits": [
+        {
+          "op": "darken",
+          "texture": "nylon_webbing_baseColor",
+          "maxValue": 40
+        }
+      ],
+      "credits": {
+        "title": "Strap buckles kit",
+        "author": "dmigul",
+        "sourceUrl": "https://sketchfab.com/3d-models/strap-buckles-kit-86c045c8ba854e0da825ac8324495b28",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; webbing base colour darkened to black"
+      }
+    },
+    {
+      "id": "sketchfab-zombie-corpse-greenall",
+      "kind": "model",
+      "category": 6,
+      "group": "graveyard",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/zombie-corpse-bb2ebca80471423a93a60a6552928abe",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Provenance accepted on the author's statement; CREDITS.md says so.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-zombie-corpse-greenall.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-zombie-corpse-greenall",
+      "edits": [],
+      "credits": {
+        "title": "Zombie corpse",
+        "author": "Colin.Greenall",
+        "sourceUrl": "https://sketchfab.com/3d-models/zombie-corpse-bb2ebca80471423a93a60a6552928abe",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; provenance accepted on the author's statement"
+      }
+    },
+    {
+      "id": "sketchfab-zombie-hand-craggle",
+      "kind": "model",
+      "category": 6,
+      "group": "graveyard",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/zombie-hand-4c8b6ca93ab04d0699523d3a9ef80c67",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Desaturate the green slightly.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-zombie-hand-craggle.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-zombie-hand-craggle",
+      "edits": [
+        {
+          "op": "desaturate",
+          "texture": "material0000_baseColor",
+          "maxSaturation": 0.6
+        }
+      ],
+      "credits": {
+        "title": "Zombie hand",
+        "author": "craggle",
+        "sourceUrl": "https://sketchfab.com/3d-models/zombie-hand-4c8b6ca93ab04d0699523d3a9ef80c67",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; green slightly desaturated"
+      }
+    },
+    {
+      "id": "sketchfab-zombie-hand-ruella",
+      "kind": "model",
+      "category": 6,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/zombie-hand-79755114a2334af4b712c3b11741d738",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Decimate from 319.5K to about 30K triangles, bake normals from the sculpt, remove the blue sleeve.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-zombie-hand-ruella.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-zombie-hand-ruella",
+      "edits": [
+        {
+          "op": "removeNode",
+          "mesh": "Object_0"
+        },
+        {
+          "op": "decimate",
+          "triangles": 30000
+        }
+      ],
+      "credits": {
+        "title": "Zombie hand",
+        "author": "Agustin Ruella",
+        "sourceUrl": "https://sketchfab.com/3d-models/zombie-hand-79755114a2334af4b712c3b11741d738",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; blue sleeve removed, decimated to about 30,000 triangles"
+      }
+    },
+    {
+      "id": "sketchfab-zombie-mutant",
+      "kind": "model",
+      "category": 6,
+      "group": "graveyard",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/zombie-mutant-795f6432ebcb4c39a2aa5039752be92a",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Re-tint paler. The model page says credit is optional, but the license is CC BY 4.0, so we credit anyway.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-zombie-mutant.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-zombie-mutant",
+      "edits": [],
+      "credits": {
+        "title": "Zombie mutant",
+        "author": "Regulator",
+        "sourceUrl": "https://sketchfab.com/3d-models/zombie-mutant-795f6432ebcb4c39a2aa5039752be92a",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP"
+      }
+    }
+  ]
+}

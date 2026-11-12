@@ -1,5 +1,14 @@
 {
-  "pbtResults": {},
+  "pbtResults": {
+    "15.5 Write property test for output paths": {
+      "status": "passed",
+      "lastRunTimestamp": 1794470817334
+    },
+    "15.4 Write property test for the license allow-list": {
+      "status": "passed",
+      "lastRunTimestamp": 1794470817947
+    }
+  },
   "executionHistory": {
     "1.1 Pull the repository and read project context": [
       {
@@ -703,6 +712,11 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470590616
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470661567
       }
     ],
     "15.1 Implement `tools/asset-lib/picks.mjs` (picks version 2)": [
@@ -710,6 +724,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470510088
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470671023
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470761295
       }
     ],
     "15.2 Implement `licenses.mjs` and `paths.mjs`": [
@@ -717,6 +741,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470510198
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470671584
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470762611
       }
     ],
     "15.3 Write `tools/picks.json` from the README Picks": [
@@ -724,6 +758,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470510279
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470766845
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471139600
       }
     ],
     "15.4 Write property test for the license allow-list": [
@@ -731,6 +775,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470510350
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470768202
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471139869
       }
     ],
     "15.5 Write property test for output paths": [
@@ -738,6 +792,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470510429
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470768338
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471140022
       }
     ],
     "16.1 Implement `http.mjs` and `polyhaven.mjs`": [
@@ -1046,6 +1110,20 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470516831
+      }
+    ],
+    "14. Tools package (no install before approval)": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470661731
+      }
+    ],
+    "15. Recipe and validation modules": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471140129
       }
     ]
   }
