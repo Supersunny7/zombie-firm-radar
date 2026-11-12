@@ -240,7 +240,7 @@ Working rules for every task:
   - Stop and wait for the user's picks for rounds 2 and 3 together; round-2 decisions remain open. Add no Phase 2 tasks and install nothing
   - _Requirements: 31.4, 31.5, 13.2, 13.4_
 
-- [ ] 13. Final picks (Phase 1 wrap-up)
+- [x] 13. Final picks (Phase 1 wrap-up)
   - [x] 13.1 Pull, run the Proop and Rocketbox checks, write the final picks into the README
     - Run `git pull --no-edit` first; stop and report on non-zero exit or conflict. Install nothing
     - Proop / ALTEREGO AI-account check (Playwright, read-only: navigate, snapshot, screenshot only; no login, no download, no form input): open the account page of the uploader of `sketchfab-butchers-hook-chain-proop`, open every public upload, read title, tags, description and badges for the `createdwithai` tag and the words "AI generated", "AI-generated", "text-to-3D", "image-to-3D", "Meshy", "Tripo", "Luma", "Rodin". If any hit: drop the hook (Rejected: "uploader publishes AI-generated models"), leave it out of the Manual README and `tools/picks.json`, and tell the user which upload triggered it. If clean: keep it and record the number of uploads inspected and the date in the README. If a page does not load: do not list the hook and ask the user
@@ -261,7 +261,7 @@ Working rules for every task:
     - Verify with `git check-ignore -v`: `tools/cache/manual/README.md` is NOT ignored (exit code 1) and `tools/cache/manual/sketchfab-knife-switch-type-d/knife-switch-type-d.zip` IS ignored; never use `git add -f`
     - _Requirements: 15.1, 15.3, 15.4, 40.1, 40.2, 40.3, 40.4, 40.6, 33.4, 33.6_
 
-  - [-] 13.3 Commit only owned paths, report the binary-fetching packages, and stop
+  - [x] 13.3 Commit only owned paths, report the binary-fetching packages, and stop
     - Run `git pull --no-edit` first, then `git status --short`; unstage only files outside the Owned_Paths with `git restore --staged <path>` and report each
     - Stage explicitly: `git add reference/candidates`, `git add tools/cache/manual/README.md`, `git add .kiro/specs/asset-pipeline`; never `-A`, `.`, `-f`, and do not stage `DEVLOG.md`
     - Commit (requested by the user) with a conventional message of at most 72 characters, for example `docs(asset-pipeline): record final picks and manual download guide`; do not push
@@ -269,32 +269,32 @@ Working rules for every task:
     - _Requirements: 32.8, 32.9, 21.1, 21.2, 21.4, 21.6, 19.3, 41.2_
 
 - [ ] 14. Tools package (no install before approval)
-  - [ ] 14.1 Create `tools/package.json` with exact pins
+  - [x] 14.1 Create `tools/package.json` with exact pins
     - Run `git pull --no-edit` first
     - Look up current versions with `npm view <pkg> version` and the current docs (context7 or web) for gltf-transform, sharp, fbx2gltf and ffmpeg-static before writing code (Requirement 19.7)
     - Write `tools/package.json`: `private: true`, `type: module`, `engines.node >= 22`, `repository.url` (used for the User-Agent), scripts `fetch-assets`, `test` (`vitest run`), `pnpm.onlyBuiltDependencies` allowing only `sharp` and `ffmpeg-static`; dependencies pinned exactly (no `^`, `~`, `>`, `*`): `sharp`, `ffmpeg-static`, `fbx2gltf`, `meshoptimizer`, `@gltf-transform/core`, `@gltf-transform/extensions`, `@gltf-transform/functions`, `fflate`; dev dependencies `vitest` and `fast-check` at the versions in `web/package.json`
     - Do not run any install command. Do not touch `web/package.json` or the `web/` lockfile
     - _Requirements: 19.1, 19.2, 19.7, 19.8, 14.1_
 
-  - [ ] 14.2 Stop gate: list the binary-fetching packages and wait for approval, then install
+  - [-] 14.2 Stop gate: list the binary-fetching packages and wait for approval, then install
     - Tell the user, in the reply, the exact list with pinned versions: `sharp` (prebuilt libvips from `@img/sharp-win32-x64`), `ffmpeg-static` (install script downloads ffmpeg from GitHub releases; needs build-script approval in pnpm), `fbx2gltf` (FBX2glTF executables inside the npm package), `meshoptimizer` (WebAssembly, no native binary). Then stop and wait for the user's approval. Run no install command and no script needing these packages until the user approves
     - After approval: run `pnpm install` with `--dir tools` (PowerShell, `;` chaining) to create `tools/pnpm-lock.yaml`; check that every version in `tools/package.json` is exact, that `git status --short web` shows no change, and that `.gitignore` ignores `tools/node_modules`
     - If `fbx2gltf` cannot be installed or run, ask the user for another approach (for example `@cocos/fbx2gltf`) and do not fetch a binary from outside npm
     - _Requirements: 19.3, 19.4, 19.5, 19.8, 41.2, 41.3_
 
 - [ ] 15. Recipe and validation modules
-  - [ ] 15.1 Implement `tools/asset-lib/picks.mjs` (picks version 2)
+  - [~] 15.1 Implement `tools/asset-lib/picks.mjs` (picks version 2)
     - Run `git pull --no-edit` first
     - `loadPicks(path)` and `validatePick(p)` for the recipe fields `id`, `kind`, `category`, `group`, `source` (polyhaven, url, manual, generated, derived), `manual`, `expectedFile`, `targetFolder`, `edits`, `credits`, `role`; reject unknown keys, a `manual` flag that disagrees with `source.type`, a duplicate `id`, a `derived.from` that is not an `id` in the file, and any edit not defined in the edit table; return typed errors by `id`
     - Order derived picks after the picks they derive from
     - _Requirements: 35.1, 35.2, 35.3, 35.5, 35.6, 14.1_
 
-  - [ ] 15.2 Implement `licenses.mjs` and `paths.mjs`
+  - [~] 15.2 Implement `licenses.mjs` and `paths.mjs`
     - `checkLicense(pick)` with the alias table, NC / non-commercial token rejection and forbidden hosts; empty `sourceUrl`, `author` or `license` refused with the field name
     - `planOutputs(pick, produced)` and `safeJoin(root, ...parts)` as in the design; output folders per `kind`
     - _Requirements: 18.7, 18.8, 14.4, 21.1, 21.9_
 
-  - [ ] 15.3 Write `tools/picks.json` from the README Picks
+  - [~] 15.3 Write `tools/picks.json` from the README Picks
     - Run `git pull --no-edit` first
     - One entry per Pick in `reference/candidates/README.md` that is not rejected or dropped, with `credits` copied from the README rows (exact license text mapped to the allowed alias, author, source URL), `group` graveyard or lab, `source` per kind (Poly Haven id and resolution, Rocketbox GitHub raw URL at the pinned SHA, manual page URL and download option, generated and derived entries for the decals and the cracked headstone), and `expectedFile` and `targetFolder` equal to the Manual README
     - Edits per pick: craggle hand `desaturate`; skull `darken` and `grime`; morgue refrigerator `decimate` 30000; strap kit `darken` (black webbing); knife switch `selectVariant` (grey) and `splitMesh` (handle, blade, rest); `sketchfab-crutch-and-iv-drip` `removeNode` (crutch); any blue-sleeve removal recorded in the Picks; headstones `decimate` 20000; Greenall corpse credits `changes` includes "provenance accepted on the author's statement"
@@ -302,208 +302,208 @@ Working rules for every task:
     - Validate with `loadPicks` and fix findings; no download yet
     - _Requirements: 35.1, 35.2, 35.3, 35.5, 35.7, 32.5, 38.9, 39.6_
 
-  - [ ] 15.4 Write property test for the license allow-list
+  - [~] 15.4 Write property test for the license allow-list
     - **Property 7: License allow-list is exact**
     - **Validates: Requirements 18.7**
 
-  - [ ] 15.5 Write property test for output paths
+  - [~] 15.5 Write property test for output paths
     - **Property 9: Output paths follow kind and name and never escape**
     - **Validates: Requirements 14.4, 21.1, 21.9**
 
 - [ ] 16. Download and cache
-  - [ ] 16.1 Implement `http.mjs` and `polyhaven.mjs`
+  - [~] 16.1 Implement `http.mjs` and `polyhaven.mjs`
     - Look up the Poly Haven API docs again (context7 or web) and record one live `GET /files/{id}` response each for an HDRI, a texture and a model as fixtures; confirm the JSON shape the design assumes, and fix the design note if it differs
     - `http.mjs`: User-Agent from `package.json` `repository.url`, 60 s timeout, 2 retries with 1 s and 2 s back-off, streaming to a `.part` file; `polyhaven.mjs`: `/files/{id}` client, resolution and format selection, `include` map handling, `size` and `md5` checks; only documented endpoints
     - Download sources: Poly Haven API, GitHub raw at the pinned SHA, OpenGameArt direct URLs
     - Unit tests with the recorded fixtures
     - _Requirements: 14.2, 14.5, 14.6, 19.7_
 
-  - [ ] 16.2 Implement `cache.mjs`, `archive.mjs` and the manual-cache reader
+  - [~] 16.2 Implement `cache.mjs`, `archive.mjs` and the manual-cache reader
     - `isCached` with `.download.json` records (sizes and SHA-256); zero requests for cached picks
     - `archive.mjs`: zip extraction with fflate and `safeJoin` for every entry (zip-slip guard)
     - Manual-cache reader: read `targetFolder/expectedFile` (zip or single file) without any network request; if missing, report the expected file name and the source page URL, skip the pick and mark the run failed
     - _Requirements: 14.3, 14.7, 14.8, 14.9_
 
 - [ ] 17. Converters
-  - [ ] 17.1 Implement `convert-texture.mjs`
+  - [~] 17.1 Implement `convert-texture.mjs`
     - `fitInside(w, h, L)`; sharp resize with `fit: inside`, `withoutEnlargement`, WebP quality 82 (normal maps 90); L is 2048 for `ground-main`, otherwise 1024; keep the alpha channel; no KTX2, no toktx; fixture test with a tiny PNG
     - _Requirements: 16.2, 16.6, 38.8_
 
-  - [ ] 17.2 Implement `convert-hdri.mjs`
+  - [~] 17.2 Implement `convert-hdri.mjs`
     - Copy `.hdr` byte for byte, read the Radiance header width, accept only 2048 for `background` and 1024 for `environment`, fail the pick otherwise
     - _Requirements: 16.3, 16.7_
 
-  - [ ] 17.3 Implement `convert-model.mjs`
+  - [~] 17.3 Implement `convert-model.mjs`
     - Look up the gltf-transform and fbx2gltf docs again first
     - NodeIO with `ALL_EXTENSIONS` and the Meshopt encoder; FBX through `fbx2gltf`; run the pick's Edit_List (task 18) after the FBX step and before `dedup`, `prune`, `resample` (avatars and animations only), `textureCompress` (WebP, 1024) and `meshopt`; write one self-contained GLB; copy the Rocketbox `LICENSE` beside Rocketbox avatars with its own manifest and credits entries; call `checkBip01` for Rocketbox avatars; report files over 5 MB with a suggestion and keep them; fixture test reading the GLB back and finding `EXT_meshopt_compression`
     - _Requirements: 16.1, 16.5, 16.8, 18.5, 34.3, 34.4, 34.5, 36.2_
 
-  - [ ] 17.4 Implement `convert-audio.mjs`
+  - [~] 17.4 Implement `convert-audio.mjs`
     - `ffmpeg-static` path, `spawn` with an argument array (no shell), both `.ogg` (libvorbis) and `.mp3` (libmp3lame), bit-exact flags and no metadata; clear failure message if a codec is missing and no system ffmpeg fallback; fixture test with a 0.1 s WAV
     - _Requirements: 16.4, 19.4_
 
-  - [ ] 17.5 Write property test for HDRI copy and width
+  - [~] 17.5 Write property test for HDRI copy and width
     - **Property 13: HDRI is copied unchanged and width is enforced**
     - **Validates: Requirements 16.3, 16.7**
 
-  - [ ] 17.6 Write property test for the texture size limit
+  - [~] 17.6 Write property test for the texture size limit
     - **Property 14: Texture size limit preserves aspect ratio**
     - **Validates: Requirements 16.6**
 
 - [ ] 18. Edit operations and the Bip01 check
-  - [ ] 18.1 Implement the edit framework with `decimate`, `removeNode` and `selectVariant`
+  - [~] 18.1 Implement the edit framework with `decimate`, `removeNode` and `selectVariant`
     - `asset-lib/edits/index.mjs`: `applyEdits(doc, edits, { seed, strict })` in list order, typed `EditTargetMissing` error in strict mode, tolerant mode for tests; `decimate` with `MeshoptSimplifier` and a fixed 5-step error search stopping at the first result at or below the target; `removeNode` with `prune()`; `selectVariant` keeping only the named material, texture or variant
     - Geometry edits use gltf-transform and meshoptimizer only; no Blender, no other executable
     - _Requirements: 36.1, 36.2, 36.3, 36.4, 36.6, 36.8, 36.9, 37.1, 37.2_
 
-  - [ ] 18.2 Implement the texture edits `desaturate`, `darken` and `grime`
+  - [~] 18.2 Implement the texture edits `desaturate`, `darken` and `grime`
     - `desaturate` caps HSV saturation; `darken` scales RGB so the 99.5th percentile of the per-pixel maximum channel is at most `maxValue`; `grime` caps each pixel's maximum channel by a seeded value-noise field; sharp decode and encode, the only random source is `mulberry32(seed)`; register the ops in `edits/index.mjs`
     - _Requirements: 36.1, 36.5, 36.8_
 
-  - [ ] 18.3 Implement `splitMesh`
+  - [~] 18.3 Implement `splitMesh`
     - `by: node` and `by: components` (union-find over shared vertex indices, components numbered by first triangle index, listed components to named parts, `rest: true` for the remainder); every triangle in exactly one part; each part a named node; typed `SplitImpossible` error when the model cannot be split this way, which stops that pick, writes no output and tells the user the options (never Blender); inspect the real knife-switch model once the user has placed it and write the real component indices into the pick
     - _Requirements: 36.1, 36.7, 37.3, 37.4_
 
-  - [ ] 18.4 Implement `bip01.mjs`
+  - [~] 18.4 Implement `bip01.mjs`
     - `checkBip01(joints)` accepting a non-empty list where every name matches `^Bip01([ _]|$)`, returning the first offending name and the expected pattern otherwise; a scene root that is not a skin joint is ignored; the failure message names the avatar, the offending joint and the pattern
     - _Requirements: 34.3, 34.4_
 
-  - [ ] 18.5 Write property test for edit idempotence
+  - [~] 18.5 Write property test for edit idempotence
     - **Property 21: Edit operations are idempotent and deterministic**
     - **Validates: Requirements 36.3, 36.4, 36.5, 36.6, 36.9**
 
-  - [ ] 18.6 Write property test for split and decimate
+  - [~] 18.6 Write property test for split and decimate
     - **Property 22: Split and decimate preserve what they promise**
     - **Validates: Requirements 36.3, 36.4, 36.7**
 
-  - [ ] 18.7 Write property test for the Bip01 check
+  - [~] 18.7 Write property test for the Bip01 check
     - **Property 23: Bip01 skeleton check accepts exactly the Bip01-named skeletons**
     - **Validates: Requirements 34.3, 34.4**
 
 - [ ] 19. Own-work generators
-  - [ ] 19.1 Implement `tools/gen-decals.mjs`
+  - [~] 19.1 Implement `tools/gen-decals.mjs`
     - Seeded (`fnv1a32("<type>:<index>")` and `mulberry32`, no clock, no `Math.random`), 512 by 512 RGBA PNG with a transparent margin, handprint and drag-mark shapes from signed-distance primitives, HSV colour inside the inner ranges hue +-8 degrees, saturation 0.50 to 0.70, value 0.15 to 0.40; at least 3 variants per type written to `tools/cache/generated/decals/`
     - Wire the `generated` source so `convert-texture.mjs` writes WebP with alpha; credits author "Zombie Firm Radar team", license "Own work"
     - _Requirements: 38.1, 38.2, 38.3, 38.5, 38.6, 38.7, 38.8, 38.9_
 
-  - [ ] 19.2 Write property test for decal determinism
+  - [~] 19.2 Write property test for decal determinism
     - **Property 17: Decal generator is deterministic and seed-driven**
     - **Validates: Requirements 38.3, 38.4, 38.7**
 
-  - [ ] 19.3 Write property test for decal image content
+  - [~] 19.3 Write property test for decal image content
     - **Property 18: Decal images have the required size, alpha and colour range**
     - **Validates: Requirements 38.5, 38.6, 38.8**
 
-  - [ ] 19.4 Implement `tools/make-cracked-headstone.mjs`
+  - [~] 19.4 Implement `tools/make-cracked-headstone.mjs`
     - `makeCrackedHeadstone(doc, { seed })` and a CLI: seeded crack height map, Sobel normal map blended (whiteout) onto the existing normal map, chipped edge by seeded position-quantised noise so UV-seam vertices move together, decimate to at most 20,000 triangles if needed, blank face; the `derived` source runs it on the decimated intact scan; skip with the intact scan's expected file name when it is missing; fall back to the procedural headstones with a clear message when derivation is impossible
     - Credits row: author drydoctoregg, license CC BY, changes naming the derivation
     - _Requirements: 39.1, 39.2, 39.3, 39.4, 39.5, 39.6, 39.7, 39.8_
 
-  - [ ] 19.5 Write property test for the cracked-headstone limits
+  - [~] 19.5 Write property test for the cracked-headstone limits
     - **Property 19: Cracked headstone stays within the triangle limit**
     - **Validates: Requirements 39.2, 39.4**
 
-  - [ ] 19.6 Write property test for cracked-headstone determinism
+  - [~] 19.6 Write property test for cracked-headstone determinism
     - **Property 20: Cracked headstone derivation is deterministic**
     - **Validates: Requirements 39.2, 39.3**
 
 - [ ] 20. Budgets, manifest, credits and manual README
-  - [ ] 20.1 Implement `budgets.mjs`
+  - [~] 20.1 Implement `budgets.mjs`
     - `accountBudgets` with limits 26,214,400 / 26,214,400 / 62,914,560 bytes, unassigned files counted in total only with a warning, top-3 largest files per exceeded budget, files over 5,242,880 bytes listed with MB to 2 decimals and a suggestion, unreadable file sizes reported
     - _Requirements: 16.8, 17.1, 17.2, 17.3, 17.4, 17.5, 17.6, 17.7_
 
-  - [ ] 20.2 Implement `manifest.mjs`
+  - [~] 20.2 Implement `manifest.mjs`
     - `mergeManifest` and `serializeManifest` (sorted keys, 2-space indent, LF, trailing newline, no timestamps), one entry per file with non-empty `sourceUrl`, `author`, `license`, `changes`, plus `group`, `bytes`, `sha256`, `inputsSha256`, `recipe` and `bip01` where applicable; atomic write
     - _Requirements: 18.1, 14.3_
 
-  - [ ] 20.3 Implement `credits.mjs`
+  - [~] 20.3 Implement `credits.mjs`
     - `upsertCreditRows`, `ensureCmuLine`, `ensureVisibleNote` (single "## Visible in app" section first), the Poly Haven services line; one row per Path with six non-empty columns; text outside the table byte-for-byte; atomic write; own-work and modified-CC-BY rows come from the pick `credits`
     - _Requirements: 18.2, 18.3, 18.4, 18.6, 22.1, 22.2, 22.3, 22.4, 22.5, 38.9, 39.6_
 
-  - [ ] 20.4 Implement `manual-readme.mjs`
+  - [~] 20.4 Implement `manual-readme.mjs`
     - Generate `tools/cache/manual/README.md` from the picks in the format of the design (header, then one block per manual pick sorted by id with name, page URL, download option, expected file, target path, credit line, notes); omit the hook unless its check flag is `passed`; compare the first generated output with the hand-written file from task 13.2 and fix differences
     - _Requirements: 15.1, 40.1, 40.2, 40.3, 40.5, 40.6_
 
-  - [ ] 20.5 Write property test for budget accounting
+  - [~] 20.5 Write property test for budget accounting
     - **Property 2: Budget accounting invariants**
     - **Validates: Requirements 17.1, 17.2, 17.3, 17.6**
 
-  - [ ] 20.6 Write property test for the budget report and exit code
+  - [~] 20.6 Write property test for the budget report and exit code
     - **Property 3: Budget report content and exit code**
     - **Validates: Requirements 16.8, 17.4, 17.5, 17.7**
 
-  - [ ] 20.7 Write property test for the manifest
+  - [~] 20.7 Write property test for the manifest
     - **Property 4: Manifest has one complete entry per written file**
     - **Validates: Requirements 18.1**
 
-  - [ ] 20.8 Write property test for the credits table
+  - [~] 20.8 Write property test for the credits table
     - **Property 5: Credits table has exactly one row per file and is stable**
     - **Validates: Requirements 18.2, 18.3, 18.4**
 
-  - [ ] 20.9 Write property test for the CMU credit line
+  - [~] 20.9 Write property test for the CMU credit line
     - **Property 6: CMU credit line appears exactly once**
     - **Validates: Requirements 18.6**
 
-  - [ ] 20.10 Write property test for the Visible-in-app note
+  - [~] 20.10 Write property test for the Visible-in-app note
     - **Property 16: Visible-in-app note is first, unique and preserved**
     - **Validates: Requirements 22.1, 22.2, 22.3, 22.4, 22.5**
 
-  - [ ] 20.11 Write property test for the manual README
+  - [~] 20.11 Write property test for the manual README
     - **Property 15: Manual README lists every manual pick**
     - **Validates: Requirements 15.1, 40.1, 40.2, 40.3, 40.5, 40.6**
 
 - [ ] 21. Orchestrator and CLI
-  - [ ] 21.1 Implement `runFetch`, `report.mjs` and `tools/fetch-assets.mjs`
+  - [~] 21.1 Implement `runFetch`, `report.mjs` and `tools/fetch-assets.mjs`
     - Run `git pull --no-edit` first
     - Pipeline per pick: validate and license check, download or read manual cache or run generator or derivation, convert (with edits) into `tools/cache/work/<id>-<pid>`, atomic rename into `web/public/assets/<typeDir>/<id>/`, then budgets, manifest, credits, manual README; fail-soft per pick; exit code 1 on any failed, refused or missing-manual pick, exceeded budget or unreadable size; inputs hash and recipe hash skip a pick whose outputs are unchanged; `--only` and `--dry-run`; injected `Env` (fs, http, converters) and shared fakes in `tools/asset-lib/test-helpers/fakes.mjs`
     - Only write inside `web/public/assets`, `tools/cache`, `CREDITS.md` and `tools/cache/manual/README.md` (path guard)
     - _Requirements: 14.1, 14.2, 14.3, 14.4, 14.5, 14.9, 16.9, 17.4, 17.5, 18.9, 35.4, 35.5, 40.5_
 
-  - [ ] 21.2 Wire edits, generators and the derived headstone into the pipeline
+  - [~] 21.2 Wire edits, generators and the derived headstone into the pipeline
     - Apply each pick's Edit_List in `convert-model.mjs` and texture conversion, run `gen-decals` and `make-cracked-headstone` for `generated` and `derived` picks (derived after its source pick), stop a pick on `SplitImpossible` and report it without blocking the others, and set the group of each output from the pick
     - _Requirements: 35.5, 36.2, 36.8, 37.3, 37.4, 38.8, 39.1, 39.7_
 
-  - [ ] 21.3 Write property test for re-run idempotence
+  - [~] 21.3 Write property test for re-run idempotence
     - **Property 1: Re-run idempotence**
     - **Validates: Requirements 14.3, 18.4**
 
-  - [ ] 21.4 Write property test for refused picks
+  - [~] 21.4 Write property test for refused picks
     - **Property 8: Refused picks leave no trace and fail the run**
     - **Validates: Requirements 18.7, 18.8, 18.9**
 
-  - [ ] 21.5 Write property test for bounded retries and failure isolation
+  - [~] 21.5 Write property test for bounded retries and failure isolation
     - **Property 10: Retries are bounded and failures are isolated**
     - **Validates: Requirements 14.5**
 
-  - [ ] 21.6 Write property test for conversion failures
+  - [~] 21.6 Write property test for conversion failures
     - **Property 11: Conversion failure leaves no partial output**
     - **Validates: Requirements 16.9**
 
-  - [ ] 21.7 Write property test for network discipline
+  - [~] 21.7 Write property test for network discipline
     - **Property 12: Network discipline**
     - **Validates: Requirements 14.6, 14.8, 14.9**
 
-- [ ] 22. Checkpoint - Ensure all tests pass
+- [~] 22. Checkpoint - Ensure all tests pass
   - Run `pnpm --dir tools test`; ensure all tests pass, ask the user if questions arise.
 
 - [ ] 23. Full run and size report
-  - [ ] 23.1 Run the Fetch_Script
+  - [~] 23.1 Run the Fetch_Script
     - Run `git pull --no-edit` first; run `node tools/fetch-assets.mjs --dry-run`, then the real run; check `$LASTEXITCODE`
     - List the Manual_Picks whose files are missing from `tools/cache/manual/` (expected file names and page URLs) and ask the user to place them; do not create or fake any manual file; re-run after the user answers. A split that cannot be done without Blender is reported the same way
     - Check one converted skinned avatar for Meshopt quantization artefacts (inspect with `gltf-transform inspect`; if skinning looks wrong lower avatar quantization) and check the Bip01 result in the manifest
     - _Requirements: 14.9, 35.4, 37.3, 34.5, 41.1_
 
-  - [ ] 23.2 Print the size report
+  - [~] 23.2 Print the size report
     - Print the size of every output file and the used size and limit of the Graveyard_Budget, Lab_Budget and Total_Budget, list files over 5 MB, and fix budget findings (lower texture limit, higher Meshopt level, lighter decimation target) in the picks, then re-run
     - _Requirements: 16.8, 17.1, 17.2, 17.3, 17.4, 17.5, 41.4_
 
 - [ ] 24. Asset audit loop
-  - [ ] 24.1 Invoke the asset-auditor and fix findings until clean
+  - [~] 24.1 Invoke the asset-auditor and fix findings until clean
     - Invoke the `asset-auditor` agent; fix every missing row, forbidden license, missing attribution or file over 5 MB in the Owned_Paths only (by correcting picks and re-running the script, not by hand-editing outputs); invoke it again until it reports no findings; if the same finding survives two fixes, stop and ask the user
     - _Requirements: 20.1, 20.2, 20.3, 41.5, 41.6_
 
 - [ ] 25. Final report and stop gate
-  - [ ] 25.1 Write the final report and stop
+  - [~] 25.1 Write the final report and stop
     - Report converted assets, Manual_Picks still missing, picks dropped or stopped (hook, avatars, split), which headstone states are real and which fall back to procedural, the three budgets, the packages installed, and the files changed in the Owned_Paths
     - Do not commit and do not push; commit only if the user asks in a later request, staging by explicit path inside the Owned_Paths (`tools`, `web/public/assets`, `CREDITS.md`, `.gitignore`, `reference/candidates`, `.kiro/specs/asset-pipeline`), never `-A`, `.` or `-f`, with a message such as `feat(asset-pipeline): add fetch script and converted assets`
     - Leave `web/src`, `/pipeline`, `/data` and `DEVLOG.md` unchanged and unstaged; then stop

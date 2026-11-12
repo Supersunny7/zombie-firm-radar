@@ -662,6 +662,390 @@
         "executionId": "94318aaa-2d5a-45fa-87b0-af90109617f6",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794468910713
+      },
+      {
+        "executionId": "94318aaa-2d5a-45fa-87b0-af90109617f6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794468943800
+      }
+    ],
+    "13. Final picks (Phase 1 wrap-up)": [
+      {
+        "executionId": "94318aaa-2d5a-45fa-87b0-af90109617f6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794468943919
+      }
+    ],
+    "14.1 Create `tools/package.json` with exact pins": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470509880
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470520318
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470589184
+      }
+    ],
+    "14.2 Stop gate: list the binary-fetching packages and wait for approval, then install": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470509968
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470590616
+      }
+    ],
+    "15.1 Implement `tools/asset-lib/picks.mjs` (picks version 2)": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470510088
+      }
+    ],
+    "15.2 Implement `licenses.mjs` and `paths.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470510198
+      }
+    ],
+    "15.3 Write `tools/picks.json` from the README Picks": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470510279
+      }
+    ],
+    "15.4 Write property test for the license allow-list": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470510350
+      }
+    ],
+    "15.5 Write property test for output paths": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470510429
+      }
+    ],
+    "16.1 Implement `http.mjs` and `polyhaven.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470510528
+      }
+    ],
+    "16.2 Implement `cache.mjs`, `archive.mjs` and the manual-cache reader": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470512031
+      }
+    ],
+    "17.1 Implement `convert-texture.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470512317
+      }
+    ],
+    "17.2 Implement `convert-hdri.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470512443
+      }
+    ],
+    "17.3 Implement `convert-model.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470512580
+      }
+    ],
+    "17.4 Implement `convert-audio.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470512699
+      }
+    ],
+    "17.5 Write property test for HDRI copy and width": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470512803
+      }
+    ],
+    "17.6 Write property test for the texture size limit": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470512918
+      }
+    ],
+    "18.1 Implement the edit framework with `decimate`, `removeNode` and `selectVariant`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470513013
+      }
+    ],
+    "18.2 Implement the texture edits `desaturate`, `darken` and `grime`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470513108
+      }
+    ],
+    "18.3 Implement `splitMesh`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470513212
+      }
+    ],
+    "18.4 Implement `bip01.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470513315
+      }
+    ],
+    "18.5 Write property test for edit idempotence": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470513414
+      }
+    ],
+    "18.6 Write property test for split and decimate": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470513519
+      }
+    ],
+    "18.7 Write property test for the Bip01 check": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470513618
+      }
+    ],
+    "19.1 Implement `tools/gen-decals.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470513719
+      }
+    ],
+    "19.2 Write property test for decal determinism": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470513815
+      }
+    ],
+    "19.3 Write property test for decal image content": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470513914
+      }
+    ],
+    "19.4 Implement `tools/make-cracked-headstone.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470514017
+      }
+    ],
+    "19.5 Write property test for the cracked-headstone limits": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470514114
+      }
+    ],
+    "19.6 Write property test for cracked-headstone determinism": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470514275
+      }
+    ],
+    "20.1 Implement `budgets.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470514397
+      }
+    ],
+    "20.2 Implement `manifest.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470514499
+      }
+    ],
+    "20.3 Implement `credits.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470514602
+      }
+    ],
+    "20.4 Implement `manual-readme.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470514708
+      }
+    ],
+    "20.5 Write property test for budget accounting": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470514822
+      }
+    ],
+    "20.6 Write property test for the budget report and exit code": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470514930
+      }
+    ],
+    "20.7 Write property test for the manifest": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470515036
+      }
+    ],
+    "20.8 Write property test for the credits table": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470515147
+      }
+    ],
+    "20.9 Write property test for the CMU credit line": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470515238
+      }
+    ],
+    "20.10 Write property test for the Visible-in-app note": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470515370
+      }
+    ],
+    "20.11 Write property test for the manual README": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470515480
+      }
+    ],
+    "21.1 Implement `runFetch`, `report.mjs` and `tools/fetch-assets.mjs`": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470515587
+      }
+    ],
+    "21.2 Wire edits, generators and the derived headstone into the pipeline": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470515691
+      }
+    ],
+    "21.3 Write property test for re-run idempotence": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470515808
+      }
+    ],
+    "21.4 Write property test for refused picks": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470515916
+      }
+    ],
+    "21.5 Write property test for bounded retries and failure isolation": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470516015
+      }
+    ],
+    "21.6 Write property test for conversion failures": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470516120
+      }
+    ],
+    "21.7 Write property test for network discipline": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470516241
+      }
+    ],
+    "22. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470516396
+      }
+    ],
+    "23.1 Run the Fetch_Script": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470516489
+      }
+    ],
+    "23.2 Print the size report": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470516599
+      }
+    ],
+    "24.1 Invoke the asset-auditor and fix findings until clean": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470516715
+      }
+    ],
+    "25.1 Write the final report and stop": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794470516831
       }
     ]
   }
