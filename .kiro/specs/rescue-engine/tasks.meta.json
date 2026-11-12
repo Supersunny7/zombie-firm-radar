@@ -15,6 +15,14 @@
     "11.3 Write property test for the score in `web/src/engine/score.property.test.ts`": {
       "status": "passed",
       "lastRunTimestamp": 1794459964074
+    },
+    "2.6 Write property test for the serialisation round trip in `web/src/engine/treatment.roundtrip.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794460297773
+    },
+    "2.5 Write property test for treatment rejection in `web/src/engine/treatment.reject.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794460299305
     }
   },
   "executionHistory": {
@@ -142,6 +150,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459040782
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460038820
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460165749
       }
     ],
     "2.4 Write unit tests for the parser and registry in `web/src/engine/treatment.unit.test.ts`": [
@@ -149,6 +167,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459040838
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460038959
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460165928
       }
     ],
     "2.5 Write property test for treatment rejection in `web/src/engine/treatment.reject.property.test.ts`": [
@@ -156,6 +184,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459040894
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460249275
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460335210
       }
     ],
     "2.6 Write property test for the serialisation round trip in `web/src/engine/treatment.roundtrip.property.test.ts`": [
@@ -163,6 +201,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459040955
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460249677
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460335353
       }
     ],
     "3.1 Replace the placeholder types and delegate parsing in `web/src/state/types.ts` and `web/src/state/machine.ts`": [
@@ -170,6 +218,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459041015
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460039276
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460167124
       }
     ],
     "3.2 Update `web/src/test/arbitraries.ts` to generate real Treatments": [
@@ -177,6 +235,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459041111
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460250499
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460336382
       }
     ],
     "3.3 Write property test for machine delegation in `web/src/state/machine.delegation.property.test.ts`": [
@@ -222,6 +290,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459041404
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460040465
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460167948
       }
     ],
     "5.4 Write property test for the diagnosis formulas in `web/src/engine/diagnose.formulas.property.test.ts`": [
@@ -243,6 +321,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459041589
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460041271
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460168960
       }
     ],
     "6.2 Implement `applyCore` and `applyTreatment` in `web/src/engine/apply.ts`": [
@@ -250,6 +338,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459041651
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460251689
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460337991
       }
     ],
     "6.3 Write property test for refinance cost in `web/src/engine/refinance.cost.property.test.ts`": [
@@ -285,6 +383,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459041984
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460175357
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460240453
       }
     ],
     "7.2 Implement `web/src/engine/hash.ts`": [
@@ -292,6 +400,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459042038
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460176061
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460241294
       }
     ],
     "7.3 Add randomness and option generators to `web/src/engine/test/engineArbitraries.ts`": [
@@ -306,6 +424,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459042141
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460252733
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460338350
       }
     ],
     "7.5 Write unit tests for the hash and seed in `web/src/engine/hash.unit.test.ts`": [
@@ -675,6 +803,13 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794460022048
+      }
+    ],
+    "2. Tool registry and Treatment parser": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460335417
       }
     ]
   }

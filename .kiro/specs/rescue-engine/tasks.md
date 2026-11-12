@@ -42,7 +42,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Read-only: do not create or edit anything under `/data`
     - _Requirements: 1.6, 1.7, 1.9_
 
-- [ ] 2. Tool registry and Treatment parser
+- [x] 2. Tool registry and Treatment parser
   - [x] 2.1 Implement the frozen tool registry in `web/src/engine/tools.ts`
     - `ToolStatus`, `ToolSpec`, `TOOL_REGISTRY` with the four v1 tools (cut_costs c in [0, 0.08], sell_assets s in [0, 0.30], debt_for_equity w in [0, 0.60], refinance with no params) and the extension points issue_equity, chapter_11 and liquidate, each with its `order`
     - Freeze the registry (constant, not mutable state)
@@ -54,36 +54,36 @@ All commands run from `web` in PowerShell, chained with `;`.
     - `serialiseTreatment` (canonical order, sorted keys, `String(n)`, `;` between tools, `,key=value` per param) and `deserialiseTreatment` (split, build `{ name, params }`, call `parseTreatment`)
     - _Requirements: 2.6, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.15, 10.3_
 
-  - [~] 2.3 Create `web/src/engine/test/engineArbitraries.ts` with the treatment generators
+  - [x] 2.3 Create `web/src/engine/test/engineArbitraries.ts` with the treatment generators
     - `arbTreatment`: `fc.shuffledSubarray` of the four v1 tools, length 0 to 3, parameters over their full inclusive ranges with endpoints as constants, result shuffled (random click order)
     - `arbBadTreatment`: one or more corruptions on top of a valid Treatment (unknown or extension tool name, 4 to 6 tools, duplicate name, out-of-range, NaN, ±Infinity, non-number, missing or extra param key, any key on refinance, non-array, malformed entry)
     - _Requirements: 3.11, 13.10_
 
-  - [~] 2.4 Write unit tests for the parser and registry in `web/src/engine/treatment.unit.test.ts`
+  - [x] 2.4 Write unit tests for the parser and registry in `web/src/engine/treatment.unit.test.ts`
     - One test per parser error code with its exact code, message and detail; empty Treatment accepted; refinance with absent params and with `{}` accepted; any key on refinance rejected; endpoints 0 and max accepted; canonical order returned for a reversed input; `-0` normalised; input deeply equal to a `structuredClone` taken before the call
     - Registry: extension tools are registered with status `extension` and rejected by the parser with `unknown_tool` naming the tool
     - Serialisation examples from the design: `""`, `"cut_costs,c=0.05;refinance"`, `"sell_assets,s=0.2;debt_for_equity,w=0.3"`
     - _Requirements: 2.5, 2.6, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.15, 10.3_
 
-  - [~] 2.5 Write property test for treatment rejection in `web/src/engine/treatment.reject.property.test.ts`
+  - [x] 2.5 Write property test for treatment rejection in `web/src/engine/treatment.reject.property.test.ts`
     - **Property 3: The parser rejects invalid treatments with one deterministic error**
     - Use `arbBadTreatment`; compute the expected code with an independent reference classifier written inside the test; assert the offending tool or index in `detail`, deeply equal errors on two calls, and an unmodified input; `numRuns >= 100`
     - The `applyTreatment`, `simulate` and `drawOutcome` part of this property is added in task 10.6, once those functions exist
     - **Validates: Requirements 2.6, 3.3, 3.4, 3.5, 3.6, 3.8, 3.11, 3.15, 4.12, 6.10, 9.10**
 
-  - [~] 2.6 Write property test for the serialisation round trip in `web/src/engine/treatment.roundtrip.property.test.ts`
+  - [x] 2.6 Write property test for the serialisation round trip in `web/src/engine/treatment.roundtrip.property.test.ts`
     - **Property 5: Treatment serialisation round trip**
     - `deserialiseTreatment(serialiseTreatment(t))` deeply equals `parseTreatment(t).value` for any valid Treatment in any click order; `numRuns >= 100`
     - **Validates: Requirements 3.14, 10.3**
 
 - [ ] 3. State-machine integration
-  - [~] 3.1 Replace the placeholder types and delegate parsing in `web/src/state/types.ts` and `web/src/state/machine.ts`
+  - [x] 3.1 Replace the placeholder types and delegate parsing in `web/src/state/types.ts` and `web/src/state/machine.ts`
     - `types.ts`: remove the placeholder `ToolChoice` and `Treatment`; `export type { ToolChoice, Treatment } from '../engine/types';` (switch to `'../engine'` once task 14.1 creates the entry, if that keeps the build green)
     - `machine.ts`: `parseTreatment` delegates to the engine parser and maps an EngineError to `{ ok: false, reason: error.message }`; keep `MAX_TOOLS` exported; remove the unused `ToolChoice` import; store the canonical Treatment
     - Do not change any assertion in the existing state-machine tests
     - _Requirements: 3.1, 3.2, 3.12_
 
-  - [~] 3.2 Update `web/src/test/arbitraries.ts` to generate real Treatments
+  - [x] 3.2 Update `web/src/test/arbitraries.ts` to generate real Treatments
     - `arbTreatment` reuses the engine generator from `web/src/engine/test/engineArbitraries.ts`; the junk generator keeps arbitrary `{ name, params }` tools under the name `arbRawTool` for 4 to 6 tool arrays
     - Keep every exported name used by the existing state tests
     - _Requirements: 3.12, 3.13_
@@ -108,7 +108,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - `arbBadFirm`, `arbBadDelta`, `arbBadMacro`, each labelled with the expected error code and named inputs
     - _Requirements: 13.10, 14.5_
 
-  - [~] 5.3 Implement `diagnose` and `belowCoverageFor` in `web/src/engine/diagnose.ts`
+  - [x] 5.3 Implement `diagnose` and `belowCoverageFor` in `web/src/engine/diagnose.ts`
     - `shockedIcr = icr(E, D * (r + delta))`; `neededEbitIncrease = D * (r + delta) / E - 1` and `neededDebtCut = 1 - shockedIcr` when E > 0, both null when E <= 0; `neededRate = E / D`; `belowCoverage = belowCoverageFor(neededEbitIncrease)` with `x === null || x > 0`; `summary` text for both cases
     - Validation through `prepare`; returns its EngineError unchanged
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.8, 5.9, 14.2_
@@ -124,12 +124,12 @@ All commands run from `web` in PowerShell, chained with `;`.
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.11, 4.13, 4.14, 5.4, 5.8, 14.2, 14.8, 15.5_
 
 - [ ] 6. Treatment application and refinance
-  - [~] 6.1 Implement `web/src/engine/refinance.ts`
+  - [x] 6.1 Implement `web/src/engine/refinance.ts`
     - `spreadFor(icrPre)` tiers (negative counts as < 1); `refinanceApplies(oldRate, newRate)` as the strict test `1.02 * newRate < oldRate`
     - `evaluateRefinance(inputs, E', D'pre)`: D'pre = 0 → not applied, note "No debt remains to refinance.", no fee; otherwise `icrPre = icr(E', D'pre * oldRate)`, spread, `newRate = b + delta + spread`; applied → `effRate = 1.02 * newRate`, `debtShown = D'pre * 1.02`, `rateShown = newRate`; not applied → `effRate = oldRate`, `debtShown = D'pre`, `rateShown = oldRate`; always `interest = D'pre * effRate`; notes with old and new rates to 2 decimals and the 2% fee, as in the design
     - _Requirements: 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8_
 
-  - [~] 6.2 Implement `applyCore` and `applyTreatment` in `web/src/engine/apply.ts`
+  - [x] 6.2 Implement `applyCore` and `applyTreatment` in `web/src/engine/apply.ts`
     - `applyCore(inputs, treatment, recovery)` in Canonical_Order: cut_costs (`E' = E + c * (R - E)`, `growthCut = 0.5 * c`, workers), sell_assets (`sale = s * A * recovery`, `D' = Math.max(0, D' - sale)`, R' and E' times `(1 - s)`, workers), debt_for_equity (`converted = w * D'`, `D' = D' - converted`, keep with the `q + converted === 0 ? 1` guard, shareholders, creditors), refinance last via `evaluateRefinance`; pains clamped with `Math.min(100, Math.max(0, x))`
     - `debtFree = debtPreFee === 0`; `year0` as a `CoverageView` from `icr(E', interest)` or debt-free; `coverageText` "debt-free" or `fix2`
     - `applyTreatment(firm, treatment, delta, macro)` = validate in Validation_Order (delta, treatment, firm, b) + `applyCore(inputs, canonical, 0.7)`
@@ -167,11 +167,11 @@ All commands run from `web` in PowerShell, chained with `;`.
     - _Requirements: 6.7, 7.3, 7.7, 7.9, 14.1, 14.3, 14.4, 14.7, 14.9, 15.5_
 
 - [ ] 7. Randomness and seed derivation
-  - [~] 7.1 Implement `web/src/engine/rng.ts`
+  - [x] 7.1 Implement `web/src/engine/rng.ts`
     - `mulberry32(seed)` as the TypeScript port in the design (state in a closure, `| 0` reduction); `drawBlock(next)` drawing exactly 6 uniforms in the fixed order (recovery, haircut, then Box-Muller from u2..u5 using `1 - u`); `blocksFor(seed, n)` with a test-only seam (for example an optional generator factory parameter) so a property can count uniforms without changing the public `simulate` signature
     - _Requirements: 8.3, 8.4_
 
-  - [~] 7.2 Implement `web/src/engine/hash.ts`
+  - [x] 7.2 Implement `web/src/engine/hash.ts`
     - `fnv1a32(s)` over UTF-8 bytes; `isValidIsoDate` with arithmetic Gregorian leap-year rules (no `new Date`); `seedFrom(cik, treatment, isoDate)` checking treatment, then cik (`^\d{10}$` string, else `invalid_cik`), then date (`invalid_date`), and returning `fnv1a32(`${cik}|${serialiseTreatment(canonical)}|${isoDate}`)`
     - _Requirements: 9.9, 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.9_
 
@@ -180,7 +180,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - `arbBadPaths`, `arbBadSeed` (non-integer, negative, > 4294967295, non-number), `arbBadCik`, `arbBadDate` (wrong format, month 00 or 13, day 00, day 31 in a 30-day month, 29 February in a non-leap year), each labelled with its expected code
     - _Requirements: 8.13, 8.16, 9.12, 10.5, 10.9, 13.10_
 
-  - [~] 7.4 Write unit tests for the PRNG in `web/src/engine/rng.unit.test.ts`
+  - [x] 7.4 Write unit tests for the PRNG in `web/src/engine/rng.unit.test.ts`
     - Mulberry32 vectors for seed 42: compute the first 5 outputs once by running the implementation (for example a temporary `console.log` in a test run, removed afterwards) and pin the printed values in the test; do not invent or hand-type numbers that were not produced this way
     - In the same test, cross-check the 5 pinned values against an independent second implementation written inside the test with `BigInt` uint32 arithmetic; assert a repeated call returns identical values
     - `drawBlock` calls `next` exactly 6 times; recovery and haircut lie in their ranges; a generator returning `1 - 2 ** -32` gives finite eps
