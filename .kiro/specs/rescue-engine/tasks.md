@@ -123,7 +123,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - `diagnose`: E <= 0 gives null needed EBIT increase and null needed debt cut but still returns `shockedIcr` and `neededRate`; `belowCoverageFor` with 0, -0, 1e-16 and null
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.11, 4.13, 4.14, 5.4, 5.8, 14.2, 14.8, 15.5_
 
-- [ ] 6. Treatment application and refinance
+- [x] 6. Treatment application and refinance
   - [x] 6.1 Implement `web/src/engine/refinance.ts`
     - `spreadFor(icrPre)` tiers (negative counts as < 1); `refinanceApplies(oldRate, newRate)` as the strict test `1.02 * newRate < oldRate`
     - `evaluateRefinance(inputs, E', D'pre)`: D'pre = 0 → not applied, note "No debt remains to refinance.", no fee; otherwise `icrPre = icr(E', D'pre * oldRate)`, spread, `newRate = b + delta + spread`; applied → `effRate = 1.02 * newRate`, `debtShown = D'pre * 1.02`, `rateShown = newRate`; not applied → `effRate = oldRate`, `debtShown = D'pre`, `rateShown = oldRate`; always `interest = D'pre * effRate`; notes with old and new rates to 2 decimals and the 2% fee, as in the design
@@ -145,7 +145,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Empty Treatment, delta = 0: `applyTreatment(...).year0.icr` and `diagnose(...).shockedIcr` equal `icr(E, I)` within relative 1e-12; `numRuns >= 100`
     - **Validates: Requirements 5.6, 13.4**
 
-  - [~] 6.5 Write the Ashgrove worked example unit tests in `web/src/engine/ashgrove.unit.test.ts`
+  - [x] 6.5 Write the Ashgrove worked example unit tests in `web/src/engine/ashgrove.unit.test.ts`
     - Use `ashgroveWorks` and `fixtureMacro` from `web/src/dev/fixtures` (read-only) and delta = 0.01; write expected values as arithmetic expressions and compare with relative tolerance 1e-9 (stricter than the required 1e-6) with messages that show expected and actual
     - Diagnosis: shocked ICR within 0.005 of 0.5315 (0.53), needed EBIT increase within 0.005 of 0.882, needed debt cut within 0.005 of 0.469, needed rate within 0.0005 of 0.0362
     - Empty Treatment: R, E, D equal the original latest-year values; pains 0, 0, 0
@@ -157,7 +157,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Exact boundary: `refinanceApplies(1.02 * x, x)` returns false for several x, including 0.087 and 0.142
     - _Requirements: 5.7, 6.11, 7.5, 7.6, 15.1, 15.2, 15.3, 15.4, 15.9_
 
-  - [~] 6.6 Write edge-case unit tests for apply and refinance in `web/src/engine/apply.unit.test.ts`
+  - [x] 6.6 Write edge-case unit tests for apply and refinance in `web/src/engine/apply.unit.test.ts`
     - Spread tiers at icr_pre = -1, 0.999, 1, 1.499, 1.5, 2.999, 3
     - D' = 0 when refinance runs: note "No debt remains to refinance.", no fee, state unchanged
     - Sale proceeds above D: D' = 0, `debtFree` true, `coverageText` "debt-free", no Infinity or NaN in display fields
@@ -175,7 +175,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - `fnv1a32(s)` over UTF-8 bytes; `isValidIsoDate` with arithmetic Gregorian leap-year rules (no `new Date`); `seedFrom(cik, treatment, isoDate)` checking treatment, then cik (`^\d{10}$` string, else `invalid_cik`), then date (`invalid_date`), and returning `fnv1a32(`${cik}|${serialiseTreatment(canonical)}|${isoDate}`)`
     - _Requirements: 9.9, 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7, 10.9_
 
-  - [~] 7.3 Add randomness and option generators to `web/src/engine/test/engineArbitraries.ts`
+  - [x] 7.3 Add randomness and option generators to `web/src/engine/test/engineArbitraries.ts`
     - `arbBlock` (recovery [0.6, 0.8], haircut [0.3, 0.6], eps each in [-6.7, 6.7]), `arbSeed` ([0, 4294967295]), `arbIsoDate` (valid dates 1900-01-01 to 2199-12-31), `arbCik` (10 digits)
     - `arbBadPaths`, `arbBadSeed` (non-integer, negative, > 4294967295, non-number), `arbBadCik`, `arbBadDate` (wrong format, month 00 or 13, day 00, day 31 in a 30-day month, 29 February in a non-leap year), each labelled with its expected code
     - _Requirements: 8.13, 8.16, 9.12, 10.5, 10.9, 13.10_
@@ -199,7 +199,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - **Validates: Requirements 10.1, 10.2, 10.4, 10.5, 10.9**
 
 - [ ] 8. Path projection and Monte Carlo simulation
-  - [~] 8.1 Implement `projectPath` in `web/src/engine/project.ts`
+  - [x] 8.1 Implement `projectPath` in `web/src/engine/project.ts`
     - `m_0 = E' / R'`; for t = 1..3 the margin recursion with kappa and sigma; `R_t = R_{t-1} * (1 + g - growthCut)`; `EBIT_t = m_t * R_t`; `ICR_t = post.debtFree ? Infinity : icr(EBIT_t, post.interest)`; debt constant
     - _Requirements: 8.5, 8.6, 8.7, 8.8_
 

@@ -445,6 +445,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459041867
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460598920
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460748033
       }
     ],
     "6.6 Write edge-case unit tests for apply and refinance in `web/src/engine/apply.unit.test.ts`": [
@@ -452,6 +462,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459041929
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460599290
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460748316
       }
     ],
     "7.1 Implement `web/src/engine/rng.ts`": [
@@ -493,6 +513,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459042090
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460600494
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460749520
       }
     ],
     "7.4 Write unit tests for the PRNG in `web/src/engine/rng.unit.test.ts`": [
@@ -541,6 +571,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459042320
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460601223
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460750192
       }
     ],
     "8.2 Implement `simulate` and `median` in `web/src/engine/simulate.ts`": [
@@ -910,6 +950,13 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794460576160
+      }
+    ],
+    "6. Treatment application and refinance": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794460748372
       }
     ]
   }
