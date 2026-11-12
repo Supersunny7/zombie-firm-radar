@@ -231,3 +231,17 @@
 2026-11-12 | asset-pipeline | 23.2 | Size report: graveyard 22.35 MB, lab 16.94 MB, total 39.36 MB; committed 3df64fa | tools/asset-lib/run-fetch.test.mjs
 2026-11-12 | asset-pipeline | 24.1 | Asset-auditor clean after fixing LICENSE rows, decal links and recording 2k HDRI size exception | tools/, web/public/assets, CREDITS.md
 2026-11-12 | asset-pipeline | 25.1 | Final report written; Phase 2 complete and committed through a6cc8ae | none
+2026-11-12 | avatar-textures-missing-fix | 1 | Added failing-first avatar texture regression test confirming the bug. | tools/asset-lib/avatar-textures.test.mjs
+2026-11-12 | avatar-textures-missing-fix | 2 | Added preservation property tests passing on unfixed code. | tools/asset-lib/avatar-textures.preservation.property.test.mjs
+2026-11-12 | avatar-textures-missing-fix | 3.1 | Added TGA decoder with PNG output capped at 1024 px. | tools/asset-lib/tga.mjs, tga tests
+2026-11-12 | avatar-textures-missing-fix | 3.2 | Added FBX texture staging converting TGAs to PNG and rewriting references. | tools/asset-lib/fbx-textures.mjs, tests
+2026-11-12 | avatar-textures-missing-fix | 3.3 | resolveModelInput now stages FBX textures via stageFbxTextures. | tools/asset-lib/run-fetch.mjs
+2026-11-12 | avatar-textures-missing-fix | 3.4 | convertModel guards and normalises avatar materials with keepSolidTextures prune. | tools/asset-lib/convert-model.mjs, avatar-materials.mjs
+2026-11-12 | avatar-textures-missing-fix | 3.5 | Bumped model recipe with avatar-textures/v2 marker so avatars re-convert. | tools/fetch-assets.mjs
+2026-11-12 | avatar-textures-missing-fix | 3.6 | Bug condition test now passes at source level using staged PNG textures. | tools/asset-lib/avatar-textures.test.mjs
+2026-11-12 | avatar-textures-missing-fix | 3.7 | Re-converted all 8 avatars with textures; total 1,004,052 to 4,949,828 bytes, within budget. | web/public/assets/avatars, manifest.json
+2026-11-12 | avatar-textures-missing-fix | 3.8 | Preservation tests pass; textureless synthetic case declares an exception. | tools/asset-lib/avatar-textures.preservation.property.test.mjs
+2026-11-12 | avatar-textures-missing-fix | 4 | Added avatar material checklist step to asset-auditor. | .kiro/agents/asset-auditor.md
+2026-11-12 | avatar-textures-missing-fix | 5 | Rendered textured avatar with Playwright and saved screenshot. | reference/progress/avatar-textures-fixed.png
+2026-11-12 | avatar-textures-missing-fix | 6 | Checkpoint passed: 317 tools tests green. | none
+2026-11-12 | avatar-textures-missing-fix | 7 | Committed avatar texture fix as 70e7d3d. | tools, avatars, asset-auditor, spec, reference/progress

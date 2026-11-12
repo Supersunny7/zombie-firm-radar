@@ -428,7 +428,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "aa74a035f9834c2b5d5125220d2d6aac687896223b2b01d4a73bb93798e0e12c",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-business-female-01/rocketbox-business-female-01.glb": {
       "pick": "rocketbox-business-female-01",
@@ -438,10 +438,10 @@
       "license": "MIT",
       "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept",
       "group": "lab",
-      "bytes": 137272,
-      "sha256": "7fc65c9363eb9823a1452a5e1728030247095a91787770f5f337efd61b31e6e4",
+      "bytes": 657448,
+      "sha256": "955976d1dbf5e216e6b1194d825e323b3215a244269a0bc76eb9b3b4f2bd64b1",
       "inputsSha256": "aa74a035f9834c2b5d5125220d2d6aac687896223b2b01d4a73bb93798e0e12c",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-business-male-02/LICENSE": {
       "pick": "rocketbox-business-male-02",
@@ -454,7 +454,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "4ff4a71f92ecbef0697a3b7af2edf46653da4870785edaeef452d8f820d40a3a",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-business-male-02/rocketbox-business-male-02.glb": {
       "pick": "rocketbox-business-male-02",
@@ -464,10 +464,10 @@
       "license": "MIT",
       "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept",
       "group": "lab",
-      "bytes": 113768,
-      "sha256": "7b4c1d149c91b40a82a8fe067037b76c158f335c458b01f1e422109eeb0aff35",
+      "bytes": 517144,
+      "sha256": "10291849343b67d65cb10ae87ca44b8fd4ecd7a4b565c829e48b36e638373b62",
       "inputsSha256": "4ff4a71f92ecbef0697a3b7af2edf46653da4870785edaeef452d8f820d40a3a",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-construction-female-01/LICENSE": {
       "pick": "rocketbox-construction-female-01",
@@ -480,7 +480,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "2b67ed1c4d6d161dff845e9d52c0eb79715f211c9e561c770cbb16cb5c652423",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-construction-female-01/rocketbox-construction-female-01.glb": {
       "pick": "rocketbox-construction-female-01",
@@ -490,10 +490,10 @@
       "license": "MIT",
       "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept",
       "group": "lab",
-      "bytes": 127220,
-      "sha256": "68f3ec1686f5a6ebe1a21b34ef8c7cecb1d559b2b31dfefc418651044cdd4ed8",
+      "bytes": 402120,
+      "sha256": "f67cac8f60deaef4f5ff8d0fa7ccebd83e433122fff5cc74b0f5238442741ada",
       "inputsSha256": "2b67ed1c4d6d161dff845e9d52c0eb79715f211c9e561c770cbb16cb5c652423",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-construction-male-01/LICENSE": {
       "pick": "rocketbox-construction-male-01",
@@ -506,7 +506,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "0e656891c4dea304454ddd79927c12b0ea8888900fa80f2109082a6c7c8ceced",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-construction-male-01/rocketbox-construction-male-01.glb": {
       "pick": "rocketbox-construction-male-01",
@@ -516,10 +516,10 @@
       "license": "MIT",
       "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept",
       "group": "lab",
-      "bytes": 159848,
-      "sha256": "f10b33ba933177b9a16734a90794b73c7fe5f96294f19211317c40809b3f146d",
+      "bytes": 882924,
+      "sha256": "5029dcf7b71f9d7dcaf4d206118446876f0a5166a0071db5af342df3d3cb719f",
       "inputsSha256": "0e656891c4dea304454ddd79927c12b0ea8888900fa80f2109082a6c7c8ceced",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-female-adult-06/LICENSE": {
       "pick": "rocketbox-female-adult-06",
@@ -532,7 +532,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "19935a781e93772894aa661189b5693cfe9095cb88dfb0a8b99722052fd8d3a9",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-female-adult-06/rocketbox-female-adult-06.glb": {
       "pick": "rocketbox-female-adult-06",
@@ -542,10 +542,10 @@
       "license": "MIT",
       "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept",
       "group": "lab",
-      "bytes": 112620,
-      "sha256": "6294aa03c6dc7fdc6d9c5ebb650b36fc55bfaa5b84874542f83d128c2b73b1e9",
+      "bytes": 454820,
+      "sha256": "3d54f135b2cca47ec57836d8f7111dd9b7600bb8e867e7137c9f02bc883b11e3",
       "inputsSha256": "19935a781e93772894aa661189b5693cfe9095cb88dfb0a8b99722052fd8d3a9",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-gardener-male-01/LICENSE": {
       "pick": "rocketbox-gardener-male-01",
@@ -558,7 +558,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "bf65e506b082a0a8873231e8d88967caedef624577cb8241672ff55d4a975efc",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-gardener-male-01/rocketbox-gardener-male-01.glb": {
       "pick": "rocketbox-gardener-male-01",
@@ -568,10 +568,10 @@
       "license": "MIT",
       "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept",
       "group": "lab",
-      "bytes": 111700,
-      "sha256": "10f571ce6f08b9323dab21a219bf89f4fe35036ac752f0e5d631dec2f5530179",
+      "bytes": 689100,
+      "sha256": "593649e4a610dd9eae408783b1a938451bb73e0203d8fa1a968aed4158434cf4",
       "inputsSha256": "bf65e506b082a0a8873231e8d88967caedef624577cb8241672ff55d4a975efc",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-male-adult-05/LICENSE": {
       "pick": "rocketbox-male-adult-05",
@@ -584,7 +584,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "e7ff03c0113ab4cc43eccebd1fe2b9ac91191633c497d59cbf43e7627812cfc4",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-male-adult-05/rocketbox-male-adult-05.glb": {
       "pick": "rocketbox-male-adult-05",
@@ -594,10 +594,10 @@
       "license": "MIT",
       "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept",
       "group": "lab",
-      "bytes": 117652,
-      "sha256": "7e7f6513084876b42e23839f017c6757d870ced9aebf8c0d58f020cf68ce86fd",
+      "bytes": 766596,
+      "sha256": "1ab7cf209083d3bbf2c419d3cd8bdbc386290236a227bf35c352dd19a4e473fd",
       "inputsSha256": "e7ff03c0113ab4cc43eccebd1fe2b9ac91191633c497d59cbf43e7627812cfc4",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-medical-female-01/LICENSE": {
       "pick": "rocketbox-medical-female-01",
@@ -610,7 +610,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "f078c6250fb2f793660215840089d6e12ae5572e99d9389e51497f5011ce152f",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "avatars/rocketbox-medical-female-01/rocketbox-medical-female-01.glb": {
       "pick": "rocketbox-medical-female-01",
@@ -620,10 +620,10 @@
       "license": "MIT",
       "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept",
       "group": "lab",
-      "bytes": 123972,
-      "sha256": "005bbcea087bc868ddf9a9354a0aa42841a8f16fbab35bf801ed969dad13d795",
+      "bytes": 579676,
+      "sha256": "c0157fbcffba8aeff3ee93bb29c532f4e29f9822092962794f81432c16b23cc5",
       "inputsSha256": "f078c6250fb2f793660215840089d6e12ae5572e99d9389e51497f5011ce152f",
-      "recipe": "1e2bf508efd28970abb73907c7d635ead9307fab6f8363b4f09c358201fbe960"
+      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
     },
     "hdri/polyhaven-moonlit-golf-environment/polyhaven-moonlit-golf-environment_1k.hdr": {
       "pick": "polyhaven-moonlit-golf-environment",
