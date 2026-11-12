@@ -98,3 +98,81 @@
 2026-11-11 | rescue-engine | 1.4 | Added icr monotone-in-EBIT property test, 200 runs, passing | web/src/engine/icr.monotone.property.test.ts
 2026-11-11 | rescue-engine | 1.5 | Added golden-cases parser and icr runner that skips when the fixture is absent | web/src/engine/icr.golden.test.ts, test/goldenCases*.ts
 2026-11-11 | rescue-engine | 1.3 | Added icr contract property test; amended Req 1.4 to allow -0 on underflow | web/src/engine/icr.contract.property.test.ts, spec
+2026-11-11 | rescue-engine | 2.1 | Added frozen tool registry with four v1 tools and three extension points | web/src/engine/tools.ts
+2026-11-11 | rescue-engine | 11.1 | Added clamped score and liquidation recovery with cents on the dollar | web/src/engine/score.ts, liquidation.ts
+2026-11-11 | rescue-engine | 2.2 | Added strict treatment parser with canonical order and serialisation | web/src/engine/treatment.ts
+2026-11-11 | rescue-engine | 5.1 | Added prepare() input validation in design order without clamping delta | web/src/engine/inputs.ts
+2026-11-11 | rescue-engine | 11.2 | Added liquidation recovery bound property test (RR-5), passing | web/src/engine/liquidation.property.test.ts
+2026-11-11 | rescue-engine | 11.3 | Added score formula and bounds property test, passing | web/src/engine/score.property.test.ts
+2026-11-11 | rescue-engine | 11.4 | Added score and liquidation unit tests including 0.285 rounding | web/src/engine/score.unit.test.ts
+2026-11-11 | rescue-engine | 2.3 | Added valid and corrupted treatment generators for property tests | web/src/engine/test/engineArbitraries.ts
+2026-11-11 | rescue-engine | 2.4 | Added 24 parser, registry and serialisation unit tests | web/src/engine/treatment.unit.test.ts
+2026-11-11 | rescue-engine | 3.1 | State machine now uses engine Treatment type and delegates parsing | web/src/state/types.ts, machine.ts
+2026-11-11 | rescue-engine | 5.3 | Added diagnose() with needed EBIT, debt cut and rate | web/src/engine/diagnose.ts
+2026-11-11 | rescue-engine | 6.1 | Added refinance spread tiers, fee-aware apply rule and notes | web/src/engine/refinance.ts
+2026-11-11 | rescue-engine | 7.1 | Added mulberry32, fixed six-uniform drawBlock and blocksFor | web/src/engine/rng.ts
+2026-11-11 | rescue-engine | 7.2 | Added FNV-1a hash, ISO date check and seedFrom | web/src/engine/hash.ts
+2026-11-11 | rescue-engine | 2.5 | Added treatment rejection property test with independent classifier, passing | web/src/engine/treatment.reject.property.test.ts
+2026-11-11 | rescue-engine | 2.6 | Added treatment serialisation round-trip property test, passing | web/src/engine/treatment.roundtrip.property.test.ts
+2026-11-11 | rescue-engine | 3.2 | State test arbitraries now generate engine-valid treatments; junk tools kept as arbRawTool | web/src/test/arbitraries.ts
+2026-11-11 | rescue-engine | 6.2 | Added applyCore and applyTreatment in canonical tool order | web/src/engine/apply.ts
+2026-11-11 | rescue-engine | 7.4 | Added mulberry32 vectors cross-checked with BigInt reference and drawBlock tests | web/src/engine/rng.unit.test.ts
+2026-11-11 | rescue-engine | 5.2 | Added valid and labelled-bad firm, macro and delta generators | web/src/engine/test/engineArbitraries.ts
+2026-11-11 | rescue-engine | 7.5 | Added FNV-1a vectors, pinned seedFrom cross-check and date/cik order tests | web/src/engine/hash.unit.test.ts
+2026-11-11 | rescue-engine | 3.3 | Added machine delegation property test, passing | web/src/state/machine.delegation.property.test.ts
+2026-11-11 | rescue-engine | 5.4 | Added diagnosis formulas property test at relative 1e-12, passing | web/src/engine/diagnose.formulas.property.test.ts
+2026-11-11 | rescue-engine | 5.5 | Added 34 prepare and diagnose unit tests | web/src/engine/inputs.unit.test.ts, diagnose.unit.test.ts
+2026-11-11 | rescue-engine | 6.3 | Added refinance never-raises-interest property test (RR-7), passing | web/src/engine/refinance.cost.property.test.ts
+2026-11-11 | rescue-engine | 6.4 | Added RR-3 property test, passing | web/src/engine/apply.rr3.property.test.ts
+2026-11-11 | rescue-engine | 6.5 | Added Ashgrove worked example tests incl. refinance variant and boundary | web/src/engine/ashgrove.unit.test.ts
+2026-11-11 | rescue-engine | 6.6 | Added apply and refinance edge-case unit tests | web/src/engine/apply.unit.test.ts
+2026-11-11 | rescue-engine | 7.3 | Added random block, seed, date, cik and bad-option generators | web/src/engine/test/engineArbitraries.ts
+2026-11-11 | rescue-engine | 8.1 | Added projectPath three-year margin and coverage projection | web/src/engine/project.ts
+2026-11-11 | rescue-engine | 4 | Checkpoint passed: typecheck, lint, format clean; 428 tests pass, 3 skipped | none
+2026-11-11 | rescue-engine | 7.6 | Added seedFrom output and validation-order property test, passing | web/src/engine/hash.seedFrom.property.test.ts
+2026-11-11 | rescue-engine | 8.2 | Added simulate with validation order, reuse optimisation and Infinity-safe medians | web/src/engine/simulate.ts
+2026-11-11 | rescue-engine | 8.3 | Added RR-2 domain generator; precondition held on 20,000 cases | web/src/engine/test/engineArbitraries.ts
+2026-11-11 | rescue-engine | 8.4 | Added RR-1 property test with refinance in 75% of cases, passing | web/src/engine/rr1.property.test.ts
+2026-11-11 | rescue-engine | 8.5 | Added RR-2 property test with asserted precondition, passing | web/src/engine/rr2.property.test.ts
+2026-11-11 | rescue-engine | 8.6 | Added RR-4 exact delta-monotone survival odds property test, passing | web/src/engine/rr4.property.test.ts
+2026-11-11 | rescue-engine | 8.7 | Added fixed six-uniform random block property test, passing | web/src/engine/rng.block.property.test.ts
+2026-11-11 | rescue-engine | 8.8 | Added simulate unit tests and named RR-1/RR-2 counterexample tests | web/src/engine/simulate.unit.test.ts, rr.counterexamples.unit.test.ts
+2026-11-11 | rescue-engine | 9 | Checkpoint passed: typecheck, lint, format clean; 453 tests pass, 3 skipped | none
+2026-11-11 | rescue-engine | 10.1 | Added drawOutcome, failure message and upward 0.1 pp hint scan | web/src/engine/outcome.ts, apply.ts, simulate.ts
+2026-11-11 | rescue-engine | 10.2 | Added 19 outcome unit tests incl. hint, no-hint and 3-tool cases | web/src/engine/outcome.unit.test.ts
+2026-11-11 | rescue-engine | 10.3 | Added outcome consistency and wording property test, passing | web/src/engine/outcome.wording.property.test.ts
+2026-11-11 | rescue-engine | 10.4 | Added hint smallest-grid-cut property test, passing | web/src/engine/outcome.hint.property.test.ts
+2026-11-11 | rescue-engine | 10.5 | Added core composition property test, passing | web/src/engine/core.composition.property.test.ts
+2026-11-11 | rescue-engine | 10.6 | Extended Property 3 to applyTreatment, simulate and drawOutcome, passing | web/src/engine/treatment.reject.property.test.ts
+2026-11-11 | rescue-engine | 13.1 | Added worker protocol types and simulate worker entry | web/src/engine/worker/protocol.ts, simulate.worker.ts
+2026-11-11 | rescue-engine | 12.1 | Added click-order independence property test, passing | web/src/engine/clickOrder.property.test.ts
+2026-11-11 | rescue-engine | 12.2 | Added validation-order property test with no-path check, passing | web/src/engine/validation.property.test.ts
+2026-11-11 | rescue-engine | 12.3 | Added latest-year and unused-input property test, passing | web/src/engine/latestYear.property.test.ts
+2026-11-11 | rescue-engine | 12.4 | Added determinism property test (RR-6), passing | web/src/engine/determinism.property.test.ts
+2026-11-11 | rescue-engine | 12.5 | Added odds, pain and post-state range property test (RR-8), passing | web/src/engine/ranges.property.test.ts
+2026-11-11 | rescue-engine | 13.2 | Added latest-wins worker client with channels, abort and dispose | web/src/engine/worker/client.ts
+2026-11-11 | rescue-engine | 12.6 | Added display-safety property test; sub-dollar money inputs now not_rescuable (Req 4.15) | web/src/engine/displaySafety.property.test.ts, inputs.ts, spec
+2026-11-11 | rescue-engine | 13.3 | Added fake worker, latest-wins reference model and worker op generator | web/src/engine/test/fakeWorker.ts, workerModel.ts, engineArbitraries.ts
+2026-11-11 | rescue-engine | 14.1 | Added public engine entry; state now imports from engine index | web/src/engine/index.ts, web/src/state/types.ts, machine.ts
+2026-11-11 | rescue-engine | 13.4 | Added 12 worker client unit tests: supersede, abort, channels, dispose | web/src/engine/worker/client.unit.test.ts
+2026-11-11 | rescue-engine | 13.5 | Added worker id-matching property test, passing | web/src/engine/worker/client.ids.property.test.ts
+2026-11-11 | rescue-engine | 13.6 | Added worker-equals-direct simulate property test, passing | web/src/engine/worker/client.equivalence.property.test.ts
+2026-11-11 | rescue-engine | 13.7 | Added latest-wins versus reference model property test, passing | web/src/engine/worker/client.latestWins.property.test.ts
+2026-11-11 | rescue-engine | 13.8 | Added channel independence property test, passing | web/src/engine/worker/client.channels.property.test.ts
+2026-11-11 | rescue-engine | 14.2 | Added exact public export list unit test | web/src/engine/index.exports.unit.test.ts
+2026-11-11 | rescue-engine | 14.4 | Added one unit test per EngineError code, exhaustive over all 14 | web/src/engine/errors.unit.test.ts
+2026-11-11 | rescue-engine | 14.3 | Added engine purity scan with self-test and worker import check | web/src/engine/purity.test.ts
+2026-11-11 | rescue-engine | 14.5 | Benchmarked simulate 1000 paths: 0.68 to 1.73 ms median across 15 combinations | web/src/engine/simulate.bench.ts, tasks.md
+2026-11-11 | rescue-engine | 15 | Checkpoint passed twice: 536 tests pass, 3 skipped; formatted one property test | web/src/engine/displaySafety.property.test.ts
+2026-11-11 | rescue-engine | 16.1 | Recorded canonical order, random block, typed errors, UTC seed date and sub-dollar rule in steering | .kiro/steering/rescue-rules.md
+2026-11-11 | rescue-engine | 17 | Final checkpoint passed: typecheck, lint, format, 536 tests, build and bundle check | none
+2026-11-11 | rescue-engine | 18.1 | Finance review passed with issues; validated rescue_inputs (Req 4.16), added literal Ashgrove checks, clarified notes | web/src/engine, spec, steering
+2026-11-11 | rescue-engine | 18.2 | Committed engine by explicit path; pipeline and data unchanged | web/src/engine, web/src/state, spec, steering
+2026-11-12 | asset-pipeline | 9 | Round-2 picks deferred; user requested a third scouting round first | none
+2026-11-12 | asset-pipeline | 10.1 | Scouted two knife switches and two heavy doors | reference/candidates/09-round-3, notes
+2026-11-12 | asset-pipeline | 10.2 | Scouted four CC0 Poly Haven lab wall and floor textures | reference/candidates/09-round-3, notes
+2026-11-12 | asset-pipeline | 10.3 | Scouted 12 CC0 Freesound round-3 sound candidates incl. crows | reference/candidates/09-round-3, notes
+2026-11-12 | asset-pipeline | 10.4 | Listed six extra MIT Rocketbox avatars verified at the pinned SHA | reference/candidates/notes
+2026-11-12 | asset-pipeline | 11.1 | Merged round-3 categories 9, 10 and extra avatars into README | reference/candidates/README.md
+2026-11-12 | asset-pipeline | 11.2 | Validated round 3: 91 previews, licenses, counts and protected paths pass | none
+2026-11-12 | asset-pipeline | 11.3 | Committed round-3 candidates and spec updates as 6bb5c1e | reference/candidates, .kiro/specs/asset-pipeline
