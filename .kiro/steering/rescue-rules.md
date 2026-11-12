@@ -8,9 +8,11 @@ DEFINITION OF A RESCUE
 
 - A firm is rescued if, after the treatment and under the current rate shock, its projected interest coverage ratio (ICR = EBIT / interest expense) is >= 1 in each of the next 3 fiscal years. This mirrors the zombie definition (ICR < 1 for 3 straight years) in zombie-definition.md and must reuse the same icr() function.
 
-INPUTS (latest fiscal year from firms/{cik}.json): revenue R, EBIT E, interest expense I, total debt D, total assets A, equity Q; implied rate r = I / D; 10-year Treasury b from macro.json; rate shock delta from the graveyard slider (decimal, 0 to 0.05); rescue_inputs (margin_mean, margin_change_sd, revenue_growth_median).
+INPUTS (latest fiscal year from firms/{cik}.json): revenue R, EBIT E, interest expense I, total debt D, total assets A, equity Q; implied rate r = I / D; 10-year Treasury b from macro.json; rate shock delta from the graveyard slider (decimal, 0 to 0.05); rescue_inputs (margin_mean, margin_change_sd, revenue_growth_median). Money inputs (R, E, I, D, A, Q) must be 0 or at least 1 USD in absolute value; a sub-dollar amount makes the firm not rescuable.
 
 TOOLS (the player picks up to 3; v1 ships the first four)
+
+Tools are always applied in the fixed Canonical_Order (cut_costs, sell_assets, debt_for_equity, refinance), whatever order the player clicked.
 
 1. cut_costs c in [0, 0.08]: E' = E + c * (R - E). Revenue growth each projected year is reduced by 0.5 * c. Workers pain += (c / 0.08) * 50.
 
@@ -38,7 +40,13 @@ PROJECTION (3 years, Monte Carlo)
 
 - Run 1,000 paths with a seeded PRNG. Survival odds = share of paths where ICR_t >= 1 for t = 1, 2, 3. Also return the median ICR per year.
 
+- Typed errors, not clamping: an invalid delta, tool parameter, path count or seed returns a typed error. Only sigma, g and the outputs are clamped.
+
+- Each path uses a fixed Random_Block of 6 uniforms, drawn in this order: recovery, haircut, eps1, eps2, eps3. All 6 are drawn for every path, whatever the treatment.
+
 - The real outcome: when the player pulls the switch, draw ONE path with seed = hash(cik, treatment, ISO date). Same firm + same treatment + same day = same outcome.
+
+- `seedFrom` uses the UTC date in YYYY-MM-DD form. Same-day determinism holds within one JavaScript engine; one-ulp differences in Math.log, Math.cos and Math.sin across browsers are accepted for v1.
 
 - Failure reason: first year with ICR < 1, as "Year {t}: operating margin {m}%, coverage {icr}. {name} stays undead." plus a hint: the smallest extra cost cut that would have kept that year >= 1, if one exists within the allowed range. Search: scan upward in steps of 0.1 percentage point from the chosen cut (or 0) while the total cut is <= 0.08, rerunning the full treatment pipeline (sell_assets with the path recovery, debt_for_equity, refinance re-evaluated) on the same random path, and stop at the first step where that year reaches ICR >= 1. No bisection: the year-t ICR is not monotone in the cut, because the cut also lowers revenue growth by 0.5 * c.
 
