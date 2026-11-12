@@ -506,7 +506,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "0e656891c4dea304454ddd79927c12b0ea8888900fa80f2109082a6c7c8ceced",
-      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
+      "recipe": "d26e919fc4cdc8375f3493e674bfb56c4bf697fcca8d98fa3e1687d3dcf7e644"
     },
     "avatars/rocketbox-construction-male-01/rocketbox-construction-male-01.glb": {
       "pick": "rocketbox-construction-male-01",
@@ -514,38 +514,12 @@
       "author": "Microsoft (Rocketbox)",
       "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Construction_Male_01",
       "license": "MIT",
-      "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept",
+      "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept, wire-mesh face shield primitive (material m111_opacity) removed",
       "group": "lab",
-      "bytes": 882924,
-      "sha256": "5029dcf7b71f9d7dcaf4d206118446876f0a5166a0071db5af342df3d3cb719f",
+      "bytes": 769860,
+      "sha256": "e6575fe125eccb0548c1e091b8f5c3996b45f2d8a00e5378461f81b271b997af",
       "inputsSha256": "0e656891c4dea304454ddd79927c12b0ea8888900fa80f2109082a6c7c8ceced",
-      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
-    },
-    "avatars/rocketbox-female-adult-06/LICENSE": {
-      "pick": "rocketbox-female-adult-06",
-      "title": "Microsoft Rocketbox LICENSE",
-      "author": "Microsoft (Rocketbox)",
-      "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Adults/Female_Adult_06",
-      "license": "MIT",
-      "changes": "Copied unchanged from the Rocketbox repository (MIT license text).",
-      "group": "lab",
-      "bytes": 1066,
-      "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
-      "inputsSha256": "19935a781e93772894aa661189b5693cfe9095cb88dfb0a8b99722052fd8d3a9",
-      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
-    },
-    "avatars/rocketbox-female-adult-06/rocketbox-female-adult-06.glb": {
-      "pick": "rocketbox-female-adult-06",
-      "title": "Rocketbox Female_Adult_06",
-      "author": "Microsoft (Rocketbox)",
-      "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Adults/Female_Adult_06",
-      "license": "MIT",
-      "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept",
-      "group": "lab",
-      "bytes": 454820,
-      "sha256": "3d54f135b2cca47ec57836d8f7111dd9b7600bb8e867e7137c9f02bc883b11e3",
-      "inputsSha256": "19935a781e93772894aa661189b5693cfe9095cb88dfb0a8b99722052fd8d3a9",
-      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
+      "recipe": "d26e919fc4cdc8375f3493e674bfb56c4bf697fcca8d98fa3e1687d3dcf7e644"
     },
     "avatars/rocketbox-gardener-male-01/LICENSE": {
       "pick": "rocketbox-gardener-male-01",

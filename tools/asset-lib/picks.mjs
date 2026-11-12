@@ -50,7 +50,7 @@ const isByte = (v) => isNum(v) && v >= 0 && v <= 255;
 // `oneOf` lists keys of which exactly one must be present.
 export const EDIT_SPECS = {
   decimate: { required: { triangles: (v) => isInt(v) && v > 0 }, optional: {} },
-  removeNode: { required: {}, optional: { node: isStr, mesh: isStr }, oneOf: ['node', 'mesh'] },
+  removeNode: { required: {}, optional: { node: isStr, mesh: isStr, material: isStr }, oneOf: ['node', 'mesh', 'material'] },
   desaturate: { required: { texture: isStr, maxSaturation: isFrac }, optional: {} },
   darken: { required: { texture: isStr, maxValue: isByte }, optional: { percentile: (v) => isNum(v) && v > 0 && v <= 100 } },
   grime: { required: { texture: isStr, seed: isInt, floor: isByte }, optional: {} },

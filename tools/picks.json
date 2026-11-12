@@ -814,34 +814,13 @@
       "manual": false,
       "expectedFile": null,
       "targetFolder": null,
-      "edits": [],
+      "edits": [{ "op": "removeNode", "material": "m111_opacity" }],
       "credits": {
         "title": "Rocketbox Construction_Male_01",
         "author": "Microsoft (Rocketbox)",
         "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Construction_Male_01",
         "license": "MIT",
-        "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept"
-      }
-    },
-    {
-      "id": "rocketbox-female-adult-06",
-      "kind": "avatar",
-      "category": 5,
-      "group": "lab",
-      "source": {
-        "type": "url",
-        "url": "https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Adults/Female_Adult_06/Export/Female_Adult_06.fbx"
-      },
-      "manual": false,
-      "expectedFile": null,
-      "targetFolder": null,
-      "edits": [],
-      "credits": {
-        "title": "Rocketbox Female_Adult_06",
-        "author": "Microsoft (Rocketbox)",
-        "sourceUrl": "https://github.com/microsoft/Microsoft-Rocketbox/tree/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Adults/Female_Adult_06",
-        "license": "MIT",
-        "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept"
+        "changes": "FBX converted to a Meshopt-compressed glb, textures resized to 1k WebP, Bip01 skeleton kept, wire-mesh face shield primitive (material m111_opacity) removed"
       }
     },
     {

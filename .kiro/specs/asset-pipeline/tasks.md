@@ -509,7 +509,7 @@ Working rules for every task:
     - Leave `web/src`, `/pipeline`, `/data` and `DEVLOG.md` unchanged and unstaged; then stop
     - _Requirements: 41.7, 41.8, 41.9, 21.1, 21.2, 21.3, 21.4, 21.5_
 
-- [ ] 26. Visual fixes
+- [x] 26. Visual fixes
   - [x] 26.1 Build the preview page and the static server in `tools/preview/`
     - Run `git pull --no-edit` first; stop and report on non-zero exit or conflict
     - Create `tools/preview/index.html`, `preview.mjs` (three from `web/node_modules/three` if present, GLTFLoader, MeshoptDecoder, WebP textures, fixed camera and lighting, `window.__ready` after the first frame), and the `?silhouette=1` flat black-on-white mode at 200 px height
@@ -543,14 +543,14 @@ Working rules for every task:
     - Report that `reference/progress/` is outside the Owned_Paths and its PNGs are not committed unless the user asks
     - _Requirements: 44.5, 44.6, 44.7, 44.8, 42.10, 42.11, 41.5, 41.6, 17.4, 18.4_
 
-  - [-] 26.5 Commit only Owned_Paths and stop
+  - [x] 26.5 Commit only Owned_Paths and stop
     - Run `git pull --no-edit` first, then `git status --short`; unstage only files outside the Owned_Paths with `git restore --staged <path>` and report each
     - Stage explicitly: `git add tools`, `git add web/public/assets`, `git add CREDITS.md`, `git add .kiro/specs/asset-pipeline`; never `-A`, `.` or `-f`; do not stage `reference/progress`, `web/src`, `/pipeline`, `/data` or `DEVLOG.md`
     - Commit with a conventional message of at most 72 characters, for example `fix(asset-pipeline): rework cracked headstone and ruella hand`; do not push; then stop
     - _Requirements: 44.6, 41.8, 41.9, 21.1, 21.2, 21.4, 21.5_
 
 - [ ] 27. Avatar fixes
-  - [~] 27.1 Drop rocketbox-female-adult-06 and add prune support
+  - [x] 27.1 Drop rocketbox-female-adult-06 and add prune support
     - Run `git pull --no-edit` first; stop and report on non-zero exit or conflict. May run once 26.1 is done
     - Remove the `rocketbox-female-adult-06` pick from `tools/picks.json`
     - In `reference/candidates/README.md` add the pick to Picks/Rejected with the reason "Religious head covering would be shown rotting and attacking the camera in the horror sequences, which could read as targeting a real group."; update avatar counts to seven Rocketbox avatars and the sector-mapping notes (Female_Adult_06 was suggested for Retail Trade; leave Retail Trade unassigned and say so)
@@ -559,7 +559,7 @@ Working rules for every task:
     - Re-run `node tools/fetch-assets.mjs` so the script removes `web/public/assets/avatars/rocketbox-female-adult-06/` (no hand deletion or hand edits of `manifest.json` or `CREDITS.md`)
     - _Requirements: 45.1, 45.2, 45.3, 45.4, 45.5, 45.6, 45.7, 45.8, 45.9, 45.10, 18.4, 20.1_
 
-  - [~] 27.2 Investigate and fix the face box on rocketbox-construction-male-01
+  - [x] 27.2 Investigate and fix the face box on rocketbox-construction-male-01
     - Run `git pull --no-edit` first. May run once 26.1 is done
     - Before changing anything, copy the current converted avatar outside Asset_Root (for example `tools/cache/before/`, git-ignored) for the "before" render
     - Inspect the source FBX and converted glTF with gltf-transform: list the nodes, meshes, materials (`alphaMode`, `alphaCutoff`), textures and UV bounds at head height, and decide whether the box is a separate visor or helmet-shield mesh or a texture, alpha or UV error
@@ -568,14 +568,14 @@ Working rules for every task:
     - Re-run the pipeline for that pick, check the Bip01 bone check still passes and that other picks' outputs are unchanged (report any alpha-material pick whose output changes)
     - _Requirements: 46.1, 46.2, 46.3, 46.4, 46.5, 46.6, 46.7, 36.1, 36.5, 36.8_
 
-  - [~] 27.3 Render the head close-up before and after
+  - [x] 27.3 Render the head close-up before and after
     - Run `git pull --no-edit` first. Needs the preview page and server from 26.1
     - Start `tools/preview/serve.mjs` with the process tool; with the Playwright MCP server render a head close-up of `rocketbox-construction-male-01` before the fix (the copy saved in 27.2) and after the fix; save both to `reference/progress/` with lowercase-hyphen names, each under 1 MB; stop the server afterwards
     - Check the after render shows a visible face; if it does not, return to 27.2, at most 3 rounds, then stop and report
     - Report that `reference/progress/` is outside the Owned_Paths and its PNGs are not committed unless the user asks
     - _Requirements: 46.8, 44.1, 44.4, 44.5, 44.6_
 
-  - [~] 27.4 Full checks, audit, commit only Owned_Paths and stop
+  - [-] 27.4 Full checks, audit, commit only Owned_Paths and stop
     - Run `git pull --no-edit` first
     - Run `pnpm --dir tools test`; run `node tools/fetch-assets.mjs` twice and require equal SHA-256 hashes for all outputs, the Manifest and `CREDITS.md`; invoke the `asset-auditor` agent and fix findings until clean (stop and ask if one survives two fixes)
     - Run `git status --short`; unstage only files outside the Owned_Paths with `git restore --staged <path>` and report each

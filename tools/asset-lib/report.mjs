@@ -16,6 +16,14 @@ export function formatRunReport(result, { dryRun = false } = {}) {
   for (const p of result.plan ?? []) lines.push(`plan: ${p.id}: ${p.action}`);
   for (const w of result.written) lines.push(`written: ${w}`);
   for (const s of result.skipped) lines.push(`unchanged: ${s}`);
+  const pr = result.pruned;
+  if (pr) {
+    const tag = dryRun ? 'would prune' : 'pruned';
+    for (const f of pr.folders) lines.push(`${tag}: folder ${f}/`);
+    for (const f of pr.files) lines.push(`${tag}: file ${f}`);
+    for (const k of pr.manifestKeys) lines.push(`${tag}: manifest entry ${k}`);
+    for (const r of pr.creditRows) lines.push(`${tag}: credits row ${r}`);
+  }
   for (const r of result.refused) lines.push(`refused: ${r.name}: ${r.reason}`);
   for (const m of result.missing ?? []) lines.push(`missing manual file: ${m.message}`);
   for (const f of result.failed) lines.push(`failed: ${f.name}: ${f.cause}`);
@@ -23,7 +31,8 @@ export function formatRunReport(result, { dryRun = false } = {}) {
   if (result.budgets) lines.push(formatBudgetReport(result.budgets));
   lines.push(
     `summary: ${result.written.length} written, ${result.skipped.length} unchanged, ` +
-      `${result.refused.length} refused, ${(result.missing ?? []).length} missing, ${result.failed.length} failed; exit ${result.exitCode}`,
+      `${result.refused.length} refused, ${(result.missing ?? []).length} missing, ${result.failed.length} failed` +
+      `${pr && !dryRun && pr.files.length > 0 ? `, ${pr.files.length} pruned` : ''}; exit ${result.exitCode}`,
   );
   return lines.join('\n');
 }

@@ -26,7 +26,6 @@ const AVATAR_IDS = [
   'rocketbox-business-male-02',
   'rocketbox-construction-female-01',
   'rocketbox-construction-male-01',
-  'rocketbox-female-adult-06',
   'rocketbox-gardener-male-01',
   'rocketbox-male-adult-05',
   'rocketbox-medical-female-01',

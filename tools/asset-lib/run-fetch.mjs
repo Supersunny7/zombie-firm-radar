@@ -17,6 +17,7 @@ import { render as renderManualReadme } from './manual-readme.mjs';
 import { findStaleKeys, mergeManifestWithReport, parseManifest, writeManifest, MANIFEST_FILE } from './manifest.mjs';
 import { KIND_FOLDERS, planOutputs, safeJoin } from './paths.mjs';
 import { validatePick } from './picks.mjs';
+import { applyPrune, isEmptyPlan, planPrune, pruneCreditsText, pruneManifest } from './prune.mjs';
 import { exitCodeFor } from './report.mjs';
 
 /**
@@ -393,7 +394,10 @@ export function describeFailure(err) {
  */
 export async function runFetch({ picks, env, only = null, dryRun = false }) {
   const { roots } = env;
-  const result = { exitCode: 0, written: [], skipped: [], refused: [], failed: [], missing: [], warnings: [], plan: [], budgets: null };
+  const result = {
+    exitCode: 0, written: [], skipped: [], refused: [], failed: [], missing: [], warnings: [], plan: [], budgets: null,
+    pruned: { folders: [], files: [], manifestKeys: [], creditRows: [] },
+  };
   const byId = new Map(picks.map((p) => [p.id, p]));
   const ctx = { env, byId };
   const pid = env.pid ?? process.pid;
@@ -428,6 +432,22 @@ export async function runFetch({ picks, env, only = null, dryRun = false }) {
   } catch {
     /* none yet */
   }
+
+  // Prune plan (Requirement 45): picks removed from picks.json but still in the Manifest or Credits_File.
+  // Planned over ALL picks, even with --only. Executed after conversion.
+  const assetPrefix = toPosix(path.relative(roots.repoRoot, roots.assetRoot));
+  let creditsText = '';
+  try {
+    creditsText = await readFile(roots.creditsFile, 'utf8');
+  } catch {
+    /* none yet */
+  }
+  const prunePlan = planPrune({ picks, manifest: prevManifest, credits: creditsText, assetRoot: roots.assetRoot, assetPrefix });
+  for (const e of prunePlan.errors) result.failed.push({ name: e.path, cause: `prune refused: ${e.message}` });
+  result.pruned.folders = prunePlan.folders.map((f) => f.rel);
+  result.pruned.manifestKeys = [...prunePlan.manifestKeys];
+  result.pruned.creditRows = [...prunePlan.creditRows];
+  result.pruned.files = prunePlan.folders.flatMap((f) => f.files);
 
   const hashes = new Map(); // pick id -> inputs hash
   for (const e of Object.values(prevManifest.files)) if (!hashes.has(e.pick)) hashes.set(e.pick, e.inputsSha256);
@@ -530,6 +550,31 @@ export async function runFetch({ picks, env, only = null, dryRun = false }) {
       result.failed.push({ name: id, cause: describeFailure(err) });
     } finally {
       if (!dryRun) await rm(work, { recursive: true, force: true }).catch(() => {});
+    }
+  }
+
+  if (!dryRun && !isEmptyPlan(prunePlan)) {
+    try {
+      const applied = await applyPrune(prunePlan, { assetRoot: roots.assetRoot, guard: (f) => assertWritable(f, roots) });
+      for (const e of applied.errors) result.failed.push({ name: e.path, cause: `prune failed: ${e.message}` });
+      result.warnings.push(...applied.warnings);
+      // Entries of folders that could not be pruned stay in the Manifest and Credits_File.
+      const blocked = applied.errors.map((e) => `${e.path.split('/').slice(0, 2).join('/')}/`);
+      const keep = (k) => blocked.some((b) => k.startsWith(b));
+      const dropKeys = prunePlan.manifestKeys.filter((k) => !keep(k));
+      const dropRows = prunePlan.creditRows.filter((r) => !keep(r.slice(assetPrefix.length + 1)));
+      prevManifest = pruneManifest(prevManifest, dropKeys);
+      if (dropRows.length > 0) {
+        const current = await readFile(roots.creditsFile, 'utf8');
+        const next = pruneCreditsText(current, dropRows);
+        if (next !== current) await writeFileAtomic(roots.creditsFile, next, roots);
+      }
+      result.pruned.manifestKeys = dropKeys;
+      result.pruned.creditRows = dropRows;
+      result.pruned.files = applied.deleted;
+      result.pruned.folders = applied.removedDirs;
+    } catch (err) {
+      result.failed.push({ name: 'prune', cause: err.message });
     }
   }
 

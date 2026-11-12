@@ -565,7 +565,7 @@ Textures: each folder has `Textures/*.tga` of about 4 to 16 MB each (12 MB typic
 | rocketbox-gardener-male-01 (Gardener_Male_01) | `Assets/Avatars/Professions/Gardener_Male_01` | `Export/Gardener_Male_01.fbx` (517,152 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | brown work jacket and trousers, yellow rubber boots, green gloves; tiny blue tags, no legible text | older man, grey beard and dark hair | Agriculture or Services | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Gardener_Male_01/Gardener_Male_01.png) | assumed, same library (Bip01) |
 | rocketbox-female-adult-06 (Female_Adult_06) | `Assets/Avatars/Adults/Female_Adult_06` | `Export/Female_Adult_06.fbx` (529,632 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | olive knee-length tunic and trousers, white fringed headscarf, black flats; no logo | adult woman | Retail Trade | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Adults/Female_Adult_06/Female_Adult_06.png) | assumed, same library (Bip01) |
 
-Mix (from the previews): 4 female, 2 male; young adult to older adult; sectors Services, Construction, Manufacturing, Finance, Agriculture or Services, Retail Trade. All six are kept in Picks. Bip01 bone names are confirmed at conversion (task 18.4).
+Mix (from the previews): 4 female, 2 male; young adult to older adult; sectors Services, Construction, Manufacturing, Finance, Agriculture or Services, Retail Trade. Update (task 27.1): rocketbox-female-adult-06 was dropped by the user (see Rejected), so seven Rocketbox avatars remain in Picks (the Fallback rocketbox-business-male-02, rocketbox-male-adult-05 and five of the six extras) and Retail Trade, which was suggested for Female_Adult_06, is unassigned. Bip01 bone names are confirmed at conversion (task 18.4).
 
 ## Sub_Items with no suitable candidate
 
@@ -687,17 +687,17 @@ Recorded from the user's picks for rounds 1 to 3. Format: name, scene, role; the
 
 ### Extra Rocketbox avatars (final, round 3)
 
-All six kept after the preview check (no logo, brand mark or readable text; see "Extra Rocketbox avatars"). Fetched by the script at the pinned SHA, converted FBX to glb. Bip01 bone names are confirmed at conversion (task 18.4).
+Five of the six extras remain (rocketbox-female-adult-06 was dropped, see Rejected; seven Rocketbox avatars in total with the Fallback and rocketbox-male-adult-05). They were kept after the preview check (no logo, brand mark or readable text; see "Extra Rocketbox avatars"). Fetched by the script at the pinned SHA, converted FBX to glb. Bip01 bone names are confirmed at conversion (task 18.4).
 
 - rocketbox-medical-female-01: lab, patient variant (white scrubs, young adult woman).
-- rocketbox-construction-male-01: lab, patient variant (plaid shirt, tool belt, hard hat; middle-aged man).
+- rocketbox-construction-male-01: lab, patient variant (plaid shirt, tool belt, hard hat; middle-aged man; wire face shield (material m111_opacity) removed; helmet band kept).
 - rocketbox-construction-female-01: lab, patient variant (blue coveralls, hi-vis vest, hard hat; adult woman).
 - rocketbox-business-female-01: lab, patient variant (dark suit; adult woman).
 - rocketbox-gardener-male-01: lab, patient variant (brown work clothes, yellow boots; older man).
-- rocketbox-female-adult-06: lab, patient variant (olive tunic, white headscarf; adult woman).
 
 ## Rejected
 
+- rocketbox-female-adult-06 (Female_Adult_06; was a Pick in Category 5, extra Rocketbox avatars): "Religious head covering would be shown rotting and attacking the camera in the horror sequences, which could read as targeting a real group." User decision, task 27.1. Retail Trade is now unassigned. Its output folder is removed by the fetch script's prune step, not by hand.
 - sketchfab-broken-headstone: readable inscription of a real person's grave.
 - sketchfab-zombie-hand-greenall: provenance UNCONFIRMED (task 6.1, see "Provenance check" under Category 6). The author only retopologised and textured someone else's sculpt, so it stays rejected. The Greenall corpse, by contrast, is CONFIRMED and picked. The replacement sketchfab-zombie-hand-craggle is picked.
 - sketchfab-butchers-hook-chain-proop: uploader publishes AI-generated models. AI-account check on 2026-11-12 (Req 33): the uploader ALTEREGO (v.a.c.u.u.m.) has 173 public uploads (189 listing entries including pagination duplicates). 3 carry the tag "rodin" (the Hyper3D Rodin AI generator): "skeleton head with hanging rope (skull)" (https://sketchfab.com/3d-models/skeleton-head-with-hanging-rope-skull-624e3f511c7048a4a1f3c3cc46430a77, published 2025-02-20, description "This model is created for free using ..."), "Rusty Mechanical Spider V2" (uid 05a46dcbb6244460adf26aaa7ffe89a8) and "demonic helmet with horns and red gem" (uid ee9cdd6b485b4ec8a4319192d9bfc7dd). No upload carries the createdwithai tag or the words AI generated, text-to-3D, image-to-3D, Meshy, Tripo or Luma. The hook itself has tags hook, chain, butchers, proop and no AI statement, but the rule drops it on any AI-generation tag in the account. It is left out of the Manual README and `tools/picks.json`. Method: the Sketchfab public search API listing for the user, read through a Playwright page (title, tags, description, categories of every upload; no login, no download, no form input), plus one upload page opened and its snapshot checked.
