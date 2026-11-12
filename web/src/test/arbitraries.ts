@@ -9,6 +9,7 @@
  *   JSON path the guards must name when they reject it.
  */
 import fc from 'fast-check';
+import { arbTreatment } from '../engine/test/engineArbitraries';
 import type { Settings } from '../state/settings';
 import type { GameEvent } from '../state/types';
 import type {
@@ -32,13 +33,11 @@ const arbToolParams = fc.dictionary(
   { maxKeys: 4 },
 );
 
-const arbTool = fc.record({
+/** Arbitrary `{ name, params }` tool; almost never engine-valid. Used for junk only. */
+const arbRawTool = fc.record({
   name: fc.string({ minLength: 1, maxLength: 12 }),
   params: arbToolParams,
 });
-
-/** Valid treatment: 0 to 3 tools. */
-const arbTreatment = fc.array(arbTool, { minLength: 0, maxLength: 3 });
 
 /** Valid rate shock: finite, 0 to 0.05 inclusive. */
 const arbShock = fc.double({ min: 0, max: 0.05, noNaN: true });
@@ -79,7 +78,7 @@ const arbJunk: fc.Arbitrary<unknown> = fc.oneof(
   fc.boolean(),
   fc.anything(),
   // Treatments with 4 or more tools, and tools with bad shapes.
-  fc.array(arbTool, { minLength: 4, maxLength: 6 }),
+  fc.array(arbRawTool, { minLength: 4, maxLength: 6 }),
   fc.array(fc.anything(), { maxLength: 5 }),
 );
 

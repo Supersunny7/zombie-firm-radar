@@ -7,13 +7,10 @@ export type RateShock = number & { readonly __brand: 'RateShock' };
 
 export type Result = 'revived' | 'undead' | 'liquidated';
 
-export interface ToolChoice {
-  name: string;
-  params: Record<string, number | boolean>;
-}
+/** Canonical tool types come from the rescue-engine (0 to 3 tools, enforced by parseTreatment). */
+export type { ToolChoice, Treatment } from '../engine/types';
 
-/** 0 to 3 tools. Enforced by parseTreatment. */
-export type Treatment = readonly ToolChoice[];
+import type { Treatment } from '../engine/types';
 
 export interface GameContext {
   cik: Cik | null;

@@ -76,7 +76,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - `deserialiseTreatment(serialiseTreatment(t))` deeply equals `parseTreatment(t).value` for any valid Treatment in any click order; `numRuns >= 100`
     - **Validates: Requirements 3.14, 10.3**
 
-- [ ] 3. State-machine integration
+- [x] 3. State-machine integration
   - [x] 3.1 Replace the placeholder types and delegate parsing in `web/src/state/types.ts` and `web/src/state/machine.ts`
     - `types.ts`: remove the placeholder `ToolChoice` and `Treatment`; `export type { ToolChoice, Treatment } from '../engine/types';` (switch to `'../engine'` once task 14.1 creates the entry, if that keeps the build green)
     - `machine.ts`: `parseTreatment` delegates to the engine parser and maps an EngineError to `{ ok: false, reason: error.message }`; keep `MAX_TOOLS` exported; remove the unused `ToolChoice` import; store the canonical Treatment
@@ -88,7 +88,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Keep every exported name used by the existing state tests
     - _Requirements: 3.12, 3.13_
 
-  - [~] 3.3 Write property test for machine delegation in `web/src/state/machine.delegation.property.test.ts`
+  - [x] 3.3 Write property test for machine delegation in `web/src/state/machine.delegation.property.test.ts`
     - **Property 4: The state machine delegates treatment parsing**
     - Inputs: valid treatments, corrupted treatments and arbitrary junk; the machine returns `ok: true` with the engine value exactly when the engine accepts, else `ok: false` with `reason` equal to the engine error message; `numRuns >= 100`
     - **Validates: Requirements 3.2**
@@ -96,14 +96,14 @@ All commands run from `web` in PowerShell, chained with `;`.
 - [~] 4. Checkpoint: parser and state integration
   - From `web`, run `pnpm typecheck; pnpm lint; pnpm format; pnpm test`. All existing state-machine tests must pass with unchanged assertions. Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 5. Input validation and diagnosis
+- [x] 5. Input validation and diagnosis
   - [x] 5.1 Implement `prepare` in `web/src/engine/inputs.ts`
     - Steps in the design order: delta finite in [0, 0.05] else `delta_out_of_range` (no clamping); empty `years` → `not_rescuable`; latest year = highest `fy` (not assumed sorted); every null or non-finite R, E, I, D, A, Q named in `detail.inputs` in that order; then D <= 0, R <= 0, I <= 0 each named; then b = `macro.dgs10.value` not finite or < 0 → `not_rescuable` naming `b`
     - `r = I / D`; kappa = 0.3; sigma = clamp(margin_change_sd, 0.01, 0.08); g = clamp(revenue_growth_median, -0.15, 0.15); never read `margin_change_mean`
     - Never throw; never mutate firm or macro
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10, 4.11, 4.12, 4.13, 4.14, 14.8_
 
-  - [~] 5.2 Add firm, macro and delta generators to `web/src/engine/test/engineArbitraries.ts`
+  - [x] 5.2 Add firm, macro and delta generators to `web/src/engine/test/engineArbitraries.ts`
     - `arbValidFirm` (1 to 5 years with shuffled `fy`, the domains in the design table, E may be <= 0, Q may be <= 0, A large enough to clear debt), `arbMacroValid` (b in [0, 0.08]), `arbDelta` ([0, 0.05] plus the constants 0 and 0.05)
     - `arbBadFirm`, `arbBadDelta`, `arbBadMacro`, each labelled with the expected error code and named inputs
     - _Requirements: 13.10, 14.5_
@@ -113,12 +113,12 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Validation through `prepare`; returns its EngineError unchanged
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.8, 5.9, 14.2_
 
-  - [~] 5.4 Write property test for the diagnosis formulas in `web/src/engine/diagnose.formulas.property.test.ts`
+  - [x] 5.4 Write property test for the diagnosis formulas in `web/src/engine/diagnose.formulas.property.test.ts`
     - **Property 9: Diagnosis formulas**
     - Compare against the reference formulas with relative tolerance 1e-12 via `geq` in both directions; E <= 0 gives nulls; `belowCoverage` matches the rule; `numRuns >= 100`
     - **Validates: Requirements 5.1, 5.2, 5.3, 5.4, 5.5, 5.8, 14.2**
 
-  - [~] 5.5 Write unit tests for inputs and diagnosis in `web/src/engine/inputs.unit.test.ts` and `web/src/engine/diagnose.unit.test.ts`
+  - [x] 5.5 Write unit tests for inputs and diagnosis in `web/src/engine/inputs.unit.test.ts` and `web/src/engine/diagnose.unit.test.ts`
     - `prepare`: each `not_rescuable` cause with the exact `detail.inputs` (several nulls named together; D = 0; D < 0; R <= 0; I <= 0; empty years; b NaN, Infinity, negative); firm defect reported before a b defect; `delta_out_of_range` for -0.01, 0.0500001, NaN without clamping; unsorted years pick the highest `fy`; sigma and g clamps at both ends; D = 0 before treatment is `not_rescuable` and never debt-free
     - `diagnose`: E <= 0 gives null needed EBIT increase and null needed debt cut but still returns `shockedIcr` and `neededRate`; `belowCoverageFor` with 0, -0, 1e-16 and null
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.11, 4.13, 4.14, 5.4, 5.8, 14.2, 14.8, 15.5_
@@ -135,12 +135,12 @@ All commands run from `web` in PowerShell, chained with `;`.
     - `applyTreatment(firm, treatment, delta, macro)` = validate in Validation_Order (delta, treatment, firm, b) + `applyCore(inputs, canonical, 0.7)`
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.1, 7.9, 14.1, 14.3, 14.4, 14.6, 14.7, 14.9_
 
-  - [~] 6.3 Write property test for refinance cost in `web/src/engine/refinance.cost.property.test.ts`
+  - [x] 6.3 Write property test for refinance cost in `web/src/engine/refinance.cost.property.test.ts`
     - **Property 16: Refinance never raises annual interest cost (RR-7, amended)**
     - Treatments always contain refinance; assert `applied === (1.02 * newRate < oldRate)` when D'pre > 0, the rate, effRate and debt rules for both branches, `interest <= debtPreFee * oldRate` exactly, and no change and no fee when D'pre = 0; `numRuns >= 100`; apply the counterexample rule
     - **Validates: Requirements 7.5, 7.6, 7.7, 7.8, 13.8**
 
-  - [~] 6.4 Write property test for RR-3 in `web/src/engine/apply.rr3.property.test.ts`
+  - [x] 6.4 Write property test for RR-3 in `web/src/engine/apply.rr3.property.test.ts`
     - **Property 10: No treatment and no shock leave coverage unchanged (RR-3)**
     - Empty Treatment, delta = 0: `applyTreatment(...).year0.icr` and `diagnose(...).shockedIcr` equal `icr(E, I)` within relative 1e-12; `numRuns >= 100`
     - **Validates: Requirements 5.6, 13.4**
@@ -186,7 +186,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - `drawBlock` calls `next` exactly 6 times; recovery and haircut lie in their ranges; a generator returning `1 - 2 ** -32` gives finite eps
     - _Requirements: 8.3, 8.4, 15.6_
 
-  - [~] 7.5 Write unit tests for the hash and seed in `web/src/engine/hash.unit.test.ts`
+  - [x] 7.5 Write unit tests for the hash and seed in `web/src/engine/hash.unit.test.ts`
     - Published FNV-1a vectors: `fnv1a32("") = 0x811c9dc5`, `fnv1a32("a") = 0xe40c292c`, `fnv1a32("foobar") = 0xbf9cf968`, each asserted twice
     - `seedFrom('9000000001', [{ name: 'cut_costs', params: { c: 0.05 } }], '2025-02-20')`: compute once by running the code, pin the value, and cross-check it inside the test against an FNV-1a implementation written in the test over the expected input string `9000000001|cut_costs,c=0.05|2025-02-20`; assert twice
     - Distinct seeds when only the cik, only a tool parameter, only the tool set, or only the date differs

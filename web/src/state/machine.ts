@@ -9,10 +9,10 @@ import type {
   RateShock,
   Rejection,
   Result,
-  ToolChoice,
   Treatment,
   TransitionOutcome,
 } from './types';
+import { parseTreatment as parseEngineTreatment } from '../engine/treatment';
 
 export const MAX_TOOLS = 3;
 export const MAX_RATE_SHOCK = 0.05;
@@ -70,31 +70,11 @@ export function parseResult(v: unknown): Parsed<Result> {
   return { ok: false, reason: 'Result must be revived, undead or liquidated' };
 }
 
+/** Delegates to the engine parser; returns the canonical (sorted, validated) treatment. */
 export function parseTreatment(v: unknown): Parsed<Treatment> {
-  if (!Array.isArray(v)) return { ok: false, reason: 'Treatment must be an array of tools' };
-  if (v.length > MAX_TOOLS) {
-    return { ok: false, reason: `Treatment can hold at most ${MAX_TOOLS} tools` };
-  }
-  const tools: ToolChoice[] = [];
-  for (const raw of v as unknown[]) {
-    if (typeof raw !== 'object' || raw === null) {
-      return { ok: false, reason: 'Each tool must be an object' };
-    }
-    const { name, params } = raw as { name?: unknown; params?: unknown };
-    if (typeof name !== 'string' || name.length === 0) {
-      return { ok: false, reason: 'Each tool needs a non-empty name' };
-    }
-    if (typeof params !== 'object' || params === null || Array.isArray(params)) {
-      return { ok: false, reason: 'Each tool needs a params record' };
-    }
-    const out: Record<string, number | boolean> = {};
-    for (const [k, p] of Object.entries(params)) {
-      if (typeof p === 'boolean' || (typeof p === 'number' && Number.isFinite(p))) out[k] = p;
-      else return { ok: false, reason: `Tool param "${k}" must be a finite number or boolean` };
-    }
-    tools.push({ name, params: out });
-  }
-  return { ok: true, value: tools };
+  const r = parseEngineTreatment(v);
+  if (!r.ok) return { ok: false, reason: r.error.message };
+  return { ok: true, value: r.value };
 }
 
 // ---------- machine ----------
