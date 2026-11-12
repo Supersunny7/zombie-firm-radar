@@ -21,6 +21,20 @@ export class EditNotImplemented extends Error {
   }
 }
 
+/** splitMesh cannot divide the mesh as asked with gltf-transform alone; the agent asks the user (37.3). */
+export class SplitImpossible extends Error {
+  constructor({ pick, mesh, reason }) {
+    super(
+      `pick ${pick ?? '(unknown)'}: edit splitMesh: cannot split mesh "${mesh}": ${reason}. ` +
+        'Options: choose other component numbers, split by node, or supply a model whose parts are separate; Blender is not used.',
+    );
+    this.name = 'SplitImpossible';
+    this.pick = pick ?? null;
+    this.mesh = mesh;
+    this.reason = reason;
+  }
+}
+
 /** decimate could not reach the target within the fixed 5-step error search. */
 export class DecimateUnreachable extends Error {
   constructor({ pick, target, reached }) {

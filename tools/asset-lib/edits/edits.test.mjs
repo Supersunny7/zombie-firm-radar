@@ -50,7 +50,7 @@ describe('applyEdits', () => {
     const doc = sceneWith([{ name: 'A' }, { name: 'B' }]);
     await applyEdits(doc, [{ op: 'removeNode', node: 'A' }, { op: 'removeNode', node: 'A' }], { strict: false });
     expect(names(doc)).toEqual(['B']);
-    await expect(applyEdits(doc, [{ op: 'splitMesh' }])).rejects.toBeInstanceOf(EditNotImplemented);
+    await expect(applyEdits(doc, [{ op: 'notARealOp' }])).rejects.toBeInstanceOf(EditNotImplemented);
   });
 });
 

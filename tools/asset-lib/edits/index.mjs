@@ -8,9 +8,10 @@ import { decimate } from './decimate.mjs';
 import { EditNotImplemented } from './errors.mjs';
 import { removeNode } from './remove-node.mjs';
 import { selectVariant } from './select-variant.mjs';
+import { splitMesh } from './split-mesh.mjs';
 import { darken, desaturate, grime } from './texture-edits.mjs';
 
-export { DecimateUnreachable, EditNotImplemented, EditTargetMissing } from './errors.mjs';
+export { DecimateUnreachable, EditNotImplemented, EditTargetMissing, SplitImpossible } from './errors.mjs';
 export { countTriangles } from './decimate.mjs';
 
 const OPS = new Map([
@@ -20,6 +21,7 @@ const OPS = new Map([
   ['desaturate', desaturate],
   ['darken', darken],
   ['grime', grime],
+  ['splitMesh', splitMesh],
 ]);
 
 /** Register (or replace) an op implementation; used by the texture and splitMesh modules. */
