@@ -97,7 +97,9 @@ describe('display safety', () => {
 
           const out = unwrap(drawOutcome(firm, treatment, delta, macro, seed));
           expectDisplaySafe('outcome', out);
-          out.years.forEach((y, i) => expectCoverageView(`outcome.years[${i}].coverage`, y.coverage));
+          out.years.forEach((y, i) =>
+            expectCoverageView(`outcome.years[${i}].coverage`, y.coverage),
+          );
         },
       ),
       { numRuns: 200 },

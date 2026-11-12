@@ -398,11 +398,11 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Run it once with `pnpm exec vitest bench --run src/engine/simulate.bench.ts` and record the median time per combination, the machine and the Node version under "Benchmark results" in the Notes section of this file; if any median exceeds 16 ms, note that the terminate-on-cancel fallback needs reconsidering and tell the user
     - _Requirements: 12.16_
 
-- [-] 15. Checkpoint: full engine
+- [x] 15. Checkpoint: full engine
   - From `web`, run `pnpm typecheck; pnpm lint; pnpm format; pnpm test`. Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 16. Steering amendments
-  - [~] 16.1 Update `.kiro/steering/rescue-rules.md` with a normal file edit
+  - [-] 16.1 Update `.kiro/steering/rescue-rules.md` with a normal file edit
     - Record the remaining amendments from the design: fixed Canonical_Order (cut_costs, sell_assets, debt_for_equity, refinance) regardless of click order; the per-path Random_Block (recovery, haircut, eps1, eps2, eps3 drawn in this order, 6 uniforms per path, whatever the treatment); typed errors instead of clamping for delta, tool parameters, paths and seeds (only sigma, g and outputs are clamped); `seedFrom` uses the UTC date in YYYY-MM-DD form; same-day determinism holds within one JavaScript engine, with one-ulp differences in `Math.log`, `Math.cos`, `Math.sin` across browsers accepted for v1
     - Check that the Req 16.1 amendments (refinance fee rule and interest form, hint scan, amended properties 1, 2 and 7) are still present; add any that are missing
     - _Requirements: 16.1, 16.3_
