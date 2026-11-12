@@ -45,6 +45,20 @@ describe('CreditsDialog', () => {
     expect(screen.getByRole('button', { name: 'Close' })).toHaveFocus();
   });
 
+  it('renders entries as a list with a safe external source link', async () => {
+    await openCredits(
+      '# Credits\nIntro text.\n| Path | Title | Author | Source URL | License | Changes we made |\n| --- | --- | --- | --- | --- | --- |\n| p/a.glb | Crows | giddster | https://freesound.org/s/1/ | CC0 | Kept |\n| p/b.glb | Bad | Eve | javascript:alert(1) | MIT | none |',
+    );
+    expect(await screen.findByText('Intro text.')).toBeInTheDocument();
+    expect(screen.getAllByRole('listitem')).toHaveLength(2);
+    const link = screen.getByRole('link', { name: 'Source for Crows' });
+    expect(link).toHaveAttribute('href', 'https://freesound.org/s/1/');
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    expect(screen.queryByRole('link', { name: 'Source for Bad' })).not.toBeInTheDocument();
+    expect(screen.queryByText(/\| ---/)).not.toBeInTheDocument();
+  });
+
   it('shows the empty message for empty text', async () => {
     await openCredits('  ');
     expect(await screen.findByText('No credits are available.')).toBeInTheDocument();

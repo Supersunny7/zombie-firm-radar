@@ -4,7 +4,6 @@ import { describe, expect, it } from 'vitest';
 import { formatIcr } from './format';
 
 const RUNS = 200;
-const EPS = 1e-9;
 
 describe('Property 8: ICR formatting', () => {
   it('finite values give two decimals, no -0.00, and parse within rounding tolerance', () => {
@@ -14,7 +13,9 @@ describe('Property 8: ICR formatting', () => {
         const s = formatIcr(v);
         expect(s).toMatch(/^-?\d+\.\d{2}$/);
         expect(s).not.toBe('-0.00');
-        expect(Math.abs(Number(s) - v)).toBeLessThanOrEqual(0.005 + EPS);
+        expect(Math.abs(Number(s) - v)).toBeLessThanOrEqual(
+          0.005 + 4 * Number.EPSILON * Math.abs(v),
+        );
       }),
       { numRuns: RUNS },
     );

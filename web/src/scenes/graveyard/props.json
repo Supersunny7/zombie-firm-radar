@@ -1,0 +1,52 @@
+{
+  "gate": { "anchor": "behindLast", "offset": [0, 0, -6], "yaw": 0, "scale": 3 },
+  "statue": { "anchor": "plot:0", "offset": [-7.5, 0, -4], "yaw": 0.6, "scale": 1 },
+  "trunk": { "anchor": "plot:0", "offset": [8.5, 0, -2.5], "yaw": 1.2, "scale": 1 },
+  "stumps": [
+    { "model": 0, "anchor": "plot:0", "offset": [-5, 0, 1], "yaw": 0.3, "scale": 0.9 },
+    { "model": 1, "anchor": "plot:0", "offset": [6.2, 0, 3.8], "yaw": 2.1, "scale": 1 },
+    { "model": 0, "anchor": "plot:0", "offset": [-9.4, 0, 5.2], "yaw": 4.0, "scale": 0.8 },
+    { "model": 1, "anchor": "plot:0", "offset": [10.6, 0, -6.5], "yaw": 5.2, "scale": 1.1 }
+  ],
+  "lantern": {
+    "anchor": "plot:0",
+    "offset": [3.2, 0, 4.2],
+    "yaw": 0,
+    "scale": 1.6,
+    "light": { "color": "#ff9a4a", "intensity": 8, "distance": 14, "decay": 2, "height": 0.3 }
+  },
+  "rubble": [
+    { "anchor": "plot:0", "offset": [-2.1, 0, 5.6], "yaw": 0.4, "scale": 0.3 },
+    { "anchor": "plot:0", "offset": [-1.2, 0, 6.4], "yaw": 1.9, "scale": 0.18 },
+    { "anchor": "plot:0", "offset": [0.8, 0, 5.1], "yaw": 3.1, "scale": 0.25 },
+    { "anchor": "plot:0", "offset": [2.4, 0, 6.8], "yaw": 0.9, "scale": 0.4 },
+    { "anchor": "plot:0", "offset": [4.9, 0, 5.9], "yaw": 2.6, "scale": 0.22 },
+    { "anchor": "plot:0", "offset": [-6.3, 0, 3.4], "yaw": 5.0, "scale": 0.35 },
+    { "anchor": "plot:0", "offset": [-6.9, 0, 2.6], "yaw": 1.1, "scale": 0.16 },
+    { "anchor": "plot:0", "offset": [-8.2, 0, -1.3], "yaw": 4.2, "scale": 0.28 },
+    { "anchor": "plot:0", "offset": [-8.8, 0, -2.4], "yaw": 0.2, "scale": 0.5 },
+    { "anchor": "plot:0", "offset": [-6.1, 0, -5.1], "yaw": 2.8, "scale": 0.2 },
+    { "anchor": "plot:0", "offset": [-7.9, 0, -3.1], "yaw": 3.6, "scale": 0.24 },
+    { "anchor": "plot:0", "offset": [7.4, 0, -1.2], "yaw": 5.7, "scale": 0.3 },
+    { "anchor": "plot:0", "offset": [9.9, 0, -3.9], "yaw": 1.5, "scale": 0.45 },
+    { "anchor": "plot:0", "offset": [7.1, 0, -4.4], "yaw": 0.7, "scale": 0.17 },
+    { "anchor": "plot:0", "offset": [11.2, 0, -1.8], "yaw": 2.3, "scale": 0.26 },
+    { "anchor": "plot:0", "offset": [5.6, 0, 1.9], "yaw": 4.7, "scale": 0.21 },
+    { "anchor": "plot:0", "offset": [3.9, 0, 2.7], "yaw": 3.3, "scale": 0.15 },
+    { "anchor": "plot:0", "offset": [-3.4, 0, 7.9], "yaw": 1.3, "scale": 0.33 },
+    { "anchor": "plot:0", "offset": [0.2, 0, 8.6], "yaw": 5.4, "scale": 0.19 },
+    { "anchor": "plot:0", "offset": [-10.5, 0, 1.4], "yaw": 2.0, "scale": 0.38 },
+    { "anchor": "plot:0", "offset": [12.4, 0, 2.2], "yaw": 0.5, "scale": 0.27 },
+    { "anchor": "plot:0", "offset": [8.3, 0, 7.1], "yaw": 3.9, "scale": 0.23 },
+    { "anchor": "plot:0", "offset": [-4.7, 0, -7.2], "yaw": 4.4, "scale": 0.31 },
+    { "anchor": "plot:0", "offset": [2.6, 0, -8.3], "yaw": 1.7, "scale": 0.2 }
+  ],
+  "cobwebs": [
+    { "mesh": 0, "anchor": "plot:0", "offset": [-7.1, 1.2, -3.7], "yaw": 0.6, "scale": 0.012 },
+    { "mesh": 1, "anchor": "plot:0", "offset": [-7.9, 0.9, -4.3], "yaw": 2.4, "scale": 0.01 },
+    { "mesh": 2, "anchor": "plot:0", "offset": [8.2, 0.35, -2.3], "yaw": 1.2, "scale": 0.012 },
+    { "mesh": 0, "anchor": "plot:0", "offset": [-4.6, 0.5, 1.2], "yaw": 3.5, "scale": 0.009 },
+    { "mesh": 1, "anchor": "plot:0", "offset": [3.0, 0.6, 3.9], "yaw": 5.1, "scale": 0.01 },
+    { "mesh": 2, "anchor": "plot:0", "offset": [-9.1, 0.5, 5.0], "yaw": 0.9, "scale": 0.009 }
+  ]
+}

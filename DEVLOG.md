@@ -279,3 +279,14 @@
 2026-11-12 | graveyard-scene | 8.2 | Added polite visually hidden LiveRegion and announce helper. | ui/graveyard/LiveRegion.tsx, LiveRegion.test.tsx
 2026-11-12 | graveyard-scene | 7.3 | Added LightsButton (350 ms guard) and SoundButton, mounted in Hud. | ui/controls/LightsButton.tsx, SoundButton.tsx, Hud.tsx, HudToggles.test.tsx
 2026-11-12 | graveyard-scene | 8.3 | TableView uses shock view, sector filter, shocked columns and opens shared FileCard. | ui/table/TableView.tsx, TableView.test.tsx
+2026-11-12 | graveyard-scene | 10.1 | Pinned postprocessing, @react-three/postprocessing, CSM exactly; stabilised formatIcr property tolerance. | web/package.json, pnpm-lock.yaml, formatIcr.property.test.ts
+2026-11-12 | graveyard-scene | 10.2 | Added typed ASSET_KEYS/assetUrl/pickAudioKey; Credits dialog renders parsed entries. | scenes/graveyard/assets.ts, ui/parseCredits.ts, ui/CreditsDialog.tsx
+2026-11-12 | graveyard-scene | 10.3 | Added STONE_MODELS, clipFlap, modelFor and measureModel with unit tests. | scenes/graveyard/model/stoneModels.ts, clipFlap.ts, modelFor.ts, measureModel.ts
+2026-11-12 | graveyard-scene | 11.1 | Replaced placeholder with Canvas scene shell: WebGL fallback, ready flag, context-lost handling, HUD. | scenes/graveyard/GraveyardScene.tsx
+2026-11-12 | graveyard-scene | 13.1 | Added pure sceneParams with fog, light and ground values per lights mode and shock. | model/sceneParams.ts, sceneParams.test.ts
+2026-11-12 | graveyard-scene | 11.2 | Added StoneMaterial and instanced Stones (3 meshes), visibleStones, stoneGeometry, reportAssetError. | fx/StoneMaterial.tsx, r3f/Stones.tsx, layout/visible.ts, GraveyardScene.tsx
+2026-11-12 | graveyard-scene | 12.1 | Added pure deriveFaceAnchor and engravingText with unit tests. | model/deriveFaceAnchor.ts, engravingText.ts, engraving.test.ts
+2026-11-12 | graveyard-scene | 11.3 | Added canvas pointer picking: hover, click opens card, announce, hover-change subscription. | r3f/PointerInput.tsx, pointerPick.ts, GraveyardScene.tsx
+2026-11-12 | graveyard-scene | 12.2 | Added 13-slot Decal engraving pool with canvas textures, pure pool selection and crack polyline. | r3f/Engravings.tsx, engravingPool.ts, engravingCanvas.ts, GraveyardScene.tsx
+2026-11-12 | graveyard-scene | 13.4 | Added SceneLights, Sky (1k to 2k HDRI), Ground, GroundFog and HUD notices region. | scenes/graveyard/r3f/*, GraveyardScene.tsx, GraveyardHud.tsx
+2026-11-12 | graveyard-scene | 13.5 | Added props.json, pure resolveProps and lazy Props (gate, statue, rubble, cobwebs, lantern). | graveyard/props.json, props.ts, r3f/Props.tsx, GraveyardScene.tsx

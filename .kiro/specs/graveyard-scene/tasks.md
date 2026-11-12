@@ -307,19 +307,19 @@ What to check:
 
 ### Batch 4: Models, stones, picking, engravings, ground, fog, props
 
-- [ ] 10. Remaining packages, asset keys and stone model logic
-  - [~] 10.1 Install the remaining approved pins
+- [x] 10. Remaining packages, asset keys and stone model logic
+  - [x] 10.1 Install the remaining approved pins
     - Run: `Set-Location web; pnpm add --save-exact @react-three/postprocessing@3.2.2 postprocessing@6.39.6 three-custom-shader-material@6.4.0`
     - Verify exact pins and that peer ranges are satisfied (three 0.187.0).
     - _Requirements: 21.13_
     - _Design: Research summary, Decision 3_
 
-  - [~] 10.2 Implement `web/src/scenes/graveyard/assets.ts`
+  - [x] 10.2 Implement `web/src/scenes/graveyard/assets.ts`
     - Typed `ASSET_KEYS` from the design table, `assetUrl(key)` (null when not in `manifest.json`), `pickAudioKey(base)` (ogg then mp3), critical key list for the bundle check. No Ruella key.
     - _Requirements: 4.8, 8.4, 14.2, 16.10, 21.12_
     - _Design: Section 8 (asset keys)_
 
-  - [~] 10.3 Implement `model/stoneModels.ts`, `model/clipFlap.ts`, `model/modelFor.ts`
+  - [x] 10.3 Implement `model/stoneModels.ts`, `model/clipFlap.ts`, `model/modelFor.ts`
     - Measured origin/body/`flapClip` per model (Intact `{zMin 8, yMax 14}`, Cracked `{8, 18}`, Broken `null`), `clipFlap` returning a new index list, `modelFor(status, newlyUndead)`, `measureModel()`. Document the flap measurements in comments. No react/three in the pure parts.
     - _Requirements: 4.1, 4.2, 4.4, 4.5, 4.6, 4.10_
     - _Design: Section 4_
@@ -337,20 +337,20 @@ What to check:
     - Never drops a triangle fully outside the flap region, always drops one with a vertex inside.
     - _Requirements: 4.4_
 
-- [ ] 11. Scene shell, instanced stones and pointer picking
-  - [~] 11.1 Create `web/src/scenes/graveyard/GraveyardScene.tsx` (default export)
+- [x] 11. Scene shell, instanced stones and pointer picking
+  - [x] 11.1 Create `web/src/scenes/graveyard/GraveyardScene.tsx` (default export)
     - Look up `Canvas` props, `useFrame`, `useGLTF`, `Suspense`, ACES tone mapping and `onCreated` with context7 first.
     - Canvas with `hasWebGL()` fallback, error boundary per model, `data-graveyard-ready="true"` after the first rendered frame, context-lost handling, `dpr` and shadow setup. Path and default export must satisfy `check-bundle.mjs`. Mount from `SceneHost` (unchanged) and `GraveyardHud`.
     - _Requirements: 7.9, 21.9_
     - _Design: Architecture, Error Handling (WebGL), Section 17_
 
-  - [~] 11.2 Implement `fx/StoneMaterial.tsx` and `r3f/Stones.tsx`
+  - [x] 11.2 Implement `fx/StoneMaterial.tsx` and `r3f/Stones.tsx`
     - Look up three-custom-shader-material and `InstancedMesh` APIs (`setMatrixAt`, `setColorAt`, `computeBoundingSphere`) with context7 first.
     - Three `instancedMesh` (one per model, `raycast` disabled), opaque single-sided materials, flap clip at load, instance compaction by `visibleStones`, 0.45 colour multiplier for `insufficient_data`, swap to Broken for Newly_Undead, `reportAssetError` and HUD notice on a failed model.
     - _Requirements: 4.1, 4.2, 4.3, 4.5, 4.6, 4.8, 4.9, 4.10_
     - _Design: Section 4_
 
-  - [~] 11.3 Implement pointer input and hover/focus store updates
+  - [x] 11.3 Implement pointer input and hover/focus store updates
     - Ray from camera through pointer, `pickStone`, `setHovered` only on change, file card opens within 100 ms, engraving set trigger; stones are not DOM nodes.
     - _Requirements: 12.1, 12.2, 12.3, 12.4_
     - _Design: Sections 3, 12_
@@ -359,13 +359,13 @@ What to check:
     - File `GraveyardScene.test.tsx` (jsdom, mocked Canvas/`useFrame`): exactly 3 stone `instancedMesh` for 3 and for 3,000 firms (4.3), "Mock data"/"Sample data" labels within 500 ms (1.2, 1.4), WebGL fallback text.
     - _Requirements: 1.2, 1.4, 4.3_
 
-- [ ] 12. Engraving pool
-  - [~] 12.1 Implement `model/deriveFaceAnchor.ts` and `model/engravingText.ts`
+- [x] 12. Engraving pool
+  - [x] 12.1 Implement `model/deriveFaceAnchor.ts` and `model/engravingText.ts`
     - Pure face-anchor finder (nearly vertical +z/-z face cluster) and engraving text layout (name, 4-digit year, `ICR x.xx`/`ICR n/a`) with `formatIcr`.
     - _Requirements: 5.1, 5.7_
     - _Design: Section 5_
 
-  - [~] 12.2 Implement `r3f/Engravings.tsx`
+  - [x] 12.2 Implement `r3f/Engravings.tsx`
     - Look up drei `Decal` and `CanvasTexture` usage with context7 first.
     - 13 slots (proxy mesh + `Decal` + canvas texture), rebuild on hover/focus change with `nearestToRay`, keep content when nothing is hovered, `document.fonts.load` with a 300 ms cap and generic serif/mono fallback, crack polyline for `endangered`.
     - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.8, 5.9, 5.10_
@@ -380,8 +380,8 @@ What to check:
     - Property on synthetic boxes and an example on the real Intact geometry.
     - _Requirements: 5.1_
 
-- [ ] 13. Ground, sky, fog, lights and props
-  - [~] 13.1 Implement `model/sceneParams.ts`
+- [x] 13. Ground, sky, fog, lights and props
+  - [x] 13.1 Implement `model/sceneParams.ts`
     - `plotFogWeight`, `CameraFogState`, `sceneParams(lights, delta, cam)` with all colours, intensities, fog densities (Overview 0.02/0.015, Plot 0.085/0.05), layer opacities `base * factor * (1 + 0.5 * delta / 0.05)`, and ground distance constants (480 m ground, nearest edge 240 m).
     - _Requirements: 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.11, 7.12, 7.14, 7.15, 7.16, 7.17_
     - _Design: Section 7, Decision 6_
@@ -396,13 +396,13 @@ What to check:
     - **Property 42: Fog follows the camera move progress**
     - **Validates: Requirements 7.14, 7.15, 7.16, 7.17, 11.10**
 
-  - [~] 13.4 Implement `r3f/SceneLights.tsx`, `Ground.tsx`, `Sky.tsx`, `GroundFog.tsx`
+  - [x] 13.4 Implement `r3f/SceneLights.tsx`, `Ground.tsx`, `Sky.tsx`, `GroundFog.tsx`
     - Look up drei `Environment` (`files`, `background`, `backgroundIntensity`, `environmentIntensity`), `FogExp2`, shadow camera and texture APIs with context7 first.
     - Eased lights blend (about 0.5 s), camera term not eased, moon and hemisphere lights, 480 m soil ground following the camera on a 4 m snap, 1k HDRI then 2k swap without a blank frame, three fog layers, failure fallback (flat `#0b0806` ground, HUD notice "An environment asset failed to load.").
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 7.11, 7.12, 7.13, 7.14, 7.18, 8.7, 8.8, 8.9, 17.2_
     - _Design: Section 7_
 
-  - [~] 13.5 Add `props.json`, `props.ts` and `r3f/Props.tsx`
+  - [x] 13.5 Add `props.json`, `props.ts` and `r3f/Props.tsx`
     - Gate (1), statue (1), trunk (1), stumps (2 to 8), rubble (10 to 60, procedural icosahedron with lichen textures, one InstancedMesh), cobweb cards (2 to 10 from the existing pack), lantern with `#ff9a4a` point light. Anchors `world`, `plot:n`, `behindLast`. Skip with `console.warn` when a key is not in the manifest or fails to load. Start loading from a `requestAnimationFrame` after the first frame.
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.10_
     - _Design: Section 8, Lazy-loading plan_

@@ -379,6 +379,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502855641
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794505757241
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794505932429
       }
     ],
     "10.2 Implement `web/src/scenes/graveyard/assets.ts`": [
@@ -386,6 +396,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502855740
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794505757395
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794505933330
       }
     ],
     "10.3 Implement `model/stoneModels.ts`, `model/clipFlap.ts`, `model/modelFor.ts`": [
@@ -393,6 +413,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502855840
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794505937701
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794506071261
       }
     ],
     "11.1 Create `web/src/scenes/graveyard/GraveyardScene.tsx` (default export)": [
@@ -400,6 +430,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502855948
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794505938184
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794506071599
       }
     ],
     "11.2 Implement `fx/StoneMaterial.tsx` and `r3f/Stones.tsx`": [
@@ -407,6 +447,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502856056
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794506076123
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794506695627
       }
     ],
     "11.3 Implement pointer input and hover/focus store updates": [
@@ -414,6 +464,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502856148
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794506704469
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794506824685
       }
     ],
     "12.1 Implement `model/deriveFaceAnchor.ts` and `model/engravingText.ts`": [
@@ -421,6 +481,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502856249
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794506076995
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794506696541
       }
     ],
     "12.2 Implement `r3f/Engravings.tsx`": [
@@ -428,6 +498,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502856356
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794506828013
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794507243052
       }
     ],
     "13.1 Implement `model/sceneParams.ts`": [
@@ -435,6 +515,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502856459
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794506077506
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794506695187
       }
     ],
     "13.4 Implement `r3f/SceneLights.tsx`, `Ground.tsx`, `Sky.tsx`, `GroundFog.tsx`": [
@@ -442,6 +532,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502856554
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794507246621
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794507773310
       }
     ],
     "13.5 Add `props.json`, `props.ts` and `r3f/Props.tsx`": [
@@ -449,6 +549,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502856653
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794507776442
+      },
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794508001710
       }
     ],
     "14.1 Implement `layout/camera.ts`": [
@@ -690,6 +800,34 @@
         "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794505006885
+      }
+    ],
+    "10. Remaining packages, asset keys and stone model logic": [
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794506071454
+      }
+    ],
+    "11. Scene shell, instanced stones and pointer picking": [
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794506824799
+      }
+    ],
+    "12. Engraving pool": [
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794507243199
+      }
+    ],
+    "13. Ground, sky, fog, lights and props": [
+      {
+        "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794508001869
       }
     ]
   }
