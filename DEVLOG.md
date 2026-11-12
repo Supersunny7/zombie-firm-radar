@@ -254,3 +254,6 @@
 2026-11-12 | asset-pipeline | 27.2 | Construction male face box is a separate wire face-shield primitive; removed via removeNode material target | tools/asset-lib/edits/remove-node.mjs, picks.json
 2026-11-12 | asset-pipeline | 27.3 | Rendered construction male head after face-shield removal; face clear, helmet intact | reference/progress/
 2026-11-12 | asset-pipeline | 27.4 | 352 tests pass, idempotent rerun, auditor clean; committed avatar fixes as 8368a1e | tools/, web/public/assets, CREDITS.md
+2026-11-12 | graveyard-scene | 1.1 | Installed exact-pinned drei and playwright. | web/package.json, web/pnpm-lock.yaml
+2026-11-12 | graveyard-scene | 1.2 | Added hand wrist constants and dev-only Craggle hand close-up page. | handConstants.ts, HandCloseup.tsx, mount.tsx, main.tsx
+2026-11-12 | graveyard-scene | 1.3 | Added Chrome launcher and hand-closeup screenshot script. | web/scripts/lib/browser.mjs, web/scripts/hand-closeup.mjs

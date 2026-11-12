@@ -125,7 +125,7 @@ Commands run from `tools` (PowerShell, chain with `;`). Before starting, run `gi
   - Ensure all tests pass, ask the user if questions arise
   - _Requirements: 2.5, 3.5_
 
-- [-] 7. Commit
+- [x] 7. Commit
   - Run `git status` and confirm that only these paths changed for this fix: `tools/`, `web/public/assets/avatars`, `.kiro/agents/asset-auditor.md`, `.kiro/specs/avatar-textures-missing-fix/`, `reference/progress/`
   - Do not stage anything else. Do not use `git add -A` or `git add .`. In particular, leave `.playwright-mcp/` and any `tools/cache` output out of the commit. Keep `tools/cache` out of git if it is not already ignored
   - Stage: `git add tools web/public/assets/avatars .kiro/agents/asset-auditor.md .kiro/specs/avatar-textures-missing-fix reference/progress/avatar-textures-fixed.png`

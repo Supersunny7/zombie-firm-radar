@@ -1,0 +1,38 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Craggle hand close-up for the wrist-end check": [
+      {
+        "executionId": "0301cdaa-b5e1-43e4-8a99-14c489f7a6a0",
+        "chatSessionId": "sess_ac724b8a-ed80-410e-865e-f571c512307a",
+        "timestamp": 1794502213553
+      },
+      {
+        "executionId": "0301cdaa-b5e1-43e4-8a99-14c489f7a6a0",
+        "chatSessionId": "sess_ac724b8a-ed80-410e-865e-f571c512307a",
+        "timestamp": 1794502385362
+      }
+    ],
+    "1.1 Install only the packages the close-up needs": [
+      {
+        "executionId": "0301cdaa-b5e1-43e4-8a99-14c489f7a6a0",
+        "chatSessionId": "sess_ac724b8a-ed80-410e-865e-f571c512307a",
+        "timestamp": 1794502384832
+      }
+    ],
+    "1.2 Add `HAND_WRIST_END` constants and the dev-only close-up page": [
+      {
+        "executionId": "0301cdaa-b5e1-43e4-8a99-14c489f7a6a0",
+        "chatSessionId": "sess_ac724b8a-ed80-410e-865e-f571c512307a",
+        "timestamp": 1794502385042
+      }
+    ],
+    "1.3 Write the shared Chrome launcher and `hand-closeup.mjs`": [
+      {
+        "executionId": "0301cdaa-b5e1-43e4-8a99-14c489f7a6a0",
+        "chatSessionId": "sess_ac724b8a-ed80-410e-865e-f571c512307a",
+        "timestamp": 1794502385245
+      }
+    ]
+  }
+}

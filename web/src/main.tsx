@@ -10,8 +10,11 @@ import '@fontsource/jetbrains-mono/latin-500.css';
 import './index.css';
 import App from './App';
 
+if (import.meta.env.DEV && new URLSearchParams(location.search).get('view') === 'hand-closeup') {
+  await import('./dev/handCloseup/mount');
+}
 const root = document.getElementById('root');
-if (root) {
+if (root && !document.body.dataset.zfr) {
   createRoot(root).render(
     <StrictMode>
       <App />

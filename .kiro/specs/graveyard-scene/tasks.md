@@ -19,15 +19,15 @@ Rules for the executor:
 
 ### Batch 1: Craggle hand close-up (alone)
 
-- [ ] 1. Craggle hand close-up for the wrist-end check
-  - [ ] 1.1 Install only the packages the close-up needs
+- [x] 1. Craggle hand close-up for the wrist-end check
+  - [x] 1.1 Install only the packages the close-up needs
     - From the repo root run: `Set-Location web; pnpm add --save-exact @react-three/drei@10.7.9; pnpm add --save-dev --save-exact playwright@1.65.0`
     - The remaining approved pins (postprocessing, `postprocessing`, three-custom-shader-material) are installed later in task 10.1.
     - Confirm `package.json` has no range prefixes on react, fiber and drei.
     - _Requirements: 21.13_
     - _Design: Research summary (package versions), Decision 3_
 
-  - [ ] 1.2 Add `HAND_WRIST_END` constants and the dev-only close-up page
+  - [x] 1.2 Add `HAND_WRIST_END` constants and the dev-only close-up page
     - Look up `useGLTF`, `Environment`/lights and `OrbitControls`-free camera setup with context7 before writing code.
     - Create `web/src/scenes/graveyard/model/handConstants.ts` exporting `HAND_WRIST_END: 1 | -1 = 1` and `HAND_PRINCIPAL_AXIS = [0.887, 0.065, 0.456]`.
     - Create `web/src/dev/handCloseup/HandCloseup.tsx` and `mount.tsx`: only the Craggle hand (`useGLTF(url, false)`, key from `manifest.json`), neutral grey background, fixed key light, ground grid, legend with a green sphere at the proposed wrist end and a red sphere at the opposite end, axis helper, label "wrist end = +axis" or "-axis". Camera angle comes from `?angle=top|side|front|three-quarter-left|three-quarter-right|rising-preview`; `rising-preview` shows the pose at progress 1 (wrist pivot at the ground, hand pointing up).
@@ -36,7 +36,7 @@ Rules for the executor:
     - _Requirements: 14.2, 21.12_
     - _Design: Section 9 (Craggle hand close-up), Decision 2_
 
-  - [ ] 1.3 Write the shared Chrome launcher and `hand-closeup.mjs`
+  - [x] 1.3 Write the shared Chrome launcher and `hand-closeup.mjs`
     - Create `web/scripts/lib/browser.mjs`: `chromium.launch({ channel: 'chrome', headless: false })` with no fallback to bundled Chromium; helper to check that a URL answers HTTP 200 within 10 s.
     - Create `web/scripts/hand-closeup.mjs` (`--url`, default `http://localhost:5173`): opens `/?view=hand-closeup&angle=<name>` for the six angles at 1280 x 960, saves `reference/progress/craggle-hand-{angle}.png`, prints the six paths, exits non-zero if the server is unreachable, Chrome cannot launch or a file was not written. It never starts a server.
     - After the code is written, the user starts `pnpm dev` in a separate terminal and the script is run once: `Set-Location web; node scripts/hand-closeup.mjs --url http://localhost:5173`. If the dev server is not running, say so and leave the run to the user.
