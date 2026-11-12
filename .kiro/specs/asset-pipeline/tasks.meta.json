@@ -809,6 +809,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470510528
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471156871
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471294946
       }
     ],
     "16.2 Implement `cache.mjs`, `archive.mjs` and the manual-cache reader": [
@@ -816,6 +826,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470512031
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471157565
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471296423
       }
     ],
     "17.1 Implement `convert-texture.mjs`": [
@@ -823,6 +843,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470512317
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471158085
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471296907
       }
     ],
     "17.2 Implement `convert-hdri.mjs`": [
@@ -830,6 +860,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470512443
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471159542
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471298409
       }
     ],
     "17.3 Implement `convert-model.mjs`": [
@@ -844,6 +884,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470512699
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471159906
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471298852
       }
     ],
     "17.5 Write property test for HDRI copy and width": [
@@ -1124,6 +1174,13 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794471140129
+      }
+    ],
+    "16. Download and cache": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794471296577
       }
     ]
   }

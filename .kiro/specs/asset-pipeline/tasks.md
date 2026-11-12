@@ -310,26 +310,26 @@ Working rules for every task:
     - **Property 9: Output paths follow kind and name and never escape**
     - **Validates: Requirements 14.4, 21.1, 21.9**
 
-- [ ] 16. Download and cache
-  - [~] 16.1 Implement `http.mjs` and `polyhaven.mjs`
+- [x] 16. Download and cache
+  - [x] 16.1 Implement `http.mjs` and `polyhaven.mjs`
     - Look up the Poly Haven API docs again (context7 or web) and record one live `GET /files/{id}` response each for an HDRI, a texture and a model as fixtures; confirm the JSON shape the design assumes, and fix the design note if it differs
     - `http.mjs`: User-Agent from `package.json` `repository.url`, 60 s timeout, 2 retries with 1 s and 2 s back-off, streaming to a `.part` file; `polyhaven.mjs`: `/files/{id}` client, resolution and format selection, `include` map handling, `size` and `md5` checks; only documented endpoints
     - Download sources: Poly Haven API, GitHub raw at the pinned SHA, OpenGameArt direct URLs
     - Unit tests with the recorded fixtures
     - _Requirements: 14.2, 14.5, 14.6, 19.7_
 
-  - [~] 16.2 Implement `cache.mjs`, `archive.mjs` and the manual-cache reader
+  - [x] 16.2 Implement `cache.mjs`, `archive.mjs` and the manual-cache reader
     - `isCached` with `.download.json` records (sizes and SHA-256); zero requests for cached picks
     - `archive.mjs`: zip extraction with fflate and `safeJoin` for every entry (zip-slip guard)
     - Manual-cache reader: read `targetFolder/expectedFile` (zip or single file) without any network request; if missing, report the expected file name and the source page URL, skip the pick and mark the run failed
     - _Requirements: 14.3, 14.7, 14.8, 14.9_
 
 - [ ] 17. Converters
-  - [~] 17.1 Implement `convert-texture.mjs`
+  - [x] 17.1 Implement `convert-texture.mjs`
     - `fitInside(w, h, L)`; sharp resize with `fit: inside`, `withoutEnlargement`, WebP quality 82 (normal maps 90); L is 2048 for `ground-main`, otherwise 1024; keep the alpha channel; no KTX2, no toktx; fixture test with a tiny PNG
     - _Requirements: 16.2, 16.6, 38.8_
 
-  - [~] 17.2 Implement `convert-hdri.mjs`
+  - [x] 17.2 Implement `convert-hdri.mjs`
     - Copy `.hdr` byte for byte, read the Radiance header width, accept only 2048 for `background` and 1024 for `environment`, fail the pick otherwise
     - _Requirements: 16.3, 16.7_
 
@@ -338,7 +338,7 @@ Working rules for every task:
     - NodeIO with `ALL_EXTENSIONS` and the Meshopt encoder; FBX through `fbx2gltf`; run the pick's Edit_List (task 18) after the FBX step and before `dedup`, `prune`, `resample` (avatars and animations only), `textureCompress` (WebP, 1024) and `meshopt`; write one self-contained GLB; copy the Rocketbox `LICENSE` beside Rocketbox avatars with its own manifest and credits entries; call `checkBip01` for Rocketbox avatars; report files over 5 MB with a suggestion and keep them; fixture test reading the GLB back and finding `EXT_meshopt_compression`
     - _Requirements: 16.1, 16.5, 16.8, 18.5, 34.3, 34.4, 34.5, 36.2_
 
-  - [~] 17.4 Implement `convert-audio.mjs`
+  - [x] 17.4 Implement `convert-audio.mjs`
     - `ffmpeg-static` path, `spawn` with an argument array (no shell), both `.ogg` (libvorbis) and `.mp3` (libmp3lame), bit-exact flags and no metadata; clear failure message if a codec is missing and no system ffmpeg fallback; fixture test with a 0.1 s WAV
     - _Requirements: 16.4, 19.4_
 

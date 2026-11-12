@@ -20,7 +20,13 @@ Findings that shaped the design (looked up on 2026-11; versions from `npm view`)
 - **sharp.** Version 0.35.5 ships prebuilt libvips through platform-specific optional dependencies (`@img/sharp-win32-x64`). No compile step runs on Windows.
 - **Zip extraction.** Node has no built-in zip reader. `fflate` 0.8.3 is pure JavaScript with no binary and is used for `.zip` packs (Kenney, Quaternius, ambientCG).
 
-Open point not yet verified: the exact JSON shape of `GET /files/{id}` for textures and models (the public page only shows the HDRI shape). The design assumes `textures[<map>][<res>][<fmt>] = { url, size, md5 }` and `gltf[<res>].gltf = { url, size, md5, include: { <relative path>: { url, size, md5 } } }`, and the implementation task must confirm this against one live response per type before coding `polyhaven.mjs`.
+Confirmed against live `GET /files/{id}` responses (task 16.1; recorded in `tools/asset-lib/fixtures/polyhaven-files-{hdri,texture,model}.json` for `moonlit_golf`, `slate_floor`, `tree_stump_01`). Every leaf is `{ url, size, md5 }` with `url` on `dl.polyhaven.org`. The earlier assumption that textures sit under a `textures` key was wrong; the real shapes are:
+
+- **HDRI:** `hdri[<res>][hdr|exr]` (res 1k to 16k), plus a top-level `tonemapped` leaf (JPG preview, not used).
+- **Texture:** map names are top-level keys, `<Map>[<res>][jpg|png|exr]`, with maps `Diffuse`, `nor_gl`, `nor_dx`, `Rough`, `arm`, `AO`, `Displacement`. Textures also carry `blend`, `gltf` and `mtlx` keys, which we do not use. Resolutions 1k, 2k, 4k, 8k.
+- **Model:** same top-level map keys as textures (`Diffuse`, `nor_gl`, `Rough`, `arm`, `AO`, ...) plus `gltf`, `fbx`, `usd`, `blend`. The one used is `gltf[<res>].gltf = { url, size, md5, include: { "<relative path>": { url, size, md5 } } }`. `include` keys are relative paths such as `tree_stump_01.bin` and `textures/tree_stump_01_diff_1k.jpg`; the `.bin` URL points to a path under `8k` whatever the resolution requested, which is fine because the key is what gives the local name. Model downloads keep these relative paths under the pick's cache folder.
+
+`polyhaven.mjs` selects `hdri[res][format ?? hdr]`, `<map>[res][format ?? jpg]` for each map in `source.maps` (default `Diffuse`, `nor_gl`, `Rough`) and `gltf[res].gltf` plus `include` for models. A missing resolution, map or format fails with the list of options the API offers.
 
 ## Architecture
 
