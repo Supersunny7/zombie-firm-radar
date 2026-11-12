@@ -1,0 +1,596 @@
+{
+  "pbtResults": {
+    "1.4 Write property test for icr monotonicity in `web/src/engine/icr.monotone.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794459174121
+    },
+    "1.3 Write property test for the icr contract in `web/src/engine/icr.contract.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794459777781
+    }
+  },
+  "executionHistory": {
+    "1.1 Create `web/src/engine/errors.ts`, `web/src/engine/types.ts` and `web/src/engine/test/geq.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459040261
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459052461
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459116929
+      }
+    ],
+    "1.2 Implement `web/src/engine/icr.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459040396
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459053313
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459117806
+      }
+    ],
+    "1.3 Write property test for the icr contract in `web/src/engine/icr.contract.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459040456
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459134620
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459787877
+      }
+    ],
+    "1.4 Write property test for icr monotonicity in `web/src/engine/icr.monotone.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459040518
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459135328
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459238038
+      }
+    ],
+    "1.5 Implement the golden-cases runner: `web/src/engine/test/goldenCases.ts`, `web/src/engine/icr.golden.test.ts`, `web/src/engine/test/goldenCases.unit.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459040614
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459136195
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459238189
+      }
+    ],
+    "2.1 Implement the frozen tool registry in `web/src/engine/tools.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459040666
+      }
+    ],
+    "2.2 Implement `web/src/engine/treatment.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459040724
+      }
+    ],
+    "2.3 Create `web/src/engine/test/engineArbitraries.ts` with the treatment generators": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459040782
+      }
+    ],
+    "2.4 Write unit tests for the parser and registry in `web/src/engine/treatment.unit.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459040838
+      }
+    ],
+    "2.5 Write property test for treatment rejection in `web/src/engine/treatment.reject.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459040894
+      }
+    ],
+    "2.6 Write property test for the serialisation round trip in `web/src/engine/treatment.roundtrip.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459040955
+      }
+    ],
+    "3.1 Replace the placeholder types and delegate parsing in `web/src/state/types.ts` and `web/src/state/machine.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041015
+      }
+    ],
+    "3.2 Update `web/src/test/arbitraries.ts` to generate real Treatments": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041111
+      }
+    ],
+    "3.3 Write property test for machine delegation in `web/src/state/machine.delegation.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041157
+      }
+    ],
+    "4. Checkpoint: parser and state integration": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041215
+      }
+    ],
+    "5.1 Implement `prepare` in `web/src/engine/inputs.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041273
+      }
+    ],
+    "5.2 Add firm, macro and delta generators to `web/src/engine/test/engineArbitraries.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041335
+      }
+    ],
+    "5.3 Implement `diagnose` and `belowCoverageFor` in `web/src/engine/diagnose.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041404
+      }
+    ],
+    "5.4 Write property test for the diagnosis formulas in `web/src/engine/diagnose.formulas.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041467
+      }
+    ],
+    "5.5 Write unit tests for inputs and diagnosis in `web/src/engine/inputs.unit.test.ts` and `web/src/engine/diagnose.unit.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041525
+      }
+    ],
+    "6.1 Implement `web/src/engine/refinance.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041589
+      }
+    ],
+    "6.2 Implement `applyCore` and `applyTreatment` in `web/src/engine/apply.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041651
+      }
+    ],
+    "6.3 Write property test for refinance cost in `web/src/engine/refinance.cost.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041750
+      }
+    ],
+    "6.4 Write property test for RR-3 in `web/src/engine/apply.rr3.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041810
+      }
+    ],
+    "6.5 Write the Ashgrove worked example unit tests in `web/src/engine/ashgrove.unit.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041867
+      }
+    ],
+    "6.6 Write edge-case unit tests for apply and refinance in `web/src/engine/apply.unit.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041929
+      }
+    ],
+    "7.1 Implement `web/src/engine/rng.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459041984
+      }
+    ],
+    "7.2 Implement `web/src/engine/hash.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042038
+      }
+    ],
+    "7.3 Add randomness and option generators to `web/src/engine/test/engineArbitraries.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042090
+      }
+    ],
+    "7.4 Write unit tests for the PRNG in `web/src/engine/rng.unit.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042141
+      }
+    ],
+    "7.5 Write unit tests for the hash and seed in `web/src/engine/hash.unit.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042200
+      }
+    ],
+    "7.6 Write property test for seedFrom in `web/src/engine/hash.seedFrom.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042259
+      }
+    ],
+    "8.1 Implement `projectPath` in `web/src/engine/project.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042320
+      }
+    ],
+    "8.2 Implement `simulate` and `median` in `web/src/engine/simulate.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042375
+      }
+    ],
+    "8.3 Add `arbRr2Case` to `web/src/engine/test/engineArbitraries.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042432
+      }
+    ],
+    "8.4 Write property test for RR-1 in `web/src/engine/rr1.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042489
+      }
+    ],
+    "8.5 Write property test for RR-2 in `web/src/engine/rr2.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042542
+      }
+    ],
+    "8.6 Write property test for RR-4 in `web/src/engine/rr4.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042600
+      }
+    ],
+    "8.7 Write property test for the fixed random block in `web/src/engine/rng.block.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042656
+      }
+    ],
+    "8.8 Write unit tests for simulate and the named counterexamples in `web/src/engine/simulate.unit.test.ts` and `web/src/engine/rr.counterexamples.unit.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042712
+      }
+    ],
+    "9. Checkpoint: core maths and simulation": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042768
+      }
+    ],
+    "10.1 Implement `web/src/engine/outcome.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042825
+      }
+    ],
+    "10.2 Write unit tests for the outcome in `web/src/engine/outcome.unit.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042885
+      }
+    ],
+    "10.3 Write property test for outcome consistency in `web/src/engine/outcome.wording.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459042942
+      }
+    ],
+    "10.4 Write property test for the hint scan in `web/src/engine/outcome.hint.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043002
+      }
+    ],
+    "10.5 Write property test for core composition in `web/src/engine/core.composition.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043055
+      }
+    ],
+    "10.6 Extend the Property 3 test in `web/src/engine/treatment.reject.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043177
+      }
+    ],
+    "11.1 Implement `web/src/engine/score.ts` and `web/src/engine/liquidation.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043233
+      }
+    ],
+    "11.2 Write property test for liquidation in `web/src/engine/liquidation.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043288
+      }
+    ],
+    "11.3 Write property test for the score in `web/src/engine/score.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043344
+      }
+    ],
+    "11.4 Write unit tests for score and liquidation in `web/src/engine/score.unit.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043406
+      }
+    ],
+    "12.1 Write property test for click order in `web/src/engine/clickOrder.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043462
+      }
+    ],
+    "12.2 Write property test for validation order in `web/src/engine/validation.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043523
+      }
+    ],
+    "12.3 Write property test for latest-year selection in `web/src/engine/latestYear.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043583
+      }
+    ],
+    "12.4 Write property test for determinism in `web/src/engine/determinism.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043636
+      }
+    ],
+    "12.5 Write property test for ranges in `web/src/engine/ranges.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043691
+      }
+    ],
+    "12.6 Write property test for display safety in `web/src/engine/displaySafety.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043750
+      }
+    ],
+    "13.1 Implement `web/src/engine/worker/protocol.ts` and `web/src/engine/worker/simulate.worker.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043805
+      }
+    ],
+    "13.2 Implement `createSimulationClient` in `web/src/engine/worker/client.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043866
+      }
+    ],
+    "13.3 Create the fake worker, reference model and `arbWorkerOps`: `web/src/engine/test/fakeWorker.ts`, `web/src/engine/test/workerModel.ts` and `web/src/engine/test/engineArbitraries.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043922
+      }
+    ],
+    "13.4 Write unit tests for the worker client in `web/src/engine/worker/client.unit.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459043975
+      }
+    ],
+    "13.5 Write property test for id matching in `web/src/engine/worker/client.ids.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044035
+      }
+    ],
+    "13.6 Write property test for worker equivalence in `web/src/engine/worker/client.equivalence.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044089
+      }
+    ],
+    "13.7 Write property test for latest-wins in `web/src/engine/worker/client.latestWins.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044161
+      }
+    ],
+    "13.8 Write property test for Channel independence in `web/src/engine/worker/client.channels.property.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044258
+      }
+    ],
+    "14.1 Create `web/src/engine/index.ts` with the exact export list": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044315
+      }
+    ],
+    "14.2 Write the export unit test in `web/src/engine/index.exports.unit.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044372
+      }
+    ],
+    "14.3 Write the purity scan in `web/src/engine/purity.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044430
+      }
+    ],
+    "14.4 Write the error-code unit test in `web/src/engine/errors.unit.test.ts`": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044491
+      }
+    ],
+    "14.5 Write a non-gating benchmark in `web/src/engine/simulate.bench.ts` and record the timing": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044550
+      }
+    ],
+    "15. Checkpoint: full engine": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044606
+      }
+    ],
+    "16.1 Update `.kiro/steering/rescue-rules.md` with a normal file edit": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044660
+      }
+    ],
+    "17. Final checkpoint": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044720
+      }
+    ],
+    "18.1 Run the finance-reviewer agent and resolve its findings": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044772
+      }
+    ],
+    "18.2 Commit the engine by explicit path": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459044833
+      }
+    ],
+    "1. Engine foundations: errors, types and the shared icr()": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794459787967
+      }
+    ]
+  }
+}

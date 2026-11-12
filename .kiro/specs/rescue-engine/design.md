@@ -751,7 +751,7 @@ export const geq = (a: number, b: number, relTol: number): boolean =>
 
 ### Property 1: icr contract
 
-For any `ebit` and `interest` drawn from finite numbers, null, undefined, NaN and ±Infinity: `icr` never throws; it returns `ebit / interest` (by `Object.is`) when `ebit` is a non-NaN number and `interest` is finite and > 0, and null otherwise. A negative ebit with positive interest gives a negative result.
+For any `ebit` and `interest` drawn from finite numbers, null, undefined, NaN and ±Infinity: `icr` never throws; it returns `ebit / interest` (by `Object.is`) when `ebit` is a non-NaN number and `interest` is finite and > 0, and null otherwise. A negative ebit with positive interest gives `ebit / interest`, which is `< 0` or `Object.is(result, -0)` (IEEE 754 underflow, for example ebit = -5e-324, interest = 2).
 
 **Validates: Requirements 1.1, 1.2, 1.3, 1.4**
 

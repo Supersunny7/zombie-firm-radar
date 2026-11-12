@@ -52,7 +52,7 @@ The rescue-engine is a pure TypeScript module in `web/src/engine` that answers t
 1. THE Engine SHALL export `icr(ebit, interest)` that returns ebit / interest as a finite number when ebit is a finite number and interest is a finite number greater than 0.
 2. IF interest is null, undefined, NaN, zero or negative, THEN THE icr_function SHALL return null and SHALL NOT throw an exception.
 3. IF ebit is null, undefined or NaN, THEN THE icr_function SHALL return null and SHALL NOT throw an exception.
-4. WHEN ebit is negative and interest is greater than 0, THE icr_function SHALL return a negative number equal to ebit / interest.
+4. WHEN ebit is negative and interest is greater than 0, THE icr_function SHALL return ebit / interest, which is a negative number, or -0 when the IEEE 754 division underflows (for example ebit = -5e-324, interest = 2).
 5. THE Engine SHALL compute every coverage value, including each projected year ICR_t, by calling the icr_function, and THE Engine SHALL contain no other implementation of the ebit / interest division for coverage.
 6. WHERE `data/fixtures/icr_cases.json` exists, THE test suite SHALL read it in the format `{ "cases": [{ "ebit": number|null, "interest": number|null, "expected": number|null, "note"?: string }] }` (proposed format, to confirm with partner), SHALL run every Golden_Case against the icr_function, and SHALL fail if any returned value differs from the expected value by more than 1e-9 (or if an expected null is not returned as null).
 7. IF `data/fixtures/icr_cases.json` does not exist, THEN THE test suite SHALL skip the Golden_Cases test, report it as skipped, and SHALL NOT fail.
