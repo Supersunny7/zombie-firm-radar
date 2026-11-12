@@ -180,3 +180,54 @@
 2026-11-12 | asset-pipeline | 13.1 | Recorded final picks; dropped Proop hook (Rodin-tagged uploads); six Rocketbox avatars logo-clean | reference/candidates/README.md
 2026-11-12 | asset-pipeline | 13.2 | Wrote manual-download README with 31 Sketchfab and Freesound entries | tools/cache/manual/README.md
 2026-11-12 | asset-pipeline | 13.3 | Committed final picks, manual list and Phase 2 tasks as 8c689c3 | reference/candidates, tools/cache/manual/README.md, .kiro/specs/asset-pipeline
+2026-11-12 | asset-pipeline | 14.1 | Created tools/package.json with ten exactly pinned packages | tools/package.json
+2026-11-12 | asset-pipeline | 14.2 | Installed approved tools packages via pnpm; committed d9cd11c | tools/pnpm-lock.yaml, tools/pnpm-workspace.yaml
+2026-11-12 | asset-pipeline | 15.1 | Implemented picks v2 loader and validator with 12 passing tests | tools/asset-lib/picks.mjs, picks.test.mjs
+2026-11-12 | asset-pipeline | 15.2 | Implemented license allow-list and safe output paths with 12 passing tests | tools/asset-lib/licenses.mjs, paths.mjs
+2026-11-12 | asset-pipeline | 15.3 | Wrote tools/picks.json with 61 validated picks; all 31 manual files present | tools/picks.json
+2026-11-12 | asset-pipeline | 15.4 | Property 7 license allow-list test passes | tools/asset-lib/licenses.property.test.mjs
+2026-11-12 | asset-pipeline | 15.5 | Property 9 output path test passes | tools/asset-lib/paths.property.test.mjs
+2026-11-12 | asset-pipeline | 16.1 | Implemented http and Poly Haven modules; confirmed /files shape; 18 tests pass | tools/asset-lib/http.mjs, polyhaven.mjs
+2026-11-12 | asset-pipeline | 16.2 | Implemented cache, zip archive and manual-cache reader; 8 tests pass | tools/asset-lib/cache.mjs, archive.mjs
+2026-11-12 | asset-pipeline | 17.1 | Implemented deterministic WebP texture converter; 12 tests pass | tools/asset-lib/convert-texture.mjs
+2026-11-12 | asset-pipeline | 17.2 | Implemented HDRI copy with Radiance width check; 9 tests pass | tools/asset-lib/convert-hdri.mjs
+2026-11-12 | asset-pipeline | 17.4 | Implemented ogg and mp3 audio converter, byte-identical reruns; 7 tests pass | tools/asset-lib/convert-audio.mjs
+2026-11-12 | asset-pipeline | 18.4 | Implemented Bip01 skeleton check with 7 passing tests | tools/asset-lib/bip01.mjs, bip01.test.mjs
+2026-11-12 | asset-pipeline | 18.1 | Edit framework with decimate, removeNode, selectVariant; 13 tests pass | tools/asset-lib/edits/
+2026-11-12 | asset-pipeline | 17.3 | Implemented Meshopt+WebP model converter with fbx2gltf and Bip01 check; 5 tests pass | tools/asset-lib/convert-model.mjs
+2026-11-12 | asset-pipeline | 17.5 | Property 13 HDRI copy and width test passes | tools/asset-lib/convert-hdri.property.test.mjs
+2026-11-12 | asset-pipeline | 17.6 | Property 14 passes after fixing thin-texture resize bug | tools/asset-lib/convert-texture.mjs, property test
+2026-11-12 | asset-pipeline | 18.2 | Added desaturate, darken and seeded grime texture edits; 19 tests pass | tools/asset-lib/edits/texture-edits.mjs
+2026-11-12 | asset-pipeline | 18.7 | Property 23 Bip01 check test passes | tools/asset-lib/bip01.property.test.mjs
+2026-11-12 | asset-pipeline | 20.1 | Implemented budget accounting and report formatter; 5 tests pass | tools/asset-lib/budgets.mjs
+2026-11-12 | asset-pipeline | 20.2 | Implemented deterministic manifest merge and atomic writer; 10 tests pass | tools/asset-lib/manifest.mjs
+2026-11-12 | asset-pipeline | 20.3 | Implemented CREDITS upsert with Visible-in-app note; 13 tests pass | tools/asset-lib/credits.mjs
+2026-11-12 | asset-pipeline | 20.4 | Implemented manual README render and check; 8 tests pass | tools/asset-lib/manual-readme.mjs
+2026-11-12 | asset-pipeline | 19.1 | Implemented seeded procedural handprint and drag-mark decal generator; 4 tests pass | tools/gen-decals.mjs, gen-decals.test.mjs
+2026-11-12 | asset-pipeline | 18.3 | Implemented index-based splitMesh; knife switch has 160 components; 27 edit tests pass | tools/asset-lib/edits/split-mesh.mjs
+2026-11-12 | asset-pipeline | 19.2 | Property 17 decal determinism test passes | tools/gen-decals.determinism.property.test.mjs
+2026-11-12 | asset-pipeline | 19.3 | Property 18 decal content test passes | tools/gen-decals.content.property.test.mjs
+2026-11-12 | asset-pipeline | 19.4 | Implemented seeded cracked-headstone script; real scan gives 378 triangles; 9 tests pass | tools/make-cracked-headstone.mjs
+2026-11-12 | asset-pipeline | 20.5 | Property 2 budget accounting test passes | tools/asset-lib/budgets.property.test.mjs
+2026-11-12 | asset-pipeline | 20.6 | Property 3 budget report and exit code test passes | tools/asset-lib/budgets.report.property.test.mjs
+2026-11-12 | asset-pipeline | 20.7 | Property 4 manifest test passes | tools/asset-lib/manifest.property.test.mjs
+2026-11-12 | asset-pipeline | 20.8 | Property 5 credits table test passes | tools/asset-lib/credits.table.property.test.mjs
+2026-11-12 | asset-pipeline | 20.9 | Property 6 CMU credit line test passes | tools/asset-lib/credits.cmu.property.test.mjs
+2026-11-12 | asset-pipeline | 20.10 | Property 16 Visible-in-app note test passes | tools/asset-lib/credits.note.property.test.mjs
+2026-11-12 | asset-pipeline | 20.11 | Property 15 manual README test passes | tools/asset-lib/manual-readme.property.test.mjs
+2026-11-12 | asset-pipeline | 18.5 | Property 21 edit idempotence test passes | tools/asset-lib/edits/idempotence.property.test.mjs
+2026-11-12 | asset-pipeline | 18.6 | Property 22 split and decimate test passes | tools/asset-lib/edits/split-decimate.property.test.mjs
+2026-11-12 | asset-pipeline | 19.5 | Property 19 cracked-headstone limits test passes | tools/make-cracked-headstone.limits.property.test.mjs
+2026-11-12 | asset-pipeline | 19.6 | Property 20 cracked-headstone determinism test passes | tools/make-cracked-headstone.determinism.property.test.mjs
+2026-11-12 | asset-pipeline | 21.1 | Implemented runFetch orchestrator, run report, downloader and fetch-assets CLI; 12 tests pass | tools/fetch-assets.mjs, tools/asset-lib/run-fetch.mjs
+2026-11-12 | asset-pipeline | 21.2 | Wired decal generator, cracked-headstone derivation and edit error messages into runFetch; 23 tests pass | tools/asset-lib/generators.mjs, run-fetch.mjs
+2026-11-12 | asset-pipeline | 21.3 | Property 1 re-run idempotence test passes | tools/asset-lib/run-fetch.idempotence.property.test.mjs
+2026-11-12 | asset-pipeline | 21.4 | Property 8 passes after fixing empty-field refusal in runFetch | tools/asset-lib/run-fetch.mjs, refused property test
+2026-11-12 | asset-pipeline | 21.5 | Property 10 bounded retries and failure isolation test passes | tools/asset-lib/run-fetch.retries.property.test.mjs
+2026-11-12 | asset-pipeline | 21.6 | Property 11 conversion failure test passes | tools/asset-lib/run-fetch.conversion.property.test.mjs
+2026-11-12 | asset-pipeline | 21.7 | Property 12 network discipline test passes | tools/asset-lib/network.property.test.mjs
+2026-11-12 | asset-pipeline | 22 | Full tools suite 254/254 pass after raising vitest timeouts; dry run writes nothing | tools/vitest.config.mjs
+2026-11-12 | asset-pipeline | 23.1 | Real fetch run: 61/61 picks, single-GLB fix, morgue at 39K, idempotent rerun | tools/, web/public/assets, CREDITS.md
+2026-11-12 | asset-pipeline | 23.2 | Size report: graveyard 22.35 MB, lab 16.94 MB, total 39.36 MB; committed 3df64fa | tools/asset-lib/run-fetch.test.mjs
+2026-11-12 | asset-pipeline | 24.1 | Asset-auditor clean after fixing LICENSE rows, decal links and recording 2k HDRI size exception | tools/, web/public/assets, CREDITS.md
+2026-11-12 | asset-pipeline | 25.1 | Final report written; Phase 2 complete and committed through a6cc8ae | none
