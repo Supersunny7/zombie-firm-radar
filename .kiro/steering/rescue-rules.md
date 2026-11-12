@@ -18,7 +18,7 @@ TOOLS (the player picks up to 3; v1 ships the first four)
 
 3. debt_for_equity w in [0, 0.60]: converted = w * D (after asset sales); D decreases by converted. Old shareholders keep max(Q,0) / (max(Q,0) + converted); shareholders pain += (1 - keep) * 100; creditors pain += w * 60.
 
-4. refinance (on/off): ALWAYS evaluated last, whatever order the player clicked. icr_pre = E' / (D' * (r + delta)). Credit spread: icr_pre < 1 -> 0.09; 1 to < 1.5 -> 0.06; 1.5 to < 3 -> 0.035; >= 3 -> 0.02. New rate = b + delta + spread. Applies only if 1.02 * new rate < r + delta, i.e. only when it lowers the annual interest cost after the 2% fee; then D' *= 1.02. Otherwise it has no effect and the UI explains why.
+4. refinance (on/off): ALWAYS evaluated last, whatever order the player clicked. icr_pre = E' / (D' * (r + delta)). Credit spread: icr_pre < 1 -> 0.09; 1 to < 1.5 -> 0.06; 1.5 to < 3 -> 0.035; >= 3 -> 0.02. New rate = b + delta + spread. Applies only if 1.02 * new rate < r + delta, i.e. only when it lowers the annual interest cost after the 2% fee; then D' *= 1.02. The projected annual interest after refinance is computed as D'_preFee * (1.02 * new rate) (same value as D' * 1.02 at the new rate, written this way so the comparison and the interest use the same number); the UI shows debt D'_preFee * 1.02 and rate = new rate. Otherwise it has no effect and the UI explains why.
 
 5. issue_equity k in [0, 0.25] (v2): only if Q > 0; raise = k * D; D decreases by raise; dilution = raise / (Q + raise); shareholders pain += dilution * 100.
 
@@ -34,13 +34,13 @@ PROJECTION (3 years, Monte Carlo)
 
 - kappa = 0.3 by default, clamped to [0.1, 0.6]; sigma = margin_change_sd clamped to [0.01, 0.08]; g = revenue_growth_median clamped to [-0.15, 0.15].
 
-- R_t = R_{t-1} * (1 + g - 0.5 * c). EBIT_t = m_t * R_t. ICR_t = EBIT_t / (D' * r'), where r' is the rate after the shock and after refinance if it applied. Debt stays constant over the 3 years (simplification; the UI must say so).
+- R_t = R_{t-1} * (1 + g - 0.5 * c). EBIT_t = m_t * R_t. ICR_t = EBIT_t / interest, where interest = D' * (r + delta) without refinance, or D'_preFee * (1.02 * new rate) when refinance applied (see tool 4). Debt stays constant over the 3 years (simplification; the UI must say so).
 
 - Run 1,000 paths with a seeded PRNG. Survival odds = share of paths where ICR_t >= 1 for t = 1, 2, 3. Also return the median ICR per year.
 
 - The real outcome: when the player pulls the switch, draw ONE path with seed = hash(cik, treatment, ISO date). Same firm + same treatment + same day = same outcome.
 
-- Failure reason: first year with ICR < 1, as "Year {t}: operating margin {m}%, coverage {icr}. {name} stays undead." plus a hint: the smallest extra cost cut that would have kept that year >= 1, if one exists within the allowed range.
+- Failure reason: first year with ICR < 1, as "Year {t}: operating margin {m}%, coverage {icr}. {name} stays undead." plus a hint: the smallest extra cost cut that would have kept that year >= 1, if one exists within the allowed range. Search: scan upward in steps of 0.1 percentage point from the chosen cut (or 0) while the total cut is <= 0.08, rerunning the full treatment pipeline (sell_assets with the path recovery, debt_for_equity, refinance re-evaluated) on the same random path, and stop at the first step where that year reaches ICR >= 1. No bisection: the year-t ICR is not monotone in the cut, because the cut also lowers revenue growth by 0.5 * c.
 
 - Score = (rescued ? 1 : 0) * survival_odds * (1 - (workers + shareholders + creditors) / 300) * 100.
 
@@ -48,9 +48,9 @@ PROJECTION (3 years, Monte Carlo)
 
 PROPERTIES THAT MUST ALWAYS HOLD (property-based tests with fast-check)
 
-1. Any treatment that only reduces debt never lowers the projected ICR of any year on the same random path.
+1. On the same random path, a treatment that only reduces debt (debt_for_equity; not sell_assets, which also shrinks R and E) never lowers the projected ICR of any year with EBIT >= 0, and a covered year (ICR >= 1 or debt-free) never becomes uncovered. Years with negative EBIT are excluded from the first part: less interest makes a negative ICR more negative (-10/100 = -0.1 becomes -10/50 = -0.2).
 
-2. With the same random numbers, a larger cost cut never gives a lower year-1 ICR.
+2. With the same random numbers, on firms with a realistic operating margin (E/R in [-0.3, 0.3], margin_mean in [-0.2, 0.3]), a larger cost cut never gives a lower year-1 EBIT, nor a lower year-1 ICR when year-1 EBIT >= 0. Trade-off: at very high margins the 0.5 * c growth penalty can outweigh the cut (E/R = 0.9, margin_mean = 0.9, eps = 0, g = 0.01: year-1 EBIT 0.909 R at c = 0 vs 0.878432 R at c = 0.08); a named unit test documents this.
 
 3. With no treatment and delta = 0, the year-0 ICR equals the firm's current ICR.
 

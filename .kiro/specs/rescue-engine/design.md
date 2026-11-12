@@ -16,9 +16,9 @@ Every result is a hypothetical ("what it would take"), never a recommendation.
 The design rests on four decisions, each explained in its own section below:
 
 - **Pure core, thin wrappers, fixed random block per path.** All maths lives in two pure functions, `applyCore` and `projectPath`. Randomness enters only as a `RandomBlock` value of 6 uniforms per path, so two treatments can be compared on "the same random numbers" by passing the same object.
-- **Hint by grid scan, not bisection.** The coverage of the failing year is not monotone in the cost cut, so bisection can return a wrong answer. A linear scan over a 0.1 pp grid is exact and cheap (Open question A).
-- **Latest-wins worker client.** Simulation requests are coalesced per channel; stale requests are rejected with `superseded` instead of terminating the worker (Open question B).
-- **Floating-point rules chosen so monotonicity properties hold exactly.** The refinance cost is computed as `debtPreFee * min(1.02 * newRate, r + delta)`, which makes property 4 (delta monotonicity) and property 7 (refinance never raises cost) exact in IEEE arithmetic, with no epsilon.
+- **Hint by upward linear scan.** The coverage of the failing year is not monotone in the cost cut, so any search that assumes monotonicity can return a wrong answer. An upward linear scan over a 0.1 pp grid finds the smallest working cut on that grid and is cheap (Req 9.5).
+- **Latest-wins worker client.** Each Channel holds at most one In_Flight_Request and one Queued_Request; stale requests are rejected with `superseded` instead of terminating the worker (Req 12.11 to 12.15).
+- **Floating-point rules chosen so monotonicity properties hold exactly.** When refinance applies, the annual interest is `D'_preFee × (1.02 × newRate)` (Req 7.5, 8.7), so the cost is `debtPreFee * min(1.02 * newRate, r + delta)`. This makes property 4 (delta monotonicity) and property 7 (refinance never raises cost) exact in IEEE arithmetic, with no epsilon.
 
 Sources used: `.kiro/steering/rescue-rules.md`, `zombie-definition.md`, `data-contract.md`, `tech.md`; `web/src/types/data.ts`; `web/src/state/{types,machine}.ts` and their tests; `web/src/test/arbitraries.ts`; `web/src/dev/fixtures/{firms,macro}.ts`; the mulberry32 reference in [bryc/code PRNGs](https://github.com/bryc/code/blob/master/jshash/PRNGs.md); the FNV-1a definition and test vectors at [isthe.com FNV](http://www.isthe.com/chongo/tech/comp/fnv/index.html); Vite's worker import pattern in the [Vite features guide](https://vite.dev/guide/features#web-workers).
 
@@ -75,15 +75,17 @@ flowchart LR
 4. For each block: `post = applyCore(inputs, treatment, block.recovery)`; `path = projectPath(inputs, post, block)`.
 5. Aggregate survival odds, medians and debt-free share.
 
-### Validation order (deterministic, Req 3.11, 4.1)
+### Validation order (deterministic, Req 3.11, 4.1, 4.14, 10.9)
 
-Every public function that takes them checks, in this order, and returns the first error:
+Every public function checks the arguments it takes in this order and returns only the first error (Validation_Order):
 
 1. `delta` (`delta_out_of_range`),
-2. `treatment` (parser order below),
-3. `firm` (`not_rescuable`),
-4. `macro.dgs10.value` (see Open question G),
-5. function-specific options: `paths` (`invalid_paths`), `seed` (Open question F), `isoDate` (`invalid_date`).
+2. `treatment` (parser order of Req 3.11, below),
+3. `firm` (`not_rescuable`, Req 4.2 to 4.7),
+4. `macro.dgs10.value` = b: not finite or < 0 → `not_rescuable` naming `b` (Req 4.13); checked only after the firm passes,
+5. function-specific options, in this order: `paths` (`invalid_paths`, Req 8.13), `seed` (`invalid_seed`, Req 8.16, 9.12), `cik` (`invalid_cik`, Req 10.9), `isoDate` (`invalid_date`, Req 10.5).
+
+A function skips the steps for arguments it does not take. `seedFrom(cik, treatment, isoDate)` therefore checks treatment, then cik, then isoDate (Req 10.9); `simulate` checks delta, treatment, firm, b, paths, seed; `drawOutcome` checks delta, treatment, firm, b, seed.
 
 ## Components and Interfaces
 
@@ -142,7 +144,7 @@ export type * from './types';
 export type { EngineError, EngineErrorCode, EngineResult } from './errors';
 ```
 
-Cents on the dollar (Req 11.8) is a field of the `liquidationRecovery` result, so no extra runtime symbol is exported. Internal helpers (`prepare`, `applyCore`, `projectPath`, `drawBlock`, `blocksFor`, `mulberry32`, `fnv1a32`, `serialiseTreatment`, `deserialiseTreatment`, `refinanceApplies`, `hintScan`) are exported from their own modules for tests only.
+Cents on the dollar (Req 11.8) is a field of the `liquidationRecovery` result, so no extra runtime symbol is exported. Internal helpers (`prepare`, `applyCore`, `projectPath`, `drawBlock`, `blocksFor`, `mulberry32`, `fnv1a32`, `serialiseTreatment`, `deserialiseTreatment`, `refinanceApplies`, `hintScan`, `belowCoverageFor`) are exported from their own modules for tests only.
 
 ### `icr.ts` (Req 1)
 
@@ -154,7 +156,22 @@ export function icr(ebit: number | null | undefined, interest: number | null | u
 }
 ```
 
-This is the only coverage division in the engine (Req 1.5). The diagnosis computes needed debt cut as `1 - icr(E, D * (r + delta))`, which equals `1 - E / ((r + delta) * D)` because IEEE multiplication is commutative. Projected years call `icr(EBIT_t, interest)`. The graveyard imports `icr` from `web/src/engine`. The Python pipeline cannot import it, so `data/fixtures/icr_cases.json` (partner-owned, optional) is the cross-language contract (Open question I).
+This is the only coverage division in the engine (Req 1.5). The diagnosis computes needed debt cut as `1 - icr(E, D * (r + delta))`, which equals `1 - E / ((r + delta) * D)` because IEEE multiplication is commutative. Projected years call `icr(EBIT_t, interest)`. The graveyard imports `icr` from `web/src/engine`. The Python pipeline cannot import it, so `data/fixtures/icr_cases.json` (partner-owned, optional) is the cross-language contract (Req 1.6, 1.7, 1.9).
+
+Golden case format (**to confirm with partner**, Req 1.6):
+
+```json
+{
+  "cases": [
+    { "ebit": 38000000, "interest": 71500000, "expected": 0.5314685314685315, "note": "Ashgrove shocked" },
+    { "ebit": -10, "interest": 100, "expected": -0.1 },
+    { "ebit": 5, "interest": 0, "expected": null, "note": "zero interest" },
+    { "ebit": null, "interest": 10, "expected": null }
+  ]
+}
+```
+
+`ebit`, `interest` and `expected` are each a number or null; `note` is an optional string. A file in any other shape, or a case with missing or extra-typed fields, counts as a case that cannot be run and fails the test naming the file and the case index (Req 1.9). A missing file skips the test (Req 1.7). Comparison: absolute difference <= 1e-9, and an expected null must be returned as null.
 
 ### `treatment.ts` (Req 2.6, 3)
 
@@ -180,9 +197,9 @@ export function parseTreatment(input: unknown): EngineResult<Treatment>;
 
 Checks, in this fixed order, returning the first failure (Req 3.11):
 
-1. `input` is not an array → `invalid_treatment` (Open question F).
+1. `input` is not an array → `invalid_treatment` (Req 3.15).
 2. `input.length > 3` → `too_many_tools`.
-3. For each entry in input order: not a plain object or `name` not a string → `invalid_treatment`; `name` not a v1 tool (including `issue_equity`, `chapter_11`, `liquidate`) → `unknown_tool` with `detail.tool = name`.
+3. For each entry in input order: not a plain object or `name` not a string → `invalid_treatment` with `detail.index` (Req 3.15); `name` not a v1 tool (including `issue_equity`, `chapter_11`, `liquidate`) → `unknown_tool` with `detail.tool = name`.
 4. First name that appears twice, in input order → `duplicate_tool`.
 5. For each entry in input order: params check → `param_out_of_range` with `detail.tool` and `detail.param`.
    - `cut_costs` needs exactly key `c`, `sell_assets` exactly `s`, `debt_for_equity` exactly `w`. Missing key, extra key, non-number, NaN or ±Infinity, or value outside the inclusive range → error. No clamping.
@@ -259,7 +276,8 @@ Steps:
 3. Latest year = entry with the highest `fy` (not assumed sorted).
 4. Collect every one of R, E, I, D, A, Q that is `null` (or not a finite number) → `not_rescuable` naming all of them in `detail.inputs`, in the order R, E, I, D, A, Q.
 5. Value checks, in order D, R, I: `D <= 0` → `not_rescuable` naming D (covers D = 0, Req 4.2 and 14.8, and D < 0, Req 4.6); `R <= 0` → names R; `I <= 0` → names I.
-6. `r = I / D`; `b = macro.dgs10.value`; sigma and g clamped as listed. `margin_change_mean` is never read (Req 4.11).
+6. `b = macro.dgs10.value`; b not a finite number or `b < 0` → `not_rescuable` with `detail.inputs = ['b']` (Req 4.13). This runs after steps 2 to 5, so a firm defect is always reported first (Req 4.14). With b >= 0, delta >= 0 and spread >= 0.02, `newRate > 0`, so refinance interest is always > 0 and `icr` never returns null for it.
+7. `r = I / D`; sigma and g clamped as listed. `margin_change_mean` is never read (Req 4.11).
 
 kappa is the constant 0.3 (inside the steering range [0.1, 0.6], so no clamp is needed). A firm with D = 0 is reported as `not_rescuable` and never as debt-free (Req 14.8); debt-free is only a post-treatment state (Req 14.9).
 
@@ -277,7 +295,7 @@ export interface Diagnosis {
 export function diagnose(firm: Firm, delta: number, macro: Macro): EngineResult<Diagnosis>;
 ```
 
-`belowCoverage = neededEbitIncrease === null || neededEbitIncrease >= 0`, exactly as Req 5.8 states (see Open question H for the ICR = 1 boundary). With `delta = 0`, `shockedIcr = icr(E, D * (I / D))`, which equals `icr(E, I)` within relative 1e-12 (Req 5.6, Property 3).
+`belowCoverage = belowCoverageFor(neededEbitIncrease)`, where the internal helper `belowCoverageFor(x) = x === null || x > 0` (Req 5.8): a value greater than 0 means below coverage 1; a value less than or equal to 0 means the firm already covers its interest (exactly 0 is coverage exactly 1, which counts as covered); null (E <= 0) means below coverage 1. With `delta = 0`, `shockedIcr = icr(E, D * (I / D))`, which equals `icr(E, I)` within relative 1e-12 (Req 5.6, Property 10).
 
 ### `apply.ts` and `refinance.ts`: treatment (Req 6, 7)
 
@@ -295,7 +313,7 @@ export function applyTreatment(firm: Firm, treatment: Treatment, delta: number, 
 4. **refinance** (always last): `evaluateRefinance(inputs, E', D')`.
 5. Pains clamped to [0, 100] with `Math.min(100, Math.max(0, x))` (Req 6.8). In v1 the maxima are 85, 100 and 36, so the cap never binds, but it is applied.
 
-`D' - w * D'` is used, not `D' * (1 - w)`, so `D'_with <= D'_without` holds exactly in floating point (`w * D' >= 0`), which Property 1 relies on.
+`D' - w * D'` is used, not `D' * (1 - w)`, so `D'_with <= D'_without` holds exactly in floating point (`w * D' >= 0`), which RR-1 (Property 11) relies on.
 
 **Refinance** (`refinance.ts`):
 
@@ -315,19 +333,19 @@ export function refinanceApplies(oldRate: number, newRate: number): boolean {
 
 - `D'pre === 0` → not applied; `note = "No debt remains to refinance."`; no fee (Req 7.7).
 - Otherwise `icrPre = icr(E', D'pre * oldRate)` (non-null because both factors are > 0), `spread = spreadFor(icrPre)`, `newRate = b + delta + spread`, `applied = refinanceApplies(oldRate, newRate)`.
-- Applied: `effRate = 1.02 * newRate`, `debtShown = D'pre * 1.02`, `rateShown = newRate`, note `"Refinanced from 6.81% to 4.70% plus a 2% fee."` (rates to 2 decimals).
-- Not applied: `effRate = oldRate`, `debtShown = D'pre`, `rateShown = oldRate`, note `"Refinancing at 14.20% plus the 2% fee would not lower the annual interest cost of 6.81%."` (Req 7.6).
+- Applied (Req 7.5): `effRate = 1.02 * newRate`, `interest = D'pre * effRate`, i.e. D'_preFee × (1.02 × newRate); `debtShown = D'pre * 1.02`; `rateShown = newRate`; note `"Refinanced from 6.81% to 4.70% plus a 2% fee."` (rates to 2 decimals).
+- Not applied (Req 7.6): `effRate = oldRate`, `interest = D'pre * oldRate`, `debtShown = D'pre`, `rateShown = oldRate`, note `"Refinancing at 14.20% plus the 2% fee would not lower the annual interest cost of 6.81%."`.
 - In all cases `interest = D'pre * effRate`.
 
-**Why `interest = D'pre * effRate`.** Req 7.5 describes "rate = newRate, D' *= 1.02", i.e. `interest = (1.02 * D') * newRate`. That is the same real number as `D' * (1.02 * newRate)`, but the two IEEE results can differ by 1 ulp. Computing `effRate = applied ? 1.02 * newRate : oldRate` makes `effRate` exactly `min(1.02 * newRate, oldRate)` (when the two are equal, both branches give the same value). This gives three exact guarantees used later:
+**Interest is D'_preFee × (1.02 × newRate).** Req 7.5 and 8.7 fix the projected annual interest when refinance applies as `D'pre * (1.02 * newRate)`, not `(1.02 * D'pre) * newRate`. The two are the same real number but can differ by 1 ulp in IEEE arithmetic. Computing `effRate = applied ? 1.02 * newRate : oldRate` makes `effRate` exactly `min(1.02 * newRate, oldRate)` (when the two are equal, both branches give the same value). This gives three exact guarantees used later:
 
-- `interest_after = D'pre * effRate <= D'pre * oldRate = interest_before` (IEEE multiplication by a non-negative factor is monotone), so refinance never raises the annual cost (Property 7, Req 7.8).
-- effRate is a non-decreasing function of delta (Property 4).
-- effRate is a non-increasing function of icr_pre, hence of E' and of 1/D' (Properties 1 and 2).
+- `interest_after = D'pre * effRate <= D'pre * oldRate = interest_before` (IEEE multiplication by a non-negative factor is monotone), so refinance never raises the annual cost (RR-7, Property 16, Req 7.8).
+- effRate is a non-decreasing function of delta (RR-4, Property 13).
+- effRate is a non-increasing function of icr_pre, hence of E' and of 1/D' (RR-1 and RR-2, Properties 11 and 12).
 
-`debtShown` and `rateShown` are kept for display; coverage always uses `interest`.
+`debtShown` and `rateShown` are kept for display only; coverage always uses `interest`.
 
-**Year-0 coverage.** `year0 = D'pre === 0 ? debt-free : icr(E', interest)`. With an empty Treatment and delta = 0 this is `icr(E, D * (I / D))` (Property 3).
+**Year-0 coverage.** `year0 = D'pre === 0 ? debt-free : icr(E', interest)`. With an empty Treatment and delta = 0 this is `icr(E, D * (I / D))` (RR-3, Property 10).
 
 ### `rng.ts`: PRNG and the fixed random block (Req 8.3, 8.4)
 
@@ -412,7 +430,7 @@ export function simulate(firm: Firm, treatment: Treatment, delta: number, macro:
                          options: SimulateOptions): EngineResult<SimulationResult>;
 ```
 
-1. Validate (order above). `paths` defaults to 1000; must be an integer in [1, 100000], else `invalid_paths` with no path run (Req 8.13).
+1. Validate (Validation order above). `paths` defaults to 1000; must be an integer in [1, 100000], else `invalid_paths` with no path run (Req 8.13). `seed` must satisfy `Number.isInteger(seed) && seed >= 0 && seed <= 4294967295`, else `invalid_seed` with no path run; the value is never coerced with `>>> 0` (Req 8.16).
 2. `blocks = blocksFor(seed, paths)`.
 3. If the canonical Treatment has no `sell_assets`, `applyCore` does not read `recovery`, so `post` is computed once with recovery 0.7 and reused. Otherwise `post_k = applyCore(inputs, t, blocks[k].recovery)`. Both branches produce bit-identical results, because `applyCore` is a pure function whose output does not depend on `recovery` when sell_assets is absent. A unit test compares this against a naive version that always recomputes.
 4. `survivalOdds = covered / paths`, where a path is covered when `ICR_t >= 1` for t = 1, 2, 3 (`Infinity >= 1` is true).
@@ -426,12 +444,12 @@ export function drawOutcome(firm: Firm, treatment: Treatment, delta: number, mac
                             seed: number): EngineResult<Outcome>;
 ```
 
-1. Validate; `block = blocksFor(seed, 1)[0]`; `post = applyCore(inputs, t, block.recovery)`; `path = projectPath(inputs, post, block)`.
+1. Validate (delta, treatment, firm, b, then seed with the `invalid_seed` rule of `simulate`, Req 9.10, 9.12); `block = blocksFor(seed, 1)[0]`; `post = applyCore(inputs, t, block.recovery)`; `path = projectPath(inputs, post, block)`.
 2. `failingYear` = smallest t with `ICR_t < 1`, or null. `rescued = failingYear === null`.
 3. Message (Req 9.4): `` `Year ${t}: operating margin ${pct1(m_t)}%, coverage ${fix2(ICR_t)}. ${name} stays undead.` `` where `pct1(x) = clean((x * 100).toFixed(1))`, `fix2(x) = clean(x.toFixed(2))`, and `clean` turns `"-0.0"` / `"-0.00"` into `"0.0"` / `"0.00"`. A failing year is never debt-free, so ICR_t is finite.
 4. Hint: `hintScan` below.
 
-**Hint scan (replaces bisection, Open question A).** Let `t*` be the failing year, `c0` the chosen cut (0 if cut_costs is absent) and
+**Hint scan (Req 9.5 to 9.7, 9.11).** Let `t*` be the failing year, `c0` the chosen cut (0 if cut_costs is absent) and
 
 ```
 f(c) = projectPath(inputs, applyCore(inputs, withCut(t, c), block.recovery), block).icr[t* - 1]
@@ -444,7 +462,7 @@ f is not monotone in c:
 - A larger cut raises the margin but lowers growth by 0.5c. Example: E/R = 0.9, margin_mean = 0.9, eps = 0, g = 0.01, no other tools. At c = 0: m_1 = 0.9, R_1 = 1.01 R, EBIT_1 = 0.909 R. At c = 0.08: m_0 = 0.908, m_1 = 0.908 + 0.3 (0.9 - 0.908) = 0.9056, R_1 = 0.97 R, EBIT_1 = 0.878432 R. Coverage falls by 3.4%.
 - With refinance and EBIT_t < 0, a cut that switches refinance on lowers the interest and makes ICR_t more negative.
 
-So bisection on f(c) >= 1 can stop at a wrong boundary. The scan:
+So the engine scans upward from k = 1 over `c_k = c0 + k × 0.001` while `c_k <= 0.08`, and stops at the first k with f(c_k) >= 1 (Req 9.5):
 
 ```ts
 const K = Math.floor((0.08 - c0) / 0.001 + 1e-9);
@@ -455,12 +473,12 @@ for (let k = 1; k <= K; k++) {
 return null;
 ```
 
-At most 80 single-path evaluations (microseconds). It returns exactly the smallest extra cut on the 0.1 pp grid with no monotonicity assumption, so the result is already "rounded up to 0.1 pp" and capped at 0.08, and the stated extra cut is the one actually verified. Text:
+At most 80 single-path evaluations (microseconds). It returns exactly the smallest extra cut on the 0.1 pp grid with no monotonicity assumption. The hint is k × 0.1 percentage points with no separate rounding step, the total cut never exceeds 0.08, and the stated extra cut is the one actually verified. The `1e-9` guard only absorbs floating-point error in the division so that c0 = 0 gives K = 80. Documented limit (Req 9.5): when c0 is not a multiple of 0.001, a gap above `c0 + K / 1000` and below 0.08, narrower than 0.1 pp, is not tested. If no k works, `hint` is null and only the failure message is returned (Req 9.7). Text (Req 9.6):
 
 - cut_costs present: "What it would take: an extra cost cut of 1.3 percentage points would have kept year 2 at coverage 1 or above."
 - cut_costs absent: "What it would take: a cost cut of 1.3 percentage points would have kept year 2 at coverage 1 or above."
 
-The pp value is `(k / 10).toFixed(1)`. The text never contains "should", "recommend" or "advise" (Req 9.8). If the Treatment already has 3 tools and no cut_costs, the hint describes a hypothetical 4th tool; it is still computed and worded as "what it would take" (Open question A).
+The pp value is `(k / 10).toFixed(1)`. The text never contains "should", "recommend" or "advise" (Req 9.8). If the Treatment already has 3 tools and no cut_costs, the scan still runs and the hint describes a hypothetical extra cost cut, worded as "what it would take" (Req 9.11).
 
 ### `hash.ts`: seed derivation (Req 10)
 
@@ -476,7 +494,7 @@ export function seedFrom(cik: string, treatment: Treatment, isoDate: string): En
 - Pinned published vectors: `fnv1a32("") = 0x811c9dc5`, `fnv1a32("a") = 0xe40c292c`, `fnv1a32("foobar") = 0xbf9cf968`.
 - Input string: `` `${cik}|${serialiseTreatment(canonical)}|${isoDate}` ``. `|` cannot occur in a 10-digit CIK, a valid date or the serialisation.
 - `isoDate` must match `^\d{4}-\d{2}-\d{2}$` with month 01..12 and a day valid for that month, with leap years by the Gregorian rule (`y % 4 === 0 && (y % 100 !== 0 || y % 400 === 0)`); else `invalid_date` (Req 10.5). Validation is arithmetic, not `new Date(...)`, so the purity check stays simple.
-- The treatment is parsed first; any parser error is returned. The CIK is checked against `^\d{10}$` (Open question F).
+- Check order (Req 10.9): the treatment is parsed first and any parser error is returned; then `cik` must be a string matching `^\d{10}$`, else `invalid_cik`; then `isoDate` is checked (`invalid_date`). No seed is returned on any error.
 - The engine has no clock. The caller (lab spec) passes `new Date().toISOString().slice(0, 10)`, the UTC date.
 
 ### `score.ts` and `liquidation.ts` (Req 11)
@@ -539,14 +557,16 @@ export function createSimulationClient(deps?: { createWorker?: () => WorkerLike 
 - Promises reject with the plain `EngineError` value from the response (Req 12.4).
 - Every request gets a unique, increasing id. Responses resolve only the request with the matching id; unknown ids are ignored (Req 12.5, 12.6).
 
-**Latest-wins per channel (Open question B).** A worker running a synchronous loop cannot read messages mid-run, and terminating it costs a new worker start-up each time a slider moves. With simulate around 1 ms, coalescing is cheaper than terminating:
+**Latest-wins per Channel (Req 12.11 to 12.15).** A worker running a synchronous loop cannot read messages mid-run, and terminating it costs a new worker start-up each time a slider moves. With simulate around 1 ms, coalescing is cheaper than terminating. The client keeps a `Map<string, { inFlight?: Pending; queued?: Pending }>` inside its closure:
 
-- Each channel (default `'default'`) has at most one request in flight and at most one queued.
-- New request while one is in flight: the queued request, if any, is rejected with `superseded` and replaced by the new one.
-- In-flight response arrives: if a newer request is queued, the in-flight promise is rejected with `superseded` (its result is stale) and the queued request is posted; otherwise it resolves or rejects with the response.
-- `signal` aborted: a queued request is removed and rejected with `aborted`; an in-flight one is rejected with `aborted` at once and its later response is ignored.
-- Channels are independent; a request on one channel never supersedes another channel.
-- `dispose()`: terminates the worker if one exists, rejects every in-flight and queued request with `worker_disposed`, and marks the client disposed. Later requests reject with `worker_disposed` and create no worker (Req 12.7, 12.8).
+- Each Channel (default `"default"`) holds at most one In_Flight_Request and at most one Queued_Request, the latest (Req 12.11).
+- New request on a Channel with no In_Flight_Request: posted at once and becomes the In_Flight_Request.
+- New request on a Channel that has an In_Flight_Request: queued (Req 12.13). If a Queued_Request already exists, that one is rejected with `superseded` and replaced by the new request (Req 12.12).
+- Response of the In_Flight_Request arrives while a Queued_Request exists: the In_Flight_Request's promise is rejected with `superseded` (its result is stale) and the Queued_Request is then posted and becomes the In_Flight_Request (Req 12.13). With no Queued_Request, the promise resolves with the result or rejects with the carried EngineError (Req 12.4).
+- `signal` fires (Req 12.14): the request's promise is rejected with `aborted` at once. A Queued_Request is removed from its Channel. An In_Flight_Request stays recorded as in flight, because the worker is still computing it, but is marked settled; its later response is ignored for settlement and only frees the Channel, after which a Queued_Request, if any, is posted. A signal that is already aborted when `simulate` is called rejects with `aborted` without posting. Abort after settlement does nothing.
+- Channels are independent (Req 12.15): every rule above reads and writes only the entry of the request's own Channel, so a request on one Channel never supersedes or delays the settlement of a request on another Channel.
+- `dispose()`: terminates the worker if one exists, rejects every In_Flight_Request and every Queued_Request on every Channel with `worker_disposed`, and marks the client disposed. Later requests reject with `worker_disposed` and create no worker (Req 12.7, 12.8).
+- Each promise settles exactly once; the first of response, `superseded`, `aborted` or `worker_disposed` wins.
 
 Fallback, described but not built in v1: a `terminate-on-cancel` mode that terminates and respawns the worker when a request is superseded, to be used only if the benchmark shows simulate above 16 ms. UI-side `requestAnimationFrame` throttling of slider events belongs to the lab spec.
 
@@ -586,9 +606,8 @@ The existing ESLint `no-restricted-imports` rule for `src/engine/**` stays as a 
 export type EngineErrorCode =
   | 'unknown_tool' | 'too_many_tools' | 'duplicate_tool' | 'param_out_of_range'
   | 'delta_out_of_range' | 'not_rescuable' | 'invalid_paths' | 'invalid_date'
-  | 'worker_disposed'
-  | 'superseded' | 'aborted'                          // proposed, Open question B
-  | 'invalid_treatment' | 'invalid_seed' | 'invalid_cik'; // proposed, Open question F
+  | 'worker_disposed' | 'superseded' | 'aborted'       // Req 12.7, 12.12 to 12.14
+  | 'invalid_treatment' | 'invalid_seed' | 'invalid_cik'; // Req 3.15, 8.16, 9.12, 10.9
 export type InputName = 'R' | 'E' | 'I' | 'D' | 'A' | 'Q' | 'b' | 'years';
 export interface EngineError {
   readonly code: EngineErrorCode;
@@ -674,22 +693,28 @@ Single tools (recovery 0.7):
 | debt_for_equity w = 0.3 | converted = 315e6; D' = 735e6; keep = 140 / 455 = 0.307692; shareholders = 69.2308; creditors = 18 |
 | refinance alone | icr_pre = 0.5315 → spread 0.09; newRate = 0.042 + 0.01 + 0.09 = 0.142; 1.02 × 0.142 = 0.14484 ≥ 0.068095 → not applied; D' unchanged |
 
-Refinance can never apply to Ashgrove (Open question E). The condition `1.02 (b + delta + spread) < r + delta` is equivalent to `1.02 b + 1.02 spread + 0.02 delta < r`. The left side is at least `0.04284 + 0.0204 + 0 = 0.06324`, above r = 0.05810, for every delta and every treatment (no v1 tool changes r).
+Refinance can never apply to Ashgrove (Req 15.4, "does not apply" case). The condition `1.02 (b + delta + spread) < r + delta` is equivalent to `1.02 b + 1.02 spread + 0.02 delta < r`. The left side is at least `0.04284 + 0.0204 + 0 = 0.06324`, above r = 0.05810, for every delta and every treatment (no v1 tool changes r).
 
-Proposed "applies" fixture, **Ashgrove variant** (I = 120e6, everything else equal), delta = 0.01, treatment cut_costs 0.08 + debt_for_equity 0.6 + refinance:
+"Applies" fixture (Req 15.4), **Ashgrove_Variant** (I = 120e6, everything else equal), delta = 0.01, treatment cut_costs 0.08 + debt_for_equity 0.6 + refinance. Every value below was recomputed by hand. The rounded decimals are for reading; the test writes each expected value as an arithmetic expression (for example `130.96e6 / (420e6 * 0.08874)`) and compares with relative tolerance 1e-9, which meets the 1e-6 of Req 15.3 and 15.4:
 
 | Step | Value |
 | --- | --- |
-| r, r + delta | 120 / 1050 = 0.1142857; 0.1242857 |
-| E' | 38e6 + 0.08 × 1162e6 = 130.96e6 |
-| D'pre | 1050e6 − 0.6 × 1050e6 = 420e6 |
-| icr_pre | 130.96e6 / (420e6 × 0.1242857) = 130.96 / 52.2 = 2.50881 → spread **0.035** |
-| newRate | 0.042 + 0.01 + 0.035 = 0.087; 1.02 × 0.087 = 0.08874 < 0.1242857 → applies |
-| debt shown, interest | 428.4e6; 420e6 × 0.08874 = 37.2708e6 |
-| year-0 ICR | 130.96 / 37.2708 = 3.51374 (2.50881 before refinance) |
-| pains | workers 50; keep = 140 / 770 = 0.181818, shareholders 81.8182; creditors 36 |
+| r, r + delta | 120 / 1050 = 0.1142857; 0.1242857 (0.124286) |
+| E' | 38e6 + 0.08 × (1200e6 − 38e6) = 38e6 + 92.96e6 = 130.96e6 |
+| D'_preFee | 1050e6 − 0.6 × 1050e6 = 1050e6 − 630e6 = 420e6 |
+| interest before refinance | 420e6 × 0.1242857 = 48e6 + 4.2e6 = 52.2e6 |
+| icr_pre | 130.96e6 / 52.2e6 = 2.50881 → 1.5 <= icr_pre < 3 → spread **0.035** |
+| newRate | 0.042 + 0.01 + 0.035 = 0.087 |
+| fee test | 1.02 × 0.087 = 0.08874 < 0.124286 → applies |
+| displayed debt, displayed rate | 420e6 × 1.02 = 428.4e6; 0.087 |
+| projected annual interest | D'_preFee × (1.02 × newRate) = 420e6 × 0.08874 = 37.2708e6 |
+| year-0 ICR | 130.96e6 / 37.2708e6 = 3.5137 (3.51374; 2.50881 before refinance) |
+| keep | converted = 630e6; keep = 140 / (140 + 630) = 140 / 770 = 0.181818 |
+| pains | workers (0.08 / 0.08) × 50 = 50; shareholders (1 − 140/770) × 100 = 81.82 (81.8182); creditors 0.6 × 60 = 36 |
 
-The same variant with refinance alone does not apply: icr_pre = 38 / 130.5 = 0.29119 → spread 0.09 → 1.02 × 0.142 = 0.14484 ≥ 0.1242857.
+The same variant with refinance alone does not apply: icr_pre = 38e6 / (1050e6 × 0.1242857) = 38 / 130.5 = 0.29119 → spread 0.09 → 1.02 × 0.142 = 0.14484 ≥ 0.1242857.
+
+Boundary case (Req 15.4): `refinanceApplies(oldRate, newRate)` with `oldRate = 1.02 * newRate` computed in floating point returns false, because the test is strict.
 
 
 ## Correctness Properties
@@ -738,9 +763,9 @@ For any interest > 0 and any finite a <= b, `icr(a, interest) <= icr(b, interest
 
 ### Property 3: The parser rejects invalid treatments with one deterministic error
 
-For any treatment built from a valid one by one or more corruptions (unknown or extension tool name, a 4th to 6th tool, a duplicate name, a parameter that is out of range, NaN, ±Infinity, a non-number, missing, or an extra key, any key on refinance, a non-array, a malformed entry), `parseTreatment` returns `ok: false` with the code given by the precedence order (invalid_treatment, too_many_tools, unknown_tool, duplicate_tool, param_out_of_range), the error names the offending tool when there is one, two calls return deeply equal errors, the input is deeply equal to a `structuredClone` taken before the call, and `applyTreatment`, `simulate` and `drawOutcome` return the same error for the same treatment.
+For any treatment built from a valid one by one or more corruptions (unknown or extension tool name, a 4th to 6th tool, a duplicate name, a parameter that is out of range, NaN, ±Infinity, a non-number, missing, or an extra key, any key on refinance, a non-array, a malformed entry), `parseTreatment` returns `ok: false` with the code given by the fixed order of Req 3.11 (non-array → invalid_treatment; > 3 entries → too_many_tools; per entry in input order, malformed → invalid_treatment or non-v1 name → unknown_tool; first duplicate → duplicate_tool; per entry, parameter → param_out_of_range), computed by an independent reference classifier in the test. The error names the offending tool when there is one and the index of a malformed entry for invalid_treatment; two calls return deeply equal errors, the input is deeply equal to a `structuredClone` taken before the call, and `applyTreatment`, `simulate` and `drawOutcome` return the same error for the same treatment.
 
-**Validates: Requirements 2.6, 3.3, 3.4, 3.5, 3.6, 3.8, 3.11, 4.12, 6.10, 9.10**
+**Validates: Requirements 2.6, 3.3, 3.4, 3.5, 3.6, 3.8, 3.11, 3.15, 4.12, 6.10, 9.10**
 
 ### Property 4: The state machine delegates treatment parsing
 
@@ -760,11 +785,11 @@ For any valid firm, delta, seed, date and valid Treatment, and any permutation o
 
 **Validates: Requirements 3.9, 6.1, 7.1, 7.9, 10.6**
 
-### Property 7: Invalid firm, delta and paths inputs give typed errors
+### Property 7: Invalid inputs give one typed error in Validation_Order
 
-For any valid firm with one injected defect (empty `years`; any non-empty subset of R, E, I, D, A, Q set to null; D <= 0; R <= 0; I <= 0), and for any delta that is NaN, ±Infinity, < 0 or > 0.05, and any `paths` that is non-integer, < 1 or > 100000: each of `diagnose`, `applyTreatment`, `simulate` and `drawOutcome` returns `ok: false` with the expected code (`not_rescuable` naming exactly the null subset or the defective input, `delta_out_of_range`, `invalid_paths` for simulate), never throws, and leaves firm and macro deeply equal to their clones. No delta value is clamped.
+For any valid arguments with one or more injected defects drawn from: delta NaN, ±Infinity, < 0 or > 0.05; an invalid treatment; a firm defect (empty `years`; any non-empty subset of R, E, I, D, A, Q set to null; D <= 0; R <= 0; I <= 0); b NaN, ±Infinity or < 0; `paths` non-integer, < 1 or > 100000; `seed` non-integer, negative, > 4294967295 or a non-number: each of `diagnose`, `applyTreatment`, `simulate` and `drawOutcome` (for the arguments it takes) returns `ok: false` with the error of the first defect in the order delta, treatment, firm, b, paths, seed (`delta_out_of_range`; the parser code; `not_rescuable` naming exactly the null subset or the defective input; `not_rescuable` naming `b`; `invalid_paths`; `invalid_seed`). It never throws, runs no path, and leaves firm and macro deeply equal to their clones. No delta or seed value is clamped or coerced.
 
-**Validates: Requirements 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.12, 8.13, 14.8**
+**Validates: Requirements 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.12, 4.13, 4.14, 8.13, 8.16, 9.12, 14.8**
 
 ### Property 8: Latest year selection and unused inputs
 
@@ -774,7 +799,7 @@ For any valid firm, shuffling the order of `years` and changing `rescue_inputs.m
 
 ### Property 9: Diagnosis formulas
 
-For any valid firm and delta: `shockedIcr = icr(E, D * (r + delta))`; `neededRate = E / D`; when E > 0, `neededEbitIncrease` and `neededDebtCut` equal `D * (r + delta) / E - 1` and `1 - E / ((r + delta) * D)` within relative 1e-12, and when E <= 0 both are null; `belowCoverage` is true exactly when `neededEbitIncrease` is null or >= 0.
+For any valid firm and delta: `shockedIcr = icr(E, D * (r + delta))`; `neededRate = E / D`; when E > 0, `neededEbitIncrease` and `neededDebtCut` equal `D * (r + delta) / E - 1` and `1 - E / ((r + delta) * D)` within relative 1e-12, and when E <= 0 both are null; `belowCoverage` is true exactly when `neededEbitIncrease` is null or > 0, and false when it is <= 0. The exact-0 boundary (shocked coverage exactly 1, counted as covered) is pinned by a unit test on the internal helper `belowCoverageFor(x)` with x = 0, -0, 1e-16 and null, because random generation almost never hits it and firm data rarely gives exactly 0 in floating point.
 
 **Validates: Requirements 5.1, 5.2, 5.3, 5.4, 5.5, 5.8, 14.2**
 
@@ -786,26 +811,28 @@ For any valid firm, with an empty Treatment and delta = 0, `applyTreatment(...).
 
 ### Property 11: Debt-for-equity never worsens coverage on the same path (RR-1, amended)
 
-For any valid firm, delta, RandomBlock, base Treatment T without debt_for_equity (refinance included in the generator) and any w in [0, 0.60], let `with = T + debt_for_equity(w)`. For each year t = 1, 2, 3, on the same block:
+For any valid firm, delta, RandomBlock, base Treatment T without debt_for_equity (cut_costs, sell_assets and refinance may be in T) and any w in [0, 0.60], let `with = T + debt_for_equity(w)`. For each year t = 1, 2, 3, on the same block:
 
-1. if EBIT_t >= 0, `ICR_t(with) >= ICR_t(T)` exactly;
-2. if year t is covered (ICR_t >= 1) under T, it is covered under `with`.
+1. if EBIT_t >= 0, `ICR_t(with) >= ICR_t(T)`, compared exactly with no tolerance (Req 13.1);
+2. for any sign of EBIT_t, if year t is a Covered_Year under T (ICR_t >= 1 or D' = 0), it is a Covered_Year under `with` (Req 13.11).
 
-EBIT_t is identical under both (the swap does not change R' or E'). A failing case is reported by fast-check with its seed and shrunk inputs; refinance is never filtered out of the generator.
+EBIT_t is identical under both (the swap does not change R' or E'). sell_assets may appear in T but is never the varied tool, because it also scales R and E (Req 13.1). Refinance stays in the generator and is never filtered out; a failing case makes the run fail and fast-check reports its seed and shrunk inputs (Req 13.2).
 
-Why this holds exactly: `D'with = D' - w * D' <= D'` in IEEE arithmetic. If `D'with = 0` the year is debt-free (+Infinity). Otherwise, if refinance is in T and E' >= 0, `icr_pre` with the smaller denominator is >= the one without, so the spread is <= and `newRate` is <=; `effRate = min(1.02 * newRate, r + delta)` is then <=. If E' < 0, both spreads are 0.09 and effRate is equal. So `interest_with = D'with * effRate_with <= D' * effRate = interest_without`, and dividing EBIT_t >= 0 by a smaller positive denominator gives a quotient that is >= (exact). Part 1 fails for EBIT_t < 0 (for example EBIT_t = -10: -10 / 100 = -0.1 without, -10 / 50 = -0.2 with), which is why the property is amended (Open question C); part 2 still holds because a negative EBIT_t fails both.
+Why this holds exactly: `D'with = D' - w * D' <= D'` in IEEE arithmetic. If `D'with = 0` the year is debt-free (+Infinity). Otherwise, if refinance is in T and E' >= 0, `icr_pre` with the smaller denominator is >= the one without, so the spread is <= and `newRate` is <=; `effRate = min(1.02 * newRate, r + delta)` is then <=. If E' < 0, both spreads are 0.09 and effRate is equal. So `interest_with = D'with * effRate_with <= D' * effRate = interest_without`, and dividing EBIT_t >= 0 by a smaller positive denominator gives a quotient that is >= (exact). Part 1 fails for EBIT_t < 0, which is why RR-1 is amended. The unit test "RR-1 negative-EBIT counterexample" records this as documented behaviour: with EBIT_t = -10, lowering the interest from 100 to 50 lowers ICR_t from -10 / 100 = -0.1 to -10 / 50 = -0.2 (Req 13.12). Part 2 still holds for negative EBIT_t: a year with EBIT_t < 0 and D' > 0 is not covered under T, so there is nothing to keep; and if D'_T = 0 then D'_with = 0 - w × 0 = 0, so the year stays debt-free.
 
-**Validates: Requirements 13.1, 13.2**
+**Validates: Requirements 13.1, 13.2, 13.11**
 
-### Property 12: A larger cost cut never lowers year-1 coverage (RR-2, restricted domain)
+### Property 12: A larger cost cut never lowers year-1 coverage (RR-2, on the RR-2 domain)
 
-For any firm and block in the RR-2 domain (E/R in [-0.3, 0.3], margin_mean in [-0.2, 0.3], eps in [-4, 4], other inputs as `arbValidFirm`), any treatment T (sell_assets, debt_for_equity and refinance allowed) and any 0 <= c1 <= c2 <= 0.08, on the same block:
+For any firm, Random_Block and treatment T in the RR-2 domain of Req 13.3, and any 0 <= c1 <= c2 <= 0.08, the three statements below hold on the same block. The domain, generated by `arbRr2Case`, is: E/R in [-0.3, 0.3]; margin_mean in [-0.2, 0.3]; eps1, eps2, eps3 in [-4, 4]; recovery in [0.6, 0.8]; haircut in [0.3, 0.6]; R in [1e6, 1e11]; D in [1e5, 1e11]; r = I / D in [0.005, 0.25]; A in [0, 1e11]; Q in [-1e10, 1e10]; margin_change_sd in [0, 0.2]; revenue_growth_median in [-0.3, 0.3]; b in [0, 0.08]; delta in [0, 0.05]; T may contain sell_assets, debt_for_equity and refinance, and its cut_costs is replaced by c1 or c2.
 
-1. the test computes the precondition `0.7 * (1 - m_b) * (1 + g - 0.04) >= 0.5 * m_1(c = 0.08)` (m_b = E/R) and asserts that it holds, so no case is silently discarded;
-2. `geq(EBIT_1(c2), EBIT_1(c1), 1e-12)`;
-3. if `EBIT_1(c1) >= 0`, `geq(ICR_1(c2), ICR_1(c1), 1e-12)`.
+1. Precondition, asserted inside the property for every generated case (never used as a filter, so no case is silently discarded): with m_b = E/R and g the clamped growth, the test computes m_1 at c = 0.08 on the same block and asserts `0.7 * (1 - m_b) * (1 + g - 0.04) >= 0.5 * m_1(c = 0.08)` with `expect(...).toBe(true)`. A violation fails the run.
+2. `geq(EBIT_1(c2), EBIT_1(c1), 1e-12)`, i.e. EBIT_1(c2) >= EBIT_1(c1) − 1e-12 × max(|EBIT_1(c2)|, |EBIT_1(c1)|).
+3. If `EBIT_1(c1) >= 0`, `geq(ICR_1(c2), ICR_1(c1), 1e-12)`.
 
-The precondition always holds in this domain: m_1 <= 0.7 × 0.356 + 0.3 × 0.3 + 0.08 × 4 = 0.6592, so the right side is <= 0.3296, while the left side is >= 0.7 × 0.7 × 0.81 = 0.3969. A larger cut also gives a larger E', a larger icr_pre and an effRate that is <=, so interest never rises with c. Outside the domain the rule fails; a unit test records the counterexample E/R = 0.9, margin_mean = 0.9, eps = 0, g = 0.01, where year-1 EBIT is 0.909 R at c = 0 and 0.878432 R at c = 0.08 (Open question D).
+Why the precondition gives part 2: m_0 = m_b + c(1 − m_b) (sell_assets scales R and E equally), so m_1 = 0.7 m_0 + 0.3 margin_mean + sigma × eps1 rises with c, and R_1 = R'(1 + g − 0.5c). Then dEBIT_1/dc = R'[0.7(1 − m_b)(1 + g − 0.5c) − 0.5 m_1(c)] >= R'[0.7(1 − m_b)(1 + g − 0.04) − 0.5 m_1(0.08)] >= 0. Why it always holds in this domain: m_1(0.08) <= 0.7 × 0.356 + 0.3 × 0.3 + 0.08 × 4 = 0.6592, so the right side is <= 0.3296, while the left side is >= 0.7 × 0.7 × 0.81 = 0.3969. For part 3, a larger cut also gives a larger E', a larger icr_pre and an effRate that is <=, so interest never rises with c.
+
+Outside the domain the rule can fail. The unit test "RR-2 high-margin trade-off" records this (Req 13.13): E/R = 0.9, margin_mean = 0.9, eps1 = 0, g = 0.01 and no other tools give year-1 EBIT of 0.909 × R at c = 0 and 0.878432 × R at c = 0.08 (relative tolerance 1e-9).
 
 **Validates: Requirements 13.3**
 
@@ -865,15 +892,15 @@ For any valid arguments and seed, `rescued` is true exactly when every year's co
 
 ### Property 22: The hint is the smallest working extra cut on the grid
 
-For any failed Outcome with chosen cut c0 (0 when absent) and failing year t*, with `f` evaluated on the drawn block: if `hint` is not null, `hint.extraCut = k / 1000` for an integer k >= 1, `hint.totalCut <= 0.08`, `f(hint.totalCut) >= 1`, and `f(c0 + j / 1000) < 1` for every j in 1..k-1; if `hint` is null, `f(c0 + j / 1000) < 1` for every j in 1..K.
+For any failed Outcome with chosen cut c0 (0 when absent) and failing year t*, with `f` evaluated on the drawn block: if `hint` is not null, `hint.extraCut = k / 1000` for an integer k >= 1, `hint.totalCut <= 0.08`, `f(hint.totalCut) >= 1`, and `f(c0 + j / 1000) < 1` for every j in 1..k-1; if `hint` is null, `f(c0 + j / 1000) < 1` for every j in 1..K, where K is the largest k with `c0 + k / 1000 <= 0.08`. The hint text states `(k / 10).toFixed(1)` percentage points, worded as an extra cut when cut_costs is in the Treatment and as a cost cut otherwise. The generator includes 3-tool treatments without cut_costs, for which a hint is still computed (Req 9.11).
 
-**Validates: Requirements 9.5, 9.6, 9.7**
+**Validates: Requirements 9.5, 9.6, 9.7, 9.11**
 
 ### Property 23: seedFrom output and date validation
 
-For any 10-digit cik, valid Treatment and valid calendar date between 1900-01-01 and 2199-12-31, `seedFrom` returns `ok: true` with an integer in [0, 4294967295] equal to `fnv1a32(cik + "|" + serialiseTreatment(t) + "|" + date)`. For any string that is not `YYYY-MM-DD` or names an impossible day (month 00 or 13, day 00, day 31 in a 30-day month, 29 February in a non-leap year), it returns `invalid_date`.
+For any 10-digit cik, valid Treatment and valid calendar date between 1900-01-01 and 2199-12-31, `seedFrom` returns `ok: true` with an integer in [0, 4294967295] equal to `fnv1a32(cik + "|" + serialiseTreatment(t) + "|" + date)`. For any string that is not `YYYY-MM-DD` or names an impossible day (month 00 or 13, day 00, day 31 in a 30-day month, 29 February in a non-leap year), it returns `invalid_date`. For any `cik` that is not a string of exactly 10 decimal digits (shorter, longer, non-digit characters, non-string), it returns `invalid_cik`. With several defects, the error follows the order treatment, cik, isoDate: an invalid treatment wins over a bad cik, and a bad cik wins over a bad date.
 
-**Validates: Requirements 10.1, 10.2, 10.4, 10.5**
+**Validates: Requirements 10.1, 10.2, 10.4, 10.5, 10.9**
 
 ### Property 24: Score formula and bounds
 
@@ -893,15 +920,35 @@ For any valid simulation arguments (`paths` in [1, 200]), the result returned by
 
 **Validates: Requirements 12.10**
 
+### Property 27: Latest-wins per Channel matches a reference model
+
+For any sequence of operations generated by `arbWorkerOps` on one Channel (new request, optionally with an AbortSignal; fake worker answers the oldest posted request with ok or error; abort of any earlier request; `dispose()`; new request after dispose), run against the client with a fake worker and against a small reference model in the test, the following hold after every step:
+
+1. the Channel has at most one In_Flight_Request and at most one Queued_Request, and the fake worker has received at most one unanswered request for the Channel (Req 12.11);
+2. a new request on a Channel with a Queued_Request rejects that Queued_Request with `superseded` and becomes the Queued_Request (Req 12.12);
+3. a response arriving while a Queued_Request exists rejects the In_Flight_Request with `superseded`, and the Queued_Request is the next message the fake worker receives (Req 12.13);
+4. an abort rejects that request with `aborted`; an aborted Queued_Request is never posted; the later response of an aborted In_Flight_Request settles nothing (Req 12.14);
+5. `dispose()` rejects every pending request with `worker_disposed` and calls `terminate` once; any later request rejects with `worker_disposed` and does not call the factory (Req 12.7, 12.8);
+6. every promise settles exactly once, and its settlement (resolved value, or error code) equals the model's.
+
+**Validates: Requirements 12.1, 12.7, 12.8, 12.11, 12.12, 12.13, 12.14**
+
+### Property 28: Channels are independent
+
+For any two operation sequences A and B generated by `arbWorkerOps` on Channels "a" and "b", and any interleaving of A and B into one sequence (with `dispose()` excluded), the settlement of every request on Channel "a" (value or error code, and whether it was posted) is the same as when A is run alone on a fresh client, and likewise for "b". In particular no request on one Channel is ever rejected with `superseded` because of a request on the other Channel.
+
+**Validates: Requirements 12.15**
+
 ## Error Handling
 
 - **No throws.** Every exported function returns `EngineResult<T>` (except `icr`, `score` and `liquidationRecovery`, which are total and return plain values). Internal invariants that cannot fail for validated input (for example `icr` returning null on a positive interest) are guarded with an `EngineError` of the nearest code rather than an exception.
-- **No clamping of user input.** Delta and tool parameters outside their ranges are errors (Req 3.6, 4.1). Only model constants are clamped as the steering file says (sigma, g) and outputs are capped (pain meters, score inputs).
+- **No clamping of user input.** Delta, tool parameters and seeds outside their ranges are errors (Req 3.6, 4.1, 8.16, 9.12); a negative or non-finite b is `not_rescuable` (Req 4.13).
+- **Error codes (final).** `unknown_tool`, `too_many_tools`, `duplicate_tool`, `param_out_of_range`, `invalid_treatment`, `delta_out_of_range`, `not_rescuable`, `invalid_paths`, `invalid_seed`, `invalid_date`, `invalid_cik`, `worker_disposed`, `superseded`, `aborted`. This is the EngineError list of the requirements glossary; each code has a unit test (Req 15.5). Only model constants are clamped as the steering file says (sigma, g) and outputs are capped (pain meters, score inputs).
 - **Error messages** are plain sentences the UI can show directly, for example "Rate shock must be between 0 and 0.05." and "Not rescuable: missing revenue and equity for FY2024." `detail` carries machine-readable data (tool, param, inputs) for UI highlighting.
 - **Precedence** is fixed (Validation order above) so one input always gives one code.
 - **Display safety.** Infinity is confined to `PathResult`; display types use `CoverageView` and "debt-free" text. Negative zero is printed as "0.0" / "0.00".
-- **Worker failures.** Error responses reject only their own request. `superseded` and `aborted` are expected control-flow results and the UI should ignore them quietly. `worker_disposed` follows `dispose()`. A worker `error` event (script failed to load) rejects all in-flight requests with `worker_disposed` and disposes the client; the lab spec decides whether to fall back to running `simulate` on the main thread.
-- **Cross-runtime determinism.** `Math.sqrt` is correctly rounded, but ECMAScript does not require `Math.log`, `Math.cos` and `Math.sin` to be. The same engine version in the same browser always gives the same outcome (Req 10.7), but two different JS engines could differ by an ulp in eps and, in a borderline case, flip one player's outcome compared with another's (Open question J).
+- **Worker failures.** Error responses reject only their own request. `superseded` and `aborted` are expected control-flow results and the UI should ignore them quietly. `worker_disposed` follows `dispose()`. A worker `error` event (script failed to load) rejects every In_Flight_Request and Queued_Request on every Channel with `worker_disposed` and disposes the client, the same as `dispose()` (Req 12.7); the lab spec decides whether to fall back to running `simulate` on the main thread.
+- **Cross-runtime determinism.** `Math.sqrt` is correctly rounded, but ECMAScript does not require `Math.log`, `Math.cos` and `Math.sin` to be. The same engine version in the same browser always gives the same outcome (Req 10.7), but two different JS engines could differ by an ulp in eps and, in a borderline case, flip one player's outcome compared with another's. This is accepted for v1 and documented (Req 9.9, 10.7); a deterministic port such as fdlibm inside `rng.ts` is the later fix if it matters.
 
 ## Testing Strategy
 
@@ -924,21 +971,24 @@ For any valid simulation arguments (`paths` in [1, 200]), the result returned by
 | `arbTreatment` | `fc.shuffledSubarray` of the 4 v1 tools, length 0 to 3, parameters in their full inclusive ranges with the endpoints as constants, then shuffled (random click order). |
 | `arbBlock` | recovery in [0.6, 0.8], haircut in [0.3, 0.6], eps each in [-6.7, 6.7] (the full PRNG range); RR-2 uses eps in [-4, 4]. |
 | `arbSeed` | integer in [0, 4294967295]. |
-| `arbBadTreatment`, `arbBadFirm`, `arbBadDelta`, `arbBadPaths`, `arbBadDate` | One or more defects on top of a valid value, labelled with the expected error code. |
+| `arbRr2Case` | The RR-2 domain of Req 13.3 (Property 12): firm, macro, delta, block with eps in [-4, 4], and a treatment drawn from sell_assets, debt_for_equity and refinance. |
+| `arbWorkerOps` | 1 to 30 operations on a Channel: `request` (optional signal), `respond` (ok or error, for the oldest posted unanswered request), `abort(i)` for an earlier request, `dispose`, `requestAfterDispose`; used by Properties 27 and 28. |
+| `arbBadTreatment`, `arbBadFirm`, `arbBadDelta`, `arbBadMacro`, `arbBadPaths`, `arbBadSeed`, `arbBadCik`, `arbBadDate` | One or more defects on top of a valid value, labelled with the expected error code. |
 
 `web/src/test/arbitraries.ts`: `arbTreatment` reuses the engine generator so valid events carry valid treatments; `arbJunk` keeps 4 to 6 tool arrays of arbitrary `{ name, params }` (`arbRawTool`). The existing machine properties keep their assertions (Req 3.12).
 
 ### Unit tests (examples and edge cases)
 
 - **Ashgrove worked example** (Req 5.7, 15.1–15.3): diagnosis figures with the stated tolerances; one test per tool with the values in the worked-example table, written as expressions (`38e6 + 0.05 * (1.2e9 - 38e6)`), relative 1e-9, asserting E', R', D' and the affected pain meters; empty Treatment returns the original values and zero pain (Req 6.11).
-- **Refinance** (Req 7.2–7.7, 15.4 as amended): not applied on Ashgrove (refinance alone); applied on the Ashgrove variant with the figures in the table (spread 0.035, newRate 0.087, debt 428.4e6, interest 37.2708e6); boundary on `refinanceApplies(1.02 * x, x)` returning false for several x; D' = 0 note and no fee; spread tiers at icr_pre = -1, 0.999, 1, 1.499, 1.5, 2.999, 3.
+- **Refinance** (Req 7.2–7.7, 15.4): not applied on Ashgrove (refinance alone; icr_pre ≈ 0.5315, spread 0.09, newRate 0.142, 1.02 × 0.142 = 0.14484 >= 0.068095, with the comment that it can never apply to Ashgrove because 1.02 b + 1.02 spread + 0.02 delta >= 0.06324 > r = 0.05810); applied on the Ashgrove_Variant with the figures in the table (icr_pre 2.50881, spread 0.035, newRate 0.087, 1.02 × newRate 0.08874 < 0.124286, displayed debt 428.4e6, interest 37.2708e6, year-0 ICR 3.5137, keep 140/770, pains 50 / 81.82 / 36); displayed debt equals D'_preFee when not applied; boundary on `refinanceApplies(1.02 * x, x)` returning false for several x; D' = 0 note and no fee; spread tiers at icr_pre = -1, 0.999, 1, 1.499, 1.5, 2.999, 3.
 - **Every EngineError code** with its exact code, message and detail (Req 15.5).
 - **Edge cases**: debt-free after a large sale (D > 0, D' = 0, "debt-free", rescued); D = 0 before treatment gives `not_rescuable`; E <= 0 diagnosis nulls; Q <= 0 keep = 0 with converted > 0 and keep = 1 with converted = 0; s = 0.30 gives R' = 0.7 R and E' = 0.7 E'prev; median of [1, 3, 2, 10] = 2.5 and of [1, Infinity] = Infinity; failure message for a constructed path; margin -0.04% printed as "0.0".
-- **Hint**: a constructed case where the scan finds k; a case with no hint; a case with c0 = 0.08 (no hint, K = 0); the RR-2 counterexample showing that f falls with c.
+- **Hint**: a constructed case where the scan finds k; a case with no hint; a case with c0 = 0.08 (no hint, K = 0); a 3-tool Treatment without cut_costs that still gets a hint (Req 9.11).
+- **Named RR counterexamples**: "RR-1 negative-EBIT counterexample" (Req 13.12: EBIT_t = -10, interest 100 → 50, ICR_t -0.1 → -0.2) and "RR-2 high-margin trade-off" (Req 13.13: E/R = 0.9, margin_mean = 0.9, eps1 = 0, g = 0.01, no other tools; year-1 EBIT 0.909 × R at c = 0 and 0.878432 × R at c = 0.08, relative 1e-9).
 - **PRNG and hash** (Req 15.6): the first 5 mulberry32 outputs for seed 42, pinned once and checked against a `BigInt` uint32 reimplementation inside the test; FNV-1a vectors `""`, `"a"`, `"foobar"`; one pinned `seedFrom('9000000001', [{ name: 'cut_costs', params: { c: 0.05 } }], '2025-02-20')` value computed by the task and cross-checked against the test's own FNV implementation; each asserted twice. Distinct seeds for cik-only, parameter-only, tool-set-only and date-only changes (Req 10.8). `2025-02-30` and `2023-02-29` give `invalid_date`; `2024-02-29` is accepted.
 - **Simulate**: default 1000 paths; `constantDebtNote` present; optimised path equals naive recompute for treatments with and without sell_assets; `drawOutcome` path equals simulate path 0.
-- **Worker client** with a fake worker (Req 15.7): request posted; response resolves; error rejects; dispose rejects pending with `worker_disposed` and calls `terminate`; request after dispose rejects without calling the factory; latest-wins sequence from the diagram (`superseded`); abort of queued and in-flight requests (`aborted`); two channels do not supersede each other.
-- **Golden cases** (Req 1.6, 1.7, 1.9): `it.skipIf(!existsSync(path))` over `data/fixtures/icr_cases.json` resolved from the test file; tolerance 1e-9; null must be null; a parse helper is unit-tested with invalid JSON and an unrunnable case so the error names the file and the case index.
+- **Worker client** with a fake worker (Req 15.7): request posted; response resolves; error rejects; dispose rejects in-flight and queued requests with `worker_disposed` and calls `terminate`; request after dispose rejects without calling the factory; latest-wins sequence from the diagram (`superseded`, Req 12.12, 12.13); abort of a queued request (never posted) and of an in-flight request (later response ignored, queued request then posted) with `aborted` (Req 12.14); two Channels do not supersede each other (Req 12.15).
+- **Golden cases** (Req 1.6, 1.7, 1.9): `it.skipIf(!existsSync(path))` over `data/fixtures/icr_cases.json` resolved from the test file, in the format shown under `icr.ts` (to confirm with partner); tolerance 1e-9; null must be null; a parse helper is unit-tested with invalid JSON and an unrunnable case so the error names the file and the case index.
 - **Purity and exports** (Req 2.1–2.3, 12.9): the static scan described above; `Object.keys(await import('./index'))` sorted equals the expected list.
 - **Machine** (Req 3.2, 3.12): all existing state tests run unchanged.
 
@@ -950,28 +1000,18 @@ A task runs `simulate` on Ashgrove with 1,000 paths and each treatment combinati
 
 Registry contents (2.5), default worker construction (12.3), export list (2.1), purity (2.2, 2.3), the 1000-path default (8.1), messages for specific notes, and the process criteria in Requirement 16 do not vary meaningfully with input. They are covered by unit tests, static scans, `pnpm typecheck` / `lint` / `format`, or review.
 
-## Open questions for review
+## Resolved decisions
 
-Each item has a proposed resolution. None is applied to `requirements.md` or the steering file by this design.
+All items were accepted during design review; D uses option (a). The requirements now carry each decision.
 
-**A. Hint search: grid scan instead of bisection (Req 9.5).** f(c) is not monotone (growth penalty 0.5c; refinance switching on with negative EBIT), so bisection can return a cut that is not the smallest or does not work. *Proposal:* amend 9.5 to "found by a linear scan over extra cuts of 0.1 percentage point, from the smallest upward, using the full treatment pipeline on the same random numbers". Two side notes to confirm: (1) when c0 is not a multiple of 0.001, a sliver above `c0 + K / 1000` and below 0.08 (less than 0.1 pp) is not tested; (2) when the Treatment already has 3 tools and no cut_costs, the hint describes a hypothetical 4th tool. *Alternative:* discrete bisection over k with a final check that f(c_k) >= 1; valid but not always the smallest.
-
-**B. Worker cancellation (Req 12).** Requirement 12 has no criteria for latest-wins coalescing, channels, AbortSignal or the codes `superseded` and `aborted`. *Proposal:* add criteria: "WHEN a new request is made on a channel with a request queued, THE Worker_Wrapper SHALL reject the queued request with `superseded`"; "WHEN an in-flight response arrives and a newer request is queued on its channel, THE Worker_Wrapper SHALL reject the in-flight request with `superseded` and post the queued one"; "WHEN a request's AbortSignal fires, THE Worker_Wrapper SHALL reject it with `aborted` and ignore its response"; and add both codes to the EngineError list.
-
-**C. RR-1 has a real counterexample (Req 13.1).** With EBIT_t < 0, reducing debt makes ICR more negative (-10/100 = -0.1 becomes -10/50 = -0.2). This does not depend on refinance. `zombie-definition.md` property 2 already restricts itself to EBIT >= 0. *Proposal:* amend 13.1 and steering property 1 to "never lowers the projected ICR of any year with non-negative EBIT, and never turns a covered year into an uncovered one, on the same random path" (Property 11). Refinance stays in the generator.
-
-**D. RR-2 has a real counterexample (Req 13.3).** With E/R = 0.9, margin_mean = 0.9, eps = 0, g = 0.01, year-1 EBIT is 0.909 R at c = 0 and 0.878432 R at c = 0.08. With refinance and negative EBIT, a cut can also lower ICR. *Proposal (a), used in this design:* keep RR-2 as stated, test it on the realistic domain in Property 12 with the precondition asserted, keep a unit test recording the counterexample, and add a note to Req 13.3 naming the domain. *Proposal (b):* amend the steering property to "on firms whose operating margin is at most 30%, a larger cost cut never gives a lower year-1 EBIT, nor a lower year-1 ICR when year-1 EBIT is non-negative".
-
-**E. Refinance can never apply to Ashgrove (Req 15.4).** `1.02 (b + delta + spread) < r + delta` ⇔ `1.02 b + 1.02 spread + 0.02 delta < r`; the left side is >= 0.06324 and r = 0.05810. *Proposal:* amend 15.4 so the "applies" case uses the documented Ashgrove variant (I = 120e6; cut 0.08, swap 0.6, refinance; delta 0.01), and the boundary case is tested on `refinanceApplies(oldRate, newRate)` with `oldRate = 1.02 * newRate` computed in floating point, because exact equality through firm data is fragile. **Correction to the brief:** in that variant icr_pre is 2.50881, not >= 3, so the spread is 0.035 and newRate is 0.087 (not 0.02 and 0.072). Refinance still applies: 1.02 × 0.087 = 0.08874 < 0.12429.
-
-**F. Error codes for malformed input.** The requirements list no code for a non-array treatment or a malformed tool entry, a seed that is not a uint32, or a cik that is not 10 digits (which `seedFrom` needs so that `|` cannot appear in it). *Proposal:* add `invalid_treatment`, `invalid_seed` (seed must be an integer in [0, 4294967295]; no `>>> 0` coercion) and `invalid_cik` to the EngineError list, with the precedence given in this design.
-
-**G. Treasury rate validation.** If `macro.dgs10.value` were negative enough, `newRate` could be <= 0 and interest <= 0, making `icr` return null. *Proposal:* require b finite and >= 0, else `not_rescuable` naming `b`, checked after the firm (Validation order step 4). The data guards already bound real data, so this only affects hand-made input.
-
-**H. Diagnosis wording at ICR exactly 1 (Req 5.8).** `neededEbitIncrease = 0` means coverage is exactly 1, which counts as covered, yet 5.8 says "below coverage 1". *Proposal:* change 5.8 to "greater than 0 → below coverage 1; less than or equal to 0 → already covers". The design follows 5.8 as written until this is decided.
-
-**I. Golden case file format (Req 1.6).** `data/fixtures/icr_cases.json` is partner-owned and has no defined shape. *Proposal:* `{ "cases": [{ "ebit": number|null, "interest": number|null, "expected": number|null, "note"?: string }] }`, to be agreed with the partner; the test treats any other shape as an unrunnable case (Req 1.9).
-
-**J. Cross-browser determinism (Req 9.9, 10.7).** `Math.log`, `Math.cos` and `Math.sin` are not required to be correctly rounded, so two browsers could produce eps values that differ by an ulp. *Proposal:* accept this for v1 and document that "same day, same outcome" holds per browser; if it matters later, replace them with a deterministic port (for example fdlibm) inside `rng.ts`.
-
-**K. Interest computed as `D'pre * (1.02 * newRate)` (Req 7.5, 8.7).** Mathematically equal to "D' × 1.02 at newRate", but it can differ by 1 ulp and is what makes RR-4 and RR-7 exact. The displayed debt is still `D'pre * 1.02` and the displayed rate `newRate`. *Proposal:* confirm; optionally add one sentence to 8.7.
+- **A. Hint search:** upward linear scan in 0.1 pp steps up to 0.08 on the full pipeline and the same block; documented off-grid gap; 3-tool hint still computed. Req 9.5, 9.6, 9.7, 9.11, 16.1.
+- **B. Worker cancellation:** latest-wins per Channel, at most one In_Flight_Request and one Queued_Request, `superseded` and `aborted` codes, Channels independent. Req 12.1, 12.5, 12.7, 12.11 to 12.15, 15.7.
+- **C. RR-1 amended:** exact `>=` only for years with EBIT_t >= 0; Covered_Years stay covered for any sign; named negative-EBIT unit test; refinance kept in the generator. Req 13.1, 13.2, 13.11, 13.12, 16.1.
+- **D. RR-2, option (a):** rule kept, tested on the RR-2 domain with the precondition asserted, named high-margin unit test records the counterexample. Req 13.3, 13.13, 16.1.
+- **E. Refinance on Ashgrove:** never applies to Ashgrove_Works; "applies" case uses Ashgrove_Variant (spread 0.035, newRate 0.087); boundary tested on `refinanceApplies`. Req 15.4.
+- **F. Malformed-input codes:** `invalid_treatment`, `invalid_seed` (no coercion) and `invalid_cik` added, with the Validation_Order. Req 3.11, 3.15, 8.16, 9.12, 10.9.
+- **G. Treasury rate:** b must be finite and >= 0, else `not_rescuable` naming b, checked after the firm. Req 4.13, 4.14.
+- **H. Diagnosis at ICR 1:** needed EBIT increase > 0 → below coverage 1; <= 0 → already covers; null → below coverage 1. Req 5.8.
+- **I. Golden case format:** `{ "cases": [{ ebit, interest, expected, note? }] }`, any other shape is unrunnable; **format proposed, to confirm with partner**. Req 1.6, 1.7, 1.9.
+- **J. Cross-browser determinism:** same-day outcome guaranteed within one JavaScript engine; one-ulp differences across browsers accepted for v1. Req 9.9, 10.7.
+- **K. Refinance interest:** interest = D'_preFee × (1.02 × newRate); displayed debt D'_preFee × 1.02, displayed rate newRate. Req 7.5, 7.8, 8.7, 16.1.
