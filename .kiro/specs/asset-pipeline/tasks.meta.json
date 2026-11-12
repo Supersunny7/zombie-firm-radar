@@ -19,6 +19,42 @@
     "18.7 Write property test for the Bip01 check": {
       "status": "passed",
       "lastRunTimestamp": 1794475440902
+    },
+    "19.3 Write property test for decal image content": {
+      "status": "passed",
+      "lastRunTimestamp": 1794479331878
+    },
+    "20.5 Write property test for budget accounting": {
+      "status": "passed",
+      "lastRunTimestamp": 1794479334381
+    },
+    "19.2 Write property test for decal determinism": {
+      "status": "passed",
+      "lastRunTimestamp": 1794479347077
+    },
+    "20.6 Write property test for the budget report and exit code": {
+      "status": "passed",
+      "lastRunTimestamp": 1794479562408
+    },
+    "20.7 Write property test for the manifest": {
+      "status": "passed",
+      "lastRunTimestamp": 1794479563042
+    },
+    "20.9 Write property test for the CMU credit line": {
+      "status": "passed",
+      "lastRunTimestamp": 1794479566144
+    },
+    "20.8 Write property test for the credits table": {
+      "status": "passed",
+      "lastRunTimestamp": 1794479574532
+    },
+    "20.10 Write property test for the Visible-in-app note": {
+      "status": "passed",
+      "lastRunTimestamp": 1794479596369
+    },
+    "20.11 Write property test for the manual README": {
+      "status": "passed",
+      "lastRunTimestamp": 1794479654724
     }
   },
   "executionHistory": {
@@ -991,6 +1027,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470513212
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479296333
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479502528
       }
     ],
     "18.4 Implement `bip01.mjs`": [
@@ -1046,6 +1092,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470513719
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794475546745
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479286236
       }
     ],
     "19.2 Write property test for decal determinism": [
@@ -1053,6 +1109,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470513815
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479296537
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479503447
       }
     ],
     "19.3 Write property test for decal image content": [
@@ -1060,6 +1126,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470513914
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479296691
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479505280
       }
     ],
     "19.4 Implement `tools/make-cracked-headstone.mjs`": [
@@ -1067,6 +1143,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470514017
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479297147
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479505447
       }
     ],
     "19.5 Write property test for the cracked-headstone limits": [
@@ -1088,6 +1174,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470514397
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794475547261
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479178546
       }
     ],
     "20.2 Implement `manifest.mjs`": [
@@ -1095,6 +1191,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470514499
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794475549018
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479178754
       }
     ],
     "20.3 Implement `credits.mjs`": [
@@ -1102,6 +1208,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470514602
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794475549198
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479179576
       }
     ],
     "20.4 Implement `manual-readme.mjs`": [
@@ -1109,6 +1225,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470514708
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794475549842
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479180159
       }
     ],
     "20.5 Write property test for budget accounting": [
@@ -1116,6 +1242,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470514822
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479297716
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479507308
       }
     ],
     "20.6 Write property test for the budget report and exit code": [
@@ -1123,6 +1259,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470514930
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479522075
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479606957
       }
     ],
     "20.7 Write property test for the manifest": [
@@ -1130,6 +1276,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470515036
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479522598
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479607970
       }
     ],
     "20.8 Write property test for the credits table": [
@@ -1137,6 +1293,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470515147
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479524544
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479609036
       }
     ],
     "20.9 Write property test for the CMU credit line": [
@@ -1144,6 +1310,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470515238
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479524718
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479609925
       }
     ],
     "20.10 Write property test for the Visible-in-app note": [
@@ -1151,6 +1327,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470515370
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479525429
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479610956
       }
     ],
     "20.11 Write property test for the manual README": [
@@ -1158,6 +1344,16 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794470515480
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479618581
+      },
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479663487
       }
     ],
     "21.1 Implement `runFetch`, `report.mjs` and `tools/fetch-assets.mjs`": [
@@ -1270,6 +1466,13 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794475516872
+      }
+    ],
+    "20. Budgets, manifest, credits and manual README": [
+      {
+        "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794479663658
       }
     ]
   }

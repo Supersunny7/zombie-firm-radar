@@ -360,7 +360,7 @@ Working rules for every task:
     - `desaturate` caps HSV saturation; `darken` scales RGB so the 99.5th percentile of the per-pixel maximum channel is at most `maxValue`; `grime` caps each pixel's maximum channel by a seeded value-noise field; sharp decode and encode, the only random source is `mulberry32(seed)`; register the ops in `edits/index.mjs`
     - _Requirements: 36.1, 36.5, 36.8_
 
-  - [~] 18.3 Implement `splitMesh`
+  - [x] 18.3 Implement `splitMesh`
     - `by: node` and `by: components` (union-find over shared vertex indices, components numbered by first triangle index, listed components to named parts, `rest: true` for the remainder); every triangle in exactly one part; each part a named node; typed `SplitImpossible` error when the model cannot be split this way, which stops that pick, writes no output and tells the user the options (never Blender); inspect the real knife-switch model once the user has placed it and write the real component indices into the pick
     - _Requirements: 36.1, 36.7, 37.3, 37.4_
 
@@ -381,20 +381,20 @@ Working rules for every task:
     - **Validates: Requirements 34.3, 34.4**
 
 - [ ] 19. Own-work generators
-  - [~] 19.1 Implement `tools/gen-decals.mjs`
+  - [x] 19.1 Implement `tools/gen-decals.mjs`
     - Seeded (`fnv1a32("<type>:<index>")` and `mulberry32`, no clock, no `Math.random`), 512 by 512 RGBA PNG with a transparent margin, handprint and drag-mark shapes from signed-distance primitives, HSV colour inside the inner ranges hue +-8 degrees, saturation 0.50 to 0.70, value 0.15 to 0.40; at least 3 variants per type written to `tools/cache/generated/decals/`
     - Wire the `generated` source so `convert-texture.mjs` writes WebP with alpha; credits author "Zombie Firm Radar team", license "Own work"
     - _Requirements: 38.1, 38.2, 38.3, 38.5, 38.6, 38.7, 38.8, 38.9_
 
-  - [~] 19.2 Write property test for decal determinism
+  - [x] 19.2 Write property test for decal determinism
     - **Property 17: Decal generator is deterministic and seed-driven**
     - **Validates: Requirements 38.3, 38.4, 38.7**
 
-  - [~] 19.3 Write property test for decal image content
+  - [x] 19.3 Write property test for decal image content
     - **Property 18: Decal images have the required size, alpha and colour range**
     - **Validates: Requirements 38.5, 38.6, 38.8**
 
-  - [~] 19.4 Implement `tools/make-cracked-headstone.mjs`
+  - [x] 19.4 Implement `tools/make-cracked-headstone.mjs`
     - `makeCrackedHeadstone(doc, { seed })` and a CLI: seeded crack height map, Sobel normal map blended (whiteout) onto the existing normal map, chipped edge by seeded position-quantised noise so UV-seam vertices move together, decimate to at most 20,000 triangles if needed, blank face; the `derived` source runs it on the decimated intact scan; skip with the intact scan's expected file name when it is missing; fall back to the procedural headstones with a clear message when derivation is impossible
     - Credits row: author drydoctoregg, license CC BY, changes naming the derivation
     - _Requirements: 39.1, 39.2, 39.3, 39.4, 39.5, 39.6, 39.7, 39.8_
@@ -407,48 +407,48 @@ Working rules for every task:
     - **Property 20: Cracked headstone derivation is deterministic**
     - **Validates: Requirements 39.2, 39.3**
 
-- [ ] 20. Budgets, manifest, credits and manual README
-  - [~] 20.1 Implement `budgets.mjs`
+- [x] 20. Budgets, manifest, credits and manual README
+  - [x] 20.1 Implement `budgets.mjs`
     - `accountBudgets` with limits 26,214,400 / 26,214,400 / 62,914,560 bytes, unassigned files counted in total only with a warning, top-3 largest files per exceeded budget, files over 5,242,880 bytes listed with MB to 2 decimals and a suggestion, unreadable file sizes reported
     - _Requirements: 16.8, 17.1, 17.2, 17.3, 17.4, 17.5, 17.6, 17.7_
 
-  - [~] 20.2 Implement `manifest.mjs`
+  - [x] 20.2 Implement `manifest.mjs`
     - `mergeManifest` and `serializeManifest` (sorted keys, 2-space indent, LF, trailing newline, no timestamps), one entry per file with non-empty `sourceUrl`, `author`, `license`, `changes`, plus `group`, `bytes`, `sha256`, `inputsSha256`, `recipe` and `bip01` where applicable; atomic write
     - _Requirements: 18.1, 14.3_
 
-  - [~] 20.3 Implement `credits.mjs`
+  - [x] 20.3 Implement `credits.mjs`
     - `upsertCreditRows`, `ensureCmuLine`, `ensureVisibleNote` (single "## Visible in app" section first), the Poly Haven services line; one row per Path with six non-empty columns; text outside the table byte-for-byte; atomic write; own-work and modified-CC-BY rows come from the pick `credits`
     - _Requirements: 18.2, 18.3, 18.4, 18.6, 22.1, 22.2, 22.3, 22.4, 22.5, 38.9, 39.6_
 
-  - [~] 20.4 Implement `manual-readme.mjs`
+  - [x] 20.4 Implement `manual-readme.mjs`
     - Generate `tools/cache/manual/README.md` from the picks in the format of the design (header, then one block per manual pick sorted by id with name, page URL, download option, expected file, target path, credit line, notes); omit the hook unless its check flag is `passed`; compare the first generated output with the hand-written file from task 13.2 and fix differences
     - _Requirements: 15.1, 40.1, 40.2, 40.3, 40.5, 40.6_
 
-  - [~] 20.5 Write property test for budget accounting
+  - [x] 20.5 Write property test for budget accounting
     - **Property 2: Budget accounting invariants**
     - **Validates: Requirements 17.1, 17.2, 17.3, 17.6**
 
-  - [~] 20.6 Write property test for the budget report and exit code
+  - [x] 20.6 Write property test for the budget report and exit code
     - **Property 3: Budget report content and exit code**
     - **Validates: Requirements 16.8, 17.4, 17.5, 17.7**
 
-  - [~] 20.7 Write property test for the manifest
+  - [x] 20.7 Write property test for the manifest
     - **Property 4: Manifest has one complete entry per written file**
     - **Validates: Requirements 18.1**
 
-  - [~] 20.8 Write property test for the credits table
+  - [x] 20.8 Write property test for the credits table
     - **Property 5: Credits table has exactly one row per file and is stable**
     - **Validates: Requirements 18.2, 18.3, 18.4**
 
-  - [~] 20.9 Write property test for the CMU credit line
+  - [x] 20.9 Write property test for the CMU credit line
     - **Property 6: CMU credit line appears exactly once**
     - **Validates: Requirements 18.6**
 
-  - [~] 20.10 Write property test for the Visible-in-app note
+  - [x] 20.10 Write property test for the Visible-in-app note
     - **Property 16: Visible-in-app note is first, unique and preserved**
     - **Validates: Requirements 22.1, 22.2, 22.3, 22.4, 22.5**
 
-  - [~] 20.11 Write property test for the manual README
+  - [x] 20.11 Write property test for the manual README
     - **Property 15: Manual README lists every manual pick**
     - **Validates: Requirements 15.1, 40.1, 40.2, 40.3, 40.5, 40.6**
 
