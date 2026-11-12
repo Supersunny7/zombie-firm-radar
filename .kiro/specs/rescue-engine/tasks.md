@@ -43,12 +43,12 @@ All commands run from `web` in PowerShell, chained with `;`.
     - _Requirements: 1.6, 1.7, 1.9_
 
 - [ ] 2. Tool registry and Treatment parser
-  - [~] 2.1 Implement the frozen tool registry in `web/src/engine/tools.ts`
+  - [x] 2.1 Implement the frozen tool registry in `web/src/engine/tools.ts`
     - `ToolStatus`, `ToolSpec`, `TOOL_REGISTRY` with the four v1 tools (cut_costs c in [0, 0.08], sell_assets s in [0, 0.30], debt_for_equity w in [0, 0.60], refinance with no params) and the extension points issue_equity, chapter_11 and liquidate, each with its `order`
     - Freeze the registry (constant, not mutable state)
     - _Requirements: 2.5, 2.6_
 
-  - [~] 2.2 Implement `web/src/engine/treatment.ts`
+  - [x] 2.2 Implement `web/src/engine/treatment.ts`
     - `parseTreatment(input: unknown): EngineResult<Treatment>` with the fixed check order of Req 3.11: non-array → `invalid_treatment`; > 3 entries → `too_many_tools`; per entry in input order, not a plain object or non-string name → `invalid_treatment` with `detail.index`, non-v1 name (including extension tools) → `unknown_tool` with `detail.tool`; first duplicate in input order → `duplicate_tool`; per entry, parameter violation (missing key, extra key, non-number, NaN, ±Infinity, out of inclusive range, any key on refinance) → `param_out_of_range` with `detail.tool` and `detail.param`
     - No clamping; never mutate the input; return fresh objects in Canonical_Order; normalise `-0` to `0`; accept refinance with `params` absent or `{}`; accept the empty Treatment
     - `serialiseTreatment` (canonical order, sorted keys, `String(n)`, `;` between tools, `,key=value` per param) and `deserialiseTreatment` (split, build `{ name, params }`, call `parseTreatment`)
@@ -97,7 +97,7 @@ All commands run from `web` in PowerShell, chained with `;`.
   - From `web`, run `pnpm typecheck; pnpm lint; pnpm format; pnpm test`. All existing state-machine tests must pass with unchanged assertions. Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 5. Input validation and diagnosis
-  - [~] 5.1 Implement `prepare` in `web/src/engine/inputs.ts`
+  - [x] 5.1 Implement `prepare` in `web/src/engine/inputs.ts`
     - Steps in the design order: delta finite in [0, 0.05] else `delta_out_of_range` (no clamping); empty `years` → `not_rescuable`; latest year = highest `fy` (not assumed sorted); every null or non-finite R, E, I, D, A, Q named in `detail.inputs` in that order; then D <= 0, R <= 0, I <= 0 each named; then b = `macro.dgs10.value` not finite or < 0 → `not_rescuable` naming `b`
     - `r = I / D`; kappa = 0.3; sigma = clamp(margin_change_sd, 0.01, 0.08); g = clamp(revenue_growth_median, -0.15, 0.15); never read `margin_change_mean`
     - Never throw; never mutate firm or macro
@@ -275,23 +275,23 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Inside the same property, assert that `applyTreatment`, `simulate` and `drawOutcome` return the same error as `parseTreatment` for the same invalid treatment with otherwise valid arguments, and leave firm and macro deeply equal to clones; `numRuns >= 100`
     - **Validates: Requirements 2.6, 3.3, 3.4, 3.5, 3.6, 3.8, 3.11, 3.15, 4.12, 6.10, 9.10**
 
-- [ ] 11. Score and liquidation
-  - [~] 11.1 Implement `web/src/engine/score.ts` and `web/src/engine/liquidation.ts`
+- [x] 11. Score and liquidation
+  - [x] 11.1 Implement `web/src/engine/score.ts` and `web/src/engine/liquidation.ts`
     - `score({ rescued, survivalOdds, pain })` with `clamp(x, lo, hi) = x >= lo ? (x <= hi ? x : hi) : lo` on odds and each pain (NaN maps to `lo`)
     - `liquidationRecovery(A, D)`: `!(D > 0)` → 1; else `Math.min(1, 0.5 * Math.max(0, A) / D)` with NaN A as 0; `centsOnDollar = Math.round(recovery * 100)`
     - _Requirements: 11.1, 11.2, 11.3, 11.4, 11.5, 11.6, 11.7, 11.8_
 
-  - [~] 11.2 Write property test for liquidation in `web/src/engine/liquidation.property.test.ts`
+  - [x] 11.2 Write property test for liquidation in `web/src/engine/liquidation.property.test.ts`
     - **Property 14: Liquidation recovery is bounded (RR-5)**
     - A >= 0 (including 0 and very large values), D > 0; recovery equals `Math.min(1, 0.5 * A / D)` and lies in [0, 1]; `centsOnDollar` is an integer in [0, 100] equal to `Math.round(recovery * 100)`; `numRuns >= 100`
     - **Validates: Requirements 11.5, 11.6, 11.8, 13.6**
 
-  - [~] 11.3 Write property test for the score in `web/src/engine/score.property.test.ts`
+  - [x] 11.3 Write property test for the score in `web/src/engine/score.property.test.ts`
     - **Property 24: Score formula and bounds**
     - Odds and pains from finite numbers in and out of range and NaN; result equals the clamped formula, lies in [0, 100], and is 0 when not rescued; `numRuns >= 100`
     - **Validates: Requirements 11.1, 11.2, 11.3, 11.4**
 
-  - [~] 11.4 Write unit tests for score and liquidation in `web/src/engine/score.unit.test.ts`
+  - [x] 11.4 Write unit tests for score and liquidation in `web/src/engine/score.unit.test.ts`
     - Score for a hand-computed case; `rescued = false` gives 0; out-of-range inputs are clamped
     - Liquidation: D = 0 gives recovery 1 and 100 cents; Ashgrove `0.5 * 1.6e9 / 1.05e9`; a value stored just below .5 (for example 0.285) rounds to 28
     - _Requirements: 11.1, 11.3, 11.4, 11.5, 11.7, 11.8_
