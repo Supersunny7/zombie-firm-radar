@@ -49,3 +49,24 @@
 2026-11-11 | app-shell | 15.4 | Ran full build and checks, Playwright contrast audit in both lights modes, wrote report | .kiro/specs/app-shell/report.md, docs/app-shell-contrast*
 2026-11-11 | app-shell | 15.5 | Added config smoke tests for package pins, vercel.json and engine import lint rule | web/src/config.smoke.test.ts
 2026-11-11 | app-shell | 16 | Final checkpoint passed: 291 tests, lint, typecheck and build clean; initial JS 76.0 KB gzipped | none
+2026-11-11 | table-caption-data-source-fix | 1 | Draft caption test fails on HEAD for mock, confirming the bug. | none
+2026-11-11 | table-caption-data-source-fix | 2 | Real-data caption and 13 existing tests pass on HEAD baseline. | none
+2026-11-11 | vercel-pnpm-version-fix | 1 | Added smoke tests requiring pinned pnpm version in vercel.json; they fail on current config. | web/src/config.smoke.test.ts
+2026-11-11 | vercel-pnpm-version-fix | 2 | Recorded vercel.json baseline; existing smoke assertions pass, only the two pin tests fail. | none
+2026-11-11 | vercel-pnpm-version-fix | 3.1 | Pinned pnpm 12.18.0 via npx in vercel.json install and build commands; smoke tests pass. | vercel.json
+2026-11-11 | vercel-pnpm-version-fix | 3.2 | Updated app-shell requirements 16.1 and 16.7 to the pinned npx pnpm commands. | .kiro/specs/app-shell/requirements.md
+2026-11-11 | vercel-pnpm-version-fix | 3.3 | Updated app-shell design JSON block and corepack paragraph for pinned pnpm. | .kiro/specs/app-shell/design.md
+2026-11-11 | vercel-pnpm-version-fix | 3.4 | Updated app-shell task 15.2 text to the pinned npx pnpm commands. | .kiro/specs/app-shell/tasks.md
+2026-11-11 | vercel-pnpm-version-fix | 3.5 | Rewrote web README Deploy section for pinned npx pnpm commands. | web/README.md
+2026-11-11 | vercel-pnpm-version-fix | 3.6 | Searched for leftover old deploy commands; none found outside history and the bug spec. | none
+2026-11-11 | vercel-pnpm-version-fix | 3.7 | Pin tests pass on fixed config; temporary version mismatch fails naming both versions. | none
+2026-11-11 | vercel-pnpm-version-fix | 3.8 | Preservation verified: other vercel.json keys identical to HEAD, no root package.json, web/package.json unchanged. | none
+2026-11-11 | vercel-pnpm-version-fix | 3.9 | Full check passes (298 tests); pinned npx commands install and build locally. | web/src/config.smoke.test.ts
+2026-11-11 | vercel-pnpm-version-fix | 4 | Checkpoint passed: typecheck, lint, format and 298 tests green. | none
+2026-11-11 | table-caption-data-source-fix | 3.1 | Reviewed draft caption fix against design; no deviations found. | none
+2026-11-11 | table-caption-data-source-fix | 3.2 | Caption property test passes for mock and fixture on the fix. | none
+2026-11-11 | table-caption-data-source-fix | 3.3 | Real-data caption and 13 existing TableView tests pass; 15 of 15. | none
+2026-11-11 | table-caption-data-source-fix | 4.1 | Added caption tests for mock, fixture and real in lights off and on. | web/src/ui/table/TableView.test.tsx
+2026-11-11 | table-caption-data-source-fix | 4.2 | Added property over real, mock and fixture checking caption text and shared sort hint. | web/src/ui/table/TableView.test.tsx
+2026-11-11 | table-caption-data-source-fix | 5 | Full check passes: typecheck, lint, format, 305 tests, build. | none
+2026-11-11 | table-caption-data-source-fix | 6 | Checkpoint passed: typecheck, lint, format and 305 tests green. | none

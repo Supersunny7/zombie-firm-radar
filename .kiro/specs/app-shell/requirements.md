@@ -324,13 +324,13 @@ Constraints from steering: the data contract is v2 draft and stays unchanged; `/
 
 #### Acceptance Criteria
 
-1. THE repository SHALL contain a `vercel.json` that sets `installCommand` to `corepack enable && pnpm --dir web install --frozen-lockfile`, `buildCommand` to `pnpm --dir web build` and `outputDirectory` to `web/dist`.
+1. THE repository SHALL contain a `vercel.json` that sets `installCommand` to `npx --yes pnpm@12.18.0 --dir web install --frozen-lockfile`, `buildCommand` to `npx --yes pnpm@12.18.0 --dir web build` and `outputDirectory` to `web/dist`.
 2. THE `vercel.json` SHALL NOT define any server function or rewrite that requires a server runtime.
 3. WHEN the build output is served by a static file server, THE App SHALL load `firms_index.json` and `macro.json` from `web/dist/data` when real data was present at build time, or from `web/dist/data/mock` when it was not.
 4. THE Build_Tooling SHALL include `web/dist/data` in the output only from `/data` as defined in Requirement 5.
 5. THE `vercel.json` SHALL set long-lived immutable cache headers for hashed files under `/assets/` and `no-cache` for `/data/*`.
 6. THE repository SHALL contain no secrets, tokens or keys.
-7. THE deploy SHALL use the exact pnpm version from the `packageManager` field in `web/package.json` via corepack, because the lockfile is written by pnpm 12.
+7. THE deploy SHALL run pnpm through an explicit `pnpm@<version>` in both `installCommand` and `buildCommand`, where `<version>` is the exact version in the `packageManager` field of `web/package.json`, and SHALL NOT rely on corepack or on the pnpm version bundled with Vercel, because the lockfile is written by pnpm 12 and the repo root has no `package.json`.
 
 ### Requirement 17: Verification and reporting
 

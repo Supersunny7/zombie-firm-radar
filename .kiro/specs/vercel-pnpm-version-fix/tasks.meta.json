@@ -1,0 +1,216 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Write bug condition exploration test": [
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444332755
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444337038
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444430585
+      }
+    ],
+    "2. Write preservation checks (BEFORE implementing fix)": [
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444332843
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444438109
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444458730
+      }
+    ],
+    "3.1 Implement the fix in vercel.json": [
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444332937
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444461263
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444478467
+      }
+    ],
+    "3.2 Update app-shell requirements 16.1 and 16.7": [
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444333004
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444481906
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444503019
+      }
+    ],
+    "3.3 Update app-shell design.md": [
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444333071
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444482988
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444503774
+      }
+    ],
+    "3.4 Update app-shell tasks.md task 15.2": [
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444333137
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444483490
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444504549
+      }
+    ],
+    "3.5 Update web/README.md Deploy section": [
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444333203
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444484035
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444504968
+      }
+    ],
+    "3.6 Search for leftover quotes of the old commands": [
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444333269
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444508898
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444525930
+      }
+    ],
+    "3.7 Verify bug condition exploration test now passes": [
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444333354
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444527971
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444612090
+      }
+    ],
+    "3.8 Verify preservation checks still pass": [
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444333434
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444528713
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444640433
+      }
+    ],
+    "3.9 Run the full check from web": [
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444333490
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444643904
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444752585
+      }
+    ],
+    "4. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444333549
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444756399
+      },
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444793685
+      }
+    ],
+    "3. Fix for unpinned pnpm in vercel.json (ERR_PNPM_BROKEN_LOCKFILE on Vercel)": [
+      {
+        "executionId": "954b8697-aab5-4caa-a173-cf0b20855530",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444752689
+      }
+    ]
+  }
+}

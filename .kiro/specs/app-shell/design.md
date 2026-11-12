@@ -445,8 +445,8 @@ Local storage holds one key, `zfr.settings.v1`, containing the `Settings` JSON.
 
 ```json
 {
-  "installCommand": "corepack enable && pnpm --dir web install --frozen-lockfile",
-  "buildCommand": "pnpm --dir web build",
+  "installCommand": "npx --yes pnpm@12.18.0 --dir web install --frozen-lockfile",
+  "buildCommand": "npx --yes pnpm@12.18.0 --dir web build",
   "outputDirectory": "web/dist",
   "headers": [
     { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
@@ -455,7 +455,7 @@ Local storage holds one key, `zfr.settings.v1`, containing the `Settings` JSON.
 }
 ```
 
-It defines no functions or rewrites. Because there is no pnpm workspace at the repo root, `pnpm --dir web` treats `/web` as a standalone project and `pnpm-lock.yaml` lives in `/web`. `corepack enable` makes pnpm resolve the version from `packageManager` (`pnpm@12.18.0`). Vercel's build runs from the repo root, which lets the Vite plugin reach `../data`. Note for the implementation task: the Vercel project's root directory must stay at the repository root (not `web`), otherwise `/data` is not in the build context.
+It defines no functions or rewrites. Because there is no pnpm workspace at the repo root, `pnpm --dir web` treats `/web` as a standalone project and `pnpm-lock.yaml` lives in `/web`. Both commands run `npx --yes pnpm@12.18.0`, because corepack reads `packageManager` from the current directory and the repo root has no `package.json`. The smoke test checks that this version equals `packageManager` in `web/package.json`. Vercel's build runs from the repo root, which lets the Vite plugin reach `../data`. Note for the implementation task: the Vercel project's root directory must stay at the repository root (not `web`), otherwise `/data` is not in the build context.
 
 
 ## Correctness Properties

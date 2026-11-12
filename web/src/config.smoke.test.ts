@@ -57,6 +57,37 @@ describe('vercel.json', () => {
     expect(vercel).not.toHaveProperty('functions');
     expect(vercel).not.toHaveProperty('rewrites');
   });
+
+  // Bug condition exploration: both commands must pin the packageManager pnpm version.
+  const pmMatch = /^pnpm@(\d+\.\d+\.\d+)$/.exec(pkg.packageManager);
+  const expectedVersion = pmMatch?.[1];
+
+  const foundVersions = (command: string): string[] => {
+    const versions = [...command.matchAll(/\bpnpm@(\d+\.\d+\.\d+)(?![\w.-])/g)].flatMap((m) =>
+      m[1] === undefined ? [] : [m[1]],
+    );
+    return [...new Set(versions)];
+  };
+
+  it('has a packageManager field of the form pnpm@x.y.z', () => {
+    expect(
+      pmMatch,
+      `web/package.json packageManager "${pkg.packageManager}" does not match pnpm@<x.y.z>`,
+    ).not.toBeNull();
+  });
+
+  for (const key of ['installCommand', 'buildCommand'] as const) {
+    it(`${key} pins the packageManager pnpm version`, () => {
+      const command = String(vercel[key] ?? '');
+      const found = foundVersions(command);
+      const message = `vercel.json ${key} uses pnpm@${found.length ? found.join(', pnpm@') : 'none'} but web/package.json packageManager is pnpm@${expectedVersion}`;
+      expect(found, message).toEqual([expectedVersion]);
+    });
+
+    it(`${key} runs pnpm with --dir web`, () => {
+      expect(String(vercel[key] ?? '')).toContain('--dir web');
+    });
+  }
 });
 
 describe('ESLint purity rule', () => {

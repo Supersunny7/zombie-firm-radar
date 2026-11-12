@@ -39,4 +39,4 @@ The app reads static JSON from `/data/` (repository `data` folder, see `.kiro/st
 
 ## Deploy (Vercel)
 
-`vercel.json` lives at the repository root and sets the install command, the build command (`pnpm --dir web build`) and the output directory (`web/dist`). Keep the Vercel project root at the repository root. Setting it to `web` would skip `vercel.json` and break the `data` folder copy.
+`vercel.json` lives at the repository root and sets the install command, the build command and the output directory (`web/dist`). Both commands run `npx --yes pnpm@<version>`, where the version must equal `packageManager` in `web/package.json`; a test checks this. Bump all three together. Keep the Vercel project root at the repository root. Setting it to `web` would skip `vercel.json` and break the `data` folder copy.

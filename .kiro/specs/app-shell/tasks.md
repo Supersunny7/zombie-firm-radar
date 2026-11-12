@@ -238,7 +238,7 @@ Rules for every task:
     - _Requirements: 15.1, 15.2, 15.3, 15.4, 15.5, 15.6_
 
   - [x] 15.2 Create `vercel.json` at the repo root
-    - `installCommand` `corepack enable && pnpm --dir web install --frozen-lockfile`, `buildCommand` `pnpm --dir web build`, `outputDirectory` `web/dist`, immutable cache for `/assets/(.*)`, `no-cache` for `/data/(.*)`; no functions or rewrites; no secrets
+    - `installCommand` `npx --yes pnpm@12.18.0 --dir web install --frozen-lockfile`, `buildCommand` `npx --yes pnpm@12.18.0 --dir web build`, `outputDirectory` `web/dist`, immutable cache for `/assets/(.*)`, `no-cache` for `/data/(.*)`; no functions or rewrites; no secrets
     - _Requirements: 16.1, 16.2, 16.5, 16.6, 16.7_
 
   - [x] 15.3 Write docs and update `tech.md`
