@@ -1,5 +1,10 @@
 {
-  "pbtResults": {},
+  "pbtResults": {
+    "2.2 Write property tests for the shock model": {
+      "status": "passed",
+      "lastRunTimestamp": 1794503750939
+    }
+  },
   "executionHistory": {
     "1. Craggle hand close-up for the wrist-end check": [
       {
@@ -187,6 +192,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502854451
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503885100
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503952064
       }
     ],
     "6.2 Add `web/src/state/shockView.ts`": [
@@ -194,6 +209,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502854548
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503958596
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504022917
       }
     ],
     "6.3 Centralise formatters in `web/src/ui/table/format.ts`": [
@@ -201,6 +226,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502854651
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503885262
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503952263
       }
     ],
     "7.1 Implement `ui/controls/ShockSlider.tsx`": [
@@ -208,6 +243,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502854747
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504025458
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504150350
       }
     ],
     "7.2 Implement `ui/graveyard/ShockPanel.tsx` and `GraveyardHud`": [
@@ -215,6 +260,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502854849
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504155415
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504436198
       }
     ],
     "7.3 Implement `LightsButton.tsx` and `SoundButton.tsx` and mount them in `Hud.tsx`": [
@@ -222,6 +277,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502854948
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504443847
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504547508
       }
     ],
     "8.1 Implement `ui/graveyard/chooseDock.ts` and `FileCard.tsx`": [
@@ -229,6 +294,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502855043
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504026275
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504149625
       }
     ],
     "8.2 Implement `ui/graveyard/LiveRegion.tsx`": [
@@ -236,6 +311,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502855182
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504156532
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504437012
       }
     ],
     "8.3 Update `ui/table/TableView.tsx`": [
@@ -243,6 +328,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502855337
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504550530
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794505006707
       }
     ],
     "9.1 Set `server.fs.allow` in `web/vite.config.ts`": [
@@ -250,6 +345,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502855437
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504027009
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504148785
       }
     ],
     "9.2 Implement `ui/CreditsDialog.tsx` and the Settings button": [
@@ -257,6 +362,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502855537
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504156787
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504437376
       }
     ],
     "10.1 Install the remaining approved pins": [
@@ -523,6 +638,58 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794503325115
+      }
+    ],
+    "2.2 Write property tests for the shock model": [
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503638816
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503872979
+      }
+    ],
+    "2.3 Write unit tests for the shock model": [
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503639139
+      },
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503873167
+      }
+    ],
+    "6. Store slice, shock view hook and shared formatters": [
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504023120
+      }
+    ],
+    "9. Credits dialog and Vite config": [
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504437479
+      }
+    ],
+    "7. Shared HUD controls": [
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794504547648
+      }
+    ],
+    "8. File card, live region and Table_View parity": [
+      {
+        "executionId": "77c99f55-6344-4322-a807-e77448cff18b",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794505006885
       }
     ]
   }

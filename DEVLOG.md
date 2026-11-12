@@ -266,3 +266,16 @@
 2026-11-12 | graveyard-scene | 3.2 | Added CSR spatial grid, DDA stone picking and nearestToRay. | layout/grid.ts, layout/pick.ts
 2026-11-12 | graveyard-scene | 4.3 | Loader, source and HUD labels support dev sample set and mock fallback. | data/source.ts, loader.ts, App.tsx, Hud.tsx, TableView.tsx, tests
 2026-11-12 | graveyard-scene | 4.6 | Bundle guard fails build on dev-only markers; checkForbidden exported. | web/scripts/check-bundle.mjs
+2026-11-12 | graveyard-scene | 2.2 | Added fast-check property tests 4-10 for shock model with non-vacuity guard. | web/src/engine/shock.property.test.ts
+2026-11-12 | graveyard-scene | 2.3 | Added shock unit tests; snapped ICR within 1e-9 of 1 so +1.00 pp example holds. | shock.unit.test.ts, shock.ts, shock.property.test.ts
+2026-11-12 | graveyard-scene | 6.1 | Added graveyard zustand slice merged into useStore. | state/graveyard.ts, graveyard.unit.test.ts, store.ts
+2026-11-12 | graveyard-scene | 6.3 | Added statusLabel and formatYear helpers; StatusLabel reuses them. | ui/table/format.ts, ui/table/StatusLabel.tsx
+2026-11-12 | graveyard-scene | 6.2 | Added useShockView hook memoising shockBatch on firms and delta. | state/shockView.ts, shockView.unit.test.ts
+2026-11-12 | graveyard-scene | 7.1 | Added ShockSlider native range with k/400 mapping, labels and disclosures. | ui/controls/ShockSlider.tsx, ShockSlider.test.tsx
+2026-11-12 | graveyard-scene | 9.1 | Exported REPO_ROOT and set Vite server.fs.allow for CREDITS.md?raw. | web/vite.config.ts
+2026-11-12 | graveyard-scene | 8.1 | Added chooseDock and single-instance FileCard with docking and focus return. | ui/graveyard/chooseDock.ts, FileCard.tsx, chooseDock.test.ts
+2026-11-12 | graveyard-scene | 9.2 | Added lazy CreditsDialog with focus trap and Credits button in Settings menu. | ui/CreditsDialog.tsx, loadCredits.ts, SettingsMenu.tsx, tests
+2026-11-12 | graveyard-scene | 7.2 | Added ShockPanel with throttled counters and GraveyardHud. | ui/graveyard/ShockPanel.tsx, GraveyardHud.tsx, ShockPanel.test.tsx
+2026-11-12 | graveyard-scene | 8.2 | Added polite visually hidden LiveRegion and announce helper. | ui/graveyard/LiveRegion.tsx, LiveRegion.test.tsx
+2026-11-12 | graveyard-scene | 7.3 | Added LightsButton (350 ms guard) and SoundButton, mounted in Hud. | ui/controls/LightsButton.tsx, SoundButton.tsx, Hud.tsx, HudToggles.test.tsx
+2026-11-12 | graveyard-scene | 8.3 | TableView uses shock view, sector filter, shocked columns and opens shared FileCard. | ui/table/TableView.tsx, TableView.test.tsx

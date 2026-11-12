@@ -1,6 +1,11 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import type { DataSource } from '../../data/source';
+import { useShockView } from '../../state/shockView';
 import { useStore } from '../../state/store';
+import { LightsButton } from '../controls/LightsButton';
+import { SoundButton } from '../controls/SoundButton';
+import { FileCard } from '../graveyard/FileCard';
+import { ShockPanel } from '../graveyard/ShockPanel';
 import { TABLE_BUTTON_ID } from '../SkipLink';
 import { useFocusTrap } from '../useFocusTrap';
 import { formatDebt, formatIcr } from './format';
@@ -21,6 +26,10 @@ const btn = `rounded-panel border border-panel-border bg-panel px-3 py-1 text-sm
 
 export const SELECT_ONLY_IN_GRAVEYARD = 'Selection is only possible in the graveyard.';
 
+export const NO_SECTOR_MATCH = 'No firms match this sector.';
+export const EXCLUDED_FROM_SHOCK = 'Excluded from the shock';
+const ALL_SECTORS = '';
+
 const SORT_HINT = 'Sort by activating a column header.';
 
 /** Mock and fixture data are fictional, so the caption must not claim SEC EDGAR as the source. */
@@ -38,7 +47,8 @@ export function TableView() {
 }
 
 function TableDialog() {
-  const rows = useStore((s) => s.data?.index.firms);
+  const { firms: rows, batch } = useShockView();
+  const [sector, setSector] = useState(ALL_SECTORS);
   const source = useStore((s) => s.data?.source ?? null);
   const closeOverlay = useStore((s) => s.closeOverlay);
   const [sort, setSort] = useState<SortState>({ key: null, dir: 'asc' });
@@ -52,7 +62,13 @@ function TableDialog() {
 
   useFocusTrap(ref, { onEscape: close });
 
-  const sorted = sortRows(rows ?? [], sort);
+  const sectors = useMemo(() => [...new Set(rows.map((f) => f.sector))].sort(), [rows]);
+  const indexOf = useMemo(() => new Map(rows.map((f, i) => [f.cik, i])), [rows]);
+  const visible = sector === ALL_SECTORS ? rows : rows.filter((f) => f.sector === sector);
+  const sorted = sortRows(visible, sort);
+  const noMatch = rows.length > 0 && visible.length === 0;
+
+  const activate = (cik: string) => useStore.getState().openCard(cik, 'table');
 
   const select = (cik: string) => {
     const { machine, selectFirm } = useStore.getState();
@@ -80,6 +96,26 @@ function TableDialog() {
           <button type="button" className={btn} onClick={close}>
             Close
           </button>
+        </div>
+        <div className="flex flex-wrap items-start gap-3">
+          <ShockPanel />
+          <LightsButton />
+          <SoundButton />
+          <label className="flex items-center gap-2 text-sm">
+            Sector
+            <select
+              value={sector}
+              onChange={(e) => setSector(e.target.value)}
+              className={`rounded-panel border border-panel-border bg-panel px-2 py-1 text-text ${FOCUS_RING}`}
+            >
+              <option value={ALL_SECTORS}>All sectors</option>
+              {sectors.map((s) => (
+                <option key={s} value={s}>
+                  {s}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
         <p role="status" className="min-h-5 text-sm text-status-endangered">
           {message}
@@ -114,6 +150,12 @@ function TableDialog() {
                   );
                 })}
                 <th scope="col" className="border-b border-panel-border px-2 py-1">
+                  Shocked ICR
+                </th>
+                <th scope="col" className="border-b border-panel-border px-2 py-1">
+                  Newly undead
+                </th>
+                <th scope="col" className="border-b border-panel-border px-2 py-1">
                   <span className="sr-only">Actions</span>
                 </th>
               </tr>
@@ -121,13 +163,24 @@ function TableDialog() {
             <tbody>
               {sorted.length === 0 ? (
                 <tr>
-                  <td colSpan={COLUMNS.length + 1} className="px-2 py-2">
-                    No firms in the data set
+                  <td colSpan={COLUMNS.length + 3} className="px-2 py-2">
+                    {noMatch ? NO_SECTOR_MATCH : 'No firms in the data set'}
                   </td>
                 </tr>
               ) : (
                 sorted.map((f) => (
-                  <tr key={f.cik} className="border-b border-panel-border/50">
+                  <tr
+                    key={f.cik}
+                    tabIndex={0}
+                    className={`cursor-pointer border-b border-panel-border/50 ${FOCUS_RING}`}
+                    onClick={() => activate(f.cik)}
+                    onKeyDown={(e) => {
+                      if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) {
+                        e.preventDefault();
+                        activate(f.cik);
+                      }
+                    }}
+                  >
                     <td className="px-2 py-1 font-display text-base">{f.name}</td>
                     <td className="px-2 py-1">{f.sector}</td>
                     <td className="px-2 py-1">
@@ -135,13 +188,17 @@ function TableDialog() {
                     </td>
                     <td className="px-2 py-1 font-mono">{formatIcr(f.latest_icr)}</td>
                     <td className="px-2 py-1 font-mono">{formatDebt(f.total_debt_usd)}</td>
+                    <ShockCells i={indexOf.get(f.cik) ?? -1} batch={batch} />
                     <td className="px-2 py-1">
                       {f.rescue_eligible && (
                         <button
                           type="button"
                           className={btn}
                           aria-label={`Select ${f.name}`}
-                          onClick={() => select(f.cik)}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            select(f.cik);
+                          }}
                         >
                           Select
                         </button>
@@ -153,7 +210,32 @@ function TableDialog() {
             </tbody>
           </table>
         </div>
+        <FileCard />
       </div>
     </div>
+  );
+}
+
+interface ShockCellsProps {
+  i: number;
+  batch: ReturnType<typeof useShockView>['batch'];
+}
+
+/** Shocked ICR and Newly undead, as text, from the shared shock batch. */
+function ShockCells({ i, batch }: ShockCellsProps) {
+  const eligible = batch.eligible[i] === 1;
+  if (!eligible) {
+    return (
+      <>
+        <td className="px-2 py-1">{EXCLUDED_FROM_SHOCK}</td>
+        <td className="px-2 py-1">n/a</td>
+      </>
+    );
+  }
+  return (
+    <>
+      <td className="px-2 py-1 font-mono">{formatIcr(batch.shockedIcr[i] ?? null)}</td>
+      <td className="px-2 py-1">{batch.newlyUndead[i] === 1 ? 'Yes' : 'No'}</td>
+    </>
   );
 }

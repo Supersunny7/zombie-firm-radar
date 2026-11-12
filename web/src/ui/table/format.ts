@@ -1,4 +1,24 @@
+import type { FirmStatus } from '../../types/data';
+
 const NA = 'n/a';
+
+const STATUS_LABELS: Record<FirmStatus, { text: string; glyph: string }> = {
+  zombie: { text: 'Zombie', glyph: '✝' },
+  endangered: { text: 'Endangered', glyph: '▲' },
+  healthy: { text: 'Healthy', glyph: '●' },
+  insufficient_data: { text: 'Not enough data', glyph: '○' },
+};
+
+/** Text and glyph for a status; the glyph never stands alone (colour is never the only signal). */
+export function statusLabel(s: FirmStatus): { text: string; glyph: string } {
+  return STATUS_LABELS[s];
+}
+
+/** Four-digit year ("2001"); "n/a" for null or anything that is not a year 1000 to 9999. */
+export function formatYear(v: number | null): string {
+  if (v === null || !Number.isInteger(v) || v < 1000 || v > 9999) return NA;
+  return String(v);
+}
 
 /** ICR with two decimals; never "-0.00". */
 export function formatIcr(v: number | null): string {

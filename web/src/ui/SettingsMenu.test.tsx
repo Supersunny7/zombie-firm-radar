@@ -72,7 +72,7 @@ describe('SettingsMenu', () => {
     const boxes = screen.getAllByRole('checkbox');
     expect(boxes[0]).toHaveFocus();
     await user.tab({ shift: true });
-    expect(boxes[3]).toHaveFocus();
+    expect(screen.getByRole('button', { name: 'Credits' })).toHaveFocus();
     await user.tab();
     expect(boxes[0]).toHaveFocus();
   });

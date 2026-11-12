@@ -9,7 +9,12 @@ import { DEFAULT_SETTINGS } from '../../state/settings';
 import { useStore } from '../../state/store';
 import type { FirmsIndex } from '../../types/data';
 import { TABLE_BUTTON_ID } from '../SkipLink';
-import { SELECT_ONLY_IN_GRAVEYARD, TableView } from './TableView';
+import {
+  EXCLUDED_FROM_SHOCK,
+  NO_SECTOR_MATCH,
+  SELECT_ONLY_IN_GRAVEYARD,
+  TableView,
+} from './TableView';
 
 const ASHGROVE = '9000000001';
 
@@ -28,6 +33,8 @@ function reset(): void {
     data: null,
     firm: null,
     lastRejection: null,
+    cardCik: null,
+    cardOpener: null,
   });
 }
 
@@ -88,7 +95,7 @@ describe('TableView', () => {
       ...screen.getAllByRole('button', { name: /^Select / }),
     ];
     const seen = new Set<Element>();
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 40; i++) {
       if (document.activeElement) seen.add(document.activeElement);
       await user.tab();
     }
@@ -150,7 +157,7 @@ describe('TableView', () => {
     expect(before.state).toBe('capture');
 
     await user.click(screen.getByRole('button', { name: 'Select Larkmoor Textiles' }));
-    expect(screen.getByRole('status')).toHaveTextContent(SELECT_ONLY_IN_GRAVEYARD);
+    expect(screen.getByText(SELECT_ONLY_IN_GRAVEYARD)).toHaveAttribute('role', 'status');
     expect(useStore.getState().machine).toBe(before);
     expect(useStore.getState().overlay).toBe('table');
   });
@@ -179,7 +186,9 @@ describe('TableView', () => {
   it('open, sort and close leave the game machine untouched', async () => {
     const before = useStore.getState().machine;
     const { user } = await openTable();
-    await user.click(within(screen.getByRole('columnheader', { name: /ICR/ })).getByRole('button'));
+    await user.click(
+      within(screen.getByRole('columnheader', { name: /^ICR/ })).getByRole('button'),
+    );
     await user.click(screen.getByRole('button', { name: 'Close' }));
     expect(useStore.getState().machine).toBe(before);
   });
@@ -259,5 +268,96 @@ describe('TableView caption follows the Data_Source', () => {
       expect(useStore.getState().settings.lights).toBe(lights);
       expect(within(table).getByText(REAL_CAPTION)).toBeInTheDocument();
     });
+  });
+});
+
+describe('TableView shock parity', () => {
+  it('shows Shocked ICR and Newly undead columns and the shared counters', async () => {
+    await openTable();
+    const headers = screen.getAllByRole('columnheader').map((h) => h.textContent);
+    expect(headers).toContain('Shocked ICR');
+    expect(headers).toContain('Newly undead');
+    expect(screen.getByText(/Risen from the grave: \d+/)).toBeInTheDocument();
+    expect(screen.getByRole('slider', { name: 'Interest rate shock' })).toBeInTheDocument();
+  });
+
+  it('marks ineligible rows as excluded from the shock', async () => {
+    const index: FirmsIndex = {
+      ...fixtureBundle.index,
+      firms: fixtureBundle.index.firms.map((f) =>
+        f.cik === ASHGROVE ? { ...f, shock_eligible: false } : f,
+      ),
+    };
+    await openTable(index);
+    const row = screen.getByRole('cell', { name: 'Ashgrove Works' }).closest('tr')!;
+    expect(within(row).getByText(EXCLUDED_FROM_SHOCK)).toBeInTheDocument();
+  });
+
+  it('reaches slider, lights, sound and sector select by Tab', async () => {
+    const { user } = await openTable();
+    const stops = [
+      screen.getByRole('slider', { name: 'Interest rate shock' }),
+      screen.getByRole('button', { name: /^Lights (on|off)$/ }),
+      screen.getByRole('button', { name: /^Sound (on|off)$/ }),
+      screen.getByRole('combobox', { name: 'Sector' }),
+    ];
+    const seen = new Set<Element>();
+    for (let i = 0; i < 40; i++) {
+      if (document.activeElement) seen.add(document.activeElement);
+      await user.tab();
+    }
+    for (const el of stops) expect(seen.has(el)).toBe(true);
+  });
+
+  it('filters by sector and shows a message when nothing matches', async () => {
+    const { user } = await openTable();
+    const select = screen.getByRole('combobox', { name: 'Sector' });
+    const sector = fixtureBundle.index.firms[0]!.sector;
+    await user.selectOptions(select, sector);
+    for (const n of rowNames()) {
+      const f = fixtureBundle.index.firms.find((x) => x.name === n)!;
+      expect(f.sector).toBe(sector);
+    }
+    expect(screen.queryByText(NO_SECTOR_MATCH)).toBeNull();
+  });
+
+  it('shows the no-match message for an empty sector result', async () => {
+    const index: FirmsIndex = {
+      ...fixtureBundle.index,
+      firms: fixtureBundle.index.firms.map((f) => ({ ...f, sector: 'Mining' })),
+    };
+    await openTable(index);
+    const select = screen.getByRole('combobox', { name: 'Sector' });
+    // Force a sector value with no rows by removing it from the data after selection.
+    await userEvent.selectOptions(select, 'Mining');
+    expect(rowNames()).toHaveLength(3);
+    act(() => load({ ...index, firms: index.firms.map((f) => ({ ...f, sector: 'Other' })) }));
+    expect(screen.getByText(NO_SECTOR_MATCH)).toBeInTheDocument();
+  });
+
+  it('opens one File card by click, Enter and Space on a row', async () => {
+    const { user } = await openTable();
+    const row = () => screen.getByRole('cell', { name: 'Ashgrove Works' }).closest('tr')!;
+    await user.click(row());
+    expect(useStore.getState().cardCik).toBe(ASHGROVE);
+    expect(useStore.getState().cardOpener).toBe('table');
+    expect(screen.getAllByLabelText('File card')).toHaveLength(1);
+
+    act(() => useStore.getState().closeCard());
+    row().focus();
+    await user.keyboard('{Enter}');
+    expect(useStore.getState().cardCik).toBe(ASHGROVE);
+
+    act(() => useStore.getState().closeCard());
+    row().focus();
+    await user.keyboard(' ');
+    expect(useStore.getState().cardCik).toBe(ASHGROVE);
+    expect(screen.getAllByLabelText('File card')).toHaveLength(1);
+  });
+
+  it('Select button does not also open the card', async () => {
+    const { user } = await openTable();
+    await user.click(screen.getByRole('button', { name: 'Select Ashgrove Works' }));
+    expect(useStore.getState().cardCik).toBeNull();
   });
 });

@@ -5,10 +5,11 @@ import { initialMachine, transition } from './machine';
 import type { GameEvent, Machine, Rejection, TransitionOutcome } from './types';
 import { type Settings } from './settings';
 import { readSettings, writeSettings } from './settingsStorage';
+import { createGraveyardSlice, type GraveyardSlice } from './graveyard';
 
 export type Overlay = 'none' | 'table';
 
-export interface StoreState {
+export interface StoreState extends GraveyardSlice {
   machine: Machine;
   settings: Settings;
   overlay: Overlay;
@@ -51,7 +52,8 @@ function currentSearch(): string {
   return typeof window === 'undefined' ? '' : window.location.search;
 }
 
-export const useStore = create<StoreState>()((set, get) => ({
+export const useStore = create<StoreState>()((set, get, api) => ({
+  ...createGraveyardSlice(set, get, api),
   machine: initialMachine(),
   settings: readSettings(),
   overlay: 'none',

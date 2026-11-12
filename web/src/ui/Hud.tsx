@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import { useStore } from '../state/store';
 import { Clock } from './Clock';
+import { LightsButton } from './controls/LightsButton';
+import { SoundButton } from './controls/SoundButton';
 import { SettingsMenu } from './SettingsMenu';
 import { SkipLink, TABLE_BUTTON_ID } from './SkipLink';
 import { SkipSlot } from './SkipSlot';
@@ -47,6 +49,8 @@ export function Hud({ children }: { children?: ReactNode }) {
         className="pointer-events-auto m-3 flex flex-wrap items-center justify-end gap-2 min-[901px]:absolute min-[901px]:top-3 min-[901px]:right-0 min-[901px]:flex-col min-[901px]:items-end"
       >
         <SkipSlot />
+        <LightsButton />
+        <SoundButton />
         <SettingsMenu />
         <button id={TABLE_BUTTON_ID} type="button" className={btn} onClick={toggleOverlay}>
           Table view

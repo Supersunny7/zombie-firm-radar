@@ -1,5 +1,6 @@
 import { useId, useRef, useState } from 'react';
 import { effectiveReducedMotion, useStore } from '../state/store';
+import { CreditsDialog } from './CreditsDialog';
 import { useFocusTrap } from './useFocusTrap';
 
 const btn =
@@ -36,6 +37,8 @@ export function SettingsMenu() {
   const panelId = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const creditsButtonRef = useRef<HTMLButtonElement>(null);
+  const [creditsOpen, setCreditsOpen] = useState(false);
 
   const settings = useStore((s) => s.settings);
   const reducedMotion = useStore(effectiveReducedMotion);
@@ -44,6 +47,11 @@ export function SettingsMenu() {
   const close = () => {
     setOpen(false);
     buttonRef.current?.focus();
+  };
+
+  const closeCredits = () => {
+    setCreditsOpen(false);
+    creditsButtonRef.current?.focus();
   };
 
   useFocusTrap(panelRef, { active: open, onEscape: close });
@@ -86,8 +94,18 @@ export function SettingsMenu() {
             note={settings.reducedMotion === null ? 'Follow system' : undefined}
             onChange={(c) => setSetting('reducedMotion', c)}
           />
+          <button
+            ref={creditsButtonRef}
+            type="button"
+            className={`${btn} mt-2 w-full`}
+            aria-haspopup="dialog"
+            onClick={() => setCreditsOpen(true)}
+          >
+            Credits
+          </button>
         </div>
       )}
+      {creditsOpen && <CreditsDialog onClose={closeCredits} />}
     </div>
   );
 }

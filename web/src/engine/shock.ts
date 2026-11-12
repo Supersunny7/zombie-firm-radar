@@ -43,6 +43,7 @@ interface Evaluated {
 
 const MIN_AGE_YEARS = 10;
 const MAX_DELTA = 0.05;
+const ICR_SNAP_TOLERANCE = 1e-9;
 
 function validDelta(delta: number): boolean {
   return typeof delta === 'number' && Number.isFinite(delta) && delta >= 0 && delta <= MAX_DELTA;
@@ -63,6 +64,10 @@ function evaluate(f: ShockInput, delta: number): Evaluated {
   } else {
     shocked = icr(ebit, d * (r + delta));
     if (shocked === null) return notEligible;
+    // Float tolerance: EBIT is rebuilt as x*r*d, so a mathematically exact ICR of 1 can come
+    // out as 0.9999999999999999. Snap within 1e-9 of 1 to exactly 1 (design.md worked example:
+    // at +1.00 pp the ICR is exactly 1.000 and the firm is NOT undead; the rule is strictly < 1).
+    if (Math.abs(shocked - 1) <= ICR_SNAP_TOLERANCE) shocked = 1;
     // Rounding guard: a rate rise must never raise a non-negative ICR.
     if (ebit >= 0) shocked = Math.min(shocked, x);
   }

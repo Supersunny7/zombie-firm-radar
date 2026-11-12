@@ -66,7 +66,7 @@ What to check:
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.13_
     - _Design: Section 2, Decision 1_
 
-  - [ ]* 2.2 Write property tests for the shock model
+  - [x]* 2.2 Write property tests for the shock model
     - File `web/src/engine/shock.property.test.ts`. Arbitraries `arbShockInput` (ICR from [-3, 0.99], [1, 1.6], [1.6, 6]; ages 0 to 60 weighted around 9 to 11; debt including 0 and negative; `implied_rate` in [0, 0.2] or null) and `arbDelta` (slider steps `k / 400`, arbitrary doubles in [0, 0.05], and invalid values). Add the non-vacuity guard (at least 5% newly undead at +5 pp over 1,000 lists).
     - **Property 4: Invalid delta is a typed error**
     - **Property 5: Shocked ICR comes from the shared icr()**
@@ -77,7 +77,7 @@ What to check:
     - **Property 10: Status never improves and zombies stay undead**
     - **Validates: Requirements 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10, 2.11, 2.12, 13.4, 13.6**
 
-  - [ ]* 2.3 Write unit tests for the shock model
+  - [x]* 2.3 Write unit tests for the shock model
     - File `web/src/engine/shock.unit.test.ts`: worked example (`latest_icr 1.2`, rate 0.05, debt 100M, age 18: not undead at +0.75 pp and +1.00 pp, undead at +1.25 pp), `latest_icr 0.9` never newly undead, zero-interest edge, 3,000-firm `shockBatch` under 100 ms, exports present in `engine/index.ts`. Confirm `purity.test.ts` still passes.
     - _Requirements: 2.1, 2.5, 2.6, 13.3_
 
@@ -190,18 +190,18 @@ What to check:
 
 ### Batch 3: Store, HUD controls, File card, Table parity, Credits
 
-- [ ] 6. Store slice, shock view hook and shared formatters
-  - [~] 6.1 Add the graveyard store slice
+- [x] 6. Store slice, shock view hook and shared formatters
+  - [x] 6.1 Add the graveyard store slice
     - `web/src/state/graveyard.ts` with `GraveyardSlice` (`framedPlot`, `hoveredCik`, `focusedCik`, `cardCik`, `cardOpener`, `liveMessage`, `notices`, `audioBlocked` and setters) merged into `useStore` in `store.ts`. `rateShock` stays in `machine.ctx` via `setRateShock`.
     - _Requirements: 13.9, 12.4, 18.9_
     - _Design: Section 12 (store additions)_
 
-  - [~] 6.2 Add `web/src/state/shockView.ts`
+  - [x] 6.2 Add `web/src/state/shockView.ts`
     - `useShockView()` memoises `shockBatch(index.firms, rateShock)` on `[firms, delta]` and returns `{ firms, batch, error }`.
     - _Requirements: 13.3, 13.9, 19.5_
     - _Design: Section 2 (hook)_
 
-  - [~] 6.3 Centralise formatters in `web/src/ui/table/format.ts`
+  - [x] 6.3 Centralise formatters in `web/src/ui/table/format.ts`
     - `formatIcr` (two decimals, "n/a" for null, no 0 placeholder), `formatDebt` (K/M/B suffix, "n/a"), status text and glyph helper, 4-digit year. Reuse in table, card and engravings.
     - _Requirements: 5.7, 12.5, 12.6, 12.7, 12.10, 19.2_
     - _Design: Sections 5, 12_
@@ -211,18 +211,18 @@ What to check:
     - **Property 18: Display formatting never invents values**
     - **Validates: Requirements 5.1, 5.7, 12.5, 12.6, 12.7, 19.2**
 
-- [ ] 7. Shared HUD controls
-  - [~] 7.1 Implement `ui/controls/ShockSlider.tsx`
+- [x] 7. Shared HUD controls
+  - [x] 7.1 Implement `ui/controls/ShockSlider.tsx`
     - Native range over integer `k` 0..20, stored value `k / 400`, name "Interest rate shock", `aria-valuetext` "+X.XX percentage points", label "IF INTEREST RATES RISE BY +X.XX pp", static lines "Approximation based on index data; simplified rate shock" and "Debt reprices at once; simplified model".
     - _Requirements: 2.14, 13.1, 13.2, 13.7, 13.8, 13.9_
     - _Design: Section 12 (shared controls)_
 
-  - [~] 7.2 Implement `ui/graveyard/ShockPanel.tsx` and `GraveyardHud`
+  - [x] 7.2 Implement `ui/graveyard/ShockPanel.tsx` and `GraveyardHud`
     - Counters "Risen from the grave: N" (polite live, throttled to 1 per second), "N already undead", and "N not shock-eligible" only when N > 0, all from `useShockView().batch.counts`. `GraveyardHud` docks the panel bottom-left and stacks under 900 px.
     - _Requirements: 13.3, 13.4, 13.5, 13.6, 13.8_
     - _Design: Section 12 (panels)_
 
-  - [~] 7.3 Implement `LightsButton.tsx` and `SoundButton.tsx` and mount them in `Hud.tsx`
+  - [x] 7.3 Implement `LightsButton.tsx` and `SoundButton.tsx` and mount them in `Hud.tsx`
     - Lights label names the target mode, toggles are ignored within 350 ms of the last change; Sound shows "Sound on"/"Sound off" from `settings.sound && !audioBlocked`. Audio resume retry is added in task 18.3.
     - _Requirements: 16.6, 16.13, 17.1, 17.2, 17.6, 17.8_
     - _Design: Section 12 (shared controls)_
@@ -241,18 +241,18 @@ What to check:
     - Arrow, Home and End keys stay in bounds (13.7); counters equal the batch counts (13.4 to 13.6); accessible names with `vitest-axe`.
     - _Requirements: 13.3, 13.4, 13.5, 13.6, 13.7_
 
-- [ ] 8. File card, live region and Table_View parity
-  - [~] 8.1 Implement `ui/graveyard/chooseDock.ts` and `FileCard.tsx`
+- [x] 8. File card, live region and Table_View parity
+  - [x] 8.1 Implement `ui/graveyard/chooseDock.ts` and `FileCard.tsx`
     - Card content per 12.5 to 12.10 (name, sector, ICR, debt, status text, reasons, "not enough data", "undead under this rate shock" with shocked ICR), single instance, dock right or bottom with the smaller overlap, status colours at 4.5:1.
     - _Requirements: 12.1, 12.2, 12.3, 12.4, 12.5, 12.6, 12.7, 12.8, 12.9, 12.10, 12.11, 12.12, 12.13_
     - _Design: Section 12 (FileCard)_
 
-  - [~] 8.2 Implement `ui/graveyard/LiveRegion.tsx`
+  - [x] 8.2 Implement `ui/graveyard/LiveRegion.tsx`
     - Polite region fed by `announce`, text "{name}, {status}".
     - _Requirements: 18.9_
     - _Design: Section 13_
 
-  - [~] 8.3 Update `ui/table/TableView.tsx`
+  - [x] 8.3 Update `ui/table/TableView.tsx`
     - Rows from `useShockView()` with "Shocked ICR" and "Newly undead" text columns, "Excluded from the shock" for ineligible rows, shared counters, `ShockSlider`/`LightsButton`/`SoundButton`, sector `<select>` with the "No firms match this sector." message, row activation (click, Enter, Space) opens the same `FileCard`.
     - _Requirements: 19.1, 19.2, 19.3, 19.4, 19.5, 19.6, 19.7, 19.8, 19.9_
     - _Design: Section 14_
@@ -281,13 +281,13 @@ What to check:
     - jsdom + testing-library + `vitest-axe`: card content and "n/a" cases, one card at a time, contrast of each status colour at 4.5:1, table controls reachable by Tab, card identical from table and from scene.
     - _Requirements: 12.4, 12.5, 12.8, 12.9, 12.12, 19.6, 19.7_
 
-- [ ] 9. Credits dialog and Vite config
-  - [~] 9.1 Set `server.fs.allow` in `web/vite.config.ts`
+- [x] 9. Credits dialog and Vite config
+  - [x] 9.1 Set `server.fs.allow` in `web/vite.config.ts`
     - Export `REPO_ROOT`; `allow: [REPO_ROOT, searchForWorkspaceRoot(process.cwd())]`.
     - _Requirements: 20.10_
     - _Design: Section 15, Decision 7_
 
-  - [~] 9.2 Implement `ui/CreditsDialog.tsx` and the Settings button
+  - [x] 9.2 Implement `ui/CreditsDialog.tsx` and the Settings button
     - Lazy `import('../../../CREDITS.md?raw')` on first open, scrollable text region (no new Markdown dependency), `role="dialog"`, `aria-label="Credits"`, close button named "Close" with initial focus, `useFocusTrap`, Esc, focus returns to the "Credits" button, "No credits are available." for empty text. Add the "Credits" button to `SettingsMenu.tsx`.
     - _Requirements: 20.1, 20.2, 20.3, 20.4, 20.5, 20.6, 20.7, 20.8, 20.9_
     - _Design: Section 15_
