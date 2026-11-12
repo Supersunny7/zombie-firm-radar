@@ -16,8 +16,10 @@ Scope boundaries:
 ## Glossary
 
 - **Graveyard_Scene**: The React Three Fiber scene in `web/src/scenes/graveyard` that renders plots, stones, props, lights and effects.
-- **Firm_Loader**: The module `web/src/data/loader.ts` that supplies the firm list to the Graveyard_Scene, falling back to Dev_Fixtures when `firms_index.json` is absent.
-- **Dev_Fixtures**: Seeded mock data in `web/src/dev`, used only for tests, the fps measurement and the `?firms=3000` URL flag.
+- **Firm_Loader**: The module `web/src/data/loader.ts` that supplies the firm list to the Graveyard_Scene. It reads `/data/firms_index.json`, then `/data/mock/firms_index.json`, and falls back to Dev_Fixtures only in a development build.
+- **Mock_Data**: The committed file `/data/mock/firms_index.json` and the matching `/data/mock/firms/{cik}.json` files.
+- **Dev_Fixtures**: Seeded generated firms in `web/src/dev`, available only when `import.meta.env.DEV` is true and used for tests, the fps measurement and the `?firms=3000` URL flag. A production build contains no Dev_Fixtures.
+- **App_Shell_Error_Screen**: The existing error screen of the app shell that is shown when the app cannot load its data.
 - **Firm**: One entry of `firms_index.json` with `cik`, `name`, `sector`, `age_years`, `first_filing_year`, `status`, `latest_icr`, `total_debt_usd`, `implied_rate` and `shock_eligible`.
 - **Headstone**: The instanced 3D stone that represents one Firm.
 - **Stone_Renderer**: The component that draws all Headstones with one InstancedMesh per model.
@@ -30,7 +32,7 @@ Scope boundaries:
 - **File_Card**: The small panel that shows name, sector, ICR, debt and status reason for one Firm.
 - **Shock_Slider**: The control that sets the rate shock delta from 0 to 0.05 (0 to +5 pp) in steps of 0.0025 (0.25 pp).
 - **Shock_Model**: The pure function in `web/src/engine` that computes the shocked ICR and the newly undead flag for a Firm and a delta.
-- **Newly_Undead**: A Firm that is not `zombie` at delta 0 and is classed undead by the Shock_Model at the chosen delta.
+- **Newly_Undead**: A Firm that is not `zombie` at delta 0, has `age_years` of at least 10, has `latest_icr` of at least 1, and has a shocked ICR below 1 at the chosen delta.
 - **Already_Undead**: A Firm whose status is `zombie` at delta 0.
 - **Risen_Counter**: The HUD counter "Risen from the grave: N", where N is the number of Newly_Undead Firms.
 - **Mound**: The pile of excavated soil in front of a Headstone.
@@ -42,7 +44,10 @@ Scope boundaries:
 - **Lights_Mode**: The intensity mode, either "lights off" (full horror) or "lights on" (no blood, no jump scare, brighter).
 - **Reduced_Motion**: The state in which the user agent reports `prefers-reduced-motion: reduce`.
 - **Audio_Engine**: The Web Audio module that plays wind, crows, digging and gate sounds.
-- **Interaction_Gate**: The first user gesture (pointer, key or touch) on the page, required before audio starts.
+- **Interaction_Gate**: The first click, touch tap or key press on the page, required before audio starts. Pointer movement alone does not open the gate.
+- **Sound_Setting**: The persisted on/off audio setting, on by default, toggled by the HUD Sound button.
+- **Overview_Fog**: The lighter FogExp2 density used while the Camera_Rig shows the overview (0.02 in lights off, 0.015 in lights on).
+- **Plot_Fog**: The full FogExp2 density of Requirement 7 (0.085 in lights off, 0.05 in lights on), used while the Camera_Rig has a Plot framed.
 - **Table_View**: The existing accessible table in `web/src/ui/table/TableView.tsx`.
 - **Settings_Menu**: The existing menu in `web/src/ui/SettingsMenu.tsx`.
 - **Credits_Dialog**: The modal dialog that renders the text of `CREDITS.md`.
@@ -60,13 +65,17 @@ Scope boundaries:
 
 #### Acceptance Criteria
 
-1. WHEN the Graveyard_Scene mounts, THE Firm_Loader SHALL request `firms_index.json` once and supply its Firm list to the Graveyard_Scene, preserving the file's firm order and including every firm in the file.
-2. IF `firms_index.json` cannot be loaded (network failure, a non-success response, a response body that is not valid JSON, or a response whose firm list does not satisfy the field types of `firms_index.schema.json`), THEN THE Firm_Loader SHALL supply Firms from Dev_Fixtures and THE HUD SHALL show the text "Sample data" within 500 ms of the failure, and THE Graveyard_Scene SHALL keep running without an unhandled error.
-3. WHERE the URL query contains `firms=3000`, THE Firm_Loader SHALL supply exactly 3,000 Firms from the seeded Dev_Fixtures generator instead of requesting `firms_index.json`, and THE HUD SHALL show the text "Sample data".
-4. WHERE the URL query contains a `firms` value other than `3000`, THE Firm_Loader SHALL ignore the `firms` value and follow criteria 1 and 2.
-5. WHEN the Dev_Fixtures generator runs twice with the same seed and the same firm count, THE Dev_Fixtures generator SHALL produce Firm lists that are deeply equal, with the same Firms in the same order and the same field values.
-6. THE Dev_Fixtures generator SHALL produce Firms whose fields satisfy the types and enumerations of `firms_index.schema.json`, using `null` for missing values only in the nullable fields `ticker`, `latest_icr`, `total_debt_usd` and `implied_rate`, and giving each Firm a unique 10-digit zero-padded `cik`.
-7. THE Graveyard_Scene SHALL NOT create, modify or delete any file under the `/data` directory.
+1. WHEN the Graveyard_Scene mounts, THE Firm_Loader SHALL request `/data/firms_index.json` once and supply its Firm list to the Graveyard_Scene, preserving the file's firm order and including every firm in the file.
+2. IF `/data/firms_index.json` cannot be loaded (network failure, a non-success response, a response body that is not valid JSON, or a response whose firm list does not satisfy the field types of `firms_index.schema.json`), THEN THE Firm_Loader SHALL request `/data/mock/firms_index.json` once, apply the same validation, and supply its Firm list, and THE HUD SHALL show the text "Mock data" within 500 ms of the failure.
+3. IF `/data/mock/firms_index.json` also cannot be loaded or fails validation in a production build, THEN THE Firm_Loader SHALL report a load error and THE App_Shell_Error_Screen SHALL be shown, and THE Firm_Loader SHALL NOT supply Dev_Fixtures.
+4. IF `/data/mock/firms_index.json` also cannot be loaded or fails validation in a development build (`import.meta.env.DEV` is true), THEN THE Firm_Loader SHALL supply Firms from Dev_Fixtures and THE HUD SHALL show the text "Sample data" within 500 ms of the failure, and THE Graveyard_Scene SHALL keep running without an unhandled error.
+5. WHERE `import.meta.env.DEV` is true and the URL query contains `firms=3000`, THE Firm_Loader SHALL supply exactly 3,000 Firms from the seeded Dev_Fixtures generator instead of requesting any data file, and THE HUD SHALL show the text "Sample data".
+6. IF `import.meta.env.DEV` is false, THEN THE Firm_Loader SHALL ignore the `firms` URL query value and SHALL NOT generate Firms.
+7. WHERE the URL query contains a `firms` value other than `3000`, THE Firm_Loader SHALL ignore the `firms` value and follow criteria 1 to 4.
+8. THE production build SHALL contain no Dev_Fixtures generator code, so that the Dev_Fixtures module is imported only behind an `import.meta.env.DEV` guard.
+9. WHEN the Dev_Fixtures generator runs twice with the same seed and the same firm count, THE Dev_Fixtures generator SHALL produce Firm lists that are deeply equal, with the same Firms in the same order and the same field values.
+10. THE Dev_Fixtures generator SHALL produce Firms whose fields satisfy the types and enumerations of `firms_index.schema.json`, using `null` for missing values only in the nullable fields `ticker`, `latest_icr`, `total_debt_usd` and `implied_rate`, and giving each Firm a unique 10-digit zero-padded `cik`.
+11. THE Graveyard_Scene SHALL NOT create, modify or delete any file under the `/data` directory.
 
 ### Requirement 2: Shared shock rule in the engine
 
@@ -79,7 +88,7 @@ Scope boundaries:
 3. IF `latest_icr`, `total_debt_usd` or `implied_rate` is `null`, or `shock_eligible` is false, THEN THE Shock_Model SHALL return a result with `shock_eligible` set to false, SHALL return the Firm status unchanged, and SHALL return no shocked ICR value.
 4. IF delta is below 0, is greater than 0.05, or is not a finite number, THEN THE Shock_Model SHALL return a typed error identifying delta as invalid and SHALL return no status or ICR.
 5. IF shocked interest is 0 or negative, or `icr()` returns null for the shocked inputs, THEN THE Shock_Model SHALL return a result flagged as not shock-eligible, SHALL return the Firm status unchanged, and SHALL return no shocked ICR value.
-6. WHEN a Firm is not `zombie` at delta 0, has `age_years` of at least 10, has `latest_icr` below 1 and has a shocked ICR below 1, THE Shock_Model SHALL flag the Firm as Newly_Undead.
+6. WHEN a Firm is not `zombie` at delta 0, has `age_years` of at least 10, has `latest_icr` of at least 1 and has a shocked ICR below 1, THE Shock_Model SHALL flag the Firm as Newly_Undead.
 7. WHEN a Firm has status `zombie`, THE Shock_Model SHALL keep the Firm undead at every delta from 0 to 0.05 inclusive.
 8. WHEN delta equals 0, THE Shock_Model SHALL return for every Firm the same status and ICR as the unshocked input.
 9. FOR ALL Firms with EBIT of at least 0 and delta of at least 0, THE Shock_Model SHALL return a shocked ICR that is not higher than the unshocked ICR.
@@ -116,12 +125,13 @@ Scope boundaries:
 1. THE Stone_Renderer SHALL render each Firm with `healthy` status using the Intact_Stone model, each Firm with `endangered` status using the Cracked_Stone model, and each Firm with `zombie` status using the Broken_Stone model.
 2. THE Stone_Renderer SHALL render each Firm with `insufficient_data` status using the Intact_Stone model with its instance colour multiplied by 0.45 on each of the red, green and blue channels.
 3. THE Stone_Renderer SHALL draw each of the three models with exactly one InstancedMesh, so that the Graveyard_Scene contains exactly 3 stone InstancedMesh objects regardless of Firm count.
-4. THE Stone_Renderer SHALL place the thin bent flap near the base of the Broken_Stone and Intact_Stone models below the ground plane, using the sink depth from Requirement 3, so that no part of the flap is visible above the ground plane.
+4. THE Intact_Stone and Cracked_Stone models SHALL have the thin bent base flap removed from their geometry (clipped away in the model file or at load time, not merely hidden below the ground by the sink depth), so that no flap geometry exists in either model; the Broken_Stone model has no base flap and SHALL be rendered unmodified.
 5. WHEN the shock delta changes and a Firm becomes Newly_Undead, THE Stone_Renderer SHALL swap that Firm's instance to the Broken_Stone model within 1000 ms of the shock delta change.
 6. WHEN the shock delta changes and a Firm that was Newly_Undead is no longer Newly_Undead, THE Stone_Renderer SHALL restore that Firm's instance to the model for its unshocked status within 1000 ms of the shock delta change.
 7. WHILE the Graveyard_Scene renders 3,000 Firms, THE Graveyard_Scene SHALL sustain a frame rate of at least 50 frames per second, averaged over a 10 s window, on the measurement machine described in Requirement 21.
 8. WHEN the Stone_Renderer loads a model, THE Stone_Renderer SHALL load that model exactly once per page session and SHALL load only models listed in `manifest.json`.
 9. IF a model required by the Stone_Renderer is absent from `manifest.json` or fails to load, THEN THE Stone_Renderer SHALL render no instances for that model, SHALL keep rendering the other models, and SHALL report an error indicating which model failed.
+10. THE Stone_Renderer SHALL render all three stone models with opaque, single-sided materials (no transparency, no double-sided faces).
 
 ### Requirement 5: Engraving decals on nearby stones
 
@@ -159,9 +169,9 @@ Scope boundaries:
 #### Acceptance Criteria
 
 1. THE Graveyard_Scene SHALL render the ground with the Poly Haven excavated soil wall material at 2k resolution (2048 x 2048 pixel textures).
-2. THE Graveyard_Scene SHALL extend the ground so that its nearest edge is at least 1.5 times the fog distance from the camera, so that no horizon line is visible in any camera position allowed by the camera controls.
-3. WHILE lights off is active, THE Graveyard_Scene SHALL set the fog colour to `#171b21` with FogExp2 density 0.085.
-4. WHILE lights on is active, THE Graveyard_Scene SHALL set the fog colour to `#171b21` with FogExp2 density 0.05.
+2. THE Graveyard_Scene SHALL extend the ground so that its nearest edge is at least 1.5 times the fog distance from the camera, where the fog distance is 1.98 / density (the distance at which FogExp2 reaches 98 percent fog) evaluated at the lowest density in use (Overview_Fog, lights on), so that no horizon line is visible in any camera position allowed by the camera controls.
+3. WHILE lights off is active and the Camera_Rig has a Plot framed, THE Graveyard_Scene SHALL set the fog colour to `#171b21` with FogExp2 density 0.085 (Plot_Fog).
+4. WHILE lights on is active and the Camera_Rig has a Plot framed, THE Graveyard_Scene SHALL set the fog colour to `#171b21` with FogExp2 density 0.05 (Plot_Fog).
 5. THE Graveyard_Scene SHALL use the `polyhaven-moonlit-golf` HDRI as the background, at intensity 0.045 WHILE lights off is active and 0.12 WHILE lights on is active.
 6. THE Graveyard_Scene SHALL light the environment at intensity 0.05 WHILE lights off is active and 0.3 WHILE lights on is active.
 7. THE Graveyard_Scene SHALL add one shadow-casting directional moon light of colour `#8ea9d6` positioned at (-14, 18, -22), at intensity 0.12 WHILE lights off is active and 0.7 WHILE lights on is active.
@@ -171,6 +181,11 @@ Scope boundaries:
 11. THE Graveyard_Scene SHALL render Ground_Fog as three layers at y = 0.1 m, 0.38 m and 0.8 m with colour `#2b323c`, at base opacity 0.42, 0.26 and 0.12 respectively WHILE lights off is active, and 0.26, 0.16 and 0.08 respectively WHILE lights on is active.
 12. WHEN the shock delta changes within 0 to +5 percentage points (0 to 0.05), THE Graveyard_Scene SHALL set each Ground_Fog layer opacity to base opacity x (1 + 0.5 x delta / 0.05), so that opacity equals the base at delta 0 and 1.5 times the base at +5 pp.
 13. IF the soil material textures or the HDRI fail to load, THEN THE Graveyard_Scene SHALL keep rendering with a flat ground colour of `#0b0806` and the fog colour as background, and SHALL show a non-blocking notice that an environment asset failed to load.
+14. WHILE the Camera_Rig shows the overview, THE Graveyard_Scene SHALL set the fog colour to `#171b21` with FogExp2 density 0.02 WHILE lights off is active and 0.015 WHILE lights on is active (Overview_Fog), and SHALL render each Ground_Fog layer at 0.5 times its opacity from criteria 11 and 12, so that the outline of every Plot is readable in the overview.
+15. WHEN the Camera_Rig moves between the overview and a framed Plot, THE Graveyard_Scene SHALL interpolate the FogExp2 density linearly between Overview_Fog and Plot_Fog, and the Ground_Fog opacity factor between 0.5 and 1, in proportion to the camera move progress (0 to 1), so that the fog reaches its final values when the camera move ends.
+16. WHILE Reduced_Motion is true, THE Graveyard_Scene SHALL switch between Overview_Fog and Plot_Fog in the same frame as the camera cut.
+17. WHEN the camera moves from one framed Plot to another framed Plot, THE Graveyard_Scene SHALL keep the fog at Plot_Fog throughout the move.
+18. WHEN Lights_Mode changes, THE Graveyard_Scene SHALL change the fog density to the value of the new mode for the current camera state (overview or framed Plot) within 500 ms.
 
 ### Requirement 8: Hand-placed props
 
@@ -179,7 +194,7 @@ Scope boundaries:
 #### Acceptance Criteria
 
 1. THE Graveyard_Scene SHALL place exactly one iron gate behind the last row of Plots, at a depth farther from the camera than every Plot and facing the camera.
-2. THE Graveyard_Scene SHALL place exactly one gothic statue, exactly one dead tree trunk, at least 2 and at most 8 stumps, at least 10 and at most 60 scattered rubble stones, and at least 2 and at most 10 cobweb cards, each at a fixed position and rotation read from one props file, so that two page loads show every prop at identical positions.
+2. THE Graveyard_Scene SHALL place exactly one gothic statue, exactly one dead tree trunk, at least 2 and at most 8 stumps, at least 10 and at most 60 scattered rubble stones, and at least 2 and at most 10 cobweb cards, each at a fixed position and rotation read from one props file, so that two page loads show every prop at identical positions. Each rubble stone SHALL be a procedural mesh (no rubble model exists) textured with the lichen rock textures listed in `manifest.json`, and each cobweb card SHALL use a texture from the cobweb pack listed in `manifest.json`.
 3. THE Graveyard_Scene SHALL place exactly one lantern with a point light of colour `#ff9a4a`, so that the point light has a positive intensity and a finite range.
 4. THE Graveyard_Scene SHALL load only models, textures and cards that are listed in `manifest.json`.
 5. IF a model, texture or card referenced by the props file is not listed in `manifest.json`, THEN THE Graveyard_Scene SHALL skip that prop, keep rendering all other props and Plots, and report the unlisted asset name in the developer console.
@@ -237,6 +252,7 @@ Scope boundaries:
 7. WHILE the Camera_Rig shows the overview, THE HUD SHALL show "REC · CAM 03", the running timestamp, and the label "OVERVIEW · {plot count} PLOTS" in place of the plot label.
 8. WHILE Reduced_Motion is false, THE Camera_Rig SHALL complete each move between poses within 1.5 s.
 9. WHILE Reduced_Motion is true, THE Camera_Rig SHALL move to the target pose without an animated transition, within 100 ms of the triggering input.
+10. WHILE the Camera_Rig moves, THE Camera_Rig SHALL publish a move progress value from 0 to 1 and a target state (overview or framed Plot) on every rendered frame, so that the Graveyard_Scene can apply the fog rules of Requirement 7 criteria 14 to 17.
 
 ### Requirement 12: File card on hover and focus
 
@@ -267,7 +283,7 @@ Scope boundaries:
 1. THE Shock_Slider SHALL accept values from 0.00 pp to +5.00 pp inclusive in steps of 0.25 pp, giving 21 selectable values, and SHALL have an initial value of 0.00 pp.
 2. THE HUD SHALL show the text "IF INTEREST RATES RISE BY +{delta} pp" where {delta} is the current Shock_Slider value formatted with exactly two decimal places (for example "+3.00 pp" and "+0.00 pp").
 3. WHEN the Shock_Slider value changes, THE Graveyard_Scene SHALL recompute the status of all Firms through the Shock_Model and update the Risen_Counter, the Already_Undead count and the not-shock-eligible count within 100 ms for a dataset of 3,000 Firms, measured from the value change to the updated counters being rendered.
-4. THE Risen_Counter SHALL display an integer equal to the number of Newly_Undead Firms, where a Newly_Undead Firm is a Firm whose status is not "zombie" at delta 0 and is "zombie" at the current delta.
+4. THE Risen_Counter SHALL display an integer equal to the number of Newly_Undead Firms, where a Newly_Undead Firm is a Firm as defined in the Glossary (not `zombie` at delta 0, `age_years` of at least 10, `latest_icr` of at least 1, and shocked ICR below 1 at the current delta).
 5. THE HUD SHALL display a second line "{N} already undead" where N is an integer equal to the number of Already_Undead Firms, meaning Firms whose status is "zombie" at delta 0.
 6. IF one or more Firms are not shock-eligible, THEN THE HUD SHALL display the line "{N} not shock-eligible" where N is the integer count of those excluded Firms, and THE Shock_Model SHALL exclude those Firms from the Newly_Undead count.
 7. WHERE a user interacts with the Shock_Slider, THE Shock_Slider SHALL expose an accessible name, SHALL expose a value text in the form "+{delta} percentage points" with two decimals (for example "+3.00 percentage points"), and SHALL change its value by 0.25 pp on Arrow Left/Down (decrease) and Arrow Right/Up (increase), set it to 0.00 pp on Home and to +5.00 pp on End, without moving beyond those bounds.
@@ -286,7 +302,7 @@ Scope boundaries:
 4. WHEN more than 8 Firms are Newly_Undead, THE Graveyard_Scene SHALL animate the 8 Craggle_Hands whose Headstones are nearest the camera, measured by straight-line distance from the camera position to the Headstone base, and SHALL give every other Newly_Undead Firm a Mound and a Broken_Stone without a hand.
 5. WHEN two Newly_Undead Firms have equal camera distance at a Hand_Budget assignment, THE Graveyard_Scene SHALL give the hand to the Firm with the lower CIK in ascending string order.
 6. WHEN the camera moves, THE Graveyard_Scene SHALL reassign the Hand_Budget to the 8 nearest Newly_Undead Firms within 1 s of the camera coming to rest, and SHALL NOT show more than 8 Craggle_Hands at any frame during the reassignment.
-7. WHEN a Newly_Undead Firm falls back below the shock threshold, THE Graveyard_Scene SHALL lower its Craggle_Hand and remove its Mound within 2 s, and SHALL free its Hand_Budget slot for the nearest Newly_Undead Firm without a hand.
+7. WHEN a Newly_Undead Firm stops being Newly_Undead because the shocked ICR is again at least 1, THE Graveyard_Scene SHALL lower its Craggle_Hand and remove its Mound within 2 s, and SHALL free its Hand_Budget slot for the nearest Newly_Undead Firm without a hand.
 8. WHILE Reduced_Motion is true, THE Graveyard_Scene SHALL show each Craggle_Hand at its final raised pose in the first rendered frame after assignment, without a rising animation.
 9. WHEN a Craggle_Hand starts rising, THE Graveyard_Scene SHALL emit exactly one rise event for that hand, and THE Audio_Engine SHALL consume that event once, producing one rise sound per hand.
 10. IF the Craggle_Hand model fails to load, THEN THE Graveyard_Scene SHALL still place the Mound and Broken_Stone for each Newly_Undead Firm, SHALL render no hand, SHALL emit no rise events, and SHALL keep the scene running.
@@ -313,18 +329,20 @@ Scope boundaries:
 
 #### Acceptance Criteria
 
-1. WHILE the Interaction_Gate has not occurred, THE Audio_Engine SHALL play no sound and SHALL create no audible output.
+1. WHILE the Interaction_Gate has not occurred, THE Audio_Engine SHALL play no sound and SHALL create no audible output, whatever the value of the Sound_Setting.
 2. WHEN the Interaction_Gate occurs and the Audio_Engine is not muted, THE Audio_Engine SHALL start the `freesound-tomhannen-howling-wind-tower` wind loop within 500 ms and SHALL repeat it without a silent gap longer than 100 ms until the Graveyard_Scene unmounts or the Audio_Engine is muted.
 3. WHILE the Graveyard_Scene is active and the Audio_Engine is not muted, THE Audio_Engine SHALL play `freesound-giddster-crows-cawing` once per interval, with each interval drawn at random from 20 s to 60 s inclusive, and SHALL start the first interval when the Interaction_Gate occurs.
 4. WHEN a Craggle_Hand starts rising and the Audio_Engine is not muted, THE Audio_Engine SHALL play `freesound-guyburns-digging-with-shovel` exactly once for that hand, within 200 ms of the rise starting.
 5. WHEN the user leaves the Graveyard_Scene and the Audio_Engine is not muted, THE Audio_Engine SHALL play `freesound-launemax-open-close-iron-gate` exactly once.
-6. WHEN the user activates the Sound button, THE Audio_Engine SHALL toggle between muted and unmuted for all sounds within 100 ms, AND THE Sound button SHALL show the text "Sound on" while unmuted and "Sound off" while muted.
+6. WHEN the user activates the Sound button, THE Audio_Engine SHALL toggle between muted and unmuted for all sounds within 100 ms, AND THE Sound button in the HUD SHALL show the text "Sound on" while unmuted and "Sound off" while muted, and THE Audio_Engine SHALL persist the new Sound_Setting.
 7. THE Audio_Engine SHALL apply identical audio behaviour (same sounds, triggers and timings) in Reduced_Motion and in standard motion.
 8. WHILE the Audio_Engine is muted, THE Audio_Engine SHALL play no sound, including digging triggered by a rising hand, and SHALL NOT queue or replay sounds that were triggered during muting once it is unmuted.
 9. WHEN the Graveyard_Scene unmounts, THE Audio_Engine SHALL stop the wind loop and cancel the crow timer within 200 ms, and no crow sound SHALL start after the unmount.
 10. THE Audio_Engine SHALL load only audio files listed in `manifest.json`.
 11. IF an audio file fails to load or decode, THEN THE Audio_Engine SHALL skip that sound, keep all other sounds working, and keep the scene running without showing an error to the user.
 12. IF the browser blocks audio playback after the Interaction_Gate has occurred, THEN THE Sound button SHALL show "Sound off" and THE Audio_Engine SHALL retry starting audio on the next activation of the Sound button.
+13. THE Sound_Setting SHALL default to on when no stored preference exists, so that THE Sound button SHALL show "Sound on" from the first render and THE Audio_Engine SHALL start sound at the Interaction_Gate without a further user action.
+14. IF the stored Sound_Setting cannot be read at startup, THEN THE Audio_Engine SHALL treat the Sound_Setting as on.
 
 ### Requirement 17: Lights off, lights on and reduced motion
 
@@ -381,13 +399,14 @@ Scope boundaries:
 
 1. THE Settings_Menu SHALL include a button with the visible text "Credits" that is reachable by keyboard Tab navigation.
 2. WHEN the user activates the "Credits" button by mouse click, touch tap, or the Enter or Space key, THE Settings_Menu SHALL open the Credits_Dialog within 200 ms.
-3. WHEN the Credits_Dialog opens, THE Credits_Dialog SHALL render the full text of `CREDITS.md`, imported as raw text at build time, in a scrollable region, preserving every table row and every link URL as visible text.
+3. WHEN the Credits_Dialog opens, THE Credits_Dialog SHALL render the full text of `CREDITS.md`, imported from the repository root with the Vite `?raw` suffix (as raw text at build time), in a scrollable region, preserving every table row and every link URL as visible text.
 4. WHILE the Credits_Dialog is open, THE Credits_Dialog SHALL keep keyboard focus within the dialog, so that Tab on the last focusable element moves focus to the first and Shift+Tab on the first focusable element moves focus to the last.
 5. WHEN the Credits_Dialog opens, THE Credits_Dialog SHALL move keyboard focus to the close button.
 6. WHEN the user presses Esc or activates the close button, THE Credits_Dialog SHALL close within 200 ms and return keyboard focus to the "Credits" button.
 7. THE Credits_Dialog SHALL have the role "dialog", the accessible name "Credits", and a visible close button with an accessible name of "Close".
 8. THE Credits_Dialog SHALL render its text and close button with a contrast ratio of at least 4.5:1 against their background in both the lights-off and lights-on modes.
 9. IF the text of `CREDITS.md` is empty, THEN THE Credits_Dialog SHALL open and display a message indicating that no credits are available, and THE close button SHALL remain operable.
+10. THE file `web/vite.config.ts` SHALL set `server.fs.allow` to include the repository root, so that the `CREDITS.md` `?raw` import resolves without a file-system access error in both `pnpm dev` and `pnpm build`.
 
 ### Requirement 21: Performance, quality and evidence
 
@@ -399,10 +418,10 @@ Scope boundaries:
 2. IF any test in `pnpm test` fails, THEN THE test suite SHALL exit with a non-zero code and report the name of each failing test.
 3. WHEN `pnpm build` runs from the `web` directory, THE build SHALL exit with code 0, with the TypeScript build, the Vite build and the bundle size check all passing.
 4. IF the initial download size exceeds 25 MB, THEN THE bundle size check SHALL fail the build with a non-zero exit code and report the measured size and the 25 MB limit.
-5. WHEN the app loads with `?firms=3000` in a Playwright run, THE measurement script SHALL record the average frames per second over a continuous window of at least 10 s, starting after the first rendered frame of the Graveyard_Scene.
-6. WHEN the measurement script finishes, THE measurement script SHALL append an entry to `DEVLOG.md` containing the average frames per second (rounded to 1 decimal), the GPU model, the browser name and version, the viewport resolution in pixels, the quality setting (low or normal) and the date in YYYY-MM-DD form.
+5. WHEN the measurement script runs, THE measurement script SHALL drive headed (not headless) Chrome with Playwright on the developer's Windows machine against the dev server with `?firms=3000`, and SHALL record the average frames per second over a continuous window of at least 10 s, starting after the first rendered frame of the Graveyard_Scene.
+6. WHEN the measurement script finishes, THE measurement script SHALL append an entry to `DEVLOG.md` containing the average frames per second (rounded to 1 decimal), the GPU name as reported by the browser's WebGL renderer information, the browser name and version, the viewport resolution in pixels, the quality setting (low or normal) and the date in YYYY-MM-DD form.
 7. IF the measurement machine is not an integrated-GPU laptop, THEN THE measurement script SHALL write a line in the `DEVLOG.md` entry stating that the machine is not an integrated-GPU laptop.
-8. IF the measurement script cannot load the app or records fewer than 10 s of frames, THEN THE measurement script SHALL exit with a non-zero code, write no frames-per-second result to `DEVLOG.md`, and print an error indicating the cause.
+8. IF the measurement script cannot load the app, cannot launch headed Chrome, finds that the page shows no "Sample data" label (the `?firms=3000` flag was ignored), cannot read the GPU name, or records fewer than 10 s of frames, THEN THE measurement script SHALL exit with a non-zero code, write no frames-per-second result to `DEVLOG.md`, and print an error indicating the cause.
 9. WHERE the low quality toggle is on, THE Graveyard_Scene SHALL render with a lower pixel ratio than in normal quality, disable shadows cast by the Flashlight, and render exactly one fog layer.
 10. WHEN the Playwright run completes, THE Playwright run SHALL save one lights-off screenshot and one lights-on screenshot, each at 1920x1080 pixels, to `reference/progress/`.
 11. WHEN files under `web/src/scenes/**` or `web/src/fx/**` change, THE development workflow SHALL name `reference/graveyard/graveyard-rate-shock-3pp.png` as the matching reference and offer a scene-critic review.
