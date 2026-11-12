@@ -486,19 +486,19 @@ Working rules for every task:
 - [x] 22. Checkpoint - Ensure all tests pass
   - Run `pnpm --dir tools test`; ensure all tests pass, ask the user if questions arise.
 
-- [ ] 23. Full run and size report
+- [x] 23. Full run and size report
   - [x] 23.1 Run the Fetch_Script
     - Run `git pull --no-edit` first; run `node tools/fetch-assets.mjs --dry-run`, then the real run; check `$LASTEXITCODE`
     - List the Manual_Picks whose files are missing from `tools/cache/manual/` (expected file names and page URLs) and ask the user to place them; do not create or fake any manual file; re-run after the user answers. A split that cannot be done without Blender is reported the same way
     - Check one converted skinned avatar for Meshopt quantization artefacts (inspect with `gltf-transform inspect`; if skinning looks wrong lower avatar quantization) and check the Bip01 result in the manifest
     - _Requirements: 14.9, 35.4, 37.3, 34.5, 41.1_
 
-  - [-] 23.2 Print the size report
+  - [x] 23.2 Print the size report
     - Print the size of every output file and the used size and limit of the Graveyard_Budget, Lab_Budget and Total_Budget, list files over 5 MB, and fix budget findings (lower texture limit, higher Meshopt level, lighter decimation target) in the picks, then re-run
     - _Requirements: 16.8, 17.1, 17.2, 17.3, 17.4, 17.5, 41.4_
 
-- [ ] 24. Asset audit loop
-  - [~] 24.1 Invoke the asset-auditor and fix findings until clean
+- [x] 24. Asset audit loop
+  - [x] 24.1 Invoke the asset-auditor and fix findings until clean
     - Invoke the `asset-auditor` agent; fix every missing row, forbidden license, missing attribution or file over 5 MB in the Owned_Paths only (by correcting picks and re-running the script, not by hand-editing outputs); invoke it again until it reports no findings; if the same finding survives two fixes, stop and ask the user
     - _Requirements: 20.1, 20.2, 20.3, 41.5, 41.6_
 

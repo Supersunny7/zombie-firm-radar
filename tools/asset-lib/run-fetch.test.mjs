@@ -123,6 +123,38 @@ describe('runFetch', () => {
     expect(r.failed[0].cause).toContain('not wired');
   });
 
+  it('gives LICENSE files their own "changes" text and carries sizeException into the manifest', async () => {
+    const { env, roots } = await makeEnv({
+      env: {
+        generators: {
+          generated: async (pick, { outDir }) => {
+            await writeFile(path.join(outDir, `${pick.id}_a.webp`), 'gen');
+            await writeFile(path.join(outDir, 'LICENSE'), 'MIT text');
+            return {
+              files: [
+                { fileName: `${pick.id}_a.webp`, path: path.join(outDir, `${pick.id}_a.webp`), bytes: 3 },
+                { fileName: 'LICENSE', path: path.join(outDir, 'LICENSE'), bytes: 8, title: 'Microsoft Rocketbox LICENSE' },
+              ],
+            };
+          },
+        },
+      },
+    });
+    const gen = makePick('own-decal', 'texture', {
+      source: { type: 'generated', generator: 'decals', decal: 'handprint', variants: 3 },
+      credits: { changes: 'Resized and recoloured' },
+      sizeException: { maxBytes: 9_000_000, reason: 'accepted for test' },
+    });
+    const r = await runFetch({ picks: [gen], env });
+    expect(r.failed).toEqual([]);
+    const manifest = JSON.parse(await readFile(path.join(roots.assetRoot, 'manifest.json'), 'utf8'));
+    const lic = manifest.files['textures/own-decal/LICENSE'];
+    expect(lic.changes).toBe('Copied unchanged from the Rocketbox repository (MIT license text).');
+    expect(manifest.files['textures/own-decal/own-decal_a.webp'].changes).toBe('Resized and recoloured');
+    expect(manifest.files['textures/own-decal/own-decal_a.webp'].sizeException).toEqual({ maxBytes: 9_000_000, reason: 'accepted for test' });
+    expect(await readFile(roots.creditsFile, 'utf8')).toContain('Copied unchanged from the Rocketbox repository (MIT license text).');
+  });
+
   it('runs an injected generator hook and publishes its files', async () => {
     const { env, roots } = await makeEnv({
       env: {

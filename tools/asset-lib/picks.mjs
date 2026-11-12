@@ -10,7 +10,7 @@ export const ID_PATTERN = /^[a-z0-9][a-z0-9-]*$/;
 
 const PICK_KEYS = [
   'id', 'kind', 'category', 'group', 'source', 'manual',
-  'expectedFile', 'targetFolder', 'edits', 'credits', 'role', 'description',
+  'expectedFile', 'targetFolder', 'edits', 'credits', 'role', 'description', 'sizeException',
 ];
 const CREDIT_KEYS = ['title', 'author', 'sourceUrl', 'license', 'changes'];
 
@@ -129,6 +129,18 @@ function validateEdits(edits, id, errors) {
   });
 }
 
+/** Accepted size exception (Requirement 16.8, 17): an explicit per-pick allow-list entry. */
+function validateSizeException(se, id, errors) {
+  if (!isObj(se)) return errors.push(err(id, 'InvalidField', 'sizeException must be an object', 'sizeException'));
+  checkKeys(se, ['maxBytes', 'reason'], id, 'sizeException', errors);
+  if (!(isInt(se.maxBytes) && se.maxBytes > 0)) {
+    errors.push(err(id, 'InvalidField', 'sizeException.maxBytes must be a positive integer', 'sizeException.maxBytes'));
+  }
+  if (!isStr(se.reason)) {
+    errors.push(err(id, 'InvalidField', 'sizeException.reason must be a non-empty string', 'sizeException.reason'));
+  }
+}
+
 function validateCredits(credits, id, errors) {
   if (!isObj(credits)) return errors.push(err(id, 'InvalidField', 'credits must be an object', 'credits'));
   checkKeys(credits, CREDIT_KEYS, id, 'credits', errors);
@@ -162,6 +174,7 @@ export function validatePick(p, index = 0) {
   validateSource(p.source, id, errors);
   validateEdits(p.edits, id, errors);
   validateCredits(p.credits, id, errors);
+  if ('sizeException' in p) validateSizeException(p.sizeException, id, errors);
 
   if (typeof p.manual !== 'boolean') {
     errors.push(err(id, 'InvalidField', 'manual must be a boolean', 'manual'));

@@ -39,7 +39,7 @@ function top3(list) {
 }
 
 /**
- * @param {{path:string, bytes?:number, group?:'graveyard'|'lab'|null, kind?:string, error?:string}[]} files
+ * @param {{path:string, bytes?:number, group?:'graveyard'|'lab'|null, kind?:string, error?:string, sizeException?:{maxBytes:number, reason:string}}[]} files
  * @param {Record<string,'graveyard'|'lab'>} [groups] path -> group lookup (used when file.group is absent)
  */
 export function account(files, groups = {}) {
@@ -48,6 +48,7 @@ export function account(files, groups = {}) {
   const unreadable = [];
   const readable = [];
   const oversizeFiles = [];
+  const acceptedExceptions = [];
   const byBudget = { graveyard: [], lab: [], total: [] };
 
   for (const f of files) {
@@ -66,7 +67,16 @@ export function account(files, groups = {}) {
     } else if (!isMeta(f.path)) {
       unassigned.push(f.path);
     }
-    if (f.bytes > OVERSIZE_BYTES) {
+    const se = f.sizeException;
+    if (f.bytes > OVERSIZE_BYTES && se && typeof se.maxBytes === 'number' && f.bytes <= se.maxBytes) {
+      acceptedExceptions.push({
+        path: f.path,
+        bytes: f.bytes,
+        mb: (f.bytes / 1_048_576).toFixed(2),
+        maxBytes: se.maxBytes,
+        reason: String(se.reason ?? ''),
+      });
+    } else if (f.bytes > OVERSIZE_BYTES) {
       oversizeFiles.push({
         path: f.path,
         bytes: f.bytes,
@@ -87,6 +97,7 @@ export function account(files, groups = {}) {
     largest,
     unassigned,
     oversizeFiles,
+    acceptedExceptions,
     unreadable,
     files: readable.map(({ path, bytes }) => ({ path, bytes })),
     exitCode: exceeded.length > 0 || unreadable.length > 0 ? 1 : 0,
@@ -104,6 +115,9 @@ export function formatReport(report) {
   }
   for (const o of report.oversizeFiles) {
     lines.push(`warning: ${o.path} is ${o.mb} MB (over 5 MB); ${o.suggestion}`);
+  }
+  for (const a of report.acceptedExceptions ?? []) {
+    lines.push(`accepted exception: ${a.path} is ${a.mb} MB (over 5 MB, allowed up to ${a.maxBytes} B): ${a.reason}`);
   }
   for (const u of report.unreadable) {
     lines.push(`error: cannot read size of ${u.path}: ${u.reason}`);

@@ -368,7 +368,7 @@
       "credits": {
         "title": "Drag-mark decals",
         "author": "Zombie Firm Radar team",
-        "sourceUrl": "https://github.com/Supersunny7/zombie-firm-radar/tree/main/tools/gen-decals.mjs",
+        "sourceUrl": "https://github.com/Supersunny7/zombie-firm-radar/blob/main/tools/gen-decals.mjs",
         "license": "Own work",
         "changes": "Procedurally generated, 512 px RGBA PNG converted to WebP"
       }
@@ -391,7 +391,7 @@
       "credits": {
         "title": "Handprint decals",
         "author": "Zombie Firm Radar team",
-        "sourceUrl": "https://github.com/Supersunny7/zombie-firm-radar/tree/main/tools/gen-decals.mjs",
+        "sourceUrl": "https://github.com/Supersunny7/zombie-firm-radar/blob/main/tools/gen-decals.mjs",
         "license": "Own work",
         "changes": "Procedurally generated, 512 px RGBA PNG converted to WebP"
       }
@@ -644,7 +644,11 @@
         "license": "CC0",
         "changes": "Used as the 2k background sky; width limited to 2048 px"
       },
-      "role": "background"
+      "role": "background",
+      "sizeException": {
+        "maxBytes": 7340032,
+        "reason": "User accepted 2k background sky; lazy-load after first frame"
+      }
     },
     {
       "id": "polyhaven-moonlit-golf-environment",

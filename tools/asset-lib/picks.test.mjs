@@ -17,6 +17,20 @@ const manualPick = (over = {}) => base({
 });
 const codes = (errs) => errs.map((e) => e.code);
 
+describe('validatePick sizeException', () => {
+  const se = { maxBytes: 7_340_032, reason: 'User accepted 2k background sky' };
+  it('accepts a valid sizeException', () => {
+    expect(validatePick(base({ sizeException: se }))).toEqual([]);
+  });
+  it('rejects bad maxBytes, empty reason, unknown keys and non-objects', () => {
+    expect(codes(validatePick(base({ sizeException: { ...se, maxBytes: 0 } })))).toContain('InvalidField');
+    expect(codes(validatePick(base({ sizeException: { ...se, maxBytes: 1.5 } })))).toContain('InvalidField');
+    expect(codes(validatePick(base({ sizeException: { ...se, reason: ' ' } })))).toContain('InvalidField');
+    expect(codes(validatePick(base({ sizeException: { ...se, extra: 1 } })))).toContain('UnknownKey');
+    expect(codes(validatePick(base({ sizeException: 'yes' })))).toContain('InvalidField');
+  });
+});
+
 describe('validatePick', () => {
   it('accepts an optional description string and rejects an empty one', () => {
     expect(validatePick(manualPick({ description: 'lab, medical cart' }))).toEqual([]);

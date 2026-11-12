@@ -602,6 +602,7 @@ Recorded from the user's picks for rounds 1 to 3. Format: name, scene, role; the
 ### Category 2: night sky
 
 - polyhaven-moonlit-golf: graveyard, sky. Use the 2k as background and the 1k as environment lighting. Lower `backgroundIntensity` and `environmentIntensity`; use a warm-grey fog against the blue-purple sky. The other two HDRIs are dropped.
+  - Accepted size exception: the 2k sky is 6,981,963 B (over 5 MB). The user accepted it ("User accepted 2k background sky; lazy-load after first frame"); recorded as `sizeException` (maxBytes 7,340,032) in `tools/picks.json`.
 
 ### Category 3: graveyard props
 

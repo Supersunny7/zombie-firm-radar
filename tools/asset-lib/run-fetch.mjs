@@ -337,6 +337,10 @@ async function canSkip(prev, pick, inputsHash, recipe, assetRoot) {
   return entries.map(([key, e]) => ({ key, bytes: e.bytes, sha256: e.sha256 }));
 }
 
+/** Licence text copied beside an asset is never edited, so it does not inherit the asset's "changes". */
+export const LICENSE_CHANGES = 'Copied unchanged from the Rocketbox repository (MIT license text).';
+export const isLicenseFile = (relPath) => path.posix.basename(String(relPath).replace(/\\/g, '/')) === 'LICENSE';
+
 async function entriesFor(pick, files, assetRoot, inputsHash, recipe) {
   const entries = [];
   for (const f of files) {
@@ -349,7 +353,8 @@ async function entriesFor(pick, files, assetRoot, inputsHash, recipe) {
       author: pick.credits.author,
       sourceUrl: pick.credits.sourceUrl,
       license: pick.credits.license,
-      changes: pick.credits.changes,
+      changes: isLicenseFile(f.relPath) ? LICENSE_CHANGES : pick.credits.changes,
+      ...(pick.sizeException ? { sizeException: pick.sizeException } : {}),
       group: pick.group ?? null,
       bytes: st.size,
       sha256: await sha256File(full),
@@ -563,7 +568,9 @@ export async function runFetch({ picks, env, only = null, dryRun = false }) {
   const onDisk = await listFilesRecursive(roots.assetRoot);
   for (const rel of onDisk.filter((r) => !/\.(tmp|part)$/.test(r) && !/\.old-/.test(r)).sort(ordinal)) {
     try {
-      files.push({ path: rel, bytes: (await stat(path.join(roots.assetRoot, ...rel.split('/')))).size });
+      const bytes = (await stat(path.join(roots.assetRoot, ...rel.split('/')))).size;
+      const se = prevManifest.files[rel]?.sizeException;
+      files.push({ path: rel, bytes, ...(se ? { sizeException: se } : {}) });
     } catch (err) {
       files.push({ path: rel, error: err.message });
     }

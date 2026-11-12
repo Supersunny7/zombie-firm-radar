@@ -246,7 +246,7 @@ The tasks document first listed Phase 1 only. After the user's final picks for r
 5. WHERE a source model is FBX, THE Fetch_Script SHALL convert the model to glTF through an npm package before applying Meshopt compression.
 6. WHEN the Fetch_Script writes a texture, THE Fetch_Script SHALL limit its longest side to 1024 px, except the main graveyard ground texture, whose longest side SHALL be limited to 2048 px.
 7. WHEN the Fetch_Script writes an HDRI, THE Fetch_Script SHALL set its width to 2048 px for the background sky HDRI and to 1024 px for each environment-lighting HDRI.
-8. IF a converted file is larger than 5 MB (5,242,880 bytes), THEN THE Fetch_Script SHALL print the file path, its size in MB rounded to 2 decimals, and a compression suggestion, and SHALL keep the file and continue processing the remaining assets.
+8. IF a converted file is larger than 5 MB (5,242,880 bytes), THEN THE Fetch_Script SHALL print the file path, its size in MB rounded to 2 decimals, and a compression suggestion, and SHALL keep the file and continue processing the remaining assets. A pick that carries an explicit `sizeException` (`maxBytes`, `reason`) in `tools/picks.json` is reported as an accepted exception with its reason instead of a warning while the file stays within `maxBytes`, and its manifest entry records the exception.
 9. IF a conversion step fails for an asset (unreadable source, missing tool, or tool error), THEN THE Fetch_Script SHALL print the asset path and the failure cause, SHALL NOT leave a partial output file for that asset, SHALL continue with the remaining assets, and SHALL exit with a non-zero code after all assets are processed.
 
 ### Requirement 17: Size budgets

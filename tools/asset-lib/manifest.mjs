@@ -23,6 +23,7 @@ const ENTRY_KEYS = [
   'sha256',
   'inputsSha256',
   'recipe',
+  'sizeException',
 ];
 
 const isNonEmpty = (v) => typeof v === 'string' && v.trim() !== '';

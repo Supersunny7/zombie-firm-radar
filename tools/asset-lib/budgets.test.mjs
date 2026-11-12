@@ -7,6 +7,26 @@ describe('budgets', () => {
     expect(accountBudgets).toBe(account);
   });
 
+  it('reports an oversize file with a sizeException as an accepted exception, not a warning', () => {
+    const sizeException = { maxBytes: 7_340_032, reason: 'User accepted 2k background sky' };
+    const r = account([{ path: 'hdri/sky.hdr', bytes: 6_981_963, group: 'graveyard', sizeException }]);
+    expect(r.oversizeFiles).toEqual([]);
+    expect(r.acceptedExceptions).toHaveLength(1);
+    expect(r.exitCode).toBe(0);
+    const text = formatReport(r);
+    expect(text).toContain('accepted exception: hdri/sky.hdr');
+    expect(text).toContain('User accepted 2k background sky');
+    expect(text).not.toContain('warning: hdri/sky.hdr');
+  });
+
+  it('still warns when the file exceeds its sizeException maxBytes', () => {
+    const sizeException = { maxBytes: 6_000_000, reason: 'r' };
+    const r = account([{ path: 'hdri/sky.hdr', bytes: 6_981_963, group: 'graveyard', sizeException }]);
+    expect(r.acceptedExceptions).toEqual([]);
+    expect(r.oversizeFiles).toHaveLength(1);
+    expect(formatReport(r)).toContain('warning: hdri/sky.hdr');
+  });
+
   it('sums groups, counts unassigned in total only with a warning', () => {
     const r = account([
       { path: 'a.webp', bytes: 100, group: 'graveyard' },
