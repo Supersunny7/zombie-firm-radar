@@ -1,0 +1,255 @@
+{
+  "pbtResults": {
+    "1. Write bug condition exploration test (failing first)": {
+      "status": "passed",
+      "failingExample": "All 10 tests fail as expected. rocketbox-business-female-01 (committed and re-converted): f014_body and f014_opacity have no baseColorTexture, baseColorFactor [1,1,0,0.498], metallicFactor 0.4; f014_opacity alphaMode OPAQUE (expected MASK). The synthetic 1x1 [255,255,0,127] avatar resolves instead of rejecting.",
+      "lastRunTimestamp": 1794491788579
+    },
+    "2. Write preservation property tests (BEFORE implementing fix)": {
+      "status": "passed",
+      "lastRunTimestamp": 1794491889907
+    }
+  },
+  "executionHistory": {
+    "1. Write bug condition exploration test (failing first)": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491725982
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491730987
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491898874
+      }
+    ],
+    "2. Write preservation property tests (BEFORE implementing fix)": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491726063
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491731457
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491899578
+      }
+    ],
+    "3.1 Add the TGA decoder": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491726209
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491903432
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491975859
+      }
+    ],
+    "3.2 Add FBX texture staging": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491726269
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491978643
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492053304
+      }
+    ],
+    "3.3 Use the new staging in `resolveModelInput`": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491726326
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492056820
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492223913
+      }
+    ],
+    "3.4 Change `convertModel` for avatars": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491726389
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492060785
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492224073
+      }
+    ],
+    "3.5 Bump the model recipe version": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491726458
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492060933
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492224729
+      }
+    ],
+    "3.6 Verify bug condition exploration test now passes (source level)": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491726538
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492231202
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492283514
+      }
+    ],
+    "3.7 Re-run all 8 avatars and report sizes vs budget": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491726633
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492286555
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492383427
+      }
+    ],
+    "3.8 Verify preservation tests still pass": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491726689
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492387316
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492508584
+      }
+    ],
+    "4. Update the asset-auditor checklist": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491726756
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492387958
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492508971
+      }
+    ],
+    "5. Capture the Playwright screenshot": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491726819
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492388609
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492509133
+      }
+    ],
+    "6. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491726888
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492513335
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492556655
+      }
+    ],
+    "7. Commit": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794491726953
+      },
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492560768
+      }
+    ],
+    "3. Fix for avatars converted without their textures": [
+      {
+        "executionId": "0ba50249-8eb3-49cc-a567-2771fe090fce",
+        "chatSessionId": "sess_cf0a43a1-83ba-4643-8140-6ef9abfd49c1",
+        "timestamp": 1794492508719
+      }
+    ]
+  }
+}

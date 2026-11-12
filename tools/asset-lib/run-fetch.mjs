@@ -5,12 +5,13 @@
 // derivation), convert into <cache>/work/<id>-<pid>/out, atomic rename into
 // <assets>/<kindFolder>/<id>/, then (once, after all picks) budgets, manifest, credits, manual README.
 import { createHash } from 'node:crypto';
-import { cp, copyFile, mkdir, readdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { extractZip } from './archive.mjs';
 import { account } from './budgets.mjs';
 import { ensureDownloaded, isCached, readManual, readRecord, sha256File } from './cache.mjs';
 import { writeCredits } from './credits.mjs';
+import { stageFbxTextures } from './fbx-textures.mjs';
 import { checkLicense } from './licenses.mjs';
 import { render as renderManualReadme } from './manual-readme.mjs';
 import { findStaleKeys, mergeManifestWithReport, parseManifest, writeManifest, MANIFEST_FILE } from './manifest.mjs';
@@ -200,14 +201,17 @@ async function resolveModelInput(pick, source, work) {
   const input = {};
   if (licenseFile) input.licensePath = licenseFile.path;
 
-  // Rocketbox: textures sit in Textures/*.tga; FBX2glTF looks beside the FBX, so stage them flat.
+  // Rocketbox: textures sit in Textures/*.tga. FBX2glTF cannot load TGA (it writes 1x1 placeholders),
+  // so stage PNG copies of the referenced TGAs plus a same-length patched FBX that points at them.
   const textures = files.filter((f) => /^Textures\//i.test(f.name));
   if (/\.fbx$/i.test(model.name) && textures.length > 0) {
-    const stage = path.join(work, 'src');
-    await mkdir(stage, { recursive: true });
-    await copyFile(model.path, path.join(stage, path.basename(model.name)));
-    for (const t of textures) await copyFile(t.path, path.join(stage, path.basename(t.name)));
-    input.path = path.join(stage, path.basename(model.name));
+    const staged = await stageFbxTextures({
+      avatarId: pick.id,
+      fbxPath: model.path,
+      textureFiles: textures,
+      stageDir: path.join(work, 'src'),
+    });
+    input.path = staged.fbxPath;
   } else {
     input.path = model.path;
   }

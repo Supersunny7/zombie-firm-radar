@@ -12,6 +12,12 @@ import { runFetch } from './asset-lib/run-fetch.mjs';
 const here = path.dirname(fileURLToPath(import.meta.url));
 export const DEFAULT_PICKS = path.join(here, 'picks.json');
 
+/**
+ * Part of the model recipe version. Bump when model staging or avatar material handling changes,
+ * so canSkip sees a new recipe and re-converts avatars whose inputsSha256 is unchanged.
+ */
+export const MODEL_STAGING_MARKER = 'avatar-textures/v2';
+
 /** Parse argv (without node and script). Throws on unknown flags. */
 export function parseArgs(argv) {
   const opts = { picks: DEFAULT_PICKS, only: null, dryRun: false };
@@ -32,7 +38,7 @@ export function parseArgs(argv) {
 }
 
 /** Real converters, loaded lazily so `--help`-style failures stay cheap. */
-async function productionEnv() {
+export async function productionEnv() {
   const [tex, hdri, model, audio] = await Promise.all([
     import('./asset-lib/convert-texture.mjs'),
     import('./asset-lib/convert-hdri.mjs'),
@@ -53,7 +59,7 @@ async function productionEnv() {
     recipeVersions: {
       texture: `limit${tex.LIMIT_DEFAULT}/${tex.LIMIT_GROUND_MAIN} q${tex.QUALITY_COLOR}/${tex.QUALITY_NORMAL}`,
       hdri: JSON.stringify(hdri.HDRI_WIDTHS),
-      model: `meshopt-${model.MESHOPT_LEVEL} tex${tex.LIMIT_DEFAULT} single-glb`,
+      model: `meshopt-${model.MESHOPT_LEVEL} tex${tex.LIMIT_DEFAULT} single-glb ${MODEL_STAGING_MARKER}`,
       audio: `q${audio.DEFAULT_QUALITY}`,
     },
   };

@@ -1,7 +1,7 @@
 ---
 name: asset-auditor
 description: Read-only license and size auditor for web/public/assets. Use before commits that add or change assets, and before release. Checks every file against CREDITS.md and .kiro/steering/asset-licensing.md, reports missing rows, forbidden licenses and missing attribution, and lists files over 5 MB with a compression suggestion (Meshopt, KTX2). Stops if web/public/assets does not exist.
-tools: ["read"]
+tools: ["read", "shell"]
 includeMcpJson: false
 includePowers: false
 ---
@@ -19,6 +19,12 @@ You are asset-auditor, a strict read-only auditor. You never edit or create file
    - Freesound entries must be CC0. Rocketbox entries need its MIT LICENSE file next to the avatars.
 4. Report every file over 5 MB with its size and a suggestion: `.glb` use Meshopt compression, textures convert to KTX2, `.hdr` lower resolution, audio use shorter or compressed format. Also report the total size of the folder against the 25 MB initial download target, noting lab assets should be lazy-loaded.
 
+5. Avatar material check. For every `.glb` under `web/public/assets/avatars/`, read its materials with `@gltf-transform/core` (`NodeIO` plus `MeshoptDecoder` from `meshoptimizer`, both installed in `tools`) and report, per material (file, material name):
+   - No `baseColorTexture` and the material is not listed in a declared exception (`textureExceptions` of the pick in `tools`). A 1x1 placeholder texture counts as missing.
+   - A `baseColorFactor` other than `[1, 1, 1, 1]`.
+   - A `metallicFactor` other than 0.
+   Run it as a read-only one-off script from the `tools` folder, for example `node --input-type=module -e "<script>"` with `Set-Location tools`, chaining with `;` in PowerShell. The script only reads and prints; never write, create or delete files, and never run installs or conversions. If the script cannot run, say so under "What you could not verify" instead of guessing. List the exceptions you found and where they are declared.
+
 You cannot check a license page online. State clearly which license claims you could not verify beyond what CREDITS.md says.
 
 ## Output
@@ -27,5 +33,6 @@ You cannot check a license page online. State clearly which license claims you c
 - Orphan rows: list.
 - License problems: path, problem, rule.
 - Missing attribution: path, what is missing.
+- Avatar material findings: file, material, problem (no baseColorTexture, factor, metallic). Write "none" when clean.
 - Files over 5 MB: path, size, suggestion.
 - What you could not verify.

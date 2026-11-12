@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { parseRocketboxUrl, makeDownloader as makeRealDownloader } from './downloader.mjs';
 import { exitCodeFor, formatRunReport } from './report.mjs';
 import { assertWritable, mapName, runFetch } from './run-fetch.mjs';
+import { buildRecord } from './cache.mjs';
 import { makeEnv, makePick } from './test-helpers/fakes.mjs';
 
 const exists = (p) => stat(p).then(() => true, () => false);
@@ -170,6 +171,63 @@ describe('runFetch', () => {
     const r = await runFetch({ picks: [gen], env });
     expect(r.failed).toEqual([]);
     expect(await exists(path.join(roots.assetRoot, 'textures', 'own-decal', 'own-decal_a.webp'))).toBe(true);
+  });
+});
+
+describe('resolveModelInput staging (via runFetch)', () => {
+  const tga2x2 = () => {
+    const h = Buffer.alloc(18);
+    h[2] = 2; // uncompressed true colour
+    h.writeUInt16LE(2, 12);
+    h.writeUInt16LE(2, 14);
+    h[16] = 24;
+    h[17] = 0x20; // top-left origin
+    return Buffer.concat([h, Buffer.alloc(12, 200)]);
+  };
+  const fbxText = (ref) => `FBX\0 D:\\tex\\${ref}.tga \0 ..\\Textures\\${ref}.tga \0`;
+
+  async function run(fbxRef, withTexture) {
+    const seen = {};
+    const { env } = await makeEnv({
+      env: {
+        download: async (pick, dir) => {
+          await mkdir(path.join(dir, 'Textures'), { recursive: true });
+          await writeFile(path.join(dir, 'Bob.fbx'), fbxText(fbxRef), 'latin1');
+          const names = ['Bob.fbx'];
+          // Without the referenced file, ship an unrelated TGA so the Textures/ branch still runs.
+          const tex = withTexture ? 'Bob_color.tga' : 'Other.tga';
+          await writeFile(path.join(dir, 'Textures', tex), tga2x2());
+          names.push(`Textures/${tex}`);
+          return buildRecord(dir, names, ['https://example.org/Bob.fbx']);
+        },
+      },
+    });
+    env.convert.model = async (pick, input, out) => {
+      seen.path = input.path;
+      seen.fbx = await readFile(input.path, 'latin1');
+      seen.dir = await readdir(path.dirname(input.path));
+      await writeFile(path.join(out, `${pick.id}.glb`), 'glb');
+      return { files: [{ fileName: `${pick.id}.glb`, path: path.join(out, `${pick.id}.glb`), bytes: 3, kind: 'model' }], warnings: [], bip01: false };
+    };
+    const r = await runFetch({ picks: [makePick('bob-avatar', 'avatar')], env });
+    return { r, seen };
+  }
+
+  it('stages PNG copies and a patched FBX named after the pick', async () => {
+    const { r, seen } = await run('Bob_color', true);
+    expect(r.failed).toEqual([]);
+    expect(path.basename(seen.path)).toBe('bob-avatar.fbx');
+    expect(seen.fbx).toContain('Bob_color.png');
+    expect(seen.fbx).not.toMatch(/\.tga/i);
+    expect(seen.dir).toContain('Bob_color.png');
+    expect(seen.dir).not.toContain('Bob_color.tga');
+  });
+
+  it('fails naming the avatar and texture when a referenced TGA is missing', async () => {
+    const { r } = await run('Bob_color', false);
+    expect(r.failed).toHaveLength(1);
+    expect(r.failed[0].cause).toContain('bob-avatar');
+    expect(r.failed[0].cause).toContain('Bob_color.tga');
   });
 });
 

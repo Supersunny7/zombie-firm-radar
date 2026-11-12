@@ -11,6 +11,7 @@ import { ALL_EXTENSIONS } from '@gltf-transform/extensions';
 import { dedup, meshopt, prune, resample, textureCompress } from '@gltf-transform/functions';
 import { MeshoptEncoder } from 'meshoptimizer';
 import sharp from 'sharp';
+import { assertAvatarMaterials, normalizeAvatarMaterials } from './avatar-materials.mjs';
 import { bip01Message, checkBip01, collectJointNames } from './bip01.mjs';
 import { LIMIT_DEFAULT, WARN_BYTES } from './convert-texture.mjs';
 import { applyEdits } from './edits/index.mjs';
@@ -114,13 +115,24 @@ export async function convertModel(pick, input, workDir, options = {}) {
 
     await applyEdits(doc, pick.edits ?? [], { pick: pick.id, seed, strict: true });
 
-    const steps = [dedup(), prune()];
+    const avatar = pick.kind === 'avatar';
+    const exceptions = Array.isArray(pick.textureExceptions) ? pick.textureExceptions : [];
+    // FBX2glTF silently writes 1x1 placeholders for textures it cannot load; fail loudly instead.
+    if (avatar) await assertAvatarMaterials(doc, pick.id, { stage: 'pre', exceptions });
+
+    // gltf-transform 4.5.1 names the option keepSolidTextures (default false = bake solid textures).
+    const steps = [dedup(), avatar ? prune({ keepSolidTextures: true }) : prune()];
     if (pick.kind !== 'model') steps.push(resample());
     steps.push(
       textureCompress({ encoder: sharp, targetFormat: 'webp', resize: [LIMIT_DEFAULT, LIMIT_DEFAULT] }),
       meshopt({ encoder: MeshoptEncoder, level: MESHOPT_LEVEL }),
     );
     await doc.transform(...steps);
+
+    if (avatar) {
+      normalizeAvatarMaterials(doc);
+      await assertAvatarMaterials(doc, pick.id, { stage: 'post', exceptions });
+    }
 
     // writeBinary always yields one self-contained GLB; io.write(tmpOut) would pick glTF+.bin
     // from the ".tmp" extension and leave scene.bin and textures beside a JSON file.
