@@ -78,6 +78,17 @@ export function prepare(firm: Firm, delta: number, macro: Macro): EngineResult<I
   if (I <= 0) unusable.push('I');
   if (unusable.length > 0) return fail(notRescuable(unusable, 'unusable', y.fy));
 
+  const money: readonly [InputName, number][] = [
+    ['R', R],
+    ['E', E],
+    ['I', I],
+    ['D', D],
+    ['A', A],
+    ['Q', Q],
+  ];
+  const subDollar = money.filter(([, v]) => v !== 0 && Math.abs(v) < 1).map(([n]) => n);
+  if (subDollar.length > 0) return fail(notRescuable(subDollar, 'unusable', y.fy));
+
   const b = macro?.dgs10?.value;
   if (!isNum(b) || b < 0) return fail(notRescuable(['b'], 'unusable'));
 

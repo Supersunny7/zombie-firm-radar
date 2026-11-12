@@ -17,7 +17,7 @@ The rescue-engine is a pure TypeScript module in `web/src/engine` that answers t
 - **Canonical_Order**: cut_costs, sell_assets, debt_for_equity, refinance.
 - **Treatment_Parser**: The Engine function `parseTreatment` that validates unknown input into a Treatment.
 - **EngineError**: A typed error or result value with a code and a human-readable message. Codes: `unknown_tool`, `too_many_tools`, `duplicate_tool`, `param_out_of_range`, `invalid_treatment`, `delta_out_of_range`, `not_rescuable`, `invalid_paths`, `invalid_seed`, `invalid_date`, `invalid_cik`, `worker_disposed`, `superseded`, `aborted`.
-- **Validation_Order**: The fixed order in which every public Engine function checks its arguments and returns the first error: (1) delta, (2) Treatment (parser order of Requirement 3.11), (3) firm, (4) Treasury rate b, (5) function-specific options in the order paths, seed, cik, isoDate.
+- **Validation_Order**: The fixed order in which every public Engine function checks its arguments and returns the first error: (1) delta, (2) Treatment (parser order of Requirement 3.11), (3) firm (including the sub-dollar check of Requirement 4.15, after the sign checks), (4) Treasury rate b, (5) function-specific options in the order paths, seed, cik, isoDate.
 - **icr_function**: The single shared function `icr(ebit, interest)`.
 - **Post_Surgery_State**: The state after `applyTreatment`: R', E', D', rate r', equity ownership, pain meters and refinance note.
 - **D'_preFee**: The total debt after cut_costs, sell_assets and debt_for_equity, before any 2% refinance fee.
@@ -113,7 +113,8 @@ The rescue-engine is a pure TypeScript module in `web/src/engine` that answers t
 11. THE Engine SHALL set kappa to 0.3, sigma to margin_change_sd clamped to the range [0.01, 0.08], and g to revenue_growth_median clamped to the range [-0.15, 0.15], and SHALL NOT use margin_change_mean in any calculation.
 12. IF an EngineError is returned, THEN THE Engine SHALL leave the input Firm and Macro objects unmodified and SHALL NOT throw an exception.
 13. IF the firm passes criteria 2 to 7 AND `Macro.dgs10.value` (b) is not a finite number or is less than 0, THEN THE Engine SHALL return an EngineError of code `not_rescuable` naming b as the unusable input.
-14. WHEN a public Engine function receives arguments with more than one defect, THE Engine SHALL return only the first EngineError in the Validation_Order (delta, Treatment, firm, b, then function-specific options), so that the firm checks of criteria 2 to 7 run before the b check of criterion 13.
+14. WHEN a public Engine function receives arguments with more than one defect, THE Engine SHALL return only the first EngineError in the Validation_Order (delta, Treatment, firm, b, then function-specific options), so that the firm checks of criteria 2 to 7 and 15 run before the b check of criterion 13.
+15. IF any of R, E, I, D, A or Q for the latest fiscal year is non-zero and has an absolute value below 1 (USD), THEN THE Engine SHALL return an EngineError of code `not_rescuable` naming every such input in the order R, E, I, D, A, Q, checked after the D, R and I sign checks and before the b check; filings report whole USD, and this rule keeps every division finite (interest >= 1 and D * (r + delta) >= 1).
 
 ### Requirement 5: Diagnosis
 

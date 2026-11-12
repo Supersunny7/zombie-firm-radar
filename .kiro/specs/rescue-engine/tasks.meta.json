@@ -75,6 +75,30 @@
     "10.5 Write property test for core composition in `web/src/engine/core.composition.property.test.ts`": {
       "status": "passed",
       "lastRunTimestamp": 1794461438601
+    },
+    "12.4 Write property test for determinism in `web/src/engine/determinism.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794461636787
+    },
+    "12.3 Write property test for latest-year selection in `web/src/engine/latestYear.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794461688429
+    },
+    "12.1 Write property test for click order in `web/src/engine/clickOrder.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794461692097
+    },
+    "12.5 Write property test for ranges in `web/src/engine/ranges.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794461706288
+    },
+    "12.2 Write property test for validation order in `web/src/engine/validation.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794461760490
+    },
+    "12.6 Write property test for display safety in `web/src/engine/displaySafety.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794462624093
     }
   },
   "executionHistory": {
@@ -950,6 +974,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459043462
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461581381
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461780521
       }
     ],
     "12.2 Write property test for validation order in `web/src/engine/validation.property.test.ts`": [
@@ -957,6 +991,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459043523
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461582246
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461780643
       }
     ],
     "12.3 Write property test for latest-year selection in `web/src/engine/latestYear.property.test.ts`": [
@@ -964,6 +1008,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459043583
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461583443
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461781129
       }
     ],
     "12.4 Write property test for determinism in `web/src/engine/determinism.property.test.ts`": [
@@ -971,6 +1025,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459043636
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461584597
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461782266
       }
     ],
     "12.5 Write property test for ranges in `web/src/engine/ranges.property.test.ts`": [
@@ -978,6 +1042,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459043691
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461585368
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461783118
       }
     ],
     "12.6 Write property test for display safety in `web/src/engine/displaySafety.property.test.ts`": [
@@ -985,6 +1059,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459043750
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461789915
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794462644357
       }
     ],
     "13.1 Implement `web/src/engine/worker/protocol.ts` and `web/src/engine/worker/simulate.worker.ts`": [
@@ -997,6 +1081,11 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794461507666
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461576318
       }
     ],
     "13.2 Implement `createSimulationClient` in `web/src/engine/worker/client.ts`": [
@@ -1004,6 +1093,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459043866
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461790612
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461929390
       }
     ],
     "13.3 Create the fake worker, reference model and `arbWorkerOps`: `web/src/engine/test/fakeWorker.ts`, `web/src/engine/test/workerModel.ts` and `web/src/engine/test/engineArbitraries.ts`": [
@@ -1011,6 +1110,11 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459043922
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794462653340
       }
     ],
     "13.4 Write unit tests for the worker client in `web/src/engine/worker/client.unit.test.ts`": [
@@ -1179,6 +1283,13 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794461496941
+      }
+    ],
+    "12. Cross-cutting engine properties": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794462644447
       }
     ]
   }

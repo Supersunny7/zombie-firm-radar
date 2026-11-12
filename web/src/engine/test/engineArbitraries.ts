@@ -255,6 +255,9 @@ interface LatestFigures {
   readonly Q: number;
 }
 
+/** Req 4.15: a money input is 0 or at least 1 USD in absolute value (0 where 0 is valid: E, A, Q). */
+const wholeUsd = (x: number): number => (Math.abs(x) < 1 ? 0 : x);
+
 /** Latest-year figures over the design-table domains. */
 const arbLatest: fc.Arbitrary<LatestFigures> = fc
   .record({
@@ -270,11 +273,11 @@ const arbLatest: fc.Arbitrary<LatestFigures> = fc
   })
   .map(({ R, margin, D, rate, aSmall, aFactor, aLarge, Q }) => ({
     R,
-    E: R * margin,
+    E: wholeUsd(R * margin),
     I: D * rate,
     D,
-    A: aLarge ? (D / (0.3 * 0.6)) * aFactor : aSmall,
-    Q,
+    A: wholeUsd(aLarge ? (D / (0.3 * 0.6)) * aFactor : aSmall),
+    Q: wholeUsd(Q),
   }));
 
 function yearOf(fy: number, f: Record<keyof LatestFigures, number | null>): FirmYear {
@@ -434,8 +437,9 @@ export interface BadFirm {
   readonly code: 'not_rescuable';
   /**
    * Inputs prepare() must name: every null of R, E, I, D, A, Q in that order;
-   * if none is null, the unusable ones of D, R, I in that order; `['years']`
-   * when `years` is empty.
+   * if none is null, the unusable ones of D, R, I in that order; if none, the
+   * sub-dollar ones (non-zero, |x| < 1) of R, E, I, D, A, Q in that order;
+   * `['years']` when `years` is empty.
    */
   readonly inputs: readonly InputName[];
 }
@@ -451,6 +455,9 @@ const FIELD: Readonly<Record<string, keyof FirmYear>> = {
   Q: 'equity_usd',
 };
 const UNUSABLE_VALUES = [0, -0, -1, -1e6, -1e11] as const;
+/** Non-zero values with |x| < 1 USD (Req 4.15). */
+const SUB_DOLLAR_POSITIVE = [5e-318, 0.5, Number.MIN_VALUE, 0.999999, 1e-9] as const;
+const SUB_DOLLAR_ANY = [...SUB_DOLLAR_POSITIVE, -0.5, -Number.MIN_VALUE, -5e-318] as const;
 
 export const arbBadFirm: fc.Arbitrary<BadFirm> = fc.oneof(
   {
@@ -469,20 +476,32 @@ export const arbBadFirm: fc.Arbitrary<BadFirm> = fc.oneof(
         fc.subarray([...NULLABLE_ORDER]),
         fc.subarray([...UNUSABLE_ORDER]),
         fc.array(fc.nat({ max: UNUSABLE_VALUES.length - 1 }), { minLength: 3, maxLength: 3 }),
+        fc.subarray([...NULLABLE_ORDER]),
+        fc.array(fc.nat({ max: 1000 }), { minLength: 6, maxLength: 6 }),
       )
-      .filter(([, nulls, unusable]) => nulls.length + unusable.length > 0)
-      .map(([firm, nulls, unusable, picks]): BadFirm => {
+      .filter(([, nulls, unusable, , sub]) => nulls.length + unusable.length + sub.length > 0)
+      .map(([firm, nulls, unusable, picks, sub, subPicks]): BadFirm => {
         const latest = firm.years.reduce((a, y) => (y.fy > a.fy ? y : a));
         const patched: Record<string, unknown> = { ...latest };
+        // Sub-dollar values first, so unusable and null defects overwrite them (precedence).
+        // D, R and I must stay positive here, else the sign check would fire first.
+        sub.forEach((n) => {
+          const k = NULLABLE_ORDER.indexOf(n);
+          const pool = n === 'D' || n === 'R' || n === 'I' ? SUB_DOLLAR_POSITIVE : SUB_DOLLAR_ANY;
+          patched[FIELD[n] as string] = at(pool, subPicks[k] as number);
+        });
         unusable.forEach((n, i) => {
           patched[FIELD[n] as string] = UNUSABLE_VALUES[picks[i] as number];
         });
         for (const n of nulls) patched[FIELD[n] as string] = null;
         const years = firm.years.map((y) => (y === latest ? (patched as unknown as FirmYear) : y));
+        // Precedence: nulls, then D/R/I sign checks, then sub-dollar.
         const inputs =
           nulls.length > 0
             ? NULLABLE_ORDER.filter((n) => nulls.includes(n))
-            : UNUSABLE_ORDER.filter((n) => unusable.includes(n));
+            : unusable.length > 0
+              ? UNUSABLE_ORDER.filter((n) => unusable.includes(n))
+              : NULLABLE_ORDER.filter((n) => sub.includes(n));
         return { firm: { ...firm, years }, code: 'not_rescuable', inputs };
       }),
   },

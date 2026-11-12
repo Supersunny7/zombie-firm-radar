@@ -109,6 +109,42 @@ describe('prepare: not_rescuable', () => {
     expect(e.detail?.inputs).toEqual(['D', 'R', 'I']);
   });
 
+  it('Property 18 counterexample: sub-dollar EBIT is not_rescuable', () => {
+    const e = errorOf(
+      firmWith({
+        revenue_usd: 1e6,
+        ebit_usd: 4.940656e-318,
+        interest_expense_usd: 500,
+        total_debt_usd: 1e5,
+        total_assets_usd: 0,
+        equity_usd: 0,
+      }),
+      0,
+      macroWith(0),
+    );
+    expect(e.code).toBe('not_rescuable');
+    expect(e.detail?.inputs).toEqual(['E']);
+  });
+
+  it('sub-dollar interest 0.5 names I', () => {
+    const e = errorOf(firmWith({ interest_expense_usd: 0.5 }));
+    expect(e.code).toBe('not_rescuable');
+    expect(e.detail?.inputs).toEqual(['I']);
+  });
+
+  it('sub-dollar negative equity -0.5 names Q', () => {
+    const e = errorOf(firmWith({ equity_usd: -0.5 }));
+    expect(e.code).toBe('not_rescuable');
+    expect(e.detail?.inputs).toEqual(['Q']);
+  });
+
+  it('sign checks win over the sub-dollar check, which wins over b', () => {
+    expect(errorOf(firmWith({ total_debt_usd: 0, equity_usd: 0.5 })).detail?.inputs).toEqual(['D']);
+    expect(errorOf(firmWith({ equity_usd: 0.5 }), 0.01, macroWith(-1)).detail?.inputs).toEqual([
+      'Q',
+    ]);
+  });
+
   it('empty years reports years', () => {
     const f = structuredClone(ashgroveWorks);
     f.years = [];

@@ -296,51 +296,51 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Liquidation: D = 0 gives recovery 1 and 100 cents; Ashgrove `0.5 * 1.6e9 / 1.05e9`; a value stored just below .5 (for example 0.285) rounds to 28
     - _Requirements: 11.1, 11.3, 11.4, 11.5, 11.7, 11.8_
 
-- [ ] 12. Cross-cutting engine properties
-  - [~] 12.1 Write property test for click order in `web/src/engine/clickOrder.property.test.ts`
+- [x] 12. Cross-cutting engine properties
+  - [x] 12.1 Write property test for click order in `web/src/engine/clickOrder.property.test.ts`
     - **Property 6: Click order never matters**
     - Any valid Treatment and any permutation: `parseTreatment`, `applyTreatment` (including the Refinance_Note), `simulate` (`paths` in [1, 200]), `drawOutcome` and `seedFrom` return deeply equal results; `numRuns >= 100`
     - **Validates: Requirements 3.9, 6.1, 7.1, 7.9, 10.6**
 
-  - [~] 12.2 Write property test for validation order in `web/src/engine/validation.property.test.ts`
+  - [x] 12.2 Write property test for validation order in `web/src/engine/validation.property.test.ts`
     - **Property 7: Invalid inputs give one typed error in Validation_Order**
     - Inject one or more defects from `arbBadDelta`, `arbBadTreatment`, `arbBadFirm`, `arbBadMacro`, `arbBadPaths`, `arbBadSeed`; each of `diagnose`, `applyTreatment`, `simulate`, `drawOutcome` returns the first defect's error in the order delta, treatment, firm, b, paths, seed with exactly the named inputs; never throws; runs no path; firm and macro deeply equal to clones; no clamping or coercion; `numRuns >= 100`
     - **Validates: Requirements 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.12, 4.13, 4.14, 8.13, 8.16, 9.12, 14.8**
 
-  - [~] 12.3 Write property test for latest-year selection in `web/src/engine/latestYear.property.test.ts`
+  - [x] 12.3 Write property test for latest-year selection in `web/src/engine/latestYear.property.test.ts`
     - **Property 8: Latest year selection and unused inputs**
     - Shuffling `years` and changing `rescue_inputs.margin_change_mean` to any finite value leave `diagnose`, `applyTreatment`, `simulate` and `drawOutcome` deeply equal; `numRuns >= 100`
     - **Validates: Requirements 4.8, 4.11**
 
-  - [~] 12.4 Write property test for determinism in `web/src/engine/determinism.property.test.ts`
+  - [x] 12.4 Write property test for determinism in `web/src/engine/determinism.property.test.ts`
     - **Property 15: The same seed always gives the same outcome (RR-6)**
     - Two calls of `applyTreatment`, `simulate`, `drawOutcome` and `seedFrom` are deeply equal; arguments stay deeply equal to clones; `drawOutcome` with `seedFrom(cik, t, date)` is deeply equal on repeated calls; `numRuns >= 100`
     - **Validates: Requirements 2.4, 8.12, 9.9, 10.7, 13.7**
 
-  - [~] 12.5 Write property test for ranges in `web/src/engine/ranges.property.test.ts`
+  - [x] 12.5 Write property test for ranges in `web/src/engine/ranges.property.test.ts`
     - **Property 17: Odds, pain and post-state ranges (RR-8)**
     - Include treatments that drive D' to 0 and firms with Q <= 0 or E <= 0; `survivalOdds` and `debtFreeShare` in [0, 1], pains in [0, 100], `debtPreFee >= 0`, `debt >= 0`, `revenue > 0`, `keep` in [0, 1]; `numRuns >= 100`
     - **Validates: Requirements 6.8, 8.11, 13.9, 14.6**
 
-  - [~] 12.6 Write property test for display safety in `web/src/engine/displaySafety.property.test.ts`
+  - [x] 12.6 Write property test for display safety in `web/src/engine/displaySafety.property.test.ts`
     - **Property 18: No NaN or Infinity in display fields**
     - Walk every number in `Diagnosis`, `PostState`, `SimulationResult` and `Outcome` and require it to be finite; `CoverageView.icr === null` exactly when `debtFree`; D' = 0 gives every year covered, `debtFree` true and `coverageText` "debt-free"; `numRuns >= 100`
     - **Validates: Requirements 8.8, 8.14, 14.1, 14.5, 14.9**
 
 - [ ] 13. Web Worker wrapper
-  - [-] 13.1 Implement `web/src/engine/worker/protocol.ts` and `web/src/engine/worker/simulate.worker.ts`
+  - [x] 13.1 Implement `web/src/engine/worker/protocol.ts` and `web/src/engine/worker/simulate.worker.ts`
     - `SimulateArgs`, `WorkerRequest`, `WorkerResponse` as in the design
     - The worker entry imports only `../simulate` and `./protocol`, runs `simulate` and posts `{ id, ok, result }` or `{ id, ok: false, error }`
     - _Requirements: 12.1, 12.9, 12.16_
 
-  - [~] 13.2 Implement `createSimulationClient` in `web/src/engine/worker/client.ts`
+  - [x] 13.2 Implement `createSimulationClient` in `web/src/engine/worker/client.ts`
     - `WorkerLike`, `SimulationClient`; injected `createWorker` factory, default `new Worker(new URL('./simulate.worker.ts', import.meta.url), { type: 'module' })` created lazily on the first request only
     - Unique increasing ids; responses settle only the matching request; unknown ids ignored; error responses reject with the plain EngineError
     - Latest-wins per Channel (default `"default"`) with a closure-held `Map`: at most one In_Flight_Request and one Queued_Request; `superseded` for a replaced Queued_Request and for a stale In_Flight_Request when a Queued_Request exists; `aborted` on signal (queued removed, in-flight response ignored but frees the Channel, already-aborted signal never posted, abort after settlement does nothing)
     - `dispose()` terminates once and rejects all pending requests with `worker_disposed`; later requests reject with `worker_disposed` without calling the factory; a worker `error` event behaves like `dispose()`; each promise settles exactly once
     - _Requirements: 12.1, 12.2, 12.3, 12.4, 12.5, 12.6, 12.7, 12.8, 12.11, 12.12, 12.13, 12.14, 12.15_
 
-  - [~] 13.3 Create the fake worker, reference model and `arbWorkerOps`: `web/src/engine/test/fakeWorker.ts`, `web/src/engine/test/workerModel.ts` and `web/src/engine/test/engineArbitraries.ts`
+  - [-] 13.3 Create the fake worker, reference model and `arbWorkerOps`: `web/src/engine/test/fakeWorker.ts`, `web/src/engine/test/workerModel.ts` and `web/src/engine/test/engineArbitraries.ts`
     - `fakeWorker.ts`: an in-process `WorkerLike` that records posted messages and `terminate` calls, lets the test answer by id (ok, error, unknown id), and optionally runs `simulate` through `structuredClone`
     - `workerModel.ts`: a small reference model of the latest-wins rules for Properties 27 and 28
     - `arbWorkerOps` in `engineArbitraries.ts`: 1 to 30 operations (`request` with optional signal, `respond` ok or error for the oldest posted unanswered request, `abort(i)`, `dispose`, `requestAfterDispose`)
