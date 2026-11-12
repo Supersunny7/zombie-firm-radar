@@ -324,7 +324,7 @@ Working rules for every task:
     - Manual-cache reader: read `targetFolder/expectedFile` (zip or single file) without any network request; if missing, report the expected file name and the source page URL, skip the pick and mark the run failed
     - _Requirements: 14.3, 14.7, 14.8, 14.9_
 
-- [ ] 17. Converters
+- [x] 17. Converters
   - [x] 17.1 Implement `convert-texture.mjs`
     - `fitInside(w, h, L)`; sharp resize with `fit: inside`, `withoutEnlargement`, WebP quality 82 (normal maps 90); L is 2048 for `ground-main`, otherwise 1024; keep the alpha channel; no KTX2, no toktx; fixture test with a tiny PNG
     - _Requirements: 16.2, 16.6, 38.8_
@@ -333,7 +333,7 @@ Working rules for every task:
     - Copy `.hdr` byte for byte, read the Radiance header width, accept only 2048 for `background` and 1024 for `environment`, fail the pick otherwise
     - _Requirements: 16.3, 16.7_
 
-  - [~] 17.3 Implement `convert-model.mjs`
+  - [x] 17.3 Implement `convert-model.mjs`
     - Look up the gltf-transform and fbx2gltf docs again first
     - NodeIO with `ALL_EXTENSIONS` and the Meshopt encoder; FBX through `fbx2gltf`; run the pick's Edit_List (task 18) after the FBX step and before `dedup`, `prune`, `resample` (avatars and animations only), `textureCompress` (WebP, 1024) and `meshopt`; write one self-contained GLB; copy the Rocketbox `LICENSE` beside Rocketbox avatars with its own manifest and credits entries; call `checkBip01` for Rocketbox avatars; report files over 5 MB with a suggestion and keep them; fixture test reading the GLB back and finding `EXT_meshopt_compression`
     - _Requirements: 16.1, 16.5, 16.8, 18.5, 34.3, 34.4, 34.5, 36.2_
@@ -342,21 +342,21 @@ Working rules for every task:
     - `ffmpeg-static` path, `spawn` with an argument array (no shell), both `.ogg` (libvorbis) and `.mp3` (libmp3lame), bit-exact flags and no metadata; clear failure message if a codec is missing and no system ffmpeg fallback; fixture test with a 0.1 s WAV
     - _Requirements: 16.4, 19.4_
 
-  - [~] 17.5 Write property test for HDRI copy and width
+  - [x] 17.5 Write property test for HDRI copy and width
     - **Property 13: HDRI is copied unchanged and width is enforced**
     - **Validates: Requirements 16.3, 16.7**
 
-  - [~] 17.6 Write property test for the texture size limit
+  - [x] 17.6 Write property test for the texture size limit
     - **Property 14: Texture size limit preserves aspect ratio**
     - **Validates: Requirements 16.6**
 
 - [ ] 18. Edit operations and the Bip01 check
-  - [~] 18.1 Implement the edit framework with `decimate`, `removeNode` and `selectVariant`
+  - [x] 18.1 Implement the edit framework with `decimate`, `removeNode` and `selectVariant`
     - `asset-lib/edits/index.mjs`: `applyEdits(doc, edits, { seed, strict })` in list order, typed `EditTargetMissing` error in strict mode, tolerant mode for tests; `decimate` with `MeshoptSimplifier` and a fixed 5-step error search stopping at the first result at or below the target; `removeNode` with `prune()`; `selectVariant` keeping only the named material, texture or variant
     - Geometry edits use gltf-transform and meshoptimizer only; no Blender, no other executable
     - _Requirements: 36.1, 36.2, 36.3, 36.4, 36.6, 36.8, 36.9, 37.1, 37.2_
 
-  - [~] 18.2 Implement the texture edits `desaturate`, `darken` and `grime`
+  - [x] 18.2 Implement the texture edits `desaturate`, `darken` and `grime`
     - `desaturate` caps HSV saturation; `darken` scales RGB so the 99.5th percentile of the per-pixel maximum channel is at most `maxValue`; `grime` caps each pixel's maximum channel by a seeded value-noise field; sharp decode and encode, the only random source is `mulberry32(seed)`; register the ops in `edits/index.mjs`
     - _Requirements: 36.1, 36.5, 36.8_
 
@@ -364,7 +364,7 @@ Working rules for every task:
     - `by: node` and `by: components` (union-find over shared vertex indices, components numbered by first triangle index, listed components to named parts, `rest: true` for the remainder); every triangle in exactly one part; each part a named node; typed `SplitImpossible` error when the model cannot be split this way, which stops that pick, writes no output and tells the user the options (never Blender); inspect the real knife-switch model once the user has placed it and write the real component indices into the pick
     - _Requirements: 36.1, 36.7, 37.3, 37.4_
 
-  - [~] 18.4 Implement `bip01.mjs`
+  - [x] 18.4 Implement `bip01.mjs`
     - `checkBip01(joints)` accepting a non-empty list where every name matches `^Bip01([ _]|$)`, returning the first offending name and the expected pattern otherwise; a scene root that is not a skin joint is ignored; the failure message names the avatar, the offending joint and the pattern
     - _Requirements: 34.3, 34.4_
 
@@ -376,7 +376,7 @@ Working rules for every task:
     - **Property 22: Split and decimate preserve what they promise**
     - **Validates: Requirements 36.3, 36.4, 36.7**
 
-  - [~] 18.7 Write property test for the Bip01 check
+  - [x] 18.7 Write property test for the Bip01 check
     - **Property 23: Bip01 skeleton check accepts exactly the Bip01-named skeletons**
     - **Validates: Requirements 34.3, 34.4**
 
