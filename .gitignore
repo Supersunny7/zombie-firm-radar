@@ -13,6 +13,13 @@ __pycache__/
 .playwright-mcp/
 .env
 .env.*
+tools/output/
+
+# Asset pipeline download cache (only the manual README is tracked)
+tools/cache/*
+!tools/cache/manual/
+tools/cache/manual/*
+!tools/cache/manual/README.md
 
 # OS / editor
 .DS_Store

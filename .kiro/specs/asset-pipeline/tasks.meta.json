@@ -1,0 +1,230 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Pull the repository and read project context": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452234476
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452234620
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452240664
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452278636
+      }
+    ],
+    "1.2 Set up git-ignore rules and candidate folders": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452234692
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452288096
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452333070
+      }
+    ],
+    "2.1 Category 1: ground and stone textures": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452234787
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452336978
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452622690
+      }
+    ],
+    "2.2 Category 2: night sky HDRIs": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452234863
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452626240
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452708918
+      }
+    ],
+    "2.3 Category 3: graveyard props": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452234951
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452713785
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794453101383
+      }
+    ],
+    "2.4 Category 4: lab props": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452235039
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794453105082
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794453280904
+      }
+    ],
+    "2.5 Category 5: patient avatars and animations": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452235108
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794453285470
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794453514269
+      }
+    ],
+    "2.6 Category 6: zombie and grabbing-hand scans (find only)": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452235178
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794453518540
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794454069365
+      }
+    ],
+    "2.7 Category 7: sound effects": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452235246
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794454830156
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794455199587
+      }
+    ],
+    "3.1 Write `reference/candidates/README.md`": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452235321
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794455203734
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794455441741
+      }
+    ],
+    "3.2 Validate the README and the candidate files": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452235406
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794455445779
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794455493529
+      }
+    ],
+    "3.3 Commit the candidates (requested by the user)": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452235476
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794455497442
+      }
+    ],
+    "4. Stop gate - wait for the user's picks": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452235546
+      }
+    ],
+    "1. Preparation": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794452333172
+      }
+    ],
+    "2. Scout the seven categories": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794455199679
+      }
+    ]
+  }
+}

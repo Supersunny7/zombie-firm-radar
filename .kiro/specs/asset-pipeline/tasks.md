@@ -18,15 +18,15 @@ Working rules for every task:
 
 ## Tasks
 
-- [ ] 1. Preparation
-  - [ ] 1.1 Pull the repository and read project context
+- [x] 1. Preparation
+  - [x] 1.1 Pull the repository and read project context
     - Run `git pull` as the very first command, before any read or write. If it exits non-zero or reports a conflict, stop, report the output, change nothing, and do not run reset, stash or checkout
     - Read the five steering files `asset-licensing.md`, `tech.md`, `structure.md`, `kiro-workflow.md` and `product.md` from `.kiro/steering/`; stop and name any that is missing
     - Read every image under `/reference` (including `graveyard/`, `lab/`, `progress/`) and `reference/README.md`. If there are no images or the README has no listed qualities, continue and report it
     - Write a short summary of the visual targets (near-black night, one warm flashlight pool, cold moon rim light, surgical lamp pool in a dark crypt) to use for Night_Read_Rating
     - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 10.4_
 
-  - [ ] 1.2 Set up git-ignore rules and candidate folders
+  - [x] 1.2 Set up git-ignore rules and candidate folders
     - Add these four entries to `.gitignore` in this order, plus one entry for local tool output, and nothing that ignores `.kiro`: `tools/cache/*`, `!tools/cache/manual/`, `tools/cache/manual/*`, `!tools/cache/manual/README.md`
     - Create the folders `reference/candidates/01-ground-stone`, `02-night-sky`, `03-graveyard-props`, `04-lab-props`, `05-avatars`, `06-zombie-hands`, `07-sound` and `reference/candidates/notes` (they fill up with screenshots and notes in later tasks)
     - Do not create any file under `tools/cache/manual` now; `tools/cache/manual/README.md` belongs to Phase 2
@@ -34,8 +34,8 @@ Working rules for every task:
     - Never use `git add -f` or `git add --force`
     - _Requirements: 15.2, 15.3, 15.4, 21.7_
 
-- [ ] 2. Scout the seven categories
-  - [ ] 2.1 Category 1: ground and stone textures
+- [x] 2. Scout the seven categories
+  - [x] 2.1 Category 1: ground and stone textures
     - Fallbacks first: Poly Haven `lichen_rock`, `mossy_rock`, `brown_mud_leaves_01`, `excavated_soil_wall`
     - Find 2-3 Candidates for at least one ground Sub_Item and at least one stone Sub_Item, with at least 2 each overall; record whether PBR maps (color, normal, roughness) are provided
     - Verify license, author and size on each Candidate's page; estimate WebP size
@@ -43,14 +43,14 @@ Working rules for every task:
     - Record all columns plus Night_Read_Rating 1-3 with a one-line reason (roughness, albedo, surface detail) in `reference/candidates/notes/01-ground-stone.md`
     - _Requirements: 2.1, 2.4, 2.5, 2.6, 3.1, 3.2, 3.3, 10.1, 10.2, 10.3, 10.5, 10.7, 10.10, 11.1, 11.2, 11.4, 11.5_
 
-  - [ ] 2.2 Category 2: night sky HDRIs
+  - [x] 2.2 Category 2: night sky HDRIs
     - Fallbacks first: Poly Haven `kloppenheim_02_puresky`, `rogland_moonlit_night`
     - Find Candidates for a background sky and for environment lighting; record whether 1k and 2k versions exist and the role of each
     - Verify license and size; save screenshots to `reference/candidates/02-night-sky/<name>.png`
     - Record data and Night_Read_Rating with reason in `reference/candidates/notes/02-night-sky.md`
     - _Requirements: 2.1, 2.4, 2.5, 4.1, 4.2, 10.2, 10.7, 11.1, 11.2_
 
-  - [ ] 2.3 Category 3: graveyard props
+  - [x] 2.3 Category 3: graveyard props
     - Sub_Items: gate, statue, dead trees, stumps, lantern, fence, broken stones
     - Fallbacks first: Poly Haven `large_iron_gate`, `gothic_statue`, `dead_tree_trunk`, `tree_stump_01`, `Lantern_01`
     - Prefer packs that cover several Sub_Items in one style (count once); record the polygon count of each Candidate and exclude stylized or low-poly ones
@@ -58,14 +58,14 @@ Working rules for every task:
     - Record data and Night_Read_Rating with reason in `reference/candidates/notes/03-graveyard-props.md`
     - _Requirements: 2.1, 2.2, 2.4, 2.5, 5.1, 5.2, 5.3, 10.1, 10.2, 10.5, 10.7, 11.1, 11.2_
 
-  - [ ] 2.4 Category 4: lab props
+  - [x] 2.4 Category 4: lab props
     - Sub_Items: operating table, surgical lamp, IV stand, medical cart, instruments. No Fallbacks
     - Present any single pack covering three or more Sub_Items in one consistent style as its own row
     - Verify license and size; save screenshots to `reference/candidates/04-lab-props/<name>.png`
     - Record data and Night_Read_Rating with reason (judge against the surgical-lamp pool in `reference/lab`) in `reference/candidates/notes/04-lab-props.md`
     - _Requirements: 2.1, 2.2, 2.5, 6.1, 6.2, 6.3, 10.1, 10.2, 10.7, 11.1, 11.2_
 
-  - [ ] 2.5 Category 5: patient avatars and animations
+  - [x] 2.5 Category 5: patient avatars and animations
     - Fallbacks first: Microsoft Rocketbox `Business_Male_02` (`github.com/microsoft/microsoft-rocketbox`, `Assets/Avatars/Professions/Business_Male_02`) and animations `m_walk_neutral_01`, `m_walk_drunk`, `m_walk_bruised`
     - Search for further realistic rigged avatars licensed MIT, CC0 or CC BY; prefer those sharing the Rocketbox skeleton or easy to retarget
     - Record for each Candidate the skeleton type and a retargeting effort estimate (none, low, medium, high) with one sentence of justification
@@ -73,7 +73,7 @@ Working rules for every task:
     - Record data and Night_Read_Rating with reason in `reference/candidates/notes/05-avatars.md`
     - _Requirements: 2.1, 2.4, 2.5, 7.1, 7.2, 7.3, 7.4, 7.5, 10.1, 10.2, 10.7, 10.10, 11.1, 11.2_
 
-  - [ ] 2.6 Category 6: zombie and grabbing-hand scans (find only)
+  - [x] 2.6 Category 6: zombie and grabbing-hand scans (find only)
     - Search Sketchfab for downloadable CC BY or CC0 zombie and grabbing-hand scans
     - Record author name, author profile link and model page link for each; mark every row "Manual pick"
     - Do not download any Sketchfab file and do not create files under `tools/cache`
@@ -81,7 +81,7 @@ Working rules for every task:
     - Record data and Night_Read_Rating with reason in `reference/candidates/notes/06-zombie-hands.md`
     - _Requirements: 2.1, 2.5, 8.1, 8.2, 8.3, 8.4, 10.7, 10.10, 10.11, 11.1, 11.2_
 
-  - [ ] 2.7 Category 7: sound effects
+  - [x] 2.7 Category 7: sound effects
     - Sub_Items: ECG beep, ECG flatline, heartbeat, low drone, iron gate, electric zap, wind. No Fallbacks
     - Only Freesound or OpenGameArt Candidates licensed CC0; record duration and file format
     - Verify license on each sound page; save screenshots to `reference/candidates/07-sound/<name>.png`
@@ -90,7 +90,7 @@ Working rules for every task:
     - _Requirements: 2.1, 2.3, 2.5, 2.7, 9.1, 9.2, 9.3, 9.4, 10.7, 12.3_
 
 - [ ] 3. README, validation and commit
-  - [ ] 3.1 Write `reference/candidates/README.md`
+  - [x] 3.1 Write `reference/candidates/README.md`
     - Start with "Status: waiting for picks. Nothing has been downloaded." and a short legend (night-read scale, "Fallback", "Manual pick", size basis)
     - Add the comparison with `/reference`: one short paragraph per reference image (link it), then how the Candidates compare
     - One table per Category, grouped by Sub_Item, built from `reference/candidates/notes/*.md`; columns: name, preview link, source URL, author, license, file size, poly count, night-read rating, night-read reason, why it fits, plus the category extras from the design (PBR maps, 1k/2k and role, skeleton and retargeting effort, duration and format, author profile link and "Manual pick")
@@ -99,7 +99,7 @@ Working rules for every task:
     - Delete `reference/candidates/notes` once its content is merged
     - _Requirements: 2.3, 2.6, 12.1, 12.2, 12.3, 12.4, 12.5, 12.6_
 
-  - [ ] 3.2 Validate the README and the candidate files
+  - [x] 3.2 Validate the README and the candidate files
     - Check every preview link resolves to an existing PNG, each PNG is under 1 MB (1,048,576 bytes) and its name matches `^[a-z0-9-]+\.png$`
     - Check every Sub_Item table has 2-3 rows (or is listed as having no suitable candidate), every row has a non-empty license and source URL, CC BY rows have an author, Category 6 rows say "Manual pick", Category 7 ratings are `n/a`
     - Check no license is NonCommercial, SA/ND, Mixamo, paid marketplace or otherwise off the allow-list, and the distinct Candidate total is at most 38
@@ -107,14 +107,14 @@ Working rules for every task:
     - Fix any finding in the README or screenshots and re-check
     - _Requirements: 2.3, 10.7, 10.8, 10.9, 10.11, 11.4, 11.5, 12.5, 13.2, 21.3, 21.8_
 
-  - [ ] 3.3 Commit the candidates (requested by the user)
+  - [-] 3.3 Commit the candidates (requested by the user)
     - Run `git status --short`; if staged files exist outside the Owned_Paths, unstage only those with `git restore --staged <path>` and report each path
     - Stage explicitly: `git add .gitignore`, `git add reference/candidates`, `git add .kiro/specs/asset-pipeline`; never `-A`, `.` or `-f`
     - Commit with a conventional message of at most 72 characters, for example `docs(asset-pipeline): add phase 1 asset candidates`
     - Do not push unless the user asks
     - _Requirements: 21.1, 21.2, 21.4, 21.5, 21.6_
 
-- [ ] 4. Stop gate - wait for the user's picks
+- [~] 4. Stop gate - wait for the user's picks
   - Report the totals, the list of files created, and that `web/public/assets`, `manifest.json`, `CREDITS.md` and `tools/fetch-assets.mjs` are unchanged
   - Stop and wait. Do not start Phase 2. When the user sends picks and asks for Phase 2, add the Phase 2 tasks to this file first
   - _Requirements: 13.1, 13.2, 13.3, 13.4_
