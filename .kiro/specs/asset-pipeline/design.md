@@ -102,6 +102,16 @@ Column rules:
 
 **Stop gate.** After writing the README the agent reports the totals and the list of files it created, states that `web/public/assets`, `manifest.json`, `CREDITS.md` and `tools/fetch-assets.mjs` are unchanged, and ends its turn. Phase 2 tasks are added to `tasks.md` only after the user sends picks (Requirement 13.4). This design does not produce `tasks.md`.
 
+### Phase 1 extension: picks, provenance, Category 8
+
+**Category 8 (horror dressing).** A new Category with screenshots in `reference/candidates/08-horror-dressing/` and its own README table. Sub_Items: skull and bones (replicas only), body bag, morgue drawer, chains and hooks, restraint straps, blood/handprint/drag decals (CC0), cobwebs, rotten cloth, blank headstones (intact, cracked, broken). Exactly 2 Candidates per Sub_Item, no Fallbacks, same sources, license checks, Night_Read_Rating and screenshot rules as Categories 1 to 7. The 35/38 cap does not apply. Headstone rows add columns for source triangle count and "decimation needed" (limit 20,000 per stone), and the notes state that the face is blank and the state reads from the silhouette. A set covering all three states is one row repeated under each state sub-table.
+
+**Picks and Rejected.** Two README sections placed after the Category tables. "Picks" has one line per pick: name, scene, role. Names must match an existing table row, otherwise the line is left out and reported. "Rejected" lists names with reasons. Dropped Candidates keep their table rows and screenshots. Rocketbox animations in Picks are checked against the repository and the verified commit SHA is recorded for Phase 2 pinning.
+
+**Provenance check.** For each Manual_Pick whose author says it reworks another sculpt (the two Greenall models), the agent searches the author's page, description, comments and linked posts for the original. Evidence (URLs, quotes under 30 words) is written in a "Provenance" subsection of the README. Confirmed: the model goes to Picks. Unconfirmed: it goes to Rejected ("provenance unconfirmed") and one replacement is proposed (emaciated corpse or skeleton; clawing hand) under the Requirement 10 criteria, as a Manual_Pick.
+
+**Stop gate.** After validation the agent runs `git pull --no-edit`, commits only Owned_Paths, and waits for the user. No Phase 2 tasks, no installs.
+
 ### Phase 2: fetch-assets script
 
 ```mermaid

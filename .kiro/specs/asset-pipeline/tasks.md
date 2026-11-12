@@ -89,7 +89,7 @@ Working rules for every task:
     - After this task count distinct Candidates across all categories; if above 35 trim lowest-ranked third Candidates (never below 2 per Sub_Item) until at most 38, and delete the screenshots and notes rows of trimmed Candidates
     - _Requirements: 2.1, 2.3, 2.5, 2.7, 9.1, 9.2, 9.3, 9.4, 10.7, 12.3_
 
-- [ ] 3. README, validation and commit
+- [x] 3. README, validation and commit
   - [x] 3.1 Write `reference/candidates/README.md`
     - Start with "Status: waiting for picks. Nothing has been downloaded." and a short legend (night-read scale, "Fallback", "Manual pick", size basis)
     - Add the comparison with `/reference`: one short paragraph per reference image (link it), then how the Candidates compare
@@ -107,17 +107,83 @@ Working rules for every task:
     - Fix any finding in the README or screenshots and re-check
     - _Requirements: 2.3, 10.7, 10.8, 10.9, 10.11, 11.4, 11.5, 12.5, 13.2, 21.3, 21.8_
 
-  - [-] 3.3 Commit the candidates (requested by the user)
+  - [x] 3.3 Commit the candidates (requested by the user)
     - Run `git status --short`; if staged files exist outside the Owned_Paths, unstage only those with `git restore --staged <path>` and report each path
     - Stage explicitly: `git add .gitignore`, `git add reference/candidates`, `git add .kiro/specs/asset-pipeline`; never `-A`, `.` or `-f`
     - Commit with a conventional message of at most 72 characters, for example `docs(asset-pipeline): add phase 1 asset candidates`
     - Do not push unless the user asks
     - _Requirements: 21.1, 21.2, 21.4, 21.5, 21.6_
 
-- [~] 4. Stop gate - wait for the user's picks
+- [x] 4. Stop gate - wait for the user's picks
   - Report the totals, the list of files created, and that `web/public/assets`, `manifest.json`, `CREDITS.md` and `tools/fetch-assets.mjs` are unchanged
   - Stop and wait. Do not start Phase 2. When the user sends picks and asks for Phase 2, add the Phase 2 tasks to this file first
   - _Requirements: 13.1, 13.2, 13.3, 13.4_
+
+- [x] 5. Record picks
+  - [x] 5.1 Write the "Picks" and "Rejected" sections in `reference/candidates/README.md`
+    - Run `git pull --no-edit` first; stop and report on non-zero exit or conflict
+    - Use the exact picks the user passes to the executing agent: one line per pick (name, scene, role); only names that exist in a README table; report unknown names
+    - Write "Rejected" with a reason per name (for example `sketchfab-broken-headstone: readable inscription of a real person's grave`); keep dropped Candidates in their tables
+    - Verify that `m_idle_breathe_01` exists in the Rocketbox repo (`github.com/microsoft/microsoft-rocketbox`) and record the commit SHA to pin; if missing, report it and leave it out of Picks
+    - _Requirements: 23.1, 23.2, 23.3, 23.4, 23.5, 23.6, 23.7, 27.2_
+
+- [x] 6. Provenance check
+  - [x] 6.1 Check `sketchfab-zombie-corpse-greenall` and `sketchfab-zombie-hand-greenall`
+    - Search the author's page, model description, comments and linked ArtStation or other posts for the original sculpt
+    - If the original is the uploader's own work or licensed for this use: record evidence (URLs, quotes under 30 words) in a "Provenance" subsection of the README and add the model to Picks
+    - If unconfirmed: keep it in Rejected as "provenance unconfirmed" and note the result in the README
+    - _Requirements: 24.1, 24.2, 24.3, 24.4, 24.7_
+
+  - [x] 6.2 Find replacements for any unconfirmed model
+    - Only for models left unconfirmed in 6.1: one realistic emaciated corpse or skeleton, one clawing hand
+    - Apply Requirement 10 criteria (license on own page, author and link, size, Night_Read_Rating); mark as Manual_Pick; do not download; screenshots in `reference/candidates/06-zombie-hands/`
+    - _Requirements: 24.4, 24.5, 24.6, 10.1, 10.2, 10.5, 10.7, 10.10, 11.1, 11.2_
+
+- [x] 7. Category 8 scouting (horror dressing)
+  - [x] 7.1 Skull and bones, body bag, morgue drawer
+    - 2 Candidates each, no Fallbacks; skull and bones only replicas or sculpts, never real remains
+    - Verify license, author, size on each page; screenshots to `reference/candidates/08-horror-dressing/<name>.png` (names `^[a-z0-9-]+\.png$`, under 1 MB)
+    - Record data and Night_Read_Rating with reason in `reference/candidates/notes/08-horror-dressing.md`
+    - _Requirements: 25.1, 25.2, 25.3, 25.5, 25.7, 25.8, 10.1, 10.2, 10.5, 10.7, 10.10, 11.1, 11.2, 11.4, 11.5_
+
+  - [x] 7.2 Chains and hooks, restraint straps, rotten cloth, cobwebs
+    - Same rules as 7.1; append rows to the same notes file
+    - _Requirements: 25.1, 25.2, 25.5, 25.7, 25.8, 10.1, 10.2, 10.5, 10.7, 10.10, 11.1, 11.2_
+
+  - [x] 7.3 Blood splatter, handprint and drag-mark decals
+    - CC0 textures only, 2 Candidates; record whether alpha or mask maps are provided
+    - _Requirements: 25.1, 25.2, 25.4, 25.5, 25.8, 10.5, 10.7, 11.1, 11.2_
+
+  - [x] 7.4 Blank headstones in three states
+    - Sub_Items intact, cracked, broken; 2 Candidates each; a set covering all three counts for each state
+    - Blank face, dark weathered stone; record source triangle count and whether decimation to at most 20,000 triangles is needed; state readable from silhouette; prefer one author or scan set
+    - Reject and list any stone with a readable inscription of a real person
+    - _Requirements: 25.1, 25.2, 25.7, 26.1, 26.2, 26.3, 26.4, 26.5, 26.6, 26.7, 26.8_
+
+- [ ] 8. Merge, validate and commit
+  - [x] 8.1 Merge results into `reference/candidates/README.md`
+    - Add the Category 8 tables (headstone columns for triangles and decimation), the Provenance result, and update Totals (Category 8 listed separately, outside the 35/38 cap)
+    - Delete `reference/candidates/notes` once merged
+    - _Requirements: 25.5, 25.6, 24.7, 12.1, 12.2, 12.3, 12.5, 12.6_
+
+  - [x] 8.2 Validate
+    - Preview links resolve, PNGs under 1 MB with valid names, every row has license and source URL, CC BY rows have an author
+    - Category 8: exactly 2 per Sub_Item (or listed as none), decals CC0, no real remains, headstone rows have triangle data and blank faces
+    - Picks names all exist in tables; no NonCommercial, SA/ND, Mixamo or paid licenses
+    - `git status --short web/public/assets tools/fetch-assets.mjs CREDITS.md` shows no change; `web/src/engine`, `web/src/state` and `/pipeline` untouched
+    - _Requirements: 23.2, 25.2, 25.3, 25.4, 26.1, 26.3, 10.7, 10.8, 10.9, 10.11, 11.4, 11.5, 13.2, 21.3_
+
+  - [-] 8.3 Commit only owned paths
+    - Run `git pull --no-edit` first
+    - Run `git status --short`; unstage only files outside Owned_Paths with `git restore --staged <path>` and report them
+    - Stage explicitly: `git add reference/candidates`, `git add .kiro/specs/asset-pipeline`; never `-A`, `.` or `-f`
+    - Conventional message of at most 72 characters, for example `docs(asset-pipeline): add picks, provenance and horror dressing`; do not push
+    - _Requirements: 27.1, 27.2, 21.1, 21.2, 21.4, 21.5, 21.6_
+
+- [~] 9. Stop gate - wait for picks
+  - Report totals, files created, and that `web/public/assets`, `manifest.json`, `CREDITS.md` and `tools/fetch-assets.mjs` are unchanged
+  - Stop and wait for the user's picks for Category 8 and the provenance outcome. Add no Phase 2 tasks and install nothing
+  - _Requirements: 27.3, 27.4, 13.2, 13.4_
 
 ## Notes
 
@@ -141,7 +207,17 @@ Working rules for every task:
     { "id": 8, "tasks": ["2.7"] },
     { "id": 9, "tasks": ["3.1"] },
     { "id": 10, "tasks": ["3.2"] },
-    { "id": 11, "tasks": ["3.3"] }
+    { "id": 11, "tasks": ["3.3"] },
+    { "id": 12, "tasks": ["5.1"] },
+    { "id": 13, "tasks": ["6.1"] },
+    { "id": 14, "tasks": ["6.2"] },
+    { "id": 15, "tasks": ["7.1"] },
+    { "id": 16, "tasks": ["7.2"] },
+    { "id": 17, "tasks": ["7.3"] },
+    { "id": 18, "tasks": ["7.4"] },
+    { "id": 19, "tasks": ["8.1"] },
+    { "id": 20, "tasks": ["8.2"] },
+    { "id": 21, "tasks": ["8.3"] }
   ]
 }
 ```

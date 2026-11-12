@@ -203,6 +203,11 @@
         "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794455497442
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794455608307
       }
     ],
     "4. Stop gate - wait for the user's picks": [
@@ -210,6 +215,16 @@
         "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794452235546
+      },
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794455612288
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456782513
       }
     ],
     "1. Preparation": [
@@ -224,6 +239,206 @@
         "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794455199679
+      }
+    ],
+    "3. README, validation and commit": [
+      {
+        "executionId": "9ef60f92-f35b-4df6-84a2-80dc64961da6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794455608387
+      }
+    ],
+    "5.1 Write the \"Picks\" and \"Rejected\" sections in `reference/candidates/README.md`": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456859843
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456863824
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456943208
+      }
+    ],
+    "6.1 Check `sketchfab-zombie-corpse-greenall` and `sketchfab-zombie-hand-greenall`": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456859962
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456947555
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794457018646
+      }
+    ],
+    "6.2 Find replacements for any unconfirmed model": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456860041
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794457022764
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794457207201
+      }
+    ],
+    "7.1 Skull and bones, body bag, morgue drawer": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456860109
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794457211649
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794457530652
+      }
+    ],
+    "7.2 Chains and hooks, restraint straps, rotten cloth, cobwebs": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456860175
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794457535060
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794457900088
+      }
+    ],
+    "7.3 Blood splatter, handprint and drag-mark decals": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456860242
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794457903839
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794458177856
+      }
+    ],
+    "7.4 Blank headstones in three states": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456860308
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794458181553
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794458616876
+      }
+    ],
+    "8.1 Merge results into `reference/candidates/README.md`": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456860396
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794458621364
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794458831334
+      }
+    ],
+    "8.2 Validate": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456860488
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794458839438
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794458950349
+      }
+    ],
+    "8.3 Commit only owned paths": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456860555
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794458954936
+      }
+    ],
+    "9. Stop gate - wait for picks": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456860624
+      }
+    ],
+    "5. Record picks": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794456943301
+      }
+    ],
+    "6. Provenance check": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794457207334
+      }
+    ],
+    "7. Category 8 scouting (horror dressing)": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794458617043
       }
     ]
   }

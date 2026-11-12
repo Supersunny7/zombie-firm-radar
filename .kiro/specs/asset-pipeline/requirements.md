@@ -320,3 +320,72 @@ The tasks document lists Phase 1 only. Phase 2 tasks are added when the user ask
 3. WHEN the Fetch_Script writes or updates the Credits_File, THE Fetch_Script SHALL preserve the Visible_In_App_Note unchanged at the top of the file.
 4. WHEN the Fetch_Script runs a second time with unchanged inputs, THE Fetch_Script SHALL leave exactly one Visible_In_App_Note in the Credits_File.
 5. IF the Credits_File has no Visible_In_App_Note when the Fetch_Script writes it, THEN THE Fetch_Script SHALL insert the Visible_In_App_Note at the top of the file once.
+
+### Requirement 23: Picks record and rejected list
+
+**User Story:** As the project owner, I want my picks and rejections written into the candidates README, so that Phase 2 starts from a clear, reviewable record of what is used where and why other candidates were dropped.
+
+#### Acceptance Criteria
+
+1. WHEN the user passes picks to the Scout_Agent, THE Scout_Agent SHALL add a section headed "Picks" to the Candidates_README containing one line per pick, each stating the Candidate name, the scene (graveyard or lab) and the role in that scene.
+2. THE Scout_Agent SHALL write each pick line using the name of a Candidate that exists in a Candidates_README table.
+3. IF a pick names a Candidate that does not exist in any Candidates_README table, THEN THE Scout_Agent SHALL leave it out of the Picks section and report the unknown name to the user.
+4. THE Scout_Agent SHALL add a section headed "Rejected" to the Candidates_README listing each rejected Candidate by name with the reason for rejection, for example "sketchfab-broken-headstone: readable inscription of a real person's grave".
+5. THE Scout_Agent SHALL keep every Candidate that is not in Picks in its Category table and SHALL NOT delete its row or Preview_Screenshot.
+6. WHEN the Picks section names an animation from the Rocketbox repository, THE Scout_Agent SHALL verify that the animation file exists in `github.com/microsoft/microsoft-rocketbox` and SHALL record the commit SHA at which it was verified, so that Phase 2 can pin that SHA.
+7. IF a named Rocketbox animation does not exist in the repository, THEN THE Scout_Agent SHALL report the missing name to the user and SHALL NOT list that animation in Picks.
+
+### Requirement 24: Provenance check for reworked Sketchfab models
+
+**User Story:** As the project owner, I want to know whether a Sketchfab model that its author says is a rework of someone else's sculpt is really licensed for use, so that no asset enters the project with an unclear origin.
+
+#### Acceptance Criteria
+
+1. THE Scout_Agent SHALL run the provenance check for each Manual_Pick Sketchfab model whose author states that it reworks another person's sculpt, namely sketchfab-zombie-corpse-greenall and sketchfab-zombie-hand-greenall.
+2. WHEN the Scout_Agent runs the provenance check for a model, THE Scout_Agent SHALL search the author's Sketchfab page, the model description, the model comments and any linked ArtStation or other post for the original sculpt.
+3. IF the original sculpt is the uploader's own work or is licensed for use in this project, THEN THE Scout_Agent SHALL record the evidence (source URLs and quotes of fewer than 30 words each) in the Candidates_README and SHALL add the model to the Picks section.
+4. IF the original sculpt cannot be confirmed as the uploader's own work or as licensed for this use, THEN THE Scout_Agent SHALL keep the model in the Rejected section with the reason "provenance unconfirmed" and SHALL propose one replacement Candidate for it.
+5. WHEN a replacement is needed for sketchfab-zombie-corpse-greenall, THE Scout_Agent SHALL propose a realistic emaciated corpse or skeleton; WHEN a replacement is needed for sketchfab-zombie-hand-greenall, THE Scout_Agent SHALL propose a clawing hand.
+6. THE Scout_Agent SHALL hold each replacement Candidate to the selection criteria of Requirement 10 and SHALL treat it as a Manual_Pick.
+7. THE Scout_Agent SHALL record the provenance result for each checked model in the Candidates_README whether it was confirmed or not.
+
+### Requirement 25: Category 8, horror dressing
+
+**User Story:** As the project owner, I want props and decals that dress the lab and graveyard as a horror set, so that the scenes feel lived-in and unsettling without using real remains or readable personal data.
+
+#### Acceptance Criteria
+
+1. THE Scout_Agent SHALL add Category 8 "horror dressing" to the Candidates_README with the Sub_Items: human skull and bones; body bag; morgue drawer or cold chamber; rusty chains and hooks; leather restraint straps; blood splatter, handprint and drag-mark decals; cobwebs; rotten cloth or sheet; blank headstones in three states (intact, cracked, broken).
+2. THE Scout_Agent SHALL propose exactly 2 Candidates for each Category 8 Sub_Item, and SHALL treat Category 8 as having no Fallback.
+3. THE Scout_Agent SHALL propose for the Sub_Item human skull and bones only replicas or sculpts and SHALL NOT propose any asset that is or depicts real human remains.
+4. THE Scout_Agent SHALL propose for the decal Sub_Item only textures licensed CC0.
+5. THE Scout_Agent SHALL apply to Category 8 the same sources, Allowed_License checks, selection criteria, Night_Read_Rating, Preview_Screenshot and README column rules as Requirements 2.5, 10 to 12 define for Categories 1 to 7, with Preview_Screenshots saved in `reference/candidates/08-horror-dressing/`.
+6. THE Scout_Agent SHALL NOT count Category 8 Candidates toward the 35 Candidate target or the 38 Candidate maximum of Requirement 2, because Category 8 is a user-requested round with 2 Candidates per Sub_Item.
+7. WHERE one pack covers two or more Category 8 Sub_Items in a consistent style, THE Scout_Agent SHALL list it as one Candidate for each Sub_Item it covers.
+8. IF no Candidate meeting the criteria exists for a Category 8 Sub_Item, THEN THE Scout_Agent SHALL record that Sub_Item as "no suitable candidate found" with the sources searched.
+
+### Requirement 26: Headstone constraints
+
+**User Story:** As the project owner, I want blank, light-weight headstones whose state reads from their shape, so that thousands of stones can be instanced and each firm's engraving can be added as a decal.
+
+#### Acceptance Criteria
+
+1. THE Scout_Agent SHALL propose only headstone Candidates with a blank face that has no readable inscription and no names.
+2. THE Scout_Agent SHALL propose only headstone Candidates of dark, weathered stone.
+3. THE Scout_Agent SHALL record for each headstone Candidate the triangle count of the source model and whether decimation is needed to reach at most 20,000 triangles per stone.
+4. THE Scout_Agent SHALL propose only headstone Candidates that can be brought to at most 20,000 triangles each by decimation.
+5. THE Scout_Agent SHALL propose headstone Candidates whose intact, cracked and broken states are distinguishable from the silhouette alone.
+6. THE Scout_Agent SHALL prefer three stones from one author or one scan set so that the styles match.
+7. WHERE one Candidate is a set covering all three states, THE Scout_Agent SHALL count it as one Candidate for each of the three state Sub_Items.
+8. IF a headstone Candidate shows a readable inscription of a real person, THEN THE Scout_Agent SHALL exclude it and list it in the Rejected section with that reason.
+
+### Requirement 27: Second Phase 1 stop gate
+
+**User Story:** As the project owner, I want the work to stop again after the picks, provenance and Category 8 results are committed, so that I decide before anything is downloaded.
+
+#### Acceptance Criteria
+
+1. WHEN the Picks section, the provenance results and the Category 8 tables are complete and validated, THE Scout_Agent SHALL commit only files inside the Owned_Paths after running `git pull --no-edit`.
+2. THE Scout_Agent SHALL run `git pull --no-edit` instead of `git pull` for every pull in this extension.
+3. AFTER the commit, THE Scout_Agent SHALL stop and wait for the user's picks for Category 8 and the provenance outcome.
+4. WHILE the user has not given those picks, THE Scout_Agent SHALL add no Phase 2 tasks, install no packages, and leave Asset_Root, the Manifest, the Credits_File and the Fetch_Script unchanged.

@@ -1,10 +1,30 @@
 # Asset candidates (Phase 1, scouting)
 
-Status: waiting for picks. Nothing has been downloaded.
+Status: Round 2: waiting for picks for Category 8 and the replacement hand. Nothing has been downloaded.
 
-Totals: 46 distinct candidates (34 visual + 12 sound). Per category: 1 ground and stone 5, 2 night sky 3, 3 graveyard props 14, 4 lab props 5, 5 avatars 3, 6 zombie and hands 4, 7 sound 12. Packs and files covering several Sub_Items are listed once. Limit 35, hard max 38 for the visual categories.
+Totals: Categories 1-7: 47 distinct candidates (35 visual + 12 sound), counting the task 6.2 replacement hand (pending pick; sketchfab-zombie-hand-greenall stays listed but is Rejected as unconfirmed). Per category: 1 ground and stone 5, 2 night sky 3, 3 graveyard props 14, 4 lab props 5, 5 avatars 3, 6 zombie and hands 5, 7 sound 12. Packs and files covering several Sub_Items are listed once. Limit 35, hard max 38 for the visual categories. Category 8 (horror dressing), counted separately and outside the cap: 23 distinct candidates in 24 rows (22 new; 1 shared with Category 3), 0 for the bloody handprint. Overall: 69 distinct.
 
-Decision: the 35/38 cap was raised for Category 7 (sound) only. Categories 1 to 6 stay at 34, within the hard max of 38. Sound adds 12 for a final total of 46.
+Decision: the 35/38 cap was raised for Category 7 (sound) only. Categories 1 to 6 now total 35 with the task 6.2 replacement, within the hard max of 38. Sound adds 12 for a final total of 47. The cap does not apply to Category 8.
+
+Provenance result (task 6.1, details under Category 6): Greenall corpse CONFIRMED and picked. Greenall hand UNCONFIRMED and rejected. Replacement hand sketchfab-zombie-hand-craggle: pending your pick.
+
+## Decisions needed (round 2)
+
+1. Category 8 picks, per Sub_Item (2 candidates each, you may pick one, both or none):
+   - Human skull: sketchfab-human-skull-danieledefilippis or sketchfab-human-skull-plastic-model. Neither has bones.
+   - Body bag: sketchfab-smartinius-body-bag or sketchfab-body-bag-surgical-table (delete its red-blood table).
+   - Morgue drawer: sketchfab-morgue-refrigerator-porteous or sketchfab-morgue-refrigerator-12mb.
+   - Chains and hooks: sketchfab-rusty-chains-amanda98 and/or sketchfab-butchers-hook-chain-proop (Proop account: AI check first).
+   - Restraint straps: sketchfab-leather-belt-cuv or sketchfab-strap-buckles-kit-dmigul (neutral belt and webbing, not asylum straps).
+   - Blood splatter: oga-blood-splatter-exilegl or oga-blood-splat-tobiasm.
+   - Drag-mark: ambientcg-leaking004 or ambientcg-leaking001 (grey-green, need a red tint), or the own-work fallback below.
+   - Cobwebs: sketchfab-cobwebs-asset-pack-emarshall (page says "stylised") or sketchfab-cobwebs-bumstrum.
+   - Rotten cloth: polyhaven-hessian-230 or polyhaven-rough-linen (both need decay-shader staining).
+   - Headstones: intact (sketchfab-small-gravestone-drydoctoregg or sketchfab-tombstone-set-2-mr-nein, hand-textured), cracked (see item 4), broken (sketchfab-damaged-tombstone-drydoctoregg or sketchfab-small-destroyed-tombstone-04).
+2. Replacement hand: take sketchfab-zombie-hand-craggle (yes or no). The Greenall hand is rejected; sketchfab-zombie-hand-ruella is already picked.
+3. Bloody handprint: no CC0 candidate exists. Do you want a procedural handprint (and smear) generated in `tools/` as our own work? Not created yet.
+4. Cracked headstone: choose between sketchfab-cross-and-broken-gravestones-rbg (stylised, one slab usable), sketchfab-small-destroyed-tombstone-04 (loose fit), or cracking the intact drydoctoregg scan in Blender as our own work (suggested; also gives a matching broken state).
+5. Bones: skulls only. Do you want the Joshua Fox "Bones" pack checked for sculpt versus scan of real bones, or no bones?
 
 ## Legend
 
@@ -172,7 +192,7 @@ Category 5 notes: Sketchfab returned no CC0 rigged humans. Animations exist only
 
 ## Category 6: zombie and grabbing-hand scans (find only)
 
-Sub_Items: grabbing hand, zombie. Every row is a Manual pick: you download the file from the model page (Sketchfab login needed) and then it is converted. Nothing was downloaded. All four are Sketchfab, CC Attribution (CC BY 4.0), license page link http://creativecommons.org/licenses/by/4.0/. None is rigged. Triangle and vertex counts are from the model page. Size basis (unverified, no public archive size): Meshopt geometry at ~14 bytes per vertex plus ~0.5 MB for a 1k WebP set.
+Sub_Items: grabbing hand, zombie. Provenance result (task 6.1/6.2): Greenall corpse CONFIRMED and picked; Greenall hand UNCONFIRMED and rejected; craggle hand replacement pending your pick (details under "Provenance check" below). Every row is a Manual pick: you download the file from the model page (Sketchfab login needed) and then it is converted. Nothing was downloaded. All five are Sketchfab, CC Attribution (CC BY 4.0), license page link http://creativecommons.org/licenses/by/4.0/. None is rigged. Triangle and vertex counts are from the model page. Size basis (unverified, no public archive size): Meshopt geometry at ~14 bytes per vertex plus ~0.5 MB for a 1k WebP set.
 
 ### Grabbing hand
 
@@ -180,6 +200,7 @@ Sub_Items: grabbing hand, zombie. Every row is a Manual pick: you download the f
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | sketchfab-zombie-hand-greenall | [png](06-zombie-hands/sketchfab-zombie-hand-greenall.png) | https://sketchfab.com/3d-models/zombie-hand-66ca5bfb6aeb421a8cbccd6db0ae1458 | [Colin.Greenall](https://sketchfab.com/Colin.Greenall) | CC Attribution (CC BY 4.0), http://creativecommons.org/licenses/by/4.0/ | ~0.6 MB (8.5K verts x 14 B = 0.12 MB + 0.5 MB 1k WebP) | 16.9K tris | Substance Painter skin and nails (PBR set per description) | not confirmed | no (static pose) | Manual pick | 3 | Clawing hand and full forearm, veined grey-tan rotten skin with dark nails; light enough albedo to hold under a red flood and enough relief to read large near the camera. | The pose already matches "hands reaching in from the edges"; mirror it for the second side. Provenance caveat: the author says he retopologised and textured "a sculpt i love", so the base sculpt may be someone else's. Confirm provenance before adopting. |
 | sketchfab-zombie-hand-ruella | [png](06-zombie-hands/sketchfab-zombie-hand-ruella.png) | https://sketchfab.com/3d-models/zombie-hand-79755114a2334af4b712c3b11741d738 | [Agustin Ruella](https://sketchfab.com/agustinruella) | CC Attribution (CC BY 4.0), http://creativecommons.org/licenses/by/4.0/ | ~0.75 MB after decimation (~2.8 MB as is; 162.3K verts, decimate to ~30K tris = ~15K verts x 14 B = 0.21 MB + 0.5 MB 1k WebP baked from the sculpt) | 319.5K tris (decimate) | ZBrush upload tagged handpainted; likely polypaint, maps must be baked | not confirmed | no | Manual pick | 2 | Pale grey-white skin with raised veins and red wounds holds up well under red light; the blue sleeve must be removed or re-colored, and the pose is an open hand rather than a claw. | Palest skin found; high sculpt detail gives a good normal bake for close-ups. |
+| sketchfab-zombie-hand-craggle | [png](06-zombie-hands/sketchfab-zombie-hand-craggle.png) | https://sketchfab.com/3d-models/zombie-hand-4c8b6ca93ab04d0699523d3a9ef80c67 | [craggle](https://sketchfab.com/craggle) | CC Attribution (CC BY 4.0), http://creativecommons.org/licenses/by/4.0/ (shown on the model page and by the Sketchfab API) | ~0.65 MB (12.0K verts x 14 B = 0.17 MB + 0.5 MB 1k WebP; unverified, no public archive size) | 23.5K tris, 12.0K verts | one baked colour texture (1 texture, 1 material); no separate normal map listed, so relief is baked into the colour and the mesh | not confirmed | no (static pose) | Manual pick. Replacement for sketchfab-zombie-hand-greenall (pending pick) | 2 | Sickly yellow-green skin with pink-purple sores and wrinkled knuckles; mid-light albedo, so it holds up under a red flood (turns warm brown-orange, detail stays), but the saturated green may need desaturating toward pale grey; the splayed, downward-reaching pose reads as a claw close to the camera. | Realistic photogrammetry capture of a hand only (no face, no identifiable person; looks like a prop hand, page does not say). Provenance: description reads "Zombie hand captured with photogrammetry", i.e. own capture, no mention of reworking another artist's sculpt. Published 18 Apr 2022, uploaded with Blender, 288 downloads, not AI-tagged (tags dead, scary, halloween, hand, zombie). Weak points: lit-in shadows may be baked into the colour texture (check at conversion), and the wrist ends in a cut-off, so hide it in the grave soil or at the screen edge. |
 
 ### Zombie
 
@@ -189,6 +210,29 @@ Sub_Items: grabbing hand, zombie. Every row is a Manual pick: you download the f
 | sketchfab-zombie-mutant | [png](06-zombie-hands/sketchfab-zombie-mutant.png) | https://sketchfab.com/3d-models/zombie-mutant-795f6432ebcb4c39a2aa5039752be92a | [Regulator](https://sketchfab.com/A2555) | CC Attribution (CC BY 4.0), http://creativecommons.org/licenses/by/4.0/ | ~0.7 MB (13.1K verts x 14 B = 0.18 MB + 0.5 MB 1k WebP) | 26.1K tris | PBR (tag pbr) | not confirmed | no (T-pose) | Manual pick | 1 | Raw red, wet flesh all over; under the red flood it will merge with the background and lose shape, and it reads more mutant than corpse. | Muscular, detailed ZBrush body with a strong silhouette; usable if re-tinted paler. The page says no credit is needed, but the CC BY label applies, so credit anyway. |
 
 Category 6 notes: no CC BY or CC0 realistic zombie scan without a real face, Mixamo rig or franchise link was found, and neither zombie candidate is rigged (the corpse is the better fit). No CC0 result fit. Rejected: "Realistic Zombie Hitman" (possible real-person likeness, undead look barely reads), "ZOMBIE SOLDIER" (376.8K tris, origin unclear, possibly AI-generated), "Zombie (Male 1)" (rig made for Mixamo, forbidden), "Zombie-Mummy Arm" (near-black), "Hand-arm" (3.1M tris real hand scan), franchise-titled models (Minecraft, Roblox, Plants vs Zombies, Fallout, FNAF, Resident Evil), "Zombie Hand - Severed/Cut Fingers" (derived from Greenall's hand), and stylized packs. Trimming order: sketchfab-zombie-mutant first.
+
+### Provenance check (task 6.1)
+
+Checked 2026 (read-only, no login, no download, nobody contacted). Sources searched: both model pages (descriptions and all comments), the author's profile https://sketchfab.com/Colin.Greenall (23 models, no bio links to ArtStation, Instagram or a portfolio), and a web search for the author plus "zombie hand sculpt" (no hit tying either model to another artist).
+
+**sketchfab-zombie-corpse-greenall: CONFIRMED (own work, CC BY 4.0).**
+- Page: https://sketchfab.com/3d-models/zombie-corpse-bb2ebca80471423a93a60a6552928abe
+- Quote: "A Zombie corpse i made and textured... Initially i sculpted a highpoly source in Zbrush, then baked the normal maps."
+- License shown on the page: CC Attribution. Credit Colin.Greenall with link.
+- Residual risk: the claim is the author's own statement; no outside corroboration found.
+
+**sketchfab-zombie-hand-greenall: UNCONFIRMED (stays Rejected: sculpt provenance not confirmed).**
+- Page: https://sketchfab.com/3d-models/zombie-hand-66ca5bfb6aeb421a8cbccd6db0ae1458
+- Quote: "I retopologised and textured a sculpt i love... Retopology and Texturing by me."
+- The author claims only retopology and texture work, so the base sculpt is by someone else, and neither the page, the comments nor the profile name that artist or license. A CC BY label on a derivative does not grant rights over the original. A commenter's question "did U retopologe or make this model also?" went unanswered.
+- Other models found derive from this hand ("Zombie Hand - Severed/Cut Fingers", skfb.ly/oqzy8), so they inherit the same problem.
+- Needs a replacement (task 6.2).
+
+**Replacement found (task 6.2, pending pick): sketchfab-zombie-hand-craggle.**
+- Page: https://sketchfab.com/3d-models/zombie-hand-4c8b6ca93ab04d0699523d3a9ef80c67 by [craggle](https://sketchfab.com/craggle), CC Attribution (CC BY 4.0), downloadable, 23.5K tris, night-read 2, Manual pick.
+- Description says only "Zombie hand captured with photogrammetry." No reworked or unnamed sculpt is mentioned. Residual risk: a one-line description, no comments, and no outside corroboration.
+- Found with the public Sketchfab search API (downloadable, CC BY or CC0, queries on zombie, undead, dead, rotten, corpse and clawing hands). Other hits were rejected: theniloart "Zombie Hand" (1.6K tris, too coarse), joudni "Radioactive Mutant Human Hand" (stylized hand-painted, Fallout tag), mangocitrus "Hand" (2.8K tris, untextured look), "Zombie - Hand Holder" (322K tris, unclear origin), Mahosway "reaching out" (funny animated prop, no zombie look).
+- Preview: [06-zombie-hands/sketchfab-zombie-hand-craggle.png](06-zombie-hands/sketchfab-zombie-hand-craggle.png) (1024x640, 177 KB). Not added to Picks.
 
 ## Category 7: sound effects
 
@@ -248,12 +292,237 @@ No dedicated flatline-only file was kept. Both options are the packs above (theg
 
 Category 7 notes: rejected were the voice-based "Dark Voice Drone" series by kkenny101, ibrizie iron gate files (wind and cars in the background, not an open/close), a 10-minute "Wind.wav" (too long to convert under budget), and a Lifepak 12 defibrillator grab (includes voice prompts). Trimming order if ever needed: the thegreatperson pack (swap rather than cut, since it leaves ECG flatline with one candidate), or the sidequesting loop (ECG beep keeps two).
 
+## Category 8: horror dressing
+
+Round 2, added at the user's request. Sub_Items: human skull and bones, body bag, morgue drawer or cold chamber, rusty chains and hooks, leather restraint straps, blood splatter, bloody handprint, drag-mark decal, cobwebs, rotten cloth or sheet, blank headstone in three states (intact, cracked, broken). Exactly 2 Candidates per Sub_Item, no Fallbacks, except where a gap is stated. The 35/38 cap does NOT apply to Category 8 (user-requested round, Req 25.6); its candidates are counted separately in Totals.
+
+Rules applied: no real remains (skulls are a sculpt and a scan of a plastic teaching replica), decals are CC0 only, headstones have a blank face with no readable inscription. Nothing was downloaded and no login was used. Every license was read on the candidate's own page.
+
+Size basis (unverified): Meshopt geometry at about 14 bytes per vertex plus about 0.5 MB for one 1k WebP set (about 1 MB where the model has 5 to 9 textures). Sketchfab archive sizes are not public without login, so all Sketchfab estimates are computed from vertex counts. Poly Haven, ambientCG and OpenGameArt sizes come from the file lists or page figures and are also estimates of the converted web file. Every estimate is under 5 MB. Sketchfab license label: "CC Attribution", https://creativecommons.org/licenses/by/4.0/ (CC BY 4.0). All Sketchfab rows are Manual picks.
+
+Previews: Sketchfab pages were captured with the viewer (12 to 15 s wait); the viewer backgrounds (grey, dark red, blue) belong to the authors and will not appear in the scene. Night-read ratings are judgements from preview pages, not render tests.
+
+Honest limits of this round (read before picking):
+
+- Sources were not searched page by page everywhere. Sketchfab was searched through its public search API (metadata only); Poly Haven and ambientCG were checked through their APIs. Kenney, Quaternius and most of OpenGameArt were not searched page by page.
+- File size estimates are unverified.
+- Mr.Nein tombstone sets are hand-textured (painted look), not scanned.
+- The emarshall cobweb page describes the pack as "stylised" (the alpha texture itself looks photographic).
+- The Proop studio account (butcher's hook) publishes many horror props; check its other uploads are not AI-assisted before picking.
+
+### Human skull and bones
+
+Gap: neither candidate has bones, only a skull. Loose bone models found were CT scans or specimen scans of real people, rejected under Req 25.3. The "Bones" pack by Joshua Fox (https://sketchfab.com/3d-models/bones-925518d5d7ef4c7c94aa89c4b57ab394, CC BY, 29.7K faces, 15 textures, "made for a team project") was left out because the page does not say whether it is a sculpt or a scan of real bones. It is an option for the bones half only if you want it checked first.
+
+| Name | Sub_Item | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| sketchfab-human-skull-danieledefilippis | human skull and bones (skull only) | [png](08-horror-dressing/sketchfab-human-skull-danieledefilippis.png) | https://sketchfab.com/3d-models/human-skull-0f46e7f845a145208e4922e94cd0c1b6 | [danieledefilippis](https://sketchfab.com/danieledefilippis) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~0.7 MB (14.9K verts x 14 B = 0.21 MB + 0.5 MB 1k WebP; source archive 34.5 MB with 4k textures) | 29.6K faces | 5 textures (PBR set per page, 4k) | 4k source, resize to 1k | Manual pick | 2 | Hand-sculpted, plausible aged bone with a glossy, wet-looking sheen; the albedo is pale cream so it will glow in the flashlight pool unless darkened or dirtied, but the deep sockets and teeth give a strong silhouette in the moon rim. | ORIGINAL SCULPT: description says "Handculpted in ZBrush as anatomy practice", so no real remains. Skull only, no bones. Provenance: no flag, the author states it is their own sculpt. |
+| sketchfab-human-skull-plastic-model | human skull and bones (skull only) | [png](08-horror-dressing/sketchfab-human-skull-plastic-model.png) | https://sketchfab.com/3d-models/human-skull-model-plastic-017c6f4a760f40a0a03de8fae29b306b | [FFT_kedar](https://sketchfab.com/FFT_kedar) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~0.6 MB (7.3K verts x 14 B = 0.10 MB + 0.5 MB 1k WebP; source archive 24.4 MB) | 14.6K faces | 4 textures (baked, from a scan) | resize to 1k | Manual pick | 2 | Photoscan colour with orange-brown staining and a visibly plastic glossy finish; mid-bright yellowish albedo, so it needs darkening and dirt to sit in a near-black crypt, but the staining gives a lived-in look. | SCAN OF A PLASTIC TEACHING REPLICA ("Anatomical Human Skull Models For Teaching"), retopologised and baked. Not a real skull. Skull only, no bones. Provenance: no flag. |
+
+### Body bag
+
+| Name | Sub_Item | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| sketchfab-smartinius-body-bag | body bag | [png](08-horror-dressing/sketchfab-smartinius-body-bag.png) | https://sketchfab.com/3d-models/smartinius-body-bag-3d-asset-48d33832605545828f8297b64ddf599d | [smartinius](https://sketchfab.com/smartinius) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~0.65 MB (10.7K verts x 14 B = 0.15 MB + 0.5 MB 1k WebP) | 20.5K faces | 4 textures, tagged pbr (page shows no pbr type flag) | not stated | Manual pick | 3 | Near-black glossy plastic with soft folds; very low albedo, and the specular streaks catch a surgical lamp or moon rim without lighting the room. | Realistic sculpted folds and zip seam, shown as five bags of different body sizes (pick one in the file). No body inside is modelled. Provenance: no flag. |
+| sketchfab-body-bag-surgical-table | body bag | [png](08-horror-dressing/sketchfab-body-bag-surgical-table.png) | https://sketchfab.com/3d-models/body-bag-surgical-table-12-mb-5e8ffc65c2d645eab4df67fd5c9955b2 | [Mehdi Shahsavan (ahmagh2e)](https://sketchfab.com/ahmagh2e) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~1.0 MB (3.0K verts x 14 B = 0.04 MB + about 1 MB for 8 textures at 1k WebP) | 5.7K faces | PBR (metalness), 8 textures, 2 materials | not stated | Manual pick | 2 | The dark grey bag with red zipper is fine, but the pack also holds a bright white table covered in saturated red blood, which would glow under the lamp; the bag has a printed "body bag" label that looks cartoonish. | CAVEAT: the red-blood table in the pack must be deleted (or darkened) before use; the bag can be extracted alone. Small and cheap. Provenance: no flag. |
+
+### Morgue drawer or cold chamber
+
+| Name | Sub_Item | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| sketchfab-morgue-refrigerator-porteous | morgue drawer or cold chamber | [png](08-horror-dressing/sketchfab-morgue-refrigerator-porteous.png) | https://sketchfab.com/3d-models/morgue-refrigerator-d895d249fbda465faa22958ab1a63158 | [RyanPorteous](https://sketchfab.com/RyanPorteous) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ ("please give me credit" in the description) | ~0.8 MB (19.8K verts x 14 B = 0.28 MB + 0.5 MB 1k WebP; source archive 2.3 MB) | 51.2K faces (decimate to about 30K) | PBR (metalness), 3 textures, 5 materials | not stated | Manual pick | 3 | Worn blue-grey steel with chrome latches and mirror-like doors; the worn-steel look of the lab reference, and the reflective latches catch a single lamp pool. | Nine-door cooler (3 x 3) with sliding trays, made for the author's horror game. The bright reflection in the doors comes from the viewer environment and will not appear in the scene. Provenance: no flag. |
+| sketchfab-morgue-refrigerator-12mb | morgue drawer or cold chamber | [png](08-horror-dressing/sketchfab-morgue-refrigerator-12mb.png) | https://sketchfab.com/3d-models/morgue-refrigerator-12mb-3d582d8eabed42619ace30ab639c6e66 | [Mehdi Shahsavan (ahmagh2e)](https://sketchfab.com/ahmagh2e) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~1.2 MB (15.2K verts x 14 B = 0.21 MB + about 1 MB for 8 textures at 1k WebP; source archive 5.4 MB) | 26.4K faces | PBR (metalness), 8 textures, 2 materials | not stated | Manual pick | 2 | Near-black doors on a 12-door unit with one open tray, very low albedo, but the dark fronts lose all detail in a dark scene and only the open tray catches light. | A 3 x 4 cabinet with one open slide-out tray, which fits "drawer" better than sealed doors. The scene also contains an unrelated flat black panel to delete. Provenance: no flag. |
+
+### Rusty chains and hooks
+
+| Name | Sub_Item | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| sketchfab-rusty-chains-amanda98 | rusty chains | [png](08-horror-dressing/sketchfab-rusty-chains-amanda98.png) | https://sketchfab.com/3d-models/rusty-chains-be9648f8e0324bbd967c10b44007bee1 | [amanda_98](https://sketchfab.com/amanda_98) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~1.4 MB (28.8K verts x 14 B = 0.40 MB + ~1 MB for 5 textures at 1k WebP) | 57.6K faces (decimate to about 25K) | PBR (metalness), 5 textures, 1 material | not stated | Manual pick | 2 | Orange-red rust over grey steel with real mottling; the orange rust is fairly saturated and will read warm in the flashlight pool and flat in the cold moon rim unless desaturated. | Loose tangled chain to drape over the table or hang from a tombstone. "Modelled on Blender 2.8. Textured on Substance Painter". No hook in this model, so pair it with the hook below. Provenance: no flag. |
+| sketchfab-butchers-hook-chain-proop | chains and hooks | [png](08-horror-dressing/sketchfab-butchers-hook-chain-proop.png) | https://sketchfab.com/3d-models/butchers-hook-chain-proop-24a906f1992743ac900679d9d4adf9f0 | [ALTEREGO (v.a.c.u.u.m.)](https://sketchfab.com/v.a.c.u.u.m.) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~1.0 MB (38.9K verts x 14 B = 0.54 MB + 0.5 MB 1k WebP) | 77.9K faces (decimate to about 20K) | 1 texture, page shows no PBR type flag | not stated | Manual pick | 3 | Dark pitted grey steel with thin chain links; low albedo and a hanging silhouette that catches a lamp pool as a few bright specular glints. | A butcher's hook on a short chain with a top ring, for hanging from the lab ceiling. CAVEAT: the author is a studio account (Proop) that publishes many horror props; check its other uploads are not AI-assisted before picking. No AI tag on this model. |
+
+### Leather restraint straps
+
+Gap: no photoreal asylum gurney strap or true leather limb restraint was found. Both candidates are neutral belt and webbing pieces that can be set on a table as patient straps. Many strap, collar and harness models were skipped as fashion or adult-themed.
+
+| Name | Sub_Item | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| sketchfab-leather-belt-cuv | leather strap | [png](08-horror-dressing/sketchfab-leather-belt-cuv.png) | https://sketchfab.com/3d-models/leather-belt-78b2b486c65e4fc59498bc17038eef78 | [C.U.V](https://sketchfab.com/C.U.V) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~1.5 MB (32.9K verts x 14 B = 0.46 MB + ~1 MB for 9 textures at 1k WebP) | 65.3K faces (decimate to about 20K) | PBR (metalness), 9 textures, 2 materials | not stated | Manual pick | 2 | Dark brown-black leather is ideal near-black albedo, but the buckle is shiny near-white chrome and will bloom in the lamp pool; it needs a darker, rusted metal material. | An ordinary belt (description: "Ordinary leather belt"), not an asylum strap; reads as a worn leather strap once the buckle is aged. Provenance: no flag. |
+| sketchfab-strap-buckles-kit-dmigul | restraint straps | [png](08-horror-dressing/sketchfab-strap-buckles-kit-dmigul.png) | https://sketchfab.com/3d-models/strap-buckles-kit-86c045c8ba854e0da825ac8324495b28 | [dmigul](https://sketchfab.com/dmigul) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~1.1 MB (8.7K verts x 14 B = 0.12 MB + ~1 MB for 8 textures at 1k WebP) | 17.0K faces | PBR (metalness), 8 textures, 2 materials | not stated | Manual pick | 3 | Matte black woven webbing with plastic buckles, very low albedo; almost invisible in shadow but a fine fabric texture and buckle edges show in a single lamp pool. | Webbing straps with side-release and slide buckles in many lengths; reads as stretcher or patient straps, no adult framing. Neutral webbing, not a photoreal asylum strap. "Modeled from physical reference in Blender", tag `noai`. Provenance: no flag. |
+
+### Blood splatter
+
+| Name | Sub_Item | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| oga-blood-splatter-exilegl | blood splatter | [png](08-horror-dressing/oga-blood-splatter-exilegl.png) | https://opengameart.org/content/blood-splatter | [ExileGL](https://opengameart.org/users/exilegl) | CC0, http://creativecommons.org/publicdomain/zero/1.0/ | ~0.3 MB (source blood.png is 2.6 MB at 1600x1200; 1k WebP with alpha) | n/a (texture) | Color with alpha only (no normal, roughness) | 1600x1200 | no | 3 | Fine dark-red to near-black droplets and speckle, low saturation and no bright highlights, so it reads as dried spray on stone without glowing in the dark. | A wide field of speckle for drei Decal; crop it into several small patches. Provenance: tags "blood, splatter, effect, high resolution", no AI mention. |
+| oga-blood-splat-tobiasm | blood splatter | [png](08-horror-dressing/oga-blood-splat-tobiasm.png) | https://opengameart.org/content/blood-splat | [TobiasM](https://opengameart.org/users/tobiasm) | CC0, http://creativecommons.org/publicdomain/zero/1.0/ | ~0.04 MB (source blood_splat.png 87.9 KB at 256x256) | n/a (texture) | Color with alpha only | 256x256 | no | 2 | A single radial burst with soft edges and brighter saturated red cores; 256 px is soft at close range and the red is brighter than the graveyard palette unless darkened. | Single hit-splat sprite for one decal on a wall or floor. Attribution not required but appreciated. Provenance: author gives a name and a social link, no AI mention. |
+
+### Bloody handprint
+
+**No suitable candidate found.** Searched: OpenGameArt (keyword search for "handprint" returned nothing; web searches for hand, handprint, blood hand, smear), ambientCG (all 127 Decal assets listed through the API: none is blood or a handprint), Poly Haven (no blood or decal textures), itch.io and web search. Rejected on the way: "PSX Decals Free" by heyheythere (CC BY and AI-assisted), "Blood Splatter Decal Pack" by Strideh (paid, restricted), "Splatter pack" by johndh (CC BY 3.0), "Blood Effect Sprite Sheet" (derived from CC BY 3.0), "Blood Splatters" by AntumDeluge (CC0 but 32x32 px), "140+ Liquid Textures" (tiling surfaces, not decals). Rotating a splatter does not make a handprint.
+
+Suggested fallback (a suggestion only, NOT created): a procedural handprint and smear generator in `tools/` (canvas or Python: stamp a hand silhouette from a simple vector path, blur the edges, add drip streaks, output a 512 px alpha PNG in dark wet red). It would be our own work, which `asset-licensing.md` allows. Needs your decision.
+
+### Drag-mark (smear)
+
+Gap: no true blood drag or smear decal exists under CC0 in the places searched. The two below are the closest CC0 options: ambientCG "Leaking" decals (smear and streak tags, opacity map). They are grey-green moisture stains, not blood, and need a red tint in the shader (multiply with dark red, about 0.3 to 0.4 value). Both are weak fits and stand-ins until you decide on the own-work fallback (a procedural smear in `tools/`, not created).
+
+| Name | Sub_Item | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| ambientcg-leaking004 | drag-mark (smear) | [png](08-horror-dressing/ambientcg-leaking004.png) | https://ambientcg.com/view?id=Leaking004 | [ambientCG (Lennart Demes)](https://ambientcg.com) | CC0, https://docs.ambientcg.com/license/ | ~0.4 MB color + opacity at 1k WebP (1K-JPG zip is 4 MB with all maps, from the API) | n/a (texture) | Color, Displacement, Normal, Roughness, Opacity; Decal type | 1K to 8K (JPG and PNG) | no | 1 | Green-grey moss tint and pale streaks, no red at all; after re-tinting the long vertical streaks read as a wet smear, but the mossy mottling stays visible and the pale parts glow in the lamp pool. | Tags "smear, smudge, streaks, wet", with a ready opacity map for drei Decal. Streaks run down from a solid top edge (a smear down a wall or tombstone). CAVEAT: grey-green leaking decal, needs a red tint. |
+| ambientcg-leaking001 | drag-mark (smear) | [png](08-horror-dressing/ambientcg-leaking001.png) | https://ambientcg.com/view?id=Leaking001 | [ambientCG (Lennart Demes)](https://ambientcg.com) | CC0, https://docs.ambientcg.com/license/ | ~0.4 MB color + opacity at 1k WebP (1K-JPG zip is 4 MB with all maps) | n/a (texture) | Color, Opacity and the other Decal-type PBR maps (map list read from the API for 004 only) | 1K to 8K (JPG and PNG) | no | 2 | Greyer and less green than Leaking004, soft streaks with a transparent fade at the bottom; once darkened to a wet red-brown it is low contrast and subtle in the near-black scene. | Same family, lighter and more grey; the pair gives two shapes of drip or drag. CAVEAT: grey leaking decal, needs a red tint. |
+
+### Cobwebs
+
+Both are alpha-card models (flat cards, 127 to 286 vertices) with a cobweb alpha texture; place cards in corners, over tombstones and in lab corners with an alpha material.
+
+| Name | Sub_Item | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| sketchfab-cobwebs-asset-pack-emarshall | cobwebs (model with alpha cards) | [png](08-horror-dressing/sketchfab-cobwebs-asset-pack-emarshall.png) | https://sketchfab.com/3d-models/cobwebs-asset-pack-2dd4798676d84bc7af5d2a8f5834563a | [Em Marshall (emarshall)](https://sketchfab.com/emarshall) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~0.6 MB (286 verts, negligible; 6 textures at 1k WebP with alpha about 0.6 MB) | 419 faces | 6 textures, 3 materials, alpha | not stated | Manual pick | 3 | Sharp white strands with fine radial detail on transparent cards; a few bright lines against black read clearly in a lamp pool and cold moon rim without lighting the room. | About 11 varied web shapes (corner, funnel, radial) in one file. CAVEAT: the page text says "Simple, stylised cobwebs", although the alpha looks photographic. Provenance: no flag. |
+| sketchfab-cobwebs-bumstrum | cobwebs (model with alpha cards) | [png](08-horror-dressing/sketchfab-cobwebs-bumstrum.png) | https://sketchfab.com/3d-models/cobwebs-941c92fcf27b44caafbf6d690ba9593f | [DJMaesen (bumstrum)](https://sketchfab.com/bumstrum) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~0.5 MB (127 verts, negligible; 1 texture at 1k WebP about 0.5 MB) | 163 faces | 1 texture (alpha), no PBR | not stated | Manual pick | 2 | Softer, blurrier strands with a dusty glow; low contrast, so it is lost in a near-black scene unless lit directly, but it looks like dense old dust webs. | Seven web cards in one file; description is only "low poly cobwebs", tag `spiderweb`, texture is a soft photo-like web. Provenance: no flag. |
+
+### Rotten cloth or sheet
+
+Both are CC0 PBR fabric textures from Poly Haven (processing Rico Cilliers, photography colormass), script-fetchable. Neither is rotten as shipped: apply to a plane or a draped cloth mesh, darken the albedo (multiply to about 0.15 to 0.3) and add stain and tear alpha in the decay shader.
+
+| Name | Sub_Item | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| polyhaven-hessian-230 | rotten cloth (sackcloth) | [png](08-horror-dressing/polyhaven-hessian-230.png) | https://polyhaven.com/a/hessian_230 | [Rico Cilliers and colormass](https://polyhaven.com/a/hessian_230) | CC0, https://polyhaven.com/license | ~1.2 MB (API 1k JPG diffuse 1.06 MB; WebP diffuse + normal + ARM at 1k) | n/a (texture) | diffuse, normal, ARM, displacement, AO, roughness | 1k to 8k (use 1k) | no | 3 | Open-weave brown burlap with strong holes and fold depth; mid-low albedo and a coarse weave that shows in raking light. | Burlap with holes already looks torn and old; best fit for a body shroud. CAVEAT: not rotten as shipped, needs decay-shader staining. |
+| polyhaven-rough-linen | rotten cloth or sheet (linen) | [png](08-horror-dressing/polyhaven-rough-linen.png) | https://polyhaven.com/a/rough_linen | [Rico Cilliers and colormass](https://polyhaven.com/a/rough_linen) | CC0, https://polyhaven.com/license | ~1.1 MB (API 1k JPG diffuse 0.84 MB; WebP diffuse + normal + ARM at 1k) | n/a (texture) | diffuse, normal, ARM, displacement, AO, roughness | 1k to 8k (use 1k) | no | 2 | Pale blue-grey linen; reads clean, and the high albedo would glow in the lamp unless darkened and stained, though the fine weave suits a mortuary sheet. | Closest to a hospital or morgue sheet. CAVEAT: clean as shipped, needs decay-shader staining. |
+
+### Blank headstones: intact, cracked, broken
+
+Extra columns for headstones: State, Source triangles (Poly count column), Decimation needed to reach at most 20,000 triangles, Blank face, Silhouette readability. All five photo/hand-made stones are under 20,000 triangles except sketchfab-small-destroyed-tombstone-04 (100K, decimate 5x). Triangle counts are the "Triangles" figure on each page. Honest summary: the best match is the pair of photoscans by drydoctoregg (same author, same capture session, Edinburgh): Small Gravestone (intact) and Damaged Tombstone (broken). No second set covers all three states. The cracked state has one stylised candidate and one loose fit, so it is only partly filled. Viewer backgrounds will not appear in the scene.
+
+**Intact**
+
+| Name | Sub_Item | State | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count (source tris) | Decimation to <= 20,000 | Blank face | Silhouette readability | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| sketchfab-small-gravestone-drydoctoregg | blank headstone intact | intact | [png](08-horror-dressing/sketchfab-small-gravestone-drydoctoregg.png) | https://sketchfab.com/3d-models/small-gravestone-a6b9ef8756bf453e9d8b22a40d1e905a | [Peter Tilley (drydoctoregg)](https://sketchfab.com/drydoctoregg) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~0.5 MB (202 verts x 14 B = 3 KB + 0.5 MB 1k WebP) | 378 | no | yes, plain pitted face, no inscription ("identifying names have been removed") | Strong: pointed-arch rounded top, full outline, small base block | not stated on page (Substance Painter textures) | not stated | Manual pick | 3 | Mid-grey pitted stone with light lichen patches; albedo is a little bright and needs darkening (multiply to about 0.3), but the pitting catches a single warm flashlight well and the arched top rim-lights in cold moonlight. | Photogrammetry, retopologised to 378 tris, flat enough face for a decal. Same author and capture as the broken stone below. Provenance: no AI tag, Edinburgh capture. |
+| sketchfab-tombstone-set-2-mr-nein | blank headstone intact | intact | [png](08-horror-dressing/sketchfab-tombstone-set-2-mr-nein.png) | https://sketchfab.com/3d-models/tombstone-set--2-255508642ddc414caf2da269af7a11f8 | [Mr.Nein](https://sketchfab.com/Mr.Nein) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~0.55 MB (1.7K verts x 14 B = 24 KB + 0.5 MB; page says 4K texture, resize to 1k) | 3,400 (whole set of 10 stones; each stone a few hundred) | no | yes on the rounded slabs and the plain upright; the cross-topped stones carry no text | Strong: round-top slabs, flat-top slab, cross tops, clear outlines | 4K texture, uv packed, map types not stated | 4K (resize to 1k) | Manual pick | 2 | Dark grey mottled stone with correct low albedo, but the texture is a painted look rather than scanned pitting; flat faces take a decal well. | One file with about 10 blank stones; pick the round-top ones. CAVEAT: hand-textured, not photoreal (a style compromise). Set 1 (https://sketchfab.com/3d-models/tombstone-set--1-ac1b142c32274a6794cc3cde69672af1, 1.9K tris, same author and style, CC BY; preview [png](08-horror-dressing/sketchfab-tombstone-set-1-mr-nein.png)) is an equal alternative. No cracked or broken stones in either set. Provenance: no AI tag. |
+
+**Cracked**
+
+| Name | Sub_Item | State | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count (source tris) | Decimation to <= 20,000 | Blank face | Silhouette readability | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| sketchfab-cross-and-broken-gravestones-rbg | blank headstone cracked | cracked | [png](08-horror-dressing/sketchfab-cross-and-broken-gravestones-rbg.png) | https://sketchfab.com/3d-models/cross-and-broken-gravstones-409b154c632148508458f09a7ca3b493 | [RBG_illustrations](https://sketchfab.com/RBG_illustrations) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~0.55 MB (3K verts x 14 B = 42 KB + 0.5 MB 1k WebP) | 5,900 (3 stones, about 2K each) | no | yes, no text on any of the three | Strong on the slab on the right (chipped corner, cracks through face and base); the two crosses are cracked but their outline is intact | not stated | not stated | Manual pick | 3 | Near-black stone with pale hairline cracks; the lowest albedo of all candidates and the cracks glint in a flashlight pool. | CAVEAT: the page says "created for the Stylized Graveyard", so it is stylised, not scanned (outside the photoreal-only rule). Use only the right slab. The cracks run across the face, so the decal must avoid them. Provenance: no flag. |
+| sketchfab-small-destroyed-tombstone-04 (already a Category 3 pick for broken stones) | blank headstone cracked (marginal) | cracked | [png](08-horror-dressing/sketchfab-small-destroyed-tombstone-04-state-check.png) | https://sketchfab.com/3d-models/small-destroyed-tombstone-04-ba7786989b414adf91a5763e71e9854c | [archiwum_xyz](https://sketchfab.com/archiwum_xyz) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~1.3 MB (54.6K verts x 14 B = 0.76 MB + 0.5 MB 1k WebP; page says 2 x 8192 textures) | 100,000 | yes, 100K to 20K (5x) | yes, a recessed blank panel with no text | Weak: a squat block with a chipped, worn top edge; reads as weathered more than cracked | baked color, likely normal | 8K (resize to 1k) | Manual pick | 2 | Heavy saturated green moss over dark stone; moss needs desaturating. Stone and pits read well. | LOOSE FIT for cracked. Photoscan (RealityCapture, 138 photos), tag noai. Listed because it is already a Category 3 pick. |
+
+**Broken**
+
+| Name | Sub_Item | State | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count (source tris) | Decimation to <= 20,000 | Blank face | Silhouette readability | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| sketchfab-damaged-tombstone-drydoctoregg | blank headstone broken | broken | [png](08-horror-dressing/sketchfab-damaged-tombstone-drydoctoregg.png) | https://sketchfab.com/3d-models/damaged-tombstone-0cefd7412d36424c844b64cca189aba5 | [Peter Tilley (drydoctoregg)](https://sketchfab.com/drydoctoregg) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~0.5 MB (414 verts x 14 B = 6 KB + 0.5 MB 1k WebP) | 816 | no | yes, four plain flat faces on the shaft; only a faint carved band on the cornice (no text); "identifying names have been removed" | Strong: tall shaft whose cap is missing, with a hollow stepped top | not stated (Substance Painter) | not stated | Manual pick | 3 | Mid-grey granular stone with a weathered cornice; the missing top makes a distinctive dark notch against the moon rim. Darken albedo. | Photogrammetry, retopologised. Same author and capture as the intact Small Gravestone, so the style matches. The shaft is a tall obelisk pedestal rather than a round slab, so its proportions differ from the intact pick. |
+| sketchfab-small-destroyed-tombstone-04 (already a Category 3 pick for broken stones) | blank headstone broken (marginal) | broken | [png](08-horror-dressing/sketchfab-small-destroyed-tombstone-04-state-check.png) | https://sketchfab.com/3d-models/small-destroyed-tombstone-04-ba7786989b414adf91a5763e71e9854c | [archiwum_xyz](https://sketchfab.com/archiwum_xyz) | CC Attribution (CC BY 4.0), https://creativecommons.org/licenses/by/4.0/ | ~1.3 MB (see above) | 100,000 | yes, 100K to 20K | yes (blank recessed panel) | Weak to medium: titled "destroyed", but the screenshot shows a mostly intact block with a mossy chipped top | baked color, likely normal | 8K (resize to 1k) | Manual pick | 2 | See the cracked row. | Second broken option. Fits only if viewed from an angle that shows the damaged top; check the model in the viewer before picking. |
+
+Headstone gaps and fallbacks:
+
+- Cracked has only one clear candidate and it is stylised. Suggested fallback (not created): crack or break the intact drydoctoregg scan (378 tris) in Blender as our own work (boolean or a displaced crack normal map; the same method gives a chipped top). Making all three states (full, cracked, top snapped off) from that one scan would give one consistent style and a flat decal face; the source is CC BY, so the credit stays.
+- Decimation: only sketchfab-small-destroyed-tombstone-04 needs it (100K to 20K). All other candidates are far under 20,000 triangles.
+
+Rejected headstones (Req 26.8):
+
+- Unique Gravestone Scans (thats_cool_jack, https://sketchfab.com/3d-models/unique-gravestone-scans-0c46ee29b59a459fae3e2e821e28da17, CC BY): real 19th-century graves with legible text (a surname on the obelisk). Screenshot deleted.
+- Implosion of a Tombstone (kwaredesign, CC BY): a mausoleum with a door, not a headstone, 87K tris. Screenshot deleted.
+- Rejected from page metadata without opening: Badly broken family gravestone titanic victim (real person's grave), Gravestone of Thomas Buck / Renold Marvin (NoDerivs and real names), Gravestone of Deliverance Warner, Bonaventure Cemetery Tombstone Scans 1 and 2, Charles C. Imus Tombstone, Tombstone Familie Laurenz and Richter (real family graves), Old tombstone ottoman (inscriptions), Gravestone and Old Gravestone sv.stats (carved text), Tombstone Old Cemetery Freiburg and Gravestone of Fidel and Beatrix Rombach (Free Standard license, real names), Ottoman gravestone (NonCommercial), Gothic Tombstone umbravisio (AI-generated), and the many stylised or hand-painted packs.
+- sketchfab-broken-headstone: rejected earlier by the user (legible text).
+
+### Category 8 rejected while scouting, by Sub_Item
+
+- Skull: CT or medical-imaging reconstructions (real people), museum specimen scans, scans of unstated origin, NonCommercial or NoDerivs skulls, animal skulls, stylised packs, a 682K-face fossil cast.
+- Body bag: alienkatgames (CC BY-NC), "Corpse in a black body bag with ropes" (contains a corpse), very low-poly bags, handbags and luggage.
+- Morgue: "Morgue Body Storage" (PS1 style), "Morgue Freezer" (92 faces), "Morgue Refrigerator. Dead - 16MB" (includes a body), whole-room scenes, paid listings.
+- Chains, straps, cobwebs: NonCommercial or ShareAlike items (Hook & Chain Jacob, NHMW strap distributors, SUNLU3D Spider Web, Inside The Spider), Roadhog/Overwatch chain hook (game character), "Leather collar" (adult-themed framing), a straitjacket on a character, a 687K-face bandage, stylised or cartoon cobweb packs.
+- Decals: see the handprint and drag-mark sections above.
+
+Category 8 candidate count: 24 rows, 23 distinct (skulls 2, body bags 2, morgue 2, chains and hooks 2, straps 2, blood splatter 2, handprint 0, drag-mark 2, cobwebs 2, cloth 2, headstones 6 rows with sketchfab-small-destroyed-tombstone-04 listed twice). 22 of the 23 are new; sketchfab-small-destroyed-tombstone-04 is already counted in Category 3 and is a Category 3 pick.
+
 ## Sub_Items with no suitable candidate
 
 | Sub_Item | Category | Sources searched | Note |
 | --- | --- | --- | --- |
-| none | all | Poly Haven, ambientCG, Sketchfab (downloadable, CC BY and CC0), Freesound (CC0 filter), Rocketbox repo | Every Sub_Item has 2 or 3 candidates. Weak spots: no CC0 Sketchfab model fit any prop, hand, zombie or avatar search; instruments (Category 4) are tray items inside larger models; there is no lying-down patient animation; no zombie is rigged; ECG flatline has no dedicated file. Not searched: Kenney and Quaternius (stylized, excluded), OpenGameArt. |
+| bloody handprint | 8 | OpenGameArt, ambientCG (127 Decal assets), Poly Haven, itch.io, web search | No suitable candidate found: no CC0 bloody handprint exists in the places searched. Own-work procedural fallback suggested in Category 8, not created. |
+| none (Categories 1-7) | 1-7 | Poly Haven, ambientCG, Sketchfab (downloadable, CC BY and CC0), Freesound (CC0 filter), Rocketbox repo | Every Sub_Item has 2 or 3 candidates. Weak spots: no CC0 Sketchfab model fit any prop, hand, zombie or avatar search; instruments (Category 4) are tray items inside larger models; there is no lying-down patient animation; no zombie is rigged; ECG flatline has no dedicated file. Not searched: Kenney and Quaternius (stylized, excluded), OpenGameArt. |
 
 ## Totals
 
-Distinct candidates: 46 (limit 35, hard max 38 for the visual categories; the cap was raised for Category 7 (sound) only, at the user's decision). Visual 34 (Category 1: 5, 2: 3, 3: 14, 4: 5, 5: 3, 6: 4) plus sound 12 (Category 7). Fallbacks: 12 (4 in Category 1, 2 in Category 2, 5 in Category 3, 1 Rocketbox row in Category 5 counting the avatar and its three animations as one). Packs counted once: 2 in Category 4, 2 in Category 7.
+Distinct candidates, Categories 1-7: 47 (limit 35, hard max 38 for the visual categories; the cap was raised for Category 7 (sound) only, at the user's decision). Visual 35 (Category 1: 5, 2: 3, 3: 14, 4: 5, 5: 3, 6: 5, counting the task 6.2 replacement hand) plus sound 12 (Category 7).
+
+Category 8 (horror dressing, counted separately, outside the 35/38 cap): 23 distinct candidates in 24 rows (sketchfab-small-destroyed-tombstone-04 appears under both cracked and broken and is already a Category 3 pick), so 22 are new. Per Sub_Item: skull 2, body bag 2, morgue 2, chains and hooks 2, straps 2, blood splatter 2, handprint 0 (none found), drag-mark 2, cobwebs 2, rotten cloth 2, headstones 6 rows (intact 2, cracked 2, broken 2). Overall distinct across all categories: 69 (47 + 22). Category 8 Fallbacks: 0.
+
+Earlier Categories 1-7 detail: Fallbacks: 12 (4 in Category 1, 2 in Category 2, 5 in Category 3, 1 Rocketbox row in Category 5 counting the avatar and its three animations as one). Packs counted once: 2 in Category 4, 2 in Category 7.
+
+## Picks
+
+Recorded from the user's picks for Categories 1-7. Format: name, scene, role; then processing notes. "(Manual pick)" marks files you download yourself into `tools/cache/manual/<name>/` in Phase 2 (all Sketchfab and Freesound rows). Poly Haven and Rocketbox rows are fetched by the script. Category 8 picks are still pending (see "Decisions needed (round 2)" at the top). The Greenall provenance check (task 6.1) is done: corpse CONFIRMED and picked, hand UNCONFIRMED and rejected, replacement hand sketchfab-zombie-hand-craggle pending your pick (not in Picks).
+
+### Category 1: ground and stone
+
+- polyhaven-excavated-soil-wall: graveyard, main ground. Ship at 2k.
+- polyhaven-lichen-rock: graveyard, stone (tombstone surface). Ship at 1k.
+
+### Category 2: night sky
+
+- polyhaven-moonlit-golf: graveyard, sky. Use the 2k as background and the 1k as environment lighting. Lower `backgroundIntensity` and `environmentIntensity`; use a warm-grey fog against the blue-purple sky. The other two HDRIs are dropped.
+
+### Category 3: graveyard props
+
+- polyhaven-large-iron-gate: graveyard, gate on the horizon.
+- polyhaven-gothic-statue: graveyard, statue.
+- polyhaven-dead-tree-trunk: graveyard, dead trees. Decimate (102K tris source).
+- polyhaven-tree-stump-01: graveyard, stump.
+- polyhaven-tree-stump-02: graveyard, stump.
+- polyhaven-lantern-01: graveyard, lantern.
+- sketchfab-small-destroyed-tombstone-04 (Manual pick): graveyard, broken stones. Resize the 8K textures to 1k.
+- Fence: none for now.
+
+### Category 4: lab props
+
+- sketchfab-autopsy-lab-assets (PACK, Manual pick): lab, operating table, surgical lamp and instruments.
+- sketchfab-medical-props-cart (Manual pick): lab, medical cart. Decimate to about 60K faces.
+- sketchfab-crutch-and-iv-drip (Manual pick): lab, IV stand. Delete the crutch from the model.
+
+### Category 5: patient avatars and animations
+
+- rocketbox-business-male-02: lab, patient avatar (the reference patient). Convert FBX to glb.
+- rocketbox-male-adult-05: lab, second patient avatar. Same rig and pipeline.
+- Animations (shared Bip01 skeleton, no retargeting), all from `microsoft/microsoft-rocketbox`:
+  - m_walk_neutral_01: `Assets/Animations/all_animations_max_motextr_xy/m_walk_neutral_01.max.fbx`
+  - m_walk_drunk: `Assets/Animations/all_animations_max_motextr_xy/m_walk_drunk.max.fbx`
+  - m_walk_bruised: `Assets/Animations/all_animations_max_motextr_xy/m_walk_bruised.max.fbx`
+  - m_idle_breathe_01: `Assets/Animations/all_animations_max_motextr_static/m_idle_breathe_01.max.fbx` (1,397,280 B)
+- Scene and role of the animations: lab, patient motion (walk clips for the capture or approach, idle breathing for the patient on the table). Roles are my reading of the README notes; adjust if you meant otherwise.
+- Pinned commit SHA (HEAD of `master` when checked, read-only through the GitHub API): `0943055db6ec570bcef9f2c8b41c9e5467c808f9`, committed 2022-10-02T19:20:56Z. At this SHA the two avatar Export FBX files and all four animation files above exist; `m_idle_breathe_01` exists, so no alternative is needed (its siblings `m_idle_breathe_02` and `_03` also exist). The repo reports `archived: true`.
+
+### Category 6: zombie and hands
+- sketchfab-zombie-corpse-greenall (Manual pick): static graveyard/lab horror prop (no rig, A-pose). Provenance confirmed in task 6.1 (author's own ZBrush sculpt). License is CC Attribution (CC BY 4.0), so credit is required and it gets a `CREDITS.md` row. Author: Colin.Greenall (https://sketchfab.com/Colin.Greenall).
+
+- sketchfab-zombie-hand-ruella (Manual pick): graveyard (hand clawing out of a grave) and lab failure overlay (hands pushing in from the edges). Decimate from 319.5K tris to about 30K, bake normals from the sculpt, remove the blue sleeve.
+- sketchfab-zombie-mutant (Manual pick): graveyard and a second lab table, static horror prop (no rig, T-pose). Re-tint paler so it does not merge with the red flood. License is CC Attribution (CC BY 4.0), shown in its row, so credit is required and it gets a `CREDITS.md` row even though the model page says credit is optional. Author: Regulator (https://sketchfab.com/A2555).
+
+### Category 7: sound
+
+- freesound-sidequesting-steady-heart-rate-monitor-loop (Manual pick): lab, ECG beep (loop while the patient is alive).
+- freesound-thegreatperson-heart-rate-cardiac-arrest-flatline (PACK, Manual pick): lab, ECG sequence and ECG flatline. Cut the arrest sequence and the flatline tone from the one take.
+- freesound-zhro-heartbeat-loopable (Manual pick): lab, heartbeat loop.
+- freesound-lennartgreen-low-rumble-loopable (Manual pick): lab, low drone loop.
+- freesound-launemax-open-close-iron-gate (Manual pick): graveyard, iron gate open and close.
+- freesound-bigkahuna360-electrical-shock-zap (Manual pick): lab, electric zap with charge-up for the switch-pull.
+- freesound-joelaudio-electric-zap-001 (Manual pick): lab, short electric zap.
+- freesound-tomhannen-howling-wind-tower (Manual pick): graveyard, wind. Needs a crossfade loop.
+
+## Rejected
+
+- sketchfab-broken-headstone: readable inscription of a real person's grave.
+- sketchfab-zombie-hand-greenall: provenance UNCONFIRMED (task 6.1, see "Provenance check" under Category 6). The author only retopologised and textured someone else's sculpt, so it stays rejected. The Greenall corpse, by contrast, is CONFIRMED and picked. Replacement sketchfab-zombie-hand-craggle is pending your pick.
+- Category 8 headstones (Req 26.8): Unique Gravestone Scans (legible text of real graves), Implosion of a Tombstone (a mausoleum, not a headstone) and others, listed under "Rejected headstones" in Category 8. Nothing else in Category 8 is rejected yet; all 23 candidates await your picks.
+
+### Not picked
+
+Dropped, not rejected. Rows and previews stay in the tables above.
+
+- Category 1: polyhaven-brown-mud-leaves-01, polyhaven-mossy-rock, ambientcg-ground054.
+- Category 2: polyhaven-rogland-moonlit-night, polyhaven-kloppenheim-02-puresky.
+- Category 3: sketchfab-fredericksburg-cemetery-gate, sketchfab-broken-wing-angel-statue, polyhaven-dead-tree-trunk-02, sketchfab-rusty-oil-lantern, sketchfab-rusty-iron-fence, polyhaven-modular-chainlink-fence.
+- Category 4: sketchfab-daonware-medical-equipment-set, sketchfab-iv-device-with-stand.
+- Category 5: sketchfab-old-fat-man-full-rig.
+- Category 7: freesound-kkenny101-dark-atmospheric-drone-seamless, freesound-b-train-heartbeat-with-beep, freesound-nickmaysoundmusic-iron-gate-abbey-gardens, freesound-qvantor-wind-howling-synthesized.
