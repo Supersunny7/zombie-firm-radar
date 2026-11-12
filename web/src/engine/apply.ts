@@ -11,7 +11,7 @@ import type { CoverageView, PostState, RefinanceInfo, ToolChoice, Treatment } fr
 const clampPain = (x: number): number => Math.min(100, Math.max(0, x));
 
 /** toFixed(2) with "-0.00" cleaned up to "0.00". */
-const fix2 = (x: number): string => {
+export const fix2 = (x: number): string => {
   const s = x.toFixed(2);
   return s === '-0.00' ? '0.00' : s;
 };

@@ -1,12 +1,21 @@
 import fc from 'fast-check';
 import { describe, expect, it } from 'vitest';
 import type { EngineErrorCode } from './errors';
+import { applyTreatment } from './apply';
+import { drawOutcome } from './outcome';
+import { simulate } from './simulate';
 import { parseTreatment } from './treatment';
-import { arbBadTreatment } from './test/engineArbitraries';
+import type { Treatment } from './types';
+import {
+  arbBadTreatment,
+  arbDelta,
+  arbMacroValid,
+  arbSeed,
+  arbValidFirm,
+} from './test/engineArbitraries';
 
 // Feature: rescue-engine, Property 3: The parser rejects invalid treatments with one deterministic error
 // **Validates: Requirements 2.6, 3.3, 3.4, 3.5, 3.6, 3.8, 3.11, 3.15, 4.12, 6.10, 9.10**
-// Note: the applyTreatment, simulate and drawOutcome part of this property is added in task 10.6.
 
 interface Expected {
   readonly code: EngineErrorCode;
@@ -69,24 +78,47 @@ function classify(value: unknown): Expected {
 describe('parseTreatment rejection (Property 3)', () => {
   it('rejects every corrupted treatment with one deterministic error', () => {
     fc.assert(
-      fc.property(arbBadTreatment, ({ value }) => {
-        const before = structuredClone(value);
-        const expected = classify(value);
+      fc.property(
+        arbBadTreatment,
+        arbValidFirm,
+        arbMacroValid,
+        arbDelta,
+        arbSeed,
+        fc.integer({ min: 1, max: 20 }),
+        ({ value }, firm, macro, delta, seed, paths) => {
+          const before = structuredClone(value);
+          const firmBefore = structuredClone(firm);
+          const macroBefore = structuredClone(macro);
+          const expected = classify(value);
 
-        const first = parseTreatment(value);
-        const second = parseTreatment(value);
+          const first = parseTreatment(value);
+          const second = parseTreatment(value);
 
-        expect(first.ok).toBe(false);
-        if (first.ok) return;
-        expect(first.error.code).toBe(expected.code);
-        expect(first.error.detail?.tool).toBe(expected.tool);
-        expect(first.error.detail?.param).toBe(expected.param);
-        expect(first.error.detail?.index).toBe(expected.index);
+          expect(first.ok).toBe(false);
+          if (first.ok) return;
+          expect(first.error.code).toBe(expected.code);
+          expect(first.error.detail?.tool).toBe(expected.tool);
+          expect(first.error.detail?.param).toBe(expected.param);
+          expect(first.error.detail?.index).toBe(expected.index);
 
-        expect(second).toStrictEqual(first);
-        expect(value).toStrictEqual(before);
-      }),
-      { numRuns: 300 },
+          expect(second).toStrictEqual(first);
+          expect(value).toStrictEqual(before);
+
+          const bad = value as Treatment;
+          const applied = applyTreatment(firm, bad, delta, macro);
+          const simulated = simulate(firm, bad, delta, macro, { paths, seed });
+          const drawn = drawOutcome(firm, bad, delta, macro, seed);
+          for (const r of [applied, simulated, drawn]) {
+            expect(r.ok).toBe(false);
+            if (r.ok) return;
+            expect(r.error).toStrictEqual(first.error);
+          }
+          expect(firm).toStrictEqual(firmBefore);
+          expect(macro).toStrictEqual(macroBefore);
+          expect(value).toStrictEqual(before);
+        },
+      ),
+      { numRuns: 200 },
     );
   });
 });

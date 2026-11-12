@@ -59,6 +59,22 @@
     "8.7 Write property test for the fixed random block in `web/src/engine/rng.block.property.test.ts`": {
       "status": "passed",
       "lastRunTimestamp": 1794461047172
+    },
+    "10.3 Write property test for outcome consistency in `web/src/engine/outcome.wording.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794461393030
+    },
+    "10.4 Write property test for the hint scan in `web/src/engine/outcome.hint.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794461411781
+    },
+    "10.6 Extend the Property 3 test in `web/src/engine/treatment.reject.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794461437907
+    },
+    "10.5 Write property test for core composition in `web/src/engine/core.composition.property.test.ts`": {
+      "status": "passed",
+      "lastRunTimestamp": 1794461438601
     }
   },
   "executionHistory": {
@@ -764,6 +780,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459042825
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461166192
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461290121
       }
     ],
     "10.2 Write unit tests for the outcome in `web/src/engine/outcome.unit.test.ts`": [
@@ -771,6 +797,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459042885
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461295809
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461492380
       }
     ],
     "10.3 Write property test for outcome consistency in `web/src/engine/outcome.wording.property.test.ts`": [
@@ -778,6 +814,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459042942
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461296961
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461493612
       }
     ],
     "10.4 Write property test for the hint scan in `web/src/engine/outcome.hint.property.test.ts`": [
@@ -785,6 +831,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459043002
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461298176
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461494765
       }
     ],
     "10.5 Write property test for core composition in `web/src/engine/core.composition.property.test.ts`": [
@@ -792,6 +848,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459043055
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461299130
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461495981
       }
     ],
     "10.6 Extend the Property 3 test in `web/src/engine/treatment.reject.property.test.ts`": [
@@ -799,6 +865,16 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459043177
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461300076
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461496846
       }
     ],
     "11.1 Implement `web/src/engine/score.ts` and `web/src/engine/liquidation.ts`": [
@@ -916,6 +992,11 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794459043805
+      },
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461507666
       }
     ],
     "13.2 Implement `createSimulationClient` in `web/src/engine/worker/client.ts`": [
@@ -1091,6 +1172,13 @@
         "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
         "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
         "timestamp": 1794461086631
+      }
+    ],
+    "10. Drawn outcome, failure message and hint": [
+      {
+        "executionId": "5ae3ab67-dc53-43d5-8790-c934a6d74fd7",
+        "chatSessionId": "sess_0aca82ed-214c-4460-8019-b8b55c14554e",
+        "timestamp": 1794461496941
       }
     ]
   }

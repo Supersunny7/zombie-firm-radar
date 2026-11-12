@@ -13,6 +13,10 @@ const DEFAULT_PATHS = 1000;
 const MAX_PATHS = 100000;
 const MAX_SEED = 4294967295;
 
+/** Shared seed rule (Req 8.16, 9.12): an integer in [0, 4294967295], never coerced. */
+export const isValidSeed = (seed: unknown): seed is number =>
+  typeof seed === 'number' && Number.isInteger(seed) && seed >= 0 && seed <= MAX_SEED;
+
 /**
  * Median of a list of numbers. Sorts a Float64Array copy numerically (handles Infinity);
  * an even count averages the two middle values. Returns NaN for an empty list.
@@ -57,9 +61,7 @@ export function simulateWith(
     return fail(invalidPaths(rawPaths));
   }
   const seed: unknown = options?.seed;
-  if (typeof seed !== 'number' || !Number.isInteger(seed) || seed < 0 || seed > MAX_SEED) {
-    return fail(invalidSeed(seed));
-  }
+  if (!isValidSeed(seed)) return fail(invalidSeed(seed));
 
   const inputs = prepared.value;
   const canonical = parsed.value;

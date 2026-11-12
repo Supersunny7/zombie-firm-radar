@@ -242,35 +242,35 @@ All commands run from `web` in PowerShell, chained with `;`.
 - [x] 9. Checkpoint: core maths and simulation
   - From `web`, run `pnpm typecheck; pnpm lint; pnpm format; pnpm test`. Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 10. Drawn outcome, failure message and hint
-  - [~] 10.1 Implement `web/src/engine/outcome.ts`
+- [x] 10. Drawn outcome, failure message and hint
+  - [x] 10.1 Implement `web/src/engine/outcome.ts`
     - `drawOutcome(firm, treatment, delta, macro, seed)`: Validation_Order (delta, treatment, firm, b, seed with the `invalid_seed` rule); `block = blocksFor(seed, 1)[0]`; `applyCore` with the block recovery; `projectPath`; `failingYear` = smallest t with ICR_t < 1; `rescued`
     - `failureMessage` "Year {t}: operating margin {m}%, coverage {icr}. {name} stays undead." with `pct1`, `fix2` and the `-0` clean-up
     - `hintScan`: `K = Math.floor((0.08 - c0) / 0.001 + 1e-9)`, upward scan k = 1..K of `c = Math.min(0.08, c0 + k / 1000)` on the full pipeline (`withCut` in an internal shape with no 3-tool cap) and the same block; stop at the first ICR_t* >= 1; text "What it would take: an extra cost cut of X percentage points …" with cut_costs present and "… a cost cut of X percentage points …" without, X = `(k / 10).toFixed(1)`; null when none works; never "should", "recommend" or "advise"
     - _Requirements: 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.10, 9.11, 9.12, 12.16_
 
-  - [~] 10.2 Write unit tests for the outcome in `web/src/engine/outcome.unit.test.ts`
+  - [x] 10.2 Write unit tests for the outcome in `web/src/engine/outcome.unit.test.ts`
     - A constructed failing case where the scan finds k, asserting `extraCut`, `totalCut` and text; a case with no hint; c0 = 0.08 (K = 0, no hint); a 3-tool Treatment without cut_costs that still gets a hint worded as a cost cut
     - Failure message format for a constructed path; margin -0.04% printed as "0.0"
     - `drawOutcome` path equals path 0 of `simulate` with the same seed and treatment; `invalid_seed` without coercion; `seedFrom` + `drawOutcome` gives deeply equal Outcomes on repeated calls
     - _Requirements: 9.4, 9.5, 9.6, 9.7, 9.9, 9.11, 9.12, 15.5_
 
-  - [~] 10.3 Write property test for outcome consistency in `web/src/engine/outcome.wording.property.test.ts`
+  - [x] 10.3 Write property test for outcome consistency in `web/src/engine/outcome.wording.property.test.ts`
     - **Property 21: Outcome consistency and wording**
     - `rescued` iff every year covered; null fields when rescued; otherwise smallest failing year and the message regex from the design with that year's values and the firm name; no "should", "recommend" or "advise" (case-insensitive); `numRuns >= 100`
     - **Validates: Requirements 9.2, 9.3, 9.4, 9.8**
 
-  - [~] 10.4 Write property test for the hint scan in `web/src/engine/outcome.hint.property.test.ts`
+  - [x] 10.4 Write property test for the hint scan in `web/src/engine/outcome.hint.property.test.ts`
     - **Property 22: The hint is the smallest working extra cut on the grid**
     - With f evaluated on the drawn block: hint present → `extraCut = k / 1000` with integer k >= 1, `totalCut <= 0.08`, `f(totalCut) >= 1`, `f(c0 + j / 1000) < 1` for j < k; hint null → no grid point up to K works; text states `(k / 10).toFixed(1)` with the right wording; the generator includes 3-tool treatments without cut_costs; `numRuns >= 100`
     - **Validates: Requirements 9.5, 9.6, 9.7, 9.11**
 
-  - [~] 10.5 Write property test for core composition in `web/src/engine/core.composition.property.test.ts`
+  - [x] 10.5 Write property test for core composition in `web/src/engine/core.composition.property.test.ts`
     - **Property 20: Simulation and outcome are built from the core functions**
     - `paths` in [1, 200]; survival odds equal the covered share computed from `blocksFor`, `applyCore` and `projectPath`; `drawOutcome` years, margins and coverage match block 0; `numRuns >= 100`
     - **Validates: Requirements 8.5, 8.9, 9.1**
 
-  - [~] 10.6 Extend the Property 3 test in `web/src/engine/treatment.reject.property.test.ts`
+  - [x] 10.6 Extend the Property 3 test in `web/src/engine/treatment.reject.property.test.ts`
     - **Property 3: The parser rejects invalid treatments with one deterministic error** (completion)
     - Inside the same property, assert that `applyTreatment`, `simulate` and `drawOutcome` return the same error as `parseTreatment` for the same invalid treatment with otherwise valid arguments, and leave firm and macro deeply equal to clones; `numRuns >= 100`
     - **Validates: Requirements 2.6, 3.3, 3.4, 3.5, 3.6, 3.8, 3.11, 3.15, 4.12, 6.10, 9.10**
@@ -328,7 +328,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - **Validates: Requirements 8.8, 8.14, 14.1, 14.5, 14.9**
 
 - [ ] 13. Web Worker wrapper
-  - [~] 13.1 Implement `web/src/engine/worker/protocol.ts` and `web/src/engine/worker/simulate.worker.ts`
+  - [-] 13.1 Implement `web/src/engine/worker/protocol.ts` and `web/src/engine/worker/simulate.worker.ts`
     - `SimulateArgs`, `WorkerRequest`, `WorkerResponse` as in the design
     - The worker entry imports only `../simulate` and `./protocol`, runs `simulate` and posts `{ id, ok, result }` or `{ id, ok: false, error }`
     - _Requirements: 12.1, 12.9, 12.16_
