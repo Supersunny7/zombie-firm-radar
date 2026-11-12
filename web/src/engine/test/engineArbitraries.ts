@@ -1,6 +1,7 @@
 import fc from 'fast-check';
 import type { Firm, FirmStatus, FirmYear, Macro } from '../../types/data';
 import type { InputName } from '../errors';
+import type { RandomBlock } from '../rng';
 import type { ToolChoice, Treatment, V1ToolName } from '../types';
 
 /** Full inclusive ranges of the four v1 tools (rescue-rules.md). */
@@ -486,3 +487,241 @@ export const arbBadFirm: fc.Arbitrary<BadFirm> = fc.oneof(
       }),
   },
 );
+
+// ---------------------------------------------------------------------------
+// Randomness, seed, date and CIK generators
+// ---------------------------------------------------------------------------
+
+/** One Path's random numbers: recovery, haircut and six-sigma-bounded normals. */
+export const arbBlock: fc.Arbitrary<RandomBlock> = fc.record({
+  recovery: arbParam(0.6, 0.8),
+  haircut: arbParam(0.3, 0.6),
+  eps: fc.tuple(arbParam(-6.7, 6.7), arbParam(-6.7, 6.7), arbParam(-6.7, 6.7)),
+});
+
+/** One case of the RR-2 domain (Req 13.3, Property 12). */
+export interface Rr2Case {
+  readonly firm: Firm;
+  readonly macro: Macro;
+  readonly delta: number;
+  /** eps1..eps3 in [-4, 4]; recovery in [0.6, 0.8]; haircut in [0.3, 0.6]. */
+  readonly block: RandomBlock;
+  /** Distinct tools drawn from sell_assets, debt_for_equity and refinance; no cut_costs. */
+  readonly baseTreatment: Treatment;
+}
+
+const RR2_NAMES: readonly V1ToolName[] = ['sell_assets', 'debt_for_equity', 'refinance'];
+const RR2_A_MAX = 1e11;
+
+/** arbValidFirm with the latest-year assets capped to the RR-2 domain A in [0, 1e11]. */
+const arbRr2Firm: fc.Arbitrary<Firm> = arbValidFirm.map((firm): Firm => {
+  const latest = firm.years.reduce((a, y) => (y.fy > a.fy ? y : a));
+  const a = latest.total_assets_usd;
+  if (a === null || a <= RR2_A_MAX) return firm;
+  return {
+    ...firm,
+    years: firm.years.map((y) => (y === latest ? { ...y, total_assets_usd: RR2_A_MAX } : y)),
+  };
+});
+
+/**
+ * RR-2 domain of Req 13.3 (Property 12): firm with E/R in [-0.3, 0.3], margin_mean in
+ * [-0.2, 0.3], R, D, r, A, Q, sigma and g ranges as in the requirement; macro with b in
+ * [0, 0.08]; delta in [0, 0.05]; a block with eps in [-4, 4]; and a base treatment of
+ * 0 to 3 distinct tools from sell_assets, debt_for_equity and refinance (the property sets cut_costs).
+ */
+export const arbRr2Case: fc.Arbitrary<Rr2Case> = fc.record({
+  firm: arbRr2Firm,
+  macro: arbMacroValid,
+  delta: arbDelta,
+  block: fc.record({
+    recovery: arbParam(0.6, 0.8),
+    haircut: arbParam(0.3, 0.6),
+    eps: fc.tuple(arbParam(-4, 4), arbParam(-4, 4), arbParam(-4, 4)),
+  }),
+  baseTreatment: fc
+    .shuffledSubarray([...RR2_NAMES], { minLength: 0, maxLength: 3 })
+    .chain((names) => fc.tuple(...names.map(arbTool)))
+    .map((tools): Treatment => tools),
+});
+
+/** Valid seed: unsigned 32-bit integer. */
+export const arbSeed: fc.Arbitrary<number> = fc.oneof(
+  { weight: 1, arbitrary: fc.constantFrom(0, 1, 4294967295) },
+  { weight: 6, arbitrary: fc.integer({ min: 0, max: 4294967295 }) },
+);
+
+const DAYS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] as const;
+const isLeap = (y: number): boolean => y % 4 === 0 && (y % 100 !== 0 || y % 400 === 0);
+const pad = (n: number, w: number): string => String(n).padStart(w, '0');
+const daysIn = (y: number, m: number): number => (m === 2 && isLeap(y) ? 29 : (DAYS[m - 1] ?? 0));
+
+/** Valid ISO calendar date YYYY-MM-DD from 1900-01-01 to 2199-12-31 (Gregorian leap rules). */
+export const arbIsoDate: fc.Arbitrary<string> = fc
+  .record({
+    y: fc.integer({ min: 1900, max: 2199 }),
+    m: fc.integer({ min: 1, max: 12 }),
+    d: fc.integer({ min: 1, max: 31 }),
+  })
+  .map(({ y, m, d }) => `${pad(y, 4)}-${pad(m, 2)}-${pad(Math.min(d, daysIn(y, m)), 2)}`);
+
+/** Valid CIK: exactly 10 digits (leading zeros allowed). */
+export const arbCik: fc.Arbitrary<string> = fc
+  .array(fc.constantFrom(...'0123456789'.split('')), { minLength: 10, maxLength: 10 })
+  .map((ds) => ds.join(''));
+
+export interface BadPaths {
+  /** Passed as `unknown`; never an integer in [1, 100000]. */
+  readonly paths: unknown;
+  readonly code: 'invalid_paths';
+}
+
+export const arbBadPaths: fc.Arbitrary<BadPaths> = fc
+  .oneof(
+    fc.constantFrom<unknown>(
+      0,
+      -0,
+      -1,
+      100001,
+      1e9,
+      0.5,
+      1.5,
+      Number.NaN,
+      Infinity,
+      -Infinity,
+      '1000',
+      null,
+      undefined,
+      true,
+      {},
+      [],
+    ),
+    fc.integer({ min: -1_000_000, max: 0 }),
+    fc.integer({ min: 100001, max: 10_000_000 }),
+    fc.double({ min: 0.001, max: 99999, noNaN: true }).filter((n) => !Number.isInteger(n)),
+  )
+  .map((paths) => ({ paths, code: 'invalid_paths' as const }));
+
+export interface BadSeed {
+  /** Passed as `unknown`; never an integer in [0, 4294967295]. */
+  readonly seed: unknown;
+  readonly code: 'invalid_seed';
+}
+
+export const arbBadSeed: fc.Arbitrary<BadSeed> = fc
+  .oneof(
+    fc.constantFrom<unknown>(
+      -1,
+      4294967296,
+      0.5,
+      Number.NaN,
+      Infinity,
+      -Infinity,
+      '5',
+      null,
+      undefined,
+      true,
+      {},
+      [],
+      1n,
+    ),
+    fc.integer({ min: -2147483648, max: -1 }),
+    fc.integer({ min: 4294967296, max: Number.MAX_SAFE_INTEGER }),
+    fc.double({ min: 0.001, max: 4294967294, noNaN: true }).filter((n) => !Number.isInteger(n)),
+  )
+  .map((seed) => ({ seed, code: 'invalid_seed' as const }));
+
+export interface BadCik {
+  /** Passed as `unknown`; never a string of exactly 10 digits. */
+  readonly cik: unknown;
+  readonly code: 'invalid_cik';
+}
+
+const digits = (n: number): fc.Arbitrary<string> =>
+  fc
+    .array(fc.constantFrom(...'0123456789'.split('')), { minLength: n, maxLength: n })
+    .map((ds) => ds.join(''));
+
+export const arbBadCik: fc.Arbitrary<BadCik> = fc
+  .oneof(
+    fc.constantFrom<unknown>(
+      '',
+      '123',
+      ' 000000123',
+      '0000001234 ',
+      'abcdefghij',
+      '000000123x',
+      '0000-01234',
+      '１２３４５６７８９０',
+      12345,
+      1234567890,
+      null,
+      undefined,
+      true,
+      {},
+      [],
+    ),
+    digits(9),
+    digits(11),
+    fc.integer({ min: 0, max: 9999999999 }),
+  )
+  .map((cik) => ({ cik, code: 'invalid_cik' as const }));
+
+export interface BadDate {
+  /** Passed as `unknown`; never a valid YYYY-MM-DD calendar date. */
+  readonly date: unknown;
+  readonly code: 'invalid_date';
+}
+
+const arbYear = fc.integer({ min: 1900, max: 2199 });
+const arbNonLeapYear = arbYear.filter((y) => !isLeap(y));
+
+export const arbBadDate: fc.Arbitrary<BadDate> = fc
+  .oneof(
+    // wrong format
+    fc.constantFrom<unknown>(
+      '',
+      '2024-1-05',
+      '2024-01-5',
+      '24-01-05',
+      '2024/01/05',
+      '20240105',
+      '2024-01-05T00:00:00Z',
+      ' 2024-01-05',
+      '2024-01-05 ',
+      'yesterday',
+      '2024-02-30',
+      '2023-02-29',
+      '1900-02-29',
+      '2100-02-29',
+      '2024-00-10',
+      '2024-13-10',
+      '2024-01-00',
+      '2024-04-31',
+      null,
+      undefined,
+      20240105,
+      true,
+      {},
+      [],
+      new Date(0),
+    ),
+    // month 00 or 13
+    fc
+      .tuple(arbYear, fc.constantFrom('00', '13'), fc.integer({ min: 1, max: 28 }))
+      .map(([y, m, d]) => `${pad(y, 4)}-${m}-${pad(d, 2)}`),
+    // day 00
+    fc
+      .tuple(arbYear, fc.integer({ min: 1, max: 12 }))
+      .map(([y, m]) => `${pad(y, 4)}-${pad(m, 2)}-00`),
+    // day 31 in a 30-day month
+    fc.tuple(arbYear, fc.constantFrom(4, 6, 9, 11)).map(([y, m]) => `${pad(y, 4)}-${pad(m, 2)}-31`),
+    // 29 February in a non-leap year
+    arbNonLeapYear.map((y) => `${pad(y, 4)}-02-29`),
+    // wrong separators or digit counts
+    fc
+      .tuple(fc.integer({ min: 100, max: 99999 }), fc.integer({ min: 1, max: 12 }))
+      .filter(([y]) => String(y).length !== 4)
+      .map(([y, m]) => `${y}-${pad(m, 2)}-01`),
+  )
+  .map((date) => ({ date, code: 'invalid_date' as const }));

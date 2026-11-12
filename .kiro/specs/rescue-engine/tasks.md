@@ -166,7 +166,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Click order: a reversed Treatment gives a deeply equal PostState and Refinance_Note
     - _Requirements: 6.7, 7.3, 7.7, 7.9, 14.1, 14.3, 14.4, 14.7, 14.9, 15.5_
 
-- [ ] 7. Randomness and seed derivation
+- [x] 7. Randomness and seed derivation
   - [x] 7.1 Implement `web/src/engine/rng.ts`
     - `mulberry32(seed)` as the TypeScript port in the design (state in a closure, `| 0` reduction); `drawBlock(next)` drawing exactly 6 uniforms in the fixed order (recovery, haircut, then Box-Muller from u2..u5 using `1 - u`); `blocksFor(seed, n)` with a test-only seam (for example an optional generator factory parameter) so a property can count uniforms without changing the public `simulate` signature
     - _Requirements: 8.3, 8.4_
@@ -193,7 +193,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - `2025-02-30` and `2023-02-29` give `invalid_date`; `2024-02-29` is accepted; a 9-digit cik gives `invalid_cik`; an invalid treatment wins over a bad cik, and a bad cik wins over a bad date
     - _Requirements: 10.1, 10.2, 10.4, 10.5, 10.6, 10.7, 10.8, 10.9, 15.6_
 
-  - [~] 7.6 Write property test for seedFrom in `web/src/engine/hash.seedFrom.property.test.ts`
+  - [x] 7.6 Write property test for seedFrom in `web/src/engine/hash.seedFrom.property.test.ts`
     - **Property 23: seedFrom output and date validation**
     - Valid inputs equal `fnv1a32(cik + "|" + serialiseTreatment(t) + "|" + date)` and lie in [0, 4294967295]; bad dates give `invalid_date`, bad ciks give `invalid_cik`, and several defects follow treatment, cik, isoDate; `numRuns >= 100`
     - **Validates: Requirements 10.1, 10.2, 10.4, 10.5, 10.9**
@@ -203,16 +203,16 @@ All commands run from `web` in PowerShell, chained with `;`.
     - `m_0 = E' / R'`; for t = 1..3 the margin recursion with kappa and sigma; `R_t = R_{t-1} * (1 + g - growthCut)`; `EBIT_t = m_t * R_t`; `ICR_t = post.debtFree ? Infinity : icr(EBIT_t, post.interest)`; debt constant
     - _Requirements: 8.5, 8.6, 8.7, 8.8_
 
-  - [~] 8.2 Implement `simulate` and `median` in `web/src/engine/simulate.ts`
+  - [x] 8.2 Implement `simulate` and `median` in `web/src/engine/simulate.ts`
     - Validation_Order: delta, treatment, firm, b, then `paths` (default 1000, integer in [1, 100000], else `invalid_paths`) and `seed` (integer in [0, 4294967295] without coercion, else `invalid_seed`); no path runs on error
     - `blocksFor(seed, paths)`; compute `post` once with recovery 0.7 when sell_assets is absent, else per block; survival odds; medians from a sorted `Float64Array` (even count averages the middle two); `debtFree`, `debtFreeShare`, `post` for display, `constantDebtNote`; map Infinity to `CoverageView { icr: null, debtFree: true }`
     - _Requirements: 8.1, 8.2, 8.5, 8.7, 8.8, 8.9, 8.10, 8.11, 8.12, 8.13, 8.14, 8.15, 8.16, 12.16_
 
-  - [~] 8.3 Add `arbRr2Case` to `web/src/engine/test/engineArbitraries.ts`
+  - [x] 8.3 Add `arbRr2Case` to `web/src/engine/test/engineArbitraries.ts`
     - The RR-2 domain of Req 13.3: firm, macro, delta, block with eps in [-4, 4], and a base treatment drawn from sell_assets, debt_for_equity and refinance (its cut_costs is set by the property)
     - _Requirements: 13.3_
 
-  - [~] 8.4 Write property test for RR-1 in `web/src/engine/rr1.property.test.ts`
+  - [-] 8.4 Write property test for RR-1 in `web/src/engine/rr1.property.test.ts`
     - **Property 11: Debt-for-equity never worsens coverage on the same path (RR-1, amended)**
     - Base T without debt_for_equity (cut_costs, sell_assets and refinance allowed; refinance never filtered out), `with = T + debt_for_equity(w)`, same `arbBlock` object for both; part 1 exact `>=` for years with EBIT_t >= 0; part 2 a Covered_Year stays covered for any sign; `numRuns >= 100`
     - If fast-check finds a counterexample, stop and report it to the user with seed and shrunk inputs; do not weaken the property or exclude refinance
