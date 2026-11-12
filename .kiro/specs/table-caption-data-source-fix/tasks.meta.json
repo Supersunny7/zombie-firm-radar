@@ -1,0 +1,182 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Write bug condition exploration test (review the existing draft test)": [
+      {
+        "executionId": "e60dba28-7269-4339-8dd7-356f5e27d1c5",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794443871533
+      },
+      {
+        "executionId": "e60dba28-7269-4339-8dd7-356f5e27d1c5",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794443875555
+      },
+      {
+        "executionId": "e60dba28-7269-4339-8dd7-356f5e27d1c5",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444136809
+      }
+    ],
+    "2. Write preservation property tests (BEFORE verifying the fix)": [
+      {
+        "executionId": "e60dba28-7269-4339-8dd7-356f5e27d1c5",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794443871635
+      },
+      {
+        "executionId": "e60dba28-7269-4339-8dd7-356f5e27d1c5",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794443876105
+      },
+      {
+        "executionId": "e60dba28-7269-4339-8dd7-356f5e27d1c5",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794444137329
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445005546
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445007597
+      }
+    ],
+    "3.1 Review the draft fix in `web/src/ui/table/TableView.tsx`": [
+      {
+        "executionId": "e60dba28-7269-4339-8dd7-356f5e27d1c5",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794443871713
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445010913
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445034049
+      }
+    ],
+    "3.2 Verify bug condition exploration test now passes": [
+      {
+        "executionId": "e60dba28-7269-4339-8dd7-356f5e27d1c5",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794443871785
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445038984
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445056744
+      }
+    ],
+    "3.3 Verify preservation tests still pass": [
+      {
+        "executionId": "e60dba28-7269-4339-8dd7-356f5e27d1c5",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794443871855
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445039134
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445058761
+      }
+    ],
+    "4.1 Check lights off and lights on": [
+      {
+        "executionId": "e60dba28-7269-4339-8dd7-356f5e27d1c5",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794443871934
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445062213
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445085069
+      }
+    ],
+    "4.2 Check all three sources in one property": [
+      {
+        "executionId": "e60dba28-7269-4339-8dd7-356f5e27d1c5",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794443872000
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445087867
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445107901
+      }
+    ],
+    "5. Run the full check": [
+      {
+        "executionId": "e60dba28-7269-4339-8dd7-356f5e27d1c5",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794443872099
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445110622
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445164514
+      }
+    ],
+    "6. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "e60dba28-7269-4339-8dd7-356f5e27d1c5",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794443872200
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445167737
+      },
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445203174
+      }
+    ],
+    "3. Fix for hardcoded Table view caption": [
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445058816
+      }
+    ],
+    "4. Extra coverage (user approved editing the test file)": [
+      {
+        "executionId": "04bafdab-dabf-4628-a6e9-de4e248df91d",
+        "chatSessionId": "sess_1737c235-10c0-4ff2-829c-20fc4d66bd5e",
+        "timestamp": 1794445107968
+      }
+    ]
+  }
+}

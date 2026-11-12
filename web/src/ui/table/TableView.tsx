@@ -1,4 +1,5 @@
 import { useCallback, useRef, useState } from 'react';
+import type { DataSource } from '../../data/source';
 import { useStore } from '../../state/store';
 import { TABLE_BUTTON_ID } from '../SkipLink';
 import { useFocusTrap } from '../useFocusTrap';
@@ -20,6 +21,15 @@ const btn = `rounded-panel border border-panel-border bg-panel px-3 py-1 text-sm
 
 export const SELECT_ONLY_IN_GRAVEYARD = 'Selection is only possible in the graveyard.';
 
+const SORT_HINT = 'Sort by activating a column header.';
+
+/** Mock and fixture data are fictional, so the caption must not claim SEC EDGAR as the source. */
+function captionFor(source: DataSource | null): string {
+  return source === 'mock' || source === 'fixture'
+    ? `Fictional firms (mock data). ${SORT_HINT}`
+    : `Firms from SEC EDGAR filings. ${SORT_HINT}`;
+}
+
 /** Shows the overlay only while the store's overlay mode is `table`; remounting resets local state. */
 export function TableView() {
   const open = useStore((s) => s.overlay === 'table');
@@ -28,6 +38,7 @@ export function TableView() {
 
 function TableDialog() {
   const rows = useStore((s) => s.data?.index.firms);
+  const source = useStore((s) => s.data?.source ?? null);
   const closeOverlay = useStore((s) => s.closeOverlay);
   const [sort, setSort] = useState<SortState>({ key: null, dir: 'asc' });
   const [message, setMessage] = useState('');
@@ -74,9 +85,7 @@ function TableDialog() {
         </p>
         <div className="overflow-auto">
           <table className="w-full border-collapse text-left text-sm">
-            <caption className="pb-2 text-left text-text-2">
-              Firms from SEC EDGAR filings. Sort by activating a column header.
-            </caption>
+            <caption className="pb-2 text-left text-text-2">{captionFor(source)}</caption>
             <thead>
               <tr>
                 {COLUMNS.map((c) => {

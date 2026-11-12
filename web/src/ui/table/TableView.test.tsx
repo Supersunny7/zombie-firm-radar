@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { act, cleanup, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import fc from 'fast-check';
 import { axe } from 'vitest-axe';
 import { fixtureBundle } from '../../dev/fixtures';
 import { initialMachine } from '../../state/machine';
@@ -186,5 +187,77 @@ describe('TableView', () => {
   it('has no axe violations with the fixture', async () => {
     const { container } = await openTable();
     expect((await axe(container)).violations).toEqual([]);
+  });
+});
+
+describe('TableView caption follows the Data_Source', () => {
+  const MOCK_CAPTION = 'Fictional firms (mock data). Sort by activating a column header.';
+  const REAL_CAPTION = 'Firms from SEC EDGAR filings. Sort by activating a column header.';
+
+  function openWith(source: 'real' | 'mock' | 'fixture') {
+    useStore.setState({
+      data: { index: fixtureBundle.index, macro: fixtureBundle.macro, source },
+    });
+    render(<TableView />);
+    act(() => useStore.getState().toggleOverlay());
+    return screen.getByRole('table');
+  }
+
+  it('says the firms are fictional for every non-real source (property)', () => {
+    fc.assert(
+      fc.property(fc.constantFrom('mock', 'fixture'), (source) => {
+        cleanup();
+        reset();
+        const table = openWith(source);
+        expect(within(table).getByText(MOCK_CAPTION)).toBeInTheDocument();
+        expect(table.textContent).not.toContain('SEC EDGAR');
+      }),
+      { numRuns: 10 },
+    );
+  });
+
+  it('matches the expected caption for every source and keeps one sort hint (property)', () => {
+    const SORT_HINT = 'Sort by activating a column header.';
+    const expected = {
+      real: REAL_CAPTION,
+      mock: MOCK_CAPTION,
+      fixture: MOCK_CAPTION,
+    } as const;
+    fc.assert(
+      fc.property(fc.constantFrom('real', 'mock', 'fixture'), (source) => {
+        cleanup();
+        reset();
+        const table = openWith(source);
+        const caption = table.querySelector('caption')!.textContent ?? '';
+        expect(caption).toBe(expected[source]);
+        expect(caption.endsWith(SORT_HINT)).toBe(true);
+        expect(caption.includes('SEC EDGAR')).toBe(source === 'real');
+      }),
+      { numRuns: 15 },
+    );
+  });
+
+  it('keeps the SEC EDGAR caption for real data', () => {
+    const table = openWith('real');
+    expect(within(table).getByText(REAL_CAPTION)).toBeInTheDocument();
+  });
+
+  describe.each(['off', 'on'] as const)('with lights %s', (lights) => {
+    beforeEach(() => {
+      useStore.setState({ settings: { ...DEFAULT_SETTINGS, lights } });
+    });
+
+    it.each(['mock', 'fixture'] as const)('shows the fictional caption for %s data', (source) => {
+      const table = openWith(source);
+      expect(useStore.getState().settings.lights).toBe(lights);
+      expect(within(table).getByText(MOCK_CAPTION)).toBeInTheDocument();
+      expect(table.textContent).not.toContain('SEC EDGAR');
+    });
+
+    it('shows the SEC EDGAR caption for real data', () => {
+      const table = openWith('real');
+      expect(useStore.getState().settings.lights).toBe(lights);
+      expect(within(table).getByText(REAL_CAPTION)).toBeInTheDocument();
+    });
   });
 });
