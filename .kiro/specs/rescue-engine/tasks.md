@@ -374,31 +374,31 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Two `arbWorkerOps` sequences on "a" and "b", any interleaving without `dispose()`; each Channel's settlements and posted flags equal those of the sequence run alone on a fresh client; `numRuns >= 100`
     - **Validates: Requirements 12.15**
 
-- [ ] 14. Public entry, purity, error codes and benchmark
+- [x] 14. Public entry, purity, error codes and benchmark
   - [x] 14.1 Create `web/src/engine/index.ts` with the exact export list
     - Runtime exports exactly: `icr`, `diagnose`, `applyTreatment`, `simulate`, `drawOutcome`, `score`, `seedFrom`, `parseTreatment`, `liquidationRecovery`, `createSimulationClient`; `export type * from './types'`; `export type { EngineError, EngineErrorCode, EngineResult } from './errors'`
     - Delete `web/src/engine/.gitkeep`; point `web/src/state/types.ts` and `machine.ts` at `'../engine'` if task 3.1 used a deeper path
     - _Requirements: 2.1, 2.5, 3.1_
 
-  - [-] 14.2 Write the export unit test in `web/src/engine/index.exports.unit.test.ts`
+  - [x] 14.2 Write the export unit test in `web/src/engine/index.exports.unit.test.ts`
     - `Object.keys(await import('./index')).sort()` equals the sorted expected list, and each symbol resolves without error
     - _Requirements: 2.1_
 
-  - [~] 14.3 Write the purity scan in `web/src/engine/purity.test.ts`
+  - [x] 14.3 Write the purity scan in `web/src/engine/purity.test.ts`
     - Read every `.ts` file under `web/src/engine` (skipping itself) and fail, naming file and line, on: `from`, `import()` or `require()` of `react`, `react-dom`, `three`, `react/*`, `three/*`, `@react-three/*`, or a relative path resolving into `src/scenes`, `src/fx` or `src/ui`; `Math.random`, `Date.now`, `performance.now`, `new Date()` with no arguments; a top-level `let` or `var`
     - Also assert `worker/simulate.worker.ts` imports only `../simulate` and `./protocol`
     - _Requirements: 2.2, 2.3, 12.9, 12.16_
 
-  - [~] 14.4 Write the error-code unit test in `web/src/engine/errors.unit.test.ts`
+  - [x] 14.4 Write the error-code unit test in `web/src/engine/errors.unit.test.ts`
     - One test per EngineError code (all 14), each triggered through a public function or the worker client and asserting the exact code, message and detail
     - _Requirements: 15.5_
 
-  - [~] 14.5 Write a non-gating benchmark in `web/src/engine/simulate.bench.ts` and record the timing
+  - [x] 14.5 Write a non-gating benchmark in `web/src/engine/simulate.bench.ts` and record the timing
     - Vitest `bench` of `simulate` on Ashgrove with 1000 paths for each treatment combination; the file is not picked up by `pnpm test`, so it never gates a run
     - Run it once with `pnpm exec vitest bench --run src/engine/simulate.bench.ts` and record the median time per combination, the machine and the Node version under "Benchmark results" in the Notes section of this file; if any median exceeds 16 ms, note that the terminate-on-cancel fallback needs reconsidering and tell the user
     - _Requirements: 12.16_
 
-- [~] 15. Checkpoint: full engine
+- [-] 15. Checkpoint: full engine
   - From `web`, run `pnpm typecheck; pnpm lint; pnpm format; pnpm test`. Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 16. Steering amendments
@@ -433,7 +433,25 @@ All commands run from `web` in PowerShell, chained with `;`.
 - `web/src/dev/fixtures` is read-only for this spec; the Ashgrove_Variant is built inside the test as a copy with I = 120e6.
 - Counterexample rule: a property-test failure is reported to the user with the fast-check seed and shrunk inputs. Do not weaken the property, filter the case, widen a tolerance or remove refinance.
 - Mulberry32 and `seedFrom` pinned values are produced by running the code once and cross-checked inside the test against an independent implementation; no numbers are invented in this file.
-- Benchmark results: to be filled in by task 14.5.
+- Benchmark results (task 14.5, `simulate` on Ashgrove Works, 1000 paths, delta 0.01, fixed seed, c 0.04, s 0.15, w 0.3). Machine: AMD Ryzen 9 8945HS w/ Radeon 780M Graphics; OS: Microsoft Windows NT 10.0.26200.0; Node v26.13.0; Vitest 5.1.0. Run with `pnpm exec vitest bench --run src/engine/simulate.bench.ts`; values below are from a second run that exported JSON (the first run printed no table). Every median is far below the 16 ms threshold, so the terminate-on-cancel fallback stands.
+
+  | Combination | Median ms | p99 ms |
+  | --- | --- | --- |
+  | empty | 0.71 | 1.51 |
+  | cut_costs | 0.69 | 1.69 |
+  | sell_assets | 1.04 | 2.07 |
+  | cut_costs + sell_assets | 1.05 | 2.20 |
+  | debt_for_equity | 0.69 | 1.49 |
+  | cut_costs + debt_for_equity | 0.70 | 1.53 |
+  | sell_assets + debt_for_equity | 1.05 | 2.10 |
+  | cut_costs + sell_assets + debt_for_equity | 1.03 | 2.23 |
+  | refinance | 0.68 | 1.56 |
+  | cut_costs + refinance | 0.68 | 1.63 |
+  | sell_assets + refinance | 1.42 | 2.81 |
+  | cut_costs + sell_assets + refinance | 1.43 | 2.71 |
+  | debt_for_equity + refinance | 0.68 | 1.66 |
+  | cut_costs + debt_for_equity + refinance | 0.92 | 1.65 |
+  | sell_assets + debt_for_equity + refinance | 1.73 | 2.99 |
 
 ## Task Dependency Graph
 

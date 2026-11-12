@@ -8,9 +8,9 @@ export type RateShock = number & { readonly __brand: 'RateShock' };
 export type Result = 'revived' | 'undead' | 'liquidated';
 
 /** Canonical tool types come from the rescue-engine (0 to 3 tools, enforced by parseTreatment). */
-export type { ToolChoice, Treatment } from '../engine/types';
+export type { ToolChoice, Treatment } from '../engine';
 
-import type { Treatment } from '../engine/types';
+import type { Treatment } from '../engine';
 
 export interface GameContext {
   cik: Cik | null;

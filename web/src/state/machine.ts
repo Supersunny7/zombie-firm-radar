@@ -12,7 +12,7 @@ import type {
   Treatment,
   TransitionOutcome,
 } from './types';
-import { parseTreatment as parseEngineTreatment } from '../engine/treatment';
+import { parseTreatment as parseEngineTreatment } from '../engine';
 
 export const MAX_TOOLS = 3;
 export const MAX_RATE_SHOCK = 0.05;
