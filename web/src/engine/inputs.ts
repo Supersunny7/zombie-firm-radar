@@ -89,10 +89,20 @@ export function prepare(firm: Firm, delta: number, macro: Macro): EngineResult<I
   const subDollar = money.filter(([, v]) => v !== 0 && Math.abs(v) < 1).map(([n]) => n);
   if (subDollar.length > 0) return fail(notRescuable(subDollar, 'unusable', y.fy));
 
+  // Req 4.16: rescue_inputs must be present with finite values; margin_change_mean is never read.
+  const ri = firm.rescue_inputs as Firm['rescue_inputs'] | null | undefined;
+  if (ri === null || ri === undefined || typeof ri !== 'object') {
+    return fail(notRescuable(['rescue_inputs'], 'unusable'));
+  }
+  const badRi: InputName[] = [];
+  if (!isNum(ri.margin_mean)) badRi.push('margin_mean');
+  if (!isNum(ri.margin_change_sd)) badRi.push('margin_change_sd');
+  if (!isNum(ri.revenue_growth_median)) badRi.push('revenue_growth_median');
+  if (badRi.length > 0) return fail(notRescuable(badRi, 'unusable'));
+
   const b = macro?.dgs10?.value;
   if (!isNum(b) || b < 0) return fail(notRescuable(['b'], 'unusable'));
 
-  const ri = firm.rescue_inputs;
   return ok({
     cik: firm.cik,
     name: firm.name,

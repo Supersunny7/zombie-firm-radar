@@ -81,7 +81,7 @@ Every public function checks the arguments it takes in this order and returns on
 
 1. `delta` (`delta_out_of_range`),
 2. `treatment` (parser order of Req 3.11, below),
-3. `firm` (`not_rescuable`, Req 4.2 to 4.7; the sub-dollar check of Req 4.15 comes after the D, R, I sign checks),
+3. `firm` (`not_rescuable`, Req 4.2 to 4.7; the sub-dollar check of Req 4.15 comes after the D, R, I sign checks; the `rescue_inputs` check of Req 4.16 comes last),
 4. `macro.dgs10.value` = b: not finite or < 0 → `not_rescuable` naming `b` (Req 4.13); checked only after the firm passes,
 5. function-specific options, in this order: `paths` (`invalid_paths`, Req 8.13), `seed` (`invalid_seed`, Req 8.16, 9.12), `cik` (`invalid_cik`, Req 10.9), `isoDate` (`invalid_date`, Req 10.5).
 
@@ -277,6 +277,7 @@ Steps:
 4. Collect every one of R, E, I, D, A, Q that is `null` (or not a finite number) → `not_rescuable` naming all of them in `detail.inputs`, in the order R, E, I, D, A, Q.
 5. Value checks, in order D, R, I: `D <= 0` → `not_rescuable` naming D (covers D = 0, Req 4.2 and 14.8, and D < 0, Req 4.6); `R <= 0` → names R; `I <= 0` → names I.
 6. Sub-dollar check (Req 4.15): every one of R, E, I, D, A, Q with `x !== 0 && Math.abs(x) < 1` → `not_rescuable` naming all of them in the order R, E, I, D, A, Q. Runs after the D/R/I sign checks and before the b check.
+6b. `rescue_inputs` check (Req 4.16): `firm.rescue_inputs` missing, or any of `margin_mean`, `margin_change_sd`, `revenue_growth_median` not a finite number → `not_rescuable`, reason `unusable`, naming every such field (`rescue_inputs` alone when the object is missing). Runs after the money checks and before the b check; never throws.
 7. `b = macro.dgs10.value`; b not a finite number or `b < 0` → `not_rescuable` with `detail.inputs = ['b']` (Req 4.13). This runs after steps 2 to 5, so a firm defect is always reported first (Req 4.14). With b >= 0, delta >= 0 and spread >= 0.02, `newRate > 0`, so refinance interest is always > 0 and `icr` never returns null for it.
 8. `r = I / D`; sigma and g clamped as listed. `margin_change_mean` is never read (Req 4.11).
 
@@ -335,7 +336,7 @@ export function refinanceApplies(oldRate: number, newRate: number): boolean {
 - `D'pre === 0` → not applied; `note = "No debt remains to refinance."`; no fee (Req 7.7).
 - Otherwise `icrPre = icr(E', D'pre * oldRate)` (non-null because both factors are > 0), `spread = spreadFor(icrPre)`, `newRate = b + delta + spread`, `applied = refinanceApplies(oldRate, newRate)`.
 - Applied (Req 7.5): `effRate = 1.02 * newRate`, `interest = D'pre * effRate`, i.e. D'_preFee × (1.02 × newRate); `debtShown = D'pre * 1.02`; `rateShown = newRate`; note `"Refinanced from 6.81% to 4.70% plus a 2% fee."` (rates to 2 decimals).
-- Not applied (Req 7.6): `effRate = oldRate`, `interest = D'pre * oldRate`, `debtShown = D'pre`, `rateShown = oldRate`, note `"Refinancing at 14.20% plus the 2% fee would not lower the annual interest cost of 6.81%."`.
+- Not applied (Req 7.6): `effRate = oldRate`, `interest = D'pre * oldRate`, `debtShown = D'pre`, `rateShown = oldRate`, note `"Refinancing at 14.20% plus the 2% fee would not lower the current rate of 6.81%, so the annual interest cost would not fall."`.
 - In all cases `interest = D'pre * effRate`.
 
 **Interest is D'_preFee × (1.02 × newRate).** Req 7.5 and 8.7 fix the projected annual interest when refinance applies as `D'pre * (1.02 * newRate)`, not `(1.02 * D'pre) * newRate`. The two are the same real number but can differ by 1 ulp in IEEE arithmetic. Computing `effRate = applied ? 1.02 * newRate : oldRate` makes `effRate` exactly `min(1.02 * newRate, oldRate)` (when the two are equal, both branches give the same value). This gives three exact guarantees used later:
@@ -1017,3 +1018,4 @@ All items were accepted during design review; D uses option (a). The requirement
 - **J. Cross-browser determinism:** same-day outcome guaranteed within one JavaScript engine; one-ulp differences across browsers accepted for v1. Req 9.9, 10.7.
 - **K. Refinance interest:** interest = D'_preFee × (1.02 × newRate); displayed debt D'_preFee × 1.02, displayed rate newRate. Req 7.5, 7.8, 8.7, 16.1.
 - **L. Sub-dollar money inputs (found by Property 18, seed -1208496245):** non-zero |x| < 1 USD is not_rescuable (Req 4.15).
+- **M. rescue_inputs validation (finance review) → Req 4.16:** a missing `rescue_inputs`, or a non-finite `margin_mean`, `margin_change_sd` or `revenue_growth_median`, is `not_rescuable`, so NaN never reaches `projectPath`.

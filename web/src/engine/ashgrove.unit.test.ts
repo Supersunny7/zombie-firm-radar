@@ -143,6 +143,61 @@ describe('Ashgrove worked example', () => {
     });
   });
 
+  describe('independent hand-computed literals (relative 1e-6, Req 15.3)', () => {
+    const LIT = 1e-6;
+
+    it('diagnosis at delta 0.01', () => {
+      const res = diagnose(structuredClone(ashgroveWorks), DELTA, fixtureMacro);
+      if (!res.ok) throw new Error('expected ok');
+      const d = res.value;
+      // shocked interest = 1.05e9 * (61/1050 + 0.01) = 71.5e6, so E / interest = 38 / 71.5
+      expectRel('shocked interest', 38e6 / d.shockedIcr, 71.5e6, LIT);
+      expectRel('shockedIcr', d.shockedIcr, 0.5314685, LIT);
+      expectRel('neededEbitIncrease', d.neededEbitIncrease as number, 0.881579, LIT);
+      expectRel('neededDebtCut', d.neededDebtCut as number, 0.4685315, LIT);
+      expectRel('neededRate', d.neededRate, 0.036190476, LIT);
+    });
+
+    it('cut_costs 0.05', () => {
+      const s = applyOk(ashgroveWorks, [{ name: 'cut_costs', params: { c: 0.05 } }]);
+      expectRel("E'", s.ebit, 96.1e6, LIT);
+      expectRel('workers', s.pain.workers, 31.25, LIT);
+    });
+
+    it('sell_assets 0.2', () => {
+      const s = applyOk(ashgroveWorks, [{ name: 'sell_assets', params: { s: 0.2 } }]);
+      expectRel("D'", s.debtPreFee, 826e6, LIT);
+      expectRel("R'", s.revenue, 960e6, LIT);
+      expectRel("E'", s.ebit, 30.4e6, LIT);
+      expectRel('workers', s.pain.workers, 23.33333, LIT);
+    });
+
+    it('debt_for_equity 0.3', () => {
+      const s = applyOk(ashgroveWorks, [{ name: 'debt_for_equity', params: { w: 0.3 } }]);
+      expectRel("D'", s.debtPreFee, 735e6, LIT);
+      expectRel('keep', s.keep, 0.3076923, LIT);
+      expectRel('shareholders', s.pain.shareholders, 69.2308, LIT);
+      expectRel('creditors', s.pain.creditors, 18, LIT);
+    });
+
+    it('variant: cut 0.08 + swap 0.6 + refinance', () => {
+      const s = applyOk(variant, [
+        { name: 'cut_costs', params: { c: 0.08 } },
+        { name: 'debt_for_equity', params: { w: 0.6 } },
+        { name: 'refinance', params: {} },
+      ]);
+      expectRel('icr_pre', s.refinance.icrPre as number, 2.508812, LIT);
+      expectRel('newRate', s.refinance.newRate as number, 0.087, LIT);
+      expectRel('displayed debt', s.debt, 428.4e6, LIT);
+      expectRel('interest', s.interest, 37.2708e6, LIT);
+      expectRel('year-0 ICR', s.year0.icr as number, 3.5137427, LIT);
+      expectRel('keep', s.keep, 0.1818182, LIT);
+      expectRel('shareholders', s.pain.shareholders, 81.8182, LIT);
+      expectRel('creditors', s.pain.creditors, 36, LIT);
+      expectRel('workers', s.pain.workers, 50, LIT);
+    });
+  });
+
   it('exact boundary: refinanceApplies(1.02 * x, x) is false', () => {
     for (const x of [0.087, 0.142, 0.02, 0.05, 0.0625, 0.1, 0.123456789]) {
       expect(refinanceApplies(1.02 * x, x), `x = ${x}`).toBe(false);

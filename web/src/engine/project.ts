@@ -17,7 +17,8 @@ export interface PathResult {
 /**
  * Sentinel for the unreachable case where icr() returns null for a year that is not
  * debt-free (non-positive or non-finite interest, or NaN EBIT). It is finite, far below 1
- * (never counts as covered), and keeps medians NaN-free.
+ * (never counts as covered), and keeps medians NaN-free. Unreachable for validated input
+ * (Req 4.16 rejects non-finite rescue_inputs in prepare); kept as a fail-safe.
  */
 const UNCOVERED = -Number.MAX_VALUE;
 

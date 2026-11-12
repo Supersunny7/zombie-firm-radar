@@ -66,7 +66,7 @@ export function evaluateRefinance(
   const effRate = applied ? FEE * newRate : oldRate;
   const note = applied
     ? `Refinanced from ${pct(oldRate)} to ${pct(newRate)} plus a 2% fee.`
-    : `Refinancing at ${pct(newRate)} plus the 2% fee would not lower the annual interest cost of ${pct(oldRate)}.`;
+    : `Refinancing at ${pct(newRate)} plus the 2% fee would not lower the current rate of ${pct(oldRate)}, so the annual interest cost would not fall.`;
 
   return {
     info: { requested: true, applied, icrPre, spread, oldRate, newRate, note },

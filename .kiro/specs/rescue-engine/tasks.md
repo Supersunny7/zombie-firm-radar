@@ -411,13 +411,13 @@ All commands run from `web` in PowerShell, chained with `;`.
   - From `web`, run `pnpm typecheck; pnpm lint; pnpm format; pnpm test; pnpm build`. Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 18. Finance review and commit
-  - [-] 18.1 Run the finance-reviewer agent and resolve its findings
+  - [x] 18.1 Run the finance-reviewer agent and resolve its findings
     - Invoke `finance-reviewer` on `web/src/engine` against `rescue-rules.md`, `zombie-definition.md`, this spec and the Ashgrove worked example
     - Fix every finding in engine code or tests; if a finding conflicts with the approved requirements or design, or would weaken a property, stop and ask the user
     - After the fixes, rerun from `web`: `pnpm typecheck; pnpm lint; pnpm format; pnpm test; pnpm build`
     - _Requirements: 15.8, 15.9_
 
-  - [~] 18.2 Commit the engine by explicit path
+  - [-] 18.2 Commit the engine by explicit path
     - Run `git pull` first; confirm `git diff --stat -- pipeline data` is empty
     - Stage by explicit path only, never `git add -A`, `git add .` or `git commit -a`: `git add web/src/engine web/src/state web/src/test/arbitraries.ts .kiro/specs/rescue-engine .kiro/steering/rescue-rules.md` (the steering file goes in this commit unless it was committed earlier)
     - Check `git status` shows nothing staged outside these paths

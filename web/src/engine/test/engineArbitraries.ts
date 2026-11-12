@@ -469,6 +469,42 @@ export const arbBadFirm: fc.Arbitrary<BadFirm> = fc.oneof(
     })),
   },
   {
+    // Req 4.16: valid money inputs, defective rescue_inputs (checked after nulls, signs and sub-dollar).
+    weight: 2,
+    arbitrary: fc
+      .tuple(
+        arbValidFirm,
+        fc.integer({ min: 1, max: 7 }),
+        fc.constantFrom<unknown>(Number.NaN, Infinity, -Infinity, null, undefined, '0.1'),
+        fc.boolean(),
+      )
+      .map(([firm, mask, badValue, dropObject]): BadFirm => {
+        const RI_FIELDS = ['margin_mean', 'margin_change_sd', 'revenue_growth_median'] as const;
+        if (dropObject) {
+          const { rescue_inputs: _dropped, ...rest } = firm;
+          void _dropped;
+          return {
+            firm: rest as unknown as Firm,
+            code: 'not_rescuable',
+            inputs: ['rescue_inputs'],
+          };
+        }
+        const ri: Record<string, unknown> = { ...firm.rescue_inputs };
+        const named: InputName[] = [];
+        RI_FIELDS.forEach((k, i) => {
+          if ((mask >> i) & 1) {
+            ri[k] = badValue;
+            named.push(k);
+          }
+        });
+        return {
+          firm: { ...firm, rescue_inputs: ri as unknown as Firm['rescue_inputs'] },
+          code: 'not_rescuable',
+          inputs: named,
+        };
+      }),
+  },
+  {
     weight: 6,
     arbitrary: fc
       .tuple(

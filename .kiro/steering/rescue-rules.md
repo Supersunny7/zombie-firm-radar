@@ -42,7 +42,7 @@ PROJECTION (3 years, Monte Carlo)
 
 - Typed errors, not clamping: an invalid delta, tool parameter, path count or seed returns a typed error. Only sigma, g and the outputs are clamped.
 
-- Each path uses a fixed Random_Block of 6 uniforms, drawn in this order: recovery, haircut, eps1, eps2, eps3. All 6 are drawn for every path, whatever the treatment.
+- Each path draws a fixed Random_Block of 6 uniforms, whatever the treatment: u0 → recovery, u1 → haircut, (u2, u3) → eps1 and eps2 by Box-Muller, (u4, u5) → eps3 (the second Box-Muller output is discarded).
 
 - The real outcome: when the player pulls the switch, draw ONE path with seed = hash(cik, treatment, ISO date). Same firm + same treatment + same day = same outcome.
 

@@ -14,7 +14,19 @@ export type EngineErrorCode =
   | 'invalid_seed'
   | 'invalid_cik';
 
-export type InputName = 'R' | 'E' | 'I' | 'D' | 'A' | 'Q' | 'b' | 'years';
+export type InputName =
+  | 'R'
+  | 'E'
+  | 'I'
+  | 'D'
+  | 'A'
+  | 'Q'
+  | 'b'
+  | 'years'
+  | 'rescue_inputs'
+  | 'margin_mean'
+  | 'margin_change_sd'
+  | 'revenue_growth_median';
 
 export interface EngineError {
   readonly code: EngineErrorCode;
@@ -40,6 +52,10 @@ const INPUT_LABELS: Readonly<Record<InputName, string>> = {
   Q: 'equity',
   b: 'the 10-year Treasury rate',
   years: 'fiscal years',
+  rescue_inputs: 'rescue inputs',
+  margin_mean: 'mean operating margin',
+  margin_change_sd: 'margin change deviation',
+  revenue_growth_median: 'median revenue growth',
 };
 
 function joinWords(words: readonly string[]): string {

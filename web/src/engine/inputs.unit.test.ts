@@ -172,6 +172,52 @@ describe('prepare: not_rescuable', () => {
   });
 });
 
+describe('prepare: rescue_inputs (Req 4.16)', () => {
+  function withRi(patch: Record<string, unknown>): Firm {
+    const f = structuredClone(ashgroveWorks);
+    Object.assign(f.rescue_inputs, patch);
+    return f;
+  }
+
+  it('missing rescue_inputs is not_rescuable and does not throw', () => {
+    const f = structuredClone(ashgroveWorks) as unknown as Record<string, unknown>;
+    delete f['rescue_inputs'];
+    const e = errorOf(f as unknown as Firm);
+    expect(e.code).toBe('not_rescuable');
+    expect(e.detail?.inputs).toEqual(['rescue_inputs']);
+  });
+
+  it('NaN margin_mean names margin_mean', () => {
+    const e = errorOf(withRi({ margin_mean: Number.NaN }));
+    expect(e.code).toBe('not_rescuable');
+    expect(e.detail?.inputs).toEqual(['margin_mean']);
+  });
+
+  it('Infinity margin_change_sd names margin_change_sd', () => {
+    const e = errorOf(withRi({ margin_change_sd: Number.POSITIVE_INFINITY }));
+    expect(e.code).toBe('not_rescuable');
+    expect(e.detail?.inputs).toEqual(['margin_change_sd']);
+  });
+
+  it('null revenue_growth_median names revenue_growth_median', () => {
+    const e = errorOf(withRi({ revenue_growth_median: null }));
+    expect(e.code).toBe('not_rescuable');
+    expect(e.detail?.inputs).toEqual(['revenue_growth_median']);
+  });
+
+  it('names several bad fields in order, after money checks and before b', () => {
+    const f = withRi({ margin_mean: Number.NaN, revenue_growth_median: Number.NaN });
+    expect(errorOf(f, 0.01, macroWith(Number.NaN)).detail?.inputs).toEqual([
+      'margin_mean',
+      'revenue_growth_median',
+    ]);
+    const g = withRi({ margin_mean: Number.NaN });
+    const last = g.years[g.years.length - 1] as FirmYear;
+    last.equity_usd = null;
+    expect(errorOf(g).detail?.inputs).toEqual(['Q']);
+  });
+});
+
 describe('prepare: delta_out_of_range', () => {
   it.each([-0.01, 0.0500001, Number.NaN])('rejects %s without clamping', (d) => {
     const e = errorOf(structuredClone(ashgroveWorks), d);

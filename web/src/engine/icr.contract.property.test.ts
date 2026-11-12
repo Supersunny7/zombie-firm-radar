@@ -32,7 +32,7 @@ describe('Property 1: icr contract', () => {
     );
   });
 
-  it('returns ebit / interest for finite ebit and positive finite interest; negative ebit gives a negative result', () => {
+  it('returns ebit / interest for finite ebit and positive finite interest; negative ebit gives a negative result, or -0 on underflow (Req 1.4)', () => {
     fc.assert(
       fc.property(
         fc.double({ noNaN: true, noDefaultInfinity: true, min: -1e12, max: 1e12 }),
