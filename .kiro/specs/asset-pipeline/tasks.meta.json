@@ -575,6 +575,11 @@
         "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794466768233
+      },
+      {
+        "executionId": "d0b96136-0d90-4a57-b2e8-329178085d46",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794467533259
       }
     ],
     "12. Combined stop gate - wait for picks for rounds 2 and 3": [
@@ -582,6 +587,16 @@
         "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794465239379
+      },
+      {
+        "executionId": "d0b96136-0d90-4a57-b2e8-329178085d46",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794467538175
+      },
+      {
+        "executionId": "94318aaa-2d5a-45fa-87b0-af90109617f6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794467777645
       }
     ],
     "10. Round 3 scouting (lab and finale, sounds, extra avatars)": [
@@ -589,6 +604,64 @@
         "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794466544648
+      }
+    ],
+    "11. Merge and validate": [
+      {
+        "executionId": "d0b96136-0d90-4a57-b2e8-329178085d46",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794467533437
+      }
+    ],
+    "13.1 Pull, run the Proop and Rocketbox checks, write the final picks into the README": [
+      {
+        "executionId": "94318aaa-2d5a-45fa-87b0-af90109617f6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794468250085
+      },
+      {
+        "executionId": "94318aaa-2d5a-45fa-87b0-af90109617f6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794468274831
+      },
+      {
+        "executionId": "94318aaa-2d5a-45fa-87b0-af90109617f6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794468278566
+      },
+      {
+        "executionId": "94318aaa-2d5a-45fa-87b0-af90109617f6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794468715317
+      }
+    ],
+    "13.2 Write `tools/cache/manual/README.md`": [
+      {
+        "executionId": "94318aaa-2d5a-45fa-87b0-af90109617f6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794468716680
+      },
+      {
+        "executionId": "94318aaa-2d5a-45fa-87b0-af90109617f6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794468720454
+      },
+      {
+        "executionId": "94318aaa-2d5a-45fa-87b0-af90109617f6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794468906584
+      }
+    ],
+    "13.3 Commit only owned paths, report the binary-fetching packages, and stop": [
+      {
+        "executionId": "94318aaa-2d5a-45fa-87b0-af90109617f6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794468906749
+      },
+      {
+        "executionId": "94318aaa-2d5a-45fa-87b0-af90109617f6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794468910713
       }
     ]
   }

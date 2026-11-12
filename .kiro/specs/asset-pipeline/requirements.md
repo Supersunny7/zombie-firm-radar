@@ -6,7 +6,7 @@ The asset-pipeline feature supplies the licensed 3D models, textures, HDRIs, ava
 
 Phase 1 (Scouting) finds, verifies and documents 2-3 candidates per sub-item in 7 categories, then stops and waits for the user's picks. Phase 2 (Download and Convert) downloads the picked assets with a reproducible script, converts them to web formats, enforces size budgets, and records licenses in `CREDITS.md` and `web/public/assets/manifest.json`.
 
-The tasks document lists Phase 1 only. Phase 2 tasks are added when the user asks after picking. The visual targets are the images in `/reference` (near-black night scene with one warm flashlight pool and cold moon rim light in the graveyard; surgical lamp pool on the patient in a dark crypt in the lab). Licensing rules come from `.kiro/steering/asset-licensing.md`. The tech stack and budgets come from `.kiro/steering/tech.md`.
+The tasks document first listed Phase 1 only. After the user's final picks for rounds 2 and 3, the tasks document holds a Phase 1 wrap-up (task 13) and all Phase 2 tasks (tasks 14 and later), and every one of them is required. The visual targets are the images in `/reference` (near-black night scene with one warm flashlight pool and cold moon rim light in the graveyard; surgical lamp pool on the patient in a dark crypt in the lab). Licensing rules come from `.kiro/steering/asset-licensing.md`. The tech stack and budgets come from `.kiro/steering/tech.md`.
 
 ## Glossary
 
@@ -38,6 +38,17 @@ The tasks document lists Phase 1 only. Phase 2 tasks are added when the user ask
 - **Owned_Paths**: The only paths the Asset_Pipeline may stage and commit: `tools/`, `web/public/assets`, `reference/candidates`, `CREDITS.md`, `.gitignore`, `.kiro/specs/asset-pipeline`.
 - **Visible_In_App_Note**: The note at the top of the Credits_File headed "Visible in app", stating that the Credits_File content is shown in the Credits button of the Settings menu in the app.
 - **Parallel_Chat**: A concurrent working session that edits `web/src/engine` and `web/src/state` and holds uncommitted work.
+- **Final_Picks**: The user's final selections for rounds 2 and 3, recorded in the Picks and Not picked sections of the Candidates_README.
+- **Picks_File**: The committed file `tools/picks.json`, the recipe that lists every picked asset with its source, edits and credit fields.
+- **Edit_Operation**: One named, parameterised change that the Fetch_Script applies to a model or texture of a pick after conversion to glTF or to an image, such as decimate, removeNode, desaturate, darken, grime, selectVariant or splitMesh.
+- **Edit_List**: The ordered list of Edit_Operations stored in the `edits` field of a pick.
+- **Decal_Generator**: The own-work script `tools/gen-decals.mjs` that draws the handprint and drag-mark decal images procedurally.
+- **Cracked_Headstone_Script**: The own-work script `tools/make-cracked-headstone.mjs` that derives the cracked headstone model from the intact headstone scan.
+- **Intact_Headstone_Scan**: The Manual_Pick model `sketchfab-small-gravestone-drydoctoregg` by the author drydoctoregg, licensed CC BY.
+- **Bip01_Skeleton**: The 3ds Max Biped skeleton of the Microsoft Rocketbox avatars, whose bone names start with `Bip01`.
+- **Proop_Account**: The Sketchfab account (shown as ALTEREGO or Proop) that uploaded `sketchfab-butchers-hook-chain-proop`.
+- **Manual_README**: The file `tools/cache/manual/README.md`, which lists how to download and where to place every Manual_Pick.
+- **Own_Work_Tool_Output**: A file produced by the Decal_Generator or the Cracked_Headstone_Script.
 
 ## Requirements
 
@@ -441,3 +452,146 @@ The tasks document lists Phase 1 only. Phase 2 tasks are added when the user ask
 3. THE Scout_Agent SHALL commit only files inside the Owned_Paths, and only WHEN the user asks for a commit; the user has not asked for a commit in this round.
 4. AFTER the merge and validation, THE Scout_Agent SHALL stop and wait for the user's picks for rounds 2 and 3 together; the round-2 decisions remain open.
 5. WHILE the user has not given those picks, THE Scout_Agent SHALL add no Phase 2 tasks, install no packages, and leave Asset_Root, the Manifest, the Credits_File and the Fetch_Script unchanged.
+
+### Requirement 32: Final picks record for rounds 2 and 3
+
+**User Story:** As the project owner, I want my final picks for rounds 2 and 3 written into the candidates README, so that Phase 2 starts from one reviewable record of what is used, what is edited and what is not used.
+
+#### Acceptance Criteria
+
+1. WHEN the Phase 1 wrap-up starts, THE Scout_Agent SHALL run `git pull --no-edit` as its first command and SHALL stop and report the output on a non-zero exit code or a merge conflict.
+2. THE Scout_Agent SHALL write the Final_Picks of round 2 and round 3 into the "Picks" section of the Candidates_README, one line per pick stating the Candidate name, the scene (graveyard or lab) and the role, plus the planned edit in words where the Final_Picks name one (for example "decimate to about 30K triangles", "desaturate the green slightly", "split handle and blade from the base").
+3. THE Scout_Agent SHALL write the following Candidates into the "Not picked" section of the Candidates_README, each with the reason "not picked by the user": the leather belt, the plastic skull, the rough linen, both Mr.Nein sets, the RBG crosses, both ambientCG leaking decals, the second body bag, the second morgue unit, knife-switch-type-c, the olkaad iron door, castle-brick-07, slate-floor-02, and the second Candidate in each round-3 sound pair.
+4. THE Scout_Agent SHALL keep `sketchfab-zombie-hand-greenall` in the "Rejected" section and SHALL add `sketchfab-zombie-corpse-greenall` to Picks with the note "provenance accepted on the author's statement".
+5. THE Scout_Agent SHALL carry the phrase "provenance accepted on the author's statement" into the `credits.changes` field of the pick for `sketchfab-zombie-corpse-greenall` in the Picks_File, so that the Credits_File row records it when the file exists.
+6. THE Scout_Agent SHALL write each pick line using the name of a Candidate that exists in a Candidates_README table, and SHALL report any unknown name to the user without adding it.
+7. THE Scout_Agent SHALL apply the outcome of the Proop_Account check (Requirement 33) and of the Rocketbox preview check (Requirement 34) to the Picks and Not picked sections before the section is committed.
+8. WHEN the Candidates_README, the Manual_README and the spec files are complete, THE Scout_Agent SHALL stage only `reference/candidates`, `tools/cache/manual/README.md` and `.kiro/specs/asset-pipeline` by explicit path, SHALL NOT stage `DEVLOG.md`, and SHALL NOT run `git add -A`, `git add .` or `git add -f`.
+9. WHEN the user has asked for the commit in the current request, THE Scout_Agent SHALL commit the staged Owned_Paths with a conventional message of the form `docs(asset-pipeline): <description>` of at most 72 characters and SHALL then stop.
+
+### Requirement 33: AI-account check for the Proop hook upload
+
+**User Story:** As the project owner, I want the uploader of the butcher's hook checked for AI-generated models before I download anything, so that no AI-generated asset of unknown origin enters the project.
+
+#### Acceptance Criteria
+
+1. WHEN the Phase 1 wrap-up runs, THE Scout_Agent SHALL check the Proop_Account before `sketchfab-butchers-hook-chain-proop` is written into the Manual_README.
+2. WHEN the Scout_Agent runs the check, THE Scout_Agent SHALL open the Proop_Account page and the pages of its other public uploads with the Playwright_Server in read-only mode (navigation, snapshot and screenshot only, no login, no download, no form input).
+3. WHEN the Scout_Agent inspects an upload, THE Scout_Agent SHALL read its title, tags, description and badges for AI-generation statements, including the Sketchfab "createdwithai" tag and the words "AI generated", "AI-generated", "text-to-3D", "image-to-3D", "Meshy", "Tripo", "Luma" and "Rodin".
+4. IF any upload of the Proop_Account carries an AI-generation tag or statement, THEN THE Scout_Agent SHALL drop `sketchfab-butchers-hook-chain-proop` from Picks, add it to Rejected with the reason "uploader publishes AI-generated models", leave it out of the Manual_README and the Picks_File, and tell the user in the report which upload triggered the decision.
+5. IF no upload of the Proop_Account carries an AI-generation tag or statement, THEN THE Scout_Agent SHALL keep the pick and SHALL record the number of uploads inspected and the date of the check in the Candidates_README.
+6. IF the Proop_Account page or any of its upload pages cannot be loaded, THEN THE Scout_Agent SHALL treat the check as unfinished, SHALL NOT list the hook download in the Manual_README, and SHALL ask the user how to proceed.
+
+### Requirement 34: Rocketbox preview logo check and Bip01 bone-name confirmation
+
+**User Story:** As the project owner, I want the six extra Rocketbox avatars checked for brand marks and for the expected skeleton, so that no logo ships in the app and no animation is retargeted onto a wrong rig.
+
+#### Acceptance Criteria
+
+1. WHEN the Phase 1 wrap-up runs, THE Scout_Agent SHALL open the repository preview image of each of the avatars Medical_Female_01, Construction_Male_01, Construction_Female_01, Business_Female_01, Gardener_Male_01 and Female_Adult_06 and SHALL look at each image for logos, brand marks and readable brand text.
+2. IF a preview image shows a logo, a brand mark or readable brand text, THEN THE Scout_Agent SHALL drop that avatar from Picks, add it to Not picked with the reason "logo or brand mark visible in the preview", and tell the user which avatars were dropped.
+3. WHEN the Fetch_Script converts a Rocketbox avatar, THE Fetch_Script SHALL read the joint names of the converted skeleton and SHALL confirm that every joint name matches the pattern `^Bip01([ _]|$)`, treating a single exported scene root node without the prefix as not a joint.
+4. IF the skeleton of a Rocketbox avatar contains a joint whose name does not match the pattern in criterion 3, or contains no joint at all, THEN THE Fetch_Script SHALL fail the conversion of that avatar with a message naming the avatar, the first offending joint name and the expected pattern, SHALL write no output file for that avatar, and SHALL continue with the remaining picks.
+5. WHEN the Fetch_Script converts a Rocketbox avatar successfully, THE Fetch_Script SHALL record in the pick's Manifest entry that the Bip01 check passed.
+
+### Requirement 35: Final picks recipe in the Picks_File
+
+**User Story:** As a developer, I want every final pick written as one recipe entry with its source, edits and credit fields, so that the Fetch_Script rebuilds the whole asset folder without manual decisions.
+
+#### Acceptance Criteria
+
+1. THE Picks_File SHALL contain exactly one entry for each pick in the Final_Picks and in the round-1 Picks of the Candidates_README that is not rejected or dropped.
+2. THE Picks_File SHALL give each entry the fields `id`, `source`, `manual`, `expectedFile`, `targetFolder`, `group`, `edits` and `credits`, where `expectedFile` and `targetFolder` are null when `manual` is false, `group` is `graveyard` or `lab`, `edits` is a possibly empty Edit_List, and `credits` holds the non-empty values `title`, `author`, `sourceUrl`, `license` and `changes`.
+3. WHERE a pick is a Manual_Pick, THE Picks_File SHALL set `manual` to true, `expectedFile` to the exact file name that the Manual_README states, and `targetFolder` to `tools/cache/manual/<id>`.
+4. WHERE a pick is a Manual_Pick, THE Fetch_Script SHALL read the pick's file from `targetFolder/expectedFile` and SHALL make no network request for it.
+5. WHERE a pick's files come from the Decal_Generator or the Cracked_Headstone_Script, THE Picks_File SHALL set `source.type` to `generated` or `derived` respectively and THE Fetch_Script SHALL run the matching script instead of a download.
+6. IF an entry has an unknown key, a missing required field, a duplicate `id`, or an edit that is not defined in Requirement 36, THEN THE Fetch_Script SHALL refuse the entry, report its `id` and the problem, continue with the remaining entries, and exit with a non-zero code after all entries are processed.
+7. THE Picks_File SHALL record for the Final_Picks at least these edits: for `sketchfab-zombie-hand-craggle` a desaturate of the green; for `sketchfab-human-skull-danieledefilippis` a darken and a grime; for `sketchfab-morgue-refrigerator-porteous` a decimate to about 30,000 triangles; for `sketchfab-strap-buckles-kit-dmigul` a darken of the webbing to black; for `sketchfab-knife-switch-type-d` a selectVariant of the grey variant and a splitMesh that separates handle and blade from the base; for `sketchfab-crutch-and-iv-drip` a removeNode of the crutch; and for the headstones a decimate to at most 20,000 triangles.
+
+### Requirement 36: Per-asset edit operations
+
+**User Story:** As a developer, I want a small fixed set of repeatable edit operations in the recipe, so that each asset is adapted to the scene without opening a 3D editor.
+
+#### Acceptance Criteria
+
+1. THE Fetch_Script SHALL support these Edit_Operations: `decimate` (target triangle count), `removeNode` (node or mesh name), `desaturate` (texture or material, saturation cap), `darken` (texture or material, maximum channel value), `grime` (texture or material, seed, floor value), `selectVariant` (material or texture variant name) and `splitMesh` (by node or by connected parts, with the output part names).
+2. WHEN the Fetch_Script applies an Edit_List, THE Fetch_Script SHALL apply the Edit_Operations in the listed order to the model read from the cache, after the FBX-to-glTF step and before the Meshopt step.
+3. WHEN the Fetch_Script applies `decimate`, THE Fetch_Script SHALL reduce the triangle count of each affected mesh so that the total is at most the target, using meshoptimizer through gltf-transform, and SHALL leave a mesh unchanged when its triangle count is already at or below the target.
+4. WHEN the Fetch_Script applies `removeNode`, THE Fetch_Script SHALL remove the named node or mesh and its children, SHALL leave every other node unchanged, and SHALL prune resources that no longer have a reference.
+5. WHEN the Fetch_Script applies `desaturate`, `darken` or `grime`, THE Fetch_Script SHALL change only the named texture, SHALL set the result so that applying the same operation to its own output changes no 8-bit channel by more than 1, and SHALL use only the seed from the pick for any random value.
+6. WHEN the Fetch_Script applies `selectVariant`, THE Fetch_Script SHALL keep only the named material or texture variant and SHALL remove the other variants and unreferenced textures.
+7. WHEN the Fetch_Script applies `splitMesh`, THE Fetch_Script SHALL divide the named mesh into the listed parts so that every triangle belongs to exactly one part, the total triangle count is unchanged, and each part is a separate node with the listed name that can be animated.
+8. IF an Edit_Operation names a node, mesh, material or texture that does not exist in the model, THEN THE Fetch_Script SHALL fail that pick with a message naming the pick, the operation and the missing name, write no output file for it, and continue with the remaining picks.
+9. WHEN the Fetch_Script runs the same Edit_List twice on the same cached input, THE Fetch_Script SHALL produce output files with the same SHA-256 hashes.
+
+### Requirement 37: No executables outside npm for geometry edits
+
+**User Story:** As the project owner, I want all geometry edits done with npm packages only, so that no Blender or other unreviewed program runs on my machine.
+
+#### Acceptance Criteria
+
+1. THE Fetch_Script SHALL perform every geometry edit with gltf-transform and meshoptimizer only.
+2. THE Asset_Pipeline SHALL NOT call Blender or any other executable that was not installed through npm.
+3. IF a `splitMesh` Edit_Operation cannot be done with gltf-transform and meshoptimizer for a model (for example because the handle and the blade share one connected mesh with no separating node or connected part), THEN THE Scout_Agent SHALL stop work on that pick, SHALL describe the problem and the options to the user, and SHALL wait for the user's answer before continuing with that pick.
+4. WHILE the user has not answered a stop under criterion 3, THE Scout_Agent SHALL continue with the other picks and SHALL leave the stopped pick out of the Manifest and the Credits_File.
+5. IF a conversion step needs a binary that is available only outside npm, THEN THE Scout_Agent SHALL ask the user for another approach, as Requirement 19.5 states.
+
+### Requirement 38: Procedural handprint and drag-mark decals
+
+**User Story:** As the project owner, I want our own generated blood handprint and drag-mark decals, so that the horror dressing needs no third-party decal and every mark is repeatable.
+
+#### Acceptance Criteria
+
+1. THE Decal_Generator SHALL live at `tools/gen-decals.mjs` and SHALL write to the git-ignored folder `tools/cache/generated/decals/` only.
+2. THE Decal_Generator SHALL produce at least 3 variants of a handprint decal and at least 3 variants of a drag-mark decal.
+3. THE Decal_Generator SHALL draw each variant with a seeded pseudo-random number generator whose seed is derived from the decal type and the variant index, and SHALL NOT read the clock, `Math.random` or the environment.
+4. WHEN the Decal_Generator runs twice with the same seed, THE Decal_Generator SHALL write PNG files with the same SHA-256 hashes.
+5. THE Decal_Generator SHALL write each variant as a 512 by 512 pixel RGBA PNG with a transparent background, so that the alpha channel contains at least one pixel with alpha 0 and at least one pixel with alpha above 0.
+6. THE Decal_Generator SHALL give every pixel with alpha above 0 a dark, wet, low-saturation red colour, defined as hue within 15 degrees of red, saturation from 0.45 to 0.75, and value from 0.12 to 0.45.
+7. THE Decal_Generator SHALL give the 3 or more variants of one decal type pairwise different pixel data.
+8. WHERE the pipeline converts textures to WebP, THE Fetch_Script SHALL convert each generated PNG to a WebP file that keeps the alpha channel, with its longest side at most 1024 pixels.
+9. THE Fetch_Script SHALL write for each generated decal a Credits_File row and a Manifest entry with the author "Zombie Firm Radar team", the license "Own work" and a non-empty "Changes we made" text that states the decal is procedurally generated.
+
+### Requirement 39: Cracked headstone derived from the intact scan
+
+**User Story:** As the project owner, I want the cracked headstone made by our own script from the intact scan, so that all three headstone states match in style and the cracked state is repeatable.
+
+#### Acceptance Criteria
+
+1. THE Cracked_Headstone_Script SHALL live at `tools/make-cracked-headstone.mjs` and SHALL read the Intact_Headstone_Scan from the Manual_Cache after the `decimate` Edit_Operation of the intact pick has been applied.
+2. THE Cracked_Headstone_Script SHALL add a displaced crack normal map to the stone material, generated procedurally from a seeded pseudo-random number generator, and SHALL add a chipped edge by moving vertices near the top and side edges of the stone, using only the seed from the pick.
+3. WHEN the Cracked_Headstone_Script runs twice on the same input with the same seed, THE Cracked_Headstone_Script SHALL write GLB files with the same SHA-256 hashes.
+4. THE Cracked_Headstone_Script SHALL produce a model with at most 20,000 triangles, and WHEN the chipped edge would add triangles beyond that limit, THE Cracked_Headstone_Script SHALL decimate the result to the limit.
+5. THE Cracked_Headstone_Script SHALL keep the face of the stone free of readable inscriptions.
+6. THE Fetch_Script SHALL write for the cracked headstone a Credits_File row whose Author column names the author of the Intact_Headstone_Scan (drydoctoregg), whose License column is "CC BY" and whose "Changes we made" column states that the cracked state was derived by our script from the intact scan with a displaced crack normal map and a chipped edge.
+7. IF the Intact_Headstone_Scan is missing from the Manual_Cache, THEN THE Fetch_Script SHALL skip the cracked headstone, report the expected file name of the intact scan, and exit with a non-zero code after all picks are processed.
+8. WHERE the cracked headstone is not produced, THE Asset_Pipeline SHALL leave the procedural headstones as the fallback and SHALL state this in the final report.
+
+### Requirement 40: Manual-pick README completeness
+
+**User Story:** As the project owner, I want exact download instructions for every manual pick, so that I can fetch each file on the first try and drop it in the right folder.
+
+#### Acceptance Criteria
+
+1. THE Manual_README SHALL contain one entry for every pick whose `manual` field is true, and no entry for any other pick.
+2. THE Manual_README SHALL state in each entry the Candidate name, the source page URL, the exact download option to choose on the site (for example the Sketchfab "glTF" autoconverted zip or the original format, or the Freesound original file), the exact expected file name, the exact target path `tools/cache/manual/<id>/<expectedFile>`, the credit line, and any note such as "grey variant" for the knife switch.
+3. THE Manual_README SHALL state the Freesound author in the credit line of every sound entry.
+4. WHEN the Manual_README is written, THE Scout_Agent SHALL verify with `git check-ignore` that `tools/cache/manual/README.md` is not ignored and that a file under `tools/cache/manual/<id>/` is ignored.
+5. WHEN the Fetch_Script runs, THE Fetch_Script SHALL regenerate the Manual_README from the Picks_File so that the file content depends only on the picks.
+6. THE Manual_README SHALL NOT contain an entry for `sketchfab-butchers-hook-chain-proop` unless the check in Requirement 33 passed.
+
+### Requirement 41: Phase 2 execution order, audit and stop gate
+
+**User Story:** As the project owner, I want Phase 2 to install only what I approved, finish with an audit and a report, and then stop, so that nothing is committed or kept without my say.
+
+#### Acceptance Criteria
+
+1. THE Scout_Agent SHALL run `git pull --no-edit` as the first command of every Phase 2 task that changes files.
+2. WHEN the tools package is ready for its first install, THE Scout_Agent SHALL list the Prebuilt_Binary_Packages (sharp, ffmpeg-static, fbx2gltf) with their pinned versions and note that meshoptimizer is WebAssembly, SHALL stop, and SHALL wait for the user's approval before running any install command.
+3. WHILE the user has not approved the install, THE Scout_Agent SHALL run no install command and no script that needs the packages.
+4. WHEN the Fetch_Script has run with exit code 0, THE Scout_Agent SHALL print a size report with the size of every output file and the used size and limit of the Graveyard_Budget, Lab_Budget and Total_Budget.
+5. WHEN the size report is complete, THE Scout_Agent SHALL invoke the Asset_Auditor and repeat fixes and audits as Requirement 20 states until the Asset_Auditor reports no findings.
+6. IF the same Asset_Auditor finding remains after two fixes, THEN THE Scout_Agent SHALL stop and ask the user instead of repeating the fix.
+7. WHEN the audit reports no findings, THE Scout_Agent SHALL write a final report that lists the converted assets, the Manual_Picks that are still missing from the Manual_Cache, the picks that were dropped or stopped, the budgets and the packages installed, and SHALL then stop.
+8. THE Scout_Agent SHALL run `git commit` in Phase 2 only WHEN the user asks for it in the current request, and SHALL stage only files inside the Owned_Paths by explicit path.
+9. THE Scout_Agent SHALL leave every file outside the Owned_Paths, including `web/src`, `/pipeline`, `/data` and `DEVLOG.md`, unchanged and unstaged.

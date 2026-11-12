@@ -276,7 +276,7 @@ Fields:
 
 | Field | Type | Notes |
 | --- | --- | --- |
-| `name` | string | `^[a-z0-9][a-z0-9-]*$`, unique; becomes the output subfolder |
+| `name` | string | superseded by `id` in the final recipe (see "Phase 2 additions"); `^[a-z0-9][a-z0-9-]*$`, unique; becomes the output subfolder |
 | `kind` | `texture \| hdri \| model \| avatar \| animation \| audio` | selects converter and output folder |
 | `category` | 1..7 | matches Candidates_README |
 | `group` | `graveyard \| lab` | budget group; if missing the file counts only in the total (warning) |
@@ -630,15 +630,57 @@ Reflection notes: the per-budget limit criteria (17.1-17.3) and the unassigned-f
 
 ### Property 15: Manual README lists every manual pick
 
-*For any* set of picks, the generated `tools/cache/manual/README.md` SHALL contain, for every manual pick, its `expectedFile` and `pageUrl`, SHALL contain no entry for non-manual picks, and generating it twice from the same picks SHALL produce identical bytes.
+*For any* set of picks, the generated `tools/cache/manual/README.md` SHALL contain exactly one entry for every pick with `manual: true` and no entry for any other pick, each entry SHALL contain the pick's `id`, `pageUrl`, download option, `expectedFile`, target path `tools/cache/manual/<id>/<expectedFile>` and credit line (and the note when the pick has one), the hook pick `sketchfab-butchers-hook-chain-proop` SHALL appear only when its AI-account check flag is `passed`, and generating the file twice from the same picks SHALL produce identical bytes.
 
-**Validates: Requirements 15.1**
+**Validates: Requirements 15.1, 40.1, 40.2, 40.3, 40.5, 40.6**
 
 ### Property 16: Visible-in-app note is first, unique and preserved
 
 *For any* `CREDITS.md` content (with zero, one or several copies of the note, at any position, with or without altered body text, and with arbitrary other text and table rows), `ensureVisibleNote` SHALL return content in which the `## Visible in app` section appears exactly once and is the first section, its body equals the fixed text, and all text outside the note is unchanged byte for byte; applying it twice SHALL give the same result as applying it once; and *for any* sequence of `upsertCreditRows` and `ensureCmuLine` calls applied after it, the note SHALL remain unchanged, first and unique.
 
 **Validates: Requirements 22.1, 22.2, 22.3, 22.4, 22.5**
+
+### Property 17: Decal generator is deterministic and seed-driven
+
+*For any* decal type in {handprint, drag-mark} and any variant index from 0 to 15, running the generator twice SHALL give PNG bytes with the same SHA-256; and *for any* two distinct variant indices of the same type, the pixel data SHALL differ. The generator SHALL give the same output whatever the system clock and `Math.random` return (tests stub both to throw).
+
+**Validates: Requirements 38.3, 38.4, 38.7**
+
+### Property 18: Decal images have the required size, alpha and colour range
+
+*For any* generated decal variant, the decoded image SHALL be 512 by 512 pixels with 4 channels, SHALL contain at least one pixel with alpha 0 and at least one pixel with alpha above 0, and *for every* pixel with alpha above 0 the HSV hue SHALL be within 15 degrees of red, the saturation between 0.45 and 0.75 and the value between 0.12 and 0.45. After conversion to WebP the alpha channel SHALL still be present and the longest side SHALL be at most 1024 pixels.
+
+**Validates: Requirements 38.5, 38.6, 38.8**
+
+### Property 19: Cracked headstone stays within the triangle limit
+
+*For any* valid input mesh (a closed or open triangle mesh with 12 to 40,000 triangles, UVs, and an optional normal map) and any seed, the model written by the Cracked_Headstone_Script SHALL have at most 20,000 triangles, SHALL contain a normal-map texture, and SHALL have the same bounding-box height as the input within 5 percent.
+
+**Validates: Requirements 39.2, 39.4**
+
+### Property 20: Cracked headstone derivation is deterministic
+
+*For any* valid input mesh and any seed, running the Cracked_Headstone_Script twice SHALL write GLB files with the same SHA-256; and vertices that share a position in the input (UV seams) SHALL still share a position in the output, so the chipped edge opens no gap.
+
+**Validates: Requirements 39.2, 39.3**
+
+### Property 21: Edit operations are idempotent and deterministic
+
+*For any* model or texture and any single Edit_Operation with valid parameters, applying the operation to its own output (in tolerant mode, where a missing target is not an error) SHALL give the same result as applying it once: exactly for `decimate`, `removeNode`, `selectVariant` and `splitMesh`, and within 1 level per 8-bit channel for `desaturate`, `darken` and `grime`. Applying a whole Edit_List twice to the same cached input SHALL give files with the same SHA-256.
+
+**Validates: Requirements 36.3, 36.4, 36.5, 36.6, 36.9**
+
+### Property 22: Split and decimate preserve what they promise
+
+*For any* mesh and any valid `splitMesh` selection, every input triangle SHALL belong to exactly one output part, the sum of the part triangle counts SHALL equal the input count, and the part nodes SHALL carry the requested names; and *for any* mesh and any target T, `decimate` SHALL return at most T triangles when the input had more than T, and the unchanged mesh when the input had T or fewer. `removeNode` SHALL leave every node other than the named node and its descendants unchanged.
+
+**Validates: Requirements 36.3, 36.4, 36.7**
+
+### Property 23: Bip01 skeleton check accepts exactly the Bip01-named skeletons
+
+*For any* list of joint names, `checkBip01(joints)` SHALL accept if and only if the list is not empty and every name matches `^Bip01([ _]|$)`; on refusal it SHALL return the first offending name (or "no joints" for an empty list) and the expected pattern.
+
+**Validates: Requirements 34.3, 34.4**
 
 ## Error Handling
 
@@ -677,7 +719,7 @@ Libraries: Vitest 5.1.0 and fast-check 4.10.2 (same versions as `web/package.jso
 
 ### Property tests
 
-- Each of the 16 properties above is implemented as exactly one `fc.assert(fc.property(...))` test with `numRuns: 100` or more (200 for the license and credits properties).
+- Each of the 23 properties (1 to 16 above and 17 to 23 in "Phase 2 additions") is implemented as exactly one `fc.assert(fc.property(...))` test with `numRuns: 100` or more (200 for the license and credits properties).
 - Each test carries a comment tag in this form: `// Feature: asset-pipeline, Property 7: License allow-list is exact`.
 - Orchestrator-level properties (1, 4, 8, 10, 11, 12) run `runFetch` against a temp directory with injected fakes: an `http` fake that records every request (URL, headers) and applies a generated failure schedule, and converter fakes that return bytes derived deterministically from the input hash and can be told to throw at a generated step.
 - Generators: valid picks (names from `^[a-z0-9][a-z0-9-]*$`, each kind, each source type, licenses drawn from the alias table with random case and padding); invalid licenses (arbitrary strings, allowed names with `-NC`, `-SA`, `-ND` appended, empty and whitespace-only); path segments including `..`, `.`, `C:\`, `/`, `\` and unicode; markdown documents with a credits table of random rows including duplicate Paths and arbitrary text before and after; file lists with sizes concentrated around the three limits (`limit - 1`, `limit`, `limit + 1`).
@@ -724,3 +766,236 @@ Round 3 follows the same Phase 1 process as the earlier categories (Requirements
 - **README updates.** Add Categories 9 and 10 and an "Extra Rocketbox avatars" table, update the Status line and the "Decisions needed" list (round 2 and round 3 together), then delete `reference/candidates/notes`.
 - **Commit.** Not part of the default flow. The agent reports and asks; it commits owned paths only if the user requests it.
 - **Stop gate.** After merge and validation, stop and wait for picks for rounds 2 and 3 together.
+
+## Phase 2 additions (final picks, edits, own-work generators)
+
+This section is the design for Requirements 32 to 41. It extends the Phase 2 design above and does not replace it. Where the text above says pick `name`, read `id`.
+
+### Phase 1 wrap-up flow (tasks 13.1 to 13.3)
+
+```mermaid
+flowchart TD
+    A[git pull --no-edit] --> B[Proop / ALTEREGO check with Playwright, read-only]
+    A --> C[Rocketbox preview check, six PNGs]
+    B -->|AI tag or statement found| B1[Drop hook: Rejected + not in Manual README, tell user]
+    B -->|clean| B2[Keep hook, record uploads inspected + date]
+    B -->|page not loadable| B3[Do not list hook, ask user]
+    C -->|logo or brand mark| C1[Drop avatar: Not picked]
+    C -->|clean| C2[Keep avatar]
+    B1 --> D[Write Picks + Not picked in README]
+    B2 --> D
+    C1 --> D
+    C2 --> D
+    D --> E[Write tools/cache/manual/README.md]
+    E --> F[git check-ignore verification]
+    F --> G[Commit owned paths only when asked, then stop]
+```
+
+The agent works in `reference/candidates/README.md`, `tools/cache/manual/README.md` and `.kiro/specs/asset-pipeline` only. In this wrap-up the Manual_README is written by hand from the Final_Picks. From Phase 2 on it is generated by `manual-readme.mjs` from the Picks_File and must match the hand-written file in content (the generator's first run is diffed against it; differences are fixed in the Picks_File or the generator, not ignored).
+
+Check details:
+
+- **Proop check.** Navigate to the account page, list all public uploads (scroll or follow the pagination), open each upload page, and read title, tags, description and badges from the page snapshot. Flag words: the Sketchfab tag `createdwithai`, "AI generated", "AI-generated", "text-to-3D", "image-to-3D", "Meshy", "Tripo", "Luma", "Rodin". A hit on any upload drops the hook for the whole account. The README records the number of uploads inspected and the date. No login, no download, no form input.
+- **Rocketbox preview check.** The six avatars are Medical_Female_01, Construction_Male_01, Construction_Female_01, Business_Female_01, Gardener_Male_01 and Female_Adult_06. The agent opens each preview PNG from the repository at the pinned SHA and looks for logos, brand marks and readable brand text on clothing, helmets or vests. A hit drops the avatar into Not picked. The check is visual and is recorded in the README as "checked, no logo" or "dropped: logo".
+- **Bip01 bone names** cannot be checked from a preview image. The check is a converter step (see below) that fails the conversion if the names do not match.
+
+### Binary-fetching packages (rule kept)
+
+Before the first `pnpm install` in `tools/` the agent lists the packages that fetch or contain binaries and waits for the user's approval (Requirements 19.3, 41.2):
+
+| Package | Pin | Binary behaviour |
+| --- | --- | --- |
+| `sharp` | 0.35.5 | prebuilt libvips from the platform optional dependency `@img/sharp-win32-x64` |
+| `ffmpeg-static` | 5.3.0 | install script downloads an ffmpeg binary from GitHub releases; needs the pnpm build-script allow-list |
+| `fbx2gltf` | 0.9.7-p1 | FBX2glTF executables inside the npm tarball |
+| `meshoptimizer` | 1.3.0 | WebAssembly only, no native binary |
+
+All versions are re-checked with `npm view` at install time and written to `tools/package.json` as exact pins. The agent does not run `pnpm install`, `pnpm add` or any script that needs these packages until the user has approved. No Blender and no other program from outside npm is run (Requirement 37).
+
+### Final recipe format (`tools/picks.json`, version 2)
+
+The Picks_File version becomes 2. `id` is the Candidate name used in the README (for example `sketchfab-knife-switch-type-d`) and also the output subfolder name. Entries are sorted by `id`.
+
+```json
+{
+  "version": 2,
+  "picks": [
+    {
+      "id": "sketchfab-knife-switch-type-d",
+      "kind": "model",
+      "category": 9,
+      "group": "lab",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/...",
+        "downloadOption": "Sketchfab 'Download 3D Model' > glTF (autoconverted) zip",
+        "note": "Use the grey variant.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "knife-switch-type-d.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-knife-switch-type-d",
+      "edits": [
+        { "op": "selectVariant", "variant": "grey" },
+        { "op": "splitMesh", "mesh": "Switch", "by": "components",
+          "parts": [ { "name": "handle", "components": [0] }, { "name": "blade", "components": [1] }, { "name": "base", "rest": true } ] }
+      ],
+      "credits": {
+        "title": "Knife switch type D",
+        "author": "<author name from the model page>",
+        "sourceUrl": "https://sketchfab.com/3d-models/...",
+        "license": "CC BY",
+        "changes": "Grey variant kept, handle and blade split from the base for animation, geometry Meshopt-compressed, textures 1k WebP"
+      }
+    },
+    {
+      "id": "own-handprint-decal",
+      "kind": "texture",
+      "category": 8,
+      "group": "graveyard",
+      "source": { "type": "generated", "generator": "decals", "decal": "handprint", "variants": 3 },
+      "manual": false, "expectedFile": null, "targetFolder": null,
+      "edits": [],
+      "credits": { "title": "Handprint decals", "author": "Zombie Firm Radar team", "sourceUrl": "https://github.com/<owner>/zombie-firm-radar/tree/main/tools/gen-decals.mjs", "license": "Own work", "changes": "Procedurally generated, 512 px RGBA PNG converted to WebP" }
+    },
+    {
+      "id": "own-headstone-cracked",
+      "kind": "model",
+      "category": 8,
+      "group": "graveyard",
+      "source": { "type": "derived", "script": "cracked-headstone", "from": "sketchfab-small-gravestone-drydoctoregg", "seed": 20260101 },
+      "manual": false, "expectedFile": null, "targetFolder": null,
+      "edits": [],
+      "credits": { "title": "Cracked headstone (derived)", "author": "drydoctoregg", "sourceUrl": "<intact scan page URL>", "license": "CC BY", "changes": "Derived by our script from the intact scan: displaced crack normal map and chipped edge, decimated to at most 20,000 triangles, Meshopt-compressed" }
+    }
+  ]
+}
+```
+
+(The `components` indices and mesh names in the example are placeholders; the implementing task reads the real model and writes the real values. The seed is any fixed integer recorded in the pick.)
+
+Fields (Requirement 35):
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `id` | string | `^[a-z0-9][a-z0-9-]*$`, unique, equals the README Candidate name or an `own-` name for own work |
+| `kind` | as before | selects converter and output folder |
+| `category` | 1..10 | README category |
+| `group` | `graveyard \| lab` | required in v2; the budget group |
+| `source` | union | `polyhaven`, `url`, `manual` (adds `downloadOption`, `note?`, `entry?`, `pageUrl`), `generated` (`generator`, `decal`, `variants`), `derived` (`script`, `from`, `seed`) |
+| `manual` | boolean | true exactly when `source.type = "manual"` |
+| `expectedFile`, `targetFolder` | string or null | non-null exactly for manual picks; `targetFolder = tools/cache/manual/<id>` |
+| `edits` | Edit_List | possibly empty; validated against the edit table below |
+| `credits` | object | `title`, `author`, `sourceUrl`, `license`, `changes`, all non-empty; feeds manifest and `CREDITS.md` |
+| `role` | as before | optional |
+
+Validation rejects unknown keys, a `manual` flag that disagrees with `source.type`, a non-manual pick with `expectedFile`, a duplicate `id`, a `group` other than the two values, and any edit not in the table below (Requirement 35.6). The license check of the earlier design applies to `credits.license` and `credits.sourceUrl`. A `derived` pick must name an `id` that exists in the file (`from`), and the derived pick is processed after the pick it derives from.
+
+### Edit operations (`asset-lib/edits/*.mjs`)
+
+Edits run on a gltf-transform `Document` (geometry and material edits) or on an RGBA pixel buffer (texture edits), in list order, after the optional FBX-to-glTF step and before the textureCompress and Meshopt steps. Each op is a pure function `(doc, params, ctx) -> doc` with `ctx = { seed, strict }`. In `strict` mode (the pipeline) a missing target throws a typed `EditTargetMissing` error naming pick, op and target (Requirement 36.8). In tolerant mode (used only by the idempotence test) a missing target is a no-op.
+
+| Op | Params | Behaviour | Idempotent because |
+| --- | --- | --- | --- |
+| `decimate` | `triangles` (target total) | If the total triangle count is above the target, call `simplify` from gltf-transform functions with `MeshoptSimplifier` (from `meshoptimizer`), ratio = target / current, `error` tuned by a fixed 5-step search that stops at the first result at or below the target; the last step forces `lockBorder: false` and error 0.05 | a mesh at or below the target is returned unchanged |
+| `removeNode` | `node` (name) or `mesh` (name) | Dispose the node or mesh and descendants, then `prune()` | a second run finds nothing to remove (tolerant mode) |
+| `desaturate` | `texture` (name), `maxSaturation` (0..1) | Per pixel, convert to HSV, set `s = min(s, maxSaturation)`, convert back, round | saturation is already capped (within 1 level of rounding) |
+| `darken` | `texture`, `maxValue` (0..255), `percentile` (default 99.5) | Compute the percentile `p` of the per-pixel maximum channel; scale all RGB by `f = min(1, maxValue / p)`, floor | after scaling `p <= maxValue`, so `f = 1` |
+| `grime` | `texture`, `seed`, `floor` (0..255) | Build a seeded value-noise field `cap(x, y)` in `[floor, 255]`; scale each pixel so its maximum channel is at most `cap(x, y)` | a second pass finds every pixel already at or below its cap |
+| `selectVariant` | `variant` (material name, texture name, or KHR_materials_variants name) | Keep the named variant; dispose other variants and unreferenced textures; `prune()` | the other variants are already gone |
+| `splitMesh` | `mesh`, `by` (`node` or `components`), `parts` | `by: node`: promote each primitive or child to its own named node. `by: components`: build triangle connectivity from shared vertex indices (union-find), number components in order of first triangle index, assign listed `components` to named parts, `rest: true` takes the remainder; write each part as a mesh on a new node under the original parent | a second run finds the part names already present and does nothing (tolerant mode) |
+
+Notes:
+
+- Texture edits find the texture by material slot name or image name, decode it with sharp to raw RGBA, apply the op in plain JavaScript (integer arithmetic where possible, the only random source being the pick seed through `mulberry32`), and write it back as PNG so later steps see lossless data. The `textureCompress` step converts it to WebP afterwards.
+- `splitMesh` uses only gltf-transform and `Float32`/`Uint32` array handling. It needs no external tool. A knife switch whose handle and blade share one connected component with the base cannot be split by connectivity. In that case the op throws `SplitImpossible`, the pick is stopped, and the agent describes the options to the user and waits (Requirement 37.3). It never calls Blender.
+- `decimate` for the morgue refrigerator targets about 30,000 triangles; for headstones the target is 20,000.
+- Edits are listed in the recipe in the order they must run. The order is not sorted by the script.
+
+### Bip01 check (`asset-lib/bip01.mjs`)
+
+```ts
+checkBip01(joints: string[]): { ok: true } | { ok: false; offending: string; expected: '^Bip01([ _]|$)' }
+```
+
+`convert-model.mjs` collects the joint names of every skin in the converted document (`skin.listJoints().map(j => j.getName())`) for avatar picks whose `credits.sourceUrl` points to the Rocketbox repository, and calls `checkBip01` before writing. On failure it throws with the message `<id>: skeleton is not Bip01-named (first offending joint: "<name>", expected <pattern>). Rocketbox animations need the Bip01 skeleton; conversion stopped.`, the work folder is deleted, and the run continues with the other picks. A scene root node that is not part of a skin is not a joint and is ignored. On success the Manifest entry gets `"bip01": true`.
+
+### Procedural decal generator (`tools/gen-decals.mjs`)
+
+```text
+node tools/gen-decals.mjs [--out tools/cache/generated/decals]
+```
+
+- **Output.** `handprint-0.png` to `handprint-2.png` and `dragmark-0.png` to `dragmark-2.png` (3 variants each, the count comes from the picks `variants` field and is at least 3), 512 by 512 RGBA PNG. The folder is under `tools/cache/`, so the PNGs are git-ignored; the generator is committed, and the converted WebP lands in `web/public/assets/textures/<id>/`.
+- **Seeding.** `seed = fnv1a32("<type>:<index>") XOR 0x5A0B1E` and `mulberry32(seed)`. No `Date`, no `Math.random`, no environment reads. Property 17 stubs the clock and `Math.random` to throw.
+- **Drawing.** A coverage field `c(x, y)` in `[0, 1]` is built from signed-distance shapes, with a 24 pixel empty margin so the border is transparent (alpha 0). Handprint: an ellipse palm plus five rotated capsules for the fingers and the thumb with seeded angle, length and width jitter, then a smear stretched along a seeded direction. Drag mark: a seeded curved ribbon (3 to 5 control points) with a width that tapers, finger streaks (parallel thin capsules) along its length, and dry-brush breakup from value noise. A second noise field adds wet-edge variation. Alpha is `round(255 * clamp(c * wet))`.
+- **Colour.** For each pixel with alpha above 0: hue `h` in `[-8, 8]` degrees (wrapped to red), saturation `s` in `[0.50, 0.70]`, value `v` in `[0.15, 0.40]`, both varying with seeded noise and darker where the coverage is thick. The generator clamps to these inner ranges, so the rounding to 8 bits stays inside the specified outer ranges (hue within 15 degrees, saturation 0.45 to 0.75, value 0.12 to 0.45). Pixels with alpha 0 get the base red RGB so that texture filtering does not bleed black.
+- **Encoding.** `sharp(raw, { raw: { width: 512, height: 512, channels: 4 } }).png({ compressionLevel: 9, adaptiveFiltering: false, palette: false })`. The encoder is pinned by the `sharp` version, which is part of the recipe hash.
+- **Pipeline.** The `generated` source runs the generator into the cache folder; `convert-texture.mjs` then makes `<id>_<index>.webp` with alpha (`webp({ quality: 82, alphaQuality: 90 })`), limit 1024. Manifest entries and credits rows use `credits` from the pick (author "Zombie Firm Radar team", license "Own work"). The 512 px size means no resize happens.
+
+### Cracked-headstone script (`tools/make-cracked-headstone.mjs`)
+
+```text
+node tools/make-cracked-headstone.mjs --in <intact.glb> --out <cracked.glb> --seed <int>
+```
+
+The pipeline calls the same code as a function `makeCrackedHeadstone(doc, { seed })` on the intact scan after its `decimate` edit. Steps:
+
+1. **Crack height map.** A 1024 by 1024 float field. A seeded random walk draws 1 to 2 main cracks from the top half downwards (step 3 to 6 px, heading jitter 0.35 rad, plus a pull toward vertical) and 2 to 4 side branches that start at random points on the main cracks and stop after 40 to 120 px. Each stroke is a V-profile of depth 1.0 at the centre fading to 0 over 2 to 5 px. A small value-noise term roughens the walls.
+2. **Normal map.** Height to normal with a Sobel filter (strength 2.5), written as tangent-space RGB. If the material already has a normal map it is decoded, resampled to 1024, and combined by the standard "whiteout" blend (`n = normalize(n1.xy + n2.xy, n1.z * n2.z)`); otherwise the crack normals are blended onto a flat normal. The result replaces or sets the material's normal texture. The roughness is raised slightly inside the crack mask by writing the mask into the roughness texture's green channel only if that texture exists; otherwise skipped.
+3. **Chipped edge.** For every vertex whose normalised local height is above 0.8 or whose distance to either side of the bounding box is below 6 percent of the width, compute a displacement `d = chip(pos) * amplitude`, where `chip` is seeded 3D value noise sampled at the vertex position quantised to 1/10,000 of the bounding box. The vertex is moved by `-d` along the normalised position-to-centre direction, clamped to keep the height change under 5 percent. The noise depends on the quantised position only, so duplicated vertices at UV seams get the same displacement and no gap opens (Property 20). Triangle count and topology do not change.
+4. **Limit.** If the triangle count is above 20,000 the script calls `decimate` with target 20,000. The intact stone is decimated to at most 20,000 before this step, so the limit step is a safety net.
+5. **Face stays blank.** The crack map is masked by an inset rectangle of 12 percent on all sides of the front face's UV box only for the faint noise term; cracks may cross the face (that is the point), but no glyph-like marks are produced. No text is drawn anywhere.
+6. **Output.** `models/own-headstone-cracked/own-headstone-cracked.glb` through the usual Meshopt and WebP steps; manifest and credits use the pick's `credits` (author drydoctoregg, license CC BY, "changes" naming the derivation).
+
+If the intact scan is missing from the Manual_Cache, the derived pick is skipped with the expected file name of the intact pick, and the run exits non-zero (Requirement 39.7). If the derivation is impossible (for example the model has no UVs), the pick fails with a clear message and the procedural headstones remain the fallback (Requirement 39.8). The final report states which headstone states are real and which are fallback.
+
+### Manual README format (`tools/cache/manual/README.md`)
+
+Generated by `manual-readme.mjs` from the Picks_File (and written by hand once in task 13.2). Sorted by `id`. Top section:
+
+```markdown
+# Manual downloads
+
+These files need a login or a manual choice on the source site, so the script never fetches them.
+Download each file as described, then put it at the exact path shown. The folder content is git-ignored; only this README is tracked.
+Run `node tools/fetch-assets.mjs` afterwards. Missing files are listed by name and skipped.
+```
+
+Then one block per manual pick:
+
+```markdown
+### sketchfab-knife-switch-type-d
+- Candidate: sketchfab-knife-switch-type-d (lab, finale switch)
+- Source page: https://sketchfab.com/3d-models/...
+- Download option: Sketchfab "Download 3D Model" > "glTF" (autoconverted) zip
+- Expected file name: knife-switch-type-d.zip
+- Put it at: tools/cache/manual/sketchfab-knife-switch-type-d/knife-switch-type-d.zip
+- Credit line: "Knife switch type D" by <author>, CC BY 4.0, https://sketchfab.com/3d-models/...
+- Notes: use the grey variant.
+```
+
+For Freesound entries the download option is "Download the original file (not the preview MP3)", the credit line names the Freesound user name, and the expected file name is the original name with its extension. A Freesound login is needed, which is why these are manual. Entries for Rocketbox, Poly Haven and other scripted sources do not appear. The hook entry appears only if the Proop check passed (Property 15).
+
+### Manifest, credits and error additions
+
+- Manifest entries gain `"edits": "<hash of the Edit_List>"` in the recipe hash and, for avatars, `"bip01": true`. The recipe hash covers the Edit_List, the converter versions and the seed, so a changed edit re-runs the pick.
+- `CREDITS.md` rows come from `credits` in the pick. Own-work rows use author "Zombie Firm Radar team" and license "Own work". The row for `sketchfab-zombie-corpse-greenall` includes "provenance accepted on the author's statement" in the "Changes we made" cell. The row for the cracked headstone names drydoctoregg, CC BY, and the derivation. The Credits_File keeps its single Visible-in-app note at the top (Property 16).
+- Additional error rows:
+
+| Situation | Behaviour | Exit |
+| --- | --- | --- |
+| Edit names a missing node, mesh, material or texture | Pick fails: `id`, op, missing name; no output; continue | 1 at end |
+| `splitMesh` impossible without a 3D editor | Pick stops with `SplitImpossible`; the agent asks the user; other picks continue | 1 at end |
+| Rocketbox skeleton not Bip01-named | Conversion fails with the message above; no output | 1 at end |
+| Intact headstone scan missing | Cracked headstone skipped, intact file name reported | 1 at end |
+| Decal generator or derivation throws | Pick fails; no output; procedural fallback stated in the report | 1 at end |
+| Picks entry invalid (unknown key, bad edit, duplicate id) | Entry refused, reported by `id`; others continue | 1 at end |
+
+### Testing additions
+
+- Properties 17 to 23 are `fc.assert(fc.property(...))` tests with at least 100 runs each. To keep the mesh-heavy ones (19, 20, 22) fast, the triangle count generator is skewed to small meshes (most runs under 2,000 triangles) with `fc.constantFrom(20000, 20001, 40000)` mixed in so the limit boundary is always exercised. Tag format: `// Feature: asset-pipeline, Property 17: Decal generator is deterministic and seed-driven`.
+- Mesh generators build grid and random triangle meshes in memory with gltf-transform `Document` and `Buffer`s; no model files are needed. Texture generators build random RGBA buffers of 8 by 8 to 64 by 64 pixels.
+- Example tests: the Medical_Female_01 style joint list (`Bip01 Pelvis`, `Bip01 Spine`, ...) passes; a Mixamo-style list (`mixamorig:Hips`) fails with the first offending name; a manual README sample for the knife switch matches the format above; the Picks_File for the repository validates against the schema (smoke test of the real `tools/picks.json`).
+- Review checks (no PBT): the Proop account check and the Rocketbox preview check are agent workflows with recorded evidence in the README.
+- Full Phase 2 gate: `pnpm --dir tools test; node tools/fetch-assets.mjs`, check `$LASTEXITCODE`, then the asset-auditor loop until clean (Requirement 41.5), then the final report and stop.

@@ -1,49 +1,22 @@
 # Asset candidates (Phase 1, scouting)
 
-Status: Rounds 2 and 3: waiting for picks. Nothing has been downloaded.
+Status: Final picks recorded; Phase 2 tasks written; nothing downloaded yet.
 
-Totals: Categories 1-7: 47 distinct candidates (35 visual + 12 sound), counting the task 6.2 replacement hand (pending pick; sketchfab-zombie-hand-greenall stays listed but is Rejected as unconfirmed). Per category: 1 ground and stone 5, 2 night sky 3, 3 graveyard props 14, 4 lab props 5, 5 avatars 3, 6 zombie and hands 5, 7 sound 12. Packs and files covering several Sub_Items are listed once. Limit 35, hard max 38 for the visual categories. Category 8 (horror dressing), counted separately and outside the cap: 23 distinct candidates in 24 rows (22 new; 1 shared with Category 3), 0 for the bloody handprint. Category 9 (lab and finale, round 3, separate, outside the cap): 8 distinct (knife switch 2, heavy door 2, lab wall 2, lab floor 2). Category 10 (sounds, round 3, separate, outside the cap): 12 distinct. Overall: 89 distinct (47 + 22 + 8 + 12). The 6 extra Rocketbox avatars (round 3) are listed separately and are not counted as scouted candidates.
+Totals: Categories 1-7: 47 distinct candidates (35 visual + 12 sound), counting the task 6.2 replacement hand (picked; sketchfab-zombie-hand-greenall stays listed but is Rejected as unconfirmed). Per category: 1 ground and stone 5, 2 night sky 3, 3 graveyard props 14, 4 lab props 5, 5 avatars 3, 6 zombie and hands 5, 7 sound 12. Packs and files covering several Sub_Items are listed once. Limit 35, hard max 38 for the visual categories. Category 8 (horror dressing), counted separately and outside the cap: 23 distinct candidates in 24 rows (22 new; 1 shared with Category 3), 0 for the bloody handprint. Category 9 (lab and finale, round 3, separate, outside the cap): 8 distinct (knife switch 2, heavy door 2, lab wall 2, lab floor 2). Category 10 (sounds, round 3, separate, outside the cap): 12 distinct. Overall: 89 distinct (47 + 22 + 8 + 12). The 6 extra Rocketbox avatars (round 3) are listed separately and are not counted as scouted candidates.
 
 Decision: the 35/38 cap was raised for Category 7 (sound) only. Categories 1 to 6 now total 35 with the task 6.2 replacement, within the hard max of 38. Sound adds 12 for a final total of 47. The cap does not apply to Categories 8, 9 and 10.
 
-Provenance result (task 6.1, details under Category 6): Greenall corpse CONFIRMED and picked. Greenall hand UNCONFIRMED and rejected. Replacement hand sketchfab-zombie-hand-craggle: pending your pick.
+Provenance result (task 6.1, details under Category 6): Greenall corpse CONFIRMED and picked (provenance accepted on the author's statement). Greenall hand UNCONFIRMED and rejected. Replacement hand sketchfab-zombie-hand-craggle: picked.
 
 ## Decisions needed (rounds 2 and 3)
 
-Rounds 2 and 3 are decided together. Nothing is downloaded until your picks for both arrive.
+Resolved. Your final picks for rounds 2 and 3 are recorded under "Picks", "Rejected" and "Not picked" below. No open decisions remain in Phase 1; Phase 2 tasks are written. Nothing has been downloaded.
 
-Round 3 (new):
+How each earlier question was settled:
 
-A. Knife switch: sketchfab-knife-switch-type-c or sketchfab-knife-switch-type-d (grey variant; the handle may need splitting in Blender).
-B. Heavy door: polyhaven-large-castle-door (separate leaves, fetched by the script) or sketchfab-iron-door-olkaad (one fused scan, needs cutting).
-C. Lab wall: polyhaven-dark-brick-wall or polyhaven-castle-brick-07 (needs darkening).
-D. Lab floor: polyhaven-slate-floor or polyhaven-slate-floor-02 (too warm, heavy darkening).
-E. Six sounds, 2 candidates each (pick one, both or none):
-   - Jump-scare sting: freesound-qubodup-vibrating-jumpscare and/or freesound-za-games-metal-spring-pluck-sting.
-   - Digging in dirt: freesound-guyburns-digging-with-shovel or freesound-trp-digging-dirt-shovel-05 (needs trimming).
-   - Shambling footsteps: freesound-starvolt-shuffling-1-rear or freesound-indieground-pas-zombie-route.
-   - Cloth rustle: freesound-zazz-cloth-rustle-8 or freesound-khenshom-cotton-clothes-rustling.
-   - Electrical hum before a zap: freesound-smice-6-hum-loop or freesound-tairblenn-old-electrometer-humming (3 parts, take the hum).
-   - Crows (optional, you may skip): freesound-giddster-crows-cawing or freesound-etienne-leplumey-crows-over-nests (needs trimming).
-F. Extra Rocketbox avatars: which of the 6 to keep (Medical_Female_01, Construction_Male_01, Construction_Female_01, Business_Female_01, Gardener_Male_01, Female_Adult_06), none included. Glance at the repo previews first; clothing, age and gender are inferred from folder names.
-
-Round 2 (still open):
-
-1. Category 8 picks, per Sub_Item (2 candidates each, you may pick one, both or none):
-   - Human skull: sketchfab-human-skull-danieledefilippis or sketchfab-human-skull-plastic-model. Neither has bones.
-   - Body bag: sketchfab-smartinius-body-bag or sketchfab-body-bag-surgical-table (delete its red-blood table).
-   - Morgue drawer: sketchfab-morgue-refrigerator-porteous or sketchfab-morgue-refrigerator-12mb.
-   - Chains and hooks: sketchfab-rusty-chains-amanda98 and/or sketchfab-butchers-hook-chain-proop (Proop account: AI check first).
-   - Restraint straps: sketchfab-leather-belt-cuv or sketchfab-strap-buckles-kit-dmigul (neutral belt and webbing, not asylum straps).
-   - Blood splatter: oga-blood-splatter-exilegl or oga-blood-splat-tobiasm.
-   - Drag-mark: ambientcg-leaking004 or ambientcg-leaking001 (grey-green, need a red tint), or the own-work fallback below.
-   - Cobwebs: sketchfab-cobwebs-asset-pack-emarshall (page says "stylised") or sketchfab-cobwebs-bumstrum.
-   - Rotten cloth: polyhaven-hessian-230 or polyhaven-rough-linen (both need decay-shader staining).
-   - Headstones: intact (sketchfab-small-gravestone-drydoctoregg or sketchfab-tombstone-set-2-mr-nein, hand-textured), cracked (see item 4), broken (sketchfab-damaged-tombstone-drydoctoregg or sketchfab-small-destroyed-tombstone-04).
-2. Replacement hand: take sketchfab-zombie-hand-craggle (yes or no). The Greenall hand is rejected; sketchfab-zombie-hand-ruella is already picked.
-3. Bloody handprint: no CC0 candidate exists. Do you want a procedural handprint (and smear) generated in `tools/` as our own work? Not created yet.
-4. Cracked headstone: choose between sketchfab-cross-and-broken-gravestones-rbg (stylised, one slab usable), sketchfab-small-destroyed-tombstone-04 (loose fit), or cracking the intact drydoctoregg scan in Blender as our own work (suggested; also gives a matching broken state).
-5. Bones: skulls only. Do you want the Joshua Fox "Bones" pack checked for sculpt versus scan of real bones, or no bones?
+- Round 3 A to F: knife switch sketchfab-knife-switch-type-d (grey variant); door polyhaven-large-castle-door; lab wall polyhaven-dark-brick-wall; lab floor polyhaven-slate-floor; one sound per pair (sting qubodup, digging guyburns, shambling indieground, cloth zazz, hum smice-6, crows giddster); all six extra Rocketbox avatars kept after the preview check.
+- Round 2 items 1 to 5: Category 8 choices recorded in Picks. Replacement hand craggle taken. Procedural handprint and drag-mark generated in `tools/` as our own work. Cracked headstone derived by our script from the intact drydoctoregg scan. Bones: none.
+- Checks run in this step: the Proop/ALTEREGO AI-account check FAILED (hook dropped, see Rejected); the Rocketbox preview logo check found no logo or readable text on any of the six avatars (see "Extra Rocketbox avatars").
 
 ## Legend
 
@@ -211,7 +184,7 @@ Category 5 notes: Sketchfab returned no CC0 rigged humans. Animations exist only
 
 ## Category 6: zombie and grabbing-hand scans (find only)
 
-Sub_Items: grabbing hand, zombie. Provenance result (task 6.1/6.2): Greenall corpse CONFIRMED and picked; Greenall hand UNCONFIRMED and rejected; craggle hand replacement pending your pick (details under "Provenance check" below). Every row is a Manual pick: you download the file from the model page (Sketchfab login needed) and then it is converted. Nothing was downloaded. All five are Sketchfab, CC Attribution (CC BY 4.0), license page link http://creativecommons.org/licenses/by/4.0/. None is rigged. Triangle and vertex counts are from the model page. Size basis (unverified, no public archive size): Meshopt geometry at ~14 bytes per vertex plus ~0.5 MB for a 1k WebP set.
+Sub_Items: grabbing hand, zombie. Provenance result (task 6.1/6.2): Greenall corpse CONFIRMED and picked; Greenall hand UNCONFIRMED and rejected; craggle hand replacement picked (details under "Provenance check" below). Every row is a Manual pick: you download the file from the model page (Sketchfab login needed) and then it is converted. Nothing was downloaded. All five are Sketchfab, CC Attribution (CC BY 4.0), license page link http://creativecommons.org/licenses/by/4.0/. None is rigged. Triangle and vertex counts are from the model page. Size basis (unverified, no public archive size): Meshopt geometry at ~14 bytes per vertex plus ~0.5 MB for a 1k WebP set.
 
 ### Grabbing hand
 
@@ -219,7 +192,7 @@ Sub_Items: grabbing hand, zombie. Provenance result (task 6.1/6.2): Greenall cor
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | sketchfab-zombie-hand-greenall | [png](06-zombie-hands/sketchfab-zombie-hand-greenall.png) | https://sketchfab.com/3d-models/zombie-hand-66ca5bfb6aeb421a8cbccd6db0ae1458 | [Colin.Greenall](https://sketchfab.com/Colin.Greenall) | CC Attribution (CC BY 4.0), http://creativecommons.org/licenses/by/4.0/ | ~0.6 MB (8.5K verts x 14 B = 0.12 MB + 0.5 MB 1k WebP) | 16.9K tris | Substance Painter skin and nails (PBR set per description) | not confirmed | no (static pose) | Manual pick | 3 | Clawing hand and full forearm, veined grey-tan rotten skin with dark nails; light enough albedo to hold under a red flood and enough relief to read large near the camera. | The pose already matches "hands reaching in from the edges"; mirror it for the second side. Provenance caveat: the author says he retopologised and textured "a sculpt i love", so the base sculpt may be someone else's. Confirm provenance before adopting. |
 | sketchfab-zombie-hand-ruella | [png](06-zombie-hands/sketchfab-zombie-hand-ruella.png) | https://sketchfab.com/3d-models/zombie-hand-79755114a2334af4b712c3b11741d738 | [Agustin Ruella](https://sketchfab.com/agustinruella) | CC Attribution (CC BY 4.0), http://creativecommons.org/licenses/by/4.0/ | ~0.75 MB after decimation (~2.8 MB as is; 162.3K verts, decimate to ~30K tris = ~15K verts x 14 B = 0.21 MB + 0.5 MB 1k WebP baked from the sculpt) | 319.5K tris (decimate) | ZBrush upload tagged handpainted; likely polypaint, maps must be baked | not confirmed | no | Manual pick | 2 | Pale grey-white skin with raised veins and red wounds holds up well under red light; the blue sleeve must be removed or re-colored, and the pose is an open hand rather than a claw. | Palest skin found; high sculpt detail gives a good normal bake for close-ups. |
-| sketchfab-zombie-hand-craggle | [png](06-zombie-hands/sketchfab-zombie-hand-craggle.png) | https://sketchfab.com/3d-models/zombie-hand-4c8b6ca93ab04d0699523d3a9ef80c67 | [craggle](https://sketchfab.com/craggle) | CC Attribution (CC BY 4.0), http://creativecommons.org/licenses/by/4.0/ (shown on the model page and by the Sketchfab API) | ~0.65 MB (12.0K verts x 14 B = 0.17 MB + 0.5 MB 1k WebP; unverified, no public archive size) | 23.5K tris, 12.0K verts | one baked colour texture (1 texture, 1 material); no separate normal map listed, so relief is baked into the colour and the mesh | not confirmed | no (static pose) | Manual pick. Replacement for sketchfab-zombie-hand-greenall (pending pick) | 2 | Sickly yellow-green skin with pink-purple sores and wrinkled knuckles; mid-light albedo, so it holds up under a red flood (turns warm brown-orange, detail stays), but the saturated green may need desaturating toward pale grey; the splayed, downward-reaching pose reads as a claw close to the camera. | Realistic photogrammetry capture of a hand only (no face, no identifiable person; looks like a prop hand, page does not say). Provenance: description reads "Zombie hand captured with photogrammetry", i.e. own capture, no mention of reworking another artist's sculpt. Published 18 Apr 2022, uploaded with Blender, 288 downloads, not AI-tagged (tags dead, scary, halloween, hand, zombie). Weak points: lit-in shadows may be baked into the colour texture (check at conversion), and the wrist ends in a cut-off, so hide it in the grave soil or at the screen edge. |
+| sketchfab-zombie-hand-craggle | [png](06-zombie-hands/sketchfab-zombie-hand-craggle.png) | https://sketchfab.com/3d-models/zombie-hand-4c8b6ca93ab04d0699523d3a9ef80c67 | [craggle](https://sketchfab.com/craggle) | CC Attribution (CC BY 4.0), http://creativecommons.org/licenses/by/4.0/ (shown on the model page and by the Sketchfab API) | ~0.65 MB (12.0K verts x 14 B = 0.17 MB + 0.5 MB 1k WebP; unverified, no public archive size) | 23.5K tris, 12.0K verts | one baked colour texture (1 texture, 1 material); no separate normal map listed, so relief is baked into the colour and the mesh | not confirmed | no (static pose) | Manual pick. Replacement for sketchfab-zombie-hand-greenall (picked) | 2 | Sickly yellow-green skin with pink-purple sores and wrinkled knuckles; mid-light albedo, so it holds up under a red flood (turns warm brown-orange, detail stays), but the saturated green may need desaturating toward pale grey; the splayed, downward-reaching pose reads as a claw close to the camera. | Realistic photogrammetry capture of a hand only (no face, no identifiable person; looks like a prop hand, page does not say). Provenance: description reads "Zombie hand captured with photogrammetry", i.e. own capture, no mention of reworking another artist's sculpt. Published 18 Apr 2022, uploaded with Blender, 288 downloads, not AI-tagged (tags dead, scary, halloween, hand, zombie). Weak points: lit-in shadows may be baked into the colour texture (check at conversion), and the wrist ends in a cut-off, so hide it in the grave soil or at the screen edge. |
 
 ### Zombie
 
@@ -247,11 +220,11 @@ Checked 2026 (read-only, no login, no download, nobody contacted). Sources searc
 - Other models found derive from this hand ("Zombie Hand - Severed/Cut Fingers", skfb.ly/oqzy8), so they inherit the same problem.
 - Needs a replacement (task 6.2).
 
-**Replacement found (task 6.2, pending pick): sketchfab-zombie-hand-craggle.**
+**Replacement found (task 6.2, now picked): sketchfab-zombie-hand-craggle.**
 - Page: https://sketchfab.com/3d-models/zombie-hand-4c8b6ca93ab04d0699523d3a9ef80c67 by [craggle](https://sketchfab.com/craggle), CC Attribution (CC BY 4.0), downloadable, 23.5K tris, night-read 2, Manual pick.
 - Description says only "Zombie hand captured with photogrammetry." No reworked or unnamed sculpt is mentioned. Residual risk: a one-line description, no comments, and no outside corroboration.
 - Found with the public Sketchfab search API (downloadable, CC BY or CC0, queries on zombie, undead, dead, rotten, corpse and clawing hands). Other hits were rejected: theniloart "Zombie Hand" (1.6K tris, too coarse), joudni "Radioactive Mutant Human Hand" (stylized hand-painted, Fallout tag), mangocitrus "Hand" (2.8K tris, untextured look), "Zombie - Hand Holder" (322K tris, unclear origin), Mahosway "reaching out" (funny animated prop, no zombie look).
-- Preview: [06-zombie-hands/sketchfab-zombie-hand-craggle.png](06-zombie-hands/sketchfab-zombie-hand-craggle.png) (1024x640, 177 KB). Not added to Picks.
+- Preview: [06-zombie-hands/sketchfab-zombie-hand-craggle.png](06-zombie-hands/sketchfab-zombie-hand-craggle.png) (1024x640, 177 KB). Picked in the final picks (hands clawing out of graves; desaturate the green slightly).
 
 ## Category 7: sound effects
 
@@ -577,22 +550,22 @@ Six more Rocketbox avatars on the same library, so patients can vary by sector a
 
 License: MIT, [LICENSE.md at the pinned SHA](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) (file exists, 1066 bytes). Rocketbox avatars are synthetic characters, so there is no real person. Include the LICENSE file next to the avatars.
 
-IMPORTANT: clothing, age group and gender were inferred from the folder names only. The preview images were NOT opened. Take a quick visual look at the six repo previews (links in the last column) before picking, in particular for logos or marks (Construction helmets and Medical_Female_01 are the likeliest) and for age. Rocketbox has no explicit age labels, so "young adult" and "older" are guesses.
+Preview check (2026-11-12): all six repository preview PNGs (1280x720, T-pose on a plain grey background, pinned SHA) were opened and looked at. None shows a logo, brand mark, readable text or insignia, so none is dropped. The clothing and age/gender columns below now describe what the previews show, replacing the earlier folder-name guesses. Small caveat: Construction_Female_01 has a tiny red woven tab on the trouser pocket and Gardener_Male_01 has tiny blue tags on the jacket and trouser leg; at preview resolution they carry no legible text or mark. Look at the 1k textures at conversion and blank the tab if it turns out to be a brand label. Rocketbox has no explicit age labels, so ages are visual estimates. No preview image is kept in the repository.
 
 Skeleton: assumed, same library (3ds Max Biped, Bip01). The repo README at the SHA has no "Bip01" or "skeleton" text, and bone names can only be confirmed by opening an FBX, which was not done. The two avatars already picked come from the same folder families, so the same rig is expected. Check the bone names after the first retarget.
 
 Textures: each folder has `Textures/*.tga` of about 4 to 16 MB each (12 MB typical). Phase 2 resizes them to 1k WebP in the script, and at that size they are not a budget problem. KTX2 is skipped for v1. Each folder also holds a `_facial.fbx` (about 1.9 to 2.3 MB); only the plain FBX is the main file.
 
-| Name | Repo path (at SHA) | Main FBX (size) | License | Clothing (inferred from name) | Age group / gender (inferred) | Suggested sector | Preview (repo) | Skeleton |
+| Name | Repo path (at SHA) | Main FBX (size) | License | Clothing (seen in preview) | Age group / gender (seen in preview) | Suggested sector | Preview (repo) | Skeleton |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| rocketbox-medical-female-01 (Medical_Female_01) | `Assets/Avatars/Professions/Medical_Female_01` | `Export/Medical_Female_01.fbx` (583,200 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | medical or scrubs-style work clothes (nurse-like; unconfirmed) | adult, female | Services (health care) | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Medical_Female_01/Medical_Female_01.png) | assumed, same library (Bip01) |
-| rocketbox-construction-male-01 (Construction_Male_01) | `Assets/Avatars/Professions/Construction_Male_01` | `Export/Construction_Male_01.fbx` (676,496 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | construction work clothes; helmet and tools textures present | adult, male | Construction | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Construction_Male_01/Construction_Male_01.png) | assumed, same library (Bip01) |
-| rocketbox-construction-female-01 (Construction_Female_01) | `Assets/Avatars/Professions/Construction_Female_01` | `Export/Construction_Female_01.fbx` (603,248 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | construction work clothes; helmet texture present | young adult or adult, female | Manufacturing | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Construction_Female_01/Construction_Female_01.png) | assumed, same library (Bip01) |
-| rocketbox-business-female-01 (Business_Female_01) | `Assets/Avatars/Professions/Business_Female_01` | `Export/Business_Female_01.fbx` (616,576 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | business or office wear | adult, female | Finance | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Business_Female_01/Business_Female_01.png) | assumed, same library (Bip01) |
-| rocketbox-gardener-male-01 (Gardener_Male_01) | `Assets/Avatars/Professions/Gardener_Male_01` | `Export/Gardener_Male_01.fbx` (517,152 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | outdoor work clothes | older adult, male (age is a guess) | Agriculture or Services | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Gardener_Male_01/Gardener_Male_01.png) | assumed, same library (Bip01) |
-| rocketbox-female-adult-06 (Female_Adult_06) | `Assets/Avatars/Adults/Female_Adult_06` | `Export/Female_Adult_06.fbx` (529,632 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | everyday casual clothes | adult, female | Retail Trade | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Adults/Female_Adult_06/Female_Adult_06.png) | assumed, same library (Bip01) |
+| rocketbox-medical-female-01 (Medical_Female_01) | `Assets/Avatars/Professions/Medical_Female_01` | `Export/Medical_Female_01.fbx` (583,200 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | white short-sleeved scrub tunic and trousers over a blue undershirt, white shoes; no logo | young adult woman, dark hair in a bun | Services (health care) | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Medical_Female_01/Medical_Female_01.png) | assumed, same library (Bip01) |
+| rocketbox-construction-male-01 (Construction_Male_01) | `Assets/Avatars/Professions/Construction_Male_01` | `Export/Construction_Male_01.fbx` (676,496 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | blue plaid shirt, jeans, tan tool belt with tools, white hard hat with visor and ear defenders, black shoes; no logo | middle-aged man, grey stubble | Construction | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Construction_Male_01/Construction_Male_01.png) | assumed, same library (Bip01) |
+| rocketbox-construction-female-01 (Construction_Female_01) | `Assets/Avatars/Professions/Construction_Female_01` | `Export/Construction_Female_01.fbx` (603,248 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | blue coveralls, yellow hi-vis vest with reflective bands, white hard hat, yellow work gloves, tan boots, shoulder radio; tiny red pocket tab, no legible text | adult woman, short fair hair | Manufacturing | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Construction_Female_01/Construction_Female_01.png) | assumed, same library (Bip01) |
+| rocketbox-business-female-01 (Business_Female_01) | `Assets/Avatars/Professions/Business_Female_01` | `Export/Business_Female_01.fbx` (616,576 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | dark trouser suit, white blouse, open-toe heels; no logo | adult woman, short dark hair | Finance | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Business_Female_01/Business_Female_01.png) | assumed, same library (Bip01) |
+| rocketbox-gardener-male-01 (Gardener_Male_01) | `Assets/Avatars/Professions/Gardener_Male_01` | `Export/Gardener_Male_01.fbx` (517,152 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | brown work jacket and trousers, yellow rubber boots, green gloves; tiny blue tags, no legible text | older man, grey beard and dark hair | Agriculture or Services | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Gardener_Male_01/Gardener_Male_01.png) | assumed, same library (Bip01) |
+| rocketbox-female-adult-06 (Female_Adult_06) | `Assets/Avatars/Adults/Female_Adult_06` | `Export/Female_Adult_06.fbx` (529,632 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | olive knee-length tunic and trousers, white fringed headscarf, black flats; no logo | adult woman | Retail Trade | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Adults/Female_Adult_06/Female_Adult_06.png) | assumed, same library (Bip01) |
 
-Mix: 4 female, 2 male; adult to older adult; sectors Services, Construction, Manufacturing, Finance, Agriculture or Services, Retail Trade. Weakest part: age spread, until the previews are viewed.
+Mix (from the previews): 4 female, 2 male; young adult to older adult; sectors Services, Construction, Manufacturing, Finance, Agriculture or Services, Retail Trade. All six are kept in Picks. Bip01 bone names are confirmed at conversion (task 18.4).
 
 ## Sub_Items with no suitable candidate
 
@@ -619,7 +592,7 @@ Earlier Categories 1-7 detail: Fallbacks: 12 (4 in Category 1, 2 in Category 2, 
 
 ## Picks
 
-Recorded from the user's picks for Categories 1-7. Format: name, scene, role; then processing notes. "(Manual pick)" marks files you download yourself into `tools/cache/manual/<name>/` in Phase 2 (all Sketchfab and Freesound rows). Poly Haven and Rocketbox rows are fetched by the script. Category 8, 9 and 10 picks and the extra avatars are still pending (see "Decisions needed (rounds 2 and 3)" at the top). The Greenall provenance check (task 6.1) is done: corpse CONFIRMED and picked, hand UNCONFIRMED and rejected, replacement hand sketchfab-zombie-hand-craggle pending your pick (not in Picks).
+Recorded from the user's picks for rounds 1 to 3. Format: name, scene, role; then processing notes. "(Manual pick)" marks files you download yourself into `tools/cache/manual/<name>/` in Phase 2 (all Sketchfab and Freesound rows). Poly Haven and Rocketbox rows are fetched by the script. Category 8, 9 and 10 picks and the extra avatars are recorded below (final, 2026-11-12). Totals: 30 candidate picks in rounds 2 and 3 (14 in round 2: 4 zombie and hands, 10 horror dressing; 16 in round 3: 4 lab and finale, 6 sounds, 6 avatars), of which 2 (sketchfab-zombie-hand-ruella, sketchfab-zombie-mutant) were already picked earlier, plus 2 own-work decal generators and 1 derived cracked headstone that are not candidates. The Proop butcher's hook was picked and then dropped by the AI-account check, so it is not counted.
 
 ### Category 1: ground and stone
 
@@ -661,10 +634,11 @@ Recorded from the user's picks for Categories 1-7. Format: name, scene, role; th
 
 ### Category 6: zombie and hands
 
-- sketchfab-zombie-corpse-greenall (Manual pick): static graveyard/lab horror prop (no rig, A-pose). Provenance confirmed in task 6.1 (author's own ZBrush sculpt). License is CC Attribution (CC BY 4.0), so credit is required and it gets a `CREDITS.md` row. Author: Colin.Greenall (https://sketchfab.com/Colin.Greenall).
+- sketchfab-zombie-corpse-greenall (Manual pick): static graveyard/lab horror prop (no rig, A-pose). Provenance accepted on the author's statement (task 6.1 found the author's own ZBrush sculpt; to be recorded in CREDITS.md). License is CC Attribution (CC BY 4.0), so credit is required and it gets a `CREDITS.md` row. Author: Colin.Greenall (https://sketchfab.com/Colin.Greenall).
 
-- sketchfab-zombie-hand-ruella (Manual pick): graveyard (hand clawing out of a grave) and lab failure overlay (hands pushing in from the edges). Decimate from 319.5K tris to about 30K, bake normals from the sculpt, remove the blue sleeve.
-- sketchfab-zombie-mutant (Manual pick): graveyard and a second lab table, static horror prop (no rig, T-pose). Re-tint paler so it does not merge with the red flood. License is CC Attribution (CC BY 4.0), shown in its row, so credit is required and it gets a `CREDITS.md` row even though the model page says credit is optional. Author: Regulator (https://sketchfab.com/A2555).
+- sketchfab-zombie-hand-craggle (Manual pick): graveyard, hands clawing out of graves. Desaturate the green slightly. License CC BY, credit required.
+- sketchfab-zombie-hand-ruella (Manual pick): lab failure overlay, hands reaching in from the screen edges (also usable in the graveyard). Decimate from 319.5K tris to about 30K, bake normals from the sculpt, remove the blue sleeve.
+- sketchfab-zombie-mutant (Manual pick, kept): graveyard and a second lab table, static horror prop (no rig, T-pose). Re-tint paler so it does not merge with the red flood. License is CC Attribution (CC BY 4.0), shown in its row, so credit is required and it gets a `CREDITS.md` row even though the model page says credit is optional. Author: Regulator (https://sketchfab.com/A2555).
 
 ### Category 7: sound
 
@@ -677,11 +651,56 @@ Recorded from the user's picks for Categories 1-7. Format: name, scene, role; th
 - freesound-joelaudio-electric-zap-001 (Manual pick): lab, short electric zap.
 - freesound-tomhannen-howling-wind-tower (Manual pick): graveyard, wind. Needs a crossfade loop.
 
+
+### Category 8: horror dressing (final, round 2)
+
+- sketchfab-human-skull-danieledefilippis (Manual pick): lab and graveyard, human skull. Darken and add grime. Bones: none.
+- sketchfab-smartinius-body-bag (Manual pick): lab, body bag.
+- sketchfab-morgue-refrigerator-porteous (Manual pick): lab, morgue drawer. Decimate to about 30K triangles.
+- sketchfab-rusty-chains-amanda98 (Manual pick): lab, rusty chains.
+- sketchfab-strap-buckles-kit-dmigul (Manual pick): lab, restraint straps. Black webbing.
+- oga-blood-splatter-exilegl (Manual pick): lab and graveyard, blood splatter decals (lights-off mode only).
+- Bloody handprint decal: own procedural generator in `tools/`, 512 px alpha PNG, dark wet red, several variants. Own work, listed in CREDITS.md as our own work. Not a Candidate row (no CC0 source exists).
+- Drag-mark (smear) decal: same own generator, 512 px alpha PNG, dark wet red, several variants. Own work. The two ambientCG leaking decals are not used.
+- sketchfab-cobwebs-asset-pack-emarshall (Manual pick): lab and graveyard, cobwebs.
+- polyhaven-hessian-230: lab, rotten cloth or sheet. Stained in the decay shader. Fetched by the script.
+- sketchfab-small-gravestone-drydoctoregg (Manual pick): graveyard, intact headstone.
+- sketchfab-damaged-tombstone-drydoctoregg (Manual pick): graveyard, broken headstone.
+- Cracked headstone: no download. Our script derives it from the intact sketchfab-small-gravestone-drydoctoregg scan (displaced crack normal map and chipped edge), recorded as a modified CC BY work with the drydoctoregg credit. The procedural headstones remain the fallback if it is not produced.
+
+### Category 9: lab and finale (final, round 3)
+
+- sketchfab-knife-switch-type-d (Manual pick): lab, finale knife switch. Grey variant. Split the handle and blade from the base so the pull can be animated.
+- polyhaven-large-castle-door: lab, heavy exit door. Fetched by the script (separate leaves).
+- polyhaven-dark-brick-wall: lab, wall texture. Fetched by the script.
+- polyhaven-slate-floor: lab, floor texture. Fetched by the script.
+
+### Category 10: sounds (final, round 3)
+
+- freesound-qubodup-vibrating-jumpscare (Manual pick): lights-off jump scare, one per outcome.
+- freesound-guyburns-digging-with-shovel (Manual pick): graveyard, zombie claws out of the grave.
+- freesound-indieground-pas-zombie-route (Manual pick): graveyard and lab, shambling footsteps.
+- freesound-zazz-cloth-rustle-8 (PACK, Manual pick): lab, cloth rustle.
+- freesound-smice-6-hum-loop (Manual pick): lab, electrical hum before the zap.
+- freesound-giddster-crows-cawing (Manual pick): graveyard, crows (optional ambience).
+
+### Extra Rocketbox avatars (final, round 3)
+
+All six kept after the preview check (no logo, brand mark or readable text; see "Extra Rocketbox avatars"). Fetched by the script at the pinned SHA, converted FBX to glb. Bip01 bone names are confirmed at conversion (task 18.4).
+
+- rocketbox-medical-female-01: lab, patient variant (white scrubs, young adult woman).
+- rocketbox-construction-male-01: lab, patient variant (plaid shirt, tool belt, hard hat; middle-aged man).
+- rocketbox-construction-female-01: lab, patient variant (blue coveralls, hi-vis vest, hard hat; adult woman).
+- rocketbox-business-female-01: lab, patient variant (dark suit; adult woman).
+- rocketbox-gardener-male-01: lab, patient variant (brown work clothes, yellow boots; older man).
+- rocketbox-female-adult-06: lab, patient variant (olive tunic, white headscarf; adult woman).
+
 ## Rejected
 
 - sketchfab-broken-headstone: readable inscription of a real person's grave.
-- sketchfab-zombie-hand-greenall: provenance UNCONFIRMED (task 6.1, see "Provenance check" under Category 6). The author only retopologised and textured someone else's sculpt, so it stays rejected. The Greenall corpse, by contrast, is CONFIRMED and picked. Replacement sketchfab-zombie-hand-craggle is pending your pick.
-- Category 8 headstones (Req 26.8): Unique Gravestone Scans (legible text of real graves), Implosion of a Tombstone (a mausoleum, not a headstone) and others, listed under "Rejected headstones" in Category 8. Nothing else in Category 8 is rejected yet; all 23 candidates await your picks.
+- sketchfab-zombie-hand-greenall: provenance UNCONFIRMED (task 6.1, see "Provenance check" under Category 6). The author only retopologised and textured someone else's sculpt, so it stays rejected. The Greenall corpse, by contrast, is CONFIRMED and picked. The replacement sketchfab-zombie-hand-craggle is picked.
+- sketchfab-butchers-hook-chain-proop: uploader publishes AI-generated models. AI-account check on 2026-11-12 (Req 33): the uploader ALTEREGO (v.a.c.u.u.m.) has 173 public uploads (189 listing entries including pagination duplicates). 3 carry the tag "rodin" (the Hyper3D Rodin AI generator): "skeleton head with hanging rope (skull)" (https://sketchfab.com/3d-models/skeleton-head-with-hanging-rope-skull-624e3f511c7048a4a1f3c3cc46430a77, published 2025-02-20, description "This model is created for free using ..."), "Rusty Mechanical Spider V2" (uid 05a46dcbb6244460adf26aaa7ffe89a8) and "demonic helmet with horns and red gem" (uid ee9cdd6b485b4ec8a4319192d9bfc7dd). No upload carries the createdwithai tag or the words AI generated, text-to-3D, image-to-3D, Meshy, Tripo or Luma. The hook itself has tags hook, chain, butchers, proop and no AI statement, but the rule drops it on any AI-generation tag in the account. It is left out of the Manual README and `tools/picks.json`. Method: the Sketchfab public search API listing for the user, read through a Playwright page (title, tags, description, categories of every upload; no login, no download, no form input), plus one upload page opened and its snapshot checked.
+- Category 8 headstones (Req 26.8): Unique Gravestone Scans (legible text of real graves), Implosion of a Tombstone (a mausoleum, not a headstone) and others, listed under "Rejected headstones" in Category 8. The other Category 8 candidates are either picked or listed under "Not picked".
 
 ### Not picked
 
@@ -693,3 +712,7 @@ Dropped, not rejected. Rows and previews stay in the tables above.
 - Category 4: sketchfab-daonware-medical-equipment-set, sketchfab-iv-device-with-stand.
 - Category 5: sketchfab-old-fat-man-full-rig.
 - Category 7: freesound-kkenny101-dark-atmospheric-drone-seamless, freesound-b-train-heartbeat-with-beep, freesound-nickmaysoundmusic-iron-gate-abbey-gardens, freesound-qvantor-wind-howling-synthesized.
+- Category 8: sketchfab-leather-belt-cuv, sketchfab-human-skull-plastic-model, polyhaven-rough-linen, sketchfab-tombstone-set-2-mr-nein (and Mr.Nein set 1, which has no row of its own and is described in the set 2 row), sketchfab-cross-and-broken-gravestones-rbg, ambientcg-leaking004, ambientcg-leaking001, sketchfab-body-bag-surgical-table, sketchfab-morgue-refrigerator-12mb, oga-blood-splat-tobiasm, sketchfab-cobwebs-bumstrum. Reason for all: not picked by the user.
+- Category 9: sketchfab-knife-switch-type-c, sketchfab-iron-door-olkaad, polyhaven-castle-brick-07, polyhaven-slate-floor-02. Reason: not picked by the user.
+- Category 10: freesound-za-games-metal-spring-pluck-sting, freesound-trp-digging-dirt-shovel-05, freesound-starvolt-shuffling-1-rear, freesound-khenshom-cotton-clothes-rustling, freesound-tairblenn-old-electrometer-humming, freesound-etienne-leplumey-crows-over-nests. Reason: not picked by the user (the second Candidate in each pair).
+- Extra Rocketbox avatars: none dropped. The logo check found no logo or brand mark in any of the six previews.
