@@ -176,3 +176,7 @@
 2026-11-12 | asset-pipeline | 11.1 | Merged round-3 categories 9, 10 and extra avatars into README | reference/candidates/README.md
 2026-11-12 | asset-pipeline | 11.2 | Validated round 3: 91 previews, licenses, counts and protected paths pass | none
 2026-11-12 | asset-pipeline | 11.3 | Committed round-3 candidates and spec updates as 6bb5c1e | reference/candidates, .kiro/specs/asset-pipeline
+2026-11-12 | asset-pipeline | 12 | Received final picks for rounds 2 and 3; combined stop gate passed | none
+2026-11-12 | asset-pipeline | 13.1 | Recorded final picks; dropped Proop hook (Rodin-tagged uploads); six Rocketbox avatars logo-clean | reference/candidates/README.md
+2026-11-12 | asset-pipeline | 13.2 | Wrote manual-download README with 31 Sketchfab and Freesound entries | tools/cache/manual/README.md
+2026-11-12 | asset-pipeline | 13.3 | Committed final picks, manual list and Phase 2 tasks as 8c689c3 | reference/candidates, tools/cache/manual/README.md, .kiro/specs/asset-pipeline
