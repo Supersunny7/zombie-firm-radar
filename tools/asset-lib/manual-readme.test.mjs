@@ -57,6 +57,19 @@ describe('manual-readme render', () => {
   });
 });
 
+describe('manual-readme description', () => {
+  it('uses description verbatim for the Candidate line, else group and role, else group', () => {
+    const md = render([
+      pick('sketchfab-d', { description: 'graveyard and lab, my own wording' }),
+      pick('sketchfab-r', { role: 'prop' }),
+      pick('sketchfab-g'),
+    ]);
+    expect(md).toContain('- Candidate: sketchfab-d (graveyard and lab, my own wording)');
+    expect(md).toContain('- Candidate: sketchfab-r (lab, prop)');
+    expect(md).toContain('- Candidate: sketchfab-g (lab)');
+  });
+});
+
 describe('manual-readme check', () => {
   const md = render(picks);
   it('accepts its own output', () => {

@@ -190,6 +190,6 @@ describe('production downloader', () => {
     const record = await dl(pick, dir);
     expect(record.files.map((f) => f.file)).toEqual(['Bob.fbx', 'Textures/Bob_color.tga', 'LICENSE']);
     expect(record.sourceUrls).toHaveLength(3);
-    expect(requested.some((u) => u.endsWith(`/${sha}/LICENSE`))).toBe(true);
+    expect(requested.some((u) => u.endsWith(`/${sha}/LICENSE.md`))).toBe(true);
   });
 });

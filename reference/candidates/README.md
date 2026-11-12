@@ -656,7 +656,7 @@ Recorded from the user's picks for rounds 1 to 3. Format: name, scene, role; the
 
 - sketchfab-human-skull-danieledefilippis (Manual pick): lab and graveyard, human skull. Darken and add grime. Bones: none.
 - sketchfab-smartinius-body-bag (Manual pick): lab, body bag.
-- sketchfab-morgue-refrigerator-porteous (Manual pick): lab, morgue drawer. Decimate to about 30K triangles.
+- sketchfab-morgue-refrigerator-porteous (Manual pick): lab, morgue drawer. Decimate to ~39K (user accepted; 30K unreachable without distortion).
 - sketchfab-rusty-chains-amanda98 (Manual pick): lab, rusty chains.
 - sketchfab-strap-buckles-kit-dmigul (Manual pick): lab, restraint straps. Black webbing.
 - oga-blood-splatter-exilegl (Manual pick): lab and graveyard, blood splatter decals (lights-off mode only).

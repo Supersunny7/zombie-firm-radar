@@ -91,3 +91,14 @@ describe('texture edits', () => {
     await expect(applyEdits(await docWith(randomPixels(4)), [{ op: 'desaturate', texture: 'tex', maxSaturation: 2 }])).rejects.toThrow(RangeError);
   });
 });
+
+describe('texture edits: unnamed textures', () => {
+  it('matches an unnamed texture by its image file name without extension', async () => {
+    const doc = await docWith(randomPixels(7));
+    const tex = doc.getRoot().listTextures()[0];
+    tex.setName('').setURI('textures/material_0_baseColor.png');
+    const out = await applyEdits(doc, [{ op: 'darken', texture: 'material_0_baseColor', maxValue: 100 }], { strict: true });
+    const data = await read(out);
+    expect(Math.max(...data)).toBeLessThanOrEqual(101);
+  });
+});

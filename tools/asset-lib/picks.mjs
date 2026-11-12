@@ -10,7 +10,7 @@ export const ID_PATTERN = /^[a-z0-9][a-z0-9-]*$/;
 
 const PICK_KEYS = [
   'id', 'kind', 'category', 'group', 'source', 'manual',
-  'expectedFile', 'targetFolder', 'edits', 'credits', 'role',
+  'expectedFile', 'targetFolder', 'edits', 'credits', 'role', 'description',
 ];
 const CREDIT_KEYS = ['title', 'author', 'sourceUrl', 'license', 'changes'];
 
@@ -157,6 +157,7 @@ export function validatePick(p, index = 0) {
   }
   if (!GROUPS.includes(p.group)) errors.push(err(id, 'InvalidField', `group must be one of ${GROUPS.join(', ')}`, 'group'));
   if ('role' in p && !isStr(p.role)) errors.push(err(id, 'InvalidField', 'role must be a non-empty string', 'role'));
+  if ('description' in p && !isStr(p.description)) errors.push(err(id, 'InvalidField', 'description must be a non-empty string', 'description'));
 
   validateSource(p.source, id, errors);
   validateEdits(p.edits, id, errors);

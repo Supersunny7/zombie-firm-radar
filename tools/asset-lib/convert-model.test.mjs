@@ -1,5 +1,5 @@
 // Fixture tests for convert-model.mjs: tiny glTF documents built in code (no downloads, no FBX files).
-import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, readdir, readFile, rm, writeFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { Document, NodeIO } from '@gltf-transform/core';
@@ -95,6 +95,14 @@ describe('convertModel', () => {
     const back = await io.read(a.files[0].path);
     expect(back.getRoot().listMeshes()).toHaveLength(1);
     expect(Buffer.compare(await readFile(a.files[0].path), await readFile(b.files[0].path))).toBe(0);
+  });
+
+  it('leaves exactly one binary GLB in the output folder (no .bin or texture files beside it)', async () => {
+    const src = await writeSource('single.glb');
+    const outDir = path.join(dir, 'out-single');
+    await convertModel({ id: 'single', kind: 'model', edits: [] }, { path: src }, outDir);
+    expect(await readdir(outDir)).toEqual(['single.glb']);
+    expect((await readFile(path.join(outDir, 'single.glb'))).subarray(0, 4).toString('latin1')).toBe('glTF');
   });
 
   it('runs the pick Edit_List and fails strictly on a missing target', async () => {

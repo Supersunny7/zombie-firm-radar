@@ -18,6 +18,11 @@ const manualPick = (over = {}) => base({
 const codes = (errs) => errs.map((e) => e.code);
 
 describe('validatePick', () => {
+  it('accepts an optional description string and rejects an empty one', () => {
+    expect(validatePick(manualPick({ description: 'lab, medical cart' }))).toEqual([]);
+    expect(codes(validatePick(manualPick({ description: '' })))).toContain('InvalidField');
+  });
+
   it('accepts valid polyhaven and manual picks', () => {
     expect(validatePick(base())).toEqual([]);
     expect(validatePick(manualPick())).toEqual([]);

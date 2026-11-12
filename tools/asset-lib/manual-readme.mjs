@@ -45,7 +45,8 @@ export function manualPicks(picks, { hookCheckPassed = false } = {}) {
 }
 
 function candidateLine(p) {
-  const detail = p.role ? `${p.group}, ${p.role}` : p.group;
+  // description is the user's own wording for the Candidate line and wins over group and role.
+  const detail = p.description ?? (p.role ? `${p.group}, ${p.role}` : p.group);
   return `${p.id} (${detail})`;
 }
 

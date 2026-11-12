@@ -6,6 +6,7 @@
       "kind": "audio",
       "category": 10,
       "group": "lab",
+      "description": "lab, electric zap with charge-up for the switch-pull",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/BigKahuna360/sounds/160421/",
@@ -28,6 +29,7 @@
       "kind": "audio",
       "category": 10,
       "group": "graveyard",
+      "description": "graveyard, crows (optional ambience)",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/giddster/sounds/437345/",
@@ -50,6 +52,7 @@
       "kind": "audio",
       "category": 10,
       "group": "graveyard",
+      "description": "graveyard, zombie claws out of the grave",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/guyburns/sounds/558413/",
@@ -73,6 +76,7 @@
       "kind": "audio",
       "category": 10,
       "group": "graveyard",
+      "description": "graveyard and lab, shambling footsteps",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/indieground/sounds/223815/",
@@ -95,6 +99,7 @@
       "kind": "audio",
       "category": 7,
       "group": "lab",
+      "description": "lab, short electric zap",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/JoelAudio/sounds/136542/",
@@ -117,6 +122,7 @@
       "kind": "audio",
       "category": 7,
       "group": "graveyard",
+      "description": "graveyard, iron gate open and close",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/launemax/sounds/274767/",
@@ -139,6 +145,7 @@
       "kind": "audio",
       "category": 7,
       "group": "lab",
+      "description": "lab, low drone loop",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/lennartgreen/sounds/638914/",
@@ -161,6 +168,7 @@
       "kind": "audio",
       "category": 10,
       "group": "lab",
+      "description": "lights-off jump scare, one per outcome",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/qubodup/sounds/814056/",
@@ -183,6 +191,7 @@
       "kind": "audio",
       "category": 7,
       "group": "lab",
+      "description": "lab, ECG beep (loop while the patient is alive)",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/sidequesting/sounds/534998/",
@@ -206,6 +215,7 @@
       "kind": "audio",
       "category": 10,
       "group": "lab",
+      "description": "lab, electrical hum before the zap",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/Smice_6/sounds/536527/",
@@ -229,6 +239,7 @@
       "kind": "audio",
       "category": 7,
       "group": "lab",
+      "description": "lab, ECG sequence and ECG flatline (PACK)",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/thegreatperson/sounds/210793/",
@@ -252,6 +263,7 @@
       "kind": "audio",
       "category": 7,
       "group": "graveyard",
+      "description": "graveyard, wind",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/tomhannen/sounds/486599/",
@@ -275,6 +287,7 @@
       "kind": "audio",
       "category": 10,
       "group": "lab",
+      "description": "lab, cloth rustle (PACK)",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/zazz.sound.design/sounds/435296/",
@@ -298,6 +311,7 @@
       "kind": "audio",
       "category": 7,
       "group": "lab",
+      "description": "lab, heartbeat loop",
       "source": {
         "type": "manual",
         "pageUrl": "https://freesound.org/people/ZHR%C3%98/sounds/551437/",
@@ -978,6 +992,7 @@
       "kind": "model",
       "category": 4,
       "group": "lab",
+      "description": "lab, operating table, surgical lamp and instruments (PACK)",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/autopsy-lab-assets-5ceaaa4482a84774b9922366cfb228e7",
@@ -1002,6 +1017,7 @@
       "kind": "model",
       "category": 8,
       "group": "lab",
+      "description": "lab and graveyard, cobwebs",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/cobwebs-asset-pack-2dd4798676d84bc7af5d2a8f5834563a",
@@ -1026,6 +1042,7 @@
       "kind": "model",
       "category": 4,
       "group": "lab",
+      "description": "lab, IV stand",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/crutch-and-iv-drip-5cc65c6aed374220b67f7d60e679153e",
@@ -1055,6 +1072,7 @@
       "kind": "model",
       "category": 8,
       "group": "graveyard",
+      "description": "graveyard, broken headstone",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/damaged-tombstone-0cefd7412d36424c844b64cca189aba5",
@@ -1084,6 +1102,7 @@
       "kind": "model",
       "category": 8,
       "group": "lab",
+      "description": "lab and graveyard, human skull",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/human-skull-0f46e7f845a145208e4922e94cd0c1b6",
@@ -1120,6 +1139,7 @@
       "kind": "model",
       "category": 9,
       "group": "lab",
+      "description": "lab, finale knife switch",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/early-1900s-knife-switches-type-d-dba93ad080ee4f8ca922e0df84ec9b4b",
@@ -1173,6 +1193,7 @@
       "kind": "model",
       "category": 4,
       "group": "lab",
+      "description": "lab, medical cart",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/medical-props-4b2e1a4c3f13432b9a0bc15355b27632",
@@ -1202,11 +1223,12 @@
       "kind": "model",
       "category": 8,
       "group": "lab",
+      "description": "lab, morgue drawer",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/morgue-refrigerator-d895d249fbda465faa22958ab1a63158",
         "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
-        "note": "Decimate to about 30K triangles. The author asks for credit.",
+        "note": "Decimate to about 39K triangles (user accepted; 30K unreachable without distortion). The author asks for credit.",
         "entry": "scene.gltf"
       },
       "manual": true,
@@ -1215,7 +1237,7 @@
       "edits": [
         {
           "op": "decimate",
-          "triangles": 30000
+          "triangles": 39000
         }
       ],
       "credits": {
@@ -1223,7 +1245,7 @@
         "author": "RyanPorteous",
         "sourceUrl": "https://sketchfab.com/3d-models/morgue-refrigerator-d895d249fbda465faa22958ab1a63158",
         "license": "CC BY 4.0",
-        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; decimated to about 30,000 triangles"
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; decimated to about 39,000 triangles"
       }
     },
     {
@@ -1231,6 +1253,7 @@
       "kind": "model",
       "category": 8,
       "group": "lab",
+      "description": "lab, rusty chains",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/rusty-chains-be9648f8e0324bbd967c10b44007bee1",
@@ -1254,6 +1277,7 @@
       "kind": "model",
       "category": 3,
       "group": "graveyard",
+      "description": "graveyard, broken stones",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/small-destroyed-tombstone-04-ba7786989b414adf91a5763e71e9854c",
@@ -1283,6 +1307,7 @@
       "kind": "model",
       "category": 8,
       "group": "graveyard",
+      "description": "graveyard, intact headstone",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/small-gravestone-a6b9ef8756bf453e9d8b22a40d1e905a",
@@ -1312,6 +1337,7 @@
       "kind": "model",
       "category": 8,
       "group": "lab",
+      "description": "lab, body bag",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/smartinius-body-bag-3d-asset-48d33832605545828f8297b64ddf599d",
@@ -1335,6 +1361,7 @@
       "kind": "model",
       "category": 8,
       "group": "lab",
+      "description": "lab, restraint straps",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/strap-buckles-kit-86c045c8ba854e0da825ac8324495b28",
@@ -1365,6 +1392,7 @@
       "kind": "model",
       "category": 6,
       "group": "graveyard",
+      "description": "graveyard and lab, static horror prop (no rig, A-pose)",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/zombie-corpse-bb2ebca80471423a93a60a6552928abe",
@@ -1389,6 +1417,7 @@
       "kind": "model",
       "category": 6,
       "group": "graveyard",
+      "description": "graveyard, hands clawing out of graves",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/zombie-hand-4c8b6ca93ab04d0699523d3a9ef80c67",
@@ -1419,6 +1448,7 @@
       "kind": "model",
       "category": 6,
       "group": "lab",
+      "description": "lab failure overlay, hands reaching in from the screen edges",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/zombie-hand-79755114a2334af4b712c3b11741d738",
@@ -1452,6 +1482,7 @@
       "kind": "model",
       "category": 6,
       "group": "graveyard",
+      "description": "graveyard and second lab table, static horror prop (no rig, T-pose)",
       "source": {
         "type": "manual",
         "pageUrl": "https://sketchfab.com/3d-models/zombie-mutant-795f6432ebcb4c39a2aa5039752be92a",

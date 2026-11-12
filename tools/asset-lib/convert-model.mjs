@@ -4,7 +4,7 @@
 // Edit_List, dedup, prune, resample (avatars and animations only), textureCompress (WebP, 1024),
 // meshopt. Output is one self-contained GLB. Writes only into the given work folder.
 import { createRequire } from 'node:module';
-import { copyFile, mkdir, rename, rm, stat } from 'node:fs/promises';
+import { copyFile, mkdir, rename, rm, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { NodeIO } from '@gltf-transform/core';
 import { ALL_EXTENSIONS } from '@gltf-transform/extensions';
@@ -48,7 +48,8 @@ function skeletonNames(doc) {
   for (const anim of doc.getRoot().listAnimations()) {
     for (const ch of anim.listChannels()) {
       const node = ch.getTargetNode();
-      if (node) names.add(node.getName());
+      // Rocketbox animations also animate the standard root-motion helper; it is not part of the skeleton.
+      if (node && node.getName() !== 'MotionExtractionHelper') names.add(node.getName());
     }
   }
   return [...names];
@@ -121,7 +122,9 @@ export async function convertModel(pick, input, workDir, options = {}) {
     );
     await doc.transform(...steps);
 
-    await io.write(tmpOut, doc);
+    // writeBinary always yields one self-contained GLB; io.write(tmpOut) would pick glTF+.bin
+    // from the ".tmp" extension and leave scene.bin and textures beside a JSON file.
+    await writeFile(tmpOut, await io.writeBinary(doc));
     await rename(tmpOut, outPath);
     created.push(outPath);
     await rm(tmpFbx, { force: true });

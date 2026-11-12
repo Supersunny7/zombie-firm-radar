@@ -53,7 +53,7 @@ async function productionEnv() {
     recipeVersions: {
       texture: `limit${tex.LIMIT_DEFAULT}/${tex.LIMIT_GROUND_MAIN} q${tex.QUALITY_COLOR}/${tex.QUALITY_NORMAL}`,
       hdri: JSON.stringify(hdri.HDRI_WIDTHS),
-      model: `meshopt-${model.MESHOPT_LEVEL} tex${tex.LIMIT_DEFAULT}`,
+      model: `meshopt-${model.MESHOPT_LEVEL} tex${tex.LIMIT_DEFAULT} single-glb`,
       audio: `q${audio.DEFAULT_QUALITY}`,
     },
   };

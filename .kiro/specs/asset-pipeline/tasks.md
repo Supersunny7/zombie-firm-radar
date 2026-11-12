@@ -487,13 +487,13 @@ Working rules for every task:
   - Run `pnpm --dir tools test`; ensure all tests pass, ask the user if questions arise.
 
 - [ ] 23. Full run and size report
-  - [~] 23.1 Run the Fetch_Script
+  - [x] 23.1 Run the Fetch_Script
     - Run `git pull --no-edit` first; run `node tools/fetch-assets.mjs --dry-run`, then the real run; check `$LASTEXITCODE`
     - List the Manual_Picks whose files are missing from `tools/cache/manual/` (expected file names and page URLs) and ask the user to place them; do not create or fake any manual file; re-run after the user answers. A split that cannot be done without Blender is reported the same way
     - Check one converted skinned avatar for Meshopt quantization artefacts (inspect with `gltf-transform inspect`; if skinning looks wrong lower avatar quantization) and check the Bip01 result in the manifest
     - _Requirements: 14.9, 35.4, 37.3, 34.5, 41.1_
 
-  - [~] 23.2 Print the size report
+  - [-] 23.2 Print the size report
     - Print the size of every output file and the used size and limit of the Graveyard_Budget, Lab_Budget and Total_Budget, list files over 5 MB, and fix budget findings (lower texture limit, higher Meshopt level, lighter decimation target) in the picks, then re-run
     - _Requirements: 16.8, 17.1, 17.2, 17.3, 17.4, 17.5, 41.4_
 

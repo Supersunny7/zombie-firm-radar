@@ -269,7 +269,7 @@ Files to download: **31** (17 Sketchfab zips, 14 Freesound sounds).
 - Expected file name: sketchfab-morgue-refrigerator-porteous.zip
 - Put it at: tools/cache/manual/sketchfab-morgue-refrigerator-porteous/sketchfab-morgue-refrigerator-porteous.zip
 - Credit line: "Morgue refrigerator" by RyanPorteous, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), https://sketchfab.com/3d-models/morgue-refrigerator-d895d249fbda465faa22958ab1a63158
-- Notes: Decimate to about 30K triangles. The author asks for credit.
+- Notes: Decimate to about 39K triangles (user accepted; 30K unreachable without distortion). The author asks for credit.
 
 ### sketchfab-rusty-chains-amanda98
 - Candidate: sketchfab-rusty-chains-amanda98 (lab, rusty chains)

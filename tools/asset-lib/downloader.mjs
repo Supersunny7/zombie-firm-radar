@@ -45,7 +45,7 @@ async function fetchRocketboxExtras(pick, dir, httpOpts) {
     const r = await downloadToFile(it.download_url, safeJoin(dir, 'Textures', it.name), httpOpts);
     files.push({ file: rel, url: it.download_url, bytes: r.bytes, sha256: r.sha256, md5: r.md5 });
   }
-  const licenseUrl = `https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/${rb.sha}/LICENSE`;
+  const licenseUrl = `https://raw.githubusercontent.com/microsoft/Microsoft-Rocketbox/${rb.sha}/LICENSE.md`;
   const lic = await downloadToFile(licenseUrl, safeJoin(dir, 'LICENSE'), httpOpts);
   files.push({ file: 'LICENSE', url: licenseUrl, bytes: lic.bytes, sha256: lic.sha256, md5: lic.md5 });
   return files;

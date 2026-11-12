@@ -24,7 +24,9 @@ function checkNumber(op, name, value, min, max) {
 
 function findTexture(doc, params, op, ctx) {
   const name = params.texture;
-  const tex = doc.getRoot().listTextures().find((t) => t.getName() === name);
+  // glTF textures often have no name (Sketchfab exports); fall back to the image file name without extension.
+  const stem = (t) => (t.getURI() || '').split('/').pop().replace(/\.[^.]+$/, '');
+  const tex = doc.getRoot().listTextures().find((t) => t.getName() === name || (!t.getName() && stem(t) === name));
   if (!tex) {
     if (ctx.strict) throw new EditTargetMissing({ pick: ctx.pick, op, target: name });
     return null;
