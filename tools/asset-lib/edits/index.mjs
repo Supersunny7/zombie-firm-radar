@@ -6,10 +6,14 @@
 // Only gltf-transform and meshoptimizer are used; no Blender, no other executable (37.1, 37.2).
 import { decimate } from './decimate.mjs';
 import { EditNotImplemented } from './errors.mjs';
+import { joinMeshes } from './join-meshes.mjs';
+import { removeByVertexColor } from './remove-by-color.mjs';
+import { raggedCut } from './ragged-cut.mjs';
 import { removeNode } from './remove-node.mjs';
 import { selectVariant } from './select-variant.mjs';
 import { splitMesh } from './split-mesh.mjs';
 import { darken, desaturate, grime } from './texture-edits.mjs';
+import { tint } from './tint.mjs';
 
 export { DecimateUnreachable, EditNotImplemented, EditTargetMissing, SplitImpossible } from './errors.mjs';
 export { countTriangles } from './decimate.mjs';
@@ -22,6 +26,10 @@ const OPS = new Map([
   ['darken', darken],
   ['grime', grime],
   ['splitMesh', splitMesh],
+  ['removeByVertexColor', removeByVertexColor],
+  ['raggedCut', raggedCut],
+  ['tint', tint],
+  ['joinMeshes', joinMeshes],
 ]);
 
 /** Register (or replace) an op implementation; used by the texture and splitMesh modules. */

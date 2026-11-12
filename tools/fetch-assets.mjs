@@ -61,6 +61,8 @@ export async function productionEnv() {
       hdri: JSON.stringify(hdri.HDRI_WIDTHS),
       model: `meshopt-${model.MESHOPT_LEVEL} tex${tex.LIMIT_DEFAULT} single-glb ${MODEL_STAGING_MARKER}`,
       audio: `q${audio.DEFAULT_QUALITY}`,
+      // Bump when tools/make-cracked-headstone.mjs changes its output, so the derived pick reconverts.
+      derived: 'cracked-headstone@3',
     },
   };
 }

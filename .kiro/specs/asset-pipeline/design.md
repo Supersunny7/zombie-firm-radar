@@ -1005,3 +1005,73 @@ For Freesound entries the download option is "Download the original file (not th
 - Example tests: the Medical_Female_01 style joint list (`Bip01 Pelvis`, `Bip01 Spine`, ...) passes; a Mixamo-style list (`mixamorig:Hips`) fails with the first offending name; a manual README sample for the knife switch matches the format above; the Picks_File for the repository validates against the schema (smoke test of the real `tools/picks.json`).
 - Review checks (no PBT): the Proop account check and the Rocketbox preview check are agent workflows with recorded evidence in the README.
 - Full Phase 2 gate: `pnpm --dir tools test; node tools/fetch-assets.mjs`, check `$LASTEXITCODE`, then the asset-auditor loop until clean (Requirement 41.5), then the final report and stop.
+
+## Visual fixes (headstone silhouette, Ruella hand, preview page)
+
+### Cracked headstone rework (Requirements 42)
+
+`makeCrackedHeadstone` keeps its signature and its determinism, and gains a geometry stage before the existing normal map and chip steps:
+
+1. **Own geometry only.** The script measures the bounding box of the decimated intact scan, then builds the fracture plane from the seed: a diagonal plane through the slab, tilted 20 to 40 degrees from horizontal, crossing the slab in its upper half. The pre-existing notch on the intact face is never used as an anchor; the fracture is placed by the plane, and a unit test places a notch on the face of a synthetic slab and checks it does not move the plane.
+2. **Split and offset.** Triangles are cut by the plane (clip, with new vertices on the plane), the two pieces are capped along the cut so both stay closed, and the top piece is moved by an offset along the plane direction plus a small drop, which opens a visible step in the outline. Offset: the assumed real height of the stone is a constant (0.9 m) recorded in the manifest `changes` text; the translation is 2.0 to 3.3 cm (seeded), that is `cm / 100 / 0.9` of the model height (2.2 to 3.7 percent), directed 20 degrees out of the plane from the downhill direction, plus a tilt of 0.8 degrees, so the largest vertex move stays within 4 cm. The chipped edge (step 3 of the base script, run before the split) and the corner chip also lower the top, so the overall bounding-box height changes by less than 10 percent (the old limit of 5 percent applied to the chip alone; Property 19 keeps the triangle limit and Property 20 the determinism). Geometry lives in `tools/asset-lib/fracture.mjs`; the pre-split decimate target is 18,000 triangles to leave headroom for the cuts. The first run on the intact scan (seed 20260101) gives 622 triangles, XOR 10.7 percent, IoU 0.895. The scale assumption is written next to the number, and the script prints it.
+3. **Chipped corner.** One upper corner is removed by a second seeded plane that clips a triangular wedge off the top piece, with a cap, so the outline changes.
+4. **Crack texture.** The crack line is drawn in the base colour texture along the fracture plane intersection (darker, 2 to 4 px) in addition to the normal map. No text, no glyph-like marks on the face.
+5. **Budget and idempotence.** Final decimate to 20,000 if needed. A marker in the glTF `extras` (`crackedBy: "make-cracked-headstone@2"`) makes a second run a no-op (Property 20 and the idempotence test).
+
+Silhouette check (a test helper `tools/preview/silhouette.mjs` plus the Playwright render): the preview page renders both models flat black on white at 200 px height from the same front-quarter camera; the helper reads the two PNGs with sharp, thresholds at 128, and computes `xor = |A xor B| / |A|` and `IoU = |A and B| / |A or B|`. Accept when `xor >= 0.03` (IoU about 0.97 or lower). The numbers go in the report.
+
+### Ruella hand edits (Requirement 43)
+
+New rows for the edit-operations table:
+
+| Op | Params | Behaviour | Idempotent because |
+| --- | --- | --- | --- |
+| `removeByVertexColor` | `mesh`, `hueRange`, `minSat`, `minVal`, `seed`, `raggedness` | Deletes triangles whose three vertices all match the colour range (the blue sleeve), then prunes unused vertices. Where the deleted region meets the kept region (the wrist), the boundary is moved along a seeded ragged line (noise displacement of the cut position along the arm axis, 5 to 15 percent of wrist width), and the boundary loop is capped with a fan so no open edge remains | the second run finds no matching triangles and the boundary is already closed |
+| `raggedCut` | `mesh`, `axis`, `at` (fraction of bounding box), `seed`, `raggedness` | Cuts the mesh at a seeded ragged plane, discards the far side and caps the loop | after the cut nothing lies beyond the plane |
+| `tint` | `texture`, `hue`, `maxSaturation`, `meanValue`, `tolerance` | Converts skin pixels to HSV, moves hue toward the target, caps saturation, and scales value so the mean value of non-transparent pixels is `meanValue` (0.45 to 0.55) | the mean already equals the target within 1 level, so the scale is 1 |
+
+The recipe for `sketchfab-zombie-hand-ruella` becomes `removeByVertexColor` (blue range, if the sleeve has no vertex colours the node or material split is used instead through the existing `removeNode`), then `tint` (grey-green, mean value 0.5), then `decimate` to 30,000. The edits use gltf-transform and plain JavaScript only; they are added to the picks schema and to the Requirement 36 list. The mean-value check is a unit test on the converted texture.
+
+### Preview page and server (Requirement 44)
+
+```text
+tools/preview/
+  index.html        module page; ?model=<url>&silhouette=1&size=200
+  preview.mjs       loads three from an import map, GLTFLoader, MeshoptDecoder, fixed camera and lights
+  serve.mjs         node:http static server on 127.0.0.1, port from argv (default 4173), serves tools/preview, web/public/assets and web/node_modules/three only
+  silhouette.mjs    XOR and IoU on two PNGs (sharp)
+  README.md         the `render` helper: start the server, navigate, wait for window.__ready, screenshot the canvas, stop the server
+```
+
+- `three` comes from `web/node_modules/three` when present (mapped by the server under `/vendor/three/`). If it is absent, the agent tells the user and adds a pinned dev dependency in `tools/` only after approval.
+- WebP textures decode in the browser; the Meshopt decoder is `three/examples/jsm/libs/meshopt_decoder.module.js`.
+- `silhouette=1` replaces every material with flat black, sets a white background, no tone mapping or shadows, and sets the canvas to 200 px height.
+- The page sets `window.__ready = true` after the first frame, and the Playwright render waits for it. The server is started with `control_pwsh_process`, stopped by the agent afterwards, binds to `127.0.0.1` and has no outbound request.
+- Screenshots go to `reference/progress/` (outside the Owned_Paths, not committed unless asked).
+
+### Testing additions
+
+- Unit tests for the new geometry (fracture clip keeps meshes closed, offset in range, notch ignored, corner removed) and for `removeByVertexColor`, `raggedCut`, `tint` (mean value in range, cap closed, no open boundary edge at the cut).
+- Properties 19 and 20 keep their meaning (triangle limit, determinism); the generators in the 19.5 and 19.6 tests are updated so the larger geometry path is exercised. Property 21 gains the three new ops in its idempotence and determinism generators.
+- The silhouette threshold is checked by an integration test over two synthetic slabs and again on the real render.
+
+## Avatar fixes (prune on removal, face box finding)
+
+### Prune on removal (Requirement 45)
+
+- New pure module `tools/asset-lib/prune.mjs` with `planPrune({ picks, manifest, credits, assetRoot })`. It returns `{ folders, manifestKeys, creditRows, errors }` and touches no file. The orchestrator executes the plan through the injected `fs`, so tests run on a temp directory.
+- A pick id is "removed" when the Manifest or the Credits_File holds a path `<typeDir>/<id>/...` whose `<id>` is not an `id` in the Picks_File. Only the first two path segments under Asset_Root name the owner; shared files such as `manifest.json` have no owner and are never candidates.
+- Safety rules: the folder must be exactly `<Asset_Root>/<typeDir>/<id>` with `<typeDir>` in the six known subfolders, resolved through `safeJoin` so `..`, absolute paths and symlinked escapes are refused (error, non-zero exit, nothing deleted for that entry). Deletion is recursive only inside that folder. Folders of remaining picks and unowned files are never touched. Own-work outputs of remaining picks (decals, cracked headstone) are never pruned because their ids stay in the Picks_File.
+- Order inside a run: load picks, plan prune, process picks, execute prune, merge Manifest and Credits_File, write budgets. Pruning runs after conversion so a failed run does not delete assets while a replacement is missing. `--dry-run` prints the plan only. A second run finds an empty plan, which gives idempotence.
+- Property to test: for any set of existing files under a fake Asset_Root and any set of removed ids, the set of deleted paths is a subset of the files inside the removed ids' `<typeDir>/<id>` folders, and every other file is unchanged.
+- README side: `reference/candidates/README.md` gets a Picks/Rejected row for `rocketbox-female-adult-06` with the recorded reason, the avatar count becomes seven, and the sector-mapping note says Retail Trade is unassigned (it was Female_Adult_06).
+
+### Face box finding workflow (Requirement 46)
+
+1. Inspect the source FBX (via the fbx2gltf output kept in `work/`) and the converted glTF with gltf-transform: list nodes, meshes, primitives, materials with `alphaMode` and `alphaCutoff`, base colour texture, and the UV bounds of each primitive that sits at head height.
+2. Classify:
+   - Mesh finding: a separate visor or helmet-shield primitive or node. Fix is a `removeNode` edit by name in the recipe of `rocketbox-construction-male-01`. Re-run the pipeline for that pick only.
+   - Texture finding: the source material is alpha-masked (opacity texture) but the converted material is opaque, or `alphaMode` is wrong, or a UV island samples the wrong region. Fix is in the conversion step: copy `alphaMode` and `alphaCutoff` from the FBX2glTF output through the texture and Meshopt steps, or correct the material. A unit test builds a small document with an alpha-masked material, runs the conversion step, and asserts `alphaMode` and `alphaCutoff` survive; it fails before the fix.
+3. Record the finding (mesh or texture), the evidence and the fix in the README and the report.
+4. Keep the Bip01 bone check from the avatar conversion; it must pass after the edit.
+5. Render a head close-up before and after with the preview page (Requirement 44 page, fixed camera moved to the head) and save both PNGs to `reference/progress/`. These are outside the Owned_Paths and are not committed unless the user asks.

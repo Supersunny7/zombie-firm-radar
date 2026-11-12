@@ -18,11 +18,14 @@ import { MeshoptDecoder } from 'meshoptimizer';
 import sharp from 'sharp';
 import { countTriangles, decimate } from './asset-lib/edits/decimate.mjs';
 import { extractZip } from './asset-lib/archive.mjs';
+import { fractureParams, fractureTriangles, readPrimitive, writePrimitive } from './asset-lib/fracture.mjs';
 
 export const MAX_TRIANGLES = 20000;
 export const MAP_SIZE = 1024;
 export const DEFAULT_SEED = 20260101;
 export const MARKER_KEY = 'crackedHeadstone';
+export const CRACKED_BY = 'make-cracked-headstone@3';
+const PRE_FRACTURE_LIMIT = 16000; // headroom for the split and the rimmed caps (3 triangles per cut edge) under MAX_TRIANGLES
 const SOBEL_STRENGTH = 2.5;
 const HEIGHT_CLAMP = 0.02; // per-vertex vertical move, fraction of height (two ends => under 5 %)
 
@@ -298,6 +301,104 @@ export function chipEdges(doc, seed) {
   }
 }
 
+// ---------------------------------------------------------------- fracture (Requirement 42)
+
+/** Primitives with the world matrix of the first node that uses their mesh. */
+function trianglePrimitives(doc) {
+  const matrixByMesh = new Map();
+  for (const node of doc.getRoot().listNodes()) {
+    const mesh = node.getMesh();
+    if (mesh && !matrixByMesh.has(mesh)) matrixByMesh.set(mesh, node.getWorldMatrix());
+  }
+  const out = [];
+  for (const mesh of doc.getRoot().listMeshes()) {
+    const M = matrixByMesh.get(mesh) ?? IDENTITY;
+    const inv = inverseAffine(M);
+    if (!inv) continue;
+    for (const prim of mesh.listPrimitives()) {
+      if (prim.getMode() === 4 && prim.getAttribute('POSITION')) out.push({ prim, M, inv });
+    }
+  }
+  return out;
+}
+
+/** Darken the fracture edge in the base colour texture: sharp, 2 to 4 px, seeded jitter. */
+async function paintCrackLine(materials, uvSegments, seed) {
+  const done = new Set();
+  const rng = mulberry32((seed ^ 0xb1ac) >>> 0);
+  const nseed = (seed ^ 0x51de) | 0;
+  const widths = uvSegments.map(() => 2 + Math.floor(rng() * 3));
+  for (const mat of materials) {
+    const tex = mat.getBaseColorTexture();
+    if (!tex || done.has(tex) || !tex.getImage()) continue;
+    done.add(tex);
+    let decoded;
+    try {
+      decoded = await sharp(Buffer.from(tex.getImage())).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+    } catch {
+      continue; // undecodable (for example KTX2): vertex colour alone darkens the cut faces
+    }
+    const { data, info } = decoded;
+    const w = info.width, h = info.height, ch = info.channels;
+    const disk = (cx, cy, r) => {
+      for (let y = Math.floor(cy - r); y <= Math.ceil(cy + r); y++) {
+        for (let x = Math.floor(cx - r); x <= Math.ceil(cx + r); x++) {
+          if (x < 0 || y < 0 || x >= w || y >= h || (x + 0.5 - cx) ** 2 + (y + 0.5 - cy) ** 2 > r * r) continue;
+          const o = (y * w + x) * ch;
+          data[o] = Math.round(data[o] * 0.14);
+          data[o + 1] = Math.round(data[o + 1] * 0.13);
+          data[o + 2] = Math.round(data[o + 2] * 0.12);
+        }
+      }
+    };
+    uvSegments.forEach(([u0, v0, u1, v1], s) => {
+      const x0 = u0 * w, y0 = v0 * h, x1 = u1 * w, y1 = v1 * h;
+      const len = Math.hypot(x1 - x0, y1 - y0);
+      if (len > w * 0.5) return; // segment across a UV seam, not a stroke
+      const nx = len > 0 ? -(y1 - y0) / len : 0, ny = len > 0 ? (x1 - x0) / len : 0;
+      const steps = Math.max(1, Math.ceil(len * 2));
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps;
+        const x = x0 + (x1 - x0) * t, y = y0 + (y1 - y0) * t;
+        const j = (valueNoise3(nseed, x / 6, y / 6, 0) - 0.5) * 2.4;
+        disk(x + nx * j, y + ny * j, widths[s] / 2);
+      }
+    });
+    const png = await sharp(data, { raw: { width: w, height: h, channels: ch } }).png({ compressionLevel: 9 }).toBuffer();
+    tex.setImage(new Uint8Array(png)).setMimeType('image/png');
+  }
+}
+
+/**
+ * Fracture the slab: diagonal plane split, offset top piece, chipped upper corner, capped cuts,
+ * dark crack line in the base colour texture. Returns the parameters used.
+ */
+export async function fractureHeadstone(doc, materials, seed) {
+  const prims = trianglePrimitives(doc);
+  const read = prims.map((p) => ({ ...p, ...readPrimitive(p.prim, p.M, p.inv) }));
+  const min = [Infinity, Infinity, Infinity], max = [-Infinity, -Infinity, -Infinity];
+  for (const r of read) {
+    for (const t of r.tris) {
+      for (const v of t) {
+        for (let k = 0; k < 3; k++) {
+          if (v[k] < min[k]) min[k] = v[k];
+          if (v[k] > max[k]) max[k] = v[k];
+        }
+      }
+    }
+  }
+  if (!Number.isFinite(min[0])) throw new CrackedHeadstoneImpossible('the model has no triangle geometry');
+  const params = fractureParams(seed, { min, max });
+  const uvSegments = [];
+  for (const r of read) {
+    const res = fractureTriangles(r.tris, params);
+    uvSegments.push(...res.uvSegments);
+    writePrimitive(doc, r.prim, res.tris, r.M, r.inv, r.hasTangent);
+  }
+  await paintCrackLine(materials, uvSegments, seed);
+  return params;
+}
+
 // ---------------------------------------------------------------- main entry
 
 export function isCracked(doc) {
@@ -337,8 +438,8 @@ export async function makeCrackedHeadstone(doc, { seed = DEFAULT_SEED } = {}) {
   if (isCracked(doc)) return doc;
   const materials = stoneMaterials(doc); // throws before any change when impossible
 
-  // Safety net first: keep the chip on the final topology and the count under the limit.
-  if (countTriangles(doc) > MAX_TRIANGLES) await decimate(doc, { triangles: MAX_TRIANGLES }, { pick: 'cracked-headstone' });
+  // Leave headroom: the split and the caps add triangles, and decimating afterwards would weld the gap shut.
+  if (countTriangles(doc) > PRE_FRACTURE_LIMIT) await decimate(doc, { triangles: PRE_FRACTURE_LIMIT }, { pick: 'cracked-headstone' });
 
   const crack = crackNormals(crackHeightMap(seed));
   const done = new Map(); // old normal texture (or null) -> new texture
@@ -355,11 +456,25 @@ export async function makeCrackedHeadstone(doc, { seed = DEFAULT_SEED } = {}) {
   }
 
   chipEdges(doc, seed);
+  const fracture = await fractureHeadstone(doc, materials, seed);
 
   if (countTriangles(doc) > MAX_TRIANGLES) await decimate(doc, { triangles: MAX_TRIANGLES }, { pick: 'cracked-headstone' });
 
   const root = doc.getRoot();
-  root.setExtras({ ...(root.getExtras() ?? {}), [MARKER_KEY]: { version: 1, seed } });
+  const round = (x) => Math.round(x * 1e4) / 1e4;
+  root.setExtras({
+    ...(root.getExtras() ?? {}),
+    crackedBy: CRACKED_BY,
+    [MARKER_KEY]: {
+      version: 2,
+      seed,
+      assumedHeightM: fracture.assumedHeightM,
+      offsetCm: round(fracture.offsetCm),
+      offsetUnits: round(fracture.offsetUnits),
+      heightUnits: round(fracture.size[1]),
+      tiltDeg: round(fracture.tiltDeg),
+    },
+  });
   return doc;
 }
 

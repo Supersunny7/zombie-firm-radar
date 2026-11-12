@@ -22,7 +22,7 @@ function checkNumber(op, name, value, min, max) {
   }
 }
 
-function findTexture(doc, params, op, ctx) {
+export function findTexture(doc, params, op, ctx) {
   const name = params.texture;
   // glTF textures often have no name (Sketchfab exports); fall back to the image file name without extension.
   const stem = (t) => (t.getURI() || '').split('/').pop().replace(/\.[^.]+$/, '');
@@ -35,7 +35,7 @@ function findTexture(doc, params, op, ctx) {
 }
 
 /** Decode to RGBA8 raw pixels, run `fn(data, width, height)` in place, encode in the original format. */
-async function editPixels(tex, fn) {
+export async function editPixels(tex, fn) {
   const mime = tex.getMimeType();
   const { data, info } = await sharp(Buffer.from(tex.getImage()), { failOn: 'none' })
     .ensureAlpha()

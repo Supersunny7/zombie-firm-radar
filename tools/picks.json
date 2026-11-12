@@ -416,7 +416,7 @@
         "author": "Peter Tilley (drydoctoregg)",
         "sourceUrl": "https://sketchfab.com/3d-models/small-gravestone-a6b9ef8756bf453e9d8b22a40d1e905a",
         "license": "CC BY 4.0",
-        "changes": "Derived by our script from the intact scan: displaced crack normal map and chipped edge, decimated to at most 20,000 triangles, Meshopt-compressed"
+        "changes": "Derived by our script from the intact scan: diagonal fracture through the slab with the top piece offset 2.76 cm (2.14 model units; scale assumption: stone height 0.9 m = 69.8 model units), one upper corner chipped off, dark crack line in the base colour texture, displaced crack normal map, chipped edge, at most 20,000 triangles, Meshopt-compressed"
       }
     },
     {
@@ -1468,6 +1468,18 @@
           "op": "removeNode",
           "mesh": "Object_0"
         },
+        { "op": "raggedCut", "axis": "x", "at": 0.628, "seed": 20260101, "amplitude": 0.2 },
+        {
+          "op": "tint",
+          "hue": 115,
+          "minSaturation": 0.28,
+          "maxSaturation": 0.36,
+          "meanValue": 0.5,
+          "hueSpread": 6,
+          "meshes": ["Object_2", "Object_3", "Object_4", "Object_5", "Object_6"]
+        },
+        { "op": "joinMeshes", "meshes": ["Object_5", "Object_6"] },
+        { "op": "joinMeshes", "meshes": ["Object_2", "Object_3", "Object_4"] },
         {
           "op": "decimate",
           "triangles": 30000
@@ -1478,7 +1490,7 @@
         "author": "Agustin Ruella",
         "sourceUrl": "https://sketchfab.com/3d-models/zombie-hand-79755114a2334af4b712c3b11741d738",
         "license": "CC BY 4.0",
-        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; blue sleeve removed, decimated to about 30,000 triangles"
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; sleeve and the red forearm under it cut away at the wrist with a seeded ragged edge and capped, skin vertex colours graded to grey-green (mean HSV value 0.5, nails kept), decimated to about 30,000 triangles"
       }
     },
     {

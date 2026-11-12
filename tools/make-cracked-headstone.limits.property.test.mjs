@@ -86,8 +86,8 @@ describe('cracked headstone limits', () => {
 
           // at most 20,000 triangles
           expect(countTriangles(doc)).toBeLessThanOrEqual(20000);
-          // same bounding-box height within 5 percent
-          expect(Math.abs(heightOf(doc) - before) / before).toBeLessThan(0.05);
+          // bounding-box height within 10 percent (chip <= 4, offset <= 4.4, tilt <= 1)
+          expect(Math.abs(heightOf(doc) - before) / before).toBeLessThan(0.1);
           expect(isCracked(doc)).toBe(true);
 
           // a normal map is present

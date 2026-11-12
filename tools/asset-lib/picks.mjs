@@ -56,6 +56,25 @@ export const EDIT_SPECS = {
   grime: { required: { texture: isStr, seed: isInt, floor: isByte }, optional: {} },
   selectVariant: { required: { variant: isStr }, optional: {} },
   splitMesh: { required: { mesh: isStr, by: (v) => v === 'node' || v === 'components', parts: validParts }, optional: {} },
+  removeByVertexColor: {
+    required: { mesh: isStr, hueRange: (v) => Array.isArray(v) && v.length === 2 && v.every((x) => isNum(x) && x >= 0 && x <= 360), minSat: isFrac },
+    optional: { minVal: isFrac, axis: (v) => v === 'x' || v === 'y' || v === 'z', above: isNum },
+  },
+  joinMeshes: { required: { meshes: (v) => Array.isArray(v) && v.length >= 2 && v.every(isStr) }, optional: {} },
+  raggedCut: {
+    required: { axis: (v) => v === 'x' || v === 'y' || v === 'z', at: isFrac, seed: isInt, amplitude: (v) => isNum(v) && v >= 0 && v <= 0.5 },
+    optional: { mesh: isStr, keep: (v) => v === 'below' || v === 'above' },
+  },
+  tint: {
+    required: { hue: (v) => isNum(v) && v >= 0 && v <= 360, maxSaturation: isFrac, meanValue: isFrac },
+    optional: {
+      minSaturation: isFrac,
+      tolerance: (v) => isNum(v) && v >= 0 && v <= 0.5,
+      hueSpread: (v) => isNum(v) && v >= 0 && v <= 180,
+      meshes: (v) => Array.isArray(v) && v.length > 0 && v.every(isStr),
+      texture: isStr,
+    },
+  },
 };
 export const EDIT_OPS = Object.keys(EDIT_SPECS);
 

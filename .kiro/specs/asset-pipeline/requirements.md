@@ -595,3 +595,84 @@ The tasks document first listed Phase 1 only. After the user's final picks for r
 7. WHEN the audit reports no findings, THE Scout_Agent SHALL write a final report that lists the converted assets, the Manual_Picks that are still missing from the Manual_Cache, the picks that were dropped or stopped, the budgets and the packages installed, and SHALL then stop.
 8. THE Scout_Agent SHALL run `git commit` in Phase 2 only WHEN the user asks for it in the current request, and SHALL stage only files inside the Owned_Paths by explicit path.
 9. THE Scout_Agent SHALL leave every file outside the Owned_Paths, including `web/src`, `/pipeline`, `/data` and `DEVLOG.md`, unchanged and unstaged.
+
+### Requirement 42: Cracked headstone silhouette (amends Requirement 39)
+
+**User Story:** As the project owner, I want the cracked headstone to look different from the intact stone at graveyard distance, so that the player reads the state from the outline and not only from a texture.
+
+#### Acceptance Criteria
+
+1. THE Cracked_Headstone_Script SHALL cut a diagonal fracture through the slab of the Intact_Headstone_Scan so that the outline of the resulting model contains a real gap or step along the fracture, and not only a texture change.
+2. THE Cracked_Headstone_Script SHALL remove one upper corner of the slab as a chip that changes the outline.
+3. THE Cracked_Headstone_Script SHALL offset the top piece of the fractured slab by 2 to 4 cm relative to the real height of the stone, converted to model units of the scan, where the scale assumption (assumed real height of the stone in metres and the resulting offset in model units) is recorded in the Manifest entry and in the "Changes we made" cell of the Credits_File row.
+4. THE Cracked_Headstone_Script SHALL paint a darker crack line along the fracture in the stone texture.
+5. THE Cracked_Headstone_Script SHALL produce a model with at most 20,000 triangles.
+6. WHEN the Cracked_Headstone_Script runs twice on the same input with the same seed, THE Cracked_Headstone_Script SHALL write GLB files with the same SHA-256 hashes.
+7. WHEN the Cracked_Headstone_Script runs on its own output, THE Cracked_Headstone_Script SHALL leave the model unchanged (idempotence).
+8. THE Cracked_Headstone_Script SHALL keep the face of the stone free of readable inscriptions and SHALL NOT draw any glyph-like mark on the face.
+9. THE Cracked_Headstone_Script SHALL locate the fracture and the chipped corner by geometry it creates itself and SHALL NOT treat the pre-existing notch on the face of the intact scan as a crack, a chip or a fracture line.
+10. WHEN the silhouette of `own-headstone-cracked` and the silhouette of the intact headstone are rendered at 200 px height from the graveyard viewing direction, THE Asset_Pipeline SHALL measure the difference and SHALL require a silhouette XOR area of at least 3 percent of the intact silhouette area, equivalent to an intersection over union of 0.97 or lower.
+11. IF the measured silhouette difference is below the threshold in criterion 10, THEN THE Asset_Pipeline SHALL report the measured XOR percent and IoU and SHALL NOT accept the cracked headstone.
+
+### Requirement 43: Ruella hand without sleeve, dead skin tone
+
+**User Story:** As the project owner, I want the Ruella hand to be a bare, dead-looking hand without the blue sleeve, so that the hand reading from the screen edge looks like a zombie hand and does not glow under the lamp.
+
+#### Acceptance Criteria
+
+1. THE Fetch_Script SHALL delete the blue sleeve geometry of `sketchfab-zombie-hand-ruella` and SHALL NOT merely recolour it.
+2. THE Fetch_Script SHALL give the cut at the wrist a ragged edge drawn from the seed of the pick, using only that seed.
+3. THE Fetch_Script SHALL cap or close the cut at the wrist so that no open boundary edge at the cut shows the interior of the mesh.
+4. THE Fetch_Script SHALL grade the remaining skin to a grey-green dead tone whose mean HSV value over the skin pixels is from 0.45 to 0.55.
+5. WHEN the Fetch_Script applies the Edit_List of `sketchfab-zombie-hand-ruella` to its own output, THE Fetch_Script SHALL leave the geometry unchanged and SHALL change no 8-bit texture channel by more than 1.
+6. THE Fetch_Script SHALL produce a model with at most 30,000 triangles for `sketchfab-zombie-hand-ruella`.
+7. THE Fetch_Script SHALL support these additional Edit_Operations, defined in the edit-operations table of the design and accepted by the Picks_File schema: `removeByVertexColor` (delete the triangles whose vertex colour matches a colour range, with a ragged cut line and a cap), `raggedCut` (cut the mesh by a seeded ragged plane and close the cut) and `tint` (grade the named texture to a target hue, saturation cap and mean value).
+8. IF an added Edit_Operation names a node, mesh, material or texture that does not exist in the model, THEN THE Fetch_Script SHALL fail that pick as Requirement 36.8 states.
+9. THE Fetch_Script SHALL perform the added Edit_Operations with gltf-transform, meshoptimizer and plain JavaScript only, and SHALL NOT call Blender or any executable outside npm.
+
+### Requirement 44: Visual verification of the fixed assets
+
+**User Story:** As the project owner, I want before and after renders of the two fixed assets, so that I can see the fixes and the silhouette difference instead of trusting the numbers.
+
+#### Acceptance Criteria
+
+1. THE Asset_Pipeline SHALL provide a static preview page under `tools/preview/` that loads a `.glb` file with the Meshopt decoder and WebP textures, with a fixed camera and fixed lighting.
+2. THE preview page SHALL use the `three` package installed under `web/node_modules` WHERE that package is present, and SHALL otherwise use a pinned dev dependency declared in `tools/package.json` only after the Scout_Agent has told the user and the user has agreed.
+3. WHERE the query parameter `silhouette=1` is present, THE preview page SHALL render the model as flat black on white at 200 px height.
+4. THE Asset_Pipeline SHALL serve the preview page with a local static server script that uses only Node built-ins, that the Scout_Agent starts and stops itself, and that makes no network request and binds only to `127.0.0.1`.
+5. WHEN the fixed assets are verified, THE Scout_Agent SHALL render the cracked headstone, the intact headstone and the Ruella hand before and after the fixes with the Playwright_Server, and SHALL save the PNG files to `reference/progress/` with lowercase letters, digits and hyphens in the names, each under 1 MB, including the 200 px silhouette pair of the headstone.
+6. THE Scout_Agent SHALL treat `reference/progress/` as outside the Owned_Paths, SHALL NOT stage or commit the PNG files unless the user asks, and SHALL report this to the user.
+7. IF the render shows that a fix fails its measurable criterion in Requirement 42 or 43, THEN THE Scout_Agent SHALL change the edit and render again, up to 3 rounds, and SHALL stop and report to the user when the third round still fails.
+8. WHEN the visual fixes pass, THE Scout_Agent SHALL run the full tools tests, SHALL run the pipeline twice and require equal SHA-256 hashes, SHALL regenerate the Credits_File and the Manifest with the script, and SHALL run the Asset_Auditor until it reports no findings, as Requirement 41.5 states.
+
+### Requirement 45: Drop rocketbox-female-adult-06 and prune removed picks
+
+**User Story:** As the project owner, I want the Rocketbox Female_Adult_06 avatar removed from the project and the pipeline to clean up after any removed pick, so that no asset remains that could read as targeting a real group and the repository holds only what `tools/picks.json` lists.
+
+#### Acceptance Criteria
+
+1. THE Picks_File SHALL contain no pick with the id `rocketbox-female-adult-06`.
+2. WHEN the Fetch_Script runs, THE Fetch_Script SHALL prune every Asset_Root folder `web/public/assets/<typeDir>/<id>/` whose `<id>` is recorded in the Manifest or the Credits_File as owned by a pick that is no longer in the Picks_File.
+3. WHEN the Fetch_Script prunes a removed pick, THE Fetch_Script SHALL delete the Manifest entries and the Credits_File rows whose Path lies inside that pick's folder.
+4. THE Fetch_Script SHALL delete files only inside Asset_Root folders owned by removed pick ids, and SHALL leave every other file, including files in sibling folders, in the folder of a pick that remains, and files outside Asset_Root, unchanged.
+5. IF a removed pick's folder path resolves outside Asset_Root or is not a direct `<typeDir>/<id>` folder, THEN THE Fetch_Script SHALL skip that folder, SHALL report the path as an error and SHALL exit with a non-zero status.
+6. WHEN the Fetch_Script runs with `--dry-run`, THE Fetch_Script SHALL print the folders, Manifest entries and Credits_File rows it would prune and SHALL delete nothing.
+7. WHEN the Fetch_Script runs a second time after pruning, THE Fetch_Script SHALL prune nothing and SHALL leave the Asset_Root, the Manifest and the Credits_File byte-identical.
+8. WHEN `rocketbox-female-adult-06` is dropped, THE Asset_Pipeline SHALL remove `web/public/assets/avatars/rocketbox-female-adult-06/`, including its `.glb` file and its LICENSE file, through the pruning in criteria 2 and 3 and not by hand.
+9. THE Candidates_README SHALL list `rocketbox-female-adult-06` under Picks/Rejected in `reference/candidates/README.md` with the reason "Religious head covering would be shown rotting and attacking the camera in the horror sequences, which could read as targeting a real group."
+10. THE Candidates_README SHALL state that seven Rocketbox avatars remain, SHALL update every avatar count in the README and in the sector-mapping notes, and SHALL state that Female_Adult_06 was suggested for Retail Trade and that Retail Trade is now unassigned.
+
+### Requirement 46: Face box on rocketbox-construction-male-01
+
+**User Story:** As the project owner, I want the box that covers the face of the construction worker avatar found and fixed at its real cause, so that the avatar shows a face and the fix is explained and repeatable.
+
+#### Acceptance Criteria
+
+1. WHEN investigating the face box, THE Scout_Agent SHALL inspect the source FBX and the converted glTF of `rocketbox-construction-male-01` and SHALL list every mesh, node and material that covers the face, with its name, material alphaMode, alphaCutoff, texture and UV range.
+2. THE Scout_Agent SHALL record the finding as one of "mesh" (a separate visor or helmet-shield mesh or node) or "texture" (an opaque rendering caused by alpha, material or UV handling) and SHALL record the evidence and the fix in `reference/candidates/README.md` and in the report.
+3. IF the finding is "mesh", THEN THE Picks_File SHALL contain a `removeNode` edit in the recipe of `rocketbox-construction-male-01` that removes the visor or shield node or mesh by name.
+4. IF the finding is "texture", THEN THE Fetch_Script SHALL preserve the alphaMode (`MASK` or `BLEND`) and the alphaCutoff of the source material in its converted output, or SHALL correct the affected material or UV mapping, and a unit test SHALL fail without the fix and pass with it.
+5. WHEN the Fetch_Script converts `rocketbox-construction-male-01` after the fix, THE converted model SHALL keep every `Bip01` bone name of the Bip01_Skeleton.
+6. THE fix SHALL leave the output of every other pick byte-identical, apart from picks whose source materials use alpha, and SHALL record any such pick in the report.
+7. WHEN the fix is applied to its own output, THE Fetch_Script SHALL produce the same model, as Requirement 36.5 states for Edit_Operations.
+8. WHEN the fix is verified, THE Scout_Agent SHALL render a head close-up of `rocketbox-construction-male-01` before and after the fix with the preview page and the Playwright_Server, SHALL save the PNG files to `reference/progress/` with lowercase letters, digits and hyphens in the names, each under 1 MB, and SHALL NOT stage or commit them unless the user asks.

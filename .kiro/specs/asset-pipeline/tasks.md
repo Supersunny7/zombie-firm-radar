@@ -509,9 +509,83 @@ Working rules for every task:
     - Leave `web/src`, `/pipeline`, `/data` and `DEVLOG.md` unchanged and unstaged; then stop
     - _Requirements: 41.7, 41.8, 41.9, 21.1, 21.2, 21.3, 21.4, 21.5_
 
+- [ ] 26. Visual fixes
+  - [x] 26.1 Build the preview page and the static server in `tools/preview/`
+    - Run `git pull --no-edit` first; stop and report on non-zero exit or conflict
+    - Create `tools/preview/index.html`, `preview.mjs` (three from `web/node_modules/three` if present, GLTFLoader, MeshoptDecoder, WebP textures, fixed camera and lighting, `window.__ready` after the first frame), and the `?silhouette=1` flat black-on-white mode at 200 px height
+    - Create `tools/preview/serve.mjs` using only Node built-ins, bound to `127.0.0.1`, serving only `tools/preview`, `web/public/assets` and `web/node_modules/three`, with no outbound request
+    - Create `tools/preview/silhouette.mjs` (XOR percent and IoU of two PNGs, sharp) and `tools/preview/README.md` with the `render` helper (start server, navigate, wait for `window.__ready`, screenshot, stop server)
+    - Look up the current three.js GLTFLoader and MeshoptDecoder docs through context7 before writing the page; if `web/node_modules/three` is missing, tell the user and wait before adding any dev dependency
+    - Add unit tests for the silhouette helper and the server path rules (no path traversal, only the three roots)
+    - _Requirements: 44.1, 44.2, 44.3, 44.4, 19.1, 37.2_
+
+  - [x] 26.2 Rework the cracked headstone in `tools/make-cracked-headstone.mjs`
+    - Run `git pull --no-edit` first
+    - Implement the diagonal fracture with a real outline step, the chipped upper corner, the 2 to 4 cm top-piece offset (record the assumed real height and offset in the manifest `changes` text), the darker crack line in the texture, and the `extras` marker for idempotence; keep the blank face and ignore the pre-existing notch on the intact face
+    - Update the unit tests, and update the 19.5 and 19.6 property tests if they now conflict, keeping the meaning of Property 19 (at most 20,000 triangles) and Property 20 (deterministic derivation)
+    - Update the `own-headstone-cracked` pick in `tools/picks.json` (credits `changes` with the scale assumption) and re-run the pipeline for that pick
+    - _Requirements: 42.1, 42.2, 42.3, 42.4, 42.5, 42.6, 42.7, 42.8, 42.9, 39.2, 39.3, 39.4, 39.5, 39.6_
+
+  - [x] 26.3 Add the Ruella hand edits in `tools/asset-lib/edits`
+    - Run `git pull --no-edit` first
+    - Add `removeByVertexColor`, `raggedCut` and `tint` (seeded, strict and tolerant modes), register them in the edit-operations table and in the picks schema validation
+    - Update the `sketchfab-zombie-hand-ruella` recipe in `tools/picks.json`: delete the sleeve, ragged cut capped at the wrist, grey-green tint with mean HSV value 0.45 to 0.55, decimate to at most 30,000 triangles
+    - Add unit tests (sleeve triangles gone, no open boundary edge at the cut, mean value in range, missing target fails the pick) and update the idempotence and property tests for edits (Property 21) to include the new ops
+    - Re-run the pipeline for that pick
+    - _Requirements: 43.1, 43.2, 43.3, 43.4, 43.5, 43.6, 43.7, 43.8, 43.9, 36.1, 36.5, 36.8, 36.9_
+
+  - [x] 26.4 Render before and after, verify, and finish the checks
+    - Run `git pull --no-edit` first
+    - Start `tools/preview/serve.mjs` with the process tool, render with the Playwright MCP server the cracked headstone, the intact headstone and the Ruella hand before and after the fixes to `reference/progress/` (lowercase-hyphen names, each under 1 MB), including the 200 px silhouette pair of the headstone; stop the server afterwards
+    - Run the silhouette helper on the pair and require XOR of at least 3 percent (IoU 0.97 or lower); check the Ruella render shows no sleeve, a closed ragged wrist and a dark grey-green tone
+    - If a check fails, fix the edit, re-run the pipeline for the pick and render again; at most 3 rounds, then stop and report to the user
+    - Run `pnpm --dir tools test`, run `node tools/fetch-assets.mjs` twice and require equal SHA-256 hashes for all outputs, regenerate `CREDITS.md` and the manifest through the script (no hand edits), then invoke the `asset-auditor` agent and fix findings until clean (stop and ask if one survives two fixes)
+    - Report that `reference/progress/` is outside the Owned_Paths and its PNGs are not committed unless the user asks
+    - _Requirements: 44.5, 44.6, 44.7, 44.8, 42.10, 42.11, 41.5, 41.6, 17.4, 18.4_
+
+  - [-] 26.5 Commit only Owned_Paths and stop
+    - Run `git pull --no-edit` first, then `git status --short`; unstage only files outside the Owned_Paths with `git restore --staged <path>` and report each
+    - Stage explicitly: `git add tools`, `git add web/public/assets`, `git add CREDITS.md`, `git add .kiro/specs/asset-pipeline`; never `-A`, `.` or `-f`; do not stage `reference/progress`, `web/src`, `/pipeline`, `/data` or `DEVLOG.md`
+    - Commit with a conventional message of at most 72 characters, for example `fix(asset-pipeline): rework cracked headstone and ruella hand`; do not push; then stop
+    - _Requirements: 44.6, 41.8, 41.9, 21.1, 21.2, 21.4, 21.5_
+
+- [ ] 27. Avatar fixes
+  - [~] 27.1 Drop rocketbox-female-adult-06 and add prune support
+    - Run `git pull --no-edit` first; stop and report on non-zero exit or conflict. May run once 26.1 is done
+    - Remove the `rocketbox-female-adult-06` pick from `tools/picks.json`
+    - In `reference/candidates/README.md` add the pick to Picks/Rejected with the reason "Religious head covering would be shown rotting and attacking the camera in the horror sequences, which could read as targeting a real group."; update avatar counts to seven Rocketbox avatars and the sector-mapping notes (Female_Adult_06 was suggested for Retail Trade; leave Retail Trade unassigned and say so)
+    - Add `tools/asset-lib/prune.mjs` (`planPrune`) and wire it into `tools/fetch-assets.mjs` after conversion: prune only `<typeDir>/<id>` folders of pick ids that are in the Manifest or Credits_File but no longer in `picks.json`, with their Manifest entries and Credits_File rows; support `--dry-run`; refuse paths that escape Asset_Root with an error and a non-zero exit
+    - Add unit tests (removed folder, glb and LICENSE gone, manifest and credits entries gone, dry-run deletes nothing, escaping path refused, second run prunes nothing) and a fast-check property test, at least 100 runs: for any fake Asset_Root and any set of removed ids, the deleted paths are all inside the removed picks' folders and every other file is unchanged
+    - Re-run `node tools/fetch-assets.mjs` so the script removes `web/public/assets/avatars/rocketbox-female-adult-06/` (no hand deletion or hand edits of `manifest.json` or `CREDITS.md`)
+    - _Requirements: 45.1, 45.2, 45.3, 45.4, 45.5, 45.6, 45.7, 45.8, 45.9, 45.10, 18.4, 20.1_
+
+  - [~] 27.2 Investigate and fix the face box on rocketbox-construction-male-01
+    - Run `git pull --no-edit` first. May run once 26.1 is done
+    - Before changing anything, copy the current converted avatar outside Asset_Root (for example `tools/cache/before/`, git-ignored) for the "before" render
+    - Inspect the source FBX and converted glTF with gltf-transform: list the nodes, meshes, materials (`alphaMode`, `alphaCutoff`), textures and UV bounds at head height, and decide whether the box is a separate visor or helmet-shield mesh or a texture, alpha or UV error
+    - If it is a mesh or node: add a `removeNode` edit by name to the recipe of the pick in `tools/picks.json`. If it is a texture or material error: fix the conversion so `alphaMode` (`MASK` or `BLEND`) and `alphaCutoff` from the FBX2glTF output are preserved, or correct the material or UV, with a unit test that fails without the fix
+    - Record the finding (mesh vs texture), the evidence and the fix in `reference/candidates/README.md` and in the final report
+    - Re-run the pipeline for that pick, check the Bip01 bone check still passes and that other picks' outputs are unchanged (report any alpha-material pick whose output changes)
+    - _Requirements: 46.1, 46.2, 46.3, 46.4, 46.5, 46.6, 46.7, 36.1, 36.5, 36.8_
+
+  - [~] 27.3 Render the head close-up before and after
+    - Run `git pull --no-edit` first. Needs the preview page and server from 26.1
+    - Start `tools/preview/serve.mjs` with the process tool; with the Playwright MCP server render a head close-up of `rocketbox-construction-male-01` before the fix (the copy saved in 27.2) and after the fix; save both to `reference/progress/` with lowercase-hyphen names, each under 1 MB; stop the server afterwards
+    - Check the after render shows a visible face; if it does not, return to 27.2, at most 3 rounds, then stop and report
+    - Report that `reference/progress/` is outside the Owned_Paths and its PNGs are not committed unless the user asks
+    - _Requirements: 46.8, 44.1, 44.4, 44.5, 44.6_
+
+  - [~] 27.4 Full checks, audit, commit only Owned_Paths and stop
+    - Run `git pull --no-edit` first
+    - Run `pnpm --dir tools test`; run `node tools/fetch-assets.mjs` twice and require equal SHA-256 hashes for all outputs, the Manifest and `CREDITS.md`; invoke the `asset-auditor` agent and fix findings until clean (stop and ask if one survives two fixes)
+    - Run `git status --short`; unstage only files outside the Owned_Paths with `git restore --staged <path>` and report each
+    - Stage explicitly: `git add tools`, `git add web/public/assets`, `git add CREDITS.md`, `git add reference/candidates`, `git add .kiro/specs/asset-pipeline`; never `-A`, `.` or `-f`; do not stage `reference/progress`, `web/src`, `/pipeline`, `/data` or `DEVLOG.md`
+    - Commit with a conventional message of at most 72 characters, for example `fix(asset-pipeline): drop female-adult-06, fix construction face box`; do not push; then stop. This is the commit gate for task 27; task 26.5 is the commit gate for task 26
+    - _Requirements: 45.7, 46.5, 44.6, 44.8, 41.5, 41.8, 41.9, 21.1, 21.2, 21.4, 21.5_
+
 ## Notes
 
-- Tasks 1 to 12 are complete and unchanged. Tasks 13 to 25 are all required: there are no optional (`*`) tasks, including every property-test task.
+- Tasks 1 to 12 are complete and unchanged. Tasks 13 to 27 are all required: there are no optional (`*`) tasks, including every property-test task.
 - Property-based tests (fast-check with Vitest, at least 100 runs each) are written for Properties 1 to 23 of the design, one sub-task per property.
 - Every task that changes files starts with `git pull --no-edit` and stages only Owned_Paths by explicit path.
 - No package is installed before the user approves the binary-fetching list in task 14.2.
@@ -568,7 +642,16 @@ Working rules for every task:
     { "id": 43, "tasks": ["23.1"] },
     { "id": 44, "tasks": ["23.2"] },
     { "id": 45, "tasks": ["24.1"] },
-    { "id": 46, "tasks": ["25.1"] }
+    { "id": 46, "tasks": ["25.1"] },
+    { "id": 47, "tasks": ["26.1"] },
+    { "id": 48, "tasks": ["26.2"] },
+    { "id": 49, "tasks": ["26.3"] },
+    { "id": 50, "tasks": ["26.4"] },
+    { "id": 51, "tasks": ["26.5"] },
+    { "id": 52, "tasks": ["27.1"] },
+    { "id": 53, "tasks": ["27.2"] },
+    { "id": 54, "tasks": ["27.3"] },
+    { "id": 55, "tasks": ["27.4"] }
   ]
 }
 ```

@@ -12,7 +12,7 @@
       "bytes": 63564,
       "sha256": "f0decddce1080ace035aa41dc81ac3fb89b2b4525a5063dbe805ab3cd44cdbbb",
       "inputsSha256": "3058b48f6892bed4023bfc93ca1ac58635f2a2e4e5edc0045e15ee828e4d5cbc",
-      "recipe": "aa2f8cc56b9b24758295edd5d46dae4eeb030ccb5371efa733c65066a696ad15"
+      "recipe": "cc9f75c8be8fe731fe0c2a3eaaf16e20581cdc7f5bd536baf0d5a96c7a93d9f8"
     },
     "animations/rocketbox-m-walk-bruised/rocketbox-m-walk-bruised.glb": {
       "pick": "rocketbox-m-walk-bruised",
@@ -25,7 +25,7 @@
       "bytes": 66624,
       "sha256": "958252b9cfcd69b5800efeb2888b426f2eb70b5def7a7e222974b7a94470f449",
       "inputsSha256": "4dd89795fb423db011631388061a59a2bdef67ba9fa001a1ecc9f4149103998c",
-      "recipe": "aa2f8cc56b9b24758295edd5d46dae4eeb030ccb5371efa733c65066a696ad15"
+      "recipe": "cc9f75c8be8fe731fe0c2a3eaaf16e20581cdc7f5bd536baf0d5a96c7a93d9f8"
     },
     "animations/rocketbox-m-walk-drunk/rocketbox-m-walk-drunk.glb": {
       "pick": "rocketbox-m-walk-drunk",
@@ -38,7 +38,7 @@
       "bytes": 86464,
       "sha256": "4b014b9e390c19b4fc0905e0d298ffd7a632bc0836e0577197e08ff7edf52efd",
       "inputsSha256": "7056431c81b1830cfc4866ff80c91a879e9933ba2f6c35b05ae6dc114ea5047e",
-      "recipe": "aa2f8cc56b9b24758295edd5d46dae4eeb030ccb5371efa733c65066a696ad15"
+      "recipe": "cc9f75c8be8fe731fe0c2a3eaaf16e20581cdc7f5bd536baf0d5a96c7a93d9f8"
     },
     "animations/rocketbox-m-walk-neutral-01/rocketbox-m-walk-neutral-01.glb": {
       "pick": "rocketbox-m-walk-neutral-01",
@@ -51,7 +51,7 @@
       "bytes": 53720,
       "sha256": "f0ea95d6b95187c0d288bdb22183537c8dbe4e4cd01976c2bb15007cd4aa45a3",
       "inputsSha256": "a95d1cac1f2e1d1c70bdf8865ca8ac60be169efc58545feea1c03ec86dc59a70",
-      "recipe": "aa2f8cc56b9b24758295edd5d46dae4eeb030ccb5371efa733c65066a696ad15"
+      "recipe": "cc9f75c8be8fe731fe0c2a3eaaf16e20581cdc7f5bd536baf0d5a96c7a93d9f8"
     },
     "audio/freesound-bigkahuna360-electrical-shock-zap/freesound-bigkahuna360-electrical-shock-zap.mp3": {
       "pick": "freesound-bigkahuna360-electrical-shock-zap",
@@ -64,7 +64,7 @@
       "bytes": 39936,
       "sha256": "d39c8204d74a549093e09641b52cde7b5f0027756701fc015c2604498b86cc0c",
       "inputsSha256": "e1c4433c97ba42b2074e8cac9b9eff3d906553953523ba783ebd99f75c8e9e5b",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-bigkahuna360-electrical-shock-zap/freesound-bigkahuna360-electrical-shock-zap.ogg": {
       "pick": "freesound-bigkahuna360-electrical-shock-zap",
@@ -77,7 +77,7 @@
       "bytes": 39082,
       "sha256": "0ad59cbafe2fac7c02003732d2891104dd0aed98bc784c093211c33e262082a5",
       "inputsSha256": "e1c4433c97ba42b2074e8cac9b9eff3d906553953523ba783ebd99f75c8e9e5b",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-giddster-crows-cawing/freesound-giddster-crows-cawing.mp3": {
       "pick": "freesound-giddster-crows-cawing",
@@ -90,7 +90,7 @@
       "bytes": 611376,
       "sha256": "2dab1b182d5fb0e282c691fdb2ac35864efd6c402826faf11ab0dc5c0614f2c2",
       "inputsSha256": "df02355539afeda48349473b1f40843249585e5532ece7b6941ec4025937ba70",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-giddster-crows-cawing/freesound-giddster-crows-cawing.ogg": {
       "pick": "freesound-giddster-crows-cawing",
@@ -103,7 +103,7 @@
       "bytes": 503992,
       "sha256": "7c6ce0538e9caf0213d31209eac2863129d4f5684d90220045e4c2873218b068",
       "inputsSha256": "df02355539afeda48349473b1f40843249585e5532ece7b6941ec4025937ba70",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-guyburns-digging-with-shovel/freesound-guyburns-digging-with-shovel.mp3": {
       "pick": "freesound-guyburns-digging-with-shovel",
@@ -116,7 +116,7 @@
       "bytes": 347376,
       "sha256": "1b3a2942c894c15b3ffdfea45d7d767d89516978114df0abac640fa64df1c07f",
       "inputsSha256": "d4a51cf2ee3fbc82742b72265f00d17b6369b92dc60126e1da58e00621275a70",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-guyburns-digging-with-shovel/freesound-guyburns-digging-with-shovel.ogg": {
       "pick": "freesound-guyburns-digging-with-shovel",
@@ -129,7 +129,7 @@
       "bytes": 251325,
       "sha256": "51728989469f277744e37c423b3bb7b50697fcc238b04a80110ed21c8bda4f56",
       "inputsSha256": "d4a51cf2ee3fbc82742b72265f00d17b6369b92dc60126e1da58e00621275a70",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-indieground-pas-zombie-route/freesound-indieground-pas-zombie-route.mp3": {
       "pick": "freesound-indieground-pas-zombie-route",
@@ -142,7 +142,7 @@
       "bytes": 366939,
       "sha256": "24abd17cd3c9ea968dbf56bfc4cc62c74450d35473155885dee27cd6af7b908a",
       "inputsSha256": "0017d3fa9831da125cef00dbba9997244af40a3e947b4fe2ad36b5556bfa9c75",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-indieground-pas-zombie-route/freesound-indieground-pas-zombie-route.ogg": {
       "pick": "freesound-indieground-pas-zombie-route",
@@ -155,7 +155,7 @@
       "bytes": 324704,
       "sha256": "c596333a1705ecd5d8ef4eb195e3e1367ddd5632309f3c90d93ab9e27f43783e",
       "inputsSha256": "0017d3fa9831da125cef00dbba9997244af40a3e947b4fe2ad36b5556bfa9c75",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-joelaudio-electric-zap-001/freesound-joelaudio-electric-zap-001.mp3": {
       "pick": "freesound-joelaudio-electric-zap-001",
@@ -168,7 +168,7 @@
       "bytes": 14735,
       "sha256": "a3b85b140a70bae26ba4a2dc1b116817045889eb5fa4e98cf0b718e15046477d",
       "inputsSha256": "b78c0412632e0f85293ecb3b98cf9550ce80a268eea3aeae1bddc71a43fa8f81",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-joelaudio-electric-zap-001/freesound-joelaudio-electric-zap-001.ogg": {
       "pick": "freesound-joelaudio-electric-zap-001",
@@ -181,7 +181,7 @@
       "bytes": 9824,
       "sha256": "b77dcc8c9527aa2ba4ff82850b16ced2daf861e650332f579d803f2cd4ae535e",
       "inputsSha256": "b78c0412632e0f85293ecb3b98cf9550ce80a268eea3aeae1bddc71a43fa8f81",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-launemax-open-close-iron-gate/freesound-launemax-open-close-iron-gate.mp3": {
       "pick": "freesound-launemax-open-close-iron-gate",
@@ -194,7 +194,7 @@
       "bytes": 187728,
       "sha256": "c15037cd0a27f0c13280c59df2aa1ecfec25902a3a5cf35c7d1da159e4561673",
       "inputsSha256": "e905eb7f3e88248e49433f721f1c543c9e0a729927e72f79fecb869d7003ed56",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-launemax-open-close-iron-gate/freesound-launemax-open-close-iron-gate.ogg": {
       "pick": "freesound-launemax-open-close-iron-gate",
@@ -207,7 +207,7 @@
       "bytes": 167231,
       "sha256": "a8fd9f5d6e203a202864a476d1dfbb7239a839f17aa588966ebf92af3330f117",
       "inputsSha256": "e905eb7f3e88248e49433f721f1c543c9e0a729927e72f79fecb869d7003ed56",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-lennartgreen-low-rumble-loopable/freesound-lennartgreen-low-rumble-loopable.mp3": {
       "pick": "freesound-lennartgreen-low-rumble-loopable",
@@ -220,7 +220,7 @@
       "bytes": 165909,
       "sha256": "04ac24a448487f9dfc6b646e370d4fe29863c41a96ea80df0172a1cac34b6e4f",
       "inputsSha256": "01d82d933c9537c68f38fd6d84d710e8d543db1369c0e310844d84188adcd605",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-lennartgreen-low-rumble-loopable/freesound-lennartgreen-low-rumble-loopable.ogg": {
       "pick": "freesound-lennartgreen-low-rumble-loopable",
@@ -233,7 +233,7 @@
       "bytes": 118319,
       "sha256": "de862ce6389abde56ac93ac5bff47b1a0ed63815d9ff971db1059f7d87327bfb",
       "inputsSha256": "01d82d933c9537c68f38fd6d84d710e8d543db1369c0e310844d84188adcd605",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-qubodup-vibrating-jumpscare/freesound-qubodup-vibrating-jumpscare.mp3": {
       "pick": "freesound-qubodup-vibrating-jumpscare",
@@ -246,7 +246,7 @@
       "bytes": 150453,
       "sha256": "c981b0dd84f7b1696a5f2021728fc0f74ebec5b9d0aa01b9313179fb4204ec81",
       "inputsSha256": "fe21b1557c0e34a057477bd375b5cac20e456c3865f04ed077699816f72dfe9a",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-qubodup-vibrating-jumpscare/freesound-qubodup-vibrating-jumpscare.ogg": {
       "pick": "freesound-qubodup-vibrating-jumpscare",
@@ -259,7 +259,7 @@
       "bytes": 115623,
       "sha256": "72c55ecbff3c025d4cd14bc6c86835bea0b5a72f3de672fb548bcd86ce8007eb",
       "inputsSha256": "fe21b1557c0e34a057477bd375b5cac20e456c3865f04ed077699816f72dfe9a",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-sidequesting-steady-heart-rate-monitor-loop/freesound-sidequesting-steady-heart-rate-monitor-loop.mp3": {
       "pick": "freesound-sidequesting-steady-heart-rate-monitor-loop",
@@ -272,7 +272,7 @@
       "bytes": 294731,
       "sha256": "ede4dbefe5dd02c051f1d8111262924fa0c32706bb8dbaefa99c13c117548ff8",
       "inputsSha256": "5fd2eed3c669e999c1403166379138de181018709222a6f0876dc139281b5f3d",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-sidequesting-steady-heart-rate-monitor-loop/freesound-sidequesting-steady-heart-rate-monitor-loop.ogg": {
       "pick": "freesound-sidequesting-steady-heart-rate-monitor-loop",
@@ -285,7 +285,7 @@
       "bytes": 440775,
       "sha256": "d43ce1d4aa27f310f8f3d0c940bd97a798b88b1e30f2f002b5a3e294aac02d5a",
       "inputsSha256": "5fd2eed3c669e999c1403166379138de181018709222a6f0876dc139281b5f3d",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-smice-6-hum-loop/freesound-smice-6-hum-loop.mp3": {
       "pick": "freesound-smice-6-hum-loop",
@@ -298,7 +298,7 @@
       "bytes": 390288,
       "sha256": "661a820db5c25268dfbeb3b7457573bafc5d68f59984688ca1beb807644730d4",
       "inputsSha256": "bc2bd6860af56bd0e5fce27a3d86e0e1f8fe1ede74f8a806d0e0371e169c8322",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-smice-6-hum-loop/freesound-smice-6-hum-loop.ogg": {
       "pick": "freesound-smice-6-hum-loop",
@@ -311,7 +311,7 @@
       "bytes": 307226,
       "sha256": "06cf123fddf0256e68364eb2025d70cac4ba431fbce222c1f1de762339db25d9",
       "inputsSha256": "bc2bd6860af56bd0e5fce27a3d86e0e1f8fe1ede74f8a806d0e0371e169c8322",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-thegreatperson-heart-rate-cardiac-arrest-flatline/freesound-thegreatperson-heart-rate-cardiac-arrest-flatline.mp3": {
       "pick": "freesound-thegreatperson-heart-rate-cardiac-arrest-flatline",
@@ -324,7 +324,7 @@
       "bytes": 277698,
       "sha256": "43384dded43a0488653c10f07472fab4cadbe1c4313e6bf00d6be1abeebc4b9d",
       "inputsSha256": "62ab6e5e9de6946ee976b6c09b706655000ec1c33f110d6f74ad660268eb7e24",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-thegreatperson-heart-rate-cardiac-arrest-flatline/freesound-thegreatperson-heart-rate-cardiac-arrest-flatline.ogg": {
       "pick": "freesound-thegreatperson-heart-rate-cardiac-arrest-flatline",
@@ -337,7 +337,7 @@
       "bytes": 233427,
       "sha256": "e5d70f5372b991847d1bf62675267c22d1b2bd5a526348c8e9879e2779491988",
       "inputsSha256": "62ab6e5e9de6946ee976b6c09b706655000ec1c33f110d6f74ad660268eb7e24",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-tomhannen-howling-wind-tower/freesound-tomhannen-howling-wind-tower.mp3": {
       "pick": "freesound-tomhannen-howling-wind-tower",
@@ -350,7 +350,7 @@
       "bytes": 280896,
       "sha256": "58fd9696980aba273aa5a633c1996d65e0ff8f7022d66297a045f1b305bef8dd",
       "inputsSha256": "72f33aa8e7313c0d4fbedb95df13fcacb497185656a8f188b7d45df82290d998",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-tomhannen-howling-wind-tower/freesound-tomhannen-howling-wind-tower.ogg": {
       "pick": "freesound-tomhannen-howling-wind-tower",
@@ -363,7 +363,7 @@
       "bytes": 241168,
       "sha256": "36abab1125fb4d019b7327cf557e69cdf7ff8dd35196abd5b19265ac387e66f9",
       "inputsSha256": "72f33aa8e7313c0d4fbedb95df13fcacb497185656a8f188b7d45df82290d998",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-zazz-cloth-rustle-8/freesound-zazz-cloth-rustle-8.mp3": {
       "pick": "freesound-zazz-cloth-rustle-8",
@@ -376,7 +376,7 @@
       "bytes": 900936,
       "sha256": "e0cbdc6124452678af2567b2d691adc77b4a5e260372bbb8a3d8058a5d5447b3",
       "inputsSha256": "19b7a334bd6a11ed46b7ed7786903677c859a5741d282edb8af5a758a450eb1b",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-zazz-cloth-rustle-8/freesound-zazz-cloth-rustle-8.ogg": {
       "pick": "freesound-zazz-cloth-rustle-8",
@@ -389,7 +389,7 @@
       "bytes": 815813,
       "sha256": "1479ba55b5bd08bb1181280ad6ec5ce45ac0d787b07001ec6dea59d30c6266cd",
       "inputsSha256": "19b7a334bd6a11ed46b7ed7786903677c859a5741d282edb8af5a758a450eb1b",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-zhro-heartbeat-loopable/freesound-zhro-heartbeat-loopable.mp3": {
       "pick": "freesound-zhro-heartbeat-loopable",
@@ -402,7 +402,7 @@
       "bytes": 22778,
       "sha256": "bcffa122459554d16ad84b5ce08303d8dd0073748cedf926333b12c03c3d0c61",
       "inputsSha256": "ff4016cd350da12eb197e9eda67e45c0c40f78c65dcbc72b9bf6d7f79a9001c4",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-zhro-heartbeat-loopable/freesound-zhro-heartbeat-loopable.ogg": {
       "pick": "freesound-zhro-heartbeat-loopable",
@@ -415,7 +415,7 @@
       "bytes": 45180,
       "sha256": "be38199cd13e7e7ad5902ee91c55016eae0313bcf7ac90d302ac50bf3d1ae0fc",
       "inputsSha256": "ff4016cd350da12eb197e9eda67e45c0c40f78c65dcbc72b9bf6d7f79a9001c4",
-      "recipe": "82036bc7e554ccf3d030b7e153e39cb5d6edfeff9e5e36e674699a4808be6c66"
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "avatars/rocketbox-business-female-01/LICENSE": {
       "pick": "rocketbox-business-female-01",
@@ -428,7 +428,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "aa74a035f9834c2b5d5125220d2d6aac687896223b2b01d4a73bb93798e0e12c",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-business-female-01/rocketbox-business-female-01.glb": {
       "pick": "rocketbox-business-female-01",
@@ -441,7 +441,7 @@
       "bytes": 657448,
       "sha256": "955976d1dbf5e216e6b1194d825e323b3215a244269a0bc76eb9b3b4f2bd64b1",
       "inputsSha256": "aa74a035f9834c2b5d5125220d2d6aac687896223b2b01d4a73bb93798e0e12c",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-business-male-02/LICENSE": {
       "pick": "rocketbox-business-male-02",
@@ -454,7 +454,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "4ff4a71f92ecbef0697a3b7af2edf46653da4870785edaeef452d8f820d40a3a",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-business-male-02/rocketbox-business-male-02.glb": {
       "pick": "rocketbox-business-male-02",
@@ -467,7 +467,7 @@
       "bytes": 517144,
       "sha256": "10291849343b67d65cb10ae87ca44b8fd4ecd7a4b565c829e48b36e638373b62",
       "inputsSha256": "4ff4a71f92ecbef0697a3b7af2edf46653da4870785edaeef452d8f820d40a3a",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-construction-female-01/LICENSE": {
       "pick": "rocketbox-construction-female-01",
@@ -480,7 +480,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "2b67ed1c4d6d161dff845e9d52c0eb79715f211c9e561c770cbb16cb5c652423",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-construction-female-01/rocketbox-construction-female-01.glb": {
       "pick": "rocketbox-construction-female-01",
@@ -493,7 +493,7 @@
       "bytes": 402120,
       "sha256": "f67cac8f60deaef4f5ff8d0fa7ccebd83e433122fff5cc74b0f5238442741ada",
       "inputsSha256": "2b67ed1c4d6d161dff845e9d52c0eb79715f211c9e561c770cbb16cb5c652423",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-construction-male-01/LICENSE": {
       "pick": "rocketbox-construction-male-01",
@@ -506,7 +506,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "0e656891c4dea304454ddd79927c12b0ea8888900fa80f2109082a6c7c8ceced",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-construction-male-01/rocketbox-construction-male-01.glb": {
       "pick": "rocketbox-construction-male-01",
@@ -519,7 +519,7 @@
       "bytes": 882924,
       "sha256": "5029dcf7b71f9d7dcaf4d206118446876f0a5166a0071db5af342df3d3cb719f",
       "inputsSha256": "0e656891c4dea304454ddd79927c12b0ea8888900fa80f2109082a6c7c8ceced",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-female-adult-06/LICENSE": {
       "pick": "rocketbox-female-adult-06",
@@ -532,7 +532,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "19935a781e93772894aa661189b5693cfe9095cb88dfb0a8b99722052fd8d3a9",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-female-adult-06/rocketbox-female-adult-06.glb": {
       "pick": "rocketbox-female-adult-06",
@@ -545,7 +545,7 @@
       "bytes": 454820,
       "sha256": "3d54f135b2cca47ec57836d8f7111dd9b7600bb8e867e7137c9f02bc883b11e3",
       "inputsSha256": "19935a781e93772894aa661189b5693cfe9095cb88dfb0a8b99722052fd8d3a9",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-gardener-male-01/LICENSE": {
       "pick": "rocketbox-gardener-male-01",
@@ -558,7 +558,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "bf65e506b082a0a8873231e8d88967caedef624577cb8241672ff55d4a975efc",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-gardener-male-01/rocketbox-gardener-male-01.glb": {
       "pick": "rocketbox-gardener-male-01",
@@ -571,7 +571,7 @@
       "bytes": 689100,
       "sha256": "593649e4a610dd9eae408783b1a938451bb73e0203d8fa1a968aed4158434cf4",
       "inputsSha256": "bf65e506b082a0a8873231e8d88967caedef624577cb8241672ff55d4a975efc",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-male-adult-05/LICENSE": {
       "pick": "rocketbox-male-adult-05",
@@ -584,7 +584,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "e7ff03c0113ab4cc43eccebd1fe2b9ac91191633c497d59cbf43e7627812cfc4",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-male-adult-05/rocketbox-male-adult-05.glb": {
       "pick": "rocketbox-male-adult-05",
@@ -597,7 +597,7 @@
       "bytes": 766596,
       "sha256": "1ab7cf209083d3bbf2c419d3cd8bdbc386290236a227bf35c352dd19a4e473fd",
       "inputsSha256": "e7ff03c0113ab4cc43eccebd1fe2b9ac91191633c497d59cbf43e7627812cfc4",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-medical-female-01/LICENSE": {
       "pick": "rocketbox-medical-female-01",
@@ -610,7 +610,7 @@
       "bytes": 1066,
       "sha256": "17474e386e0b9e1a700cc3d06b2b0882a2c376d9c6b49c7f8274409b8f8d2352",
       "inputsSha256": "f078c6250fb2f793660215840089d6e12ae5572e99d9389e51497f5011ce152f",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "avatars/rocketbox-medical-female-01/rocketbox-medical-female-01.glb": {
       "pick": "rocketbox-medical-female-01",
@@ -623,7 +623,7 @@
       "bytes": 579676,
       "sha256": "c0157fbcffba8aeff3ee93bb29c532f4e29f9822092962794f81432c16b23cc5",
       "inputsSha256": "f078c6250fb2f793660215840089d6e12ae5572e99d9389e51497f5011ce152f",
-      "recipe": "9e0873ba8137bf1e162144fc394626b267799c71a63b242e5a5df66ea4b048b4"
+      "recipe": "75c1f5d98ef3505a54328742b7ec15dfe57478038b7c25fd8913625bcc42065d"
     },
     "hdri/polyhaven-moonlit-golf-environment/polyhaven-moonlit-golf-environment_1k.hdr": {
       "pick": "polyhaven-moonlit-golf-environment",
@@ -636,7 +636,7 @@
       "bytes": 1725527,
       "sha256": "cff71a58efa0c06e06b54046ee877c933d74e7292be1d71511aca1a36749d60c",
       "inputsSha256": "c85a70b7c25cec10dcfa78828ff036e3e622d524e6145a16d09703d5d5d4aee3",
-      "recipe": "6f5d85a4994b1610465994ebd381378d7ee4c278a7f3a3a3d6e8b8cac8a401f3"
+      "recipe": "dac56e7ed2a3fe9eb4b558f77a12e53c08f1d6e74a3f65579021c79a38c39801"
     },
     "hdri/polyhaven-moonlit-golf/polyhaven-moonlit-golf_2k.hdr": {
       "pick": "polyhaven-moonlit-golf",
@@ -649,7 +649,7 @@
       "bytes": 6981963,
       "sha256": "b4e3a366b785fcfe765ef8143a8930cf4e71aa59467ef9050098ecf375d7926b",
       "inputsSha256": "3633140a9688d846b1668b576593cfa5c4546d5be51bd317ae5a74189e11790c",
-      "recipe": "480bb759609a8f692ad53a002c8c561f7961f8786fe985ec4de3df66b2323c73",
+      "recipe": "e85e0de4dbdbed3c38509234c845d679b85168af2383c178a668101b66bb1514",
       "sizeException": {
         "maxBytes": 7340032,
         "reason": "User accepted 2k background sky; lazy-load after first frame"
@@ -661,12 +661,12 @@
       "author": "Peter Tilley (drydoctoregg)",
       "sourceUrl": "https://sketchfab.com/3d-models/small-gravestone-a6b9ef8756bf453e9d8b22a40d1e905a",
       "license": "CC BY 4.0",
-      "changes": "Derived by our script from the intact scan: displaced crack normal map and chipped edge, decimated to at most 20,000 triangles, Meshopt-compressed",
+      "changes": "Derived by our script from the intact scan: diagonal fracture through the slab with the top piece offset 2.76 cm (2.14 model units; scale assumption: stone height 0.9 m = 69.8 model units), one upper corner chipped off, dark crack line in the base colour texture, displaced crack normal map, chipped edge, at most 20,000 triangles, Meshopt-compressed",
       "group": "graveyard",
-      "bytes": 287396,
-      "sha256": "11516d71415f396dbdb96d8ba3bca428b6aa97be63461783bf4e4b5f9c222526",
+      "bytes": 330348,
+      "sha256": "f633c0179db6db84513cf1dbcfa06d106bcdce0891aea60dd9cf1bef9db8c582",
       "inputsSha256": "01834042d25e37419203c1cea73a5c8b2a045693f21047f297f392592c80e94e",
-      "recipe": "3402d67cef91207dad0612d24e577789f14f61f4dec68be09f4aac1682ca60a1"
+      "recipe": "cc8db19bea68d2bbddb8cc3b4aebbf34412b28534233217ef0984ec4ecd17931"
     },
     "models/polyhaven-dead-tree-trunk/polyhaven-dead-tree-trunk.glb": {
       "pick": "polyhaven-dead-tree-trunk",
@@ -679,7 +679,7 @@
       "bytes": 701424,
       "sha256": "4956852ec9dd21deb893a8ea98d38ac6553faf3a396683e1f79aa8739aa2eba1",
       "inputsSha256": "67d11b8699c032bb3a6c2244aa4b4b5964bf4f540375f23ebfbd9a038cd55555",
-      "recipe": "fbc7114cc8c4b93e9c4faaa459f896aebc978ebfa3a6f24fcf6e0226fc6a980d"
+      "recipe": "f71ef2572c5966930c1b038d54412af67a6475d25cefc1028ec6087603972c48"
     },
     "models/polyhaven-gothic-statue/polyhaven-gothic-statue.glb": {
       "pick": "polyhaven-gothic-statue",
@@ -692,7 +692,7 @@
       "bytes": 1037824,
       "sha256": "86dbfb62d5e0812156dab0332cb02738e7b369f7781e3cbe690da7760b7e3618",
       "inputsSha256": "b349e57e087d61abf7f4f3cc2bd128179dcbb1cd93783631a68aa9780a6f6847",
-      "recipe": "baf512a0b632428e18384344d623fe0417e62640d4a9b5b4e1172c0c758784dd"
+      "recipe": "1dcf259b26c99e6ff145b1f45bf4b6c09e65cc8493e0b664fd049ea7871f0e8e"
     },
     "models/polyhaven-lantern-01/polyhaven-lantern-01.glb": {
       "pick": "polyhaven-lantern-01",
@@ -705,7 +705,7 @@
       "bytes": 604068,
       "sha256": "a9e4e520cc067ecf90f0369816e18d7a57ec05c23f24b77cd42ebf53420f9e57",
       "inputsSha256": "8a3cdefe2dbe251ad9d7b06ed87341c6a3a34c40425136885a662c7b1bbddfb1",
-      "recipe": "baf512a0b632428e18384344d623fe0417e62640d4a9b5b4e1172c0c758784dd"
+      "recipe": "1dcf259b26c99e6ff145b1f45bf4b6c09e65cc8493e0b664fd049ea7871f0e8e"
     },
     "models/polyhaven-large-castle-door/polyhaven-large-castle-door.glb": {
       "pick": "polyhaven-large-castle-door",
@@ -718,7 +718,7 @@
       "bytes": 705548,
       "sha256": "7818b2b8bb8fdea38daa3d49886269d1bdb3eed806171063d52944490e64b3ab",
       "inputsSha256": "4924e7b8e39d1dd13e64e084593729dbdaf785c44e2fb32f313f8cd06626e745",
-      "recipe": "baf512a0b632428e18384344d623fe0417e62640d4a9b5b4e1172c0c758784dd"
+      "recipe": "1dcf259b26c99e6ff145b1f45bf4b6c09e65cc8493e0b664fd049ea7871f0e8e"
     },
     "models/polyhaven-large-iron-gate/polyhaven-large-iron-gate.glb": {
       "pick": "polyhaven-large-iron-gate",
@@ -731,7 +731,7 @@
       "bytes": 656884,
       "sha256": "106a0e914429be2149f10de9b8358caa266ab6922cc0a57518e5408ec90f61c5",
       "inputsSha256": "9410a60ecbf13acada0939004a49a44eb0c89450d458fd91b037bef3e40c24e6",
-      "recipe": "baf512a0b632428e18384344d623fe0417e62640d4a9b5b4e1172c0c758784dd"
+      "recipe": "1dcf259b26c99e6ff145b1f45bf4b6c09e65cc8493e0b664fd049ea7871f0e8e"
     },
     "models/polyhaven-tree-stump-01/polyhaven-tree-stump-01.glb": {
       "pick": "polyhaven-tree-stump-01",
@@ -744,7 +744,7 @@
       "bytes": 1009032,
       "sha256": "6a12a0511d66eb15678156af8f0f45147329910e4d8004d01868eabfe12f6935",
       "inputsSha256": "c1e772a848bd3876504a789d3304f481e8222310aa55832aed5cedf9c18557f2",
-      "recipe": "baf512a0b632428e18384344d623fe0417e62640d4a9b5b4e1172c0c758784dd"
+      "recipe": "1dcf259b26c99e6ff145b1f45bf4b6c09e65cc8493e0b664fd049ea7871f0e8e"
     },
     "models/polyhaven-tree-stump-02/polyhaven-tree-stump-02.glb": {
       "pick": "polyhaven-tree-stump-02",
@@ -757,7 +757,7 @@
       "bytes": 1192448,
       "sha256": "1496ec285366a1c23f5d1e3866477f84bc733bb177bc98042e3422be49be8036",
       "inputsSha256": "b5f7bab1856473a8e431a3073ae7bbc37967cfb99eb0eb67f7e83ddfefba1da7",
-      "recipe": "baf512a0b632428e18384344d623fe0417e62640d4a9b5b4e1172c0c758784dd"
+      "recipe": "1dcf259b26c99e6ff145b1f45bf4b6c09e65cc8493e0b664fd049ea7871f0e8e"
     },
     "models/sketchfab-autopsy-lab-assets/sketchfab-autopsy-lab-assets.glb": {
       "pick": "sketchfab-autopsy-lab-assets",
@@ -770,7 +770,7 @@
       "bytes": 2070316,
       "sha256": "7e441ce01f85fa33df6269f4cb09d4dac96136512d482171b90ac46a38292812",
       "inputsSha256": "897334bfe92eb30d81c6aa99fc348032868b90779576594a9be11fc3a30a62ca",
-      "recipe": "852c2f177a3db569ae2f6f44f6f5852eeef1c0b988b2baf71bc0877fc6f2651a"
+      "recipe": "985fde230bbd3a5afb1e3cc22a556b277284cd3811f9216cfa68f5291876f78e"
     },
     "models/sketchfab-cobwebs-asset-pack-emarshall/sketchfab-cobwebs-asset-pack-emarshall.glb": {
       "pick": "sketchfab-cobwebs-asset-pack-emarshall",
@@ -783,7 +783,7 @@
       "bytes": 934404,
       "sha256": "b88e5b87c304608492d9129eee4326820a8d796019f2549635db41b39679f3b1",
       "inputsSha256": "8b2e9864d1e575c6aaf699306de093bb07771d8bed0bdd155d976144764c05ac",
-      "recipe": "852c2f177a3db569ae2f6f44f6f5852eeef1c0b988b2baf71bc0877fc6f2651a"
+      "recipe": "985fde230bbd3a5afb1e3cc22a556b277284cd3811f9216cfa68f5291876f78e"
     },
     "models/sketchfab-crutch-and-iv-drip/sketchfab-crutch-and-iv-drip.glb": {
       "pick": "sketchfab-crutch-and-iv-drip",
@@ -796,7 +796,7 @@
       "bytes": 334712,
       "sha256": "14bc4b1d4160b3731a0e7331e68e12de41e42f110e88c2d88fe64210ed95ffc5",
       "inputsSha256": "24bfdd8330d9c9db073919f8cea1e9c21352301f52335815afc58dcc7bb4c3ce",
-      "recipe": "24bd7f879ccdf8ac14f8c2e553c815f426a765824e97445e5f7597b458b15196"
+      "recipe": "e45bac340beede2043c31532694ed684f18725a3d89d608c08fd92e7b3f77dc7"
     },
     "models/sketchfab-damaged-tombstone-drydoctoregg/sketchfab-damaged-tombstone-drydoctoregg.glb": {
       "pick": "sketchfab-damaged-tombstone-drydoctoregg",
@@ -809,7 +809,7 @@
       "bytes": 432520,
       "sha256": "20cabb0e3258ae5092f52be5489f0e5f4146202b6fe3d754c831fa78ce6f704e",
       "inputsSha256": "fffc1506b3edda373f054e8be592897f9976236d73191d854a3895e14a035793",
-      "recipe": "0b928f4e8e747d72044689af716c0f2edf20e388a2d5f84da415b743ccf412c7"
+      "recipe": "d975418b82fba14007f1b096c11bf4f0fb82370e7e332bcd34de7636e9c08e28"
     },
     "models/sketchfab-human-skull-danieledefilippis/sketchfab-human-skull-danieledefilippis.glb": {
       "pick": "sketchfab-human-skull-danieledefilippis",
@@ -822,7 +822,7 @@
       "bytes": 629212,
       "sha256": "4152e79d7e9f4c5f3ad31493239310218864a3f884b9b6919c35f762a56bd8ac",
       "inputsSha256": "b0bcfe8b1b69ea47fa7293b2d6955cde4f95f9057419ca5d6d7e02dff55b1505",
-      "recipe": "2ce218b5676094c2f9a76fa1ad0bba5a7d13458223580785825d3be9947fe036"
+      "recipe": "b1da412bd1e7222d4db7e31631c9fc8eddc177ded7abe26587ca384e5c83907f"
     },
     "models/sketchfab-knife-switch-type-d/sketchfab-knife-switch-type-d.glb": {
       "pick": "sketchfab-knife-switch-type-d",
@@ -835,7 +835,7 @@
       "bytes": 621676,
       "sha256": "f1c9c85e08359e586e84927f50f506451117790178bc866af2c9c5fc77cbf170",
       "inputsSha256": "ebbd2cce0d0a5b6f4cfeb042fb532b48f072960c622d544980703826d3b205c5",
-      "recipe": "fcac7e13c4cdf981144847e77987f9c2914f3439a008fa2d3251804d430737e5"
+      "recipe": "ca5482ffc61aaa28038324e14adc5e5c226b2fd3cff4eb519099d44ddbb6fb67"
     },
     "models/sketchfab-medical-props-cart/sketchfab-medical-props-cart.glb": {
       "pick": "sketchfab-medical-props-cart",
@@ -848,7 +848,7 @@
       "bytes": 1303612,
       "sha256": "264b09ea7f469f844ab739a2c87661f2ec2a38f9846c4e7ee85e156e0bcf9244",
       "inputsSha256": "b1de242a4041e4bdea4708a227915f967b05f250b8f4af9a68cc32787e98e1cf",
-      "recipe": "f647c5f3197c48af0d2d8a11fed645e16a0f783d8815d1d6c98b256601bd6ba1"
+      "recipe": "d8d3ed0e907867d0e033d8c877fa0782f2beef6e928fb608f4bf1f97a5a3effc"
     },
     "models/sketchfab-morgue-refrigerator-porteous/sketchfab-morgue-refrigerator-porteous.glb": {
       "pick": "sketchfab-morgue-refrigerator-porteous",
@@ -861,7 +861,7 @@
       "bytes": 116020,
       "sha256": "0afcf6d01ab2ee4333d8a4bac50d8a4aaa8fe7ac5ebcd14c74655e79ad3baf46",
       "inputsSha256": "831c3964d2764121feb73d9aa101261ed90bbd8133823264c76c09b9491453c8",
-      "recipe": "dc2ef04d36380417aa1cd4a8ce80a80dc75981071e2cda00407cfa8fcb041bf9"
+      "recipe": "c4eb813f90bb607e7af3157f4452fab12869430a1659a21c4845e37de436680a"
     },
     "models/sketchfab-rusty-chains-amanda98/sketchfab-rusty-chains-amanda98.glb": {
       "pick": "sketchfab-rusty-chains-amanda98",
@@ -874,7 +874,7 @@
       "bytes": 1276284,
       "sha256": "088eda87315fbf414ab195c9e06757a054f3539bd27191ce3784e16daab368d0",
       "inputsSha256": "b3a6aa9c0bb8cdefa9a0f31cab2078c460275317837b8ddacd6035f287c6dd1c",
-      "recipe": "852c2f177a3db569ae2f6f44f6f5852eeef1c0b988b2baf71bc0877fc6f2651a"
+      "recipe": "985fde230bbd3a5afb1e3cc22a556b277284cd3811f9216cfa68f5291876f78e"
     },
     "models/sketchfab-small-destroyed-tombstone-04/sketchfab-small-destroyed-tombstone-04.glb": {
       "pick": "sketchfab-small-destroyed-tombstone-04",
@@ -887,7 +887,7 @@
       "bytes": 519544,
       "sha256": "268a967a3d3c72d0d5a7eca1112b3bb6944a44eba6a812115385a67047f6b964",
       "inputsSha256": "8fb9299745c5f390aed7755a647f4fd771b89a21fc6e295c61907c19ab13475d",
-      "recipe": "0b928f4e8e747d72044689af716c0f2edf20e388a2d5f84da415b743ccf412c7"
+      "recipe": "d975418b82fba14007f1b096c11bf4f0fb82370e7e332bcd34de7636e9c08e28"
     },
     "models/sketchfab-small-gravestone-drydoctoregg/sketchfab-small-gravestone-drydoctoregg.glb": {
       "pick": "sketchfab-small-gravestone-drydoctoregg",
@@ -900,7 +900,7 @@
       "bytes": 298608,
       "sha256": "e17cc518f14991cc4749ab02f3952fdcb9eb4b2218e6dd9aaf82ae756e0dc537",
       "inputsSha256": "65f6136b7e8781b01d3ccd242d5e5e0ebd43c5386a2a9b374e45a9856f82f054",
-      "recipe": "0b928f4e8e747d72044689af716c0f2edf20e388a2d5f84da415b743ccf412c7"
+      "recipe": "d975418b82fba14007f1b096c11bf4f0fb82370e7e332bcd34de7636e9c08e28"
     },
     "models/sketchfab-smartinius-body-bag/sketchfab-smartinius-body-bag.glb": {
       "pick": "sketchfab-smartinius-body-bag",
@@ -913,7 +913,7 @@
       "bytes": 265936,
       "sha256": "a391eb64e76bd91dfc3fd1189eaa9b92068ce6b0a85f94dc20d7baf558f0f132",
       "inputsSha256": "e73893b664862546558f33732d7f1a356aefcce68e86a9d4e3ebd0c6f2dac0df",
-      "recipe": "852c2f177a3db569ae2f6f44f6f5852eeef1c0b988b2baf71bc0877fc6f2651a"
+      "recipe": "985fde230bbd3a5afb1e3cc22a556b277284cd3811f9216cfa68f5291876f78e"
     },
     "models/sketchfab-strap-buckles-kit-dmigul/sketchfab-strap-buckles-kit-dmigul.glb": {
       "pick": "sketchfab-strap-buckles-kit-dmigul",
@@ -926,7 +926,7 @@
       "bytes": 604916,
       "sha256": "bf885c92c3f70d48a353c3cc04c1d5bd62bdd5d0b38e9c4be4d705a70636bd5f",
       "inputsSha256": "346364a8dfdc9ba216ca734376936ab11db0c983f56705fe00481086f2097825",
-      "recipe": "dfabc1753e230780d049a5f85d29b42205a799d9aefa05b4f310645960617369"
+      "recipe": "2b5946a3065a95196c610c53477f1604866be79f7b4bafcde7b29412e9e735fa"
     },
     "models/sketchfab-zombie-corpse-greenall/sketchfab-zombie-corpse-greenall.glb": {
       "pick": "sketchfab-zombie-corpse-greenall",
@@ -939,7 +939,7 @@
       "bytes": 503480,
       "sha256": "73e9774f9d15cc6942127f839f99998fc0c3f3841f915005f7b52266f1041676",
       "inputsSha256": "dd07f8a1322432ef2e1f30a18a683bb20200834ceb5c83706fcdfdb4c313cbfc",
-      "recipe": "852c2f177a3db569ae2f6f44f6f5852eeef1c0b988b2baf71bc0877fc6f2651a"
+      "recipe": "985fde230bbd3a5afb1e3cc22a556b277284cd3811f9216cfa68f5291876f78e"
     },
     "models/sketchfab-zombie-hand-craggle/sketchfab-zombie-hand-craggle.glb": {
       "pick": "sketchfab-zombie-hand-craggle",
@@ -952,7 +952,7 @@
       "bytes": 351240,
       "sha256": "5c306e495ca41f34893ea1ea558448fc7f9f926b90117cdf00a1c5c64880f20f",
       "inputsSha256": "94395fb476fe47020e187a86118f9e964539e4441da131b9f8f4f0c7c071c469",
-      "recipe": "7bbeb6911d0af11dc847290775a774848f897c5f750670d26f001db8fe36726e"
+      "recipe": "ac905ee3388881c5fd9e176540dbc358605bf5d4fe90c20e819e4e0aec502e88"
     },
     "models/sketchfab-zombie-hand-ruella/sketchfab-zombie-hand-ruella.glb": {
       "pick": "sketchfab-zombie-hand-ruella",
@@ -960,12 +960,12 @@
       "author": "Agustin Ruella",
       "sourceUrl": "https://sketchfab.com/3d-models/zombie-hand-79755114a2334af4b712c3b11741d738",
       "license": "CC BY 4.0",
-      "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; blue sleeve removed, decimated to about 30,000 triangles",
+      "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; sleeve and the red forearm under it cut away at the wrist with a seeded ragged edge and capped, skin vertex colours graded to grey-green (mean HSV value 0.5, nails kept), decimated to about 30,000 triangles",
       "group": "lab",
-      "bytes": 301908,
-      "sha256": "c2119a48993a08d59e4c08b3dee94f8b43551f63bebe34776ae43699f76e3490",
+      "bytes": 268892,
+      "sha256": "6f91e8f6b16a786307c325f78774547cd6419eb95f385d2e794b4b7f9cd9423e",
       "inputsSha256": "c0a609ae594198823105dbff1a1ac171041b5912e33429bad3a11526db526fce",
-      "recipe": "90b8b7716013fdf38fbfd142e4bfd9d642a22a083dccf32a7266e0e1065e7397"
+      "recipe": "ea0b4c2a4c00bdf8cffac6557cba7436598cfbf3b16b228cf4205719279cf3ec"
     },
     "models/sketchfab-zombie-mutant/sketchfab-zombie-mutant.glb": {
       "pick": "sketchfab-zombie-mutant",
@@ -978,7 +978,7 @@
       "bytes": 570220,
       "sha256": "51896a556e625a06f10597937d8bfc48d370958f6552bbf595e8c639a9e3fb69",
       "inputsSha256": "a9f79b2b4a4b76d7dff56229aaaffe2783f38e6ee22681b7e9b9c689ad3db7d0",
-      "recipe": "852c2f177a3db569ae2f6f44f6f5852eeef1c0b988b2baf71bc0877fc6f2651a"
+      "recipe": "985fde230bbd3a5afb1e3cc22a556b277284cd3811f9216cfa68f5291876f78e"
     },
     "textures/oga-blood-splatter-exilegl/oga-blood-splatter-exilegl_color.webp": {
       "pick": "oga-blood-splatter-exilegl",
@@ -991,7 +991,7 @@
       "bytes": 607246,
       "sha256": "42896d3628155bd13ea6251813c9fc101fc090d1ca118b3ae6b034e825e2f993",
       "inputsSha256": "4d9258d283a095435a545adf983c8e410e30d146bfaaf90ab08f7c2a75b4f6aa",
-      "recipe": "86038054509fea560b13d3a91c9f9811ab999a08d649be0ab80263751f668764"
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     },
     "textures/own-drag-mark-decal/own-drag-mark-decal_drag-mark-0.webp": {
       "pick": "own-drag-mark-decal",
@@ -1004,7 +1004,7 @@
       "bytes": 11868,
       "sha256": "bcd3882860dd3f67a24c5eba84398c54e0576da43843ffed2c8fb066c4648b05",
       "inputsSha256": "eb501f929bd8201ee1c9066f6ac0c7c83126138f82ab2dc2ff51d46d13209b5f",
-      "recipe": "aaea392d4662101e26a7a1dcd10a9741020088e6e4bea398e15e4ec487bf4d88"
+      "recipe": "08b65468f8a56f6bc5c72679257173bfed02165bb3e585ebe106d27d7cbca83e"
     },
     "textures/own-drag-mark-decal/own-drag-mark-decal_drag-mark-1.webp": {
       "pick": "own-drag-mark-decal",
@@ -1017,7 +1017,7 @@
       "bytes": 12240,
       "sha256": "88ac2b261cb9ea1a79c77dd683e735d3473a0440801c178745d5b72f15bb3459",
       "inputsSha256": "eb501f929bd8201ee1c9066f6ac0c7c83126138f82ab2dc2ff51d46d13209b5f",
-      "recipe": "aaea392d4662101e26a7a1dcd10a9741020088e6e4bea398e15e4ec487bf4d88"
+      "recipe": "08b65468f8a56f6bc5c72679257173bfed02165bb3e585ebe106d27d7cbca83e"
     },
     "textures/own-drag-mark-decal/own-drag-mark-decal_drag-mark-2.webp": {
       "pick": "own-drag-mark-decal",
@@ -1030,7 +1030,7 @@
       "bytes": 15106,
       "sha256": "d59fed5f7c7e1981c0f515a86ebff004795a14537516446025fa51c359e81ae1",
       "inputsSha256": "eb501f929bd8201ee1c9066f6ac0c7c83126138f82ab2dc2ff51d46d13209b5f",
-      "recipe": "aaea392d4662101e26a7a1dcd10a9741020088e6e4bea398e15e4ec487bf4d88"
+      "recipe": "08b65468f8a56f6bc5c72679257173bfed02165bb3e585ebe106d27d7cbca83e"
     },
     "textures/own-handprint-decal/own-handprint-decal_handprint-0.webp": {
       "pick": "own-handprint-decal",
@@ -1043,7 +1043,7 @@
       "bytes": 23770,
       "sha256": "a254f7fa14509b8c3fd2f961dfc0aa35c415a12497c9bd91ff273aafa5a2fbb5",
       "inputsSha256": "ff7f9b288b54e26288f77990ea872bbc5e60ba76aa5df907ee968871210c431d",
-      "recipe": "1c8c45563ccf5aac0a87255a82ea92fc7c56df4ff4c849b2727fd636894b094c"
+      "recipe": "daa3eb5c502861b7b8cbc7eec74caecbf3cbbd1ffd8570ccd68c1c6594439c4d"
     },
     "textures/own-handprint-decal/own-handprint-decal_handprint-1.webp": {
       "pick": "own-handprint-decal",
@@ -1056,7 +1056,7 @@
       "bytes": 23170,
       "sha256": "586f672588d196cce2e8fbcc04e96e009bc0a721c0210774f64494a172b74c9d",
       "inputsSha256": "ff7f9b288b54e26288f77990ea872bbc5e60ba76aa5df907ee968871210c431d",
-      "recipe": "1c8c45563ccf5aac0a87255a82ea92fc7c56df4ff4c849b2727fd636894b094c"
+      "recipe": "daa3eb5c502861b7b8cbc7eec74caecbf3cbbd1ffd8570ccd68c1c6594439c4d"
     },
     "textures/own-handprint-decal/own-handprint-decal_handprint-2.webp": {
       "pick": "own-handprint-decal",
@@ -1069,7 +1069,7 @@
       "bytes": 22300,
       "sha256": "ce13d7baabd648e081f93702d955458c590ab08556ee88db1a6bc6bcf268f668",
       "inputsSha256": "ff7f9b288b54e26288f77990ea872bbc5e60ba76aa5df907ee968871210c431d",
-      "recipe": "1c8c45563ccf5aac0a87255a82ea92fc7c56df4ff4c849b2727fd636894b094c"
+      "recipe": "daa3eb5c502861b7b8cbc7eec74caecbf3cbbd1ffd8570ccd68c1c6594439c4d"
     },
     "textures/polyhaven-dark-brick-wall/polyhaven-dark-brick-wall_diffuse.webp": {
       "pick": "polyhaven-dark-brick-wall",
@@ -1082,7 +1082,7 @@
       "bytes": 205474,
       "sha256": "eb1f3aed93e5c8766544fbf10496ab7544f364b67d3be60d29c183d710a7fd1d",
       "inputsSha256": "c384ed02d443d595d3d5c2ca5bad622de02c95eb301aaf95031016a0c68bcc4a",
-      "recipe": "86038054509fea560b13d3a91c9f9811ab999a08d649be0ab80263751f668764"
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     },
     "textures/polyhaven-dark-brick-wall/polyhaven-dark-brick-wall_nor-gl.webp": {
       "pick": "polyhaven-dark-brick-wall",
@@ -1095,7 +1095,7 @@
       "bytes": 519706,
       "sha256": "dbcc87b4062951b8eb059ce5b0e05019160db4a36d20e82e8685d18e551a39cb",
       "inputsSha256": "c384ed02d443d595d3d5c2ca5bad622de02c95eb301aaf95031016a0c68bcc4a",
-      "recipe": "86038054509fea560b13d3a91c9f9811ab999a08d649be0ab80263751f668764"
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     },
     "textures/polyhaven-dark-brick-wall/polyhaven-dark-brick-wall_rough.webp": {
       "pick": "polyhaven-dark-brick-wall",
@@ -1108,7 +1108,7 @@
       "bytes": 12766,
       "sha256": "eabcaf43af483f71dc61806075b691d971eeaeca92737634df389318cd331d0d",
       "inputsSha256": "c384ed02d443d595d3d5c2ca5bad622de02c95eb301aaf95031016a0c68bcc4a",
-      "recipe": "86038054509fea560b13d3a91c9f9811ab999a08d649be0ab80263751f668764"
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     },
     "textures/polyhaven-excavated-soil-wall/polyhaven-excavated-soil-wall_diffuse.webp": {
       "pick": "polyhaven-excavated-soil-wall",
@@ -1121,7 +1121,7 @@
       "bytes": 339992,
       "sha256": "b91ec737a6d4cb043fb34fe4a9315ff10d39bc755da5ce7f2ed020868beab875",
       "inputsSha256": "c73e84d4f65a3f71315fa57632238175939aacae6381b91346f31da6a3c63a27",
-      "recipe": "e07ab34a36b0595f89f7bb207f24e87c8663b2aa5925676dd6b4a988b20fe909"
+      "recipe": "96f5cb109375351337addf621c1b8648595e0d19997784d067e7d86b4174cd5c"
     },
     "textures/polyhaven-excavated-soil-wall/polyhaven-excavated-soil-wall_nor-gl.webp": {
       "pick": "polyhaven-excavated-soil-wall",
@@ -1134,7 +1134,7 @@
       "bytes": 1889866,
       "sha256": "ead02bbf8ef648b858253a6d7eb5653e16b49ade87b1681b3db247bff3ab5980",
       "inputsSha256": "c73e84d4f65a3f71315fa57632238175939aacae6381b91346f31da6a3c63a27",
-      "recipe": "e07ab34a36b0595f89f7bb207f24e87c8663b2aa5925676dd6b4a988b20fe909"
+      "recipe": "96f5cb109375351337addf621c1b8648595e0d19997784d067e7d86b4174cd5c"
     },
     "textures/polyhaven-excavated-soil-wall/polyhaven-excavated-soil-wall_rough.webp": {
       "pick": "polyhaven-excavated-soil-wall",
@@ -1147,7 +1147,7 @@
       "bytes": 38316,
       "sha256": "f6f6ff41f27bb135407948dc5c084384995482ffca597f971df938f9808c32b2",
       "inputsSha256": "c73e84d4f65a3f71315fa57632238175939aacae6381b91346f31da6a3c63a27",
-      "recipe": "e07ab34a36b0595f89f7bb207f24e87c8663b2aa5925676dd6b4a988b20fe909"
+      "recipe": "96f5cb109375351337addf621c1b8648595e0d19997784d067e7d86b4174cd5c"
     },
     "textures/polyhaven-hessian-230/polyhaven-hessian-230_diffuse.webp": {
       "pick": "polyhaven-hessian-230",
@@ -1160,7 +1160,7 @@
       "bytes": 301602,
       "sha256": "5bd3201362d5354f6f40b2f935366da37e89050a731dd42761997c1c285b0fee",
       "inputsSha256": "eb7461ee6f1420bcbecb87efad2f3abb7bf0120ff4e4dcd1b3d1a12a973958d8",
-      "recipe": "86038054509fea560b13d3a91c9f9811ab999a08d649be0ab80263751f668764"
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     },
     "textures/polyhaven-hessian-230/polyhaven-hessian-230_nor-gl.webp": {
       "pick": "polyhaven-hessian-230",
@@ -1173,7 +1173,7 @@
       "bytes": 377254,
       "sha256": "f6a2fe440e8de5dfd31f8062f1ec9b2d6a0aa2624c488ff0382e7d9d51e36aa4",
       "inputsSha256": "eb7461ee6f1420bcbecb87efad2f3abb7bf0120ff4e4dcd1b3d1a12a973958d8",
-      "recipe": "86038054509fea560b13d3a91c9f9811ab999a08d649be0ab80263751f668764"
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     },
     "textures/polyhaven-hessian-230/polyhaven-hessian-230_rough.webp": {
       "pick": "polyhaven-hessian-230",
@@ -1186,7 +1186,7 @@
       "bytes": 332568,
       "sha256": "5ca8c1709255245719efcab812621ea9b5c0a0add12876cbf43f63848fb9a80d",
       "inputsSha256": "eb7461ee6f1420bcbecb87efad2f3abb7bf0120ff4e4dcd1b3d1a12a973958d8",
-      "recipe": "86038054509fea560b13d3a91c9f9811ab999a08d649be0ab80263751f668764"
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     },
     "textures/polyhaven-lichen-rock/polyhaven-lichen-rock_diffuse.webp": {
       "pick": "polyhaven-lichen-rock",
@@ -1199,7 +1199,7 @@
       "bytes": 313218,
       "sha256": "9c26e61e825d246123c9e1fecd206b6f83e5667e5b6063d8e7a6ff83cc60392f",
       "inputsSha256": "0fa33ad3a59fcd4c64fa6e875107845c653e73569ea8171c9561d1db5eb68687",
-      "recipe": "86038054509fea560b13d3a91c9f9811ab999a08d649be0ab80263751f668764"
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     },
     "textures/polyhaven-lichen-rock/polyhaven-lichen-rock_nor-gl.webp": {
       "pick": "polyhaven-lichen-rock",
@@ -1212,7 +1212,7 @@
       "bytes": 489270,
       "sha256": "99c8c10e9764d227b65504b48457d5591e35f0cc1379689238c20df65b8903cf",
       "inputsSha256": "0fa33ad3a59fcd4c64fa6e875107845c653e73569ea8171c9561d1db5eb68687",
-      "recipe": "86038054509fea560b13d3a91c9f9811ab999a08d649be0ab80263751f668764"
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     },
     "textures/polyhaven-lichen-rock/polyhaven-lichen-rock_rough.webp": {
       "pick": "polyhaven-lichen-rock",
@@ -1225,7 +1225,7 @@
       "bytes": 106362,
       "sha256": "3136a025639e036737fb8c721a8c49d44955f8d38bd5fc169eadb5b98149b8b3",
       "inputsSha256": "0fa33ad3a59fcd4c64fa6e875107845c653e73569ea8171c9561d1db5eb68687",
-      "recipe": "86038054509fea560b13d3a91c9f9811ab999a08d649be0ab80263751f668764"
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     },
     "textures/polyhaven-slate-floor/polyhaven-slate-floor_diffuse.webp": {
       "pick": "polyhaven-slate-floor",
@@ -1238,7 +1238,7 @@
       "bytes": 87582,
       "sha256": "b17c86ffe5a5ae99679174942e7d6086d67d938b93b2dbf8c9fac59629aa28f5",
       "inputsSha256": "83cb19d6d61656a74de3e10b7d68a0d195d5f750bc703b3f210e82cf62ee20fd",
-      "recipe": "86038054509fea560b13d3a91c9f9811ab999a08d649be0ab80263751f668764"
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     },
     "textures/polyhaven-slate-floor/polyhaven-slate-floor_nor-gl.webp": {
       "pick": "polyhaven-slate-floor",
@@ -1251,7 +1251,7 @@
       "bytes": 240070,
       "sha256": "2b0f5657b69c47850e67515147cfee7b9320e6162ae84627e4b4d3c0ed02dd9a",
       "inputsSha256": "83cb19d6d61656a74de3e10b7d68a0d195d5f750bc703b3f210e82cf62ee20fd",
-      "recipe": "86038054509fea560b13d3a91c9f9811ab999a08d649be0ab80263751f668764"
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     },
     "textures/polyhaven-slate-floor/polyhaven-slate-floor_rough.webp": {
       "pick": "polyhaven-slate-floor",
@@ -1264,7 +1264,7 @@
       "bytes": 243294,
       "sha256": "c92bcfe96ab285e2d5e74995d163a1e9f208932e3a05e5ec14a64ca520c42c6c",
       "inputsSha256": "83cb19d6d61656a74de3e10b7d68a0d195d5f750bc703b3f210e82cf62ee20fd",
-      "recipe": "86038054509fea560b13d3a91c9f9811ab999a08d649be0ab80263751f668764"
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     }
   }
 }

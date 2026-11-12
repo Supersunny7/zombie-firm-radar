@@ -70,7 +70,7 @@
     },
     "18.5 Write property test for edit idempotence": {
       "status": "passed",
-      "lastRunTimestamp": 1794487930487
+      "lastRunTimestamp": 1794494751781
     },
     "21.3 Write property test for re-run idempotence": {
       "status": "passed",
@@ -1706,6 +1706,144 @@
         "executionId": "73af4ec2-398c-4789-b71e-012c5580b444",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794490829771
+      }
+    ],
+    "26.1 Build the preview page and the static server in `tools/preview/`": [
+      {
+        "executionId": "3f3191cd-0570-4fc4-9b0c-7fba06652279",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794492830528
+      },
+      {
+        "executionId": "3f3191cd-0570-4fc4-9b0c-7fba06652279",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794492837117
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794493022740
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794493024460
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794493366316
+      }
+    ],
+    "26.2 Rework the cracked headstone in `tools/make-cracked-headstone.mjs`": [
+      {
+        "executionId": "3f3191cd-0570-4fc4-9b0c-7fba06652279",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794492830687
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794493022988
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794493367906
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794494402788
+      }
+    ],
+    "26.3 Add the Ruella hand edits in `tools/asset-lib/edits`": [
+      {
+        "executionId": "3f3191cd-0570-4fc4-9b0c-7fba06652279",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794492830833
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794493023169
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794494404780
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794494999638
+      }
+    ],
+    "26.4 Render before and after, verify, and finish the checks": [
+      {
+        "executionId": "3f3191cd-0570-4fc4-9b0c-7fba06652279",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794492830973
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794493023320
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794495000003
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794497193776
+      }
+    ],
+    "26.5 Commit only Owned_Paths and stop": [
+      {
+        "executionId": "3f3191cd-0570-4fc4-9b0c-7fba06652279",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794492831103
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794493023483
+      },
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794497194037
+      }
+    ],
+    "27.1 Drop rocketbox-female-adult-06 and add prune support": [
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794493023674
+      }
+    ],
+    "27.2 Investigate and fix the face box on rocketbox-construction-male-01": [
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794493023883
+      }
+    ],
+    "27.3 Render the head close-up before and after": [
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794493024076
+      }
+    ],
+    "27.4 Full checks, audit, commit only Owned_Paths and stop": [
+      {
+        "executionId": "bb3bea0f-af00-4595-8dae-462517b519c3",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794493024245
       }
     ]
   }

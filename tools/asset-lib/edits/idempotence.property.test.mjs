@@ -1,4 +1,4 @@
-﻿// Feature: asset-pipeline, Property 21: Edit operations are idempotent and deterministic
+// Feature: asset-pipeline, Property 21: Edit operations are idempotent and deterministic
 // **Validates: Requirements 36.3, 36.4, 36.5, 36.6, 36.9**
 import { Document, NodeIO } from '@gltf-transform/core';
 import { ALL_EXTENSIONS } from '@gltf-transform/extensions';
@@ -81,6 +81,8 @@ const structure = (doc) =>
     materials: doc.getRoot().listMaterials().map((m) => m.getName()),
   });
 
+/** COLOR_0 values of every primitive that has them. */
+const colors = (doc) => doc.getRoot().listMeshes().flatMap((m) => m.listPrimitives().map((p) => Array.from(p.getAttribute('COLOR_0')?.getArray() ?? [])));
 const texName = fc.constantFrom('StdColor', 'RustColor', 'Missing');
 
 /** A valid op with its box count requirement (splitMesh needs 3 boxes to name components 1 and 2). */
@@ -100,7 +102,41 @@ const textureOp = fc.oneof(
   fc.record({ op: fc.constant('darken'), texture: texName, maxValue: fc.integer({ min: 0, max: 255 }) }),
   fc.record({ op: fc.constant('grime'), texture: texName, seed: fc.integer({ min: 0, max: 1e9 }), floor: fc.integer({ min: 0, max: 255 }) }),
 );
-const anyOp = fc.oneof(geometryOp, textureOp);
+const meshName = fc.constantFrom('A', 'B', 'Obj', 'Missing');
+/** Ruella ops (Requirement 43): colour-range removal (optionally bounded), mesh join, seeded ragged cut with cap, skin grading. */
+const ruellaOp = fc.oneof(
+  fc.record({
+    op: fc.constant('removeByVertexColor'),
+    mesh: meshName,
+    hueRange: fc.constantFrom([330, 30], [0, 60], [200, 280]),
+    minSat: fc.double({ min: 0, max: 0.9, noNaN: true }),
+  }),
+  fc.record({
+    op: fc.constant('removeByVertexColor'),
+    mesh: meshName,
+    hueRange: fc.constantFrom([330, 30], [0, 60]),
+    minSat: fc.double({ min: 0, max: 0.9, noNaN: true }),
+    axis: fc.constantFrom('x', 'y', 'z'),
+    above: fc.double({ min: 0, max: 1, noNaN: true }),
+  }),
+  fc.constantFrom(['A', 'Obj'], ['Obj', 'A'], ['A', 'Missing']).map((meshes) => ({ op: 'joinMeshes', meshes })),
+  fc.record({
+    op: fc.constant('raggedCut'),
+    axis: fc.constantFrom('x', 'y', 'z'),
+    at: fc.double({ min: 0.2, max: 0.9, noNaN: true }),
+    seed: fc.integer({ min: 0, max: 1e9 }),
+    amplitude: fc.double({ min: 0, max: 0.25, noNaN: true }),
+  }),
+  fc.record({
+    op: fc.constant('tint'),
+    hue: fc.integer({ min: 0, max: 360 }),
+    maxSaturation: fc.double({ min: 0.2, max: 1, noNaN: true }),
+    meanValue: fc.double({ min: 0.3, max: 0.7, noNaN: true }),
+    meshes: fc.constant(['A', 'B']),
+  }),
+  fc.record({ op: fc.constant('tint'), texture: texName, hue: fc.integer({ min: 0, max: 360 }), maxSaturation: fc.double({ min: 0.2, max: 1, noNaN: true }), meanValue: fc.double({ min: 0.3, max: 0.7, noNaN: true }) }),
+);
+const anyOp = fc.oneof(geometryOp, textureOp, ruellaOp);
 
 describe('Property 21: edit operations are idempotent and deterministic', () => {
   it('a single op applied to its own output changes nothing (exact for geometry ops, within 1 level for colour ops)', async () => {
@@ -116,14 +152,21 @@ describe('Property 21: edit operations are idempotent and deterministic', () => 
         }
         const geoOnce = structure(doc);
         const pxOnce = await pixels(doc);
+        const colOnce = colors(doc);
         const shaOnce = await sha(doc);
         await applyEdits(doc, [edit], { strict: false });
         expect(structure(doc)).toBe(geoOnce);
-        const tolerant = edit.op === 'desaturate' || edit.op === 'darken' || edit.op === 'grime';
+        const tolerant = edit.op === 'desaturate' || edit.op === 'darken' || edit.op === 'grime' || edit.op === 'tint';
         if (!tolerant) {
           expect(await sha(doc)).toBe(shaOnce);
           return;
         }
+        const colTwice = colors(doc);
+        expect(colTwice.length).toBe(colOnce.length);
+        colOnce.forEach((a, i) => {
+          expect(colTwice[i].length).toBe(a.length);
+          a.forEach((x, k) => expect(Math.abs(x - colTwice[i][k])).toBeLessThanOrEqual(2e-3));
+        });
         const pxTwice = await pixels(doc);
         expect(Object.keys(pxTwice)).toEqual(Object.keys(pxOnce));
         for (const name of Object.keys(pxOnce)) {
