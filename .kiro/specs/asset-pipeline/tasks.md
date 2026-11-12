@@ -483,7 +483,7 @@ Working rules for every task:
     - **Property 12: Network discipline**
     - **Validates: Requirements 14.6, 14.8, 14.9**
 
-- [~] 22. Checkpoint - Ensure all tests pass
+- [x] 22. Checkpoint - Ensure all tests pass
   - Run `pnpm --dir tools test`; ensure all tests pass, ask the user if questions arise.
 
 - [ ] 23. Full run and size report
