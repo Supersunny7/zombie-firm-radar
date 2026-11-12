@@ -8,5 +8,8 @@ export { seedFrom } from './hash';
 export { parseTreatment } from './treatment';
 export { liquidationRecovery } from './liquidation';
 export { createSimulationClient } from './worker/client';
+export { shockFirm, shockBatch } from './shock';
+export { mulberry32 } from './rng';
+export type { ShockInput, ShockResult, ShockBatch, ShockStatus } from './shock';
 export type * from './types';
 export type { EngineError, EngineErrorCode, EngineResult } from './errors';

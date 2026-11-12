@@ -16,6 +16,7 @@ function getDefaultLoader(): Loader {
   defaultLoader ??= createLoader({
     fetch: (...args) => fetch(...args),
     isDev: import.meta.env.DEV,
+    search: location.search,
     loadFixture: devLoadFixture,
   });
   return defaultLoader;

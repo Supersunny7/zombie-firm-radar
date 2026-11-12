@@ -1,6 +1,6 @@
 export interface Settings {
   lights: 'off' | 'on';
-  /** Stored flag only. No audio is started by the app shell. */
+  /** Default on. Audio still waits for the first user gesture. */
   sound: boolean;
   lowQuality: boolean;
   /** null = follow the system `prefers-reduced-motion` setting. */
@@ -9,13 +9,16 @@ export interface Settings {
 
 export const DEFAULT_SETTINGS: Settings = {
   lights: 'off',
-  sound: false,
+  sound: true,
   lowQuality: false,
   reducedMotion: null,
 };
 
+/** Stored version marker. Blobs without v = 2 are legacy and their sound is ignored. */
+export const SETTINGS_VERSION = 2;
+
 export function serializeSettings(s: Settings): string {
-  return JSON.stringify(s);
+  return JSON.stringify({ v: SETTINGS_VERSION, ...s });
 }
 
 /** Never throws. Invalid JSON, non-objects and wrongly typed fields fall back per field. */
@@ -31,7 +34,8 @@ export function parseSettings(raw: string | null): Settings {
   if (typeof value !== 'object' || value === null || Array.isArray(value)) return result;
   const o = value as Record<string, unknown>;
   if (o['lights'] === 'off' || o['lights'] === 'on') result.lights = o['lights'];
-  if (typeof o['sound'] === 'boolean') result.sound = o['sound'];
+  // Legacy blobs stored sound = false as the old default; only v2 blobs carry a real choice.
+  if (o['v'] === SETTINGS_VERSION && typeof o['sound'] === 'boolean') result.sound = o['sound'];
   if (typeof o['lowQuality'] === 'boolean') result.lowQuality = o['lowQuality'];
   if (typeof o['reducedMotion'] === 'boolean' || o['reducedMotion'] === null) {
     result.reducedMotion = o['reducedMotion'];

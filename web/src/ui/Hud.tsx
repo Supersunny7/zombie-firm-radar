@@ -18,7 +18,12 @@ export const FOOTER_TEXT = 'Data: SEC EDGAR. Not investment advice.';
 export function Hud({ children }: { children?: ReactNode }) {
   const source = useStore((s) => s.data?.source ?? null);
   const toggleOverlay = useStore((s) => s.toggleOverlay);
-  const showMock = source === 'mock' || source === 'fixture';
+  const dataLabel =
+    source === 'mock'
+      ? 'Mock data'
+      : source === 'fixture' || source === 'sample'
+        ? 'Sample data'
+        : null;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-10 flex flex-col font-ui text-text max-[900px]:static max-[900px]:min-h-screen">
@@ -46,9 +51,9 @@ export function Hud({ children }: { children?: ReactNode }) {
         <button id={TABLE_BUTTON_ID} type="button" className={btn} onClick={toggleOverlay}>
           Table view
         </button>
-        {showMock && (
+        {dataLabel && (
           <span className={`${panel} border-status-endangered px-3 py-1 text-sm text-text`}>
-            Mock data
+            {dataLabel}
           </span>
         )}
       </aside>

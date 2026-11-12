@@ -38,7 +38,10 @@ try {
   const page = await browser.newPage({ viewport: { width: 1280, height: 960 } });
   for (const angle of ANGLES) {
     await page.goto(`${baseUrl}/?view=hand-closeup&angle=${angle}`, { waitUntil: 'load' });
-    await page.waitForSelector('body[data-hand-ready="true"]', { timeout: 30_000 });
+    await page.waitForSelector('body[data-hand-ready="true"]', {
+      state: 'attached',
+      timeout: 30_000,
+    });
     await page.waitForTimeout(500);
     const file = join(outDir, `craggle-hand-${angle}.png`);
     await page.screenshot({ path: file });

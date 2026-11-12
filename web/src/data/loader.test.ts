@@ -83,12 +83,12 @@ describe('loader sources', () => {
     }
   });
 
-  it('does not fall back to mock when the real index is invalid JSON', async () => {
+  it('falls back to mock when the real index is invalid JSON (Req 1.2)', async () => {
     const m = mockFetch({ '/data/firms_index.json': 'badjson', ...base('/data/mock/') });
     const loader = createLoader({ fetch: m.fetch, isDev: false });
     const res = await loader.loadStartup();
-    expect(!res.ok && res.error.status).toBe('invalid json');
-    expect(m.calls.some((u) => u.startsWith('/data/mock/'))).toBe(false);
+    expect(res.ok && res.value.source).toBe('mock');
+    expect(m.calls.filter((u) => u === '/data/mock/firms_index.json')).toHaveLength(1);
   });
 });
 

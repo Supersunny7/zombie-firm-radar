@@ -25,6 +25,7 @@ const SORT_HINT = 'Sort by activating a column header.';
 
 /** Mock and fixture data are fictional, so the caption must not claim SEC EDGAR as the source. */
 function captionFor(source: DataSource | null): string {
+  if (source === 'sample') return `Generated sample firms. ${SORT_HINT}`;
   return source === 'mock' || source === 'fixture'
     ? `Fictional firms (mock data). ${SORT_HINT}`
     : `Firms from SEC EDGAR filings. ${SORT_HINT}`;

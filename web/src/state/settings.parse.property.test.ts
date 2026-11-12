@@ -83,7 +83,7 @@ describe('Property 6: Settings parsing never throws and falls back per field', (
           { maxKeys: 3 },
         ),
         (valid, corrupt, bad, extra) => {
-          const obj: Record<string, unknown> = { ...extra };
+          const obj: Record<string, unknown> = { ...extra, v: 2 };
           const expected: Settings = { ...DEFAULT_SETTINGS };
           for (const f of FIELDS) {
             if (corrupt[f]) {
@@ -99,6 +99,17 @@ describe('Property 6: Settings parsing never throws and falls back per field', (
         },
       ),
       { numRuns: 300 },
+    );
+  });
+
+  it('legacy blobs keep other valid fields and take sound from the default', () => {
+    fc.assert(
+      fc.property(arbSettings, fc.constantFrom(undefined, 1, 0), (s, v) => {
+        const obj: Record<string, unknown> = { ...s };
+        if (v !== undefined) obj['v'] = v;
+        expect(parseSettings(JSON.stringify(obj))).toEqual({ ...s, sound: DEFAULT_SETTINGS.sound });
+      }),
+      { numRuns: 100 },
     );
   });
 

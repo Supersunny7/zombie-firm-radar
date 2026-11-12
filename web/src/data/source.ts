@@ -3,7 +3,19 @@
  */
 import type { FixtureBundle } from '../dev/fixtures';
 
-export type DataSource = 'real' | 'mock' | 'fixture';
+export type DataSource = 'real' | 'mock' | 'fixture' | 'sample';
+
+export const SAMPLE_FIRM_COUNT = 3000;
+
+/**
+ * `?firms=3000` only, and only in a development build. `dev` is a parameter so
+ * tests cover both values.
+ */
+export function sampleCountFromSearch(search: string, dev: boolean): number | null {
+  if (!dev) return null;
+  const values = new URLSearchParams(search).getAll('firms');
+  return values.includes(String(SAMPLE_FIRM_COUNT)) ? SAMPLE_FIRM_COUNT : null;
+}
 
 export const REAL_BASE = '/data/';
 export const MOCK_BASE = '/data/mock/';

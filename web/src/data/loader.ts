@@ -14,6 +14,7 @@ import {
   firmUrl,
   indexUrl,
   macroUrl,
+  sampleCountFromSearch,
   type DataSource,
 } from './source';
 
@@ -30,6 +31,13 @@ export interface LoaderDeps {
   fetch: typeof fetch;
   isDev: boolean;
   loadFixture?: () => Promise<FixtureBundle>;
+  /** URL query string (e.g. `location.search`); only `firms=3000` in development is honoured. */
+  search?: string;
+}
+
+/** Dev-only generated firm files, keyed by CIK. */
+interface RawBundle {
+  firms: Record<string, unknown>;
 }
 
 export interface Loader {
@@ -45,7 +53,7 @@ const good = <T>(value: T): Result<T, LoadError> => ({ ok: true, value });
 export function createLoader(deps: LoaderDeps): Loader {
   /** Validated values keyed by full URL. Failures are never written here. */
   const cache = new Map<string, unknown>();
-  let loaded: (LoadedData & { base: string; fixture?: FixtureBundle }) | null = null;
+  let loaded: (LoadedData & { base: string; fixture?: RawBundle }) | null = null;
   let startup: Promise<Result<LoadedData, LoadError>> | null = null;
 
   /** Fetch `url`, parse JSON, run `guard`, cache on success. */
@@ -141,18 +149,52 @@ export function createLoader(deps: LoaderDeps): Loader {
     return good({ index: index.value, macro: macro.value, source: 'fixture' });
   }
 
+  /** Development only: generated sample firms, never requested from disk or network. */
+  async function startFromSample(count: number): Promise<Result<LoadedData, LoadError>> {
+    if (import.meta.env.DEV) {
+      try {
+        const { generateSampleFirms } = await import('../dev/sample/generate');
+        const bundle = generateSampleFirms(count, 1);
+        const index = guardFirmsIndex(bundle.index);
+        if (!index.ok)
+          return err({ file: 'sample:firms_index.json', status: 'invalid data', detail: index });
+        const macro = guardMacro(bundle.macro);
+        if (!macro.ok)
+          return err({ file: 'sample:macro.json', status: 'invalid data', detail: macro });
+        loaded = {
+          index: index.value,
+          macro: macro.value,
+          source: 'sample',
+          base: '',
+          fixture: bundle,
+        };
+        return good({ index: index.value, macro: macro.value, source: 'sample' });
+      } catch {
+        /* fall through to the error below */
+      }
+    }
+    return err({
+      file: 'sample',
+      status: 'invalid data',
+      message: 'The dev sample could not be generated.',
+    });
+  }
+
   async function runStartup(): Promise<Result<LoadedData, LoadError>> {
     if (deps.isDev) {
-      const mock = await probe(MOCK_BASE);
-      if (mock.result.ok) return startFromBase(MOCK_BASE, 'mock', mock.result.value);
-      if (!mock.missing) return err(mock.result.error);
-      return startFromFixture();
+      const count = sampleCountFromSearch(deps.search ?? '', true);
+      if (count !== null) return startFromSample(count);
     }
     const real = await probe(REAL_BASE);
     if (real.result.ok) return startFromBase(REAL_BASE, 'real', real.result.value);
-    if (!real.missing) return err(real.result.error);
     const mock = await probe(MOCK_BASE);
     if (mock.result.ok) return startFromBase(MOCK_BASE, 'mock', mock.result.value);
+    if (deps.isDev) {
+      const fixture = await startFromFixture();
+      if (fixture.ok) return fixture;
+      const sample = await startFromSample(100);
+      if (sample.ok) return sample;
+    }
     return err(mock.result.error);
   }
 
@@ -189,14 +231,15 @@ export function createLoader(deps: LoaderDeps): Loader {
         message: `CIK ${cik} is not listed in firms_index.json.`,
       });
     }
-    if (data.source === 'fixture') {
+    if (data.source === 'fixture' || data.source === 'sample') {
+      const prefix = data.source;
       const raw = data.fixture?.firms[cik];
-      const url = `fixture:${file}`;
+      const url = `${prefix}:${file}`;
       if (raw === undefined)
         return err({
           file: url,
           status: 'invalid data',
-          message: `CIK ${cik} is not in the fixture.`,
+          message: `CIK ${cik} is not in the ${prefix}.`,
         });
       const g = guardFirm(raw);
       if (!g.ok) return err({ file: url, status: 'invalid data', detail: g });

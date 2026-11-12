@@ -33,6 +33,497 @@
         "chatSessionId": "sess_ac724b8a-ed80-410e-865e-f571c512307a",
         "timestamp": 1794502385245
       }
+    ],
+    "1.4 Write a unit test for the hand geometry": [
+      {
+        "executionId": "c6d19a3d-22c2-4045-964e-6ca8bf4f71ee",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502579944
+      },
+      {
+        "executionId": "c6d19a3d-22c2-4045-964e-6ca8bf4f71ee",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502638263
+      }
+    ],
+    "2.1 Implement `web/src/engine/shock.ts` and exports": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502853518
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502865727
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503048598
+      }
+    ],
+    "3.1 Implement `web/src/scenes/graveyard/layout/layout.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502853668
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502865849
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503048969
+      }
+    ],
+    "3.2 Implement `layout/grid.ts` and `layout/pick.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502853810
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503053681
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503180329
+      }
+    ],
+    "3.3 Implement `layout/nav.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502853941
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503054357
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503181072
+      }
+    ],
+    "4.1 Implement `web/src/dev/sample/generate.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502854038
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503054921
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503181789
+      }
+    ],
+    "4.3 Extend the loader, source and HUD labels": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502854135
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503185914
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503324240
+      }
+    ],
+    "4.6 Extend `web/scripts/check-bundle.mjs` with the production guard": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502854228
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503186570
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503325013
+      }
+    ],
+    "5.1 Update `web/src/state/settings.ts` and its existing tests": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502854334
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502865967
+      },
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503049139
+      }
+    ],
+    "6.1 Add the graveyard store slice": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502854451
+      }
+    ],
+    "6.2 Add `web/src/state/shockView.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502854548
+      }
+    ],
+    "6.3 Centralise formatters in `web/src/ui/table/format.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502854651
+      }
+    ],
+    "7.1 Implement `ui/controls/ShockSlider.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502854747
+      }
+    ],
+    "7.2 Implement `ui/graveyard/ShockPanel.tsx` and `GraveyardHud`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502854849
+      }
+    ],
+    "7.3 Implement `LightsButton.tsx` and `SoundButton.tsx` and mount them in `Hud.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502854948
+      }
+    ],
+    "8.1 Implement `ui/graveyard/chooseDock.ts` and `FileCard.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502855043
+      }
+    ],
+    "8.2 Implement `ui/graveyard/LiveRegion.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502855182
+      }
+    ],
+    "8.3 Update `ui/table/TableView.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502855337
+      }
+    ],
+    "9.1 Set `server.fs.allow` in `web/vite.config.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502855437
+      }
+    ],
+    "9.2 Implement `ui/CreditsDialog.tsx` and the Settings button": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502855537
+      }
+    ],
+    "10.1 Install the remaining approved pins": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502855641
+      }
+    ],
+    "10.2 Implement `web/src/scenes/graveyard/assets.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502855740
+      }
+    ],
+    "10.3 Implement `model/stoneModels.ts`, `model/clipFlap.ts`, `model/modelFor.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502855840
+      }
+    ],
+    "11.1 Create `web/src/scenes/graveyard/GraveyardScene.tsx` (default export)": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502855948
+      }
+    ],
+    "11.2 Implement `fx/StoneMaterial.tsx` and `r3f/Stones.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502856056
+      }
+    ],
+    "11.3 Implement pointer input and hover/focus store updates": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502856148
+      }
+    ],
+    "12.1 Implement `model/deriveFaceAnchor.ts` and `model/engravingText.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502856249
+      }
+    ],
+    "12.2 Implement `r3f/Engravings.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502856356
+      }
+    ],
+    "13.1 Implement `model/sceneParams.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502856459
+      }
+    ],
+    "13.4 Implement `r3f/SceneLights.tsx`, `Ground.tsx`, `Sky.tsx`, `GroundFog.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502856554
+      }
+    ],
+    "13.5 Add `props.json`, `props.ts` and `r3f/Props.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502856653
+      }
+    ],
+    "14.1 Implement `layout/camera.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502856754
+      }
+    ],
+    "14.2 Implement `r3f/CameraRig.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502856852
+      }
+    ],
+    "14.3 Implement `r3f/Flashlight.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502856946
+      }
+    ],
+    "14.4 Implement `ui/graveyard/PlotNav.tsx` and the REC label": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502857048
+      }
+    ],
+    "15.1 Implement `fx/glitchScheduler.ts` and `fx/cctvParams.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502857157
+      }
+    ],
+    "15.2 Implement `fx/TrackingGlitchEffect.ts` and `fx/CctvPass.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502857254
+      }
+    ],
+    "16.1 Implement `model/dressing.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502857365
+      }
+    ],
+    "16.2 Implement `r3f/Mounds.tsx` and `r3f/BloodDecals.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502857472
+      }
+    ],
+    "16.3 Implement `model/placement.ts` and `model/coneCovers.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502857582
+      }
+    ],
+    "16.4 Implement `r3f/Creatures.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502857686
+      }
+    ],
+    "17.1 Implement `model/handPool.ts` and `model/handPose.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502857801
+      }
+    ],
+    "17.2 Implement `scenes/graveyard/riseEvents.ts` and `r3f/Hands.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502857908
+      }
+    ],
+    "18.1 Implement `web/src/audio/scheduler.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502858014
+      }
+    ],
+    "18.2 Implement `web/src/audio/audioEngine.ts`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502858114
+      }
+    ],
+    "18.3 Wire audio into the scene and Sound button": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502858213
+      }
+    ],
+    "19.1 Implement `ui/graveyard/StoneFocusProxy.tsx` and `r3f/FocusMarker.tsx`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502858317
+      }
+    ],
+    "19.2 Wire keyboard behaviour": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502858510
+      }
+    ],
+    "20.1 Implement low quality mode": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502858719
+      }
+    ],
+    "20.2 Add the 25 MB initial-download check to `web/scripts/check-bundle.mjs`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502858977
+      }
+    ],
+    "21.1 Implement `web/scripts/measure-fps.mjs`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502859100
+      }
+    ],
+    "22.1 Implement `web/scripts/screenshots.mjs`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502859220
+      }
+    ],
+    "22.2 Update `.kiro/steering/structure.md`": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502859339
+      }
+    ],
+    "23.1 Run the full check and fix failures": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794502859443
+      }
+    ],
+    "2. Shock model in the engine": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503048797
+      }
+    ],
+    "5. Settings migration (sound defaults to on)": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503049265
+      }
+    ],
+    "3. Layout, spatial grid, picking and keyboard navigation (pure)": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503181162
+      }
+    ],
+    "4. Dev-only sample data, loader changes and production bundle guard": [
+      {
+        "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794503325115
+      }
     ]
   }
 }

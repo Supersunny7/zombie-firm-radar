@@ -93,7 +93,7 @@ describe('SettingsMenu', () => {
     await user.click(screen.getByRole('checkbox', { name: /Reduced motion/ }));
 
     const s = useStore.getState().settings;
-    expect(s).toEqual({ lights: 'on', sound: true, lowQuality: true, reducedMotion: true });
+    expect(s).toEqual({ lights: 'on', sound: false, lowQuality: true, reducedMotion: true });
     expect(readSettings()).toEqual(s);
   });
 

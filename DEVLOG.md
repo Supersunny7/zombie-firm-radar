@@ -257,3 +257,12 @@
 2026-11-12 | graveyard-scene | 1.1 | Installed exact-pinned drei and playwright. | web/package.json, web/pnpm-lock.yaml
 2026-11-12 | graveyard-scene | 1.2 | Added hand wrist constants and dev-only Craggle hand close-up page. | handConstants.ts, HandCloseup.tsx, mount.tsx, main.tsx
 2026-11-12 | graveyard-scene | 1.3 | Added Chrome launcher and hand-closeup screenshot script. | web/scripts/lib/browser.mjs, web/scripts/hand-closeup.mjs
+2026-11-12 | graveyard-scene | 1.4 | Added Craggle hand geometry unit test (principal axis, no skin, no clips). | web/src/scenes/graveyard/model/handGeometry.test.ts
+2026-11-12 | graveyard-scene | 2.1 | Added shockFirm/shockBatch engine shock model and exports; fixed hand-closeup waitForSelector. | web/src/engine/shock.ts, engine/index.ts, scripts/hand-closeup.mjs
+2026-11-12 | graveyard-scene | 3.1 | Added pure computeLayout with plot grouping, sizing and lean rules. | web/src/scenes/graveyard/layout/layout.ts
+2026-11-12 | graveyard-scene | 5.1 | Settings v2 migration: sound defaults on, legacy blobs take default sound. | web/src/state/settings.ts, settings tests, SettingsMenu.test.tsx
+2026-11-12 | graveyard-scene | 3.3 | Added nextFocus keyboard navigation with 45 degree cone. | web/src/scenes/graveyard/layout/nav.ts
+2026-11-12 | graveyard-scene | 4.1 | Added deterministic dev-only sample firm generator with marker constant. | web/src/dev/sample/generate.ts
+2026-11-12 | graveyard-scene | 3.2 | Added CSR spatial grid, DDA stone picking and nearestToRay. | layout/grid.ts, layout/pick.ts
+2026-11-12 | graveyard-scene | 4.3 | Loader, source and HUD labels support dev sample set and mock fallback. | data/source.ts, loader.ts, App.tsx, Hud.tsx, TableView.tsx, tests
+2026-11-12 | graveyard-scene | 4.6 | Bundle guard fails build on dev-only markers; checkForbidden exported. | web/scripts/check-bundle.mjs

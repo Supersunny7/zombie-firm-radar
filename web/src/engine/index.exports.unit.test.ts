@@ -7,9 +7,12 @@ const EXPECTED = [
   'drawOutcome',
   'icr',
   'liquidationRecovery',
+  'mulberry32',
   'parseTreatment',
   'score',
   'seedFrom',
+  'shockBatch',
+  'shockFirm',
   'simulate',
 ].sort();
 

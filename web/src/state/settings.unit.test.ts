@@ -11,9 +11,38 @@ describe('settings defaults', () => {
   it('has the documented default values', () => {
     expect(DEFAULT_SETTINGS).toEqual({
       lights: 'off',
-      sound: false,
+      sound: true,
       lowQuality: false,
       reducedMotion: null,
+    });
+  });
+
+  it('serializeSettings writes v: 2', () => {
+    expect(JSON.parse(serializeSettings(DEFAULT_SETTINGS))).toMatchObject({ v: 2, sound: true });
+  });
+
+  it('v2 blobs keep a stored sound choice', () => {
+    expect(parseSettings('{"v":2,"sound":false}').sound).toBe(false);
+  });
+
+  it('legacy blobs keep other fields but take sound from the default', () => {
+    for (const raw of [
+      '{"lights":"on","sound":false,"lowQuality":true,"reducedMotion":false}',
+      '{"v":1,"lights":"on","sound":false,"lowQuality":true,"reducedMotion":false}',
+    ]) {
+      expect(parseSettings(raw)).toEqual({
+        lights: 'on',
+        sound: true,
+        lowQuality: true,
+        reducedMotion: false,
+      });
+    }
+  });
+
+  it('invalid v2 fields fall back per field', () => {
+    expect(parseSettings('{"v":2,"lights":5,"sound":"x","lowQuality":true}')).toEqual({
+      ...DEFAULT_SETTINGS,
+      lowQuality: true,
     });
   });
 

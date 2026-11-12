@@ -92,9 +92,9 @@ describe('App startup', () => {
   });
 
   it.each([
-    ['mock', true],
-    ['fixture', true],
-    ['real', false],
+    ['mock', 'Mock data'],
+    ['fixture', 'Sample data'],
+    ['real', null],
   ] as const)('renders the graveyard from the %s source', async (kind, mockLabel) => {
     const { loader } = makeLoader(kind);
     render(<App loader={loader} />);
@@ -102,8 +102,8 @@ describe('App startup', () => {
     expect(useStore.getState().data?.source).toBe(kind);
     expect(screen.queryByText('Loading feed…')).not.toBeInTheDocument();
     expect(screen.getAllByTestId('canvas')).toHaveLength(1);
-    if (mockLabel) expect(screen.getByText('Mock data')).toBeInTheDocument();
-    else expect(screen.queryByText('Mock data')).not.toBeInTheDocument();
+    if (mockLabel) expect(screen.getByText(mockLabel)).toBeInTheDocument();
+    else expect(screen.queryByText(/^(Mock|Sample) data$/)).not.toBeInTheDocument();
     expect(footer()).toBeInTheDocument();
   });
 });

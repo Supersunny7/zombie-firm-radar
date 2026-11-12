@@ -66,10 +66,14 @@ describe('Hud', () => {
     expect(screen.getByText(FOOTER_TEXT)).toBeVisible();
   });
 
-  it.each(['mock', 'fixture'] as const)('shows the Mock data label for %s', (source) => {
+  it.each([
+    ['mock', 'Mock data'],
+    ['fixture', 'Sample data'],
+    ['sample', 'Sample data'],
+  ] as const)('shows the data label for %s', (source, label) => {
     useStore.setState({ data: dataWith(source) });
     render(<Hud />);
-    expect(screen.getByText('Mock data')).toBeInTheDocument();
+    expect(screen.getByText(label)).toBeInTheDocument();
   });
 
   it('hides the Mock data label for real data and while the source is unknown', () => {
