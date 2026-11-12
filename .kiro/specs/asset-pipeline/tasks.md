@@ -350,7 +350,7 @@ Working rules for every task:
     - **Property 14: Texture size limit preserves aspect ratio**
     - **Validates: Requirements 16.6**
 
-- [ ] 18. Edit operations and the Bip01 check
+- [x] 18. Edit operations and the Bip01 check
   - [x] 18.1 Implement the edit framework with `decimate`, `removeNode` and `selectVariant`
     - `asset-lib/edits/index.mjs`: `applyEdits(doc, edits, { seed, strict })` in list order, typed `EditTargetMissing` error in strict mode, tolerant mode for tests; `decimate` with `MeshoptSimplifier` and a fixed 5-step error search stopping at the first result at or below the target; `removeNode` with `prune()`; `selectVariant` keeping only the named material, texture or variant
     - Geometry edits use gltf-transform and meshoptimizer only; no Blender, no other executable
@@ -368,11 +368,11 @@ Working rules for every task:
     - `checkBip01(joints)` accepting a non-empty list where every name matches `^Bip01([ _]|$)`, returning the first offending name and the expected pattern otherwise; a scene root that is not a skin joint is ignored; the failure message names the avatar, the offending joint and the pattern
     - _Requirements: 34.3, 34.4_
 
-  - [~] 18.5 Write property test for edit idempotence
+  - [x] 18.5 Write property test for edit idempotence
     - **Property 21: Edit operations are idempotent and deterministic**
     - **Validates: Requirements 36.3, 36.4, 36.5, 36.6, 36.9**
 
-  - [~] 18.6 Write property test for split and decimate
+  - [x] 18.6 Write property test for split and decimate
     - **Property 22: Split and decimate preserve what they promise**
     - **Validates: Requirements 36.3, 36.4, 36.7**
 
@@ -380,7 +380,7 @@ Working rules for every task:
     - **Property 23: Bip01 skeleton check accepts exactly the Bip01-named skeletons**
     - **Validates: Requirements 34.3, 34.4**
 
-- [ ] 19. Own-work generators
+- [x] 19. Own-work generators
   - [x] 19.1 Implement `tools/gen-decals.mjs`
     - Seeded (`fnv1a32("<type>:<index>")` and `mulberry32`, no clock, no `Math.random`), 512 by 512 RGBA PNG with a transparent margin, handprint and drag-mark shapes from signed-distance primitives, HSV colour inside the inner ranges hue +-8 degrees, saturation 0.50 to 0.70, value 0.15 to 0.40; at least 3 variants per type written to `tools/cache/generated/decals/`
     - Wire the `generated` source so `convert-texture.mjs` writes WebP with alpha; credits author "Zombie Firm Radar team", license "Own work"
@@ -399,11 +399,11 @@ Working rules for every task:
     - Credits row: author drydoctoregg, license CC BY, changes naming the derivation
     - _Requirements: 39.1, 39.2, 39.3, 39.4, 39.5, 39.6, 39.7, 39.8_
 
-  - [~] 19.5 Write property test for the cracked-headstone limits
+  - [x] 19.5 Write property test for the cracked-headstone limits
     - **Property 19: Cracked headstone stays within the triangle limit**
     - **Validates: Requirements 39.2, 39.4**
 
-  - [~] 19.6 Write property test for cracked-headstone determinism
+  - [x] 19.6 Write property test for cracked-headstone determinism
     - **Property 20: Cracked headstone derivation is deterministic**
     - **Validates: Requirements 39.2, 39.3**
 
