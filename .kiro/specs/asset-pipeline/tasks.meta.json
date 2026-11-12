@@ -411,6 +411,11 @@
         "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794458954936
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794458984665
       }
     ],
     "9. Stop gate - wait for picks": [
@@ -418,6 +423,16 @@
         "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794456860624
+      },
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794458988733
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794465174509
       }
     ],
     "5. Record picks": [
@@ -439,6 +454,141 @@
         "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
         "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
         "timestamp": 1794458617043
+      }
+    ],
+    "8. Merge, validate and commit": [
+      {
+        "executionId": "c7da7448-a111-49e5-8b4c-3e2932f57172",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794458984738
+      }
+    ],
+    "10.1 Knife switch and heavy door": [
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794465238876
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794465246300
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794466081422
+      }
+    ],
+    "10.2 Lab wall and floor textures": [
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794465238959
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794466085321
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794466188676
+      }
+    ],
+    "10.3 Round 3 sounds": [
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794465239034
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794466192545
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794466455968
+      }
+    ],
+    "10.4 Six extra Rocketbox avatars": [
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794465239105
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794466460263
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794466544546
+      }
+    ],
+    "11.1 Merge round 3 into `reference/candidates/README.md`": [
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794465239172
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794466548620
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794466701962
+      }
+    ],
+    "11.2 Validate": [
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794465239243
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794466706312
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794466761813
+      }
+    ],
+    "11.3 Report and ask about committing (no commit without a request)": [
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794465239312
+      },
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794466768233
+      }
+    ],
+    "12. Combined stop gate - wait for picks for rounds 2 and 3": [
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794465239379
+      }
+    ],
+    "10. Round 3 scouting (lab and finale, sounds, extra avatars)": [
+      {
+        "executionId": "71eb5b6b-5be6-49b6-a614-c34cee89bee6",
+        "chatSessionId": "sess_ece6f528-3c5e-463f-a463-344f1e38aa93",
+        "timestamp": 1794466544648
       }
     ]
   }

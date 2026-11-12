@@ -712,3 +712,15 @@ From the repository root in PowerShell: `pnpm --dir tools test; node tools/fetch
 
 - **Separate tools package.** Fetch_Script dependencies (sharp, ffmpeg-static, fbx2gltf, meshoptimizer, gltf-transform, fflate and the test libraries) live only in `tools/package.json` with its own lockfile in `tools/`. They are never added to `web/package.json` or the `web/` lockfile, so the web bundle and the web CI install never see these tools (Requirement 19.8).
 - **Git ignore rules for the cache.** The four `.gitignore` entries shown in "Ownership and git safety" replace any `git add -f` approach. `git add -f` and `git add --force` are never used (Requirements 15.2 to 15.4, 21.7).
+
+## Phase 1, round 3 (lab and finale, sounds, extra avatars)
+
+Round 3 follows the same Phase 1 process as the earlier categories (Requirements 28 to 31). It adds no application code and no Phase 2 design.
+
+- **Category 9, lab and finale.** Sub_Items: knife switch or lever, old heavy door, lab wall texture, lab floor texture; 2 Candidates each, no Fallbacks. Wall and floor prefer Poly Haven or ambientCG CC0 and record PBR map availability. Screenshots go to `reference/candidates/09-round-3/`. Notes are written to `reference/candidates/notes/09-round-3.md` and merged into the README.
+- **Category 10, sounds.** Sub_Items: jump-scare sting, digging in dirt, shambling footsteps, cloth rustle, electrical hum, crows (optional). Freesound CC0 only, 2 each, every row "Manual pick", duration and format recorded, night-read `n/a`. Page screenshots share `reference/candidates/09-round-3/`. If crows has no CC0 fit, the row says "no suitable candidate found" and work continues.
+- **Cap.** Categories 8, 9 and 10 are outside the 35/38 cap of Requirement 2; the README Totals line lists them separately.
+- **Extra Rocketbox avatars.** Six more avatars on the Bip01 skeleton, mixed ages and genders, everyday or work clothes. Each is verified by path at the pinned SHA `0943055db6ec570bcef9f2c8b41c9e5467c808f9` (for example via the GitHub contents API or raw URL for `Assets/Avatars/...`). The list table records path, MIT license, clothing, age group, gender, "no real person or brand", and a link to the repo preview image. No screenshots, no download.
+- **README updates.** Add Categories 9 and 10 and an "Extra Rocketbox avatars" table, update the Status line and the "Decisions needed" list (round 2 and round 3 together), then delete `reference/candidates/notes`.
+- **Commit.** Not part of the default flow. The agent reports and asks; it commits owned paths only if the user requests it.
+- **Stop gate.** After merge and validation, stop and wait for picks for rounds 2 and 3 together.

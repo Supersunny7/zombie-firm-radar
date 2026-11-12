@@ -389,3 +389,55 @@ The tasks document lists Phase 1 only. Phase 2 tasks are added when the user ask
 2. THE Scout_Agent SHALL run `git pull --no-edit` instead of `git pull` for every pull in this extension.
 3. AFTER the commit, THE Scout_Agent SHALL stop and wait for the user's picks for Category 8 and the provenance outcome.
 4. WHILE the user has not given those picks, THE Scout_Agent SHALL add no Phase 2 tasks, install no packages, and leave Asset_Root, the Manifest, the Credits_File and the Fetch_Script unchanged.
+
+### Requirement 28: Category 9, lab and finale (round 3)
+
+**User Story:** As the project owner, I want candidates for the switch, the lab exit door and the lab walls and floor, so that the finale and the lab room can be dressed from real, licensed assets.
+
+#### Acceptance Criteria
+
+1. THE Scout_Agent SHALL add Category 9 "lab and finale (round 3)" to the Candidates_README with the Sub_Items: large knife switch or lever (Frankenstein-style) for the "pull the switch" moment; old heavy door (wood or iron) for the lab exit; lab wall texture (old brick or stone crypt wall); lab floor texture (wet stone or tile).
+2. THE Scout_Agent SHALL propose exactly 2 Candidates for each Category 9 Sub_Item, and SHALL treat Category 9 as having no Fallback.
+3. THE Scout_Agent SHALL prefer Poly Haven or ambientCG Candidates licensed CC0 for the wall and floor texture Sub_Items.
+4. THE Scout_Agent SHALL apply to Category 9 the same sources, Allowed_License checks, selection criteria, Night_Read_Rating, Preview_Screenshot and README column rules as Requirements 2.5 and 10 to 12 define for Categories 1 to 7, with Preview_Screenshots saved in `reference/candidates/09-round-3/`.
+5. THE Scout_Agent SHALL record for each wall and floor Candidate whether PBR maps (color, normal, roughness) are provided.
+6. IF no Candidate meeting the criteria exists for a Category 9 Sub_Item, THEN THE Scout_Agent SHALL record that Sub_Item as "no suitable candidate found" with the sources searched.
+
+### Requirement 29: Category 10, sounds (round 3)
+
+**User Story:** As the project owner, I want sound candidates for the scares and the lab atmosphere, so that outcomes and the graveyard have audio that matches the visuals.
+
+#### Acceptance Criteria
+
+1. THE Scout_Agent SHALL add Category 10 "sounds (round 3)" to the Candidates_README with the Sub_Items: jump-scare sting; digging in dirt; shambling footsteps; cloth rustle; electrical hum before a zap; crows.
+2. THE Scout_Agent SHALL propose exactly 2 Candidates for each Category 10 Sub_Item and SHALL propose only Freesound Candidates licensed CC0.
+3. THE Scout_Agent SHALL mark every Category 10 row "Manual pick" and SHALL NOT download any file.
+4. THE Scout_Agent SHALL record the duration and file format of each Category 10 Candidate and SHALL write `n/a` for its Night_Read_Rating and reason.
+5. THE Scout_Agent SHALL save Preview_Screenshots of the sound pages in `reference/candidates/09-round-3/` under names matching `^[a-z0-9-]+\.png$` and each under 1 MB.
+6. THE Scout_Agent SHALL treat the Sub_Item crows as optional: IF no CC0 Candidate fits, THEN THE Scout_Agent SHALL record "no suitable candidate found" with the sources searched and SHALL continue without blocking.
+7. THE Scout_Agent SHALL NOT count Category 9 or Category 10 Candidates toward the 35 Candidate target or the 38 Candidate maximum of Requirement 2, and the same exemption applies to round 2 (Category 8).
+
+### Requirement 30: Extra Rocketbox avatars
+
+**User Story:** As the project owner, I want six more Rocketbox avatars on the same skeleton, so that patients vary by sector and age without new retargeting work.
+
+#### Acceptance Criteria
+
+1. THE Scout_Agent SHALL list 6 additional Microsoft Rocketbox avatars that use the same 3ds Max Biped (Bip01) skeleton as `Business_Male_02`, with a mix of ages and genders and with everyday or work clothes, for sector variety.
+2. THE Scout_Agent SHALL verify that each listed avatar exists in `github.com/microsoft/microsoft-rocketbox` at the pinned commit SHA `0943055db6ec570bcef9f2c8b41c9e5467c808f9` and SHALL record its exact repository path.
+3. THE Scout_Agent SHALL record for each avatar the MIT license, the clothing, the apparent age group and gender, and a statement that no real person and no brand or logo is depicted.
+4. THE Scout_Agent SHALL NOT be required to scout other sources or take Preview_Screenshots for these avatars, and MAY reference the Rocketbox preview images in the repository by link.
+5. IF an avatar cannot be found at the pinned SHA, THEN THE Scout_Agent SHALL leave it out of the list, report it, and choose another avatar so that 6 are listed where possible.
+6. THE Scout_Agent SHALL NOT download any avatar file.
+
+### Requirement 31: Combined stop gate for rounds 2 and 3
+
+**User Story:** As the project owner, I want the work to stop after round 3 so that I decide on rounds 2 and 3 together before anything is downloaded.
+
+#### Acceptance Criteria
+
+1. THE Scout_Agent SHALL run `git pull --no-edit` before starting round 3 and before any commit in this extension.
+2. WHEN Categories 9 and 10 and the extra avatar list are merged into the Candidates_README and validated, THE Scout_Agent SHALL report the result to the user.
+3. THE Scout_Agent SHALL commit only files inside the Owned_Paths, and only WHEN the user asks for a commit; the user has not asked for a commit in this round.
+4. AFTER the merge and validation, THE Scout_Agent SHALL stop and wait for the user's picks for rounds 2 and 3 together; the round-2 decisions remain open.
+5. WHILE the user has not given those picks, THE Scout_Agent SHALL add no Phase 2 tasks, install no packages, and leave Asset_Root, the Manifest, the Credits_File and the Fetch_Script unchanged.

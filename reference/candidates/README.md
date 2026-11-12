@@ -1,14 +1,33 @@
 # Asset candidates (Phase 1, scouting)
 
-Status: Round 2: waiting for picks for Category 8 and the replacement hand. Nothing has been downloaded.
+Status: Rounds 2 and 3: waiting for picks. Nothing has been downloaded.
 
-Totals: Categories 1-7: 47 distinct candidates (35 visual + 12 sound), counting the task 6.2 replacement hand (pending pick; sketchfab-zombie-hand-greenall stays listed but is Rejected as unconfirmed). Per category: 1 ground and stone 5, 2 night sky 3, 3 graveyard props 14, 4 lab props 5, 5 avatars 3, 6 zombie and hands 5, 7 sound 12. Packs and files covering several Sub_Items are listed once. Limit 35, hard max 38 for the visual categories. Category 8 (horror dressing), counted separately and outside the cap: 23 distinct candidates in 24 rows (22 new; 1 shared with Category 3), 0 for the bloody handprint. Overall: 69 distinct.
+Totals: Categories 1-7: 47 distinct candidates (35 visual + 12 sound), counting the task 6.2 replacement hand (pending pick; sketchfab-zombie-hand-greenall stays listed but is Rejected as unconfirmed). Per category: 1 ground and stone 5, 2 night sky 3, 3 graveyard props 14, 4 lab props 5, 5 avatars 3, 6 zombie and hands 5, 7 sound 12. Packs and files covering several Sub_Items are listed once. Limit 35, hard max 38 for the visual categories. Category 8 (horror dressing), counted separately and outside the cap: 23 distinct candidates in 24 rows (22 new; 1 shared with Category 3), 0 for the bloody handprint. Category 9 (lab and finale, round 3, separate, outside the cap): 8 distinct (knife switch 2, heavy door 2, lab wall 2, lab floor 2). Category 10 (sounds, round 3, separate, outside the cap): 12 distinct. Overall: 89 distinct (47 + 22 + 8 + 12). The 6 extra Rocketbox avatars (round 3) are listed separately and are not counted as scouted candidates.
 
-Decision: the 35/38 cap was raised for Category 7 (sound) only. Categories 1 to 6 now total 35 with the task 6.2 replacement, within the hard max of 38. Sound adds 12 for a final total of 47. The cap does not apply to Category 8.
+Decision: the 35/38 cap was raised for Category 7 (sound) only. Categories 1 to 6 now total 35 with the task 6.2 replacement, within the hard max of 38. Sound adds 12 for a final total of 47. The cap does not apply to Categories 8, 9 and 10.
 
 Provenance result (task 6.1, details under Category 6): Greenall corpse CONFIRMED and picked. Greenall hand UNCONFIRMED and rejected. Replacement hand sketchfab-zombie-hand-craggle: pending your pick.
 
-## Decisions needed (round 2)
+## Decisions needed (rounds 2 and 3)
+
+Rounds 2 and 3 are decided together. Nothing is downloaded until your picks for both arrive.
+
+Round 3 (new):
+
+A. Knife switch: sketchfab-knife-switch-type-c or sketchfab-knife-switch-type-d (grey variant; the handle may need splitting in Blender).
+B. Heavy door: polyhaven-large-castle-door (separate leaves, fetched by the script) or sketchfab-iron-door-olkaad (one fused scan, needs cutting).
+C. Lab wall: polyhaven-dark-brick-wall or polyhaven-castle-brick-07 (needs darkening).
+D. Lab floor: polyhaven-slate-floor or polyhaven-slate-floor-02 (too warm, heavy darkening).
+E. Six sounds, 2 candidates each (pick one, both or none):
+   - Jump-scare sting: freesound-qubodup-vibrating-jumpscare and/or freesound-za-games-metal-spring-pluck-sting.
+   - Digging in dirt: freesound-guyburns-digging-with-shovel or freesound-trp-digging-dirt-shovel-05 (needs trimming).
+   - Shambling footsteps: freesound-starvolt-shuffling-1-rear or freesound-indieground-pas-zombie-route.
+   - Cloth rustle: freesound-zazz-cloth-rustle-8 or freesound-khenshom-cotton-clothes-rustling.
+   - Electrical hum before a zap: freesound-smice-6-hum-loop or freesound-tairblenn-old-electrometer-humming (3 parts, take the hum).
+   - Crows (optional, you may skip): freesound-giddster-crows-cawing or freesound-etienne-leplumey-crows-over-nests (needs trimming).
+F. Extra Rocketbox avatars: which of the 6 to keep (Medical_Female_01, Construction_Male_01, Construction_Female_01, Business_Female_01, Gardener_Male_01, Female_Adult_06), none included. Glance at the repo previews first; clothing, age and gender are inferred from folder names.
+
+Round 2 (still open):
 
 1. Category 8 picks, per Sub_Item (2 candidates each, you may pick one, both or none):
    - Human skull: sketchfab-human-skull-danieledefilippis or sketchfab-human-skull-plastic-model. Neither has bones.
@@ -436,6 +455,145 @@ Rejected headstones (Req 26.8):
 
 Category 8 candidate count: 24 rows, 23 distinct (skulls 2, body bags 2, morgue 2, chains and hooks 2, straps 2, blood splatter 2, handprint 0, drag-mark 2, cobwebs 2, cloth 2, headstones 6 rows with sketchfab-small-destroyed-tombstone-04 listed twice). 22 of the 23 are new; sketchfab-small-destroyed-tombstone-04 is already counted in Category 3 and is a Category 3 pick.
 
+## Category 9: lab and finale (round 3)
+
+Round 3, added at the user's request. Sub_Items: knife switch (finale), heavy door (lab exit), lab wall texture, lab floor texture. Exactly 2 Candidates per Sub_Item, no Fallbacks. The 35/38 cap does NOT apply to Category 9 (Req 29.7); its candidates are counted separately in Totals. Nothing was downloaded and no login was used. Every license was read on the candidate's own page.
+
+Size basis (unverified): Meshopt geometry at about 14 bytes per vertex plus about 0.5 MB per 1k WebP set (about 1 MB for several texture variants); Poly Haven rows are computed from the files API (.bin x 0.3 plus 1k JPG x 0.5). Sketchfab archive sizes are not public without login. Every estimate is under 5 MB. Sketchfab license label: "CC Attribution", http://creativecommons.org/licenses/by/4.0/ (CC BY 4.0). Night-read ratings are judgements from preview pages and albedo colour, not render tests. Sketchfab viewer backgrounds belong to the authors and will not appear in the scene. Some Poly Haven captures show a Chinese-language popup from the site and author avatar photos; neither is part of the asset. Lab reference for night-read: a single cool lamp pool, a pitch-black crypt, worn steel with copper and brass highlights, a wet dark stone floor.
+
+Caveats (read before picking):
+
+- Knife switch: neither Mad Lobster model is rigged. Both show open and closed poses, so the handle is probably modelled in each pose. Whether handle and blade are separate nodes is NOT verified; expect to split the handle and blade from the base in Blender after download. Avoid the red and yellow-striped variants (too bright for a pitch-black crypt); use the grey.
+- Heavy door: polyhaven-large-castle-door has separate leaves (glTF nodes `large_castle_door_frame`, `large_castle_door_right`, `large_castle_door_left`, verified in the 1k gltf), so each leaf can swing. sketchfab-iron-door-olkaad is one fused scan including the frame, so it needs cutting in Blender, and the back of the door is likely baked or missing.
+- Lab wall: polyhaven-castle-brick-07 is orange-red and mid-bright; it needs an albedo multiply of about 0.4 and desaturation.
+- Lab floor: polyhaven-slate-floor-02 is too warm and bright for a cool-lit black crypt and would compete with the lantern; usable only with a heavy albedo multiply.
+- Sources were not searched page by page everywhere: Sketchfab through its public search API (downloadable only; queries: knife switch, frankenstein lever, big switch lever laboratory, large lever switch industrial, electrical lever switch vintage, old heavy door, dungeon iron door scan), Poly Haven through its API. ambientCG, Kenney, Quaternius (stylised, excluded) and OpenGameArt were not searched page by page.
+- Spares seen but not opened on their pages, not counted as candidates: CurlyFryWhy "Heavy Metal Door / Submarine Door" and "Photoreal Heavy Steel Door" (steel, not the wood and iron crypt style); walls `castle_brick_broken_06`, `medieval_blocks_02`, `stone_wall_04`; floors `slate_floor_03`, `cobblestone_floor_09`, `mossy_cobblestone`.
+
+### Knife switch
+
+| Name | Sub_Item | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| sketchfab-knife-switch-type-c | Knife switch | [png](09-round-3/sketchfab-knife-switch-type-c.png) | https://sketchfab.com/3d-models/early-1900s-knife-switches-type-c-033dd717e4b04e46b6da85195085b8f3 | [Mad_Lobster_Workshop](https://sketchfab.com/Mad_Lobster_Workshop) | CC Attribution (CC BY 4.0), http://creativecommons.org/licenses/by/4.0/ | ~1.4 MB (unverified; 27,176 verts x ~14 B = 0.4 MB + ~1 MB 1k WebP for texture variants) | 51,712 faces | PBR-textured per page and preview (maps not listed; check after download) | not stated (Blender, Substance-style textures; resize to 1k) | Yes | 3 | Dark slate base with worn brass blades and contacts and a black wooden handle: the brass catches a single cool lamp and reads against black; a red variant exists to avoid (use the grey). | Double-bladed early-1900s knife switch, open and closed pose included, "not rigged, but easy to animate". Handle/blade are posed as separate parts in the open and closed models (visible in the preview); whether they are separate nodes/meshes is NOT verified, so it may need splitting in Blender. |
+| sketchfab-knife-switch-type-d | Knife switch | [png](09-round-3/sketchfab-knife-switch-type-d.png) | https://sketchfab.com/3d-models/early-1900s-knife-switches-type-d-dba93ad080ee4f8ca922e0df84ec9b4b | [Mad_Lobster_Workshop](https://sketchfab.com/Mad_Lobster_Workshop) | CC Attribution (CC BY 4.0), http://creativecommons.org/licenses/by/4.0/ | ~1.2 MB (unverified; 11,775 verts x ~14 B = 0.17 MB + ~1 MB 1k WebP for variants) | 22,656 faces | PBR-textured per page and preview (maps not listed; check after download) | not stated (resize to 1k) | Yes | 3 | Black slate panel, dark handle, copper/brass blade straps: matches worn steel with copper/brass highlights; grey variant is darkest. Red and yellow-striped variants are too bright for a pitch-black crypt. | Single-bladed, tall black handle makes a clear "pull the switch" silhouette; lighter than Type C. Open and closed pose shown (handle tilts with the blade bridge); "not rigged". Handle separate node: NOT verified, likely a separate part per pose, may need splitting. |
+
+### Heavy door
+
+| Name | Sub_Item | Preview | Source URL | Author | License | File size (estimate, basis) | Poly count | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| polyhaven-large-castle-door | Heavy door | [png](09-round-3/polyhaven-large-castle-door.png) | https://polyhaven.com/a/large_castle_door | [Tina](https://polyhaven.com/all?a=Tina) | CC0, https://polyhaven.com/license | ~1.6 MB (.bin 0.42 MB x 0.3 + 1k JPG diffuse 0.80 + normal 1.02 + ARM 1.02 MB x 0.5) | 12,640 tris (page: 13K) | diffuse, normal (GL), ARM | 1k, 2k, 4k (download shown 4K) | No (Poly Haven, fetchable by script) | 2 | Weathered mid-brown wood with black iron straps and rivets; matte and warm brown, so it needs a dim lamp to avoid looking lit; iron straps give the dark edge. | Arched medieval double wooden door, 3 m tall. Frame and leaves ARE separate: glTF nodes `large_castle_door_frame`, `large_castle_door_right`, `large_castle_door_left` (verified in the 1k gltf), so each leaf can swing. Clean game-ready mesh; CC0. |
+| sketchfab-iron-door-olkaad | Heavy door | [png](09-round-3/sketchfab-iron-door-olkaad.png) | https://sketchfab.com/3d-models/iron-door-e8d18cc2db694241b16a083e6632c8ba | [olkaad](https://sketchfab.com/olkaad) | CC Attribution (CC BY 4.0), http://creativecommons.org/licenses/by/4.0/ | ~0.7 MB (unverified; 10,964 verts x ~14 B = 0.15 MB + 0.5 MB 1k WebP) | 20,000 faces | baked color (photoscan, no separate PBR maps stated) | not stated (resize to 1k) | Yes | 3 | Very dark brown timber with rusty iron bands, near-black overall: reads as a heavy door lit by a cool lamp and disappears into a black crypt wall. | Photoscan of a hand-built iron-and-wood double door from Old Nicosia, tagged noai, photoreal. Leaf is NOT separate from the frame: it is one scanned mesh including the frame, so it would need cutting in Blender (and the back of the door is likely baked or missing). Provenance: real scan of a building door in a venue, no people or branding visible. |
+
+### Lab wall texture
+
+All lab wall and floor sets are Poly Haven and fetchable by the script (Manual pick: No). All four provide PBR maps: color, normal (GL and DX), roughness, AO, displacement and ARM; the planned 1k set ships as color + normal (GL) + ARM. Separate AO, roughness and displacement maps add about 1.1 to 1.9 MB of JPG per set before WebP.
+
+| Name | Sub_Item | Preview | Source URL | Author | License | File size (estimate, basis) | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| polyhaven-dark-brick-wall | Lab wall | [png](09-round-3/polyhaven-dark-brick-wall.png) | https://polyhaven.com/a/dark_brick_wall | Dario Barresi (processing), Dimitrios Savva (photography) | CC0, https://polyhaven.com/license | ~1.55 MB (1k JPG color 0.92 + normal 1.33 + ARM 0.86 = 3.11 MB x 0.5) | color, normal (GL and DX), roughness, AO, displacement, ARM | 1k, 2k, 4k, 8k | No (Poly Haven, fetchable by script) | 3 | Near-black charcoal bricks with pale mortar lines; rough and matte. Mortar is the only bright part and will fall into black outside the lamp pool; reads as a pitch-black crypt wall. | Brick running bond, rough and uneven (tags rough, uneven, dark), 1 m tall tile, so it needs tiling. Dark albedo matches the "dark, rough walls" preference. |
+| polyhaven-castle-brick-07 | Lab wall | [png](09-round-3/polyhaven-castle-brick-07.png) | https://polyhaven.com/a/castle_brick_07 | Rob Tuytel | CC0, https://polyhaven.com/license | ~0.96 MB (1k JPG color 0.66 + normal 1.00 + ARM 0.27 = 1.93 MB x 0.5) | color, normal (GL and DX), roughness, AO, displacement, ARM, rough_ao | 1k, 2k, 4k, 8k | No (Poly Haven, fetchable by script) | 2 | Old brick with gaps and loose bricks, but the albedo is orange-red and mid-bright; under a cool lamp it looks rusty and busy. Needs an albedo multiply of about 0.4 and desaturation to sit in a black crypt. | Strongest relief (damaged, loose bricks, deep gaps) so a lamp pool rakes across it well; castle/old look. Indoor or outdoor, 2.5 m wide tile. |
+
+### Lab floor texture
+
+| Name | Sub_Item | Preview | Source URL | Author | License | File size (estimate, basis) | PBR maps | Resolutions | Manual pick | Night-read | Night-read reason | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| polyhaven-slate-floor | Lab floor | [png](09-round-3/polyhaven-slate-floor.png) | https://polyhaven.com/a/slate_floor | Dimitrios Savva | CC0, https://polyhaven.com/license | ~1.24 MB (1k JPG color 0.71 + normal 0.81 + ARM 0.97 = 2.49 MB x 0.5) | color, normal (GL and DX), roughness, AO, displacement, ARM | 1k, 2k, 4k, 8k | No (Poly Haven, fetchable by script) | 3 | Very dark purple-black slate slabs with pale cracks between them; tagged shiny, coated, polished, reflective. The roughness map (0.80 MB at 1k JPG, large detail) should give the wet sheen variation under one cool lamp. | Matches "wet dark stone floor with reflections" best: dark albedo, polished/coated by tag, 2.3 m tile with irregular flagstones. |
+| polyhaven-slate-floor-02 | Lab floor | [png](09-round-3/polyhaven-slate-floor-02.png) | https://polyhaven.com/a/slate_floor_02 | Dimitrios Savva | CC0, https://polyhaven.com/license | ~0.80 MB (1k JPG color 0.61 + normal 0.34 + ARM 0.65 = 1.60 MB x 0.5) | color, normal (GL and DX), roughness, AO, displacement, ARM | 1k, 2k, 4k, 8k | No (Poly Haven, fetchable by script) | 1 | Warm brown/orange worn slate with beige grout; much too bright and warm for a cool-lit black crypt, would compete with the lantern. Usable only with a heavy albedo multiply. | Old weathered stone floor with the lightest download; worn and rustic (tags old, weathered, worn). Weaker fit than slate_floor and listed as the second candidate for comparison. |
+
+Category 9 rejected while scouting: Sketchfab "Switch knife" and other pocket knives (weapons, not switches); "Simple Industrial ON/OFF Switch" (Free Standard license, 196 faces); Poly Haven `power_box_01` (modern breaker box, not a lever); NonCommercial or NoDerivs doors ("Wooden Door - Vintage" by olkaad, "Traditional Door - Medina of Tunis"); AI-tagged ("createdwithai") props by Unreal_Joelab; "Old Medieval Church Door" (3DHelga, 108k faces, too heavy); lidar scans by ffedo (160k to 425k faces).
+
+Category 9 candidate count: 8 rows, 8 distinct (knife switch 2, heavy door 2, lab wall 2, lab floor 2), 0 Fallbacks, outside the 35/38 cap.
+
+## Category 10: sounds (round 3)
+
+Round 3, added at the user's request. Sub_Items: jump-scare sting, digging in dirt, shambling footsteps, cloth rustle, electrical hum before a zap, crows (optional). 12 rows, 12 distinct sounds, all Freesound, 2 per Sub_Item. The 35/38 cap does NOT apply to Category 10 (Req 29.7); counted separately in Totals. Every row is a Manual pick (Freesound login needed to download). Night-read: n/a for every row. Poly count: n/a. Nothing was downloaded.
+
+License on every page: "Creative Commons 0", http://creativecommons.org/publicdomain/zero/1.0/ . The pages say you can copy, modify, distribute and perform the sound, even for commercial purposes, without asking the author. Each URL was opened in Playwright and the license text read from the page.
+
+Size basis: duration x bitrate. .ogg about 64 kbps mono or 112 kbps stereo; .mp3 about 96 kbps mono or 128 kbps stereo. Estimates only, confirm at conversion. All converted estimates are under 5 MB, but several originals are over 5 MB.
+
+No overlap with Category 7 (checked against its 12 Freesound IDs). No copyrighted music, film, game or TV rips, or identifiable voices.
+
+Caveats:
+
+- freesound-trp-digging-dirt-shovel-05 is 4:23 (39.4 MB FLAC) and freesound-etienne-leplumey-crows-over-nests is 4:28 at 96 kHz (147.3 MB WAV). Both must be trimmed (to about 20 s and 40 s) before converting, or they cost 3.7 MB or more.
+- freesound-tairblenn-old-electrometer-humming has 3 parts (noise with the hum removed, then the hum): pick the hum part.
+- freesound-za-games-metal-spring-pluck-sting is by Za-Games (mono, 4.8 s, heavy reverb); it can be layered with the qubodup sting for the lights-off outcome.
+- freesound-smice-6-hum-loop: check the loop seam at conversion; mono would halve the size.
+- freesound-guyburns-digging-with-shovel, freesound-zazz-cloth-rustle-8, freesound-khenshom-cotton-clothes-rustling and freesound-giddster-crows-cawing are not loopable as is; cut a clean section or crossfade.
+- freesound-starvolt-shuffling-1-rear is one of six matching Front/Rear files (Shuffling 1 to 3) and zazz cloth-rustle-8 is one of Cloth Rustle 1 to 8; each series is counted once.
+- Crows are optional (see Decisions needed).
+- OpenGameArt was not searched; Freesound had enough CC0 hits.
+
+### Jump-scare sting
+
+| Name | Covers | Preview | Source URL | Author | License | Duration | Original format | Size | Loopable | Manual pick | Night-read | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| freesound-qubodup-vibrating-jumpscare | jump-scare sting | [png](09-round-3/freesound-qubodup-vibrating-jumpscare.png) | https://freesound.org/people/qubodup/sounds/814056/ | [qubodup](https://freesound.org/people/qubodup/) | Creative Commons 0, http://creativecommons.org/publicdomain/zero/1.0/ | 0:08.307 | WAV, 44.1 kHz, 16-bit, stereo | 1.4 MB; ~0.12 MB / ~0.13 MB (8.3 s stereo x 112 / 128 kbps) | No (one-shot, decaying) | Manual pick | n/a | Original layered piano and drums run through a plugin, made by the author; sharp attack with a long decay suits a once-per-outcome scare. 21 ratings. |
+| freesound-za-games-metal-spring-pluck-sting | jump-scare sting | [png](09-round-3/freesound-za-games-metal-spring-pluck-sting.png) | https://freesound.org/people/Za-Games/sounds/540213/ | [Za-Games](https://freesound.org/people/Za-Games/) | Creative Commons 0, http://creativecommons.org/publicdomain/zero/1.0/ | 0:04.768 | WAV, 44.1 kHz, 16-bit, mono | 410.8 KB; ~0.04 MB / ~0.06 MB (4.8 s mono x 64 / 96 kbps) | No (one-shot) | Manual pick | n/a | Plucked metal spring with heavy reverb, tagged horror sting; short, so it can be layered with the first for the lights-off outcome. |
+
+### Digging in dirt
+
+| Name | Covers | Preview | Source URL | Author | License | Duration | Original format | Size | Loopable | Manual pick | Night-read | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| freesound-guyburns-digging-with-shovel | digging in dirt | [png](09-round-3/freesound-guyburns-digging-with-shovel.png) | https://freesound.org/people/guyburns/sounds/558413/ | [guyburns](https://freesound.org/people/guyburns/) | Creative Commons 0, http://creativecommons.org/publicdomain/zero/1.0/ | 0:18.139 | M4A, 44.1 kHz, 678 kbps, stereo | 1.5 MB; ~0.25 MB / ~0.29 MB (18.1 s stereo x 112 / 128 kbps) | Not as is (cut a clean section and crossfade) | Manual pick | n/a | Field recording of a shovel in gravel and dirt at night, a believable grave-digging bed for a zombie clawing out. |
+| freesound-trp-digging-dirt-shovel-05 | digging in dirt | [png](09-round-3/freesound-trp-digging-dirt-shovel-05.png) | https://freesound.org/people/TRP/sounds/574859/ | [TRP](https://freesound.org/people/TRP/) | Creative Commons 0, http://creativecommons.org/publicdomain/zero/1.0/ | 4:23.000 | FLAC, 48 kHz, 24-bit, stereo | 39.4 MB; ~3.7 MB / ~4.2 MB if kept whole (263 s stereo x 112 / 128 kbps); a 20 s trim is about 0.3 MB | Not as is (trim to a few seconds) | Manual pick | n/a | Long clean shovel recording from a Sony MiniDisc rig; gives many shovel strokes to choose from. Trim before converting; the original is over 5 MB. |
+
+### Shambling footsteps
+
+| Name | Covers | Preview | Source URL | Author | License | Duration | Original format | Size | Loopable | Manual pick | Night-read | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| freesound-starvolt-shuffling-1-rear (PACK) | shambling footsteps | [png](09-round-3/freesound-starvolt-shuffling-1-rear.png) | https://freesound.org/people/Starvolt/sounds/189225/ | [Starvolt](https://freesound.org/people/Starvolt/) | Creative Commons 0, http://creativecommons.org/publicdomain/zero/1.0/ | 0:08.598 | WAV, 44.1 kHz, 16-bit, stereo | 1.4 MB; ~0.12 MB / ~0.14 MB (8.6 s stereo x 112 / 128 kbps) | Possible with a crossfade (idle shuffling, no rhythm hits) | Manual pick | n/a | Page says a small group shuffling to replicate idling zombies. One of six matching Front/Rear files (Shuffling 1 to 3), counted once. Group of people, no voices noted on the page. |
+| freesound-indieground-pas-zombie-route | shambling footsteps | [png](09-round-3/freesound-indieground-pas-zombie-route.png) | https://freesound.org/people/indieground/sounds/223815/ | [indieground](https://freesound.org/people/indieground/) | Creative Commons 0, http://creativecommons.org/publicdomain/zero/1.0/ | 0:28.325 | WAV, 44.1 kHz, 16-bit, stereo | 4.8 MB; ~0.40 MB / ~0.45 MB (28.3 s stereo x 112 / 128 kbps) | Not as is | Manual pick | n/a | Slow gravel footsteps tagged zombie, recorded on a Zoom H2n; gravel matches a graveyard path. |
+
+### Cloth rustle
+
+| Name | Covers | Preview | Source URL | Author | License | Duration | Original format | Size | Loopable | Manual pick | Night-read | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| freesound-zazz-cloth-rustle-8 (PACK) | cloth rustle | [png](09-round-3/freesound-zazz-cloth-rustle-8.png) | https://freesound.org/people/zazz.sound.design/sounds/435296/ | [zazz.sound.design](https://freesound.org/people/zazz.sound.design/) | Creative Commons 0, http://creativecommons.org/publicdomain/zero/1.0/ | 1:33.765 | WAV, 48 kHz, 24-bit, mono | 12.9 MB; ~0.75 MB / ~1.1 MB (93.8 s mono x 64 / 96 kbps) | No (many separate rustles; cut one) | Manual pick | n/a | Clean mono foley, 25 ratings. Part of a series Cloth Rustle 1 to 8 (same author), counted once. |
+| freesound-khenshom-cotton-clothes-rustling | cloth rustle | [png](09-round-3/freesound-khenshom-cotton-clothes-rustling.png) | https://freesound.org/people/khenshom/sounds/481075/ | [khenshom](https://freesound.org/people/khenshom/) | Creative Commons 0, http://creativecommons.org/publicdomain/zero/1.0/ | 0:38.452 | WAV, 48 kHz, 32-bit, stereo | 14.1 MB; ~0.54 MB / ~0.62 MB (38.5 s stereo x 112 / 128 kbps) | No (cut one movement) | Manual pick | n/a | Cotton clothing movement, boom mic, 46 ratings; softer than the first, for a slumped body shifting. |
+
+### Electrical hum before a zap
+
+| Name | Covers | Preview | Source URL | Author | License | Duration | Original format | Size | Loopable | Manual pick | Night-read | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| freesound-smice-6-hum-loop | electrical hum before a zap | [png](09-round-3/freesound-smice-6-hum-loop.png) | https://freesound.org/people/Smice_6/sounds/536527/ | [Smice_6](https://freesound.org/people/Smice_6/) | Creative Commons 0, http://creativecommons.org/publicdomain/zero/1.0/ | 0:37.359 | WAV, 48 kHz, 24-bit, stereo | 10.3 MB; ~0.52 MB / ~0.60 MB (37.4 s stereo x 112 / 128 kbps); mono would halve it | Yes, titled Hum Loop and tagged Loop (check the seam at conversion) | Manual pick | n/a | Steady electric tone for a hum bed that rises before the switch is pulled. |
+| freesound-tairblenn-old-electrometer-humming | electrical hum before a zap | [png](09-round-3/freesound-tairblenn-old-electrometer-humming.png) | https://freesound.org/people/Tairblenn/sounds/540305/ | [Tairblenn](https://freesound.org/people/Tairblenn/) | Creative Commons 0, http://creativecommons.org/publicdomain/zero/1.0/ | 0:27.108 | MP3, 44.1 kHz, 120 kbps, stereo | 398.4 KB; ~0.38 MB / ~0.43 MB (27.1 s stereo x 112 / 128 kbps) | Yes, titled Loopable; the page lists 3 parts (noise with hum removed, then the hum), so pick the hum part | Manual pick | n/a | Old electrometer disc hum, an analog, period-fitting buzz for the lab. |
+
+### Crows (optional)
+
+| Name | Covers | Preview | Source URL | Author | License | Duration | Original format | Size | Loopable | Manual pick | Night-read | Why it fits |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| freesound-giddster-crows-cawing | crows | [png](09-round-3/freesound-giddster-crows-cawing.png) | https://freesound.org/people/giddster/sounds/437345/ | [giddster](https://freesound.org/people/giddster/) | Creative Commons 0, http://creativecommons.org/publicdomain/zero/1.0/ | 0:38.237 | WAV, 44.1 kHz, 32-bit, stereo | 12.9 MB; ~0.54 MB / ~0.61 MB (38.2 s stereo x 112 / 128 kbps) | Possible with a crossfade (ambient) | Manual pick | n/a | Crows in trees on a cold day, Zoom H1, 24 ratings; clear cawing for the graveyard bed. |
+| freesound-etienne-leplumey-crows-over-nests | crows | [png](09-round-3/freesound-etienne-leplumey-crows-over-nests.png) | https://freesound.org/people/etienne.leplumey/sounds/534322/ | [etienne.leplumey](https://freesound.org/people/etienne.leplumey/) | Creative Commons 0, http://creativecommons.org/publicdomain/zero/1.0/ | 4:28.187 | WAV, 96 kHz, 24-bit, stereo | 147.3 MB; ~3.7 MB / ~4.3 MB if kept whole (268 s stereo x 112 / 128 kbps); a 40 s trim is about 0.6 MB | Possible after a trim | Manual pick | n/a | Crows flying and cawing over nests with wind, a fuller flock for a wide shot. Trim before converting. |
+
+Category 10 rejected while scouting: DeqstersLab 819593 "Spooky Sting from VT Lair" (a third-party sample pack, origin unclear); JeffPearson 849840 "shoveling-dirt" (0.65 s, self-described low quality, credits a game name); maurolupo 330811 "Zombie on the leaves" (6:20, 128 MB, human voices and Walking Dead tags).
+
+Category 10 candidate count: 12 rows, 12 distinct (sting 2, digging 2, footsteps 2, cloth rustle 2, electrical hum 2, crows 2), 0 Fallbacks, outside the 35/38 cap.
+
+## Extra Rocketbox avatars (round 3)
+
+Six more Rocketbox avatars on the same library, so patients can vary by sector and age. They are listed separately and are NOT counted as scouted candidates. Nothing was downloaded or cloned; the listings come from the read-only GitHub git-tree API at the pinned SHA `0943055db6ec570bcef9f2c8b41c9e5467c808f9` (repo `microsoft/Microsoft-Rocketbox`). Already in use and not repeated: `Business_Male_02`, `Male_Adult_05`. Excluded: Children, Police, Military, Security, Fire, Pilot, Delivery (clothing may carry a brand), Party. All 6 folders and main FBXs were verified present at the SHA; no replacements were needed.
+
+License: MIT, [LICENSE.md at the pinned SHA](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) (file exists, 1066 bytes). Rocketbox avatars are synthetic characters, so there is no real person. Include the LICENSE file next to the avatars.
+
+IMPORTANT: clothing, age group and gender were inferred from the folder names only. The preview images were NOT opened. Take a quick visual look at the six repo previews (links in the last column) before picking, in particular for logos or marks (Construction helmets and Medical_Female_01 are the likeliest) and for age. Rocketbox has no explicit age labels, so "young adult" and "older" are guesses.
+
+Skeleton: assumed, same library (3ds Max Biped, Bip01). The repo README at the SHA has no "Bip01" or "skeleton" text, and bone names can only be confirmed by opening an FBX, which was not done. The two avatars already picked come from the same folder families, so the same rig is expected. Check the bone names after the first retarget.
+
+Textures: each folder has `Textures/*.tga` of about 4 to 16 MB each (12 MB typical). Phase 2 resizes them to 1k WebP in the script, and at that size they are not a budget problem. KTX2 is skipped for v1. Each folder also holds a `_facial.fbx` (about 1.9 to 2.3 MB); only the plain FBX is the main file.
+
+| Name | Repo path (at SHA) | Main FBX (size) | License | Clothing (inferred from name) | Age group / gender (inferred) | Suggested sector | Preview (repo) | Skeleton |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| rocketbox-medical-female-01 (Medical_Female_01) | `Assets/Avatars/Professions/Medical_Female_01` | `Export/Medical_Female_01.fbx` (583,200 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | medical or scrubs-style work clothes (nurse-like; unconfirmed) | adult, female | Services (health care) | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Medical_Female_01/Medical_Female_01.png) | assumed, same library (Bip01) |
+| rocketbox-construction-male-01 (Construction_Male_01) | `Assets/Avatars/Professions/Construction_Male_01` | `Export/Construction_Male_01.fbx` (676,496 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | construction work clothes; helmet and tools textures present | adult, male | Construction | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Construction_Male_01/Construction_Male_01.png) | assumed, same library (Bip01) |
+| rocketbox-construction-female-01 (Construction_Female_01) | `Assets/Avatars/Professions/Construction_Female_01` | `Export/Construction_Female_01.fbx` (603,248 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | construction work clothes; helmet texture present | young adult or adult, female | Manufacturing | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Construction_Female_01/Construction_Female_01.png) | assumed, same library (Bip01) |
+| rocketbox-business-female-01 (Business_Female_01) | `Assets/Avatars/Professions/Business_Female_01` | `Export/Business_Female_01.fbx` (616,576 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | business or office wear | adult, female | Finance | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Business_Female_01/Business_Female_01.png) | assumed, same library (Bip01) |
+| rocketbox-gardener-male-01 (Gardener_Male_01) | `Assets/Avatars/Professions/Gardener_Male_01` | `Export/Gardener_Male_01.fbx` (517,152 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | outdoor work clothes | older adult, male (age is a guess) | Agriculture or Services | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Professions/Gardener_Male_01/Gardener_Male_01.png) | assumed, same library (Bip01) |
+| rocketbox-female-adult-06 (Female_Adult_06) | `Assets/Avatars/Adults/Female_Adult_06` | `Export/Female_Adult_06.fbx` (529,632 B) | [MIT](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/LICENSE.md) | everyday casual clothes | adult, female | Retail Trade | [png](https://github.com/microsoft/Microsoft-Rocketbox/blob/0943055db6ec570bcef9f2c8b41c9e5467c808f9/Assets/Avatars/Adults/Female_Adult_06/Female_Adult_06.png) | assumed, same library (Bip01) |
+
+Mix: 4 female, 2 male; adult to older adult; sectors Services, Construction, Manufacturing, Finance, Agriculture or Services, Retail Trade. Weakest part: age spread, until the previews are viewed.
+
 ## Sub_Items with no suitable candidate
 
 | Sub_Item | Category | Sources searched | Note |
@@ -449,11 +607,19 @@ Distinct candidates, Categories 1-7: 47 (limit 35, hard max 38 for the visual ca
 
 Category 8 (horror dressing, counted separately, outside the 35/38 cap): 23 distinct candidates in 24 rows (sketchfab-small-destroyed-tombstone-04 appears under both cracked and broken and is already a Category 3 pick), so 22 are new. Per Sub_Item: skull 2, body bag 2, morgue 2, chains and hooks 2, straps 2, blood splatter 2, handprint 0 (none found), drag-mark 2, cobwebs 2, rotten cloth 2, headstones 6 rows (intact 2, cracked 2, broken 2). Overall distinct across all categories: 69 (47 + 22). Category 8 Fallbacks: 0.
 
+Category 9 (lab and finale, round 3, counted separately, outside the 35/38 cap): 8 distinct candidates in 8 rows. Per Sub_Item: knife switch 2, heavy door 2, lab wall 2, lab floor 2. Fallbacks: 0.
+
+Category 10 (sounds, round 3, counted separately, outside the 35/38 cap): 12 distinct candidates in 12 rows. Per Sub_Item: jump-scare sting 2, digging 2, shambling footsteps 2, cloth rustle 2, electrical hum 2, crows 2 (optional). Fallbacks: 0. Packs counted once: 2 (starvolt shuffling series, zazz cloth rustle series).
+
+Extra Rocketbox avatars (round 3): 6 listed, none missing, listed separately and not counted as scouted candidates.
+
+Round 3 scouted total: 20 (8 + 12). Overall distinct across Categories 1-10: 89 (47 + 22 + 20). The 35/38 cap does not apply to Categories 8, 9 and 10.
+
 Earlier Categories 1-7 detail: Fallbacks: 12 (4 in Category 1, 2 in Category 2, 5 in Category 3, 1 Rocketbox row in Category 5 counting the avatar and its three animations as one). Packs counted once: 2 in Category 4, 2 in Category 7.
 
 ## Picks
 
-Recorded from the user's picks for Categories 1-7. Format: name, scene, role; then processing notes. "(Manual pick)" marks files you download yourself into `tools/cache/manual/<name>/` in Phase 2 (all Sketchfab and Freesound rows). Poly Haven and Rocketbox rows are fetched by the script. Category 8 picks are still pending (see "Decisions needed (round 2)" at the top). The Greenall provenance check (task 6.1) is done: corpse CONFIRMED and picked, hand UNCONFIRMED and rejected, replacement hand sketchfab-zombie-hand-craggle pending your pick (not in Picks).
+Recorded from the user's picks for Categories 1-7. Format: name, scene, role; then processing notes. "(Manual pick)" marks files you download yourself into `tools/cache/manual/<name>/` in Phase 2 (all Sketchfab and Freesound rows). Poly Haven and Rocketbox rows are fetched by the script. Category 8, 9 and 10 picks and the extra avatars are still pending (see "Decisions needed (rounds 2 and 3)" at the top). The Greenall provenance check (task 6.1) is done: corpse CONFIRMED and picked, hand UNCONFIRMED and rejected, replacement hand sketchfab-zombie-hand-craggle pending your pick (not in Picks).
 
 ### Category 1: ground and stone
 
@@ -494,6 +660,7 @@ Recorded from the user's picks for Categories 1-7. Format: name, scene, role; th
 - Pinned commit SHA (HEAD of `master` when checked, read-only through the GitHub API): `0943055db6ec570bcef9f2c8b41c9e5467c808f9`, committed 2022-10-02T19:20:56Z. At this SHA the two avatar Export FBX files and all four animation files above exist; `m_idle_breathe_01` exists, so no alternative is needed (its siblings `m_idle_breathe_02` and `_03` also exist). The repo reports `archived: true`.
 
 ### Category 6: zombie and hands
+
 - sketchfab-zombie-corpse-greenall (Manual pick): static graveyard/lab horror prop (no rig, A-pose). Provenance confirmed in task 6.1 (author's own ZBrush sculpt). License is CC Attribution (CC BY 4.0), so credit is required and it gets a `CREDITS.md` row. Author: Colin.Greenall (https://sketchfab.com/Colin.Greenall).
 
 - sketchfab-zombie-hand-ruella (Manual pick): graveyard (hand clawing out of a grave) and lab failure overlay (hands pushing in from the edges). Decimate from 319.5K tris to about 30K, bake normals from the sculpt, remove the blue sleeve.

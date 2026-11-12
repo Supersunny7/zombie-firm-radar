@@ -160,7 +160,7 @@ Working rules for every task:
     - Reject and list any stone with a readable inscription of a real person
     - _Requirements: 25.1, 25.2, 25.7, 26.1, 26.2, 26.3, 26.4, 26.5, 26.6, 26.7, 26.8_
 
-- [ ] 8. Merge, validate and commit
+- [x] 8. Merge, validate and commit
   - [x] 8.1 Merge results into `reference/candidates/README.md`
     - Add the Category 8 tables (headstone columns for triangles and decimation), the Provenance result, and update Totals (Category 8 listed separately, outside the 35/38 cap)
     - Delete `reference/candidates/notes` once merged
@@ -173,17 +173,72 @@ Working rules for every task:
     - `git status --short web/public/assets tools/fetch-assets.mjs CREDITS.md` shows no change; `web/src/engine`, `web/src/state` and `/pipeline` untouched
     - _Requirements: 23.2, 25.2, 25.3, 25.4, 26.1, 26.3, 10.7, 10.8, 10.9, 10.11, 11.4, 11.5, 13.2, 21.3_
 
-  - [-] 8.3 Commit only owned paths
+  - [x] 8.3 Commit only owned paths
     - Run `git pull --no-edit` first
     - Run `git status --short`; unstage only files outside Owned_Paths with `git restore --staged <path>` and report them
     - Stage explicitly: `git add reference/candidates`, `git add .kiro/specs/asset-pipeline`; never `-A`, `.` or `-f`
     - Conventional message of at most 72 characters, for example `docs(asset-pipeline): add picks, provenance and horror dressing`; do not push
     - _Requirements: 27.1, 27.2, 21.1, 21.2, 21.4, 21.5, 21.6_
 
-- [~] 9. Stop gate - wait for picks
+- [x] 9. Stop gate - wait for picks
   - Report totals, files created, and that `web/public/assets`, `manifest.json`, `CREDITS.md` and `tools/fetch-assets.mjs` are unchanged
   - Stop and wait for the user's picks for Category 8 and the provenance outcome. Add no Phase 2 tasks and install nothing
   - _Requirements: 27.3, 27.4, 13.2, 13.4_
+
+- [x] 10. Round 3 scouting (lab and finale, sounds, extra avatars)
+  - [x] 10.1 Knife switch and heavy door
+    - Run `git pull --no-edit` first; stop and report on non-zero exit or conflict
+    - Category 9 Sub_Items: large knife switch or lever (Frankenstein-style) and old heavy door (wood or iron); 2 Candidates each, no Fallbacks
+    - Verify license, author and size on each page; screenshots to `reference/candidates/09-round-3/<name>.png` (names `^[a-z0-9-]+\.png$`, under 1 MB)
+    - Record data and Night_Read_Rating with reason in `reference/candidates/notes/09-round-3.md`
+    - _Requirements: 28.1, 28.2, 28.4, 28.6, 31.1, 10.1, 10.2, 10.5, 10.7, 10.10, 11.1, 11.2, 11.4, 11.5_
+
+  - [x] 10.2 Lab wall and floor textures
+    - Sub_Items: old brick or stone crypt wall, wet stone or tile floor; 2 Candidates each; prefer Poly Haven or ambientCG CC0
+    - Record whether PBR maps (color, normal, roughness) are provided; screenshots to `reference/candidates/09-round-3/`
+    - Append rows to `reference/candidates/notes/09-round-3.md`
+    - _Requirements: 28.1, 28.2, 28.3, 28.4, 28.5, 28.6, 10.7, 11.1, 11.2_
+
+  - [x] 10.3 Round 3 sounds
+    - Category 10 Sub_Items: jump-scare sting, digging in dirt, shambling footsteps, cloth rustle, electrical hum before a zap, crows (optional)
+    - Freesound CC0 only, 2 Candidates each, every row "Manual pick"; do not download any file; record duration and file format; `n/a` for Night_Read_Rating and reason
+    - Verify the license on each sound page; screenshots to `reference/candidates/09-round-3/`
+    - If no CC0 Candidate fits crows, record "no suitable candidate found" with sources searched and continue
+    - Record rows in `reference/candidates/notes/10-sounds-round-3.md`
+    - _Requirements: 29.1, 29.2, 29.3, 29.4, 29.5, 29.6, 29.7, 10.7, 10.10_
+
+  - [x] 10.4 Six extra Rocketbox avatars
+    - List 6 avatars on the same Bip01 skeleton as `Business_Male_02`, mixed ages and genders, everyday or work clothes
+    - Verify each exact path in `github.com/microsoft/microsoft-rocketbox` at SHA `0943055db6ec570bcef9f2c8b41c9e5467c808f9`; leave out and report any that are missing and pick another
+    - Record path, MIT license, clothing, apparent age group, gender, "no real person or brand", and a link to the repo preview image; no screenshots, no download
+    - Write rows to `reference/candidates/notes/extra-avatars.md`
+    - _Requirements: 30.1, 30.2, 30.3, 30.4, 30.5, 30.6_
+
+- [ ] 11. Merge and validate
+  - [x] 11.1 Merge round 3 into `reference/candidates/README.md`
+    - Run `git pull --no-edit` first
+    - Add Category 9, Category 10 and an "Extra Rocketbox avatars" table; update the Totals line (Categories 8, 9, 10 listed separately, outside the 35/38 cap)
+    - Update the Status line and the "Decisions needed" list: picks for rounds 2 and 3 together, round-2 decisions still open
+    - Delete `reference/candidates/notes` once merged
+    - _Requirements: 28.1, 29.1, 29.7, 30.1, 31.2, 31.4, 12.1, 12.2, 12.3, 12.5, 12.6_
+
+  - [x] 11.2 Validate
+    - Preview links resolve, PNGs under 1 MB with valid names, every row has license and source URL, CC BY rows have an author
+    - Category 9 and 10: exactly 2 per Sub_Item (or listed as none), sounds CC0 and "Manual pick" with duration and format and `n/a` ratings, wall and floor rows say whether PBR maps exist
+    - Extra avatars: 6 rows (or reported shortfall), paths checked at the pinned SHA, MIT license
+    - No NonCommercial, SA/ND, Mixamo or paid licenses
+    - `git status --short web/public/assets tools/fetch-assets.mjs CREDITS.md` shows no change; `web/src/engine`, `web/src/state` and `/pipeline` untouched
+    - _Requirements: 28.4, 28.6, 29.2, 29.3, 29.4, 30.2, 30.3, 31.5, 10.7, 10.8, 10.9, 10.11, 11.4, 11.5, 13.2, 21.3_
+
+  - [-] 11.3 Report and ask about committing (no commit without a request)
+    - The user has not asked for a commit this round. Report `git status --short` and the list of new and changed files, and ask whether to commit
+    - Only if the user asks: run `git pull --no-edit`, unstage files outside Owned_Paths with `git restore --staged <path>` and report them, stage explicitly `git add reference/candidates` and `git add .kiro/specs/asset-pipeline` (never `-A`, `.` or `-f`), commit with a conventional message of at most 72 characters such as `docs(asset-pipeline): add round 3 candidates`, and do not push
+    - _Requirements: 31.1, 31.3, 21.1, 21.2, 21.4, 21.5, 21.6_
+
+- [~] 12. Combined stop gate - wait for picks for rounds 2 and 3
+  - Report totals, files created, and that `web/public/assets`, `manifest.json`, `CREDITS.md` and `tools/fetch-assets.mjs` are unchanged
+  - Stop and wait for the user's picks for rounds 2 and 3 together; round-2 decisions remain open. Add no Phase 2 tasks and install nothing
+  - _Requirements: 31.4, 31.5, 13.2, 13.4_
 
 ## Notes
 
@@ -217,7 +272,14 @@ Working rules for every task:
     { "id": 18, "tasks": ["7.4"] },
     { "id": 19, "tasks": ["8.1"] },
     { "id": 20, "tasks": ["8.2"] },
-    { "id": 21, "tasks": ["8.3"] }
+    { "id": 21, "tasks": ["8.3"] },
+    { "id": 22, "tasks": ["10.1"] },
+    { "id": 23, "tasks": ["10.2"] },
+    { "id": 24, "tasks": ["10.3"] },
+    { "id": 25, "tasks": ["10.4"] },
+    { "id": 26, "tasks": ["11.1"] },
+    { "id": 27, "tasks": ["11.2"] },
+    { "id": 28, "tasks": ["11.3"] }
   ]
 }
 ```
