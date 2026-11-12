@@ -407,11 +407,11 @@ All commands run from `web` in PowerShell, chained with `;`.
     - Check that the Req 16.1 amendments (refinance fee rule and interest form, hint scan, amended properties 1, 2 and 7) are still present; add any that are missing
     - _Requirements: 16.1, 16.3_
 
-- [-] 17. Final checkpoint
+- [x] 17. Final checkpoint
   - From `web`, run `pnpm typecheck; pnpm lint; pnpm format; pnpm test; pnpm build`. Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 18. Finance review and commit
-  - [~] 18.1 Run the finance-reviewer agent and resolve its findings
+  - [-] 18.1 Run the finance-reviewer agent and resolve its findings
     - Invoke `finance-reviewer` on `web/src/engine` against `rescue-rules.md`, `zombie-definition.md`, this spec and the Ashgrove worked example
     - Fix every finding in engine code or tests; if a finding conflicts with the approved requirements or design, or would weaken a property, stop and ask the user
     - After the fixes, rerun from `web`: `pnpm typecheck; pnpm lint; pnpm format; pnpm test; pnpm build`
