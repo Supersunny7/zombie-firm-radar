@@ -18,7 +18,7 @@ TOOLS (the player picks up to 3; v1 ships the first four)
 
 3. debt_for_equity w in [0, 0.60]: converted = w * D (after asset sales); D decreases by converted. Old shareholders keep max(Q,0) / (max(Q,0) + converted); shareholders pain += (1 - keep) * 100; creditors pain += w * 60.
 
-4. refinance (on/off): ALWAYS evaluated last, whatever order the player clicked. icr_pre = E' / (D' * (r + delta)). Credit spread: icr_pre < 1 -> 0.09; 1 to < 1.5 -> 0.06; 1.5 to < 3 -> 0.035; >= 3 -> 0.02. New rate = b + delta + spread. Applies only if new rate < r + delta; then D' *= 1.02 (2% fee). Otherwise it has no effect and the UI explains why.
+4. refinance (on/off): ALWAYS evaluated last, whatever order the player clicked. icr_pre = E' / (D' * (r + delta)). Credit spread: icr_pre < 1 -> 0.09; 1 to < 1.5 -> 0.06; 1.5 to < 3 -> 0.035; >= 3 -> 0.02. New rate = b + delta + spread. Applies only if 1.02 * new rate < r + delta, i.e. only when it lowers the annual interest cost after the 2% fee; then D' *= 1.02. Otherwise it has no effect and the UI explains why.
 
 5. issue_equity k in [0, 0.25] (v2): only if Q > 0; raise = k * D; D decreases by raise; dilution = raise / (Q + raise); shareholders pain += dilution * 100.
 
@@ -60,6 +60,6 @@ PROPERTIES THAT MUST ALWAYS HOLD (property-based tests with fast-check)
 
 6. The same seed always gives the same outcome.
 
-7. Refinance changes the rate only when the new rate is lower than the old one.
+7. Refinance changes the rate only when 1.02 * new rate is lower than the old rate (r + delta), so it never raises annual interest cost.
 
 8. Survival odds are always within [0, 1] and pain meters within [0, 100].
