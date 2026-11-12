@@ -239,7 +239,7 @@ All commands run from `web` in PowerShell, chained with `;`.
     - `rr.counterexamples.unit.test.ts`: a test named exactly "RR-1 negative-EBIT counterexample" (EBIT_t = -10, interest 100 → 50, ICR_t -0.1 → -0.2 via `icr`), and a test named exactly "RR-2 high-margin trade-off" (E/R = 0.9, margin_mean = 0.9, eps1 = 0, g = 0.01, no other tools; year-1 EBIT `0.909 * R` at c = 0 and `0.878432 * R` at c = 0.08, relative tolerance 1e-9)
     - _Requirements: 8.1, 8.8, 8.10, 8.13, 8.15, 8.16, 13.12, 13.13, 14.9, 15.5_
 
-- [-] 9. Checkpoint: core maths and simulation
+- [x] 9. Checkpoint: core maths and simulation
   - From `web`, run `pnpm typecheck; pnpm lint; pnpm format; pnpm test`. Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 10. Drawn outcome, failure message and hint
