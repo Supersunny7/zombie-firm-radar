@@ -70,3 +70,31 @@
 2026-11-11 | table-caption-data-source-fix | 4.2 | Added property over real, mock and fixture checking caption text and shared sort hint. | web/src/ui/table/TableView.test.tsx
 2026-11-11 | table-caption-data-source-fix | 5 | Full check passes: typecheck, lint, format, 305 tests, build. | none
 2026-11-11 | table-caption-data-source-fix | 6 | Checkpoint passed: typecheck, lint, format and 305 tests green. | none
+2026-11-11 | asset-pipeline | 1.1 | Pulled repo and read steering files and reference images | none
+2026-11-11 | asset-pipeline | 1.2 | Added tools/cache ignore rules and created candidate folders | .gitignore
+2026-11-11 | asset-pipeline | 2.1 | Scouted five CC0 ground and stone texture candidates | reference/candidates/01-ground-stone, notes
+2026-11-11 | asset-pipeline | 2.2 | Scouted three CC0 Poly Haven night sky HDRIs | reference/candidates/02-night-sky, notes
+2026-11-11 | asset-pipeline | 2.3 | Scouted 14 graveyard prop candidates, two per sub-item | reference/candidates/03-graveyard-props, notes
+2026-11-11 | asset-pipeline | 2.4 | Scouted five CC BY Sketchfab lab prop candidates incl. two packs | reference/candidates/04-lab-props, notes
+2026-11-11 | asset-pipeline | 2.5 | Scouted three rigged avatar candidates, two Rocketbox MIT | reference/candidates/05-avatars, notes
+2026-11-11 | asset-pipeline | 2.6 | Found four CC BY Sketchfab zombie and hand manual picks | reference/candidates/06-zombie-hands, notes
+2026-11-11 | asset-pipeline | 2.7 | Scouted 12 CC0 Freesound sound candidates under the raised cap | reference/candidates/07-sound, notes
+2026-11-11 | asset-pipeline | 3.1 | Wrote candidates README with 46 candidates in seven category tables | reference/candidates/README.md
+2026-11-11 | asset-pipeline | 3.2 | Validated 46 candidate rows, previews and protected paths; all checks pass | none
+2026-11-11 | asset-pipeline | 3.3 | Committed phase 1 candidates as 73373e2 | .gitignore, reference/candidates, .kiro/specs/asset-pipeline
+2026-11-11 | asset-pipeline | 4 | Received user picks; stop gate passed, scouting follow-ups requested | none
+2026-11-11 | asset-pipeline | 5.1 | Recorded user picks, rejections and Rocketbox SHA in candidates README | reference/candidates/README.md
+2026-11-11 | asset-pipeline | 6.1 | Provenance check: Greenall corpse confirmed own sculpt, Greenall hand unconfirmed | reference/candidates/README.md
+2026-11-11 | asset-pipeline | 6.2 | Found CC BY craggle photogrammetry hand as replacement candidate | reference/candidates/README.md, 06-zombie-hands
+2026-11-11 | asset-pipeline | 7.1 | Scouted six CC BY skull, body bag and morgue cooler candidates | reference/candidates/08-horror-dressing, notes
+2026-11-11 | asset-pipeline | 7.2 | Scouted eight chains, straps, cloth texture and cobweb candidates | reference/candidates/08-horror-dressing, notes
+2026-11-11 | asset-pipeline | 7.3 | Scouted CC0 blood splatter and smear decals; no CC0 handprint found | reference/candidates/08-horror-dressing, notes
+2026-11-11 | asset-pipeline | 7.4 | Scouted blank headstone candidates; cracked state has one weak option | reference/candidates/08-horror-dressing, notes
+2026-11-11 | asset-pipeline | 8.1 | Merged Category 8 and provenance results into candidates README | reference/candidates/README.md
+2026-11-11 | asset-pipeline | 8.2 | Validated round-2 README: 71 previews, licenses, picks and counts pass | none
+2026-11-11 | asset-pipeline | 8.3 | Committed round-2 candidates and spec updates as 7b925de | reference/candidates, .kiro/specs/asset-pipeline
+2026-11-11 | rescue-engine | 1.1 | Added engine error codes, result types, data model types and geq helper | web/src/engine/errors.ts, types.ts, test/geq.ts
+2026-11-11 | rescue-engine | 1.2 | Added shared icr() returning null for missing or non-positive interest | web/src/engine/icr.ts
+2026-11-11 | rescue-engine | 1.4 | Added icr monotone-in-EBIT property test, 200 runs, passing | web/src/engine/icr.monotone.property.test.ts
+2026-11-11 | rescue-engine | 1.5 | Added golden-cases parser and icr runner that skips when the fixture is absent | web/src/engine/icr.golden.test.ts, test/goldenCases*.ts
+2026-11-11 | rescue-engine | 1.3 | Added icr contract property test; amended Req 1.4 to allow -0 on underflow | web/src/engine/icr.contract.property.test.ts, spec
