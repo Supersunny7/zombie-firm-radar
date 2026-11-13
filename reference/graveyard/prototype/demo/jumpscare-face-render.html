@@ -1,0 +1,21 @@
+<!DOCTYPE html><html><body style="margin:0;background:#000">
+<script type="importmap">{"imports":{"three":"/three/build/three.module.js","three/addons/":"/three/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three'; import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'; import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+const q=new URLSearchParams(location.search); const side=parseFloat(q.get('s')||'1');
+const r=new THREE.WebGLRenderer({antialias:true}); r.setSize(1280,720); r.toneMapping=THREE.ACESFilmicToneMapping; r.outputColorSpace=THREE.SRGBColorSpace; document.body.appendChild(r.domElement);
+const s=new THREE.Scene(); s.background=new THREE.Color('#000');
+const L=new GLTFLoader(); L.setMeshoptDecoder(MeshoptDecoder);
+L.load('/assets/models/sketchfab-possessed-undead-giantswing/sketchfab-possessed-undead-giantswing.glb',g=>{
+  const m=g.scene; s.add(m); m.updateMatrixWorld(true);
+  let head; m.traverse(o=>{ if(o.isBone&&o.name.startsWith('Head_')) head=o; if(o.isMesh){o.frustumCulled=false; o.material.color.multiplyScalar(0.9);} });
+  const box=new THREE.Box3().setFromObject(m,true); const H=box.max.y-box.min.y;
+  const hp=head.getWorldPosition(new THREE.Vector3()); hp.y+=H*0.035;
+  const cam=new THREE.PerspectiveCamera(40,16/9,0.01,100);
+  cam.position.copy(hp).add(new THREE.Vector3(0.02*H, 0.0*H, side*0.2*H)); cam.lookAt(hp.clone().add(new THREE.Vector3(0,-0.012*H,0)));
+  const key=new THREE.SpotLight('#cfd6ff', 6, 0, 0.9, 0.8, 0); key.position.copy(hp).add(new THREE.Vector3(-0.08*H,-0.12*H,side*0.12*H)); key.target.position.copy(hp); s.add(key,key.target);
+  const rim=new THREE.PointLight('#ff3a20', 3, 0, 0); rim.position.copy(hp).add(new THREE.Vector3(0.12*H,0.05*H,-side*0.08*H)); s.add(rim);
+  s.add(new THREE.AmbientLight('#202430',0.4));
+  setTimeout(()=>{r.render(s,cam);window.done=true},1500);
+});
+</script></body></html>
