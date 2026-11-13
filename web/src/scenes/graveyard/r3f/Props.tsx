@@ -15,12 +15,15 @@ import {
   SRGBColorSpace,
   Vector3,
 } from 'three';
-import type { BufferGeometry, InstancedMesh, Material, Object3D } from 'three';
+import type { BufferGeometry, InstancedMesh, Material, Object3D, PointLight } from 'three';
 import { mulberry32 } from '../../../engine/rng';
+import { effectiveReducedMotion, useStore } from '../../../state/store';
 import { ASSET_KEYS, assetUrl } from '../assets';
 import type { GraveyardLayout } from '../layout/layout';
+import { LOOK_LANTERN } from '../look';
 import { resolveProps } from '../props';
 import type { Placement } from '../props';
+import { lanternIntensity } from './lanternLight';
 import { ModelBoundary } from './ModelBoundary';
 
 function skip(key: string, reason: string): void {
@@ -101,25 +104,29 @@ function GltfProp({
   );
 }
 
-/** Lantern glass uses KHR_materials_transmission; swap it for a plain emissive transparent material. */
-function Lantern({
-  url,
-  p,
-  light,
-  lightPosition,
-}: {
-  url: string;
-  p: Placement;
-  light: { color: string; intensity: number; distance: number; decay: number };
-  lightPosition: readonly [number, number, number];
-}) {
+/**
+ * Lantern prop with its Lantern_Light (23.10): point light from LOOK_LANTERN, LOOK_LANTERN.height
+ * above the ground at the prop, intensity flickered per frame by lanternIntensity.
+ * Lantern glass uses KHR_materials_transmission; swap it for a plain emissive transparent material
+ * whose emissive colour is the light colour.
+ */
+function Lantern({ url, p }: { url: string; p: Placement }) {
   const { scene } = useGLTF(url, false);
+  const lightRef = useRef<PointLight>(null);
+  useFrame(({ clock }) => {
+    const light = lightRef.current;
+    if (!light) return;
+    light.intensity = lanternIntensity(
+      clock.elapsedTime,
+      effectiveReducedMotion(useStore.getState()),
+    );
+  });
   const { object, glass } = useMemo(() => {
     const clone = scene.clone(true);
     shade(clone, false);
     const g = new MeshStandardMaterial({
       color: '#ffd9a0',
-      emissive: light.color,
+      emissive: LOOK_LANTERN.color,
       emissiveIntensity: 1.4,
       transparent: true,
       opacity: 0.55,
@@ -131,7 +138,7 @@ function Lantern({
       if ((m.transmission ?? 0) > 0) o.material = g;
     });
     return { object: clone, glass: g };
-  }, [scene, light.color]);
+  }, [scene]);
   useEffect(() => () => glass.dispose(), [glass]);
   return (
     <>
@@ -139,11 +146,13 @@ function Lantern({
         <primitive object={object} />
       </group>
       <pointLight
-        color={light.color}
-        intensity={light.intensity}
-        distance={light.distance}
-        decay={light.decay}
-        position={[...lightPosition]}
+        ref={lightRef}
+        name="lantern-light"
+        color={LOOK_LANTERN.color}
+        intensity={LOOK_LANTERN.intensity}
+        distance={LOOK_LANTERN.distance}
+        decay={LOOK_LANTERN.decay}
+        position={[p.x, p.y + LOOK_LANTERN.height, p.z]}
       />
     </>
   );
@@ -298,16 +307,7 @@ function PropsContent({ layout }: { layout: GraveyardLayout }) {
           </PropSlot>
         );
       })}
-      <PropSlot assetKey={ASSET_KEYS.lantern}>
-        {(u) => (
-          <Lantern
-            url={u}
-            p={r.lantern}
-            light={r.lantern.light}
-            lightPosition={r.lantern.lightPosition}
-          />
-        )}
-      </PropSlot>
+      <PropSlot assetKey={ASSET_KEYS.lantern}>{(u) => <Lantern url={u} p={r.lantern} />}</PropSlot>
       <Rubble items={r.rubble} />
       {r.cobwebs.map((c, i) => (
         <PropSlot key={i} assetKey={ASSET_KEYS.cobwebs}>

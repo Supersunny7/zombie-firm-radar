@@ -56,3 +56,12 @@ Write the six 1920x1080 screenshots to `reference/progress/` (starts the server 
 ```powershell
 node tools/preview/screenshot.mjs --scene horror-assets
 ```
+
+## Scene: horror-stones
+
+`horror-stones.html?material=app|metalmap|gltf` shows close-ups of `sketchfab-small-gravestone-drydoctoregg`, `sketchfab-damaged-tombstone-drydoctoregg` and `own-headstone-cracked`, one 640x1080 panel each. Lights use the lights-off values of `web/src/scenes/graveyard/look.ts`: fog, hemisphere, moon, a camera-mounted flashlight, ACES at exposure 1 and environment 0. There is no CCTV grade. `app` copies the `StoneMaterial` setup after task 3.31: opaque, FrontSide, map, normalMap, roughnessMap and metalnessMap (the same glb metal/roughness texture), metalness from the glb factor, and colour × (0.62, 0.68, 0.78) × 0.55. `prefix` is the setup before task 3.31 (no metalnessMap) and makes the before shot. `metalmap` is the first attempt's diagnostic (`prefix` plus the metalnessMap, the same as `app`). `gltf` uses the loader material unchanged. The camera and lights are fixed in `SETUP`.
+
+```powershell
+node tools/preview/screenshot.mjs --scene horror-stones-before   # horror-batch2b-stone-before.png + diagnostic
+node tools/preview/screenshot.mjs --scene horror-stones-after    # horror-batch2b-stone-after.png
+```

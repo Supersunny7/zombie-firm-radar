@@ -1,23 +1,33 @@
 // @vitest-environment node
-// Requirements 11.14, 20.8: the new horror-pass pure modules import no react or three
+// Requirements 11.14, 20.8, 20.11: the horror-pass pure modules import no react or three
 // and never use setTimeout or setInterval (choreography belongs to the frame clock).
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 
-const dir = dirname(fileURLToPath(import.meta.url));
+/** `web/src`: this file lives in `web/src/scenes/graveyard`. */
+const srcDir = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 
-/** Pure modules added by the horror pass, relative to this folder. */
+/** Pure modules added by the horror pass, relative to `web/src`. */
 export const PURE_MODULES: readonly string[] = [
-  'layout/jitter.ts',
-  'layout/extents.ts',
-  'model/tornMound.ts',
-  'model/moundPlacement.ts',
-  'model/moundSets.ts',
-  'model/grass.ts',
-  'model/grassTexture.ts',
-  'model/dressing.ts',
+  // Batch 2
+  'scenes/graveyard/layout/jitter.ts',
+  'scenes/graveyard/layout/extents.ts',
+  'scenes/graveyard/model/tornMound.ts',
+  'scenes/graveyard/model/moundPlacement.ts',
+  'scenes/graveyard/model/moundSets.ts',
+  'scenes/graveyard/model/grass.ts',
+  'scenes/graveyard/model/grassTexture.ts',
+  'scenes/graveyard/model/dressing.ts',
+  // Batch 2b
+  'scenes/graveyard/look.ts',
+  'fx/gradeColour.ts',
+  'scenes/graveyard/model/moonAnchor.ts',
+  'scenes/graveyard/model/groundFogLook.ts',
+  'scenes/graveyard/r3f/lanternLight.ts',
+  'scenes/graveyard/r3f/flashlightState.ts',
+  'fx/cctvParams.ts',
 ];
 
 /** Blanks comments (keeps strings and line numbers) so prose cannot trip the scan. */
@@ -121,7 +131,7 @@ describe('horror pass purity scan', () => {
   });
 
   it.each(PURE_MODULES)('%s imports no react or three and uses no timers', (rel) => {
-    const source = readFileSync(join(dir, rel), 'utf8');
+    const source = readFileSync(join(srcDir, rel), 'utf8');
     expect(scanPureSource(source), rel).toEqual([]);
   });
 });

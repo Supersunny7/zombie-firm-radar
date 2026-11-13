@@ -4,6 +4,7 @@ import { DataTexture, LinearFilter, LinearMipmapLinearFilter, RepeatWrapping } f
 import type { Group, Mesh, MeshBasicMaterial } from 'three';
 import { mulberry32 } from '../../../engine/rng';
 import { useStore } from '../../../state/store';
+import { groundFogDrawn, groundFogScale } from '../model/groundFogLook';
 import { qualityParams } from '../model/quality';
 import { FOG_LAYER_COLOR, sceneParams } from '../model/sceneParams';
 import { blendedParamsRef, defaultCameraFog } from './lightsBlend';
@@ -16,7 +17,10 @@ const NOISE_SIZE = 64;
 /** Drift speed in tiles per second per layer (slow; no strobing). */
 const DRIFT = [0.004, 0.0065, 0.009] as const;
 
-const INITIAL = sceneParams('off', 0, defaultCameraFog(0)).fogLayers;
+/** Session start: lights off, Plot 1 framed (no layers drawn there, 23.19). */
+const INITIAL_PARAMS = sceneParams('off', 0, defaultCameraFog(0));
+const INITIAL = INITIAL_PARAMS.fogLayers;
+const INITIAL_DRAWN = groundFogDrawn(INITIAL_PARAMS.plotLook);
 
 /** Tileable two-octave value noise as an RGBA texture; the alpha map reads the green channel. */
 function makeNoise(seed: number): DataTexture {
@@ -80,6 +84,9 @@ function setOpacity(mesh: Mesh, opacity: number): void {
  * Three horizontal noise layers at y = 0.1, 0.38 and 0.8 m (7.11). Opacities come from
  * `sceneParams` through the shared blend (lights, camera and rate shock, 7.12, 7.14); the
  * sheets follow the camera on a snap equal to one noise tile and drift slowly.
+ * In a lights-off framed Plot the layers are not drawn (23.19): opacities are scaled by
+ * 1 - plotLook, so they fade out over the camera move (and the lights ease) instead of popping,
+ * and the group is hidden once the scale reaches 0. Kept mounted so textures are not rebuilt.
  */
 export function GroundFog() {
   const count = qualityParams(
@@ -92,22 +99,28 @@ export function GroundFog() {
   useEffect(() => () => textures.forEach((t) => t.dispose()), [textures]);
 
   useFrame(({ camera }, dt) => {
-    group.current?.position.set(
-      Math.round(camera.position.x / SNAP_M) * SNAP_M,
-      0,
-      Math.round(camera.position.z / SNAP_M) * SNAP_M,
-    );
-    const layers = blendedParamsRef.current?.fogLayers;
+    const g = group.current;
+    const params = blendedParamsRef.current;
+    const scale = params ? groundFogScale(params.plotLook) : INITIAL_DRAWN ? 1 : 0;
+    if (g) {
+      g.position.set(
+        Math.round(camera.position.x / SNAP_M) * SNAP_M,
+        0,
+        Math.round(camera.position.z / SNAP_M) * SNAP_M,
+      );
+      g.visible = scale > 0;
+    }
+    const layers = params?.fogLayers;
     for (let i = 0; i < count; i++) {
       const tex = textures[i]!;
       driftTexture(tex, DRIFT[i]! * Math.min(dt, 0.1));
       const mesh = meshes.current[i];
-      if (mesh && layers) setOpacity(mesh, layers[i]!.opacity);
+      if (mesh && layers) setOpacity(mesh, layers[i]!.opacity * scale);
     }
   }, -5);
 
   return (
-    <group ref={group}>
+    <group ref={group} visible={INITIAL_DRAWN}>
       {INITIAL.slice(0, count).map((layer, i) => (
         <mesh
           key={layer.y}

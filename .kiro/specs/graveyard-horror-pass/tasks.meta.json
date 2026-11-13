@@ -55,6 +55,14 @@
     "2.21 Write property test for grass determinism and plot locality": {
       "status": "passed",
       "lastRunTimestamp": 1794551751021
+    },
+    "3.14 Write property test for the plot pose": {
+      "status": "passed",
+      "lastRunTimestamp": 1794570233198
+    },
+    "3.21 Write property test for the grade steps": {
+      "status": "passed",
+      "lastRunTimestamp": 1794570349557
     }
   },
   "executionHistory": {
@@ -1309,6 +1317,873 @@
         "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794550433772
+      }
+    ],
+    "3.4 Apply the H2 fix": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569275945
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569314533
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569604608
+      }
+    ],
+    "3.5 Write the jsdom remount test for the H2 fix": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569276141
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569900070
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570267141
+      }
+    ],
+    "3.6 Write the HUD tests for the Lights control": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569276594
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569901623
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570268847
+      }
+    ],
+    "3.7 Create the look constants module": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569276732
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569314934
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569606216
+      }
+    ],
+    "3.8 Write the look-values example test": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569277038
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569901970
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570269194
+      }
+    ],
+    "3.9 Remove the lights-off glow and give soil materials black emissive": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569277481
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569315715
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569606874
+      }
+    ],
+    "3.10 Fix the Torn_Mound heap, Clod and Pit materials": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569277611
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569903461
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570270547
+      }
+    ],
+    "3.11 Remove the emissive map from Grass_Cards": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569277879
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570673772
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571161776
+      }
+    ],
+    "3.12 Write the soil material example test": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569278027
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571180286
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571478032
+      }
+    ],
+    "3.13 Move the camera to the prototype pose": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569278291
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569624594
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569881807
+      }
+    ],
+    "3.14 Write property test for the plot pose": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569278547
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569904093
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570271222
+      }
+    ],
+    "3.15 Blend the framed-plot lights and fog": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569278851
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570284186
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570663379
+      }
+    ],
+    "3.16 Apply the lights in SceneLights": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569279198
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570674083
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571162253
+      }
+    ],
+    "3.17 Update the Flashlight values": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569279549
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570675507
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571163011
+      }
+    ],
+    "3.18 Update the Lantern_Light": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569279710
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570675812
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571163418
+      }
+    ],
+    "3.19 Remove ground fog and the cone in framed lights-off plots": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569280114
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571180585
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571478344
+      }
+    ],
+    "3.20 Implement the grade colour mirror": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569280475
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569624853
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569883300
+      }
+    ],
+    "3.21 Write property test for the grade steps": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569280810
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570284893
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570663728
+      }
+    ],
+    "3.22 Implement the CctvGradeEffect": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569281121
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794570677280
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571164299
+      }
+    ],
+    "3.23 Fold the tracking glitch into the grade": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569281487
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571181186
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571478969
+      }
+    ],
+    "3.24 Dim the stones and set ACES exposure": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569281632
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571485581
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571855523
+      }
+    ],
+    "3.25 Extend the purity test": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569281932
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794573064925
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794573300820
+      }
+    ],
+    "3.26 Add the Batch 2b screenshot script": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569282321
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794573065677
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794573302742
+      }
+    ],
+    "3.27 Capture the Batch 2b screenshot and offer the scene review": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569282450
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794573592468
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794573738478
+      }
+    ],
+    "3.28 Run the full check for Batch 2b": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569282776
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794573744091
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794574024544
+      }
+    ],
+    "3.29 Write the Batch 2b report": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569283149
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794574030229
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794574177311
+      }
+    ],
+    "3.30 STOP: wait for the user to review Batch 2b before continuing.": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569283518
+      }
+    ],
+    "3.31 Flatten the stone base-colour alpha in the asset pipeline": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569283871
+      },
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794571861905
+      }
+    ],
+    "4.1 Implement the rise timeline": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569284267
+      }
+    ],
+    "4.2 Write property test for the rise timeline": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569284406
+      }
+    ],
+    "4.3 Implement the Stir offsets and the Bone_Animator": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569284756
+      }
+    ],
+    "4.4 Write property test for Bone_Animator purity and smoothness": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569285155
+      }
+    ],
+    "4.5 Write property test for Stare and idle": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569285700
+      }
+    ],
+    "4.6 Write property test for the Reduced_Motion rise": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569286077
+      }
+    ],
+    "4.7 Implement the Clod arc": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569286473
+      }
+    ],
+    "4.8 Write property test for the Clod arc": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569286886
+      }
+    ],
+    "4.9 Implement the Unease_Effects": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569287283
+      }
+    ],
+    "4.10 Write property test for unease ranges and monotonicity": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569287682
+      }
+    ],
+    "4.11 Write property test for unease purity and switch-off": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569288040
+      }
+    ],
+    "4.12 Implement the Flash_Limiter and the static cut bus": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569288503
+      }
+    ],
+    "4.13 Write property test for the flash budget": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569288909
+      }
+    ],
+    "4.14 Write property test for flash acceptance rules": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569289044
+      }
+    ],
+    "4.15 Implement the Growl parameters, limiter, choice and duck schedule": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569289412
+      }
+    ],
+    "4.16 Write property test for the Growl limiter": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569289790
+      }
+    ],
+    "4.17 Write property test for the Growl choice": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569290201
+      }
+    ],
+    "4.18 Write property test for the Growl parameters": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569290592
+      }
+    ],
+    "4.19 Write property test for the duck schedule": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569290976
+      }
+    ],
+    "4.20 Implement the Settled_Shock tracker": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569291365
+      }
+    ],
+    "4.21 Write property test for Settled_Shock timing": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569291771
+      }
+    ],
+    "4.22 Implement nearest assignment, selection pose and selection store": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569292300
+      }
+    ],
+    "4.23 Write property test for nearest assignment": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569292657
+      }
+    ],
+    "4.24 Write property test for already-undead exclusion": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569292972
+      }
+    ],
+    "4.25 Implement the Risen pool": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569293410
+      }
+    ],
+    "4.26 Write property test for the Risen pool": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569293570
+      }
+    ],
+    "4.27 Implement model assignment and requested models": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569293917
+      }
+    ],
+    "4.28 Write property test for model assignment": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569294360
+      }
+    ],
+    "4.29 Write property test for the fallback chain": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569294731
+      }
+    ],
+    "4.30 Write property test for requested models": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569295112
+      }
+    ],
+    "4.31 Implement horror quality settings": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569295431
+      }
+    ],
+    "4.32 Write property test for horror quality": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569295584
+      }
+    ],
+    "4.33 Implement the character loader and bone-map test": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569295897
+      }
+    ],
+    "4.34 Implement SelectionController and the settled shock field": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569296311
+      }
+    ],
+    "4.35 Implement Characters": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569296798
+      }
+    ],
+    "4.36 Add the Stir mound motion, the soil break and the Clod burst": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569297190
+      }
+    ],
+    "4.37 Add the Rise_Cut to the CCTV pass through the Flash_Limiter": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569297567
+      }
+    ],
+    "4.38 Add Auto_Aim, Flash_Dip and flicker offers to the Flashlight": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569297961
+      }
+    ],
+    "4.39 Add Stir shake and Camera_Jitter to the Camera_Rig": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569298117
+      }
+    ],
+    "4.40 Wire the scene and retire the Craggle hand": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569298446
+      }
+    ],
+    "4.41 Remove the Mutant, Watcher, Standing_Zombies and Footstep_Bed from the scene and the group": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569298923
+      }
+    ],
+    "4.42 Extend the Audio_Engine": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569299354
+      }
+    ],
+    "4.43 Wire audio to the scene": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569299710
+      }
+    ],
+    "4.44 Write the audio example tests": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569300095
+      }
+    ],
+    "4.45 Write the Batch 3 scene tests": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569300515
+      }
+    ],
+    "4.46 Extend the purity test for the Batch 3 pure modules": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569301118
+      }
+    ],
+    "4.47 Implement the fps measurement for the Horror_Pass": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569301533
+      }
+    ],
+    "4.48 Write property test for the shock step finder": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569301849
+      }
+    ],
+    "4.49 Add the DEV helpers for screenshots and measurement": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569301992
+      }
+    ],
+    "4.50 Add the Batch 3 screenshot script": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569302317
+      }
+    ],
+    "4.51 Run the headed fps measurement and record the numbers": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569302727
+      }
+    ],
+    "4.52 Capture the Batch 3 screenshots and offer the scene review": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569302867
+      }
+    ],
+    "4.53 Verify the superseded tests are updated": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569303212
+      }
+    ],
+    "4.54 Run the full check for Batch 3": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569303560
+      }
+    ],
+    "4.55 Write the Batch 3 report": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569303732
+      }
+    ],
+    "4.56 STOP: wait for the user to review Batch 3 before continuing.": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569304085
+      }
+    ],
+    "4.57 Write property test for modelFor": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794569304469
+      }
+    ],
+    "3.31 Pass the stone metalness map in the stone material (stone blotches)": [
+      {
+        "executionId": "a7931a7f-d53b-4af4-9f37-20afb693b9cf",
+        "chatSessionId": "sess_bfd6e3ce-8169-4fa2-8bd9-b2d1b15d8dcd",
+        "timestamp": 1794573058543
       }
     ]
   }

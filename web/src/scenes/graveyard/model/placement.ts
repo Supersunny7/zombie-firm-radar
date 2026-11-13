@@ -3,11 +3,15 @@
  * Design section 8, requirements 9.1, 9.6, 9.7.
  */
 import type { GraveyardLayout } from '../layout/layout';
+import { CAMERA_BACK, CAMERA_HEIGHT } from '../layout/camera';
 import { FIRST_ROW_Z } from '../layout/layout';
 import type { Vec3 } from './coneCovers';
 
-/** Initial camera position used for the corpse choice (9.6). */
-export const INITIAL_CAMERA: Vec3 = { x: 0, y: 1.5, z: 5.6 };
+/**
+ * Initial camera position: the Plot 1 pose, (0, 1.2, 5.7) (Requirements 9.9, 23.1). Also used
+ * for the corpse choice and the Mutant facing.
+ */
+export const INITIAL_CAMERA: Vec3 = { x: 0, y: CAMERA_HEIGHT, z: FIRST_ROW_Z + CAMERA_BACK };
 /** Distance behind the back edge of the last row (>= 20 required, 9.1). */
 export const MUTANT_BEHIND = 24;
 export const MUTANT_MIN_BEHIND = 20;

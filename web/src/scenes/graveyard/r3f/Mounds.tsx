@@ -1,21 +1,24 @@
-import { useLayoutEffect, useMemo, useRef } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import { Euler, Matrix4, Quaternion, Vector3 } from 'three';
-import type { InstancedMesh, MeshStandardMaterial } from 'three';
+import type { InstancedMesh } from 'three';
 import { useShockView } from '../../../state/shockView';
 import { useStore } from '../../../state/store';
 import type { GraveyardLayout } from '../layout/layout';
 import { planDressing } from '../model/dressing';
 import { moundPlacement } from '../model/moundPlacement';
 import { moundSets } from '../model/moundSets';
-import { SOIL_FALLBACK_COLOR, WithSoil, useSoilTint } from './soil';
+import { WithSoil, createClosedMoundMaterial, useSoilTint } from './soil';
 import type { SoilMaps } from './soil';
 import { useActiveRiserCiks } from './activeRisers';
+import { lightsBlendRef } from './lightsBlend';
 import { useVisibleStones } from './useVisibleStones';
 
 /** Half-ellipsoid proportions: radius beyond the stone, and height of the heap (metres). */
 const MOUND_HEIGHT = 0.24;
 const MOUND_FRONT = 0.45;
 const MOUND_SIDE = 0.2;
+/** Empty ref: `useSoilTint` skips it (used when the mound draws the untinted fallback colour). */
+const NO_MATERIAL = { current: null };
 
 const _m = new Matrix4();
 const _q = new Quaternion();
@@ -33,7 +36,9 @@ interface MoundMeshProps {
 
 function MoundMesh({ firms, capacity, layout, maps }: MoundMeshProps) {
   const ref = useRef<InstancedMesh>(null);
-  const mat = useRef<MeshStandardMaterial>(null);
+  // Black emissive in both lights modes (horror-pass 24.1); the tint follows the lights blend.
+  const material = useMemo(() => createClosedMoundMaterial(maps, lightsBlendRef.current), [maps]);
+  useEffect(() => () => material.dispose(), [material]);
 
   useLayoutEffect(() => {
     const mesh = ref.current;
@@ -60,7 +65,9 @@ function MoundMesh({ firms, capacity, layout, maps }: MoundMeshProps) {
     mesh.computeBoundingSphere();
   }, [firms, capacity, layout]);
 
-  useSoilTint(mat);
+  // The tint replaces the colour, so it only runs on the textured mound; the fallback keeps
+  // SOIL_FALLBACK_COLOR (same guard as the torn heap).
+  useSoilTint(maps ? material : NO_MATERIAL);
 
   return (
     <instancedMesh
@@ -72,11 +79,7 @@ function MoundMesh({ firms, capacity, layout, maps }: MoundMeshProps) {
       name="mounds"
     >
       <sphereGeometry args={[1, 20, 8, 0, Math.PI * 2, 0, Math.PI / 2]} />
-      {maps ? (
-        <meshStandardMaterial ref={mat} {...maps} />
-      ) : (
-        <meshStandardMaterial ref={mat} color={SOIL_FALLBACK_COLOR} />
-      )}
+      <primitive object={material} attach="material" />
     </instancedMesh>
   );
 }

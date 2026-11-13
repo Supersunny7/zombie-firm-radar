@@ -1,7 +1,7 @@
 // DEV-only screenshot helper (`?horror=zombies|fallen`, `&shock=<pp>`). It is only imported behind
 // `import.meta.env.DEV` in GraveyardScene, and check-bundle fails a production build that still
 // contains the marker below.
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useStore } from '../../../state/store';
 import { CAMERA_FOV } from '../r3f/CameraRig';
 import { plotPose, projectToNdc } from '../layout/camera';
@@ -83,13 +83,24 @@ export function pickPlotFor(
   return c === 'zombies' ? anyZombiePlot : (best?.plot ?? null);
 }
 
-/** Applies the URL case once, when the firm list and layout are ready. Renders nothing. */
+/**
+ * True once the URL case has been applied in this page load. Module-level, not a component ref, so
+ * a remount of the scene tree (e.g. `canvasKey` bumped on `webglcontextrestored`) does not apply
+ * `?shock=` again and overwrite the user's slider value (Requirement 25, H2).
+ */
+let appliedThisPageLoad = false;
+
+/** Test-only: clears the once-per-page-load flag so tests stay independent. */
+export function resetHorrorDebugForTests(): void {
+  appliedThisPageLoad = false;
+}
+
+/** Applies the URL case once per page load, once firms and layout are ready. Renders nothing. */
 export function HorrorDebug({ layout }: { layout: GraveyardLayout }) {
   const firms = useStore((s) => s.data?.index.firms);
-  const done = useRef(false);
   useEffect(() => {
-    if (done.current || !firms || layout.plots.length === 0) return;
-    done.current = true;
+    if (appliedThisPageLoad || !firms || layout.plots.length === 0) return;
+    appliedThisPageLoad = true;
     const { horror, shockPp } = parseHorrorParams(window.location.search);
     if (horror === null && shockPp === null) return;
     const st = useStore.getState();

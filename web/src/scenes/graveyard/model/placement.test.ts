@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { computeLayout, type LayoutInput } from '../layout/layout';
+import { plotPose } from '../layout/camera';
+import { computeLayout, FIRST_ROW_Z, type LayoutInput } from '../layout/layout';
 import { coneCovers } from './coneCovers';
-import { corpseAnchor, mutantPlacement, MUTANT_MIN_BEHIND } from './placement';
+import { corpseAnchor, INITIAL_CAMERA, mutantPlacement, MUTANT_MIN_BEHIND } from './placement';
 
 function firm(i: number, sector: string, status: LayoutInput['status']): LayoutInput {
   return { cik: String(9100000000 + i), sector, status, total_debt_usd: 1e6 * (i + 1) };
@@ -27,9 +28,17 @@ describe('corpseAnchor', () => {
     expect(corpseAnchor(layout, () => false)).toBeNull();
   });
 
+  it('starts from the Plot 1 pose: eye 1.2, back 2.7 (23.1, 9.9)', () => {
+    expect(INITIAL_CAMERA.x).toBe(0);
+    expect(INITIAL_CAMERA.y).toBe(1.2);
+    expect(INITIAL_CAMERA.z).toBeCloseTo(5.7, 12);
+    const p = plotPose({ centerX: 0, frontZ: FIRST_ROW_Z }).position;
+    expect([INITIAL_CAMERA.x, INITIAL_CAMERA.y, INITIAL_CAMERA.z]).toEqual(p);
+  });
+
   it('picks the nearest zombie stone', () => {
     const layout = computeLayout(Array.from({ length: 12 }, (_, i) => firm(i, 'A', 'zombie')));
-    const camera = { x: 0, y: 1.5, z: 5.6 };
+    const camera = INITIAL_CAMERA;
     const got = corpseAnchor(layout, () => true);
     const dist = (i: number) => {
       const s = layout.stones[i]!;

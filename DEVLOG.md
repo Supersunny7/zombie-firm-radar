@@ -361,3 +361,30 @@
 2026-11-13 | graveyard-horror-pass | 2.27 | Captured Batch 2 screenshots; added DEV horror helper, brighter overview, mobile framing, darker soil, lit torn rims. | scenes/graveyard, reference/progress/horror-batch2-*.png
 2026-11-13 | graveyard-horror-pass | 2.28 | Batch 2 full check passed: web 828 tests, tools 379 tests, check-bundle OK. | none
 2026-11-13 | graveyard-horror-pass | 2.29 | Batch 2 report delivered in chat. | none
+2026-11-13 | graveyard-horror-pass | 3.9 | Removed soil glow; added black-emissive soil, mound, heap, pit, clod and grass material factories | soil.tsx, Mounds.tsx, Ground.tsx, TornMounds.tsx
+2026-11-13 | graveyard-horror-pass | 3.7 | Added pure look constants module with the prototype camera, fog, light, grade and stone values | look.ts
+2026-11-13 | graveyard-horror-pass | 3.4 | Applied ?shock= once per page load with a module-level flag (H2 fix) | HorrorDebug.tsx
+2026-11-13 | graveyard-horror-pass | 3.13 | Moved plot camera to FOV 46, eye 1.2 m, look 0.6 m; removed portrait easing | camera.ts, CameraRig.tsx, placement.ts, GraveyardScene.tsx, tests
+2026-11-13 | graveyard-horror-pass | 3.20 | Added pure grade colour mirror for saturation, gain-lift-gamma and vignette steps | gradeColour.ts
+2026-11-13 | graveyard-horror-pass | 3.8 | Added look test that parses horror-direction-params.md and checks every listed value | look.test.ts
+2026-11-13 | graveyard-horror-pass | 3.5 | Added jsdom remount test proving ?shock= applies once per page load | HorrorDebug.test.tsx
+2026-11-13 | graveyard-horror-pass | 3.10 | Torn heap, clod and pit now use black-emissive factories; clods flat #3b2c1f, pit #040302 | TornMounds.tsx
+2026-11-13 | graveyard-horror-pass | 3.6 | Added Lights-toggle and slider-key preservation jsdom tests | LightsButton.test.tsx
+2026-11-13 | graveyard-horror-pass | 3.14 | Property 46 plot-pose test; camera back set to 2.7 m to satisfy 9.4 | camera.property.test.ts, look.ts, camera and placement tests
+2026-11-13 | graveyard-horror-pass | 3.15 | Blended plot fog #0a0d13 0.075, hemisphere, moon and environment 0 for lights-off plots | sceneParams.ts, lightsBlend.ts, tests
+2026-11-13 | graveyard-horror-pass | 3.21 | Property 47: grade steps stay in range, luma kept, monotone, composition | cctvGrade.property.test.ts
+2026-11-13 | graveyard-horror-pass | 3.11 | Grass cards use the black-emissive factory; removed emissive map and glow | Grass.tsx
+2026-11-13 | graveyard-horror-pass | 3.16 | Applied plot hemisphere, moon anchor at plot centre, environment 0 and fog-colour background | SceneLights.tsx, Sky.tsx, lightsBlend.ts, moonAnchor.ts
+2026-11-13 | graveyard-horror-pass | 3.17 | Flashlight uses prototype values; one-frame 0.35 flicker capped at 3 per second | Flashlight.tsx, flashlightState.ts, camera.ts, tests
+2026-11-13 | graveyard-horror-pass | 3.18 | Lantern point light flickers with the prototype formula; constant in reduced motion | Props.tsx, lanternLight.ts, test
+2026-11-13 | graveyard-horror-pass | 3.22 | Added six-step CCTV grade effect; lights-off chain is tone mapping then grade | CctvGradeEffect.ts, CctvPass.tsx, cctvParams.ts, fx.test.ts
+2026-11-13 | graveyard-horror-pass | 3.12 | Soil material tests for no emissive, clod and pit values; fixed Mounds fallback tint guard | soilMaterials.test.tsx, Mounds.tsx
+2026-11-13 | graveyard-horror-pass | 3.19 | Ground fog fades out in lights-off framed plots; no cone mesh existed | GroundFog.tsx, groundFogLook.ts, test
+2026-11-13 | graveyard-horror-pass | 3.23 | Tracking-glitch band shift folded into the grade; lights-off chain is two passes | CctvGradeEffect.ts, TrackingGlitchEffect.ts, CctvPass.tsx, cctvParams.ts, fx.test.ts
+2026-11-13 | graveyard-horror-pass | 3.24 | Stones at 0.55 base colour in lights off; ACES exposure 1.0 set explicitly | StoneMaterial.tsx, sceneParams.ts, lightsBlend.ts, CctvPass.tsx, cctvParams.ts, tests
+2026-11-13 | graveyard-horror-pass | 3.31 | Stone material now passes the glb metalness map, removing black metal blotches | StoneMaterial.tsx, StoneMaterial.test.ts, tools/preview
+2026-11-13 | graveyard-horror-pass | 3.26 | Added --batch 2b screenshot and side-by-side reference comparison | horror-screenshots.mjs, horror-screenshots.test.mjs
+2026-11-13 | graveyard-horror-pass | 3.25 | Purity test now covers seven Batch 2b pure modules from web/src | horror.purity.test.ts
+2026-11-13 | graveyard-horror-pass | 3.27 | Captured Batch 2b look screenshot and side-by-side with horror-direction.png | reference/progress/horror-batch2b-look*.png
+2026-11-13 | graveyard-horror-pass | 3.28 | Full check passed: typecheck, lint, format, 945 web tests, build with check-bundle, 379 tools tests | none
+2026-11-13 | graveyard-horror-pass | 3.29 | Wrote the Batch 2b report with checks, screenshots and unmatched look values | docs/reviews/horror-batch2b-report.md

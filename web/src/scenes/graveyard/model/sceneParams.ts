@@ -1,5 +1,13 @@
 // Pure scene parameters for ground, sky, fog and lights (design Section 7, Decision 6).
 // No react or three imports.
+import {
+  LOOK_BACKGROUND,
+  LOOK_ENVIRONMENT_INTENSITY,
+  LOOK_HEMISPHERE,
+  LOOK_MOON,
+  LOOK_PLOT_FOG,
+  LOOK_STONE_COLOR_FACTOR,
+} from '../look';
 
 /** What the camera rig publishes every frame (11.10). */
 export interface CameraFogState {
@@ -16,15 +24,33 @@ export interface FogLayerParams {
 }
 
 export interface SceneParams {
+  /** FogExp2 colour; also the sky colour at the horizon and, in lights-off framed plots, the whole background (23.5). */
   readonly fogColor: string;
   readonly fogDensity: number;
+  /**
+   * Weight of the lights-off framed-plot look (Batch 2b, 23.4 to 23.8): 1 in a lights-off framed
+   * plot, 0 in the overview and in lights on, the plot/overview move weight in between. Consumers
+   * use it to replace the sky gradient by the flat fog colour (23.5) and to move the moon anchor
+   * from the camera focus to the framed plot centre (23.8).
+   */
+  readonly plotLook: number;
   readonly groundFogFactor: number;
   /** Overview-only blue-grey emissive lift on the stones, 0 at a plot, 1 in the overview. */
   readonly stoneLift: number;
+  /**
+   * Multiplier on every Headstone base colour: LOOK_STONE_COLOR_FACTOR (0.55) in lights off, in the
+   * overview and in framed plots alike, so the stones do not blow out in the Flashlight beam
+   * (23.14); 1 in lights on (23.16). The emissive lift and the decay tint are separate.
+   */
+  readonly stoneColorFactor: number;
   readonly backgroundIntensity: number;
   readonly envIntensity: number;
   readonly moon: {
     readonly color: string;
+    /**
+     * Offset of the moon from its anchor: the snapped camera focus in the overview and lights on
+     * (Base_Spec), the framed plot centre in lights-off framed plots (LOOK_MOON.offset, 23.8).
+     */
     readonly position: readonly [number, number, number];
     readonly intensity: number;
   };
@@ -37,14 +63,38 @@ export interface SceneParams {
   readonly fogLayers: readonly [FogLayerParams, FogLayerParams, FogLayerParams];
 }
 
+/** Base_Spec fog colour: Overview_Fog in both modes and Plot_Fog in lights on. */
 export const FOG_COLOR = '#171b21';
 export const FOG_LAYER_COLOR = '#2b323c';
 export const FLAT_GROUND_COLOR = '#0b0806';
 
 /** Overview_Fog densities (7.14): lights off, lights on. */
 export const OVERVIEW_FOG_DENSITY = { off: 0.02, on: 0.015 } as const;
-/** Plot_Fog densities (7.3, 7.4): lights off, lights on. */
-export const PLOT_FOG_DENSITY = { off: 0.085, on: 0.05 } as const;
+/** Plot_Fog densities: lights off from look.ts (23.4, was 0.085), lights on Base_Spec 7.4. */
+export const PLOT_FOG_DENSITY = { off: LOOK_PLOT_FOG.density, on: 0.05 } as const;
+
+/** Base_Spec moon and hemisphere: overview in both modes, framed plots in lights on (23.16, 23.18). */
+export const BASE_MOON = {
+  color: '#6f90e0',
+  position: [-8, 16, -26],
+} as const;
+export const BASE_HEMI = { skyColor: '#3a4a66', groundColor: '#0b0806' } as const;
+
+/** Plot-level light intensities of the Base_Spec (task 2.27); lights off is replaced in plots by look.ts. */
+const BASE_PLOT_LIGHTS = {
+  off: { env: 0.2, moon: 0.5, hemi: 0.14 },
+  on: { env: 0.3, moon: 0.7, hemi: 0.35 },
+} as const;
+
+/** Framed-plot light intensities: lights off from look.ts (23.7, 23.8), lights on Base_Spec. */
+export const PLOT_LIGHTS = {
+  off: {
+    env: LOOK_ENVIRONMENT_INTENSITY,
+    moon: LOOK_MOON.intensity,
+    hemi: LOOK_HEMISPHERE.intensity,
+  },
+  on: BASE_PLOT_LIGHTS.on,
+} as const;
 
 /**
  * Overview light levels (moon, hemisphere, environment intensity). At 90 m a 1 m stone covers a
@@ -91,10 +141,38 @@ export const GROUND_NEAREST_EDGE_M = GROUND_SIZE_M / 2;
 export const CAMERA_FAR = 360;
 
 const lerp = (a: number, b: number, t: number): number => a + (b - a) * t;
+/** Linear blend that returns `a` exactly at t <= 0 and `b` exactly at t >= 1. */
+export const mix = (a: number, b: number, t: number): number =>
+  t <= 0 ? a : t >= 1 ? b : lerp(a, b, t);
 /** Overview-to-plot blend that returns the plot value exactly at weight 1. */
-const lift = (overview: number, plot: number, w: number): number =>
-  w >= 1 ? plot : lerp(overview, plot, w);
+const lift = mix;
 const clamp01 = (x: number): number => (x < 0 ? 0 : x > 1 ? 1 : x);
+
+const HEX_RE = /^#[0-9a-f]{6}$/i;
+const channel = (hex: string, i: number): number => parseInt(hex.slice(1 + 2 * i, 3 + 2 * i), 16);
+const toHex2 = (v: number): string => Math.round(v).toString(16).padStart(2, '0');
+
+/**
+ * Blends two `#rrggbb` sRGB colours per channel, rounded to whole channel steps. Returns `a`
+ * exactly at t <= 0 and `b` exactly at t >= 1, so end-of-move values are the exact look values.
+ */
+export function mixHex(a: string, b: string, t: number): string {
+  if (t <= 0 || a === b) return a;
+  if (t >= 1) return b;
+  if (!HEX_RE.test(a) || !HEX_RE.test(b)) throw new Error(`mixHex expects #rrggbb: ${a}, ${b}`);
+  return `#${[0, 1, 2].map((i) => toHex2(lerp(channel(a, i), channel(b, i), t))).join('')}`;
+}
+
+/** Blends two offsets per axis with exact endpoints. */
+export function mixVec3(
+  a: readonly [number, number, number],
+  b: readonly [number, number, number],
+  t: number,
+): readonly [number, number, number] {
+  if (t <= 0) return a;
+  if (t >= 1) return b;
+  return [mix(a[0], b[0], t), mix(a[1], b[1], t), mix(a[2], b[2], t)];
+}
 
 /** Weight of the full Plot_Fog: 0 = Overview_Fog, 1 = Plot_Fog (7.14, 7.15, 7.17). */
 export function plotFogWeight(c: CameraFogState): number {
@@ -147,27 +225,32 @@ export function sceneParams(
     y: b.y,
     opacity: b.opacity * groundFogFactor * shock,
   });
+  // Batch 2b look weight: the prototype values apply only in lights-off framed plots (23.16, 23.18),
+  // blended with the same move weight as the fog so they are exact when the move ends (23.6).
+  const look = off ? w : 0;
   return {
-    fogColor: FOG_COLOR,
-    fogDensity: lerp(overviewFogDensity(lights, overviewDistance), PLOT_FOG_DENSITY[lights], w),
+    // Lights off: Overview_Fog colour to Plot_Fog colour (23.4); lights on keeps the Base_Spec colour.
+    fogColor: mixHex(FOG_COLOR, LOOK_BACKGROUND, look),
+    fogDensity: lift(overviewFogDensity(lights, overviewDistance), PLOT_FOG_DENSITY[lights], w),
+    plotLook: look,
     groundFogFactor,
     stoneLift: 1 - w,
+    stoneColorFactor: off ? LOOK_STONE_COLOR_FACTOR : 1,
     backgroundIntensity: off ? 0.045 : 0.12,
-    // Lights off env 0.2, moon 0.5 and hemi 0.14 (task 2.27: the earlier 0.1 / 0.22 / 0.03 left the
-    // ground black next to reference graveyard-rate-shock-3pp.png; scene-reference had 0.05 and 0.12). Those are the plot values;
-    // the overview lifts them (OVERVIEW_LIFT) so the field reads as a dim moonlit plain.
-    envIntensity: lift(OVERVIEW_LIFT[lights].env, off ? 0.2 : 0.3, w),
+    // Plot levels: lights on keeps the Base_Spec env 0.3, moon 0.7, hemi 0.35 (task 2.27); lights
+    // off uses look.ts (env 0, moon 1.1, hemi 0.18). The overview keeps OVERVIEW_LIFT so the field
+    // reads as a dim moonlit plain (23.18).
+    envIntensity: lift(OVERVIEW_LIFT[lights].env, PLOT_LIGHTS[lights].env, w),
     moon: {
-      // Cool blue (was #8ea9d6), placed behind the stones (negative z, camera looks toward -z)
-      // so they get a rim light (was [-14, 18, -22]).
-      color: '#6f90e0',
-      position: [-8, 16, -26],
-      intensity: lift(OVERVIEW_LIFT[lights].moon, off ? 0.5 : 0.7, w),
+      // Base_Spec: cool blue, behind the stones (negative z, camera looks toward -z) for rim light.
+      color: mixHex(BASE_MOON.color, LOOK_MOON.color, look),
+      position: mixVec3(BASE_MOON.position, LOOK_MOON.offset, look),
+      intensity: lift(OVERVIEW_LIFT[lights].moon, PLOT_LIGHTS[lights].moon, w),
     },
     hemi: {
-      skyColor: '#3a4a66',
-      groundColor: '#0b0806',
-      intensity: lift(OVERVIEW_LIFT[lights].hemi, off ? 0.14 : 0.35, w),
+      skyColor: mixHex(BASE_HEMI.skyColor, LOOK_HEMISPHERE.skyColor, look),
+      groundColor: mixHex(BASE_HEMI.groundColor, LOOK_HEMISPHERE.groundColor, look),
+      intensity: lift(OVERVIEW_LIFT[lights].hemi, PLOT_LIGHTS[lights].hemi, w),
     },
     fogLayerColor: FOG_LAYER_COLOR,
     fogLayers: [layer(l0), layer(l1), layer(l2)],

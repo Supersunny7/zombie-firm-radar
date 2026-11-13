@@ -580,6 +580,8 @@ The batch split 1, 2, 3a, 3b is superseded; the active batch split is Requiremen
 3. THE Graveyard_Scene SHALL render the Pit with material colour `#040302` in both Lights_Mode values.
 4. THE design SHALL remove the two known causes of the orange blobs, so that after the change none of the following remain: an `emissiveMap` on the heap or Clod materials in `web/src/scenes/graveyard/r3f/TornMounds.tsx`; the warm lights-off `glow` option of `useSoilTint` in `web/src/scenes/graveyard/r3f/soil.tsx`, including every call site that passes it; and an `emissiveMap` on the Grass_Card material in `web/src/scenes/graveyard/r3f/Grass.tsx`.
 5. THE Graveyard_Scene tests SHALL include an example test that mounts the soil, Closed_Mound, Torn_Mound heap, Pit, Clod and Grass_Card materials once in lights off and once in lights on, and asserts criterion 1 for each material, and criteria 2 and 3 for the Clod and Pit materials.
+6. THE Stone_Renderer SHALL pass the glTF metal/roughness texture of each stone model as both its roughness map and its metalness map, so that a stone whose metallicFactor is 1 renders with the metalness its texture gives (Note 2026-11-13: the earlier alpha-flatten criterion was dropped because the stone textures have no transparent texels).
+7. THE Graveyard_Scene tests SHALL include an example test that the stone material of each stone model has its metalness map set to the same texture as its roughness map, and the Batch 2b report SHALL show a close-up of a lit stone before and after the fix.
 
 ### Requirement 25: The Lights toggle leaves the rate shock alone (Batch 2b, bug fix)
 
@@ -591,6 +593,8 @@ The batch split 1, 2, 3a, 3b is superseded; the active batch split is Requiremen
 2. WHEN the user drags the Shock_Slider thumb, or presses Arrow Left, Arrow Right, Arrow Up, Arrow Down, Home or End on the focused Shock_Slider, THE Shock_Slider SHALL keep changing its value as in Base_Spec Requirement 13.7 (preservation).
 3. THE design SHALL name the root cause of the observed jump to +0.25 pp in its bug analysis, and each fix task in the tasks document SHALL reference that root cause.
 4. THE HUD tests SHALL include, for each of pointer, Enter and Space activation, one test of criterion 1 that fails on the code before the fix and passes after it. Each of these tests SHALL start with the Shock_Slider at 0 pp and again at one value in (0, 5] pp other than 0.25 pp. THE tests SHALL also include one preservation test for criterion 2 that passes both before and after the fix.
+
+Note (2026-11-13): the user reduced 25.3 and 25.4 to the H2 fix and jsdom tests, because the HUD Lights button and slider are replaced in the control-room-ui spec; H1 and H3 are not investigated.
 
 ### Requirement 26: Retired characters, props and sounds (Batch 3)
 

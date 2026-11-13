@@ -8,6 +8,7 @@ import { useStore } from '../../state/store';
 import { GraveyardHud } from '../../ui/graveyard/GraveyardHud';
 import { hasWebGL } from '../webgl';
 import { computeLayout } from './layout/layout';
+import { INITIAL_CAMERA } from './model/placement';
 import { CAMERA_FAR } from './model/sceneParams';
 import { CAMERA_FOV, CAMERA_NEAR, CameraRig } from './r3f/CameraRig';
 import { ModelBoundary } from './r3f/ModelBoundary';
@@ -70,7 +71,7 @@ export function SceneContent() {
   return (
     <>
       <CameraRig layout={layout} />
-      <SceneLights />
+      <SceneLights layout={layout} />
       <Sky />
       <Ground />
       <GroundFog />
@@ -121,7 +122,12 @@ export default function GraveyardScene() {
           shadows
           dpr={quality.dpr}
           gl={{ antialias: !lowQuality, powerPreference: 'high-performance' }}
-          camera={{ fov: CAMERA_FOV, near: CAMERA_NEAR, far: CAMERA_FAR, position: [0, 1.5, 5.6] }}
+          camera={{
+            fov: CAMERA_FOV,
+            near: CAMERA_NEAR,
+            far: CAMERA_FAR,
+            position: [INITIAL_CAMERA.x, INITIAL_CAMERA.y, INITIAL_CAMERA.z],
+          }}
           style={{ background: STAGE_BACKGROUND }}
           aria-hidden="true"
           onCreated={onCreated}

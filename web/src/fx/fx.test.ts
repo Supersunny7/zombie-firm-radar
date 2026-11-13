@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { cctvParams } from './cctvParams';
+import { EffectAttribute } from 'postprocessing';
+import type { Uniform, Vector3 } from 'three';
+import { LOOK_CCTV_GRADE, LOOK_TONE_MAPPING } from '../scenes/graveyard/look';
+import { CctvGradeEffect } from './CctvGradeEffect';
+import { BASE_TONE_MAPPING, cctvChain, cctvParams, cctvToneMapping } from './cctvParams';
 import { createGlitchScheduler } from './glitchScheduler';
+import { TRACKING_GLITCH_SHIFT_GLSL, TrackingGlitchEffect } from './TrackingGlitchEffect';
 
 function seeded(seed: number) {
   let s = seed >>> 0;
@@ -80,5 +85,151 @@ describe('glitch scheduler', () => {
     g.reset(5);
     expect(g.update(25, true)).toBe(0); // rescheduled from 25
     expect(g.update(45, true)).toBeGreaterThan(0);
+  });
+});
+
+describe('CctvGradeEffect (23.11, 23.13)', () => {
+  const value = <T>(e: CctvGradeEffect, name: string) => (e.uniforms.get(name) as Uniform<T>).value;
+
+  it('builds as a convolution effect with the look.ts values', () => {
+    const e = new CctvGradeEffect();
+    expect(e.getAttributes() & EffectAttribute.CONVOLUTION).toBe(EffectAttribute.CONVOLUTION);
+    // Convolution effects cannot transform uvs in the same pass.
+    expect(e.getFragmentShader()).toMatch(/void mainImage\(/);
+    expect(e.getFragmentShader()).not.toMatch(/mainUv/);
+    const g = LOOK_CCTV_GRADE;
+    expect(value<number>(e, 'uSaturation')).toBe(g.saturation);
+    expect(value<Vector3>(e, 'uLumaWeights').toArray()).toEqual([...g.lumaWeights]);
+    expect(value<number>(e, 'uGain')).toBe(g.gain);
+    expect(value<number>(e, 'uLift')).toBe(g.lift);
+    expect(value<number>(e, 'uGamma')).toBe(g.gamma);
+    expect(value<number>(e, 'uVignetteStrength')).toBe(g.vignetteStrength);
+    expect(value<number>(e, 'uVignettePower')).toBe(g.vignettePower);
+    expect(value<number>(e, 'uGrainSigma')).toBe(g.grainSigma);
+    expect(value<number>(e, 'uScanlinePeriod')).toBe(g.scanlinePeriod);
+    expect(value<number>(e, 'uScanlineFactor')).toBe(g.scanlineFactor);
+    expect(value<number>(e, 'uRedGhostMix')).toBe(g.redGhostMix);
+    expect(value<number>(e, 'uRedGhostOffsetPx')).toBe(g.redGhostOffsetPx);
+    e.dispose();
+  });
+
+  it('applies the tracking-glitch band shift to both samples, with no RGB split (23.12)', () => {
+    const e = new CctvGradeEffect();
+    const fs = e.getFragmentShader();
+    expect(fs).toContain(TRACKING_GLITCH_SHIFT_GLSL);
+    expect(fs).toMatch(/uniform float uGlitchAmount;/);
+    expect(fs).toMatch(/uniform float uGlitchSeed;/);
+    expect(fs).toContain('trackingGlitchShift(uv, uGlitchAmount, uGlitchSeed)');
+    expect(fs).toContain('texture2D(inputBuffer, sampleUv)');
+    expect(fs).toContain('ghostUv = sampleUv -');
+    // Only the main and the red-ghost samples read inputBuffer; no blue sample, no split.
+    expect(fs.match(/texture2D\(inputBuffer/g)).toHaveLength(2);
+    expect(fs).not.toMatch(/\.b\b/);
+    expect(value<number>(e, 'uGlitchAmount')).toBe(0);
+    e.dispose();
+  });
+
+  it('drives the glitch uniforms like TrackingGlitchEffect', () => {
+    const e = new CctvGradeEffect();
+    const ref = new TrackingGlitchEffect();
+    const seedOf = (t: TrackingGlitchEffect) => (t.uniforms.get('uSeed') as Uniform<number>).value;
+    const steps: [number, number][] = [
+      [0, 10],
+      [0.5, 21.3],
+      [1, 21.42],
+      [1, 21.5],
+      [0.35, 21.6],
+      [0, 21.7],
+      [1.7, 30],
+      [-0.2, 31],
+    ];
+    for (const [amount, t] of steps) {
+      e.driveGlitch(amount, t);
+      ref.drive(amount, t);
+      expect(e.glitchAmount).toBe(ref.amount);
+      expect(e.glitchSeed).toBe(seedOf(ref));
+      expect(e.glitchAmount).toBeGreaterThanOrEqual(0);
+      expect(e.glitchAmount).toBeLessThanOrEqual(1);
+    }
+    e.dispose();
+    ref.dispose();
+  });
+
+  it('keeps no glitch under Reduced_Motion (scheduler disabled gives amount 0)', () => {
+    const e = new CctvGradeEffect();
+    const g = createGlitchScheduler(() => 0);
+    for (let t = 0; t < 120; t += 0.05) e.driveGlitch(g.update(t, false), t);
+    expect(e.glitchAmount).toBe(0);
+    e.dispose();
+  });
+
+  it('uses the gradeColour vignette radius', () => {
+    expect(new CctvGradeEffect().getFragmentShader()).toContain('length(uv * 2.0 - 1.0)');
+  });
+
+  it('changes the grain seed every frame and keeps it while frozen', () => {
+    const e = new CctvGradeEffect();
+    e.update();
+    const a = e.grainSeed;
+    e.update();
+    expect(e.grainSeed).not.toBe(a);
+    e.setFrozen(true);
+    expect(e.frozen).toBe(true);
+    const b = e.grainSeed;
+    e.update();
+    e.update();
+    expect(e.grainSeed).toBe(b);
+  });
+});
+
+describe('cctvChain (23.12, 23.13, 23.16)', () => {
+  it('lights off is ToneMapping then the grade in separate passes, in every quality', () => {
+    for (const low of [false, true]) {
+      for (const reduced of [false, true]) {
+        const c = cctvChain('off', low, reduced);
+        // Two passes: the tracking glitch runs inside the grade, so no RGB-split effect (23.12).
+        expect(c.effects).toEqual(['toneMapping', 'grade']);
+        expect(c.effects).not.toContain('trackingGlitch');
+        expect(c.effects).not.toContain('bloom');
+        expect(c.effects).not.toContain('chromaticAberration');
+        expect(c.mergeMode).toBe('none');
+        expect(c.grainFrozen).toBe(reduced);
+      }
+    }
+  });
+
+  it('lights on keeps the Base_Spec chain without the grade', () => {
+    expect(cctvChain('on', false, false).effects).toEqual([
+      'bloom',
+      'chromaticAberration',
+      'hueSaturation',
+      'toneMapping',
+      'vignette',
+      'noise',
+      'scanline',
+      'trackingGlitch',
+    ]);
+    expect(cctvChain('on', true, false).effects).toEqual([
+      'hueSaturation',
+      'toneMapping',
+      'vignette',
+      'noise',
+      'scanline',
+      'trackingGlitch',
+    ]);
+    expect(cctvChain('on', false, true).mergeMode).toBe('auto');
+    expect(cctvChain('on', false, true).effects).not.toContain('grade');
+  });
+});
+
+describe('cctvToneMapping (23.15, 23.16)', () => {
+  it('lights off is ACES filmic with exposure 1.0 from look.ts', () => {
+    expect(cctvToneMapping('off')).toEqual({ mode: 'ACESFilmic', exposure: 1 });
+    expect(cctvToneMapping('off')).toEqual(LOOK_TONE_MAPPING);
+  });
+
+  it('lights on keeps the Base_Spec ACES with the renderer default exposure', () => {
+    expect(cctvToneMapping('on')).toEqual(BASE_TONE_MAPPING);
+    expect(BASE_TONE_MAPPING).toEqual({ mode: 'ACESFilmic', exposure: 1 });
   });
 });

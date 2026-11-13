@@ -1,15 +1,21 @@
 // Mutable flashlight state written by Flashlight every frame (design Section 10).
 // Read by the Mutant cone test (coneCovers, task 16.4); nothing here goes through the store.
+// Light values come from LOOK_FLASHLIGHT (Requirement 23.9); only the cone test aliases live here.
 import type { Ray } from '../layout/pick';
+import { LOOK_FLASHLIGHT } from '../look';
 
-export const FLASHLIGHT_COLOR = '#fff1d6';
-/** Was 70, which blew the nearest stone out to white; 25 keeps stones dim and cool in a pool. */
-export const FLASHLIGHT_INTENSITY = 25;
-export const FLASHLIGHT_DISTANCE = 28;
-export const FLASHLIGHT_ANGLE = 0.27;
-export const FLASHLIGHT_PENUMBRA = 0.85;
-export const FLASHLIGHT_DECAY = 1.7;
+/** Cone half-angle in radians (23.9), published for the cone test. */
+export const FLASHLIGHT_ANGLE: number = LOOK_FLASHLIGHT.angle;
+/** Light range in metres (23.9), published for the cone test and the shadow camera far plane. */
+export const FLASHLIGHT_DISTANCE: number = LOOK_FLASHLIGHT.distance;
 export const FLASHLIGHT_SHADOW_MAP = 1024;
+/**
+ * Base_Spec flash cap (10.5, 17.6): at most this many flickers in any 1 s window. Stands in for
+ * the shared Flash_Limiter until Batch 3 (Requirement 28 criterion 6).
+ */
+export const FLICKER_MAX_PER_WINDOW = 3;
+/** Length of the cap window in seconds. */
+export const FLICKER_WINDOW_S = 1;
 /** Offset from the camera in camera-local metres (10.2). */
 export const FLASHLIGHT_OFFSET: readonly [number, number, number] = [0.28, -0.32, 0.1];
 /** Aim used until a valid ray hit exists (10.4). */
@@ -63,6 +69,35 @@ export function writeFlashlightState(
   s.halfAngle = FLASHLIGHT_ANGLE;
   s.range = active ? FLASHLIGHT_DISTANCE : 0;
   s.active = active;
+}
+
+/** Accepted flicker start times in seconds, oldest first (at most FLICKER_MAX_PER_WINDOW). */
+export interface FlickerState {
+  starts: number[];
+}
+
+export function createFlickerState(): FlickerState {
+  return { starts: [] };
+}
+
+/**
+ * Base flicker for one rendered frame (23.9). A flicker starts when `u < flickerChance` (u from an
+ * injected uniform source in [0, 1)) and is accepted only if fewer than FLICKER_MAX_PER_WINDOW
+ * flickers were accepted in (t - FLICKER_WINDOW_S, t]; dropped candidates are not queued. An
+ * accepted flicker lasts this one frame. Returns the intensity multiplier for the frame:
+ * LOOK_FLASHLIGHT.flickerFactor (0.35) on an accepted flicker, otherwise 1. Mutates `state`.
+ */
+export function flickerStep(state: FlickerState, t: number, u: number): number {
+  const s = state.starts;
+  // Forget starts outside the window (and any from a clock that went backwards).
+  for (let i = s.length - 1; i >= 0; i--) {
+    const v = s[i];
+    if (v === undefined || v <= t - FLICKER_WINDOW_S || v > t) s.splice(i, 1);
+  }
+  if (!(u < LOOK_FLASHLIGHT.flickerChance)) return 1;
+  if (s.length >= FLICKER_MAX_PER_WINDOW) return 1;
+  s.push(t);
+  return LOOK_FLASHLIGHT.flickerFactor;
 }
 
 /**

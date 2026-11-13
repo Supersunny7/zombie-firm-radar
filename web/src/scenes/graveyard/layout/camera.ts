@@ -2,6 +2,7 @@
  * Camera rig maths (pure, design Section 10). No React or three imports.
  * Poses are plain tuples; the rig converts them to vectors.
  */
+import { LOOK_CAMERA } from '../look';
 import type { LightsMode } from '../model/sceneParams';
 import type { PlotLayout, Rect } from './layout';
 
@@ -12,37 +13,25 @@ export interface CameraPose {
   readonly target: Vec3;
 }
 
-export const CAMERA_HEIGHT = 1.5;
-export const CAMERA_BACK = 2.6;
-export const TARGET_Y = 0.2;
-export const TARGET_AHEAD = 5;
+/** Plot_Camera_Pose values from the prototype camera (Requirement 23.1, `look.ts`). */
+export const CAMERA_HEIGHT = LOOK_CAMERA.eyeHeight;
+export const CAMERA_BACK = LOOK_CAMERA.back;
+export const TARGET_Y = LOOK_CAMERA.lookHeight;
+export const TARGET_AHEAD = LOOK_CAMERA.targetAhead;
 export const LOOK_LAMBDA = 4;
 export const OVERVIEW_PITCH = Math.PI / 3;
 export const OVERVIEW_MARGIN = 1.05;
 
-/** Pose that frames one plot (10.7, 10.8). Plot 1 (frontZ = 3) gives (0, 1.5, 5.6) looking at z = -2 (Requirement 9). */
-export function plotPose(
-  plot: Pick<PlotLayout, 'centerX' | 'frontZ'>,
-  aspect: number = DESKTOP_ASPECT,
-): CameraPose {
+/**
+ * Pose that frames one plot (10.7, 10.8). Plot 1 (frontZ = 3) gives (0, 1.2, 5.7) looking at
+ * (0, 0.6, 2.0) (Requirement 23.1). The pose is the same for every aspect ratio: three's fov is
+ * vertical, so the nearest mound bases stay in the lower half in portrait too (23.3).
+ */
+export function plotPose(plot: Pick<PlotLayout, 'centerX' | 'frontZ'>): CameraPose {
   return {
     position: [plot.centerX, CAMERA_HEIGHT, plot.frontZ + CAMERA_BACK],
-    target: [plot.centerX, targetY(aspect), plot.frontZ - TARGET_AHEAD],
+    target: [plot.centerX, TARGET_Y, plot.frontZ - TARGET_AHEAD],
   };
-}
-
-/** Aspect used when none is given (desktop); the pose is unchanged for aspect >= 1. */
-export const DESKTOP_ASPECT = 16 / 9;
-/** Portrait look target: aims the camera about 17 degrees down so sky takes ~20% of the frame, not ~35%. */
-export const TARGET_Y_PORTRAIT = -0.8;
-/** Aspect at which the portrait look target is fully applied (blended from 1 down to this). */
-export const PORTRAIT_FULL_ASPECT = 0.7;
-
-/** Look target height: 0.2 for aspect >= 1, eased down to TARGET_Y_PORTRAIT for aspect <= 0.7. */
-export function targetY(aspect: number): number {
-  if (!(aspect < 1)) return TARGET_Y;
-  const t = Math.min(1, Math.max(0, (1 - aspect) / (1 - PORTRAIT_FULL_ASPECT)));
-  return TARGET_Y + (TARGET_Y_PORTRAIT - TARGET_Y) * t;
 }
 
 export interface Ndc {
@@ -174,17 +163,4 @@ export function plotLabel(
 /** "OVERVIEW · {plotCount} PLOTS" (11.7). */
 export function overviewLabel(plotCount: number): string {
   return `OVERVIEW \u00b7 ${plotCount} PLOTS`;
-}
-
-/** Flicker events per second (10.5 allows at most 3; the design uses 2). */
-export const FLICKER_RATE = 2;
-
-/**
- * Flashlight intensity factor in [0.94, 1.06] (10.5). The sum of two slow sines is held as a
- * step function that changes at most FLICKER_RATE times per second.
- */
-export function flickerFactor(t: number): number {
-  const ts = Math.floor(t * FLICKER_RATE) / FLICKER_RATE;
-  const n = 0.5 * Math.sin(2.1 * ts) + 0.5 * Math.sin(3.7 * ts + 1);
-  return 1 + 0.06 * Math.max(-1, Math.min(1, n));
 }

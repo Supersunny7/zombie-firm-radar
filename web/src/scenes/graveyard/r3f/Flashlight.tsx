@@ -4,23 +4,20 @@ import { Object3D, Raycaster, Vector3, type SpotLight } from 'three';
 import { useStore } from '../../../state/store';
 import { isStoneProxyActive } from '../../../state/stoneProxy';
 import { qualityParams } from '../model/quality';
-import { flickerFactor, smooth } from '../layout/camera';
+import { smooth } from '../layout/camera';
 import { buildGrid } from '../layout/grid';
 import { stoneCentreY, type GraveyardLayout } from '../layout/layout';
 import { pickStone, type Ray } from '../layout/pick';
+import { LOOK_FLASHLIGHT } from '../look';
 import { cameraStateRef } from './cameraState';
 import {
   AIM_LAMBDA,
-  FLASHLIGHT_ANGLE,
-  FLASHLIGHT_COLOR,
-  FLASHLIGHT_DECAY,
-  FLASHLIGHT_DISTANCE,
   FLASHLIGHT_FALLBACK_TARGET,
-  FLASHLIGHT_INTENSITY,
   FLASHLIGHT_OFFSET,
-  FLASHLIGHT_PENUMBRA,
   FLASHLIGHT_SHADOW_MAP,
   aimPoint,
+  createFlickerState,
+  flickerStep,
   writeFlashlightState,
 } from './flashlightState';
 import { getLastPointerRay } from './pointerPick';
@@ -32,8 +29,11 @@ const _origin = new Vector3();
  * Camera flashlight (design Section 10): spot light offset from the camera, aimed at the pointer
  * ray hit (stone or ground) with last-valid-target fallback, flickering.
  * Cone mesh removed at user request; soft edge from penumbra only (deviates from 10.1's additive cone).
- * Same parameters in both lights modes (10.11). The camera is not in the scene graph, so the
- * light is placed from the pose published by CameraRig.
+ * Light values from LOOK_FLASHLIGHT (23.9), the same in both lights modes. Intensity is in candela
+ * (three r155+ physical light units; the app's three 0.187 has no legacy mode).
+ * Flicker: x0.35 for one frame, chance 0.006 per frame, capped at 3 per 1 s window by
+ * `flickerStep` until the Batch 3 Flash_Limiter takes over. The camera is not in the scene graph,
+ * so the light is placed from the pose published by CameraRig.
  */
 export function Flashlight({ layout }: { layout: GraveyardLayout }) {
   const lowQuality = useStore((s) => s.settings.lowQuality);
@@ -45,6 +45,7 @@ export function Flashlight({ layout }: { layout: GraveyardLayout }) {
   const inside = useRef(false);
   const aim = useRef<[number, number, number]>([...FLASHLIGHT_FALLBACK_TARGET]);
   const goal = useRef<[number, number, number]>([...FLASHLIGHT_FALLBACK_TARGET]);
+  const flicker = useMemo(() => createFlickerState(), []);
 
   useEffect(() => {
     const el = gl.domElement;
@@ -103,7 +104,10 @@ export function Flashlight({ layout }: { layout: GraveyardLayout }) {
     target.updateMatrixWorld();
     spot.updateMatrixWorld();
     const active = useStore.getState().framedPlot !== 'overview';
-    spot.intensity = active ? FLASHLIGHT_INTENSITY * flickerFactor(state.clock.elapsedTime) : 0;
+    // Roll the flicker only while lit, so the overview does not use up the cap window.
+    spot.intensity = active
+      ? LOOK_FLASHLIGHT.intensity * flickerStep(flicker, state.clock.elapsedTime, Math.random())
+      : 0;
 
     writeFlashlightState([_origin.x, _origin.y, _origin.z], a, active);
   }, -5);
@@ -114,17 +118,18 @@ export function Flashlight({ layout }: { layout: GraveyardLayout }) {
       <spotLight
         ref={light}
         target={target}
-        color={FLASHLIGHT_COLOR}
-        intensity={FLASHLIGHT_INTENSITY}
-        distance={FLASHLIGHT_DISTANCE}
-        angle={FLASHLIGHT_ANGLE}
-        penumbra={FLASHLIGHT_PENUMBRA}
-        decay={FLASHLIGHT_DECAY}
-        castShadow={qualityParams(lowQuality, 1).flashlightShadow}
+        color={LOOK_FLASHLIGHT.color}
+        intensity={LOOK_FLASHLIGHT.intensity}
+        distance={LOOK_FLASHLIGHT.distance}
+        angle={LOOK_FLASHLIGHT.angle}
+        penumbra={LOOK_FLASHLIGHT.penumbra}
+        decay={LOOK_FLASHLIGHT.decay}
+        // Low quality turns Flashlight shadows off (Base_Spec 21.9).
+        castShadow={LOOK_FLASHLIGHT.castShadow && qualityParams(lowQuality, 1).flashlightShadow}
         shadow-mapSize={[FLASHLIGHT_SHADOW_MAP, FLASHLIGHT_SHADOW_MAP]}
         shadow-camera-near={0.3}
-        shadow-camera-far={FLASHLIGHT_DISTANCE}
-        shadow-bias={-0.0004}
+        shadow-camera-far={LOOK_FLASHLIGHT.distance}
+        shadow-bias={LOOK_FLASHLIGHT.shadowBias}
       />
     </>
   );

@@ -12,12 +12,14 @@ import {
   type CameraPose,
 } from '../layout/camera';
 import type { GraveyardLayout } from '../layout/layout';
+import { LOOK_CAMERA } from '../look';
 import { CAMERA_FAR } from '../model/sceneParams';
 import type { CameraFogState } from '../model/sceneParams';
 import { writeCameraState } from './cameraState';
 import { cameraFogRef } from './lightsBlend';
 
-export const CAMERA_FOV = 52;
+/** Vertical field of view in degrees (Requirement 23.1). */
+export const CAMERA_FOV = LOOK_CAMERA.fovDeg;
 export const CAMERA_NEAR = 0.1;
 export const MOVE_SECONDS = 1.2;
 /** Pointer look offset in metres at the screen edge (design Section 10). */
@@ -36,7 +38,7 @@ const lerp3 = (a: V3, b: V3, t: number, out: V3): void => {
 };
 
 /**
- * Camera rig: FOV 52 camera framing a plot or the overview. Plot moves are 1.2 s smoothstep
+ * Camera rig: FOV 46 camera framing a plot or the overview. Plot moves are 1.2 s smoothstep
  * tweens (instant under Reduced_Motion), with handheld sway, a pointer look offset smoothed with
  * lambda 4, and a keyboard focus pan. Publishes the fog state and the pose through mutable refs.
  */
@@ -103,7 +105,7 @@ export function CameraRig({ layout }: { layout: GraveyardLayout }) {
           ? overviewPose(lay.bounds, CAMERA_FOV, aspect)
           : plotPose(FALLBACK_PLOT);
       }
-      const base = plotPose(lay.plots[t] ?? FALLBACK_PLOT, aspect);
+      const base = plotPose(lay.plots[t] ?? FALLBACK_PLOT);
       return {
         position: [base.position[0] + pan, base.position[1], base.position[2]],
         target: [base.target[0] + pan, base.target[1], base.target[2]],

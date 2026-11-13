@@ -1,7 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import fc from 'fast-check';
+import { LOOK_CAMERA } from '../look';
 import {
-  flickerFactor,
+  CAMERA_BACK,
+  CAMERA_HEIGHT,
+  TARGET_AHEAD,
+  TARGET_Y,
   nextPlot,
   overviewLabel,
   overviewPose,
@@ -13,7 +17,7 @@ import {
 } from './camera';
 import type { Rect } from './layout';
 
-const FOV = 52;
+const FOV = 46;
 
 /** True when the ground point (x, 0, z) is inside the frustum of the pose (with a small slack). */
 function inFrustum(
@@ -54,14 +58,31 @@ function inFrustum(
   );
 }
 
-describe('plotPose', () => {
-  it('plot 1 gives the initial pose (0, 1.5, 5.6) looking at z = -2', () => {
+describe('plotPose (23.1)', () => {
+  it('plot 1 gives the prototype pose (0, 1.2, 5.7) looking at (0, 0.6, 2.0)', () => {
     const p = plotPose({ centerX: 0, frontZ: 3 });
     expect(p.position[0]).toBeCloseTo(0);
-    expect(p.position[1]).toBeCloseTo(1.5);
-    expect(p.position[2]).toBeCloseTo(5.6);
-    expect(p.target[2]).toBeCloseTo(-2);
-    expect(p.target[1]).toBeCloseTo(0.2);
+    expect(p.position[1]).toBeCloseTo(1.2);
+    expect(p.position[2]).toBeCloseTo(5.7);
+    expect(p.target[0]).toBeCloseTo(0);
+    expect(p.target[1]).toBeCloseTo(0.6);
+    expect(p.target[2]).toBeCloseTo(2.0);
+  });
+
+  it('takes eye 1.2, look 0.6, back 2.7 and ahead 1.0 from look.ts', () => {
+    expect(CAMERA_HEIGHT).toBe(LOOK_CAMERA.eyeHeight);
+    expect(TARGET_Y).toBe(LOOK_CAMERA.lookHeight);
+    expect(CAMERA_BACK).toBe(LOOK_CAMERA.back);
+    expect(TARGET_AHEAD).toBe(LOOK_CAMERA.targetAhead);
+    expect([CAMERA_HEIGHT, TARGET_Y, CAMERA_BACK, TARGET_AHEAD]).toEqual([1.2, 0.6, 2.7, 1.0]);
+  });
+
+  it('follows the plot centre and front row', () => {
+    const p = plotPose({ centerX: -7.5, frontZ: -20 });
+    expect(p.position[0]).toBe(-7.5);
+    expect(p.position[1]).toBe(1.2);
+    expect(p.position[2]).toBeCloseTo(-17.3, 12);
+    expect(p.target).toEqual([-7.5, 0.6, -21]);
   });
 });
 
@@ -146,25 +167,6 @@ describe('labels (Property 28)', () => {
   });
 });
 
-describe('flickerFactor (10.5)', () => {
-  it('stays within 6% and changes at most 3 times in any 1 s window', () => {
-    fc.assert(
-      fc.property(fc.double({ min: 0, max: 10000, noNaN: true }), (t0) => {
-        const v = flickerFactor(t0);
-        if (v < 0.94 - 1e-12 || v > 1.06 + 1e-12) return false;
-        let changes = 0;
-        let prev = flickerFactor(t0);
-        for (let i = 1; i <= 240; i++) {
-          const cur = flickerFactor(t0 + i / 240);
-          if (cur !== prev) changes++;
-          prev = cur;
-        }
-        return changes <= 3;
-      }),
-    );
-  });
-});
-
 describe('projectToNdc', () => {
   const pose = plotPose({ centerX: 0, frontZ: 3 });
 
@@ -174,9 +176,11 @@ describe('projectToNdc', () => {
     expect(n?.y).toBeCloseTo(0, 9);
   });
 
-  it('puts a front-row mound base (2 m ahead) below the centre at both aspects', () => {
+  it('puts a front-row mound base (2.1 m ahead) below the centre at both aspects', () => {
+    // Depression atan(1.2 / 2.1) = 29.7 deg, view pitch atan(0.6 / 3.7) = 9.2 deg: 20.5 deg below the
+    // centre, inside the 23 deg half FOV (design section 6, CAMERA_BACK 2.7).
     for (const aspect of [1440 / 900, 390 / 844]) {
-      const n = projectToNdc(pose, [0, 0, 1], FOV, aspect);
+      const n = projectToNdc(pose, [0, 0, 3.6], FOV, aspect);
       expect(n).not.toBeNull();
       expect(n!.y).toBeLessThan(0);
       expect(n!.y).toBeGreaterThan(-1);

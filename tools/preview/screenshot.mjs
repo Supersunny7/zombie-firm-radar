@@ -22,6 +22,18 @@ const SCENES = {
       ["hooded-woman", "horror-batch1-hooded-woman.png"],
     ],
   },
+  // Task 3.31: same page, camera and lights for the before and after shots (see SETUP in horror-stones.js).
+  "horror-stones-before": {
+    page: "horror-stones.html",
+    shots: [
+      ["prefix", "horror-batch2b-stone-before.png"],
+      ["metalmap", "horror-batch2b-stone-diagnostic-metalnessmap.png"],
+    ],
+  },
+  "horror-stones-after": {
+    page: "horror-stones.html",
+    shots: [["app", "horror-batch2b-stone-after.png"]],
+  },
 };
 
 const i = process.argv.indexOf("--scene");

@@ -1,14 +1,15 @@
-import { Suspense, useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import { RepeatWrapping, SRGBColorSpace } from 'three';
-import type { Group, MeshStandardMaterial } from 'three';
+import type { Group } from 'three';
 import { ASSET_KEYS, assetUrl } from '../assets';
 import { groundTint, TILE_M } from '../model/groundGrade';
 import { FLAT_GROUND_COLOR, GROUND_SIZE_M } from '../model/sceneParams';
 import { ModelBoundary } from './ModelBoundary';
 import { reportEnvironmentFailure } from './environmentFailure';
 import { lightsBlendRef } from './lightsBlend';
+import { createGroundSoilMaterial } from './soil';
 
 /** The ground follows the camera in whole TILE_M tiles so the texture never swims. */
 const REPEAT = GROUND_SIZE_M / TILE_M;
@@ -45,10 +46,17 @@ function ForestGround() {
     roughnessMap: groundUrl(ASSET_KEYS.forestFloor.rough),
   });
 
-  const material = useRef<MeshStandardMaterial>(null);
+  // Black emissive in both lights modes (horror-pass 24.1).
+  // Keyed on the textures themselves: useTexture returns a new keyed object every render.
+  const { map, normalMap, roughnessMap } = textures;
+  const material = useMemo(
+    () => createGroundSoilMaterial({ map, normalMap, roughnessMap }, lightsBlendRef.current),
+    [map, normalMap, roughnessMap],
+  );
+  useEffect(() => () => material.dispose(), [material]);
   // Night grade: darker and redder in lights off, eased with the lights blend.
   useFrame(() => {
-    material.current?.color.setRGB(...groundTint(lightsBlendRef.current));
+    material.color.setRGB(...groundTint(lightsBlendRef.current));
   });
 
   useEffect(() => {
@@ -64,7 +72,7 @@ function ForestGround() {
 
   return (
     <GroundPlane>
-      <meshStandardMaterial ref={material} {...textures} />
+      <primitive object={material} attach="material" />
     </GroundPlane>
   );
 }

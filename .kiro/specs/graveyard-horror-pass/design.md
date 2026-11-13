@@ -285,7 +285,16 @@ Causes to remove (24.4):
 
 Result: every soil, Closed_Mound, Torn_Mound heap, Pit, Clod and Grass_Card material has `emissive #000000`, `emissiveIntensity 0`, no `emissiveMap`, in both Lights_Mode values. Clods: `flatShading`, colour `#3b2c1f`, roughness 1. Pit: colour `#040302`; it becomes a `MeshStandardMaterial` (roughness 1, black emissive) instead of `MeshBasicMaterial`, so 24.1 applies to it. Each material is built by an exported factory in `soil.tsx` so one example test (`soilMaterials.test.tsx`) can check all six for both modes (24.5).
 
+#### Stone metalness map (24.6, 24.7)
+
+- Finding (2026-11-13): 0% of texels have alpha < 255 in the three stone textures (source and published). The stone glbs have metallicFactor 1 and a metal/roughness texture with near-zero metallic, but `web/src/fx/StoneMaterial.tsx` passed `metalness` without `metalnessMap`, so stones rendered fully metallic and went black with environment intensity 0.
+- Fix: `StoneMaterial.tsx` passes `metalnessMap={source.metalnessMap ?? undefined}` next to `roughnessMap` (glTF uses one texture for both). No pipeline edit, no `CREDITS.md` or Manifest change.
+- Test: an example test checks, for each stone model, that the stone material's `metalnessMap` is the same texture as its `roughnessMap`.
+- Evidence: before/after close-ups made with `tools/preview` scene `horror-stones-*`, saved to `reference/progress/horror-batch2b-stone-before.png` and `-after.png`.
+
 ### 8. Batch 2b bug analysis: Lights toggle and the +0.25 pp jump (Requirement 25)
+
+Note (2026-11-13): the user reduced 25.3 and 25.4 to the H2 fix and jsdom tests, because the HUD Lights button and slider are replaced in the control-room-ui spec; H1 and H3 are not investigated.
 
 **Observation:** after the Lights button is activated, the Shock_Slider reads +0.25 pp (step k = 1, stored 0.0025).
 
@@ -689,7 +698,7 @@ Unit and example tests cover wiring and edge cases; the properties above cover t
 
 | Test file | Change |
 | --- | --- |
-| `layout/camera.test.ts` | Plot pose cases assert FOV 46, eye 1.2, look 0.6, back 3.0; target easing cases removed. |
+| `layout/camera.test.ts` | Plot pose cases assert FOV 46, eye 1.2, look 0.6, back 3.0; target easing cases removed. The Base_Spec 10.5 `flickerFactor` case (Property 24) is removed with `flickerFactor`; the 23.9 flicker and its 3-per-second cap are tested in `r3f/flashlightState.test.ts`. |
 | `model/sceneParams.test.ts`, `r3f/lightsBlend.test.ts` | Plot_Fog, hemisphere, moon, background and environment values for lights-off framed plots. |
 | `r3f/TornMounds.test.ts`, `model/tornMound.test.ts`, `r3f/Grass.test.ts` | No `emissiveMap`, black emissive, Clod and Pit colours. |
 | `fx/glitchScheduler` tests | Random glitch offered through the Flash_Limiter; no vanish trigger. |

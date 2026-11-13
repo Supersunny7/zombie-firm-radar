@@ -3,13 +3,12 @@ import {
   BufferAttribute,
   BufferGeometry,
   CircleGeometry,
-  DoubleSide,
   Euler,
   Matrix4,
   Quaternion,
   Vector3,
 } from 'three';
-import type { InstancedMesh, MeshStandardMaterial } from 'three';
+import type { InstancedMesh } from 'three';
 import { mulberry32 } from '../../../engine/rng';
 import { useShockView } from '../../../state/shockView';
 import { useStore } from '../../../state/store';
@@ -21,7 +20,15 @@ import { moundPlacement } from '../model/moundPlacement';
 import { moundSets } from '../model/moundSets';
 import { CLOD_MAX, clodsFor, pitRadius, tornMoundProfile } from '../model/tornMound';
 import { useActiveRiserCiks } from './activeRisers';
-import { SOIL_FALLBACK_COLOR, SOIL_TINT_TORN_OFF, WithSoil, useSoilTint } from './soil';
+import { lightsBlendRef } from './lightsBlend';
+import {
+  SOIL_TINT_TORN_OFF,
+  WithSoil,
+  createClodMaterial,
+  createPitMaterial,
+  createTornHeapMaterial,
+  useSoilTint,
+} from './soil';
 import type { SoilMaps } from './soil';
 import { useVisibleStones } from './useVisibleStones';
 
@@ -30,10 +37,8 @@ const HEAP_Y = -0.02;
 /** The Pit disc lies just above the ground, inside the rim wall. */
 const PIT_DISC_Y = 0.012;
 const PIT_DISC_SCALE = 0.99;
-const PIT_COLOR = '#010101';
-/** Lights-off self-light of the textured rim and clods, so they read against the black ground. */
-const RIM_GLOW = 0.8;
-const CLOD_GLOW = 0.38;
+/** Empty ref: `useSoilTint` skips it (used when the heap draws the untinted fallback colour). */
+const NO_MATERIAL = { current: null };
 const STAIN_COLOR = '#3a0604';
 const STAIN_MAX_RADIUS = 0.12;
 const STAIN_MIN_RADIUS = 0.05;
@@ -137,7 +142,9 @@ function useSites(
 
 function Heaps({ sites, maps }: { sites: readonly TornSite[]; maps: SoilMaps | null }) {
   const ref = useRef<InstancedMesh>(null);
-  const mat = useRef<MeshStandardMaterial>(null);
+  // Black emissive, no emissive map (horror-pass 24.1, 24.4); null maps give the fallback colour.
+  const material = useMemo(() => createTornHeapMaterial(maps, lightsBlendRef.current), [maps]);
+  useEffect(() => () => material.dispose(), [material]);
   const geometry = useMemo(() => buildTornHeapGeometry(), []);
   useEffect(() => () => geometry.dispose(), [geometry]);
   const capacity = Math.max(1, sites.length);
@@ -158,7 +165,9 @@ function Heaps({ sites, maps }: { sites: readonly TornSite[]; maps: SoilMaps | n
     mesh.computeBoundingSphere();
   }, [sites, capacity]);
 
-  useSoilTint(mat, { off: SOIL_TINT_TORN_OFF, glow: RIM_GLOW });
+  // The tint replaces the colour, so it only runs on the textured heap; the fallback keeps
+  // SOIL_FALLBACK_COLOR.
+  useSoilTint(maps ? material : NO_MATERIAL, { off: SOIL_TINT_TORN_OFF });
 
   return (
     <instancedMesh
@@ -171,18 +180,16 @@ function Heaps({ sites, maps }: { sites: readonly TornSite[]; maps: SoilMaps | n
       frustumCulled
       name="torn-mounds"
     >
-      {maps ? (
-        <meshStandardMaterial ref={mat} {...maps} emissiveMap={maps.map} side={DoubleSide} />
-      ) : (
-        <meshStandardMaterial ref={mat} color={SOIL_FALLBACK_COLOR} side={DoubleSide} />
-      )}
+      <primitive object={material} attach="material" />
     </instancedMesh>
   );
 }
 
-function Clods({ sites, maps }: { sites: readonly TornSite[]; maps: SoilMaps | null }) {
+/** Flat-shaded dirt Clods, `CLOD_COLOR`, roughness 1, no maps and no tint (24.2). */
+function Clods({ sites }: { sites: readonly TornSite[] }) {
   const ref = useRef<InstancedMesh>(null);
-  const mat = useRef<MeshStandardMaterial>(null);
+  const material = useMemo(() => createClodMaterial(), []);
+  useEffect(() => () => material.dispose(), [material]);
   const capacity = Math.max(1, sites.length * CLOD_MAX);
 
   useLayoutEffect(() => {
@@ -206,8 +213,6 @@ function Clods({ sites, maps }: { sites: readonly TornSite[]; maps: SoilMaps | n
     mesh.computeBoundingSphere();
   }, [sites, capacity]);
 
-  useSoilTint(mat, { off: SOIL_TINT_TORN_OFF, glow: CLOD_GLOW });
-
   return (
     <instancedMesh
       key={capacity}
@@ -219,18 +224,19 @@ function Clods({ sites, maps }: { sites: readonly TornSite[]; maps: SoilMaps | n
       name="clods"
     >
       <icosahedronGeometry args={[1, 1]} />
-      {maps ? (
-        <meshStandardMaterial ref={mat} {...maps} emissiveMap={maps.map} />
-      ) : (
-        <meshStandardMaterial ref={mat} color={SOIL_FALLBACK_COLOR} />
-      )}
+      <primitive object={material} attach="material" />
     </instancedMesh>
   );
 }
 
-/** Dark open Pit: one disc per torn mound, nothing above it, darker than the soil in both modes. */
+/**
+ * Dark open Pit: one disc per torn mound, nothing above it, darker than the soil in both modes.
+ * Lit `MeshStandardMaterial` (`PIT_COLOR`, roughness 1, black emissive; 24.1, 24.3).
+ */
 function Pits({ sites }: { sites: readonly TornSite[] }) {
   const ref = useRef<InstancedMesh>(null);
+  const material = useMemo(() => createPitMaterial(), []);
+  useEffect(() => () => material.dispose(), [material]);
   const geometry = useMemo(() => flatDisc(28), []);
   useEffect(() => () => geometry.dispose(), [geometry]);
   const capacity = Math.max(1, sites.length);
@@ -259,7 +265,7 @@ function Pits({ sites }: { sites: readonly TornSite[] }) {
       raycast={() => null}
       name="pits"
     >
-      <meshBasicMaterial color={PIT_COLOR} />
+      <primitive object={material} attach="material" />
     </instancedMesh>
   );
 }
@@ -348,7 +354,7 @@ export function TornMounds({ layout }: { layout: GraveyardLayout }) {
         {(maps) => (
           <>
             <Heaps sites={sites} maps={maps} />
-            <Clods sites={sites} maps={maps} />
+            <Clods sites={sites} />
           </>
         )}
       </WithSoil>

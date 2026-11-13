@@ -76,13 +76,18 @@ function SkyDome() {
   const on = useMemo(() => new Color(TOP_ON), []);
   const hazeOff = useMemo(() => new Color(HAZE_OFF), []);
   const hazeOn = useMemo(() => new Color(HAZE_ON), []);
+  const fog = useMemo(() => new Color(), []);
   useEffect(() => () => material.dispose(), [material]);
   useFrame(() => {
     const p = blendedParamsRef.current ?? FALLBACK_PARAMS;
     const u = material.uniforms as Record<string, { value: Color }>;
-    u.horizonColor?.value.set(p.fogColor);
-    u.topColor?.value.copy(off).lerp(on, lightsBlendRef.current);
-    u.hazeColor?.value.copy(hazeOff).lerp(hazeOn, lightsBlendRef.current);
+    fog.set(p.fogColor);
+    u.horizonColor?.value.copy(fog);
+    // Lights-off framed plot (23.5): zenith and haze go to the fog colour with plotLook, so the
+    // whole background reads as `#0a0d13` and no horizon shows. plotLook is 0 in the overview and
+    // in lights on, so those skies are unchanged.
+    u.topColor?.value.copy(off).lerp(on, lightsBlendRef.current).lerp(fog, p.plotLook);
+    u.hazeColor?.value.copy(hazeOff).lerp(hazeOn, lightsBlendRef.current).lerp(fog, p.plotLook);
   });
   return (
     <mesh renderOrder={-1000} frustumCulled={false}>

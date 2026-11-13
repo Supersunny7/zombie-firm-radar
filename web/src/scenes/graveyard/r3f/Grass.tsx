@@ -1,11 +1,8 @@
 import { useEffect, useLayoutEffect, useMemo, useRef } from 'react';
-import { useFrame } from '@react-three/fiber';
 import {
   BufferAttribute,
   BufferGeometry,
-  Color,
   DataTexture,
-  DoubleSide,
   LinearFilter,
   LinearMipmapLinearFilter,
   Matrix4,
@@ -15,7 +12,7 @@ import {
   UnsignedByteType,
   Vector3,
 } from 'three';
-import type { InstancedMesh, MeshStandardMaterial } from 'three';
+import type { InstancedMesh } from 'three';
 import { fnv1a32 } from '../../../engine/hash';
 import { useStore } from '../../../state/store';
 import type { GraveyardLayout } from '../layout/layout';
@@ -23,15 +20,11 @@ import { GRASS_CAP, placeGrass } from '../model/grass';
 import type { GrassCard } from '../model/grass';
 import { GRASS_TEXTURE_SIZE, grassTexture } from '../model/grassTexture';
 import { lightsBlendRef } from './lightsBlend';
+import { GRASS_TINT_OFF, createGrassCardMaterial, useSoilTint } from './soil';
 
 /** Card geometry size in metres; instance scale = card.width / CARD_W, card.height / CARD_H. */
 const CARD_W = 0.5;
 const CARD_H = 0.35;
-/** Lights-off tint dims and cools the straw; lights on is the plain texture colour. */
-const TINT_OFF = new Color(0.62, 0.66, 0.7);
-const TINT_ON = new Color(1, 1, 1);
-/** Lights-off self-light on the grass texture: sparse straw has to read against the black ground. */
-const GRASS_GLOW = 0.3;
 
 /** Two crossed quads (0.5 x 0.35 m), base on y = 0, merged into one geometry. */
 export function buildGrassGeometry(): BufferGeometry {
@@ -122,12 +115,18 @@ export function Grass({ layout }: { layout: GraveyardLayout }) {
   const framed = useStore((s) => s.framedPlot);
   const lowQuality = useStore((s) => s.settings.lowQuality);
   const ref = useRef<InstancedMesh>(null);
-  const mat = useRef<MeshStandardMaterial>(null);
 
   const geometry = useMemo(() => buildGrassGeometry(), []);
   const texture = useMemo(() => buildGrassTexture(fnv1a32('dead-grass')), []);
   useEffect(() => () => geometry.dispose(), [geometry]);
   useEffect(() => () => texture.dispose(), [texture]);
+  // Texture as `map` only, black emissive, no emissive map (horror-pass 24.1, 24.4). R3F does not
+  // dispose primitives, so the material is disposed here.
+  const material = useMemo(
+    () => createGrassCardMaterial(texture, lightsBlendRef.current),
+    [texture],
+  );
+  useEffect(() => () => material.dispose(), [material]);
 
   const cards = useMemo(
     () => (framed === 'overview' ? [] : placeGrass(layout, framed, lowQuality ? 'low' : 'normal')),
@@ -138,15 +137,8 @@ export function Grass({ layout }: { layout: GraveyardLayout }) {
     if (ref.current) writeGrassInstances(ref.current, cards);
   }, [cards]);
 
-  // Lights-on lighting: untinted and brighter; follows the eased lights value.
-  useFrame(() => {
-    const m = mat.current;
-    if (!m) return;
-    const lb = lightsBlendRef.current;
-    m.color.lerpColors(TINT_OFF, TINT_ON, lb);
-    const g = GRASS_GLOW * (1 - lb);
-    m.emissive.setRGB(g * 0.9, g, g * 0.8);
-  });
+  // Lights off dims and cools the straw, lights on is untinted; follows the eased lights value.
+  useSoilTint(material, { off: GRASS_TINT_OFF });
 
   return (
     <instancedMesh
@@ -156,15 +148,7 @@ export function Grass({ layout }: { layout: GraveyardLayout }) {
       receiveShadow
       name="grass"
     >
-      <meshStandardMaterial
-        ref={mat}
-        map={texture}
-        emissiveMap={texture}
-        alphaTest={0.5}
-        side={DoubleSide}
-        roughness={1}
-        metalness={0}
-      />
+      <primitive object={material} attach="material" />
     </instancedMesh>
   );
 }
