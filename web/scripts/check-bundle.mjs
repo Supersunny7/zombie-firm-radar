@@ -23,6 +23,61 @@ export const FORBIDDEN_MARKERS = [
 ];
 const BINARY_EXT = /\.(glb|ktx2|hdr|png|jpe?g|webp|gif|mp3|ogg|wav|woff2?|ico)$/i;
 
+// Initial-download budget (graveyard-scene Requirements 8.10, 21.4). MB = 1,000,000 bytes (8.10).
+export const INITIAL_DOWNLOAD_LIMIT_MB = 25;
+export const BYTES_PER_MB = 1_000_000;
+const ASSET_MANIFEST = join(
+  dirname(fileURLToPath(import.meta.url)),
+  '..',
+  'public',
+  'assets',
+  'manifest.json',
+);
+
+// Duplicate of CRITICAL_ASSET_KEYS in src/scenes/graveyard/assets.ts (this script is plain .mjs).
+// check-bundle.test.mjs asserts that both lists are equal; change them together.
+export const CRITICAL_ASSET_KEYS = [
+  'models/sketchfab-small-gravestone-drydoctoregg/sketchfab-small-gravestone-drydoctoregg.glb',
+  'models/own-headstone-cracked/own-headstone-cracked.glb',
+  'models/sketchfab-damaged-tombstone-drydoctoregg/sketchfab-damaged-tombstone-drydoctoregg.glb',
+  'hdri/polyhaven-moonlit-golf-environment/polyhaven-moonlit-golf-environment_1k.hdr',
+  'textures/polyhaven-excavated-soil-wall/polyhaven-excavated-soil-wall_diffuse.webp',
+  'textures/polyhaven-excavated-soil-wall/polyhaven-excavated-soil-wall_nor-gl.webp',
+  'textures/polyhaven-excavated-soil-wall/polyhaven-excavated-soil-wall_rough.webp',
+];
+
+/** Sums manifest `bytes` of the given keys. Throws when a key is missing or has no byte count. */
+export function criticalAssetBytes(files, keys = CRITICAL_ASSET_KEYS) {
+  return keys.reduce((sum, key) => {
+    const bytes = files[key]?.bytes;
+    if (!Number.isFinite(bytes))
+      throw new Error(`critical asset "${key}" has no bytes in manifest`);
+    return sum + bytes;
+  }, 0);
+}
+
+/**
+ * Pure initial-download computation: critical asset bytes plus gzipped JS bytes
+ * (initial closure and graveyard chunk). Returns the totals and the failure message, if any.
+ */
+export function computeInitialDownload({
+  assetBytes,
+  jsGzipBytes,
+  limitMb = INITIAL_DOWNLOAD_LIMIT_MB,
+}) {
+  const totalBytes = assetBytes + jsGzipBytes;
+  const mb = (totalBytes / BYTES_PER_MB).toFixed(1);
+  const over = totalBytes > limitMb * BYTES_PER_MB;
+  return {
+    totalBytes,
+    assetBytes,
+    jsGzipBytes,
+    mb,
+    over,
+    message: over ? `Initial download ${mb} MB exceeds the ${limitMb} MB limit` : null,
+  };
+}
+
 function walk(dir, filter) {
   return readdirSync(dir).flatMap((name) => {
     const p = join(dir, name);
@@ -90,7 +145,21 @@ function main() {
   const graveyardKey = Object.keys(manifest).find((k) => k === GRAVEYARD_SRC);
   if (graveyardKey) {
     const withGraveyard = new Set([...initial, ...closure(graveyardKey)]);
-    console.log(`Total JS after graveyard scene: ${kb(sizeOf(withGraveyard))} KB gzipped`);
+    const jsGzipBytes = sizeOf(withGraveyard);
+    console.log(`Total JS after graveyard scene: ${kb(jsGzipBytes)} KB gzipped`);
+    try {
+      const assets = JSON.parse(readFileSync(ASSET_MANIFEST, 'utf8'));
+      const result = computeInitialDownload({
+        assetBytes: criticalAssetBytes(assets.files),
+        jsGzipBytes,
+      });
+      console.log(
+        `Initial download: ${result.mb} MB (critical assets ${result.assetBytes} bytes + JS gzip ${result.jsGzipBytes} bytes; limit ${INITIAL_DOWNLOAD_LIMIT_MB} MB, MB = 1,000,000 bytes)`,
+      );
+      if (result.message) failures.push(result.message);
+    } catch (err) {
+      failures.push(`initial download check failed: ${err.message}`);
+    }
   } else {
     failures.push(`graveyard chunk (${GRAVEYARD_SRC}) not found in manifest`);
   }

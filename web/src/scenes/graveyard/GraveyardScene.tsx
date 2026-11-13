@@ -2,6 +2,8 @@ import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import type { RootState } from '@react-three/fiber';
 import { ACESFilmicToneMapping } from 'three';
+import { useGraveyardAudio } from '../../audio/useGraveyardAudio';
+import { qualityParams } from './model/quality';
 import { useStore } from '../../state/store';
 import { GraveyardHud } from '../../ui/graveyard/GraveyardHud';
 import { hasWebGL } from '../webgl';
@@ -30,6 +32,9 @@ const CctvPass = lazy(() => import('../../fx/CctvPass').then((m) => ({ default: 
 const Flashlight = lazy(() => import('./r3f/Flashlight').then((m) => ({ default: m.Flashlight })));
 const Creatures = lazy(() => import('./r3f/Creatures').then((m) => ({ default: m.Creatures })));
 const Hands = lazy(() => import('./r3f/Hands').then((m) => ({ default: m.Hands })));
+const FocusMarker = lazy(() =>
+  import('./r3f/FocusMarker').then((m) => ({ default: m.FocusMarker })),
+);
 const Props = lazy(() => import('./r3f/Props').then((m) => ({ default: m.Props })));
 
 export { ModelBoundary };
@@ -70,6 +75,7 @@ export function SceneContent() {
       <Props layout={layout} />
       <Creatures layout={layout} />
       <Flashlight layout={layout} />
+      <FocusMarker layout={layout} />
       <PointerInput layout={layout} />
       <CctvPass />
     </>
@@ -77,7 +83,9 @@ export function SceneContent() {
 }
 
 export default function GraveyardScene() {
+  useGraveyardAudio();
   const lowQuality = useStore((s) => s.settings.lowQuality);
+  const quality = qualityParams(lowQuality, window.devicePixelRatio);
   const webgl = useMemo(() => hasWebGL(), []);
   const [contextLost, setContextLost] = useState(false);
   const [canvasKey, setCanvasKey] = useState(0);
@@ -100,8 +108,8 @@ export default function GraveyardScene() {
       {webgl ? (
         <Canvas
           key={canvasKey}
-          shadows={!lowQuality}
-          dpr={lowQuality ? 1 : [1, 1.5]}
+          shadows
+          dpr={quality.dpr}
           gl={{ antialias: !lowQuality, powerPreference: 'high-performance' }}
           camera={{ fov: CAMERA_FOV, near: CAMERA_NEAR, far: CAMERA_FAR, position: [0, 2.15, 9.4] }}
           style={{ background: STAGE_BACKGROUND }}

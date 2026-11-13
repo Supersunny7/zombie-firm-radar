@@ -1,10 +1,15 @@
-import { useEffect } from 'react';
+import { useEffect, type FocusEvent } from 'react';
 import { nextPlot } from '../../scenes/graveyard/layout/camera';
 import { useLayout } from '../../state/useLayout';
 import { useStore } from '../../state/store';
+import { isStoneProxyActive } from '../../state/stoneProxy';
 
 const chip =
   'shrink-0 snap-start whitespace-nowrap rounded-panel border border-panel-border bg-panel px-2 py-1 text-xs text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text aria-pressed:border-text aria-pressed:font-semibold';
+
+function reveal(e: FocusEvent<HTMLButtonElement>) {
+  e.currentTarget.scrollIntoView?.({ block: 'nearest', inline: 'nearest' });
+}
 
 function isTyping(t: EventTarget | null): boolean {
   if (!(t instanceof HTMLElement)) return false;
@@ -24,8 +29,9 @@ export function PlotNav() {
       if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
       if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
       if (isTyping(e.target)) return;
+      // The stone proxy handles its own arrows; once focus leaves it, plot arrows work again.
+      if (isStoneProxyActive()) return;
       const st = useStore.getState();
-      if (st.focusedCik !== null) return;
       const cur = st.framedPlot === 'overview' ? 0 : st.framedPlot;
       const dir = e.key === 'ArrowRight' ? 'right' : 'left';
       st.setFramedPlot(
@@ -40,11 +46,12 @@ export function PlotNav() {
   return (
     <nav
       aria-label="Plots"
-      className="pointer-events-auto flex max-w-full snap-x flex-nowrap gap-1 overflow-x-auto p-1"
+      className="scrollbar-dark pointer-events-auto flex max-w-full snap-x flex-nowrap gap-1 overflow-x-auto p-1"
     >
       <button
         type="button"
         className={chip}
+        onFocus={reveal}
         aria-pressed={framed === 'overview'}
         onClick={() => setFramedPlot('overview')}
       >
@@ -55,6 +62,7 @@ export function PlotNav() {
           key={p.sector}
           type="button"
           className={chip}
+          onFocus={reveal}
           aria-pressed={framed === i}
           onClick={() => setFramedPlot(i)}
         >

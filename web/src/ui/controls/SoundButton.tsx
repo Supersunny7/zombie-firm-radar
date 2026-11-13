@@ -1,3 +1,4 @@
+import { retryAudioResume } from '../../audio/useGraveyardAudio';
 import { useStore } from '../../state/store';
 
 const btn =
@@ -11,7 +12,15 @@ export function SoundButton() {
   const effective = sound && !audioBlocked;
 
   return (
-    <button type="button" className={btn} onClick={() => setSetting('sound', !sound)}>
+    <button
+      type="button"
+      className={btn}
+      onClick={() => {
+        // The label reads "Sound off" while blocked, so a click retries instead of muting.
+        if (audioBlocked && sound) retryAudioResume();
+        else setSetting('sound', !sound);
+      }}
+    >
       {effective ? 'Sound on' : 'Sound off'}
     </button>
   );

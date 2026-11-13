@@ -9,7 +9,6 @@ export const FLASHLIGHT_ANGLE = 0.27;
 export const FLASHLIGHT_PENUMBRA = 0.85;
 export const FLASHLIGHT_DECAY = 1.7;
 export const FLASHLIGHT_SHADOW_MAP = 1024;
-export const CONE_OPACITY = 0.08;
 /** Offset from the camera in camera-local metres (10.2). */
 export const FLASHLIGHT_OFFSET: readonly [number, number, number] = [0.28, -0.32, 0.1];
 /** Aim used until a valid ray hit exists (10.4). */

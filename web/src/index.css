@@ -32,9 +32,34 @@
   animation: none !important;
 }
 
+/* Dark, thin scrollbar for horizontal chip rows. */
+.scrollbar-dark {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(230, 226, 214, 0.25) transparent;
+}
+.scrollbar-dark::-webkit-scrollbar {
+  height: 4px;
+}
+.scrollbar-dark::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-dark::-webkit-scrollbar-thumb {
+  background: rgba(230, 226, 214, 0.25);
+  border-radius: 2px;
+}
+.scrollbar-dark::-webkit-scrollbar-thumb:hover {
+  background: rgba(230, 226, 214, 0.4);
+}
+
 body {
   margin: 0;
   background: var(--color-ink);
   color: var(--color-text);
   font-family: var(--font-ui);
+}
+
+/* Fallback 2 px focus outline for any control that lacks its own focus-visible classes. */
+:where(button, select, input, a, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
 }

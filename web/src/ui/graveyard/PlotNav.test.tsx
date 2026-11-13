@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { cleanup, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe } from 'vitest-axe';
@@ -41,6 +41,20 @@ describe('PlotNav', () => {
     expect(chips[1]).toHaveAttribute('aria-pressed', 'false');
   });
 
+  it('uses the dark thin scrollbar class on the chip row', () => {
+    render(<PlotNav />);
+    expect(screen.getByRole('navigation', { name: 'Plots' })).toHaveClass('scrollbar-dark');
+  });
+
+  it('scrolls a chip into view on focus', () => {
+    render(<PlotNav />);
+    const chip = screen.getByRole('button', { name: '3. Services' });
+    const spy = vi.fn();
+    chip.scrollIntoView = spy;
+    chip.focus();
+    expect(spy).toHaveBeenCalledWith({ block: 'nearest', inline: 'nearest' });
+  });
+
   it('chip click frames the plot and Overview frames the overview', async () => {
     render(<PlotNav />);
     await userEvent.click(screen.getByRole('button', { name: '3. Services' }));
@@ -61,11 +75,30 @@ describe('PlotNav', () => {
     expect(useStore.getState().framedPlot).toBe(2);
   });
 
-  it('ignores arrows while a stone has focus', async () => {
-    useStore.setState({ focusedCik: '0000000001' });
-    render(<PlotNav />);
+  it('ignores arrows while the stone proxy is the active element', async () => {
+    render(
+      <>
+        <button type="button" data-stone-proxy="" aria-label="proxy" />
+        <PlotNav />
+      </>,
+    );
+    screen.getByRole('button', { name: 'proxy' }).focus();
     await userEvent.keyboard('{ArrowRight}');
     expect(useStore.getState().framedPlot).toBe(0);
+  });
+
+  it('arrows work again after focus leaves the proxy, even if focusedCik is set', async () => {
+    useStore.setState({ focusedCik: '0000000001' });
+    render(
+      <>
+        <button type="button" data-stone-proxy="" aria-label="proxy" />
+        <PlotNav />
+      </>,
+    );
+    screen.getByRole('button', { name: 'proxy' }).focus();
+    await userEvent.tab();
+    await userEvent.keyboard('{ArrowRight}');
+    expect(useStore.getState().framedPlot).toBe(1);
   });
 
   it('ignores arrows while typing in an input', async () => {

@@ -564,18 +564,18 @@ What to check:
 
 ### Batch 6: Audio, keyboard navigation, quality and bundle budget
 
-- [ ] 18. Audio engine
-  - [~] 18.1 Implement `web/src/audio/scheduler.ts`
+- [x] 18. Audio engine
+  - [x] 18.1 Implement `web/src/audio/scheduler.ts`
     - `nextCrowDelay(rand) = 20 + 40 * rand()`.
     - _Requirements: 16.3_
     - _Design: Section 16_
 
-  - [~] 18.2 Implement `web/src/audio/audioEngine.ts`
+  - [x] 18.2 Implement `web/src/audio/audioEngine.ts`
     - No `AudioContext` before the Interaction_Gate (first pointerdown, touchstart or keydown, capture phase; never pointer movement), decode with `Promise.allSettled`, wind loop within 500 ms, crow timer, dig on rise events (dropped while muted or before the gate, never queued), `playLeave()`, mute via `settings.sound` (gain 0 within 50 ms, wind stopped, timer cancelled), `dispose()` within 200 ms, blocked-playback flag and `resume()` retry. Only `manifest.json` audio keys; failures skipped silently. No reading of motion settings.
     - _Requirements: 16.1, 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 16.8, 16.9, 16.10, 16.11, 16.12_
     - _Design: Section 16_
 
-  - [~] 18.3 Wire audio into the scene and Sound button
+  - [x] 18.3 Wire audio into the scene and Sound button
     - Subscribe to `riseEvents`, call `playLeave()` when leaving the graveyard, `dispose()` on unmount, `setAudioBlocked`, Sound button click retries `resume()` after a blocked start.
     - _Requirements: 14.9, 16.4, 16.5, 16.9, 16.12, 16.13_
     - _Design: Section 16_
@@ -595,13 +595,13 @@ What to check:
     - **Property 34: One rise event per hand start**
     - **Validates: Requirements 16.4, 16.8**
 
-- [ ] 19. Keyboard navigation
-  - [~] 19.1 Implement `ui/graveyard/StoneFocusProxy.tsx` and `r3f/FocusMarker.tsx`
+- [x] 19. Keyboard navigation
+  - [x] 19.1 Implement `ui/graveyard/StoneFocusProxy.tsx` and `r3f/FocusMarker.tsx`
     - Look up `RingGeometry` usage and `depthTest` options with context7 first. Single roving tab stop, first stone in reading order on Tab, ring marker (at least 3:1 contrast in both modes), 2 px focus outlines on controls.
     - _Requirements: 18.1, 18.7_
     - _Design: Section 13_
 
-  - [~] 19.2 Wire keyboard behaviour
+  - [x] 19.2 Wire keyboard behaviour
     - Arrows via `nextFocus`, Enter opens the card and focuses its first control, Esc closes and returns focus, flashlight aims at the focused stone within 300 ms, engravings rebuild around it, rig moves to the stone's plot within 1.5 s, live region announces within 500 ms.
     - _Requirements: 18.2, 18.3, 18.4, 18.5, 18.6, 18.8, 18.9_
     - _Design: Section 13_
@@ -610,13 +610,13 @@ What to check:
     - jsdom: Tab enters the proxy, arrow moves or stays, Enter/Esc focus handling, live region text.
     - _Requirements: 18.1, 18.4, 18.5, 18.9_
 
-- [ ] 20. Quality toggle and bundle budget
-  - [~] 20.1 Implement low quality mode
+- [x] 20. Quality toggle and bundle budget
+  - [x] 20.1 Implement low quality mode
     - Lower pixel ratio (0.75 x normal, floor 0.75), no flashlight shadow, moon shadow map 1024, exactly one fog layer, no bloom or chromatic aberration (other CCTV values unchanged).
     - _Requirements: 15.9, 21.9_
     - _Design: Section 17_
 
-  - [~] 20.2 Add the 25 MB initial-download check to `web/scripts/check-bundle.mjs`
+  - [x] 20.2 Add the 25 MB initial-download check to `web/scripts/check-bundle.mjs`
     - Sum manifest `bytes` of the critical key list plus gzip of the initial JS closure and graveyard chunk; fail with "Initial download X MB exceeds the 25 MB limit".
     - _Requirements: 8.10, 21.3, 21.4_
     - _Design: Section 17, Lazy-loading plan_

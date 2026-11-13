@@ -640,6 +640,16 @@
         "executionId": "191c6c60-a6c3-46f2-98c1-348326975915",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794531461183
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794534907639
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535003907
       }
     ],
     "14.4 Implement `ui/graveyard/PlotNav.tsx` and the REC label": [
@@ -667,6 +677,16 @@
         "executionId": "191c6c60-a6c3-46f2-98c1-348326975915",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794531461361
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794534909951
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535005461
       }
     ],
     "15.1 Implement `fx/glitchScheduler.ts` and `fx/cctvParams.ts`": [
@@ -810,6 +830,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502858014
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535016294
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535208551
       }
     ],
     "18.2 Implement `web/src/audio/audioEngine.ts`": [
@@ -817,6 +847,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502858114
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535229329
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535425337
       }
     ],
     "18.3 Wire audio into the scene and Sound button": [
@@ -824,6 +864,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502858213
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535432959
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535669244
       }
     ],
     "19.1 Implement `ui/graveyard/StoneFocusProxy.tsx` and `r3f/FocusMarker.tsx`": [
@@ -831,6 +881,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502858317
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535018092
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535209240
       }
     ],
     "19.2 Wire keyboard behaviour": [
@@ -838,6 +898,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502858510
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535676482
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535897011
       }
     ],
     "20.1 Implement low quality mode": [
@@ -845,6 +915,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502858719
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535904285
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794536344575
       }
     ],
     "20.2 Add the 25 MB initial-download check to `web/scripts/check-bundle.mjs`": [
@@ -852,6 +932,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502858977
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535018363
+      },
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535210906
       }
     ],
     "21.1 Implement `web/scripts/measure-fps.mjs`": [
@@ -1016,6 +1106,27 @@
         "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794510191612
+      }
+    ],
+    "18. Audio engine": [
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535669525
+      }
+    ],
+    "19. Keyboard navigation": [
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794535897181
+      }
+    ],
+    "20. Quality toggle and bundle budget": [
+      {
+        "executionId": "149ca969-bdbf-43b8-8a90-ad1a62e4c247",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794536344674
       }
     ]
   }

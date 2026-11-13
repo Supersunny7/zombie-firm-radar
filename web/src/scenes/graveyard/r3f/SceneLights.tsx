@@ -5,6 +5,7 @@ import type { DirectionalLight, HemisphereLight } from 'three';
 import { useStore } from '../../../state/store';
 import { CAMERA_FOV } from './CameraRig';
 import { CAMERA_FAR, FOG_COLOR, sceneParams } from '../model/sceneParams';
+import { qualityParams } from '../model/quality';
 import { cameraStateRef } from './cameraState';
 import {
   applyToScene,
@@ -19,8 +20,6 @@ import {
 
 /** Moon shadow frustum: 40 m x 40 m (design Section 7). */
 const SHADOW_HALF = 20;
-const SHADOW_MAP = 2048;
-const SHADOW_MAP_LOW = 1024;
 /** How far ahead of the camera the shadow box is centred, and its snap size in metres. */
 const SHADOW_AHEAD = 12;
 const SHADOW_SNAP = 1;
@@ -82,7 +81,7 @@ export function SceneLights() {
     }
   }, -10);
 
-  const size = lowQuality ? SHADOW_MAP_LOW : SHADOW_MAP;
+  const size = qualityParams(lowQuality, 1).moonShadowMapSize;
   return (
     <>
       <primitive object={fog} attach="fog" />
@@ -99,7 +98,7 @@ export function SceneLights() {
         color={initial.moon.color}
         position={[...initial.moon.position]}
         intensity={initial.moon.intensity}
-        castShadow={!lowQuality}
+        castShadow
         shadow-mapSize={[size, size]}
         shadow-bias={-0.0004}
       />

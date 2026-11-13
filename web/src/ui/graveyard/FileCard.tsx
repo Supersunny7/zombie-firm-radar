@@ -101,7 +101,7 @@ export function FileCard({ loader, stoneRect = null }: FileCardProps) {
           ref={closeRef}
           type="button"
           onClick={close}
-          className="rounded-panel border border-panel-border px-2 py-1 text-sm text-text-2"
+          className="rounded-panel border border-panel-border px-2 py-1 text-sm text-text-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text"
         >
           Close
         </button>

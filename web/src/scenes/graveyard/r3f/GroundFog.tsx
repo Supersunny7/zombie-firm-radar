@@ -3,6 +3,8 @@ import { useFrame } from '@react-three/fiber';
 import { DataTexture, LinearFilter, LinearMipmapLinearFilter, RepeatWrapping } from 'three';
 import type { Group, Mesh, MeshBasicMaterial } from 'three';
 import { mulberry32 } from '../../../engine/rng';
+import { useStore } from '../../../state/store';
+import { qualityParams } from '../model/quality';
 import { FOG_LAYER_COLOR, sceneParams } from '../model/sceneParams';
 import { blendedParamsRef, defaultCameraFog } from './lightsBlend';
 
@@ -80,6 +82,10 @@ function setOpacity(mesh: Mesh, opacity: number): void {
  * sheets follow the camera on a snap equal to one noise tile and drift slowly.
  */
 export function GroundFog() {
+  const count = qualityParams(
+    useStore((s) => s.settings.lowQuality),
+    1,
+  ).fogLayers;
   const group = useRef<Group>(null);
   const meshes = useRef<(Mesh | null)[]>([null, null, null]);
   const textures = useMemo(() => [makeNoise(11), makeNoise(23), makeNoise(37)], []);
@@ -92,7 +98,7 @@ export function GroundFog() {
       Math.round(camera.position.z / SNAP_M) * SNAP_M,
     );
     const layers = blendedParamsRef.current?.fogLayers;
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < count; i++) {
       const tex = textures[i]!;
       driftTexture(tex, DRIFT[i]! * Math.min(dt, 0.1));
       const mesh = meshes.current[i];
@@ -102,7 +108,7 @@ export function GroundFog() {
 
   return (
     <group ref={group}>
-      {INITIAL.map((layer, i) => (
+      {INITIAL.slice(0, count).map((layer, i) => (
         <mesh
           key={layer.y}
           ref={(m) => {

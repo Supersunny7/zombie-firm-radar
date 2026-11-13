@@ -4,6 +4,7 @@ import { FileCard } from './FileCard';
 import { LiveRegion } from './LiveRegion';
 import { PlotNav } from './PlotNav';
 import { ShockPanel } from './ShockPanel';
+import { StoneFocusProxy } from './StoneFocusProxy';
 
 /** Non-blocking asset notices (for example a failed environment asset). Renders nothing when empty. */
 function Notices() {
@@ -38,6 +39,7 @@ export function GraveyardHud({ loader }: GraveyardHudProps) {
       <div className="min-w-0 min-[900px]:absolute min-[900px]:top-14 min-[900px]:right-44 min-[900px]:left-3">
         <PlotNav />
       </div>
+      <StoneFocusProxy />
       <div className="min-[900px]:absolute min-[900px]:bottom-14 min-[900px]:left-1/2 min-[900px]:w-[min(52rem,calc(100%-2rem))] min-[900px]:-translate-x-1/2">
         <ShockPanel />
       </div>

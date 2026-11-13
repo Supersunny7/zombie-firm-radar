@@ -306,3 +306,12 @@
 2026-11-12 | graveyard-scene | 14.4 | HUD pass: debug bar via ?debug=1, chip row under REC, wide bottom-centre shock panel, favicon 404 fixed. | ui/*, index.html, GraveyardScene.tsx
 2026-11-12 | graveyard-scene | 13.5 | Props load fixed; gate as fog-exempt silhouette; overview light lift and sky haze. | r3f/Props.tsx, Sky.tsx, StoneMaterial.tsx, sceneParams.ts
 2026-11-12 | graveyard-scene | 13.4 | Sky shader fixed, moonlight 0.22 behind stones, overview fog scaled to distance. | r3f/Sky.tsx, sceneParams.ts, lightsBlend.ts, SceneLights.tsx
+2026-11-12 | graveyard-scene | 14.3 | Removed visible flashlight cone mesh; soft edge from spot penumbra only. | r3f/Flashlight.tsx, flashlightState.ts
+2026-11-12 | graveyard-scene | 14.4 | Dark thin scrollbar on plot chip row; chips scroll into view on focus. | ui/graveyard/PlotNav.tsx, index.css, PlotNav.test.tsx
+2026-11-12 | graveyard-scene | 20.2 | Added 25 MB initial-download check (measured 5.4 MB) with exported pure function and tests. | web/scripts/check-bundle.mjs, check-bundle.test.mjs
+2026-11-12 | graveyard-scene | 18.1 | Added pure nextCrowDelay crow scheduler (20 to 60 s). | web/src/audio/scheduler.ts, scheduler.test.ts
+2026-11-12 | graveyard-scene | 19.1 | Added roving StoneFocusProxy, ground FocusMarker ring and focus outline fallback. | ui/graveyard/StoneFocusProxy.tsx, r3f/FocusMarker.tsx, index.css, FileCard.tsx
+2026-11-12 | graveyard-scene | 18.2 | Added gated Web Audio engine: wind, crows, dig, leave, mute, blocked resume, dispose. | web/src/audio/audioEngine.ts, audioEngine.test.ts
+2026-11-12 | graveyard-scene | 18.3 | Wired audio engine into scene (dig per rise, mute, leave, delayed dispose); Sound button retries blocked resume. | audio/useGraveyardAudio.ts, GraveyardScene.tsx, SoundButton.tsx
+2026-11-12 | graveyard-scene | 19.2 | Keyboard: arrows via nextFocus, Enter/Esc card, flashlight aims at focus, plot framing, announcements. | StoneFocusProxy.tsx, PlotNav.tsx, r3f/Flashlight.tsx, tests
+2026-11-12 | graveyard-scene | 20.1 | Low quality via pure qualityParams (dpr, shadows, one fog layer); stone-proxy check moved to state. | model/quality.ts, GroundFog.tsx, SceneLights.tsx, state/stoneProxy.ts
