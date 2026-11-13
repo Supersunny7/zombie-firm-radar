@@ -2,7 +2,9 @@
 
 ## Overview
 
-The Horror_Pass turns the working graveyard of `graveyard-scene` into the found-footage frames of `reference/graveyard/horror-direction.png` and `horror-direction-sequence.png`. It covers requirements 1 to 22 in `requirements.md` and extends the Base_Spec (`.kiro/specs/graveyard-scene`) without replacing its architecture. Every spooky element keeps a financial meaning: a Risen_Zombie is a Newly_Undead firm, a Standing_Zombie is an Already_Undead firm, a Torn_Mound marks a `zombie` or Newly_Undead firm. The Watcher, the dead grass and the stone jitter are atmosphere only and carry no data.
+The Horror_Pass turns the working graveyard of `graveyard-scene` into the found-footage frames of `reference/graveyard/horror-direction.png` and `horror-direction-sequence.png`. It covers requirements 1 to 38 in `requirements.md` and extends the Base_Spec (`.kiro/specs/graveyard-scene`) without replacing its architecture. Every spooky element keeps a financial meaning: a Risen_Zombie is a Newly_Undead firm, a Torn_Mound marks a `zombie` or Newly_Undead firm, the unease effects grow with the rate shock the viewer sets, and the one graveyard jump scare fires only when every shock-eligible firm framed in the plot has turned undead. The dead grass and the stone jitter are atmosphere only and carry no data.
+
+**Control-room direction (2026-11-13).** After testing the interactive prototype (`reference/graveyard/prototype/demo/main.js`, `index.html`; reference only, never imported, values and logic are ported), the user fixed one direction in `reference/graveyard/control-room-direction.md` with exact values in `reference/graveyard/horror-direction-params.md`. The viewer is a night guard at a CCTV monitor; every control belongs to the monitor's on-screen display (OSD). This design was updated in place for Requirements 23 to 38. Sections and properties for retired behaviour (Standing_Zombies, Watcher, Far_Spots, Cone_Active, Vanish_Glitch, Footstep_Bed, Content_Notice, breathing, digging, the Mutant, the 1.2 s camera move, the File_Card in the graveyard) are kept for traceability and marked **Superseded (control-room direction, 2026-11-13)** with a pointer to the replacing section. Batches 1 and 2 are delivered; the remaining work is Batches 2b, 3 and 4 (Requirement 38, section 25).
 
 The work follows the Base_Spec layering ("ingestion, metrics and presentation stay separate") and adds four things to it:
 
@@ -15,15 +17,22 @@ Key decisions (each is justified below; the numbered **Decisions** section at th
 
 | Decision | Choice | Why |
 | --- | --- | --- |
-| Rise animation | Procedural keyframes on bones (Bone_Animator) plus an analytic two-bone IK for planted hands | The three source rigs have no usable clips for this (animation-direction.md forbids Mixamo clips). IK makes "no hand sliding" (11.7) exact instead of approximate. |
+| Rise animation | **Superseded (control-room direction, 2026-11-13)**, see "Rise animation (3)" below and section 17. Former choice: procedural keyframes on bones (Bone_Animator) plus an analytic two-bone IK for planted hands | The three source rigs have no usable clips for this (animation-direction.md forbids Mixamo clips). IK makes "no hand sliding" (11.7) exact instead of approximate. |
 | Selection timing | A Settled_Shock tracker driven by the render-loop clock, not `setTimeout` | Requirement 11.14 asks for the render-loop clock; the tracker is a pure function that tests drive with explicit times. |
 | Selection state | A separate small zustand store (`selectionStore.ts`), not the main store | Requirement 20.5 forbids changing the main store shape except `settledShock` and the notice fields. |
 | Layout | Band packing: variable column widths and row depths from per-stone extents | Jitter of 0.30 m, 20 degree yaw, fallen stones and a reserved mound zone cannot fit the fixed Base_Spec pitch (1.30 x 1.80). Extents guarantee the 0.15 m gap by construction. |
 | Fallen stones | Fall backwards (top away from the camera), base stays at the standing position | The mound stays at the former standing position (7.9) and the body never covers the Pit (8.11). |
-| Camera | Eye height 1.5 m, 2.6 m behind the first row | Satisfies 9.1 to 9.4 together; the numbers are derived in the Camera section. |
-| Characters | `SkeletonUtils.clone` of one loaded scene per model, shared geometry and materials | At most 13 skinned characters; one network load and one GPU upload per model (5.5). |
-| Growl and footsteps | Pure limiter, pure choice, pure gain function; the engine only wires them | Requirements 17.10, 17.11 and 17.21 ask for properties. |
+| Camera | **Superseded in part (control-room direction, 2026-11-13)**: eye height 1.2 m, FOV 46, camera 3.0 m behind the first row, look point 1.0 m behind it at 0.6 m (section 14.4). Former choice: eye height 1.5 m, 2.6 m behind the first row | Satisfies 9.1 to 9.4 together; the numbers are derived in the Camera section. |
+| Characters | `SkeletonUtils.clone` of one loaded scene per model, shared geometry and materials | At most 8 skinned characters since the control-room direction (26.4; formerly 13); one network load and one GPU upload per model (5.5). |
+| Growl and footsteps | Pure limiter, pure choice, pure gain function; the engine only wires them. **The Footstep_Bed is superseded (control-room direction, 2026-11-13)**, see section 19 | Requirements 17.10 and 17.11 ask for properties. |
 | Budget | `groupAssets.json` is the single list; `assets.ts` and `check-bundle.mjs` both read it | Avoids a third hand-copied key list (the Base_Spec already duplicates `CRITICAL_ASSET_KEYS`). |
+| Look values (2b) | One constants module `scenes/graveyard/look.ts`, checked against `horror-direction-params.md` by a test | Requirement 23.17; the prototype values must not drift into several files. |
+| CCTV grade (2b) | One custom `CctvGradeEffect` (postprocessing `Effect`, `EffectAttribute.CONVOLUTION`) that ports the prototype shader, in its own pass after `ToneMapping` | The red ghost samples the tone-mapped image 2 px left (23.11 f); a convolution effect is put in its own `EffectPass` by `mergeMode="auto"`, so its `inputBuffer` is the tone-mapped image. |
+| Rise animation (3) | Pure port of the prototype `KEYS`, `jerk` and `riseFrame` that returns world-space aim directions; `Characters.tsx` applies them with the prototype `aim()` | The prototype is the approved motion. No IK: the planted left arm keeps fixed directions while the root is fixed, so hands do not slide (11.7). Supersedes the two-bone IK of section 7. |
+| Choreography clock (3, 4) | Pure timelines (`riseTimeline`, `cameraSwitch`, `jumpScare`, `openingSchedule`) advanced by the render-loop clock or `requestAnimationFrame` | 11.14, 35.15; the prototype's `setTimeout` calls (camera cut at 90 ms, intro typing) are not ported. |
+| Flash budget (3, 4) | One pure `Flash_Limiter` behind a per-frame bus; every Static_Cut, glitch, dip and flicker is a candidate | Requirement 28.6 and 28.7; one place enforces the 3-flashes rule. |
+| Camera moves (4) | Cuts with a Static_Cut (`cameraSwitch.ts`), no tween | Requirement 31; the 1.2 s move is retired. |
+| OSD (4) | DOM tree under `web/src/ui/osd/` mounted by the graveyard; the app `Hud` renders nothing in graveyard states | Requirement 30.1; Table_View, Credits_Dialog, LiveRegion and StoneFocusProxy are reused. |
 
 ### Research summary
 
@@ -37,6 +46,14 @@ Documentation looked up with the context7 MCP server before relying on an API (r
 - **Not used:** `@theatre/core`, `CameraControls`, KTX2, `CCDIKSolver` (the two-bone solver is 30 lines of plain math and testable without three).
 
 **Packages.** No new dependency is added (requirement 22.10). Everything uses packages already pinned in `web/package.json` and `tools/package.json`.
+
+**Look-ups for the control-room direction (2026-11-13, context7):**
+
+- **postprocessing 6.39.6** (`/pmndrs/postprocessing`, Custom Effects manual): an effect that reads extra samples from `inputBuffer` is a convolution effect and must declare `attributes: EffectAttribute.CONVOLUTION`; at most one convolution effect per `EffectPass`, and convolution effects are incompatible with effects that implement `mainUv`. Built-in uniforms available in every effect shader: `resolution`, `texelSize`, `aspect`, `time`. Colour management: the composer follows a linear workflow and encodes to `outputColorSpace` (sRGB) only when the last pass renders to screen; the default `frameBufferType` of the React wrapper is `HalfFloatType`, so `inputBuffer` holds linear values. The prototype grades after three's `OutputPass`, i.e. on sRGB-encoded values, so `CctvGradeEffect` converts linear to sRGB at its start and back to linear at its end (plain GLSL sRGB transfer functions).
+- **@react-three/postprocessing 3.2.2** (`/pmndrs/react-postprocessing`): `EffectComposer mergeMode="auto"` (default) merges consecutive effects but keeps a convolution effect, or an effect whose shader contains `mainUv`, in a separate pass. So `<ToneMapping/>` followed by `<primitive object={cctvGrade}/>` gives two passes and the grade sees the tone-mapped image. The existing `TrackingGlitchEffect` uses `mainUv`; it is folded into the grade shader (band shift applied to the sample uv) so no `mainUv` effect meets the convolution effect.
+- **three 0.187.0** (`/mrdoob/three.js`): `SpotLight(color, intensity, distance, angle, penumbra, decay)` with intensity in candela, `angle` upper bound `PI/2`, `penumbra` in [0, 1], `decay` default 2, shadows through `castShadow` and `shadow.mapSize` / `shadow.bias` (prototype bias −0.0004); `HemisphereLight(skyColor, groundColor, intensity)` casts no shadow; `FogExp2(color, density)`; `Scene.environmentIntensity` attenuates only `scene.environment` (default 1), so 0 removes the HDRI lighting in a framed plot (23.7) while the drei `Environment` stays mounted for the overview; `MeshStandardMaterial.emissive` (default black), `emissiveIntensity` (default 1) and `emissiveMap` (default null) are the three fields Requirement 24 fixes; `flatShading` is a material flag (Clods, 24.2).
+- **@react-three/fiber 9.8.2**: unchanged rule, negative `useFrame` priorities only order callbacks. New priorities: `FlashBus` −30 (frame start, drains queued Static_Cut requests), `JumpScareController` −29, `CameraRig` −20, `SelectionController` −8, `SceneLights` −10, `Flashlight` −5, `Characters` −4, `TornMounds` / Dirt_Burst −3, `CctvPass` −2.
+- **Not used:** `InstancedMesh.raycast` and any `Raycaster.intersectObject` on skinned meshes. Picking stays on the pure grid of `layout/pick.ts` plus pure mound discs and Risen_Zombie capsules (section 22), so 33.2 holds by construction. `@theatre/core` is still not used: the graveyard sequences are short pure timelines (Decision 13).
 
 ## Architecture
 
@@ -136,7 +153,74 @@ sequenceDiagram
 | Characters | up to 13 skinned meshes, 1 to 3 draw calls each | Hero about 2 to 3 (materials), Walker and Crawler about 1 to 2. Frustum culling is off for characters (skinned bounds are bind-pose bounds). |
 | Removed | Craggle hands (1) | |
 
-Target: the Base_Spec "under 100 draw calls, under 1.5M triangles" still holds. The pipeline keeps each character at or below 30,000 triangles with a `decimate` edit when the source is larger (13 x 30,000 = 0.39M worst case). Requirement 21 measures the real number.
+Target: the Base_Spec "under 100 draw calls, under 1.5M triangles" still holds. The pipeline keeps each character at or below 30,000 triangles with a `decimate` edit when the source is larger (13 x 30,000 = 0.39M worst case; 8 x 30,000 = 0.24M since the control-room direction). Requirement 21 measures the real number. Since 2026-11-13 the Mutant (1 to 2 calls) and the Watcher and Standing_Zombies are gone, the CCTV chain lights off is two passes (ToneMapping, CctvGradeEffect) instead of one merged pass of seven effects.
+
+### Control-room architecture (Batches 2b, 3 and 4)
+
+The control-room direction adds three layers on top of the delivered scene. Pure modules stay free of React and three.js (20.11) and are listed in `horror.purity.test.ts`.
+
+| Layer | New modules | Role |
+| --- | --- | --- |
+| Look constants | `scenes/graveyard/look.ts` | Every value of Requirement 23 and the Rise / Unease / Jump_Scare numbers that `horror-direction-params.md` or `control-room-direction.md` lists. |
+| Pure choreography | `model/riseTimeline.ts`, `model/boneAnimator.ts`, `model/stir.ts`, `model/dirtBurst.ts`, `model/unease.ts`, `model/cameraSwitch.ts`, `model/framedSet.ts`, `model/plotFall.ts`, `model/jumpScare.ts`, `model/firmLookup.ts`, `model/statusWord.ts`, `fx/flashLimiter.ts`, `fx/staticCut.ts`, `audio/growl.ts`, `audio/duck.ts`, `ui/osd/openingSchedule.ts`, `ui/osd/keys.ts`, `ui/osd/hoverPlacement.ts`, `ui/osd/format.ts`, `state/openingStorage.ts` | Timelines and rules as pure functions of time, inputs and an injected random source. |
+| Scene (r3f) | `r3f/SelectionController.tsx`, `r3f/Characters.tsx`, `r3f/characterLoader.ts`, `r3f/RiserBounds.ts`, `r3f/PlotFallController.tsx`, `fx/FlashBus.tsx`, `fx/CctvGradeEffect.ts` | Drive the pure modules from `useFrame` and write uniforms, light values and bone quaternions. |
+| OSD (DOM) | `ui/osd/*` | Replaces `GraveyardHud`, `FileCard`, `PlotNav`, `ShockPanel` and the app `Hud` inside the graveyard. |
+| Small stores | `scenes/graveyard/selectionStore.ts`, `ui/osd/osdStore.ts` | Risen assignment; shown camera, hover tag, jump-scare overlay phase, opening state. The main store only gains `settledShock` (20.5). |
+
+```mermaid
+flowchart TD
+  SL[Shock_Slider in Rate_Console] -->|setRateShock live| ST[(main store)]
+  ST -->|live Shock_pp| UN[unease.ts]
+  UN --> CAMJ[CameraRig: Camera_Jitter]
+  UN --> FL[Flashlight: Flash_Dip offer]
+  UN --> GL[CctvPass: Random_Glitch offer]
+  UN --> RB[audioEngine: Rumble_Bed gain]
+  ST --> SETTLE[settle.ts]
+  SETTLE -->|Settled_Shock| SC[SelectionController]
+  CSW[cameraSwitch.ts] -->|destination at start| SC
+  SC --> POOL[risenPool + riseTimeline]
+  SC --> FS[framedSet.ts]
+  POOL --> BA[boneAnimator.ts] --> CH[Characters.tsx]
+  POOL -->|stir start| AIM[Flashlight Auto_Aim]
+  POOL -->|stir start| DUCK[audio duck: wind, crows]
+  POOL -->|rise cut| BUS
+  POOL -->|rise finished| GROWL[positional Growl]
+  FS --> PF[plotFall.ts]
+  POOL --> PF
+  PF -->|Plot_Fall| JS[jumpScare.ts timeline]
+  JS --> BUS[FlashBus + flashLimiter]
+  CSW --> BUS
+  OPEN[Opening connect] --> BUS
+  BUS --> CCTV[CctvGradeEffect uniforms: stat, glitch]
+  JS --> OSDJ[OSD JumpScareOverlay / NoSignal]
+  JS --> AUD[audioEngine: silence, scare sounds, recover]
+```
+
+```mermaid
+sequenceDiagram
+  participant U as User
+  participant RC as Rate_Console
+  participant SC as SelectionController
+  participant P as risenPool / riseTimeline
+  participant C as Characters
+  participant F as Flashlight
+  participant A as audioEngine
+  participant B as FlashBus
+  U->>RC: raises the lever
+  RC->>SC: live shock (unease grows at once)
+  SC->>SC: Settled_Shock after 250 ms
+  SC->>P: desired = nearest 8 Newly_Undead
+  P-->>C: slot enters stir (s = 0)
+  P-->>F: Auto_Aim at Pit + 0.5 m, 2.2 s
+  P-->>A: duck wind, hold crows 5 s, rumble 0.25 + 0.5a
+  Note over C: 1.4 s mound shake, camera shake
+  P-->>C: t = 0, zombie at keys 0 (below ground)
+  P-->>C: t = 0.55 torn mound + Dirt_Burst
+  P->>B: t > 0.8 Rise_Cut (static 0.32 s, glitch 0.2 s)
+  P-->>C: keys time = t + 1.15
+  P-->>A: t = 2.05 rise finished, positional Growl
+  C->>C: Stare 2.8 s, clawing, twitches
+```
 
 ## Components and Interfaces
 
@@ -286,6 +370,8 @@ The remaining Base_Spec layout rules are kept: plots sorted by sector name (UTF-
 
 ### 4. Camera inside the plot (Requirement 9)
 
+> **Superseded in part (control-room direction, 2026-11-13).** The constants, the derivation of 9.3 and the 1.2 s move below describe the delivered Batch 2 camera. Batch 2b replaces the eye height, field of view, look point and back distance (section 14.4), and Batch 4 replaces the move with the Camera_Switch cut (section 21.3). The portrait look-target easing (`targetY`, `TARGET_Y_PORTRAIT`) is removed, because 23.1 fixes the look point at 0.6 m for every aspect.
+
 New constants in `layout/camera.ts`: `CAMERA_HEIGHT = 1.5`, `CAMERA_BACK = 2.6`, `TARGET_Y = 0.2`, `TARGET_AHEAD = 5` (unchanged). `plotPose` keeps its signature: position `(centerX, 1.5, frontZ + 2.6)`, target `(centerX, 0.2, frontZ − 5)`.
 
 Derivation (all lengths in metres, front row anchor at `frontZ`):
@@ -325,6 +411,8 @@ Derivation (all lengths in metres, front row anchor at `frontZ`):
 - Only the framed Plot's cards are written to the instance buffer; a plot change rewrites it like the stone buffers.
 
 ### 6. Selection, the Settled_Shock and the Risen pool (Requirement 10)
+
+> **Kept with changes (control-room direction, 2026-11-13).** `settle.ts`, `selection.ts` (`assignNearest`, `candidatesFor`) and `SelectionController` stay as written. The Standing_Zombie assignment (events of kind 2 and 3) is removed (Requirement 26.3). The Risen pool gains the `stirring` phase and its times come from `riseTimeline.ts`; section 17.2 replaces the `RISE_SECONDS = 3.0` pool rules below.
 
 **`model/settle.ts`** (pure):
 
@@ -383,6 +471,8 @@ Rules (same shape as the retired hand pool, with the additions the requirements 
 
 ### 7. Bone_Animator, two-bone IK and character scale (Requirement 11)
 
+> **Superseded (control-room direction, 2026-11-13)**, see section 17. The role-Euler key-pose table, breathing, the 3.0 s rise, the two-bone IK (`twoBoneIk.ts` is not built), `scaleForHeight` (1.6 m to 1.9 m) and the ballistic `dirtParticles` are replaced by the prototype Rise_Keys, the Stare, clawing and twitches, per-model heights of 1.80 m to 1.85 m and Clod arcs on the Torn_Mound. Kept: the purity rule (11.12), the cik-seeded schedule (11.10), the rise-finished event (11.8), the bone maps and their Vitest check (11.11), `frustumCulled = false`, and "nothing below the waist" (11.6).
+
 **`model/boneAnimator.ts`** (pure; no React, no three). Time is seconds since the rise started.
 
 ```ts
@@ -440,6 +530,8 @@ export function solveTwoBone(shoulder: V3, target: V3, upperLen: number, lowerLe
 
 ### 8. Models for each zombie, Standing_Zombies (Requirements 12 and 13)
 
+> **Kept in part (control-room direction, 2026-11-13).** `modelAssignment.ts` (`wantedModel`, `resolveModel`) and `characterLoader.ts` stay; `CharacterId` loses `'watcher'`. The Standing_Zombie part (`standing.ts`, the Walker clips Idle and Walk1_InPlace, the 13-character bound) is **superseded**: Already_Undead firms show a Torn_Mound and no character (26.1, 26.3), and at most 8 skinned characters exist (26.4). See section 17.6.
+
 **`model/modelAssignment.ts`** (pure):
 
 ```ts
@@ -471,6 +563,8 @@ export function standingPlacement(
 - No blood decal is drawn on characters (13.13, 16.4, 19.6).
 
 ### 9. The Watcher (Requirement 14)
+
+> **Superseded (control-room direction, 2026-11-13)** by Requirement 26.2. Nothing in this section is built: no `farSpots.ts`, `watcher.ts`, `coneInput.ts`, `Watcher.tsx` or `watcherEvents.ts`, and no `GlitchScheduler.trigger`. The Watcher_Model is never requested (section 20). The touch Cone_Target survives in a simpler form: a tap aims the Flashlight at the tap point (33.8, section 22.4). The random-glitch scheduler is replaced by the per-frame Random_Glitch of section 18.1.
 
 **`model/farSpots.ts`** (pure). `farSpots(layout, framed: number | 'overview', occupied: readonly Footprint[])` returns candidate ground positions. For a framed Plot, candidates lie along the anchors of its farthest two rows (`rowAnchors`), every 1.0 m in x across the plot rectangle, shifted `0.9 m` toward −z so they stand behind the stones. In the overview the plot used is the one farthest from the camera (smallest `rect.z1`). A candidate is rejected when it is inside any headstone oriented footprint (with 0.3 m margin), any Pit disc (radius plus 0.3 m), or within 0.7 m of a zombie. The list is sorted by distance to the Selection_Pose, then by x (deterministic).
 
@@ -514,6 +608,8 @@ It starts the standard glitch (0.15 to 0.4 s, 3 steps) immediately when no glitc
 
 ### 10. Audio: Growl and Footstep_Bed (Requirement 17)
 
+> **Kept in part (control-room direction, 2026-11-13).** `growl.ts` (`createGrowlLimiter`, `pickGrowl`) and the lazy Growl loading stay. **Superseded:** the fixed gain 0.4 and 3 s fade (replaced by the positional Growl of section 19.2), `footsteps.ts`, the Footstep_Bed engine code and `setReducedMotion` for it (26.5), `setFootstepDistance`, `nearbyStanding`, and the digging sound on rise start (26.6). See section 19.
+
 **`audio/growl.ts`** (pure):
 
 ```ts
@@ -546,6 +642,8 @@ export function nextFootstep(s: FootstepState, wantPlayback: boolean, elapsed: n
 
 ### 11. Content_Notice (Requirement 18)
 
+> **Superseded (control-room direction, 2026-11-13)** by the Opening and the Warning_Replay menu item (Requirement 34, section 23) and the OSD data footer (30.8). `contentNotice.ts`, `ContentNotice.tsx` and `NoticeLink.tsx` are not built, and the main store gets no `contentNotice` slice.
+
 - `state/contentNotice.ts` holds a store slice `contentNotice: { open: boolean; dismissed: boolean }` with `dismissContentNotice()` and `openContentNotice()`, and a storage helper beside `settingsStorage.ts` using key `zfr.contentNotice.v1` (value `"dismissed"`). `readDismissed()` and `writeDismissed()` never throw (18.3): an unreadable store means "not dismissed", an unwritable store keeps the in-memory dismissal for the current page.
 - `ui/ContentNotice.tsx`: a `role="note"` single line "Contains horror and gore" and a dismiss button named "Dismiss content notice". It docks at the top edge, under the REC header, outside the 3D stage panels (18.7). At 390 px the text keeps one line with `font-size: clamp(12px, 3.4vw, 14px)` and `white-space: nowrap`.
 - `ui/NoticeLink.tsx`: a button with the text "Contains horror and gore" in the footer next to `FOOTER_TEXT`, always rendered in the graveyard and the Table_View (18.4). Activation opens the notice and moves focus to its dismiss button (18.5); dismissing a notice that was opened from the link returns focus to the link (18.6).
@@ -553,6 +651,8 @@ export function nextFootstep(s: FootstepState, wantPlayback: boolean, elapsed: n
 - The dismiss click is a normal `pointerdown`/`keydown`, so the Audio_Engine's capture listeners treat it as the Interaction_Gate with no extra code (18.11).
 
 ### 12. Quality, accessibility and counters (Requirement 19)
+
+> **Kept with changes (control-room direction, 2026-11-13).** `standingBudget` is removed from `HorrorQuality` and the Watcher note no longer applies (19.1, 19.2). Characters stay decorative for focus and hover events (19.5); a Risen_Zombie is still readable through the Hover_Tag by a pure capsule test (33.2, section 22), never by raycasting its mesh.
 
 `model/horrorQuality.ts` (pure):
 
@@ -567,6 +667,8 @@ export function horrorQuality(lowQuality: boolean): HorrorQuality;
 Low quality halves grass and Dirt_Burst, turns off character `castShadow`, keeps both budgets and does not touch the Watcher rules (19.1, 19.2). Characters are decorative: their meshes set `raycast = () => null`, are not in the DOM and never receive focus or hover (19.5). The Risen_Counter, Already_Undead line and Table_View still read `useShockView()` (live shock), so the Rise_Budget cannot change them (19.7). The same pure helpers drive the existing live region and file card; neither needs a change (19.4).
 
 ### 13. Evidence scripts (Requirements 21 and 22)
+
+> **Updated (control-room direction, 2026-11-13).** Batch names and files follow Requirement 38 (section "Delivery in Batches 1, 2, 2b, 3 and 4"). The DEV helper gains `?horror=stir|risen|fall|osd` and loses `watcher` and `notice`; `HorrorStats` writes only `data-risen-count`; the DEVLOG line drops the Standing_Zombie and Watcher counts (38.8).
 
 - **Screenshots.** `web/scripts/horror-screenshots.mjs --batch 2|3a|3b` (files: `horror-batch3a-rise.png`; `horror-batch3b-standing.png`, `-watcher.png`, `-notice.png`) uses `lib/browser.mjs` (headed Chrome, 1920 x 1080), `/?firms=3000`, lights off, and writes the files listed in 22.5 and 22.6 to `reference/progress/horror-batch<N>-<name>.png`. State is reached through the UI (slider keys, plot chips) plus a development-only helper: `?horror=rise` waits for the first `rise finished` frame, `?horror=watcher` makes the Watcher state machine schedule its first appearance after 1 s, `?horror=notice` clears the stored dismissal. The helper sits behind `import.meta.env.DEV` and the marker `__zfr_horror_debug__` is added to `FORBIDDEN_MARKERS` in `check-bundle.mjs`, so it is tree-shaken from production and checked.
 - **Measurement.** `measure-fps.mjs` gains `--horror`. It evaluates, inside the page on the dev server, `await import('/src/engine/index.ts')` and `await import('/src/state/store.ts')` (Vite serves the same module instances the app uses) to find the lowest slider step `k` (0.25 pp) with at least 8 Newly_Undead firms among the 3,000, sets it with the slider keys, waits 2 s after the Settled_Shock, then records at least 10 s of frames. Counts of Risen_Zombies, Standing_Zombies and Watchers at the start of the window come from `data-risen-count`, `data-standing-count` and `data-watcher-count` attributes that a development-only `HorrorStats` component writes to `document.body`. The DEVLOG line has every field of 21.5. This depends on Base_Spec task 21.1 (Decision 10).
