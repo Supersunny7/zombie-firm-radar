@@ -10,7 +10,7 @@ describe('cameraFarEdgeDistance', () => {
     expect(d).toBeCloseTo(h / Math.sin(((60 - 26) * Math.PI) / 180), 6);
   });
   it('caps a flat plot view at the max distance', () => {
-    expect(cameraFarEdgeDistance([0, 2.15, 9.4], [0, 0.2, -2], 52, 360)).toBe(360);
+    expect(cameraFarEdgeDistance([0, 1.5, 5.6], [0, 0.2, -2], 52, 360)).toBe(360);
   });
 });
 

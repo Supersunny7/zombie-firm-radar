@@ -24,6 +24,8 @@ const GroundFog = lazy(() => import('./r3f/GroundFog').then((m) => ({ default: m
 const Engravings = lazy(() => import('./r3f/Engravings').then((m) => ({ default: m.Engravings })));
 
 const Mounds = lazy(() => import('./r3f/Mounds').then((m) => ({ default: m.Mounds })));
+const TornMounds = lazy(() => import('./r3f/TornMounds').then((m) => ({ default: m.TornMounds })));
+const Grass = lazy(() => import('./r3f/Grass').then((m) => ({ default: m.Grass })));
 const BloodDecals = lazy(() =>
   import('./r3f/BloodDecals').then((m) => ({ default: m.BloodDecals })),
 );
@@ -36,6 +38,11 @@ const FocusMarker = lazy(() =>
   import('./r3f/FocusMarker').then((m) => ({ default: m.FocusMarker })),
 );
 const Props = lazy(() => import('./r3f/Props').then((m) => ({ default: m.Props })));
+
+// DEV-only screenshot helper; the dead branch is dropped from production builds (check-bundle).
+const HorrorDebug = import.meta.env.DEV
+  ? lazy(() => import('./dev/HorrorDebug').then((m) => ({ default: m.HorrorDebug })))
+  : null;
 
 export { ModelBoundary };
 
@@ -68,7 +75,9 @@ export function SceneContent() {
       <Ground />
       <GroundFog />
       <Stones layout={layout} />
+      <Grass layout={layout} />
       <Mounds layout={layout} />
+      <TornMounds layout={layout} />
       <BloodDecals layout={layout} />
       <Hands layout={layout} />
       <Engravings layout={layout} />
@@ -78,6 +87,7 @@ export function SceneContent() {
       <FocusMarker layout={layout} />
       <PointerInput layout={layout} />
       <CctvPass />
+      {HorrorDebug ? <HorrorDebug layout={layout} /> : null}
     </>
   );
 }
@@ -111,7 +121,7 @@ export default function GraveyardScene() {
           shadows
           dpr={quality.dpr}
           gl={{ antialias: !lowQuality, powerPreference: 'high-performance' }}
-          camera={{ fov: CAMERA_FOV, near: CAMERA_NEAR, far: CAMERA_FAR, position: [0, 2.15, 9.4] }}
+          camera={{ fov: CAMERA_FOV, near: CAMERA_NEAR, far: CAMERA_FAR, position: [0, 1.5, 5.6] }}
           style={{ background: STAGE_BACKGROUND }}
           aria-hidden="true"
           onCreated={onCreated}

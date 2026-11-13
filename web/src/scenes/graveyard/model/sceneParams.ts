@@ -52,7 +52,7 @@ export const PLOT_FOG_DENSITY = { off: 0.085, on: 0.05 } as const;
  * vignette. Blended with the plot levels by the same plot/overview weight as the fog.
  */
 export const OVERVIEW_LIFT = {
-  off: { moon: 3, hemi: 1.5, env: 0.4 },
+  off: { moon: 5, hemi: 3, env: 0.8 },
   on: { moon: 2.0, hemi: 0.8, env: 0.5 },
 } as const;
 
@@ -153,21 +153,21 @@ export function sceneParams(
     groundFogFactor,
     stoneLift: 1 - w,
     backgroundIntensity: off ? 0.045 : 0.12,
-    // Lights off env 0.1 and moon 0.22 are the user's tuning (task 13.4, reference
-    // graveyard-rate-shock-3pp.png); scene-reference had 0.05 and 0.12. Those are the plot values;
+    // Lights off env 0.2, moon 0.5 and hemi 0.14 (task 2.27: the earlier 0.1 / 0.22 / 0.03 left the
+    // ground black next to reference graveyard-rate-shock-3pp.png; scene-reference had 0.05 and 0.12). Those are the plot values;
     // the overview lifts them (OVERVIEW_LIFT) so the field reads as a dim moonlit plain.
-    envIntensity: lift(OVERVIEW_LIFT[lights].env, off ? 0.1 : 0.3, w),
+    envIntensity: lift(OVERVIEW_LIFT[lights].env, off ? 0.2 : 0.3, w),
     moon: {
       // Cool blue (was #8ea9d6), placed behind the stones (negative z, camera looks toward -z)
       // so they get a rim light (was [-14, 18, -22]).
       color: '#6f90e0',
       position: [-8, 16, -26],
-      intensity: lift(OVERVIEW_LIFT[lights].moon, off ? 0.22 : 0.7, w),
+      intensity: lift(OVERVIEW_LIFT[lights].moon, off ? 0.5 : 0.7, w),
     },
     hemi: {
       skyColor: '#3a4a66',
       groundColor: '#0b0806',
-      intensity: lift(OVERVIEW_LIFT[lights].hemi, off ? 0.03 : 0.35, w),
+      intensity: lift(OVERVIEW_LIFT[lights].hemi, off ? 0.14 : 0.35, w),
     },
     fogLayerColor: FOG_LAYER_COLOR,
     fogLayers: [layer(l0), layer(l1), layer(l2)],

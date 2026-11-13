@@ -7,6 +7,7 @@ import {
   overviewPose,
   plotLabel,
   plotPose,
+  projectToNdc,
   smooth,
   swayAmplitude,
 } from './camera';
@@ -54,11 +55,11 @@ function inFrustum(
 }
 
 describe('plotPose', () => {
-  it('plot 1 gives the initial pose (0, 2.15, 9.4) looking at z = -2', () => {
+  it('plot 1 gives the initial pose (0, 1.5, 5.6) looking at z = -2', () => {
     const p = plotPose({ centerX: 0, frontZ: 3 });
     expect(p.position[0]).toBeCloseTo(0);
-    expect(p.position[1]).toBeCloseTo(2.15);
-    expect(p.position[2]).toBeCloseTo(9.4);
+    expect(p.position[1]).toBeCloseTo(1.5);
+    expect(p.position[2]).toBeCloseTo(5.6);
     expect(p.target[2]).toBeCloseTo(-2);
     expect(p.target[1]).toBeCloseTo(0.2);
   });
@@ -161,5 +162,29 @@ describe('flickerFactor (10.5)', () => {
         return changes <= 3;
       }),
     );
+  });
+});
+
+describe('projectToNdc', () => {
+  const pose = plotPose({ centerX: 0, frontZ: 3 });
+
+  it('puts the look target at the centre', () => {
+    const n = projectToNdc(pose, pose.target, FOV, 1440 / 900);
+    expect(n?.x).toBeCloseTo(0, 9);
+    expect(n?.y).toBeCloseTo(0, 9);
+  });
+
+  it('puts a front-row mound base (2 m ahead) below the centre at both aspects', () => {
+    for (const aspect of [1440 / 900, 390 / 844]) {
+      const n = projectToNdc(pose, [0, 0, 1], FOV, aspect);
+      expect(n).not.toBeNull();
+      expect(n!.y).toBeLessThan(0);
+      expect(n!.y).toBeGreaterThan(-1);
+    }
+  });
+
+  it('returns null behind the camera and puts right-hand points at positive x', () => {
+    expect(projectToNdc(pose, [0, 0, 9], FOV, 1)).toBeNull();
+    expect(projectToNdc(pose, [1, 0, 0], FOV, 1)!.x).toBeGreaterThan(0);
   });
 });

@@ -14,7 +14,7 @@ const FALLBACK_PARAMS = sceneParams('off', 0, defaultCameraFog(0));
 const TOP_OFF = '#030406';
 const TOP_ON = '#0b111a';
 /** Moonlit haze just above the horizon, so far silhouettes (the gate) read against it. */
-const HAZE_OFF = '#34404f';
+const HAZE_OFF = '#252e3a';
 const HAZE_ON = '#4d5b6e';
 /** Dome radius: inside the camera far plane (360) so it is never clipped. */
 const DOME_RADIUS = Math.min(300, CAMERA_FAR - 60);
@@ -39,8 +39,8 @@ const DOME_FRAGMENT = /* glsl */ `
     // At or below the horizon the colour is exactly the fog colour; it fades to the zenith colour.
     float t = pow(clamp(h, 0.0, 1.0), 0.55);
     vec3 sky = mix(horizonColor, topColor, t);
-    // Haze: zero at and below the horizon (the fogged ground keeps its colour), then a band that fades with height.
-    float haze = smoothstep(0.0, 0.012, h) * exp(-h * 12.0);
+    // Haze: zero at and below the horizon (the fogged ground keeps its colour), then a soft band that rises over ~8 degrees (no hard edge against the fogged ground) and fades with height.
+    float haze = smoothstep(0.0, 0.14, h) * exp(-h * 6.0);
     gl_FragColor = vec4(mix(sky, hazeColor, haze), 1.0);
     #include <tonemapping_fragment>
     #include <colorspace_fragment>

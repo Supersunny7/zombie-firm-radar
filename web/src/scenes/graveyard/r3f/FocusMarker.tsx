@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { DoubleSide, RingGeometry } from 'three';
 import { useStore } from '../../../state/store';
-import type { GraveyardLayout } from '../layout/layout';
+import { stoneBaseY, type GraveyardLayout, type StoneLayout } from '../layout/layout';
 
 /** Light warm ring (HUD text colour) with a dark outer stroke, so it reads on dark and bright ground. */
 export const MARKER_LIGHT = '#E6E2D6';
@@ -30,7 +30,11 @@ export function FocusMarker({ layout }: { layout: GraveyardLayout }) {
   if (index < 0 || !stone) return null;
 
   return (
-    <group position={[stone.x, LIFT, stone.z]} rotation={[-Math.PI / 2, 0, 0]} name="focus-marker">
+    <group
+      position={[stone.x, ringY(stone), stone.z]}
+      rotation={[-Math.PI / 2, 0, 0]}
+      name="focus-marker"
+    >
       <mesh geometry={light} renderOrder={3}>
         <meshBasicMaterial
           color={MARKER_LIGHT}
@@ -59,6 +63,11 @@ export function FocusMarker({ layout }: { layout: GraveyardLayout }) {
       </mesh>
     </group>
   );
+}
+
+/** Ground lift, or the top surface of a fallen stone (its base is raised by half its thickness). */
+function ringY(stone: StoneLayout): number {
+  return stone.fallen ? stoneBaseY(stone) + stone.depth / 2 + LIFT : LIFT;
 }
 
 export default FocusMarker;

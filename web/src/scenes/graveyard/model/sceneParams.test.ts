@@ -85,11 +85,11 @@ describe('sceneParams', () => {
     const off = sceneParams('off', 0, plot);
     const on = sceneParams('on', 0, plot);
     expect([off.backgroundIntensity, on.backgroundIntensity]).toEqual([0.045, 0.12]);
-    expect([off.envIntensity, on.envIntensity]).toEqual([0.1, 0.3]);
-    expect([off.moon.intensity, on.moon.intensity]).toEqual([0.22, 0.7]);
+    expect([off.envIntensity, on.envIntensity]).toEqual([0.2, 0.3]);
+    expect([off.moon.intensity, on.moon.intensity]).toEqual([0.5, 0.7]);
     expect(off.moon.color).toBe('#6f90e0');
     expect(off.moon.position).toEqual([-8, 16, -26]);
-    expect([off.hemi.intensity, on.hemi.intensity]).toEqual([0.03, 0.35]);
+    expect([off.hemi.intensity, on.hemi.intensity]).toEqual([0.14, 0.35]);
     expect(off.hemi.skyColor).toBe('#3a4a66');
     expect(off.hemi.groundColor).toBe('#0b0806');
     expect(off.fogLayerColor).toBe('#2b323c');

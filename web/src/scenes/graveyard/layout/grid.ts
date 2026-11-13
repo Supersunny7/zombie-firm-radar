@@ -6,6 +6,7 @@
  * picking). `stoneCell[i]` is the single cell that contains the stone's centre, which
  * lets range queries report each stone exactly once.
  */
+import { stoneReach } from './extents';
 import type { GraveyardLayout } from './layout';
 
 export interface Grid {
@@ -21,11 +22,6 @@ export interface Grid {
   /** Stone centres (copied so queries need no layout). */
   readonly px: Float64Array;
   readonly pz: Float64Array;
-}
-
-/** Half-diagonal of the stone footprint: a yaw-safe bounding radius. */
-function footprintRadius(width: number, depth: number): number {
-  return 0.5 * Math.hypot(width, depth);
 }
 
 function clampInt(v: number, lo: number, hi: number): number {
@@ -44,7 +40,7 @@ export function buildGrid(layout: GraveyardLayout, cell = 2): Grid {
   for (let i = 0; i < n; i++) {
     const s = stones[i];
     if (!s) continue;
-    const r = footprintRadius(s.width, s.depth);
+    const r = stoneReach(s);
     px[i] = s.x;
     pz[i] = s.z;
     minX = Math.min(minX, s.x - r);
@@ -69,7 +65,7 @@ export function buildGrid(layout: GraveyardLayout, cell = 2): Grid {
   for (let i = 0; i < n; i++) {
     const s = stones[i];
     if (!s) continue;
-    const r = footprintRadius(s.width, s.depth);
+    const r = stoneReach(s);
     const cx0 = clampInt(Math.floor((s.x - r - minX) / cell), 0, nx - 1);
     const cx1 = clampInt(Math.floor((s.x + r - minX) / cell), 0, nx - 1);
     const cz0 = clampInt(Math.floor((s.z - r - minZ) / cell), 0, nz - 1);

@@ -12,22 +12,96 @@ export interface CameraPose {
   readonly target: Vec3;
 }
 
-export const CAMERA_HEIGHT = 2.15;
-export const CAMERA_BACK = 6.4;
+export const CAMERA_HEIGHT = 1.5;
+export const CAMERA_BACK = 2.6;
 export const TARGET_Y = 0.2;
 export const TARGET_AHEAD = 5;
 export const LOOK_LAMBDA = 4;
 export const OVERVIEW_PITCH = Math.PI / 3;
 export const OVERVIEW_MARGIN = 1.05;
 
-/** Pose that frames one plot (10.7, 10.8). Plot 1 (frontZ = 3) gives (0, 2.15, 9.4) looking at z = -2. */
-export function plotPose(plot: Pick<PlotLayout, 'centerX' | 'frontZ'>): CameraPose {
+/** Pose that frames one plot (10.7, 10.8). Plot 1 (frontZ = 3) gives (0, 1.5, 5.6) looking at z = -2 (Requirement 9). */
+export function plotPose(
+  plot: Pick<PlotLayout, 'centerX' | 'frontZ'>,
+  aspect: number = DESKTOP_ASPECT,
+): CameraPose {
   return {
     position: [plot.centerX, CAMERA_HEIGHT, plot.frontZ + CAMERA_BACK],
-    target: [plot.centerX, TARGET_Y, plot.frontZ - TARGET_AHEAD],
+    target: [plot.centerX, targetY(aspect), plot.frontZ - TARGET_AHEAD],
   };
 }
 
+/** Aspect used when none is given (desktop); the pose is unchanged for aspect >= 1. */
+export const DESKTOP_ASPECT = 16 / 9;
+/** Portrait look target: aims the camera about 17 degrees down so sky takes ~20% of the frame, not ~35%. */
+export const TARGET_Y_PORTRAIT = -0.8;
+/** Aspect at which the portrait look target is fully applied (blended from 1 down to this). */
+export const PORTRAIT_FULL_ASPECT = 0.7;
+
+/** Look target height: 0.2 for aspect >= 1, eased down to TARGET_Y_PORTRAIT for aspect <= 0.7. */
+export function targetY(aspect: number): number {
+  if (!(aspect < 1)) return TARGET_Y;
+  const t = Math.min(1, Math.max(0, (1 - aspect) / (1 - PORTRAIT_FULL_ASPECT)));
+  return TARGET_Y + (TARGET_Y_PORTRAIT - TARGET_Y) * t;
+}
+
+export interface Ndc {
+  /** -1 (left) to 1 (right) when inside the frame. */
+  readonly x: number;
+  /** -1 (bottom) to 1 (top) when inside the frame. */
+  readonly y: number;
+  /** Distance along the view axis; positive in front of the camera. */
+  readonly depth: number;
+}
+
+/**
+ * Project a world point to normalised device coordinates for a look-at camera with world up (0, 1, 0).
+ * `fovDeg` is the vertical field of view; `aspect` is width / height. Returns null when the point is
+ * at or behind the camera plane. Pure: no three import.
+ */
+export function projectToNdc(
+  pose: CameraPose,
+  point: Vec3,
+  fovDeg: number,
+  aspect: number,
+): Ndc | null {
+  const [px, py, pz] = pose.position;
+  let fx = pose.target[0] - px;
+  let fy = pose.target[1] - py;
+  let fz = pose.target[2] - pz;
+  const fl = Math.hypot(fx, fy, fz);
+  if (!(fl > 0)) return null;
+  fx /= fl;
+  fy /= fl;
+  fz /= fl;
+  // right = f x up(0,1,0) = (-fz, 0, fx); a vertical view axis has no defined roll.
+  let rx = -fz;
+  let rz = fx;
+  const rl = Math.hypot(rx, rz);
+  if (rl < 1e-9) {
+    rx = 1;
+    rz = 0;
+  } else {
+    rx /= rl;
+    rz /= rl;
+  }
+  // up = right x f
+  const ux = -rz * fy;
+  const uy = rz * fx - rx * fz;
+  const uz = rx * fy;
+  const vx = point[0] - px;
+  const vy = point[1] - py;
+  const vz = point[2] - pz;
+  const depth = vx * fx + vy * fy + vz * fz;
+  if (!(depth > 1e-9)) return null;
+  const tv = Math.tan((fovDeg * Math.PI) / 360);
+  const th = tv * aspect;
+  return {
+    x: (vx * rx + vz * rz) / (depth * th),
+    y: (vx * ux + vy * uy + vz * uz) / (depth * tv),
+    depth,
+  };
+}
 /** Frame-rate independent exponential smoothing: cur += (goal - cur) * (1 - exp(-lambda * dt)). */
 export function smooth(
   cur: number,

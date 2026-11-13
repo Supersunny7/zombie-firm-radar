@@ -2,14 +2,15 @@ import { Suspense, useEffect, useRef, useState } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import { RepeatWrapping, SRGBColorSpace } from 'three';
-import type { Group } from 'three';
+import type { Group, MeshStandardMaterial } from 'three';
 import { ASSET_KEYS, assetUrl } from '../assets';
+import { groundTint, TILE_M } from '../model/groundGrade';
 import { FLAT_GROUND_COLOR, GROUND_SIZE_M } from '../model/sceneParams';
 import { ModelBoundary } from './ModelBoundary';
 import { reportEnvironmentFailure } from './environmentFailure';
+import { lightsBlendRef } from './lightsBlend';
 
-/** One soil tile is 4 m; the ground follows the camera in whole tiles so the texture never swims. */
-const TILE_M = 4;
+/** The ground follows the camera in whole TILE_M tiles so the texture never swims. */
 const REPEAT = GROUND_SIZE_M / TILE_M;
 const MAX_ANISOTROPY = 8;
 
@@ -30,18 +31,24 @@ function FlatGround() {
   );
 }
 
-function soilUrl(key: string): string {
+function groundUrl(key: string): string {
   const url = assetUrl(key);
-  if (url === null) throw new Error(`Soil texture is not in the manifest: ${key}`);
+  if (url === null) throw new Error(`Ground texture is not in the manifest: ${key}`);
   return url;
 }
 
-function SoilGround() {
+function ForestGround() {
   const maxAniso = useThree((s) => s.gl.capabilities.getMaxAnisotropy());
   const textures = useTexture({
-    map: soilUrl(ASSET_KEYS.soil.diffuse),
-    normalMap: soilUrl(ASSET_KEYS.soil.normal),
-    roughnessMap: soilUrl(ASSET_KEYS.soil.rough),
+    map: groundUrl(ASSET_KEYS.forestFloor.diffuse),
+    normalMap: groundUrl(ASSET_KEYS.forestFloor.normal),
+    roughnessMap: groundUrl(ASSET_KEYS.forestFloor.rough),
+  });
+
+  const material = useRef<MeshStandardMaterial>(null);
+  // Night grade: darker and redder in lights off, eased with the lights blend.
+  useFrame(() => {
+    material.current?.color.setRGB(...groundTint(lightsBlendRef.current));
   });
 
   useEffect(() => {
@@ -57,21 +64,25 @@ function SoilGround() {
 
   return (
     <GroundPlane>
-      <meshStandardMaterial {...textures} />
+      <meshStandardMaterial ref={material} {...textures} />
     </GroundPlane>
   );
 }
 
 /**
- * 480 m soil ground that follows the camera on a 4 m snap (7.1). The nearest edge is 240 m away,
- * more than 1.5 times the longest fog distance (132 m), so fog hides the edge (7.2). If a soil
+ * 480 m forest-floor ground that follows the camera on a 4 m snap (7.1). The nearest edge is 240 m away,
+ * more than 1.5 times the longest fog distance (132 m), so fog hides the edge (7.2). If a ground
  * texture fails, a flat #0b0806 ground replaces it and the HUD posts a notice (7.13).
  */
 export function Ground() {
   const group = useRef<Group>(null);
   const [failed, setFailed] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const frames = useRef(0);
 
   useFrame(({ camera }) => {
+    // Start the Ground_Texture requests right after the first frame has rendered (5.2).
+    if (frames.current++ === 1) setLoading(true);
     group.current?.position.set(
       Math.round(camera.position.x / TILE_M) * TILE_M,
       0,
@@ -92,7 +103,7 @@ export function Ground() {
           }}
         >
           <Suspense fallback={<FlatGround />}>
-            <SoilGround />
+            {loading ? <ForestGround /> : <FlatGround />}
           </Suspense>
         </ModelBoundary>
       )}

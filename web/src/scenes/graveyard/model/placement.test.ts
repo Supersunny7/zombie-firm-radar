@@ -29,7 +29,7 @@ describe('corpseAnchor', () => {
 
   it('picks the nearest zombie stone', () => {
     const layout = computeLayout(Array.from({ length: 12 }, (_, i) => firm(i, 'A', 'zombie')));
-    const camera = { x: 0, y: 2.15, z: 9.4 };
+    const camera = { x: 0, y: 1.5, z: 5.6 };
     const got = corpseAnchor(layout, () => true);
     const dist = (i: number) => {
       const s = layout.stones[i]!;

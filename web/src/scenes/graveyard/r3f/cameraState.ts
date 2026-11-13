@@ -15,7 +15,7 @@ export interface CameraRigState {
 
 export const cameraStateRef: { current: CameraRigState } = {
   current: {
-    position: [0, 2.15, 9.4],
+    position: [0, 1.5, 5.6],
     lookAt: [0, 0.2, -2],
     atRest: true,
     target: 0,

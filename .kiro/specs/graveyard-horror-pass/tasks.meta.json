@@ -7,6 +7,54 @@
     "1.11 Write property test for group budget accounting": {
       "status": "passed",
       "lastRunTimestamp": 1794549728934
+    },
+    "2.2 Write property test for jitter bounds and locality": {
+      "status": "passed",
+      "lastRunTimestamp": 1794551186579
+    },
+    "2.4 Write property test for the fallen share": {
+      "status": "passed",
+      "lastRunTimestamp": 1794551373496
+    },
+    "2.3 Write property test for fallen stones": {
+      "status": "passed",
+      "lastRunTimestamp": 1794551385868
+    },
+    "2.7 Write property test for reading order and navigation": {
+      "status": "passed",
+      "lastRunTimestamp": 1794551386103
+    },
+    "2.6 Write property test for spacing and own-Pit clearance": {
+      "status": "passed",
+      "lastRunTimestamp": 1794551387672
+    },
+    "2.18 Write property test for mound placement": {
+      "status": "passed",
+      "lastRunTimestamp": 1794551398847
+    },
+    "2.16 Write property test for the torn mound set": {
+      "status": "passed",
+      "lastRunTimestamp": 1794551461990
+    },
+    "2.11 Write property test for the plot camera pose": {
+      "status": "passed",
+      "lastRunTimestamp": 1794551474637
+    },
+    "2.12 Write property test for nearest-mound projection (pointer centred, no sway)": {
+      "status": "passed",
+      "lastRunTimestamp": 1794551494764
+    },
+    "2.17 Write property test for pit and clod geometry": {
+      "status": "passed",
+      "lastRunTimestamp": 1794551732142
+    },
+    "2.22 Write property test for grass clearance, cap, density and quality": {
+      "status": "passed",
+      "lastRunTimestamp": 1794551748821
+    },
+    "2.21 Write property test for grass determinism and plot locality": {
+      "status": "passed",
+      "lastRunTimestamp": 1794551751021
     }
   },
   "executionHistory": {
@@ -287,6 +335,11 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548955320
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794550433634
       }
     ],
     "2.1 Implement Stone_Jitter": [
@@ -294,6 +347,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548955385
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794550442851
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794550536869
       }
     ],
     "2.2 Write property test for jitter bounds and locality": [
@@ -301,6 +364,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548955450
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551118640
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551325123
       }
     ],
     "2.3 Write property test for fallen stones": [
@@ -308,6 +381,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548955521
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551332673
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551410645
       }
     ],
     "2.4 Write property test for the fallen share": [
@@ -315,6 +398,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548955588
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551332912
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551410932
       }
     ],
     "2.5 Implement extents and the band-packed layout": [
@@ -322,6 +415,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548955655
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794550544586
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551109600
       }
     ],
     "2.6 Write property test for spacing and own-Pit clearance": [
@@ -329,6 +432,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548955970
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551333461
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551411140
       }
     ],
     "2.7 Write property test for reading order and navigation": [
@@ -336,6 +449,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548956085
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551334274
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551411953
       }
     ],
     "2.8 Update picking and the spatial grid": [
@@ -343,6 +466,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548956202
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551116914
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551322774
       }
     ],
     "2.9 Write property test for picking": [
@@ -350,6 +483,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548956350
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551423677
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551676793
       }
     ],
     "2.10 Move the camera inside the plot": [
@@ -357,6 +500,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548956450
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551117145
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551323056
       }
     ],
     "2.11 Write property test for the plot camera pose": [
@@ -364,6 +517,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548956535
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551424370
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551677206
       }
     ],
     "2.12 Write property test for nearest-mound projection (pointer centred, no sway)": [
@@ -371,6 +534,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548956622
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551425009
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551679349
       }
     ],
     "2.13 Add closed and torn mounds to the dressing plan": [
@@ -378,6 +551,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548956705
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794550443113
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794550537081
       }
     ],
     "2.14 Write property test for the dressing plan": [
@@ -385,6 +568,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548956789
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794550544795
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551109359
       }
     ],
     "2.15 Implement torn mound geometry and pit rules": [
@@ -392,6 +585,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548956882
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551117339
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551323850
       }
     ],
     "2.16 Write property test for the torn mound set": [
@@ -399,6 +602,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548956972
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551425621
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551679507
       }
     ],
     "2.17 Write property test for pit and clod geometry": [
@@ -406,6 +619,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548957114
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551688041
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551761360
       }
     ],
     "2.18 Write property test for mound placement": [
@@ -413,6 +636,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548957230
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551334941
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551412770
       }
     ],
     "2.19 Use the Ground_Texture": [
@@ -420,6 +653,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548957336
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794550443260
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794550537356
       }
     ],
     "2.20 Implement grass placement and texture": [
@@ -427,6 +670,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548957423
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551118118
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551324612
       }
     ],
     "2.21 Write property test for grass determinism and plot locality": [
@@ -434,6 +687,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548957531
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551688496
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551761632
       }
     ],
     "2.22 Write property test for grass clearance, cap, density and quality": [
@@ -441,6 +704,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548957625
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551689073
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551762185
       }
     ],
     "2.23 Implement the Grass component": [
@@ -448,6 +721,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548957721
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551423379
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551676555
       }
     ],
     "2.24 Implement closed and torn mounds and wire the Batch 2 scene": [
@@ -455,6 +738,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548957882
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551763994
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794552129505
       }
     ],
     "2.25 Write the scene tests for Batch 2": [
@@ -462,6 +755,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548957967
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794552135555
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794552372188
       }
     ],
     "2.26 Add the Batch 2 screenshot script": [
@@ -469,6 +772,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548958057
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794551772033
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794552129786
       }
     ],
     "2.27 Capture Batch 2 screenshots and offer the scene review": [
@@ -476,6 +789,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548958158
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794552373392
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794554972109
       }
     ],
     "2.28 Run the full check for Batch 2": [
@@ -483,6 +806,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548958252
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794554972485
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794555132125
       }
     ],
     "2.29 Write the Batch 2 report": [
@@ -490,6 +823,16 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548958352
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794555133436
+      },
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794555138460
       }
     ],
     "2.30 STOP: wait for the user to review Batch 2 before continuing.": [
@@ -959,6 +1302,13 @@
         "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
         "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
         "timestamp": 1794548965038
+      }
+    ],
+    "1. Batch 1: Assets and licensing (Requirements 1 to 5)": [
+      {
+        "executionId": "5fe499b2-4b4e-4b58-bf2f-c209f0aaf305",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794550433772
       }
     ]
   }

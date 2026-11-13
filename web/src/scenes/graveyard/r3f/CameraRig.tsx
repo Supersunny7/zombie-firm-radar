@@ -103,7 +103,7 @@ export function CameraRig({ layout }: { layout: GraveyardLayout }) {
           ? overviewPose(lay.bounds, CAMERA_FOV, aspect)
           : plotPose(FALLBACK_PLOT);
       }
-      const base = plotPose(lay.plots[t] ?? FALLBACK_PLOT);
+      const base = plotPose(lay.plots[t] ?? FALLBACK_PLOT, aspect);
       return {
         position: [base.position[0] + pan, base.position[1], base.position[2]],
         target: [base.target[0] + pan, base.target[1], base.target[2]],

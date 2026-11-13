@@ -16,7 +16,7 @@ Rules that apply to every task:
 
 ## Tasks
 
-- [ ] 1. Batch 1: Assets and licensing (Requirements 1 to 5)
+- [x] 1. Batch 1: Assets and licensing (Requirements 1 to 5)
   - [x] 1.1 Add the three edit operations and the pipeline guards
     - Run `git pull`. In `tools/asset-lib/edits/` add `keep-animations.mjs` (`keepAnimations { names }`, strict mode throws `EditTargetMissing` for an absent clip), `remove-animations.mjs` (dispose all clips, then `prune()`) and `spec-gloss.mjs` (`specGlossToMetalRough`, no-op when the extension is unused). All three are idempotent.
     - Register them in `edits/index.mjs` and in `EDIT_SPECS` in `picks.mjs`; add the optional pick key `forbidExtensions` (validated in `picks.mjs`) and the post-write `ForbiddenExtension` check in `convert-model.mjs`.
@@ -77,114 +77,114 @@ Rules that apply to every task:
   - [x] 1.16 Write the Batch 1 report
     - Report: what was done; check results; per-file and per-category byte breakdown with and without HDRI; chosen ground slug, URL, reason, two runners-up; skeleton report of each model (bones, clips, triangles); asset-auditor result; any AI-tag re-check finding; the confirmed 40,000,000 byte ceiling (task 1.9) and, if the fallback order of Requirement 5.13 was used, the before and after breakdown; no new dependencies.
     - _Requirements: 2.5, 3.8, 5.8, 22.3, 22.4, 22.10_
-  - [~] 1.17 STOP: wait for the user to review Batch 1 before continuing.
+  - [x] 1.17 STOP: wait for the user to review Batch 1 before continuing.
 
 - [ ] 2. Batch 2: Ground, grass, mounds, stones, picking and camera (Requirements 6 to 9)
-  - [~] 2.1 Implement Stone_Jitter
+  - [x] 2.1 Implement Stone_Jitter
     - Run `git pull`. Create `web/src/scenes/graveyard/layout/jitter.ts` with `stoneJitter(cik)` (12 uniforms from `mulberry32(fnv1a32(cik))`, offsets at most 0.30 m, yaw at most 20 degrees, height factor 0.90 to 1.10, fallen rate 0.05, fallen side yaw plus or minus 90 degrees, sink 0 to 0.08). Change `LEAN_ZOMBIE` to `[0.09, 0.13]` so total tilt stays at most 8 degrees. Pure: no React or three.
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 20.8_
-  - [~] 2.2 Write property test for jitter bounds and locality
+  - [x] 2.2 Write property test for jitter bounds and locality
     - File `layout/jitter.property.test.ts`; firm-list arbitrary of 1 to 400 firms, 1 to 12 sectors, all four statuses.
     - **Property 11: Jitter is bounded, local to the cik and deterministic**
     - **Validates: Requirements 8.1, 8.2, 8.3, 8.4, 8.5, 8.8, 8.10, 20.3**
-  - [~] 2.3 Write property test for fallen stones
+  - [x] 2.3 Write property test for fallen stones
     - File `layout/fallen.property.test.ts`.
     - **Property 12: Fallen stones lie face up**
     - **Validates: Requirements 8.7**
-  - [~] 2.4 Write property test for the fallen share
+  - [x] 2.4 Write property test for the fallen share
     - File `layout/fallenShare.property.test.ts`; lists of 2,500 to 3,000 distinct 10-digit ciks (Requirement 8.6 gives no hard guarantee below 2,500 firms; see the design risks).
     - **Property 13: Fallen share is about five percent**
     - **Validates: Requirements 8.6**
-  - [~] 2.5 Implement extents and the band-packed layout
+  - [x] 2.5 Implement extents and the band-packed layout
     - Create `layout/extents.ts` and rewrite the internals of `layout/layout.ts`: per-stone extent rectangles (oriented footprint plus the reserved mound zone), variable column and row sizes, `MIN_GAP = 0.15`, fallen stones lying backwards with face up, new `StoneLayout` fields (`fallen`, `standingYaw`, `baseY`, `pitCentre`) and `PlotLayout.rowAnchors`. Keep plot sorting, plot grid, `PLOT_GAP`, `FIRST_ROW_Z` and input-order `plot.stones`. Export `stoneBaseY` and `stoneCentreY` and switch `Stones.tsx`, `Flashlight.tsx`, `FocusMarker.tsx`, `Engravings.tsx` to them. Keep exactly 3 stone InstancedMesh objects.
     - Update superseded Base_Spec layout tests (`pointerPick.test.ts`, `placement.test.ts` call sites) and create the layout property test setup for the new algorithm.
     - After this change name `reference/graveyard/horror-direction.png` and `graveyard-rate-shock-3pp.png` as the matching references.
     - _Requirements: 8.2, 8.7, 8.9, 8.10, 8.11, 8.13, 8.14, 8.15, 20.2, 20.3_
-  - [~] 2.6 Write property test for spacing and own-Pit clearance
+  - [x] 2.6 Write property test for spacing and own-Pit clearance
     - File `layout/spacing.property.test.ts`.
     - **Property 14: Stones keep their distance and never cover their own Pit**
     - **Validates: Requirements 8.9, 8.10, 8.11**
-  - [~] 2.7 Write property test for reading order and navigation
+  - [x] 2.7 Write property test for reading order and navigation
     - File `layout/readingOrder.property.test.ts`, plus the example test of 8.16 (a jitter change leaves keyboard order unchanged).
     - **Property 15: Reading order does not depend on jitter**
     - **Validates: Requirements 8.13, 8.14, 8.16**
-  - [~] 2.8 Update picking and the spatial grid
+  - [x] 2.8 Update picking and the spatial grid
     - In `layout/pick.ts` use the full rotation (yaw, pitch, roll) and an exact oriented-box slab test; in `layout/grid.ts` insert stones by `stoneReach` radius and use `stoneCentreY` in all queries.
     - _Requirements: 8.12, 8.14_
-  - [~] 2.9 Write property test for picking
+  - [x] 2.9 Write property test for picking
     - File `layout/pick.property.test.ts` against a brute-force oriented-box reference including tilted and fallen stones.
     - **Property 16: Picking equals the brute-force oriented box test**
     - **Validates: Requirements 8.12**
-  - [~] 2.10 Move the camera inside the plot
+  - [x] 2.10 Move the camera inside the plot
     - In `layout/camera.ts` set `CAMERA_HEIGHT = 1.5`, `CAMERA_BACK = 2.6`, add pure `projectToNdc`. Update `GraveyardScene.tsx` initial camera and `model/placement.ts` `INITIAL_CAMERA` to `(0, 1.5, 5.6)`. Keep fov 52, sway, smoothing, flashlight offset, 1.2 s move, overview and fog rules.
     - Update superseded tests `camera.test.ts` (plot pose now `(0, 1.5, 5.6)`, target `(0, 0.2, -2)`) and `placement.test.ts`.
     - Matching references: `reference/graveyard/horror-direction.png` and `horror-direction-sequence.png`.
     - _Requirements: 9.1, 9.2, 9.4, 9.5, 9.6, 9.7, 9.9, 9.10, 20.3_
-  - [~] 2.11 Write property test for the plot camera pose
+  - [x] 2.11 Write property test for the plot camera pose
     - File `layout/cameraPose.property.test.ts` over generated plot sizes, including the unchanged Base_Spec overview containment property.
     - **Property 17: Plot camera pose sits among the graves**
     - **Validates: Requirements 9.1, 9.2, 9.4, 9.6, 9.8**
-  - [~] 2.12 Write property test for nearest-mound projection (pointer centred, no sway)
+  - [x] 2.12 Write property test for nearest-mound projection (pointer centred, no sway)
     - File `layout/cameraProjection.property.test.ts`; neutral pointer, sway 0, aspect ratios 1440/900 and 390/844.
     - **Property 18: Nearest-row mound bases project into the lower half**
     - **Validates: Requirements 9.3**
-  - [~] 2.13 Add closed and torn mounds to the dressing plan
+  - [x] 2.13 Add closed and torn mounds to the dressing plan
     - In `model/dressing.ts` add `torn`, `closed` (partition of all firms), `stains` (0 to 3 per torn mound, lights off only); `mounds` keeps equalling `undead`. Update superseded `dressing.test.ts`.
     - _Requirements: 7.1, 7.4, 7.6, 7.10, 7.11, 16.4, 20.3_
-  - [~] 2.14 Write property test for the dressing plan
+  - [x] 2.14 Write property test for the dressing plan
     - File `model/dressing.property.test.ts`.
     - **Property 7: Every headstone has exactly one mound, and the plan follows the shock and lights**
     - **Validates: Requirements 7.1, 7.4, 7.6, 7.10, 7.11, 10.6, 16.4**
-  - [~] 2.15 Implement torn mound geometry and pit rules
+  - [x] 2.15 Implement torn mound geometry and pit rules
     - Create `model/tornMound.ts` (pure): `tornMoundProfile`, Pit radius (width 0.5 to 0.9 m), clod count 6 to 14 and seeded positions from `PIT_R + 0.05` to 1.2 m, and `tornMoundSet(torn, activeCiks)`.
     - _Requirements: 7.2, 7.3, 7.5_
-  - [~] 2.16 Write property test for the torn mound set
+  - [x] 2.16 Write property test for the torn mound set
     - File `model/tornMoundSet.property.test.ts`.
     - **Property 8: A torn mound is never removed under a character**
     - **Validates: Requirements 7.5**
-  - [~] 2.17 Write property test for pit and clod geometry
+  - [x] 2.17 Write property test for pit and clod geometry
     - File `model/tornMound.property.test.ts`.
     - **Property 9: Pit and clod geometry**
     - **Validates: Requirements 7.2**
-  - [~] 2.18 Write property test for mound placement
+  - [x] 2.18 Write property test for mound placement
     - File `model/moundPlacement.property.test.ts`.
     - **Property 10: Mounds follow the jittered, standing headstone**
     - **Validates: Requirements 7.7, 7.8, 7.9**
-  - [~] 2.19 Use the Ground_Texture
+  - [x] 2.19 Use the Ground_Texture
     - Update `r3f/Ground.tsx` to load `ASSET_KEYS.forestFloor` (1k, repeat at least 128 texels per metre, `TILE_M = 4`), start loading within 100 ms after the first frame, keep the soil material for mounds and the `#0b0806` fallback with the HUD notice.
     - Matching reference: `reference/graveyard/horror-direction.png`. Offer scene-critic.
     - _Requirements: 5.2, 6.1, 6.2, 6.3_
-  - [~] 2.20 Implement grass placement and texture
+  - [x] 2.20 Implement grass placement and texture
     - Create `model/grassTexture.ts` (own-code RGBA 128 x 128 blade texture) and `model/grass.ts` (`placeGrass(layout, plotIndex, quality)`: seed from `fnv1a32(plot.sector)`, near-mound density, sparse background, at most 1,500 per plot, reject cards inside stone footprints and Pits, cards at most 0.35 m high, low quality halves).
     - _Requirements: 6.4, 6.5, 6.6, 6.7, 6.8, 6.9_
-  - [~] 2.21 Write property test for grass determinism and plot locality
+  - [x] 2.21 Write property test for grass determinism and plot locality
     - File `model/grassDeterminism.property.test.ts`.
     - **Property 5: Grass placement is deterministic and local to its plot**
     - **Validates: Requirements 6.6**
-  - [~] 2.22 Write property test for grass clearance, cap, density and quality
+  - [x] 2.22 Write property test for grass clearance, cap, density and quality
     - File `model/grass.property.test.ts`.
     - **Property 6: Grass respects clearance, cap, density and quality**
     - **Validates: Requirements 6.5, 6.7, 6.8, 6.9**
-  - [~] 2.23 Implement the Grass component
+  - [x] 2.23 Implement the Grass component
     - Create `r3f/Grass.tsx`: one InstancedMesh (capacity 1,500), crossed-quad geometry, `DataTexture` with mipmaps and `SRGBColorSpace`, `alphaTest = 0.5`, `DoubleSide`; only the framed plot is written; same cards in lights on with lights-on lighting. Look up three `DataTexture` and `InstancedMesh` APIs with context7.
     - _Requirements: 6.4, 6.10, 6.11_
-  - [~] 2.24 Implement closed and torn mounds and wire the Batch 2 scene
+  - [x] 2.24 Implement closed and torn mounds and wire the Batch 2 scene
     - Update `r3f/Mounds.tsx` (closed, every non-torn stone, oriented by `standingYaw`); create `r3f/TornMounds.tsx` (torn heap, Pit discs, clods, lights-off stains) all instanced; replace `tornMoundSet` use for 1 s and 2 s timing; mount `Grass`, `Mounds`, `TornMounds` in `GraveyardScene.tsx`. Keep `Hands` for now (removed in Batch 3a, task 3.30).
     - Matching references: `reference/graveyard/horror-direction.png` and `horror-direction-sequence.png`. Offer scene-critic.
     - _Requirements: 6.11, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 7.10, 7.11, 8.15_
-  - [~] 2.25 Write the scene tests for Batch 2
+  - [x] 2.25 Write the scene tests for Batch 2
     - Create `Horror.scene.test.tsx` (jsdom, mocked Canvas): exactly 3 stone InstancedMesh with a fallen stone, no model request before the first frame. Create `horror.purity.test.ts` scanning the new pure modules for `react`/`three` imports and `setTimeout`/`setInterval`.
     - _Requirements: 5.1, 8.15, 11.14, 20.8_
-  - [~] 2.26 Add the Batch 2 screenshot script
+  - [x] 2.26 Add the Batch 2 screenshot script
     - Create `web/scripts/horror-screenshots.mjs --batch 2` (headed Chrome, 1920 x 1080, `/?firms=3000`, lights off) writing `reference/progress/horror-batch2-ground-graves.png` (Plot 1 pose, nearest mounds in the lower half) and `reference/progress/horror-batch2-stones.png` (tilted, rotated, at least one fallen stone). Use the UI plus the DEV-only `?horror=` helper where needed.
     - _Requirements: 21.10, 21.11, 22.5_
-  - [~] 2.27 Capture Batch 2 screenshots and offer the scene review
+  - [x] 2.27 Capture Batch 2 screenshots and offer the scene review
     - Ask the user to start `Set-Location web; pnpm dev` (long-running; do not start it from a command), then run `Set-Location web; node scripts/horror-screenshots.mjs --batch 2 --url http://localhost:5173`. Name the matching references and offer the scene-critic.
     - _Requirements: 21.10, 22.5, 22.7_
-  - [~] 2.28 Run the full check for Batch 2
+  - [x] 2.28 Run the full check for Batch 2
     - Run `Set-Location web; pnpm typecheck; pnpm lint; pnpm format; pnpm test; pnpm build`. All must exit 0.
     - _Requirements: 21.1, 21.2_
-  - [~] 2.29 Write the Batch 2 report
+  - [x] 2.29 Write the Batch 2 report
     - Report: what was done; check results; screenshots; superseded tests updated (`camera.test.ts`, `placement.test.ts`, `dressing.test.ts`, layout call sites); open decisions (fallen-share and neutral-pointer defaults); no new dependencies.
     - _Requirements: 20.4, 22.3, 22.5, 22.10_
   - [~] 2.30 STOP: wait for the user to review Batch 2 before continuing.

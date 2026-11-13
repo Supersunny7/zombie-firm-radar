@@ -41,7 +41,7 @@ export function Hud({ children }: { children?: ReactNode }) {
     <div className="pointer-events-none fixed inset-0 z-10 flex flex-col font-ui text-text max-[900px]:static max-[900px]:min-h-screen">
       <SkipLink />
 
-      <header className="pointer-events-auto m-3 min-w-0 self-start min-[901px]:max-w-[calc(100vw-13rem)]">
+      <header className="pointer-events-auto relative z-[60] m-3 min-w-0 self-start max-[900px]:max-w-[calc(100vw-1.5rem)] min-[901px]:max-w-[calc(100vw-13rem)]">
         <div className={`${panel} flex min-w-0 items-center gap-3 px-3 py-2`}>
           <span aria-hidden="true" className="inline-block size-2.5 shrink-0 rounded-full bg-rec" />
           <span className="shrink-0 font-mono text-sm whitespace-nowrap">REC · CAM 03</span>
@@ -58,12 +58,12 @@ export function Hud({ children }: { children?: ReactNode }) {
 
       {/* Stage spacer: keeps the center free; stage sits behind on desktop. */}
       <div className="flex-1 max-[900px]:h-[60vh] max-[900px]:flex-none">
-        {children && <div className="pointer-events-auto">{children}</div>}
+        {children && <div className="pointer-events-auto relative z-[60]">{children}</div>}
       </div>
 
       <aside
         aria-label="Controls"
-        className="pointer-events-auto m-3 flex flex-wrap items-center justify-end gap-2 min-[901px]:absolute min-[901px]:top-3 min-[901px]:right-0 min-[901px]:flex-col min-[901px]:items-end"
+        className="pointer-events-auto relative z-[60] m-3 flex flex-wrap items-center justify-end gap-2 min-[901px]:absolute min-[901px]:top-3 min-[901px]:right-0 min-[901px]:flex-col min-[901px]:items-end"
       >
         <SkipSlot />
         <LightsButton />

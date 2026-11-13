@@ -7,7 +7,7 @@ import { useStore } from '../../../state/store';
 import { useShockView } from '../../../state/shockView';
 import { assetUrl } from '../assets';
 import { buildGrid } from '../layout/grid';
-import type { GraveyardLayout, StoneLayout } from '../layout/layout';
+import { stoneBaseY, stoneCentreY, type GraveyardLayout, type StoneLayout } from '../layout/layout';
 import type { Ray } from '../layout/pick';
 import { deriveFaceAnchor } from '../model/deriveFaceAnchor';
 import { modelFor } from '../model/modelFor';
@@ -147,7 +147,7 @@ function EngravingSlot({
     const mesh = ref.current;
     if (!mesh) return;
     _t.makeTranslation(-info.origin.x, -info.origin.y, -info.origin.z);
-    _p.set(stone.x, -stone.sink, stone.z);
+    _p.set(stone.x, stoneBaseY(stone), stone.z);
     _e.set(stone.pitch, stone.yaw, stone.roll, 'YXZ');
     _q.setFromEuler(_e);
     _s.set(sx, sy, stone.depth / info.body.d);
@@ -242,7 +242,7 @@ export function Engravings({ layout }: { layout: GraveyardLayout }) {
           oy: c.y,
           oz: c.z,
           dx: stone.x - c.x,
-          dy: (stone.height - stone.sink) / 2 - c.y,
+          dy: stoneCentreY(stone) - c.y,
           dz: stone.z - c.z,
         };
         setWant({ layout, pool: selectEngravingPool({ grid, layout, ray, primary: index }) });

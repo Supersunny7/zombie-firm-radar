@@ -35,7 +35,7 @@ export interface GraveyardHudProps {
  */
 export function GraveyardHud({ loader }: GraveyardHudProps) {
   return (
-    <div className="pointer-events-none flex flex-col gap-3 p-3 min-[900px]:absolute min-[900px]:inset-0 min-[900px]:p-0">
+    <div className="pointer-events-none relative z-[60] flex flex-col gap-3 p-3 min-[900px]:absolute min-[900px]:inset-0 min-[900px]:p-0">
       <div className="min-w-0 min-[900px]:absolute min-[900px]:top-14 min-[900px]:right-44 min-[900px]:left-3">
         <PlotNav />
       </div>

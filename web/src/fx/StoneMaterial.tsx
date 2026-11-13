@@ -6,14 +6,15 @@ import type CustomShaderMaterialType from 'three-custom-shader-material/vanilla'
 import { blendedParamsRef } from '../scenes/graveyard/r3f/lightsBlend';
 
 /** Overview emissive: cold blue-grey in linear colour, so stones read as lit silhouettes from far away. */
-export const OVERVIEW_STONE_EMISSIVE = [0.08, 0.11, 0.17] as const;
+export const OVERVIEW_STONE_EMISSIVE = [0.14, 0.19, 0.28] as const;
 
 const FRAGMENT = /* glsl */ `
   uniform float uDecay;
   uniform float uLift;
   void main() {
     // Cold, slightly green darkening; stronger for more decayed models.
-    vec3 c = csm_DiffuseColor.rgb;
+    // Albedo is pulled down and cooled so the flashlight pool reads dim grey-blue, not white.
+    vec3 c = csm_DiffuseColor.rgb * vec3(0.62, 0.68, 0.78);
     csm_DiffuseColor.rgb = mix(c, c * vec3(0.66, 0.74, 0.62), uDecay);
     csm_Emissive = vec3(${OVERVIEW_STONE_EMISSIVE.map((v) => v.toFixed(3)).join(', ')}) * uLift;
   }

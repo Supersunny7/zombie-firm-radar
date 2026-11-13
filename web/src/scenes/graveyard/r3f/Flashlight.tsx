@@ -6,7 +6,7 @@ import { isStoneProxyActive } from '../../../state/stoneProxy';
 import { qualityParams } from '../model/quality';
 import { flickerFactor, smooth } from '../layout/camera';
 import { buildGrid } from '../layout/grid';
-import type { GraveyardLayout } from '../layout/layout';
+import { stoneCentreY, type GraveyardLayout } from '../layout/layout';
 import { pickStone, type Ray } from '../layout/pick';
 import { cameraStateRef } from './cameraState';
 import {
@@ -90,7 +90,7 @@ export function Flashlight({ layout }: { layout: GraveyardLayout }) {
       const firms = useStore.getState().data?.index.firms;
       const idx = firms ? firms.findIndex((f) => f.cik === focused) : -1;
       const s = idx >= 0 ? layout.stones[idx] : undefined;
-      if (s) goal.current = [s.x, Math.max(0, s.height / 2 - s.sink), s.z];
+      if (s) goal.current = [s.x, Math.max(0, stoneCentreY(s)), s.z];
     }
     const a = aim.current;
     const g = goal.current;

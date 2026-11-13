@@ -331,3 +331,33 @@
 2026-11-13 | graveyard-horror-pass | 1.11 | Added group budget accounting property tests. | web/scripts/check-bundle.test.mjs
 2026-11-13 | graveyard-horror-pass | 1.15 | Batch 1 full check passed: typecheck, lint, format, web 750 tests, tools 379 tests, check-bundle OK. | web/scripts/check-bundle.test.mjs (format)
 2026-11-13 | graveyard-horror-pass | 1.16 | Batch 1 report delivered in chat with size breakdown. | none
+2026-11-13 | graveyard-horror-pass | 1.17 | Batch 1 reviewed and approved by user. | none
+2026-11-13 | graveyard-horror-pass | 2.1 | Added seeded stoneJitter and lowered zombie lean cap. | layout/jitter.ts, layout/layout.ts, jitter.test.ts
+2026-11-13 | graveyard-horror-pass | 2.13 | Added torn/closed partition and stains to dressing plan. | model/dressing.ts, dressing.test.ts
+2026-11-13 | graveyard-horror-pass | 2.19 | Ground now uses brown_mud_leaves_01 with dark red grade. | r3f/Ground.tsx, model/groundGrade.ts
+2026-11-13 | graveyard-horror-pass | 2.14 | Added dressing plan property test. | model/dressing.property.test.ts
+2026-11-13 | graveyard-horror-pass | 2.5 | Rewrote layout as band-packed with extents, jitter and fallen stones. | layout/extents.ts, layout.ts, grid.ts, pick.ts, Stones.tsx
+2026-11-13 | graveyard-horror-pass | 2.8 | Exact oriented-box picking for tilted and fallen stones. | layout/pick.ts, pick.test.ts
+2026-11-13 | graveyard-horror-pass | 2.10 | Moved plot camera to 1.5 m eye height at (0,1.5,5.6) with projectToNdc. | layout/camera.ts, placement.ts, cameraState.ts
+2026-11-13 | graveyard-horror-pass | 2.15 | Added pure torn mound profile, pit radius, clods and set. | model/tornMound.ts, tornMound.test.ts
+2026-11-13 | graveyard-horror-pass | 2.20 | Added deterministic grass placement and generated blade texture. | model/grass.ts, grassTexture.ts
+2026-11-13 | graveyard-horror-pass | 2.2 | Added jitter bounds and locality property test. | layout/jitter.property.test.ts, testArb.ts
+2026-11-13 | graveyard-horror-pass | 2.3 | Added fallen stone property test and fixed pick.test typecheck. | layout/fallen.property.test.ts, pick.test.ts
+2026-11-13 | graveyard-horror-pass | 2.4 | Added fallen share property test on 2500-3000 firm lists. | layout/fallenShare.property.test.ts
+2026-11-13 | graveyard-horror-pass | 2.6 | Added spacing and own-pit clearance property tests. | layout/spacing.property.test.ts
+2026-11-13 | graveyard-horror-pass | 2.7 | Added reading order and navigation property tests. | layout/readingOrder.property.test.ts
+2026-11-13 | graveyard-horror-pass | 2.18 | Added moundPlacement helper and property test. | model/moundPlacement.ts, moundPlacement.property.test.ts
+2026-11-13 | graveyard-horror-pass | 2.23 | Added instanced Grass component with generated blade texture. | r3f/Grass.tsx, Grass.test.ts
+2026-11-13 | graveyard-horror-pass | 2.9 | Added brute-force oriented-box picking property test. | layout/pick.property.test.ts
+2026-11-13 | graveyard-horror-pass | 2.11 | Added plot camera pose property tests. | layout/cameraPose.property.test.ts
+2026-11-13 | graveyard-horror-pass | 2.12 | Added nearest-mound lower-half projection property test. | layout/cameraProjection.property.test.ts
+2026-11-13 | graveyard-horror-pass | 2.16 | Added torn mound set property test. | model/tornMoundSet.property.test.ts
+2026-11-13 | graveyard-horror-pass | 2.17 | Added pit and clod geometry property test. | model/tornMound.property.test.ts
+2026-11-13 | graveyard-horror-pass | 2.21 | Added grass determinism and plot locality property tests. | model/grassDeterminism.property.test.ts
+2026-11-13 | graveyard-horror-pass | 2.22 | Added grass clearance, cap, density and quality property test. | model/grass.property.test.ts
+2026-11-13 | graveyard-horror-pass | 2.24 | Added closed and torn instanced mounds, pits, clods, stains and mounted grass in the scene. | r3f/Mounds.tsx, TornMounds.tsx, soil.tsx, GraveyardScene.tsx
+2026-11-13 | graveyard-horror-pass | 2.26 | Added Batch 2 screenshot script. | web/scripts/horror-screenshots.mjs, horror-screenshots.test.mjs
+2026-11-13 | graveyard-horror-pass | 2.25 | Added Batch 2 scene test and purity test for new pure modules. | Horror.scene.test.tsx, horror.purity.test.ts
+2026-11-13 | graveyard-horror-pass | 2.27 | Captured Batch 2 screenshots; added DEV horror helper, brighter overview, mobile framing, darker soil, lit torn rims. | scenes/graveyard, reference/progress/horror-batch2-*.png
+2026-11-13 | graveyard-horror-pass | 2.28 | Batch 2 full check passed: web 828 tests, tools 379 tests, check-bundle OK. | none
+2026-11-13 | graveyard-horror-pass | 2.29 | Batch 2 report delivered in chat. | none

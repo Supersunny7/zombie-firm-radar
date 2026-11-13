@@ -1,12 +1,13 @@
 /**
  * Ray picking against the stone layout (pure, plain numbers, no three imports).
  *
- * Stone box: width x (height - sink) x depth, rotated by yaw about the vertical axis,
- * base on the ground (y = 0 .. height - sink). Lean is ignored (at most 0.22 m at the top).
+ * Stone box: width x height x depth with its base centre at (x, baseY, z), rotated by the
+ * full Euler rotation (yaw, pitch, roll; order YXZ, as rendered). Fallen stones are
+ * pitch = -PI/2. The slab test is exact for this oriented box.
  * The ray direction need not be normalised; `t` and `maxT` are in ray-parameter units.
  */
 import { forEachCentreInRect, type Grid } from './grid';
-import type { GraveyardLayout, StoneLayout } from './layout';
+import { stoneBaseY, stoneCentreY, type GraveyardLayout, type StoneLayout } from './layout';
 
 export interface Ray {
   ox: number;
@@ -29,15 +30,27 @@ export interface NearHit {
 
 /** Entry parameter of the ray into the stone's box within [0, maxT], or null. */
 export function rayStoneT(s: StoneLayout, ray: Ray, maxT: number): number | null {
-  const c = Math.cos(s.yaw);
-  const sn = Math.sin(s.yaw);
-  const px = ray.ox - s.x;
-  const pz = ray.oz - s.z;
-  // World -> local (inverse of rotation about y by yaw).
-  const o = [c * px - sn * pz, ray.oy, sn * px + c * pz];
-  const d = [c * ray.dx - sn * ray.dz, ray.dy, sn * ray.dx + c * ray.dz];
+  const cy = Math.cos(s.yaw);
+  const sy = Math.sin(s.yaw);
+  const cp = Math.cos(s.pitch);
+  const sp = Math.sin(s.pitch);
+  const cr = Math.cos(s.roll);
+  const sr = Math.sin(s.roll);
+  // World -> local: inverse of R = Ry(yaw) Rx(pitch) Rz(roll) (three 'YXZ'), i.e.
+  // Rz(-roll) Rx(-pitch) Ry(-yaw), applied to a vector (no translation).
+  const toLocal = (vx: number, vy: number, vz: number): [number, number, number] => {
+    const x1 = cy * vx - sy * vz;
+    const z1 = sy * vx + cy * vz;
+    const y2 = cp * vy + sp * z1;
+    const z2 = -sp * vy + cp * z1;
+    return [cr * x1 + sr * y2, -sr * x1 + cr * y2, z2];
+  };
+  // The model origin sits at (x, baseY, z); the body spans width x height x depth with
+  // its base centre at the origin (fallen stones are just pitch = -PI/2).
+  const o = toLocal(ray.ox - s.x, ray.oy - stoneBaseY(s), ray.oz - s.z);
+  const d = toLocal(ray.dx, ray.dy, ray.dz);
   const lo = [-s.width / 2, 0, -s.depth / 2];
-  const hi = [s.width / 2, s.height - s.sink, s.depth / 2];
+  const hi = [s.width / 2, s.height, s.depth / 2];
   let tMin = 0;
   let tMax = maxT;
   for (let a = 0; a < 3; a++) {
@@ -139,7 +152,7 @@ export function perpToRay(s: StoneLayout, ray: Ray, maxT: number): number | null
   const dd = ray.dx * ray.dx + ray.dy * ray.dy + ray.dz * ray.dz;
   if (dd === 0) return null;
   const vx = s.x - ray.ox;
-  const vy = (s.height - s.sink) / 2 - ray.oy;
+  const vy = stoneCentreY(s) - ray.oy;
   const vz = s.z - ray.oz;
   const t = (vx * ray.dx + vy * ray.dy + vz * ray.dz) / dd;
   if (t < 0 || t > maxT) return null;

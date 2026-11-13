@@ -48,8 +48,26 @@ describe('planDressing', () => {
     expect(moved.blood[1]?.count).toBe(a.blood[0]?.count);
   });
 
+  it('torn equals undead and closed partitions all firms', () => {
+    const p = planDressing(firms, batch, 'on');
+    expect(p.torn).toEqual(p.undead);
+    expect(p.closed).toEqual([1, 3]);
+    expect([...p.torn, ...p.closed].sort()).toEqual([0, 1, 2, 3, 4]);
+  });
+
+  it('stains: none in lights on; 0 to 3 per torn mound in lights off', () => {
+    expect(planDressing(firms, batch, 'on').stains).toEqual([]);
+    const p = planDressing(firms, batch, 'off');
+    expect(p.stains.map((s) => s.firm)).toEqual(p.torn);
+    for (const s of p.stains) {
+      expect(s.count).toBeGreaterThanOrEqual(0);
+      expect(s.count).toBeLessThanOrEqual(3);
+      expect(s.seeds).toHaveLength(s.count);
+    }
+  });
+
   it('handles an empty list', () => {
     const p = planDressing([], { newlyUndead: new Uint8Array(0) }, 'off');
-    expect(p).toEqual({ undead: [], mounds: [], blood: [] });
+    expect(p).toEqual({ undead: [], mounds: [], torn: [], closed: [], blood: [], stains: [] });
   });
 });

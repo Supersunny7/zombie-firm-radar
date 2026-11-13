@@ -8,7 +8,7 @@ import { useStore } from '../../../state/store';
 import { useShockView } from '../../../state/shockView';
 import { assetUrl } from '../assets';
 import { buildGrid } from '../layout/grid';
-import type { GraveyardLayout } from '../layout/layout';
+import { stoneBaseY, type GraveyardLayout } from '../layout/layout';
 import { VISIBLE_RADIUS, visibleStones } from '../layout/visible';
 import { modelFor } from '../model/modelFor';
 import { STONE_MODELS, type StoneModelId } from '../model/stoneModels';
@@ -64,7 +64,7 @@ function StoneModel({ id, url, firms, capacity, layout, dim }: ModelProps) {
     for (let k = 0; k < n; k++) {
       const s = layout.stones[firms[k]!];
       if (!s) continue;
-      _p.set(s.x, -s.sink, s.z);
+      _p.set(s.x, stoneBaseY(s), s.z);
       _e.set(s.pitch, s.yaw, s.roll, 'YXZ');
       _q.setFromEuler(_e);
       _s.set(s.width / info.body.w, s.height / info.body.h, s.depth / info.body.d);

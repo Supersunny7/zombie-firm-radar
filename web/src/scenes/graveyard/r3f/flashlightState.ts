@@ -3,7 +3,8 @@
 import type { Ray } from '../layout/pick';
 
 export const FLASHLIGHT_COLOR = '#fff1d6';
-export const FLASHLIGHT_INTENSITY = 70;
+/** Was 70, which blew the nearest stone out to white; 25 keeps stones dim and cool in a pool. */
+export const FLASHLIGHT_INTENSITY = 25;
 export const FLASHLIGHT_DISTANCE = 28;
 export const FLASHLIGHT_ANGLE = 0.27;
 export const FLASHLIGHT_PENUMBRA = 0.85;

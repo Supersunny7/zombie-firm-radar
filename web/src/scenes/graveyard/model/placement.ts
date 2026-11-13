@@ -7,7 +7,7 @@ import { FIRST_ROW_Z } from '../layout/layout';
 import type { Vec3 } from './coneCovers';
 
 /** Initial camera position used for the corpse choice (9.6). */
-export const INITIAL_CAMERA: Vec3 = { x: 0, y: 2.15, z: 9.4 };
+export const INITIAL_CAMERA: Vec3 = { x: 0, y: 1.5, z: 5.6 };
 /** Distance behind the back edge of the last row (>= 20 required, 9.1). */
 export const MUTANT_BEHIND = 24;
 export const MUTANT_MIN_BEHIND = 20;

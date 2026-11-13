@@ -15,7 +15,7 @@ import { mulberry32 } from '../../../engine/rng';
 import { useShockView } from '../../../state/shockView';
 import { useStore } from '../../../state/store';
 import { ASSET_KEYS, assetUrl } from '../assets';
-import type { GraveyardLayout } from '../layout/layout';
+import { stoneBaseY, type GraveyardLayout } from '../layout/layout';
 import { planDressing, type BloodPlan } from '../model/dressing';
 import { useVisibleStones } from './useVisibleStones';
 
@@ -134,7 +134,7 @@ export function quadsFor(
       _off.set((ux * 2 - 1) * s.width * 0.3, s.height * (0.3 + uy * 0.45), s.depth / 2 + 0.015);
       _q.setFromEuler(_e.set(s.pitch, s.yaw, s.roll, 'YXZ'));
       _off.applyQuaternion(_q);
-      _p.set(s.x + _off.x, -s.sink + _off.y, s.z + _off.z);
+      _p.set(s.x + _off.x, stoneBaseY(s) + _off.y, s.z + _off.z);
       _qr.setFromAxisAngle(Z, (rot - Math.PI) * 0.25);
       _q.multiply(_qr);
       _s.set(size, size, 1);
