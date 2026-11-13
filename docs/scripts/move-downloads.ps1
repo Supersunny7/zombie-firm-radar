@@ -17,6 +17,8 @@ $freesound = @{
   "486599" = "freesound-tomhannen-howling-wind-tower"
   "435296" = "freesound-zazz-cloth-rustle-8"
   "551437" = "freesound-zhro-heartbeat-loopable"
+  "555417" = "freesound-tonsil5-zombie-growl-5"
+  "204821" = "freesound-ezcah-zombie-growl-01"
 }
 $moved = 0; $missing = @()
 foreach ($id in $freesound.Keys) {
@@ -34,6 +36,6 @@ Get-ChildItem $dl -File -Filter "sketchfab-*.zip" | ForEach-Object {
 }
 Write-Host "Moved $moved files."
 if ($missing.Count) { Write-Host "Missing Freesound files:"; $missing | ForEach-Object { Write-Host "  $_" } }
-$expected = 31
+$expected = 37
 $have = (Get-ChildItem $dest -Recurse -File | Where-Object { $_.Name -ne "README.md" }).Count
 Write-Host "Files now in tools/cache/manual: $have of $expected"
