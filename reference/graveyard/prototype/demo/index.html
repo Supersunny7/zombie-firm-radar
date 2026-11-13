@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Zombie Firm Radar — graveyard horror demo</title>
+<style>
+html,body{margin:0;height:100%;background:#000;overflow:hidden;font-family:ui-monospace,Menlo,Consolas,monospace;color:#e6e2d6}
+#stage canvas{display:block;width:100vw;height:100vh;cursor:crosshair}
+.rec{position:fixed;left:18px;top:14px;font-size:15px;letter-spacing:.04em;text-shadow:0 0 4px #000;pointer-events:none}
+.rec b{display:inline-block;width:11px;height:11px;border-radius:50%;background:#d42a2a;margin-right:8px;animation:blink 1.2s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.panel{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(620px,92vw);background:rgba(8,9,12,.78);border:1px solid #333;padding:12px 16px;display:grid;grid-template-columns:1fr auto;gap:4px 18px;align-items:end}
+.panel label{font-size:13px;letter-spacing:.08em;grid-column:1}
+.panel input{grid-column:1;width:100%;accent-color:#d42a2a}
+.ticks{grid-column:1;display:flex;justify-content:space-between;font-size:11px;color:#888}
+.count{grid-column:2;grid-row:1/4;text-align:right}
+.count .n{font-size:44px;line-height:1;color:#e03a2f;font-weight:700}
+.count .t{font-size:11px;letter-spacing:.12em;color:#bbb}
+.hint{position:fixed;right:18px;top:14px;font-size:12px;color:#999;text-align:right;pointer-events:none}
+button{font:inherit;background:rgba(8,9,12,.8);color:#e6e2d6;border:1px solid #444;padding:6px 10px;cursor:pointer}
+#mute{position:fixed;right:18px;top:48px}
+#gate,#loading{position:fixed;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:24px}
+#gate h1{font-size:22px;letter-spacing:.2em;color:#e03a2f;margin:0}
+#gate p{max-width:460px;color:#aaa;line-height:1.5;margin:0}
+#gate button{font-size:16px;padding:10px 22px;border-color:#e03a2f}
+.track{width:220px;height:3px;background:#222}#bar{height:3px;width:0;background:#e03a2f}
+.foot{position:fixed;left:18px;bottom:14px;font-size:11px;color:#777;pointer-events:none}
+@media (max-width:640px){.hint{display:none}.foot{display:none}.count .n{font-size:34px}}
+</style></head><body>
+<div id="stage"></div>
+<div class="rec"><b></b>REC · CAM 03 — PLOT 4 · MANUFACTURING<br><span id="clock">2026-11-13 03:14:07</span></div>
+<div class="hint">move the pointer: flashlight<br>drag the slider: rate shock</div>
+<button id="mute" class="ui">Sound on</button>
+<div class="panel ui">
+  <label for="shock">IF INTEREST RATES RISE BY <span id="shockv">+0.00</span> pp</label>
+  <input id="shock" type="range" min="0" max="5" step="0.25" value="0">
+  <div class="ticks"><span>0</span><span>+1</span><span>+2</span><span>+3</span><span>+4</span><span>+5 pp</span></div>
+  <div class="count"><div class="n" id="risen">0</div><div class="t">RISEN FROM<br>THE GRAVE</div></div>
+</div>
+<div class="foot">Look-dev demo · Claude prototype for Kiro reference · assets CC0 / CC BY (see CREDITS.md)</div>
+<div id="gate" class="ui"><h1>CAM 03 · LIVE</h1><p>Contains horror and gore. Headphones recommended.<br>Move the flashlight with your pointer, then raise interest rates and watch which firms crawl out of their graves.</p><button id="enter">Enter the graveyard</button></div>
+<div id="loading"><div>loading the dead…</div><div class="track"><div id="bar"></div></div></div>
+<script type="module" src="main.js"></script>
+</body></html>
