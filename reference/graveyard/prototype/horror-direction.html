@@ -1,0 +1,249 @@
+<!DOCTYPE html><html><body style="margin:0;background:#000">
+<script type="importmap">{"imports":{"three":"/three/build/three.module.js","three/addons/":"/three/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
+
+const Q = new URLSearchParams(location.search);
+const T = parseFloat(Q.get('t') ?? '1');          // rise progress 0..1
+const W = 1280, H = 720;
+const R = new THREE.WebGLRenderer({ antialias: true });
+R.setSize(W, H); R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 1.0;
+R.outputColorSpace = THREE.SRGBColorSpace; R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(R.domElement);
+
+const FOG = new THREE.Color('#0a0d13');
+const S = new THREE.Scene(); S.background = FOG; S.fog = new THREE.FogExp2(FOG, 0.075);
+const cam = new THREE.PerspectiveCamera(46, W / H, 0.05, 120);
+const CLOSE = Q.get('close');
+if (Q.get('side')) { cam.position.set(2.1, 1.25, 1.9); cam.lookAt(0.3, 0.55, -1.9); }
+cam.position.set(-0.55, 1.2, 1.35); cam.lookAt(0.35, 0.6, -2.0);
+
+// ---------- lights ----------
+S.add(new THREE.HemisphereLight('#3a4a66', '#0a0806', Q.get('lit') ? 2.5 : 0.18));
+const moon = new THREE.DirectionalLight('#7f9cd6', 1.1);           // behind: rim light
+moon.position.set(-4, 9, -22); moon.castShadow = true; moon.shadow.mapSize.set(2048, 2048);
+Object.assign(moon.shadow.camera, { left: -15, right: 15, top: 15, bottom: -15, near: 1, far: 60 });
+S.add(moon);
+const flash = new THREE.SpotLight('#ffe7c4', 55, 26, 0.36, 0.95, 2);
+flash.position.set(-0.45, 1.15, 1.25); flash.target.position.set(0.3, 0.45, -2.1);
+flash.castShadow = true; flash.shadow.mapSize.set(2048, 2048); flash.shadow.bias = -0.0004;
+S.add(flash, flash.target);
+
+// ---------- ground ----------
+const TL = new THREE.TextureLoader();
+const gA = TL.load('ground_albedo.jpg'); gA.colorSpace = THREE.SRGBColorSpace;
+const gN = TL.load('ground_normal.png');
+for (const t of [gA, gN]) { t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(14, 14); t.anisotropy = 8; }
+const groundMat = new THREE.MeshStandardMaterial({ map: gA, normalMap: gN, normalScale: new THREE.Vector2(1.4, 1.4), roughness: 0.95 });
+const gGeo = new THREE.PlaneGeometry(90, 90, 220, 220); gGeo.rotateX(-Math.PI / 2);
+{ const p = gGeo.attributes.position; for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i), z = p.getZ(i);
+    p.setY(i, 0.06 * Math.sin(x * 1.7) * Math.cos(z * 1.3) + 0.04 * Math.sin(x * 4.1 + z * 3.3)); }
+  gGeo.computeVertexNormals(); }
+const ground = new THREE.Mesh(gGeo, groundMat); ground.receiveShadow = true; S.add(ground);
+
+// grave mound: displaced half-ellipsoid, with an open hole when broken
+function mound(x, z, sx, sz, h, broken) {
+  const g = new THREE.SphereGeometry(1, 64, 32, 0, Math.PI * 2, 0, Math.PI / 2);
+  const p = g.attributes.position;
+  for (let i = 0; i < p.count; i++) {
+    const vx = p.getX(i), vy = p.getY(i), vz = p.getZ(i);
+    const n = 1 + 0.06 * Math.sin(vx * 9 + vz * 7) * Math.cos(vz * 11) + 0.04 * Math.sin(vx * 23 + vy * 17);
+    let y = vy * h * n;
+    if (broken) { const d = Math.hypot(vx, vz); if (d < 0.55) y = -0.25 + 0.4 * d; else y *= 0.9; } // torn open
+    p.setXYZ(i, vx * sx * n, y, vz * sz * n);
+  }
+  g.computeVertexNormals();
+  const mA = gA.clone(), mN = gN.clone(); mA.repeat.set(2, 2); mN.repeat.set(2, 2); mA.needsUpdate = mN.needsUpdate = true;
+  const m = new THREE.Mesh(g, new THREE.MeshStandardMaterial({ map: mA, normalMap: mN, roughness: 1, color: '#8a7866' }));
+  if (broken) { const pit = new THREE.Mesh(new THREE.CircleGeometry(0.5, 32), new THREE.MeshBasicMaterial({ color: '#040302' })); pit.rotation.x = -Math.PI / 2; pit.scale.set(sx, sz, 1); pit.position.set(x, 0.01, z); S.add(pit); }
+  m.position.set(x, -0.02, z); m.castShadow = m.receiveShadow = true; S.add(m);
+  // dirt clods thrown out
+  const clodMat = new THREE.MeshStandardMaterial({ color: '#3b2c1f', roughness: 1, flatShading: true });
+  const k = broken ? 46 : 10;
+  for (let i = 0; i < k; i++) {
+    const a = Math.random() * Math.PI * 2, r = (broken ? 0.5 : 0.8) + Math.random() * (broken ? 1.0 : 0.5);
+    const c = new THREE.Mesh(new THREE.DodecahedronGeometry(0.03 + Math.random() * 0.07, 0), clodMat);
+    c.position.set(x + Math.cos(a) * r * sx * 0.8, 0.03, z + Math.sin(a) * r * sz * 0.6);
+    c.rotation.set(Math.random() * 3, Math.random() * 3, 0); c.scale.y = 0.6; c.castShadow = true; S.add(c);
+  }
+  return m;
+}
+
+// dead grass: crossed alpha cards
+function grassTex() {
+  const c = document.createElement('canvas'); c.width = 128; c.height = 256; const x = c.getContext('2d');
+  for (let i = 0; i < 26; i++) {
+    const bx = 10 + Math.random() * 108, lean = (Math.random() - 0.5) * 60, h = 120 + Math.random() * 130;
+    const g = x.createLinearGradient(0, 256, 0, 256 - h);
+    const tone = 70 + Math.random() * 50;
+    g.addColorStop(0, `rgb(${tone * 0.55},${tone * 0.45},${tone * 0.3})`); g.addColorStop(1, `rgb(${tone},${tone * 0.85},${tone * 0.55})`);
+    x.strokeStyle = g; x.lineWidth = 1.5 + Math.random() * 2;
+    x.beginPath(); x.moveTo(bx, 256); x.quadraticCurveTo(bx + lean * 0.3, 256 - h * 0.6, bx + lean, 256 - h); x.stroke();
+  }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+{
+  const gm = new THREE.MeshStandardMaterial({ map: grassTex(), alphaTest: 0.35, side: THREE.DoubleSide, roughness: 1, color: '#6f6450' });
+  const geo = new THREE.PlaneGeometry(0.45, 0.24); geo.translate(0, 0.12, 0);
+  const n = 1400, inst = new THREE.InstancedMesh(geo, gm, n * 2); const o = new THREE.Object3D(); let k = 0;
+  for (let i = 0; i < n; i++) {
+    const x = (Math.random() - 0.5) * 22, z = 4 - Math.random() * 30;
+    if (Math.abs(x - 0.35) < 1.2 && Math.abs(z + 1.6) < 1.4) continue;   // keep zombie area open
+    const s = 0.6 + Math.random() * 0.9, ry = Math.random() * Math.PI;
+    for (const d of [0, Math.PI / 2]) { o.position.set(x, 0, z); o.rotation.set(0, ry + d, (Math.random() - 0.5) * 0.25); o.scale.set(s, s, s); o.updateMatrix(); inst.setMatrixAt(k++, o.matrix); }
+  }
+  inst.count = k; inst.receiveShadow = true; S.add(inst);
+}
+
+// ---------- loading ----------
+const L = new GLTFLoader(); L.setMeshoptDecoder(MeshoptDecoder);
+const load = (u) => new Promise((ok, no) => L.load(u, ok, undefined, no));
+const A = '/assets/models/';
+const [sInt, sCrk, sBrk, trunk, gate, lantern, statue, av1, av2, av3] = await Promise.all([
+  load(A + 'sketchfab-small-gravestone-drydoctoregg/sketchfab-small-gravestone-drydoctoregg.glb'),
+  load(A + 'own-headstone-cracked/own-headstone-cracked.glb'),
+  load(A + 'sketchfab-damaged-tombstone-drydoctoregg/sketchfab-damaged-tombstone-drydoctoregg.glb'),
+  load(A + 'polyhaven-dead-tree-trunk/polyhaven-dead-tree-trunk.glb'),
+  load(A + 'polyhaven-large-iron-gate/polyhaven-large-iron-gate.glb'),
+  load(A + 'polyhaven-lantern-01/polyhaven-lantern-01.glb'),
+  load(A + 'polyhaven-gothic-statue/polyhaven-gothic-statue.glb'),
+  load('/assets/avatars/rocketbox-construction-male-01/rocketbox-construction-male-01.glb'),
+  load('/assets/avatars/rocketbox-business-male-02/rocketbox-business-male-02.glb'),
+  load('/assets/avatars/rocketbox-male-adult-05/rocketbox-male-adult-05.glb'),
+]);
+
+function place(gltf, h, x, z, ry = 0, tx = 0, tz = 0, sink = 0.12) {
+  const m = gltf.scene.clone(true);
+  m.traverse(o => { if (o.isMesh) { o.castShadow = o.receiveShadow = true; if (o.material) { o.material = o.material.clone(); o.material.transparent = false; o.material.side = THREE.FrontSide; } } });
+  const b = new THREE.Box3().setFromObject(m); const s = h / (b.max.y - b.min.y);
+  m.traverse(o => { if (o.isMesh && o.material && o.material.color) o.material.color.multiplyScalar(0.55); });
+  m.scale.setScalar(s); m.position.set(x, -b.min.y * s - h * sink, z); m.rotation.set(tx, ry, tz, 'YXZ'); S.add(m); return m;
+}
+
+// stones: old, crowded, irregular rows; some leaning, one fallen
+const rnd = (a, b) => a + Math.random() * (b - a);
+const kinds = [sInt, sInt, sCrk, sCrk, sBrk];
+for (let row = 0; row < 9; row++) {
+  const z = -0.6 - row * 2.6 + rnd(-0.3, 0.3);
+  for (let col = -4; col <= 4; col++) {
+    if (Math.random() < 0.12) continue;
+    const x = col * 1.55 + rnd(-0.35, 0.35) + (row % 2) * 0.5;
+    if (row === 0 && x < 1.0) continue;
+    const k = kinds[Math.floor(Math.random() * kinds.length)];
+    const fallen = row > 1 && Math.random() < 0.07;
+    place(k, rnd(0.75, 1.25), x, z, rnd(-0.35, 0.35), fallen ? -1.35 : rnd(-0.16, 0.12), fallen ? 0 : rnd(-0.14, 0.14), fallen ? -0.05 : 0.14);
+  }
+}
+// the zombie's own stone, cracked, leaning back over the open grave
+place(sCrk, 1.15, 0.45, -2.75, 0.15, -0.22, 0.08, 0.1);
+for (const [x, z, h, r] of [[-3.8, -5, 0.45, 0.4], [4.2, -8, 0.5, 2.1]]) place(trunk, h, x, z, r, 0, 0, 0.1);
+place(gate, 3.2, 0.5, -24, 0, 0, 0, 0);
+place(statue, 2.1, -3.1, -6.2, 0.6, 0, 0, 0.02);
+const lan = place(lantern, 0.36, -1.0, -1.1, 0.3, 0, 0, 0);
+const lanLight = new THREE.PointLight('#ff9a4a', 1.2, 4, 2); lanLight.position.set(-1.0, 0.28, -1.1); S.add(lanLight);
+
+mound(0.4, -1.75, 0.85, 1.05, 0.2, true);     // zombie A: torn open
+mound(-1.45, -3.7, 0.65, 0.85, 0.16, true);     // zombie B: hand out
+mound(2.4, -3.6, 0.75, 1.1, 0.26, false);
+mound(-3.6, -1.4, 0.7, 1.0, 0.24, false);
+
+// ---------- zombies ----------
+const V = (x, y, z) => new THREE.Vector3(x, y, z);
+const Z = '/zin/glb/';
+const [gOscar, gPxl, gWoman, gPos] = await Promise.all([
+  load(Z + 'sketchfab-zombie-walk-oscar.glb'), load(Z + 'sketchfab-zombie-pxltiger.glb'),
+  load(Z + 'sketchfab-hooded-horror-woman-purplepoint.glb'), load(Z + 'sketchfab-possessed-undead-giantswing.glb')]);
+const MAPS = {
+  pxl: { up: s => `${s}ArmUpperarm`, fore: s => `${s}ArmForearm`, hand: s => `${s}ArmPalm`, neck: 'HumanNeck', head: 'HumanHead', spine: 'HumanSpine2', chest: 'HumanRibcage',
+         fingers: s => [1, 2, 3, 4, 5].map(i => [`${s}ArmDigit${i}1`, `${s}ArmDigit${i}2`, `${s}ArmDigit${i}3`]) },
+  pos: { up: s => `Arm1${s}_`, fore: s => `Arm2${s}_`, hand: s => `Wrist${s}_`, neck: 'Neck_', head: 'Head_', spine: 'Spine2_', chest: 'Spine3_',
+         fingers: s => ['Index', 'Middle', 'Ring', 'Pinky'].map(f => [`${f}1${s}_`, `${f}2${s}_`, `${f}3${s}_`]) },
+  mix: { up: s => `${s === 'R' ? 'Right' : 'Left'}Arm_`, fore: s => `${s === 'R' ? 'Right' : 'Left'}ForeArm`, hand: s => `${s === 'R' ? 'Right' : 'Left'}Hand_`, neck: 'Neck', head: 'Head_', spine: 'Spine1', chest: 'Spine2',
+         fingers: s => ['Index', 'Middle', 'Ring', 'Pinky'].map(f => [1, 2, 3].map(k => `${s === 'R' ? 'Right' : 'Left'}Hand${f}${k}`)) },
+};
+function rot(mat, k) { const m = mat.clone(); m.color.multiplyScalar(k); m.roughness = Math.max(m.roughness ?? 0.8, 0.75); return m; }
+function zombie(gltf, map, height, k = 1, clip = null, time = 0) {
+  const m = SkeletonUtils.clone(gltf.scene);
+  m.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; o.frustumCulled = false; o.material = rot(o.material, k); } });
+  const holder = new THREE.Group(); holder.add(m); S.add(holder);
+  if (clip) { const mix = new THREE.AnimationMixer(m); const c = gltf.animations.find(a => a.name === clip); mix.clipAction(c).play(); mix.setTime(time); }
+  m.updateMatrixWorld(true);
+  const box = new THREE.Box3().setFromObject(m, true); const sc = height / (box.max.y - box.min.y);
+  m.scale.multiplyScalar(sc); m.position.y -= box.min.y * sc; m.position.x -= (box.min.x + box.max.x) / 2 * sc; m.position.z -= (box.min.z + box.max.z) / 2 * sc;
+  holder.updateMatrixWorld(true);
+  const bones = []; m.traverse(o => { if (o.isBone) bones.push(o); });
+  console.warn('BONES', bones.slice(0, 30).map(b => b.name).join(','));
+  const B = (key) => bones.find(o => o.name.includes(key));
+  return { m: holder, B, map };
+}
+const _a = new THREE.Vector3(), _b = new THREE.Vector3();
+function aim(bone, child, dir) {
+  if (!bone || !child) return;
+  bone.updateWorldMatrix(true, true);
+  const cur = child.getWorldPosition(_b).sub(bone.getWorldPosition(_a)).normalize();
+  const q = new THREE.Quaternion().setFromUnitVectors(cur, dir.clone().normalize());
+  const bw = bone.getWorldQuaternion(new THREE.Quaternion());
+  const pw = bone.parent.getWorldQuaternion(new THREE.Quaternion());
+  bone.quaternion.copy(pw.invert().multiply(q.multiply(bw)));
+  bone.updateWorldMatrix(false, true);
+}
+function pose(z, side, upper, fore, curl) {
+  const M = z.map, up = z.B(M.up(side)), fo = z.B(M.fore(side)), ha = z.B(M.hand(side));
+  const chains = M.fingers(side).map(c => c.map(n => z.B(n)).filter(Boolean)).filter(c => c.length >= 2);
+  // palm normal from the hand's current frame: cross of finger spread and finger direction
+  aim(up, fo, upper); aim(fo, ha, fore);
+  if (!chains.length || !ha) return;
+  const hp = ha.getWorldPosition(new THREE.Vector3());
+  const first = chains[0][0].getWorldPosition(new THREE.Vector3()), last = chains[chains.length - 1][0].getWorldPosition(new THREE.Vector3());
+  const fdir = first.clone().add(last).multiplyScalar(0.5).sub(hp).normalize();
+  const spread = last.clone().sub(first).normalize();
+  let palm = new THREE.Vector3().crossVectors(spread, fdir).normalize();
+  if (side === 'L') palm.negate();
+  if (z.flipPalm) palm.negate();
+  for (const c of chains) for (let i = 0; i < c.length - 1; i++) {
+    const d = c[i + 1].getWorldPosition(new THREE.Vector3()).sub(c[i].getWorldPosition(new THREE.Vector3())).normalize();
+    const ang = curl * (i === 0 ? 0.55 : 1) * (0.85 + 0.3 * Math.random());
+    aim(c[i], c[i + 1], d.multiplyScalar(Math.cos(ang)).addScaledVector(palm, Math.sin(ang)));
+  }
+}
+function look(z, dir) { aim(z.B(z.map.neck), z.B(z.map.head), dir); }
+function bend(z, dir) { aim(z.B(z.map.spine), z.B(z.map.chest), dir); }
+
+// A (hero): bloody possessed dead hauling itself out of the torn grave, claws out
+{
+  const z = zombie(gPos, MAPS.pos, 1.85, 0.9);
+  z.m.rotation.set(0.1, 0.3, 0.05); z.m.position.set(0.4, -1.55 + 0.6 * T, -1.95); z.m.updateMatrixWorld(true);
+  bend(z, V(0.05, 0.8, 0.6));
+  pose(z, 'R', V(-0.3, 0.15, 1), V(-0.15, -0.05, 1), 1.0);
+  pose(z, 'L', V(0.45, -0.2, 0.9), V(0.2, -0.85, 0.5), 1.25);
+  look(z, V(0.35, 0.55, 0.75));
+}
+// B: gaunt zombie shambling toward the camera between the rows
+{
+  const z = zombie(gPxl, MAPS.pxl, 1.8, 0.85, 'Walk1_InPlace', 0.55);
+  z.m.rotation.set(0, -0.35, 0); z.m.position.set(2.3, 0, -4.6); z.m.updateMatrixWorld(true);
+  look(z, V(-0.35, 0.6, 0.7));
+}
+// C: pale corpse crawling out of the second grave, one arm planted
+{
+  const z = zombie(gOscar, MAPS.mix, 1.8, 0.75);
+  z.m.rotation.set(0.95, 0.35, 0); z.m.position.set(-1.2, -0.85, -3.5); z.m.updateMatrixWorld(true);
+  pose(z, 'R', V(-0.2, -0.6, 0.8), V(-0.1, -1, 0.3), 1.2);
+  pose(z, 'L', V(0.3, -0.5, 0.85), V(0.1, -1, 0.35), 1.2);
+  look(z, V(0.1, 0.4, 1));
+}
+// D: the hooded woman, far back between the stones, just outside the beam
+{
+  const z = zombie(gWoman, MAPS.mix, 2.05, 0.6);
+  z.m.rotation.set(0, -0.15, 0); z.m.position.set(-0.6, 0, -11.5); z.m.updateMatrixWorld(true);
+  look(z, V(0.25, 0.85, 0.5));
+}
+
+if (CLOSE) { cam.position.set(2.2, 1.0, 0.6); cam.lookAt(0.4, 0.2, -1.8); S.fog.density = 0.0; }
+R.render(S, cam);
+setTimeout(() => { R.render(S, cam); window.done = true; }, 2500);
+</script></body></html>
