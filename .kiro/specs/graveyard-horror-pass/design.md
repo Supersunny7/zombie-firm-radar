@@ -2,225 +2,75 @@
 
 ## Overview
 
-The Horror_Pass turns the working graveyard of `graveyard-scene` into the found-footage frames of `reference/graveyard/horror-direction.png` and `horror-direction-sequence.png`. It covers requirements 1 to 38 in `requirements.md` and extends the Base_Spec (`.kiro/specs/graveyard-scene`) without replacing its architecture. Every spooky element keeps a financial meaning: a Risen_Zombie is a Newly_Undead firm, a Torn_Mound marks a `zombie` or Newly_Undead firm, the unease effects grow with the rate shock the viewer sets, and the one graveyard jump scare fires only when every shock-eligible firm framed in the plot has turned undead. The dead grass and the stone jitter are atmosphere only and carry no data.
+The Horror_Pass turns the working graveyard of `graveyard-scene` into the found-footage frames of `reference/graveyard/horror-direction.png` and `horror-direction-sequence.png`, and into the look and behaviour of the interactive prototype (`reference/graveyard/prototype/demo/`; reference only, never imported, values and logic are ported). It extends the Base_Spec (`.kiro/specs/graveyard-scene`) without replacing its architecture. Every spooky element keeps a financial meaning: a Risen_Zombie is a Newly_Undead firm, a Torn_Mound marks a `zombie` or Newly_Undead firm, and the unease effects grow with the rate shock the viewer sets. Grass and stone jitter are atmosphere only.
 
-**Control-room direction (2026-11-13).** After testing the interactive prototype (`reference/graveyard/prototype/demo/main.js`, `index.html`; reference only, never imported, values and logic are ported), the user fixed one direction in `reference/graveyard/control-room-direction.md` with exact values in `reference/graveyard/horror-direction-params.md`. The viewer is a night guard at a CCTV monitor; every control belongs to the monitor's on-screen display (OSD). This design was updated in place for Requirements 23 to 38. Sections and properties for retired behaviour (Standing_Zombies, Watcher, Far_Spots, Cone_Active, Vanish_Glitch, Footstep_Bed, Content_Notice, breathing, digging, the Mutant, the 1.2 s camera move, the File_Card in the graveyard) are kept for traceability and marked **Superseded (control-room direction, 2026-11-13)** with a pointer to the replacing section. Batches 1 and 2 are delivered; the remaining work is Batches 2b, 3 and 4 (Requirement 38, section 25).
+**Scope (user decision 2026-11-13).** This spec delivers **Batches 1, 2, 2b and 3** (Requirements 1 to 29 and 38). Batches 1 and 2 are delivered. Batch 2b is the prototype look, the soil fix and the Lights-toggle bug (23 to 25). Batch 3 is the zombies, the unease effects and the sound (26 to 29, plus the Risen_Zombie parts of 10, 11, 12, 15, 16, 19). Requirements 30 to 37 (OSD, camera switcher, rate console, hover tag, Opening, plot-fall jump scare [cancelled], their assets and steering exceptions) are **moved to a future control-room-experience spec**; they are not designed here. The HUD, File_Card, Plot navigation and the 1.2 s Camera_Rig move of the Base_Spec stay as they are.
 
-The work follows the Base_Spec layering ("ingestion, metrics and presentation stay separate") and adds four things to it:
-
-1. **Asset tooling** (`tools/asset-lib`, `tools/picks.json`, `web/scripts/check-bundle.mjs`): three new edit operations, six new picks, a Group_Budget check.
-2. **Pure logic** (`web/src/scenes/graveyard/layout`, `.../model`, `web/src/audio`, `web/src/fx`): stone jitter and band-packed layout, selection and the Risen pool, Bone_Animator and two-bone IK, Standing placement, Watcher schedule, grass placement, Growl and Footstep rules. No React or three.js imports, so they are unit and property tested.
-3. **Scene** (`web/src/scenes/graveyard/r3f`): characters, torn mounds, grass, Dirt_Burst, Watcher, selection controller.
-4. **HUD** (`web/src/ui`, `web/src/state`): Content_Notice and Notice_Link.
-
-Key decisions (each is justified below; the numbered **Decisions** section at the end collects the ones that changed requirements-level assumptions):
+Key decisions:
 
 | Decision | Choice | Why |
 | --- | --- | --- |
-| Rise animation | **Superseded (control-room direction, 2026-11-13)**, see "Rise animation (3)" below and section 17. Former choice: procedural keyframes on bones (Bone_Animator) plus an analytic two-bone IK for planted hands | The three source rigs have no usable clips for this (animation-direction.md forbids Mixamo clips). IK makes "no hand sliding" (11.7) exact instead of approximate. |
-| Selection timing | A Settled_Shock tracker driven by the render-loop clock, not `setTimeout` | Requirement 11.14 asks for the render-loop clock; the tracker is a pure function that tests drive with explicit times. |
-| Selection state | A separate small zustand store (`selectionStore.ts`), not the main store | Requirement 20.5 forbids changing the main store shape except `settledShock` and the notice fields. |
-| Layout | Band packing: variable column widths and row depths from per-stone extents | Jitter of 0.30 m, 20 degree yaw, fallen stones and a reserved mound zone cannot fit the fixed Base_Spec pitch (1.30 x 1.80). Extents guarantee the 0.15 m gap by construction. |
-| Fallen stones | Fall backwards (top away from the camera), base stays at the standing position | The mound stays at the former standing position (7.9) and the body never covers the Pit (8.11). |
-| Camera | **Superseded in part (control-room direction, 2026-11-13)**: eye height 1.2 m, FOV 46, camera 3.0 m behind the first row, look point 1.0 m behind it at 0.6 m (section 14.4). Former choice: eye height 1.5 m, 2.6 m behind the first row | Satisfies 9.1 to 9.4 together; the numbers are derived in the Camera section. |
-| Characters | `SkeletonUtils.clone` of one loaded scene per model, shared geometry and materials | At most 8 skinned characters since the control-room direction (26.4; formerly 13); one network load and one GPU upload per model (5.5). |
-| Growl and footsteps | Pure limiter, pure choice, pure gain function; the engine only wires them. **The Footstep_Bed is superseded (control-room direction, 2026-11-13)**, see section 19 | Requirements 17.10 and 17.11 ask for properties. |
-| Budget | `groupAssets.json` is the single list; `assets.ts` and `check-bundle.mjs` both read it | Avoids a third hand-copied key list (the Base_Spec already duplicates `CRITICAL_ASSET_KEYS`). |
-| Look values (2b) | One constants module `scenes/graveyard/look.ts`, checked against `horror-direction-params.md` by a test | Requirement 23.17; the prototype values must not drift into several files. |
-| CCTV grade (2b) | One custom `CctvGradeEffect` (postprocessing `Effect`, `EffectAttribute.CONVOLUTION`) that ports the prototype shader, in its own pass after `ToneMapping` | The red ghost samples the tone-mapped image 2 px left (23.11 f); a convolution effect is put in its own `EffectPass` by `mergeMode="auto"`, so its `inputBuffer` is the tone-mapped image. |
-| Rise animation (3) | Pure port of the prototype `KEYS`, `jerk` and `riseFrame` that returns world-space aim directions; `Characters.tsx` applies them with the prototype `aim()` | The prototype is the approved motion. No IK: the planted left arm keeps fixed directions while the root is fixed, so hands do not slide (11.7). Supersedes the two-bone IK of section 7. |
-| Choreography clock (3, 4) | Pure timelines (`riseTimeline`, `cameraSwitch`, `jumpScare`, `openingSchedule`) advanced by the render-loop clock or `requestAnimationFrame` | 11.14, 35.15; the prototype's `setTimeout` calls (camera cut at 90 ms, intro typing) are not ported. |
-| Flash budget (3, 4) | One pure `Flash_Limiter` behind a per-frame bus; every Static_Cut, glitch, dip and flicker is a candidate | Requirement 28.6 and 28.7; one place enforces the 3-flashes rule. |
-| Camera moves (4) | Cuts with a Static_Cut (`cameraSwitch.ts`), no tween | Requirement 31; the 1.2 s move is retired. |
-| OSD (4) | DOM tree under `web/src/ui/osd/` mounted by the graveyard; the app `Hud` renders nothing in graveyard states | Requirement 30.1; Table_View, Credits_Dialog, LiveRegion and StoneFocusProxy are reused. |
+| Layout | Band packing from per-stone extents (Batch 2) | Jitter, yaw, fallen stones and the mound zone cannot fit a fixed pitch. |
+| Fallen stones | Fall backwards; base stays at the standing anchor | Mound stays at the standing position; body never covers the Pit. |
+| Selection | `settle.ts` driven by the render clock; separate `selectionStore` | 11.14 forbids timers; 20.5 limits main-store changes. |
+| Camera | Keep the Base_Spec 1.2 s move; Batch 2b changes only FOV 46, eye 1.2 m, look point 0.6 m, back distance (23.1) | The cut-based switch belongs to the future spec. |
+| Look values | One constants module `look.ts`, checked against `horror-direction-params.md` | Requirement 23.17. |
+| CCTV grade | One custom `CctvGradeEffect` after `ToneMapping`; tracking glitch folded into it | Red ghost samples the tone-mapped image (23.11 f); convolution effects cannot merge with `mainUv` effects. |
+| Rise animation | Pure port of the prototype `KEYS`, `jerk`, rise frame; no IK, no clips | Prototype is the approved motion; fixed root keeps hands from sliding. Supersedes the former key-pose table, breathing and two-bone IK. |
+| Choreography clock | Pure timelines advanced by the render-loop clock | 11.14; no `setTimeout`. |
+| Flash budget | One pure `Flash_Limiter` behind a per-frame bus | 28.6, 28.7: one place enforces 3 flashes per second. |
+| Budget | `groupAssets.json` is the single list for `assets.ts` and `check-bundle.mjs` | No third hand-copied list. |
 
 ### Research summary
 
-Documentation looked up with the context7 MCP server before relying on an API (rule `kiro-workflow`):
+Looked up with the context7 MCP server (rule `kiro-workflow`) and used by Batches 2b and 3:
 
-- **three 0.187.0** (`/mrdoob/three.js`): `SkeletonUtils.clone(source)` clones a hierarchy so each `SkinnedMesh` is bound to its own cloned bones while geometry and materials are shared by reference. `AnimationMixer.clipAction(clip, root)` returns the same action for the same clip and root. `InstancedMesh.setMatrixAt` needs `instanceMatrix.needsUpdate = true`, and `computeBoundingSphere()` after moving instances. `DataTexture(data, w, h, format, ...)` defaults to nearest filtering and no mipmaps, so grass sets `generateMipmaps`, `minFilter` and `magFilter` itself. `Box3.setFromObject(object, precise)` includes the node hierarchy; it is used to measure characters. `Skeleton.bones` and `Bone.quaternion` are the write targets of the Bone_Animator.
-- **@react-three/fiber 9.8.2** (`/pmndrs/react-three-fiber/v9.8.2`): a `useFrame` callback with a **positive** priority takes over the render loop; negative priorities only order callbacks. All Horror_Pass `useFrame` hooks use negative priorities, continuing the Base_Spec order (CameraRig -20, SceneLights -10, Flashlight -5): `SelectionController` -8, `Characters` -4, `DirtBurst` -3.
-- **@react-three/drei 10.7.9** (`/pmndrs/drei`): `useGLTF(path, useDraco, useMeshOpt, extendLoader)` with `useDraco = false` (all files are Meshopt, the Base_Spec rule), `useGLTF.preload`, `useAnimations(animations, root)`. The design uses `useGLTF` and a hand-driven `AnimationMixer` (not `useAnimations`) so Reduced_Motion can pause an action on its first frame deterministically.
-- **@react-three/postprocessing 3.2.2 / postprocessing 6.39.6**: no new API. The Vanish_Glitch reuses the existing `TrackingGlitchEffect.drive(amount, time)`; only the scheduler gains a `trigger`.
-- **@gltf-transform/functions 4.5.1** (`/donmccurdy/gltf-transform`): `metalRough()` converts `KHR_materials_pbrSpecularGlossiness` to metal-roughness and removes the extension; it adds `KHR_materials_ior` and `KHR_materials_specular` (the three `GLTFLoader` reads both). `prune()` drops animations that have no channels, so disposing clips and then pruning leaves no orphan samplers.
-- **Not used:** `@theatre/core`, `CameraControls`, KTX2, `CCDIKSolver` (the two-bone solver is 30 lines of plain math and testable without three).
+- **three 0.187.0**: `SpotLight(color, intensity, distance, angle, penumbra, decay)` (candela), shadows via `castShadow` and `shadow.mapSize` / `shadow.bias`; `HemisphereLight`; `FogExp2(color, density)`; `Scene.environmentIntensity` scales only `scene.environment` (0 removes HDRI light while drei `Environment` stays mounted); `MeshStandardMaterial.emissive` (default black), `emissiveIntensity`, `emissiveMap`, `flatShading`; `SkeletonUtils.clone` shares geometry and materials and rebinds bones; `InstancedMesh.setMatrixAt` needs `instanceMatrix.needsUpdate`.
+- **@react-three/fiber 9.8.2**: negative `useFrame` priorities only order callbacks. Order: CameraRig -20, SceneLights -10, SelectionController -8, Flashlight -5, Characters -4, TornMounds / Dirt_Burst -3, CctvPass -2.
+- **postprocessing 6.39.6 / @react-three/postprocessing 3.2.2**: an effect that samples `inputBuffer` at other texels declares `EffectAttribute.CONVOLUTION` and gets its own pass; it cannot share a pass with an effect that implements `mainUv`; built-in uniforms `resolution`, `texelSize`, `time`; the composer works in linear space and encodes to sRGB only at the last pass, so the grade converts linear to sRGB at its start and back at its end (the prototype grades after `OutputPass`).
+- **@react-three/drei 10.7.9**: `useGLTF(path, false, true)` (Meshopt only).
+- **Not used:** `@theatre/core`, `CameraControls`, KTX2, `Raycaster` on skinned meshes.
 
-**Packages.** No new dependency is added (requirement 22.10). Everything uses packages already pinned in `web/package.json` and `tools/package.json`.
-
-**Look-ups for the control-room direction (2026-11-13, context7):**
-
-- **postprocessing 6.39.6** (`/pmndrs/postprocessing`, Custom Effects manual): an effect that reads extra samples from `inputBuffer` is a convolution effect and must declare `attributes: EffectAttribute.CONVOLUTION`; at most one convolution effect per `EffectPass`, and convolution effects are incompatible with effects that implement `mainUv`. Built-in uniforms available in every effect shader: `resolution`, `texelSize`, `aspect`, `time`. Colour management: the composer follows a linear workflow and encodes to `outputColorSpace` (sRGB) only when the last pass renders to screen; the default `frameBufferType` of the React wrapper is `HalfFloatType`, so `inputBuffer` holds linear values. The prototype grades after three's `OutputPass`, i.e. on sRGB-encoded values, so `CctvGradeEffect` converts linear to sRGB at its start and back to linear at its end (plain GLSL sRGB transfer functions).
-- **@react-three/postprocessing 3.2.2** (`/pmndrs/react-postprocessing`): `EffectComposer mergeMode="auto"` (default) merges consecutive effects but keeps a convolution effect, or an effect whose shader contains `mainUv`, in a separate pass. So `<ToneMapping/>` followed by `<primitive object={cctvGrade}/>` gives two passes and the grade sees the tone-mapped image. The existing `TrackingGlitchEffect` uses `mainUv`; it is folded into the grade shader (band shift applied to the sample uv) so no `mainUv` effect meets the convolution effect.
-- **three 0.187.0** (`/mrdoob/three.js`): `SpotLight(color, intensity, distance, angle, penumbra, decay)` with intensity in candela, `angle` upper bound `PI/2`, `penumbra` in [0, 1], `decay` default 2, shadows through `castShadow` and `shadow.mapSize` / `shadow.bias` (prototype bias −0.0004); `HemisphereLight(skyColor, groundColor, intensity)` casts no shadow; `FogExp2(color, density)`; `Scene.environmentIntensity` attenuates only `scene.environment` (default 1), so 0 removes the HDRI lighting in a framed plot (23.7) while the drei `Environment` stays mounted for the overview; `MeshStandardMaterial.emissive` (default black), `emissiveIntensity` (default 1) and `emissiveMap` (default null) are the three fields Requirement 24 fixes; `flatShading` is a material flag (Clods, 24.2).
-- **@react-three/fiber 9.8.2**: unchanged rule, negative `useFrame` priorities only order callbacks. New priorities: `FlashBus` −30 (frame start, drains queued Static_Cut requests), `JumpScareController` −29, `CameraRig` −20, `SelectionController` −8, `SceneLights` −10, `Flashlight` −5, `Characters` −4, `TornMounds` / Dirt_Burst −3, `CctvPass` −2.
-- **Not used:** `InstancedMesh.raycast` and any `Raycaster.intersectObject` on skinned meshes. Picking stays on the pure grid of `layout/pick.ts` plus pure mound discs and Risen_Zombie capsules (section 22), so 33.2 holds by construction. `@theatre/core` is still not used: the graveyard sequences are short pure timelines (Decision 13).
+Any API not listed here must be looked up with context7 before use at task time (`kiro-workflow`). The Rise_Keys table values are read from `reference/graveyard/prototype/demo/main.js` at task time, not copied into this document.
 
 ## Architecture
 
-### Existing code this design extends
+### Files that Batches 2b and 3 change or add
 
-| Existing file | What it provides | Change |
-| --- | --- | --- |
-| `web/src/scenes/graveyard/layout/layout.ts` | `computeLayout`, fixed pitch grid, `StoneLayout`, `PlotLayout` | Replaced internals by band packing; adds jitter, fallen, rows, pit anchor (below). |
-| `web/src/scenes/graveyard/layout/camera.ts` | `plotPose`, `overviewPose`, `smooth`, `flickerFactor` | `CAMERA_HEIGHT` 2.15 to 1.5, `CAMERA_BACK` 6.4 to 2.6; adds `selectionPose`. |
-| `web/src/scenes/graveyard/layout/pick.ts`, `grid.ts` | Yaw-only box picking; grid with bounding circles | Exact oriented box including pitch and roll; grid radius from `stoneReach`. |
-| `web/src/scenes/graveyard/model/dressing.ts` | `planDressing` (mounds = undead only) | Adds `closed`, `torn`, `stains`; `mounds` keeps its name for the union. |
-| `web/src/scenes/graveyard/r3f/Mounds.tsx` | One InstancedMesh of closed mounds for undead stones | Split into `Mounds` (closed, every stone) and `TornMounds` (torn, pits, clods, stains). |
-| `web/src/scenes/graveyard/r3f/Hands.tsx`, `model/handPool.ts`, `handPose.ts` | Craggle hands | `Hands.tsx` and `handPool.ts` are deleted; `assignHands` moves to `selection.ts` as `assignNearest`. `handPose.ts`, `handConstants.ts`, `handGeometry.test.ts` and the dev close-up page stay (15.2, 15.4). |
-| `web/src/scenes/graveyard/riseEvents.ts` | Typed emitter for rise starts | Generalised to `createEmitter<T>()`; `riseEvents` (start) is unchanged, `riseFinishedEvents` is new. |
-| `web/src/scenes/graveyard/r3f/Ground.tsx` | 480 m soil ground, 4 m tiles | Texture set becomes the Ground_Texture; soil stays for mounds (6.2). |
-| `web/src/scenes/graveyard/r3f/Flashlight.tsx`, `flashlightState.ts` | Spot light, aim from pointer, `coneCovers` source | Reads `coneInput` for Cone_Active and the touch Cone_Target; publishes `coneActive`. |
-| `web/src/scenes/graveyard/GraveyardScene.tsx` | Scene composition, `ReadyFlag` | Mounts `SelectionController`, `Characters`, `Watcher`, `TornMounds`, `Grass`, `DirtBurst`; removes `Hands`; initial camera `[0, 1.5, 5.6]`. |
-| `web/src/fx/glitchScheduler.ts`, `CctvPass.tsx` | Random tracking glitch | `GlitchScheduler.trigger(now)`; `CctvPass` subscribes to `watcherEvents.vanish`. |
-| `web/src/audio/audioEngine.ts`, `useGraveyardAudio.ts`, `scheduler.ts` | Wind, crows, digging, gate; rise subscription | Growl, Footstep_Bed, lights input; `AudioParamLike` gains `linearRampToValueAtTime`. |
-| `web/src/state/store.ts`, `graveyard.ts` | Main store, graveyard slice | Adds `settledShock` and a `contentNotice` slice only (20.5). |
-| `web/src/ui/Hud.tsx` | Header, controls, footer text | Footer gets the Notice_Link; `ContentNotice` mounts above the footer. |
-| `tools/asset-lib/edits/index.mjs`, `picks.mjs`, `convert-model.mjs`, `budgets.mjs`, `manual-readme.mjs` | Edit table, pick validation, model conversion, budgets, README generator | Three edit ops, six picks, a post-write extension check, a new limit, a wider README header. |
-| `web/scripts/check-bundle.mjs` | 400 KB JS budget, 25 MB initial download, dev markers | Adds the Group_Budget check and the horror dev marker. |
-| `web/scripts/measure-fps.mjs` | Base_Spec task 21.1 (in progress, not yet in the repository) | The Horror_Pass adds `--horror` mode; see Decision 10. |
+| Area | Files |
+| --- | --- |
+| Look (2b) | `scenes/graveyard/look.ts` (new), `layout/camera.ts`, `r3f/CameraRig.tsx` (`CAMERA_FOV`), `model/sceneParams.ts`, `r3f/lightsBlend.ts`, `r3f/SceneLights.tsx`, `r3f/Flashlight.tsx`, `r3f/Props.tsx` (Lantern_Light), `r3f/Stones.tsx`, `fx/CctvGradeEffect.ts` (new), `fx/CctvPass.tsx`, `fx/cctvParams.ts`, `fx/TrackingGlitchEffect.ts` |
+| Soil (2b) | `r3f/soil.tsx`, `r3f/TornMounds.tsx`, `r3f/Mounds.tsx`, `r3f/Grass.tsx`, `r3f/Ground.tsx` |
+| Lights bug (2b) | `ui/controls/LightsButton.tsx`, `ui/controls/ShockSlider.tsx`, `ui/graveyard/ShockPanel.tsx`, `scenes/graveyard/dev/HorrorDebug.tsx` (analysis in section 8) |
+| Riser (3) | `model/riseTimeline.ts`, `model/boneAnimator.ts`, `model/stir.ts`, `model/dirtBurst.ts`, `model/risenPool.ts`, `model/selection.ts`, `model/settle.ts`, `model/modelAssignment.ts`, `r3f/SelectionController.tsx`, `r3f/Characters.tsx`, `r3f/characterLoader.ts`, `selectionStore.ts` (all new; `r3f/Hands.tsx` and `model/handPool.ts` deleted) |
+| Unease and flash (3) | `model/unease.ts`, `fx/flashLimiter.ts`, `fx/staticCutBus.ts`, `fx/FlashBus.tsx` (new), `fx/glitchScheduler.ts`, `r3f/CameraRig.tsx`, `r3f/Flashlight.tsx` |
+| Audio (3) | `audio/audioEngine.ts`, `audio/useGraveyardAudio.ts`, `audio/growl.ts`, `audio/duck.ts` (new), `audio/scheduler.ts` |
+| Evidence (3) | `web/scripts/horror-screenshots.mjs` (`--batch 2b|3`), `web/scripts/measure-fps.mjs` (`--horror`) |
 
-### Component and data flow
+Pure modules import neither React nor three.js (20.11); `horror.purity.test.ts` scans them.
 
-```mermaid
-flowchart TD
-  subgraph Tooling
-    ZIPS[tools/cache/manual zips] --> PICKS[picks.json + new edits]
-    PICKS --> FETCH[fetch-assets.mjs / convert-model.mjs]
-    FETCH --> ASSETS[web/public/assets + manifest.json]
-    ASSETS --> GA[groupAssets.json budget check]
-  end
-  subgraph Pure
-    STORE[(main store: rateShock, settledShock, settings)] --> SHOCK[engine shockBatch live]
-    STORE --> SETTLED[engine shockBatch settled]
-    LAYOUT[layout.ts + jitter + extents] --> SEL[selection.ts assignNearest]
-    CAM[cameraStateRef.target] --> SELPOSE[selectionPose]
-    SELPOSE --> SEL
-    SETTLED --> SEL
-    SEL --> MODELS[modelAssignment.ts]
-    SEL --> STAND[standing.ts]
-    MODELS --> POOL[risenPool.ts]
-    POOL --> BONES[boneAnimator.ts + twoBoneIk.ts]
-    SHOCK --> DRESS[dressing.ts closed / torn / stains]
-    POOL -->|active ciks| DRESS
-    LAYOUT --> WATCH[watcher.ts + farSpots.ts]
-    LAYOUT --> GRASS[grass.ts]
-  end
-  subgraph Scene[R3F scene]
-    DRESS --> MOUNDS[Mounds + TornMounds + Clods + Pits]
-    BONES --> CHARS[Characters]
-    STAND --> CHARS
-    WATCH --> WATCHER[Watcher]
-    GRASS --> GRASSMESH[Grass InstancedMesh]
-    POOL -->|rise start / finished| EVENTS[riseEvents / riseFinishedEvents]
-    WATCH -->|vanish| GLITCH[CctvPass glitch trigger]
-  end
-  EVENTS --> AUDIO[audioEngine: dig, growl]
-  CHARS -->|nearest standing distance| AUDIO
-```
-
-### Selection to rise sequence
+### Selection to rise (Batch 3)
 
 ```mermaid
 sequenceDiagram
-  participant U as User
   participant S as Shock_Slider
-  participant ST as main store
-  participant SC as SelectionController (useFrame, -8)
-  participant SS as selectionStore
-  participant P as risenPool (pure)
+  participant SC as SelectionController (-8)
+  participant P as risenPool + riseTimeline
   participant C as Characters
-  participant A as audioEngine
-  U->>S: moves slider (several changes)
-  S->>ST: setRateShock(k/400)
-  Note over ST: live shock updates Torn_Mounds, Broken_Stones, counters at once
-  SC->>SC: settleTracker(value, clockNow) unchanged for 250 ms
-  SC->>ST: setSettledShock(v)
-  SC->>SC: Selection_Event: assignNearest(newlyUndead(settled), selectionPose, 8)
-  SC->>SS: setRisen([cik...]) + modelByCik
-  C->>P: stepRisenPool(desired, dt, ready)
-  P-->>C: slot states, started[], finished[]
-  C->>A: riseEvents.emit(start) => playDig
-  C->>A: riseFinishedEvents.emit => playGrowl (limiter, lights off, unmuted)
-```
-
-### Draw-call and budget impact
-
-| Object | Draw calls | Notes |
-| --- | --- | --- |
-| Closed mounds (1), torn mounds (1), pits (1), clods (1), ground stains (1) | 5 | Instanced; one added to the Base_Spec "mounds" call. |
-| Grass cards | 1 | At most 1,500 cards in the framed Plot. |
-| Dirt_Burst | 1 | 8 x 40 = 320 instances capacity. |
-| Characters | up to 13 skinned meshes, 1 to 3 draw calls each | Hero about 2 to 3 (materials), Walker and Crawler about 1 to 2. Frustum culling is off for characters (skinned bounds are bind-pose bounds). |
-| Removed | Craggle hands (1) | |
-
-Target: the Base_Spec "under 100 draw calls, under 1.5M triangles" still holds. The pipeline keeps each character at or below 30,000 triangles with a `decimate` edit when the source is larger (13 x 30,000 = 0.39M worst case; 8 x 30,000 = 0.24M since the control-room direction). Requirement 21 measures the real number. Since 2026-11-13 the Mutant (1 to 2 calls) and the Watcher and Standing_Zombies are gone, the CCTV chain lights off is two passes (ToneMapping, CctvGradeEffect) instead of one merged pass of seven effects.
-
-### Control-room architecture (Batches 2b, 3 and 4)
-
-The control-room direction adds three layers on top of the delivered scene. Pure modules stay free of React and three.js (20.11) and are listed in `horror.purity.test.ts`.
-
-| Layer | New modules | Role |
-| --- | --- | --- |
-| Look constants | `scenes/graveyard/look.ts` | Every value of Requirement 23 and the Rise / Unease / Jump_Scare numbers that `horror-direction-params.md` or `control-room-direction.md` lists. |
-| Pure choreography | `model/riseTimeline.ts`, `model/boneAnimator.ts`, `model/stir.ts`, `model/dirtBurst.ts`, `model/unease.ts`, `model/cameraSwitch.ts`, `model/framedSet.ts`, `model/plotFall.ts`, `model/jumpScare.ts`, `model/firmLookup.ts`, `model/statusWord.ts`, `fx/flashLimiter.ts`, `fx/staticCut.ts`, `audio/growl.ts`, `audio/duck.ts`, `ui/osd/openingSchedule.ts`, `ui/osd/keys.ts`, `ui/osd/hoverPlacement.ts`, `ui/osd/format.ts`, `state/openingStorage.ts` | Timelines and rules as pure functions of time, inputs and an injected random source. |
-| Scene (r3f) | `r3f/SelectionController.tsx`, `r3f/Characters.tsx`, `r3f/characterLoader.ts`, `r3f/RiserBounds.ts`, `r3f/PlotFallController.tsx`, `fx/FlashBus.tsx`, `fx/CctvGradeEffect.ts` | Drive the pure modules from `useFrame` and write uniforms, light values and bone quaternions. |
-| OSD (DOM) | `ui/osd/*` | Replaces `GraveyardHud`, `FileCard`, `PlotNav`, `ShockPanel` and the app `Hud` inside the graveyard. |
-| Small stores | `scenes/graveyard/selectionStore.ts`, `ui/osd/osdStore.ts` | Risen assignment; shown camera, hover tag, jump-scare overlay phase, opening state. The main store only gains `settledShock` (20.5). |
-
-```mermaid
-flowchart TD
-  SL[Shock_Slider in Rate_Console] -->|setRateShock live| ST[(main store)]
-  ST -->|live Shock_pp| UN[unease.ts]
-  UN --> CAMJ[CameraRig: Camera_Jitter]
-  UN --> FL[Flashlight: Flash_Dip offer]
-  UN --> GL[CctvPass: Random_Glitch offer]
-  UN --> RB[audioEngine: Rumble_Bed gain]
-  ST --> SETTLE[settle.ts]
-  SETTLE -->|Settled_Shock| SC[SelectionController]
-  CSW[cameraSwitch.ts] -->|destination at start| SC
-  SC --> POOL[risenPool + riseTimeline]
-  SC --> FS[framedSet.ts]
-  POOL --> BA[boneAnimator.ts] --> CH[Characters.tsx]
-  POOL -->|stir start| AIM[Flashlight Auto_Aim]
-  POOL -->|stir start| DUCK[audio duck: wind, crows]
-  POOL -->|rise cut| BUS
-  POOL -->|rise finished| GROWL[positional Growl]
-  FS --> PF[plotFall.ts]
-  POOL --> PF
-  PF -->|Plot_Fall| JS[jumpScare.ts timeline]
-  JS --> BUS[FlashBus + flashLimiter]
-  CSW --> BUS
-  OPEN[Opening connect] --> BUS
-  BUS --> CCTV[CctvGradeEffect uniforms: stat, glitch]
-  JS --> OSDJ[OSD JumpScareOverlay / NoSignal]
-  JS --> AUD[audioEngine: silence, scare sounds, recover]
-```
-
-```mermaid
-sequenceDiagram
-  participant U as User
-  participant RC as Rate_Console
-  participant SC as SelectionController
-  participant P as risenPool / riseTimeline
-  participant C as Characters
-  participant F as Flashlight
-  participant A as audioEngine
-  participant B as FlashBus
-  U->>RC: raises the lever
-  RC->>SC: live shock (unease grows at once)
-  SC->>SC: Settled_Shock after 250 ms
+  participant F as Flashlight / CctvPass / Audio
+  S->>SC: live shock (unease grows at once)
+  SC->>SC: Settled_Shock after 250 ms (render clock)
   SC->>P: desired = nearest 8 Newly_Undead
-  P-->>C: slot enters stir (s = 0)
-  P-->>F: Auto_Aim at Pit + 0.5 m, 2.2 s
-  P-->>A: duck wind, hold crows 5 s, rumble 0.25 + 0.5a
-  Note over C: 1.4 s mound shake, camera shake
-  P-->>C: t = 0, zombie at keys 0 (below ground)
-  P-->>C: t = 0.55 torn mound + Dirt_Burst
-  P->>B: t > 0.8 Rise_Cut (static 0.32 s, glitch 0.2 s)
-  P-->>C: keys time = t + 1.15
-  P-->>A: t = 2.05 rise finished, positional Growl
-  C->>C: Stare 2.8 s, clawing, twitches
+  P-->>F: Stir start: Auto_Aim, duck wind, rumble 0.25+0.5a
+  P-->>C: t=0 character at keys 0; t=0.55 torn mound + Dirt_Burst
+  P-->>F: t>0.8 Rise_Cut (Static_Cut 0.32 s, glitch 0.2 s)
+  P-->>C: keys time t+1.15; t=2.05 rise finished
+  C-->>F: positional Growl; Stare 2.8 s
 ```
+
+### Draw-call impact
+
+Closed mounds, torn mounds, pits, clods, stains: 5 instanced calls; grass 1; Dirt_Burst replaced by Clod motion (no extra call); at most 8 skinned characters (1 to 3 calls each); Mutant, Watcher and Standing_Zombies removed. Lights-off CCTV chain is two passes (ToneMapping, CctvGradeEffect). Base_Spec targets (under 100 calls, 1.5M triangles) hold; Requirement 21.12 measures them.
 
 ## Components and Interfaces
 
@@ -295,11 +145,11 @@ Credits use the exact titles, authors, URLs and `CC BY 4.0` / `CC0` of requireme
 }
 ```
 
-- `assets.ts` keeps `ASSET_KEYS` and gains `GROUND_SLUG` and `ASSET_KEYS.forestFloor`, `ASSET_KEYS.characters`, `ASSET_KEYS.audio.growls`, `ASSET_KEYS.audio.footsteps`. `assets.test.ts` asserts that `groupAssets.json` equals the set derived from `ASSET_KEYS` (all keys except `craggleHand`, `ruella`, the mp3 fallbacks and the HDRI) so the two cannot drift.
+- `assets.ts` keeps `ASSET_KEYS` and gains `GROUND_SLUG` and `ASSET_KEYS.forestFloor`, `ASSET_KEYS.characters`, `ASSET_KEYS.audio.growls`. `assets.test.ts` asserts that `groupAssets.json` equals the set derived from `ASSET_KEYS` (all keys except `craggleHand`, `ruella`, the mp3 fallbacks and the HDRI) so the two cannot drift. Since Batch 3 the Mutant, the Watcher_Model and the Footstep_Bed leave the list (26.7, 26.11); their files, Manifest entries and credits stay.
 - `check-bundle.mjs` reads the same JSON with `readFileSync` (no TypeScript import) and exports `computeGroupBudget(files, groups)`: bytes per category, HDRI bytes separately, total, `over` and a message `Graveyard asset group <mb> MB exceeds the 25 MB Group_Budget` (5.7). Any key missing from the manifest, any file above 5,000,000 bytes in the group (5.10) and any non-finite `bytes` also fail. The result prints `ground`, `characters`, `stones`, `props`, `sounds`, `hdri`, and the total with and without HDRI, which is the breakdown of 5.8.
 - `pnpm build` already runs `check-bundle`, so 21.1 enforces the budget.
-- **Pipeline ceiling.** `budgets.mjs` `LIMITS.graveyard` is 26,214,400 and counts every file in the manifest group (both HDRIs, both audio formats, unused sources). It is 23.48 MB today, so the new files would exceed it. See Decision 6: it becomes 40,000,000 bytes on disk (confirmed, 5.12), while the real session budget is the 25 MB Group_Budget above.
-- **Fallback order when the group exceeds 25 MB (5.13, 5.14).** Apply in this order and stop at the first step that brings the total to at most 25,000,000 bytes: (1) stop loading and shipping what the graveyard no longer uses: the Craggle_Hand is already outside `groupAssets.json` (15.1, 15.6); the Mutant (570,220 bytes) is removed from `groupAssets.json` and from the scene because the Watcher replaces it, after the user approves superseding Base_Spec Requirement 9 for the Mutant; (2) reduce texture quality: re-encode the largest texture files in the group at a lower resolution or stronger compression (for example the stump, statue or soil sets), never below the texel density of 6.1 for the Ground_Texture. After each step `computeGroupBudget` is rerun and the report prints the per-file and per-category breakdown before and after, naming each removed or recompressed file.
+- **Pipeline ceiling.** `budgets.mjs` `LIMITS.graveyard` is 26,214,400 and counts every file in the manifest group (both HDRIs, both audio formats, unused sources). It is 23.48 MB today, so the new files would exceed it. See Decision 5: it becomes 40,000,000 bytes on disk (confirmed, 5.12), while the real session budget is the 25 MB Group_Budget above.
+- **Fallback order when the group exceeds 25 MB (5.13, 5.14).** Apply in this order and stop at the first step that brings the total to at most 25,000,000 bytes: (1) stop loading and shipping what the graveyard no longer uses: the Craggle_Hand (already outside `groupAssets.json`) and the Mutant (570,220 bytes; approved by the user 2026-11-13); (2) reduce texture quality: re-encode the largest texture files in the group at a lower resolution or stronger compression (for example the stump, statue or soil sets), never below the texel density of 6.1 for the Ground_Texture. After each step `computeGroupBudget` is rerun and the report prints the per-file and per-category breakdown before and after, naming each removed or recompressed file.
 
 **Estimated Graveyard_Asset_Group** (sizes from the manifest; ground and characters are bounds):
 
@@ -316,7 +166,7 @@ Credits use the exact titles, authors, URLs and `CC BY 4.0` / `CC0` of requireme
 | **Subtotal without characters** | **at most 17,252,404** | |
 | Character_Models | headroom 7,747,596 | about 1.9 MB per model on average |
 
-The Batch 1 report replaces the two estimates with measured values. The sky HDRI files (1,725,527 + 6,981,963) are reported on a separate line.
+The Batch 1 report replaces the two estimates with measured values. The sky HDRI files (1,725,527 + 6,981,963) are reported on a separate line. Since Batch 3 the Mutant, digging and Footstep_Bed sounds and the Watcher_Model are not requested and are not counted (26.11).
 
 ### 3. Stone_Jitter and the band-packed layout (Requirement 8)
 
@@ -362,7 +212,7 @@ Each stone gets a local axis-aligned **extent rectangle** relative to its anchor
 
 A plot is a table: `cols` columns and `rows` rows as in the Base_Spec (`cols = max(1, ceil(sqrt(n * PITCH_Z / PITCH_X)))`), but column `c` has **left** and **right** extents `L_c = max left`, `R_c = max right` over its members, and row `r` has **front** and **back** extents `F_r`, `B_r` likewise. Column anchors are `cx_0 = 0` and `cx_{c+1} = cx_c + R_c + MIN_GAP + L_{c+1}`; row anchors go from the front row back (−z) the same way with `B_r + MIN_GAP + F_{r+1}`. `MIN_GAP = 0.15`. Because every stone's extent rectangle lies inside its cell box, rectangles of different cells are at least 0.15 m apart, so the oriented footprints are too (8.9). The Base_Spec constants `PITCH_X`, `PITCH_Z` remain only as the `cols` formula inputs. Typical row depth is about 1.9 m for upright rows and about 3.4 m for a row that contains a fallen stone, so a plot with 5 percent fallen stones is about 25 percent deeper than before. This is accepted.
 
-The remaining Base_Spec layout rules are kept: plots sorted by sector name (UTF-16 order), plot grid of `ceil(sqrt(plotCount))` columns, `PLOT_GAP = 1.6`, `PAD = 0.4`, plot 0 centred on x = 0 with its first row anchor at `FIRST_ROW_Z = 3`, stone array indexed by `firmIndex`, `plot.stones` in input order (reading order, 8.13), empty list returns the zero layout. `PlotLayout` gains `rowAnchors: number[]` (anchor z of each row, front first) for the Watcher and the grass.
+The remaining Base_Spec layout rules are kept: plots sorted by sector name (UTF-16 order), plot grid of `ceil(sqrt(plotCount))` columns, `PLOT_GAP = 1.6`, `PAD = 0.4`, plot 0 centred on x = 0 with its first row anchor at `FIRST_ROW_Z = 3`, stone array indexed by `firmIndex`, `plot.stones` in input order (reading order, 8.13), empty list returns the zero layout. `PlotLayout` gains `rowAnchors: number[]` (anchor z of each row, front first) for the grass.
 
 **Keyboard order and navigation.** `plot.stones` is built from the input order, so reading order does not change with jitter (8.13). `nextFocus` already uses `s.x, s.z`, which are the jittered centres (8.14); it is unchanged.
 
@@ -370,21 +220,19 @@ The remaining Base_Spec layout rules are kept: plots sorted by sector name (UTF-
 
 ### 4. Camera inside the plot (Requirement 9)
 
-> **Superseded in part (control-room direction, 2026-11-13).** The constants, the derivation of 9.3 and the 1.2 s move below describe the delivered Batch 2 camera. Batch 2b replaces the eye height, field of view, look point and back distance (section 14.4), and Batch 4 replaces the move with the Camera_Switch cut (section 21.3). The portrait look-target easing (`targetY`, `TARGET_Y_PORTRAIT`) is removed, because 23.1 fixes the look point at 0.6 m for every aspect.
+> **Superseded in part by Batch 2b (section 6).** The constants and the derivation below describe the delivered Batch 2 camera (eye height 1.5 m, FOV 52). Batch 2b changes FOV to 46, eye height to 1.2 m, look point to 0.6 m and the back distance; the 1.2 s move, smoothing, sway and the pointer ranges stay.
 
 New constants in `layout/camera.ts`: `CAMERA_HEIGHT = 1.5`, `CAMERA_BACK = 2.6`, `TARGET_Y = 0.2`, `TARGET_AHEAD = 5` (unchanged). `plotPose` keeps its signature: position `(centerX, 1.5, frontZ + 2.6)`, target `(centerX, 0.2, frontZ − 5)`.
 
 Derivation (all lengths in metres, front row anchor at `frontZ`):
 
 - **Distance (9.2):** nearest stone base centre is at horizontal distance `2.6 ± 0.3 <= 2.9 <= 4.0`.
-- **Inside the extended boundary (9.4):** the plot rectangle's front edge is `frontZ + F_0 + PAD` with `F_0 >= depth/2 + 0.45 + 0.45 >= 1.04` (mound zone; the narrowest stone has `depth = 0.28`) so the edge is at least `frontZ + 1.44`; extended by `PLOT_GAP = 1.6` it is at least `frontZ + 3.04 > frontZ + 2.6`. Laterally the camera is at the plot's `centerX`. The property test in the Testing section checks this for generated plots.
+- **Inside the extended boundary (9.4):** the plot rectangle's front edge is `frontZ + F_0 + PAD` with `F_0 >= depth/2 + 0.45 + 0.45 >= 1.04` (mound zone; the narrowest stone has `depth = 0.28`) so the edge is at least `frontZ + 1.44`; extended by `PLOT_GAP = 1.6` it is at least `frontZ + 3.04 > frontZ + 2.6`. Laterally the camera is at the plot's `centerX`.
 - **Eye height (9.1):** 1.5.
-- **Lower half (9.3):** the camera pitches down by `θ = atan((1.5 − 0.2) / 5) = 14.6°`. The nearest mound base point (front edge of a mound, 0.6 m in front of the stone) is at ground distance `2.0 m`, depression angle `atan(1.5 / 2.0) = 36.9°`. The vertical field of view is 52 degrees (half 26°), so the point sits `36.9° − 14.6° = 22.3°` below the view centre, inside the frame and in its lower half. The same value holds at 390 x 844 because three's `fov` is vertical, and every nearest-row mound at the same distance projects to the same NDC y. The test runs `projectToNdc` (pure, in `camera.ts`) at both aspect ratios.
-  *Measured with the pointer at the neutral position and sway 0.* With `pointer.y = −1` the look target drops 1.3 m and the pitch grows to 27.5°, which moves the nearest mounds above the centre; 9.7 keeps the pointer ranges, so 9.3 is defined for the framed pose, not for extreme pointer positions (Decision 8).
+- **Lower half (9.3):** the camera pitches down by `θ = atan((1.5 − 0.2) / 5) = 14.6°`. The nearest mound base point is at ground distance `2.0 m`, depression angle `atan(1.5 / 2.0) = 36.9°`. With a vertical field of view of 52 degrees (half 26°) the point sits `22.3°` below the view centre, inside the frame and in its lower half. The same value holds at 390 x 844 because three's `fov` is vertical. *Measured with the pointer at the neutral position and sway 0* (Decision 7).
 - **Look target offset (9.7):** unchanged formula, `target = base + (pointer.x * 3.2, 0.2 + pointer.y * 1.3 relative to the plot look point)`.
-- **Overview (9.6):** `overviewPose` is untouched and ignores the 1.5 m rule. `OVERVIEW_Y = 25` in `Stones.tsx` still separates it.
-- **Start (9.9):** `GraveyardScene` initial camera becomes `[0, 1.5, 5.6]`, `INITIAL_CAMERA` in `placement.ts` the same, and `FLASHLIGHT_FALLBACK_TARGET` stays `[0, 0.2, −2]` (it equals `target` for `frontZ = 3`).
-- **Unchanged (9.5, 9.10):** fov 52, `LOOK_LAMBDA`, sway amplitudes, flashlight offset, 1.2 s plot move, fog rules.
+- **Overview (9.6):** `overviewPose` is untouched and ignores the eye-height rule. `OVERVIEW_Y = 25` in `Stones.tsx` still separates it.
+- **Start (9.9):** the initial camera frames Plot 1.
 
 `selectionPose(target, layout, aspect)` returns `plotPose(plot).position` or `overviewPose(...).position`, i.e. the destination pose (Selection_Pose definition). It takes no pointer, sway or flashlight input, which is how 10.3 holds by construction.
 
@@ -392,366 +240,152 @@ Derivation (all lengths in metres, front row anchor at `frontZ`):
 
 **Ground (6.1 to 6.3).** `Ground.tsx` loads `ASSET_KEYS.forestFloor` (diffuse, normal, roughness at 1k). `TILE_M = 4` stays: 1024 texels per 4 m is 256 texels per metre, above the 128 required. The failure fallback (`#0b0806` flat ground and the HUD notice) is unchanged.
 
-**Closed mounds (7.1, 7.7).** `Mounds.tsx` now draws one instance for every visible stone that is not in the torn set, with the Base_Spec half-ellipsoid (`MOUND_HEIGHT 0.24`, `MOUND_FRONT 0.45`, `MOUND_SIDE 0.2`), centred on the stone base and oriented with `standingYaw` (7.8, 7.9). The tint still follows `lightsBlendRef`.
+**Closed mounds (7.1, 7.7).** `Mounds.tsx` draws one instance for every visible stone that is not in the torn set, with the Base_Spec half-ellipsoid (`MOUND_HEIGHT 0.24`, `MOUND_FRONT 0.45`, `MOUND_SIDE 0.2`), centred on the stone base and oriented with `standingYaw` (7.8, 7.9).
 
 **Torn mounds** (`r3f/TornMounds.tsx`, geometry in `model/tornMound.ts`):
 
-- `tornMoundProfile(r)` (pure) gives the heap height for a radial coordinate: crater floor below ground inside `PIT_R`, a broken rim crest of 0.30 m at `PIT_R * 1.15`, falling to 0 at the heap radius. The geometry is a lathe-style disc with 24 x 10 segments and seeded radial noise (the "broken rim"). It is built once from a fixed seed; per-instance variation comes from scale and yaw.
-- **Pit (7.2, 7.3):** one InstancedMesh of `CircleGeometry` discs (radius `PIT_R = 0.25 + 0.2 * u`, so width 0.5 to 0.9 m), `MeshBasicMaterial` colour `#050403` at `y = 0.015` with `polygonOffset`, centred on `pitCentre`. Nothing covers the opening. A character emerging through the disc is hidden below `y = 0` by the opaque ground plane, and the rim hides the rest.
-- **Clods (7.2):** one InstancedMesh of `IcosahedronGeometry(1, 0)` with the soil material; 6 to 14 per torn mound (`6 + hash % 9`), positions seeded by `cik`, between `PIT_R + 0.05` and 1.2 m from the Pit centre, scale 0.04 to 0.12.
-- **Stains (7.11):** lights off only, `stainCount = hash(cik) % 4` (0 to 3) flat quads from the existing drag-mark atlas cells on the heap top, drawn by a small InstancedMesh next to `BloodDecals`. Lights on draws none (7.10).
-- **Which mound (7.4 to 7.6):** `tornSet = live undead ∪ activeCiks(pool)`. `planDressing` produces `torn` (live undead) and `closed` (all other firms), and `tornMoundSet(torn, activeCiks)` adds the firms whose Risen_Zombie has not finished lowering, so a Torn_Mound never reverts under a character. A firm that stops being Newly_Undead gets its Closed_Mound back within 2 s: lowering takes at most 1.2 s plus one frame.
-- **Already_Undead (7.6):** zombies at shock 0 are in `torn` at every delta, as in the Base_Spec `undead` rule.
+- `tornMoundProfile(r)` (pure) gives the heap height for a radial coordinate: crater floor below ground inside `PIT_R`, a broken rim crest of 0.30 m at `PIT_R * 1.15`, falling to 0 at the heap radius. The geometry is a lathe-style disc with 24 x 10 segments and seeded radial noise, built once from a fixed seed; per-instance variation comes from scale and yaw.
+- **Pit (7.2, 7.3):** one InstancedMesh of `CircleGeometry` discs (radius `PIT_R = 0.25 + 0.2 * u`, so width 0.5 to 0.9 m) at `y = 0.015` with `polygonOffset`, centred on `pitCentre`. Nothing covers the opening. A character emerging through the disc is hidden below `y = 0` by the opaque ground plane, and the rim hides the rest. (Batch 2b: colour `#040302`, see section 7.)
+- **Clods (7.2):** one InstancedMesh of `IcosahedronGeometry(1, 0)`; 6 to 14 per torn mound (`6 + hash % 9`), positions seeded by `cik`, between `PIT_R + 0.05` and 1.2 m from the Pit centre, scale 0.04 to 0.12.
+- **Stains (7.11):** lights off only, `stainCount = hash(cik) % 4` (0 to 3) flat quads on the heap top. Lights on draws none (7.10).
+- **Which mound (7.4 to 7.6):** `tornSet = live undead ∪ activeCiks(pool)`. `planDressing` produces `torn` (live undead) and `closed` (all other firms), and `tornMoundSet(torn, activeCiks)` adds the firms whose Risen_Zombie has not finished lowering, so a Torn_Mound never reverts under a character. A firm that stops being Newly_Undead gets its Closed_Mound back within 2 s.
+- **Already_Undead (7.6):** zombies at shock 0 are in `torn` at every delta.
 
 **Grass** (`model/grass.ts`, `model/grassTexture.ts`, `r3f/Grass.tsx`):
 
-- `grassTexture(seed)` returns an RGBA `Uint8Array` 128 x 128 drawn by our own code (blade strokes with seeded lengths and lean, alpha 0 or 255); `Grass.tsx` wraps it in a `DataTexture` with `generateMipmaps = true`, `minFilter = LinearMipmapLinearFilter`, `magFilter = LinearFilter`, `colorSpace = SRGBColorSpace`. The material is `MeshStandardMaterial` with `alphaTest = 0.5`, `side = DoubleSide`. The texture is own work, so no `CREDITS.md` row (6.4).
+- `grassTexture(seed)` returns an RGBA `Uint8Array` 128 x 128 drawn by our own code; `Grass.tsx` wraps it in a `DataTexture` with `generateMipmaps = true`, `minFilter = LinearMipmapLinearFilter`, `magFilter = LinearFilter`, `colorSpace = SRGBColorSpace`. The material is `MeshStandardMaterial` with `alphaTest = 0.5`, `side = DoubleSide`. The texture is own work, so no `CREDITS.md` row (6.4).
 - Geometry: two crossed 0.5 x 0.35 m quads merged into one `BufferGeometry` (card height at most 0.35, 6.5). One `InstancedMesh`, capacity 1,500 (6.11).
 - `placeGrass(layout, plotIndex, quality)` (pure) per Plot: seed `fnv1a32(plot.sector)` (so a plot's cards do not depend on other plots, 6.6). `perMound = max(1, min(5, floor(1200 / n)))`; when `n > 1200`, only stones with `hash(cik) % ceil(n / 1200) == 0` get cards. Each mound gets `perMound` cards within 1.0 m of the mound centre; a sparse background adds at most 300 cards over the plot rectangle at a density at least ten times lower than the near density. Candidates inside any stone's oriented footprint or inside a Pit disc are rejected (6.8). Total per Plot is at most 1,500 (6.7). Low quality keeps every other card (6.9). Lights on draws the same cards with lights-on lighting (6.10).
 - Only the framed Plot's cards are written to the instance buffer; a plot change rewrites it like the stone buffers.
 
-### 6. Selection, the Settled_Shock and the Risen pool (Requirement 10)
-
-> **Kept with changes (control-room direction, 2026-11-13).** `settle.ts`, `selection.ts` (`assignNearest`, `candidatesFor`) and `SelectionController` stay as written. The Standing_Zombie assignment (events of kind 2 and 3) is removed (Requirement 26.3). The Risen pool gains the `stirring` phase and its times come from `riseTimeline.ts`; section 17.2 replaces the `RISE_SECONDS = 3.0` pool rules below.
-
-**`model/settle.ts`** (pure):
-
-```ts
-export const SETTLE_SECONDS = 0.25;
-export interface SettleState { value: number; since: number; settled: number | null }
-export function stepSettle(s: SettleState, value: number, now: number): { state: SettleState; settledNow: boolean };
-```
-
-A change of `value` resets `since = now`; `settledNow` is true on the first call where `now − since >= 0.25` and `settled !== value`. `SelectionController` calls it from its `useFrame` with `state.clock.elapsedTime`, so the delay is 250 ms plus at most one frame (inside the 50 ms tolerance at 20 fps and above) and no timer exists (11.14). The first load of the Firm list is a Selection_Event without waiting.
-
-**`model/selection.ts`** (pure):
+### 6. Batch 2b: prototype look (Requirement 23)
 
-```ts
-export const RISEN_BUDGET = 8;
-export const STANDING_BUDGET = 4;
-export interface Candidate { cik: string; dist: number }
-/** Nearest first; ties by lower cik (plain string order); duplicates counted once; input not mutated. */
-export function assignNearest(c: readonly Candidate[], budget: number): string[];
-export function candidatesFor(firms, indices, layout, pose: Vec3): Candidate[]; // distance to headstone BASE centre (x, 0, z)
-```
+| Item | Change | Req |
+| --- | --- | --- |
+| `look.ts` | Single constants module; every value of 23.1, 23.4, 23.5, 23.7 to 23.11, 23.14, 23.15 listed in `horror-direction-params.md`. Example test parses that file and compares each listed value. | 23.17 |
+| Camera | `CAMERA_FOV` 46, `CAMERA_HEIGHT` 1.2, `TARGET_Y` 0.6, `CAMERA_BACK` 3.0, `TARGET_AHEAD` 1.0. The portrait target easing (`TARGET_Y_PORTRAIT`) is removed. The 1.2 s move, smoothing and sway stay. Check: nearest mound base is 2.4 m ahead, depression 26.6°, look-centre pitch 8.5°, so the base sits 18.1° below the centre (half FOV 23°). | 23.1 to 23.3 |
+| Fog | Plot_Fog `FogExp2` `#0a0d13`, 0.075, background = fog colour, in lights-off framed plots. `sceneParams.blendParams` interpolates Overview_Fog to Plot_Fog with the existing move progress, so the framed values are exact when the move ends. Overview values unchanged. | 23.4 to 23.6, 23.18 |
+| Lights | Hemisphere `#3a4a66` / `#0a0806` / 0.18; `scene.environmentIntensity = 0` in framed plots; shadow moon `#7f9cd6` 1.1 at plot centre + (-4, 9, -22). Lights-on values unchanged (23.16). | 23.7, 23.8 |
+| Flashlight | Colour `#ffe7c4`, intensity 55, distance 26, angle 0.36, penumbra 0.95, decay 2, shadow bias -0.0004. Flicker x0.35 for one frame, chance 0.006 (offered to the Flash_Limiter from Batch 3; 2b keeps the Base_Spec cap). | 23.9 |
+| Lantern_Light | Point light `#ff9a4a`, 1.2 x (0.85 + 0.15 sin(13t) sin(7.3t)), distance 4, decay 2, 0.28 m above ground; constant 1.2 in Reduced_Motion. | 23.10 |
+| Stones | Base colour x0.55 in lights off. ACES, exposure 1.0 (lights off). | 23.14, 23.15 |
+| Ground fog, cone | No ground-fog layer and no volumetric cone in lights-off framed plots; unchanged in lights on and in the overview. | 23.19 |
+| `CctvGradeEffect` | `EffectAttribute.CONVOLUTION`, after `ToneMapping`. Order: (a) saturation 0.6 (mix 40 % luma 0.3/0.59/0.11), (b) x1.4 + 0.015, clamp, pow 0.9, (c) vignette 1 - 0.38 r^2.5 clamped, (d) grain sigma 0.035 new each frame, (e) every third row x0.88, (f) red 40 % mixed with red sampled 2 px left from the **pre-(a)** input. Linear to sRGB at the start and back at the end. Tracking-glitch band shift is applied to the sample uv inside this shader (the separate `mainUv` effect leaves the lights-off chain). No bloom, no chromatic aberration. Low quality keeps all six steps; Reduced_Motion freezes the grain time. | 23.11 to 23.13 |
+| `gradeColour` | Pure TS mirror of steps (a) to (c) used by the property test. | 23.11 |
 
-`assignNearest` is `assignHands` unchanged in behaviour (it already satisfies 10.1, 10.2, 10.12) and is exported under the new name. `candidatesFor` measures the straight-line distance from the Selection_Pose to the headstone base `(s.x, 0, s.z)`.
+### 7. Batch 2b: no glowing soil (Requirement 24)
 
-**`SelectionController`** (`r3f/SelectionController.tsx`, `useFrame` priority −8) watches three inputs and emits a Selection_Event when any of them changes:
+Causes to remove (24.4):
 
-1. the settled shock changes (`stepSettle`);
-2. `cameraStateRef.current.target` changes (the rig writes the destination at the start of a move, so the assignment uses the destination pose from the start, 10.8);
-3. the Firm list loads for the first time.
+| File | Remove |
+| --- | --- |
+| `r3f/TornMounds.tsx` | `emissiveMap` on heap and Clod materials |
+| `r3f/soil.tsx` | the lights-off `glow` option of `useSoilTint` and every call site that passes it (`Ground.tsx`, `Mounds.tsx`, `TornMounds.tsx`) |
+| `r3f/Grass.tsx` | `emissiveMap` on the Grass_Card material |
 
-On an event it computes `batch = shockBatch(firms, settledShock)`, `risen = assignNearest(newlyUndead(batch), RISEN_BUDGET)`, `modelByCik` (section 8), and for events of kind 2 and 3 `standing = assignNearest(alreadyUndead, STANDING_BUDGET)` (13.1, 13.2). It writes `{ risen, modelByCik, standing }` into `selectionStore` and `setSettledShock(v)` into the main store. Nothing in this path reads the pointer, the sway, the flashlight or the interpolated camera pose (10.3).
+Result: every soil, Closed_Mound, Torn_Mound heap, Pit, Clod and Grass_Card material has `emissive #000000`, `emissiveIntensity 0`, no `emissiveMap`, in both Lights_Mode values. Clods: `flatShading`, colour `#3b2c1f`, roughness 1. Pit: colour `#040302`; it becomes a `MeshStandardMaterial` (roughness 1, black emissive) instead of `MeshBasicMaterial`, so 24.1 applies to it. Each material is built by an exported factory in `soil.tsx` so one example test (`soilMaterials.test.tsx`) can check all six for both modes (24.5).
 
-**`model/risenPool.ts`** (pure, replaces `handPool.ts`):
+### 8. Batch 2b bug analysis: Lights toggle and the +0.25 pp jump (Requirement 25)
 
-```ts
-export type RisenPhase = 'idle' | 'waiting' | 'rising' | 'up' | 'lowering';
-export interface RisenSlot { cik: string | null; phase: RisenPhase; t: number }
-export interface RisenPool { slots: RisenSlot[] }          // length 8
-export const RISE_SECONDS = 3.0;
-export const LOWER_SECONDS = 1.2;
-export function stepRisenPool(
-  s: RisenPool, desired: readonly string[], dt: number,
-  opts: { reduced: boolean; ready: (cik: string) => boolean },
-): { state: RisenPool; started: string[]; finished: string[] };
-```
+**Observation:** after the Lights button is activated, the Shock_Slider reads +0.25 pp (step k = 1, stored 0.0025).
 
-Rules (same shape as the retired hand pool, with the additions the requirements add):
+**What the code does** (read for this design):
 
-- A desired CIK without a slot takes an `idle` slot only. It enters `waiting` (a slot is held, no body) until `ready(cik)` is true (12.6: the Torn_Mound is already shown), then `rising` and appears in `started`.
-- A slot whose CIK left `desired` becomes `lowering` (or `idle` at once under Reduced_Motion) and frees only when lowering ends; no replacement starts earlier (10.7). A `lowering` slot counts as active, so `activeCount <= 8` at every step (10.9).
-- `rising` becomes `up` at `t >= RISE_SECONDS` and the CIK appears in `finished` exactly once (11.8).
-- Reduced_Motion: a desired CIK goes straight to `up` in the same step, appears in `started` and `finished` in that step (11.15, 17.8).
-- Budget: `desired` is sliced to 8. A new CIK that finds no idle slot waits for the next step after a slot frees (at most `LOWER_SECONDS` = 1.2 s), and starts within 100 ms of the Selection_Event only when a slot is free (10.5).
+- `LightsButton.onClick` only calls `setSetting('lights', ...)`; `setSetting` writes `settings` only. `ThemeSync`, `Hud` and `ShockPanel` read `lights` or `rateShock` but never write `rateShock`.
+- The only writers of `machine.ctx.rateShock` are: `ShockSlider` `onChange` (`shockValue(k) = k / 400`), the dev-only `DebugBar` number input, and the dev-only `HorrorDebug`, which calls `setRateShock(shockPp / 100)` from `?shock=<pp>` once per mount (`done` ref). `?shock=0.25` yields exactly 0.0025.
+- Global key handlers (`PlotNav` arrows, `SkipSlot` Escape, `StoneFocusProxy`) never touch the slider; the audio gate only listens.
 
-`Characters.tsx` calls it every frame with `dt` clamped to 0.1 s and emits `riseEvents.emit` for `started` and `riseFinishedEvents.emit` for `finished`.
+**Root cause: not proven by reading.** No code path writes a rate shock on a lights change. Ranked hypotheses:
 
-### 7. Bone_Animator, two-bone IK and character scale (Requirement 11)
+| # | Hypothesis | Mechanism | Discriminating test |
+| --- | --- | --- | --- |
+| H1 | The click lands on the slider | Below 900 px (and with the `aside` wrapping) the Lights button and `ShockPanel` share the same stacked layout; the label change ("Lights off" / "Lights on") reflows the row. A pointer click or Playwright centre click that hits the range input sets the nearest step, which is k = 1 near the left end. | Playwright at 390x844, 900x800, 1440x900: `document.elementFromPoint` at the button centre must be the button; record `input` events on `input[type=range]` during the click. |
+| H2 | `HorrorDebug` re-applies the URL | A remount of the scene tree (`canvasKey` increments on `webglcontextrestored`, which a lights change can provoke through shadow or environment changes) resets the `done` ref; the effect parses `?shock=0.25` again and calls `setRateShock(0.0025)`. | Reload without `shock` in the URL; if the jump is gone, H2. Unit test: mount `HorrorDebug`, unmount, mount, assert `setRateShock` is called once per mount only because of the param. |
+| H3 | A synthetic `input` event from the toolchain | Screenshot or test scripts that press Tab/Space or dispatch events on the focused range. | Same `input` listener from H1 plus `event.isTrusted`. |
 
-> **Superseded (control-room direction, 2026-11-13)**, see section 17. The role-Euler key-pose table, breathing, the 3.0 s rise, the two-bone IK (`twoBoneIk.ts` is not built), `scaleForHeight` (1.6 m to 1.9 m) and the ballistic `dirtParticles` are replaced by the prototype Rise_Keys, the Stare, clawing and twitches, per-model heights of 1.80 m to 1.85 m and Clod arcs on the Torn_Mound. Kept: the purity rule (11.12), the cik-seeded schedule (11.10), the rise-finished event (11.8), the bone maps and their Vitest check (11.11), `frustumCulled = false`, and "nothing below the waist" (11.6).
+**Task order (first task of the fix):** add a DEV-only `useStore.subscribe` that logs `console.trace` when `machine.ctx.rateShock` changes, reproduce, and read the stack. Fix by cause: H1 non-overlapping layout and hit-test; H2 apply `?shock=` only once per page load (module-level flag, not a component ref); H3 test-script fix.
 
-**`model/boneAnimator.ts`** (pure; no React, no three). Time is seconds since the rise started.
+**Tests (25.4).** HUD jsdom tests (pointer, Enter, Space on `LightsButton`; shock 0 and one value in (0, 5] other than 0.25) assert `rateShock` is bit-equal 500 ms later, plus one preservation test for slider keys. **Limit:** under H1 and H2 these jsdom tests pass on the current code, so they cannot "fail before the fix" as 25.4 requires. The failing-before test is the browser `elementFromPoint` / `input`-event test (H1) or the remount test (H2); 25.4 needs adjusting once the cause is known.
 
-```ts
-export type Role =
-  | 'spine' | 'chest' | 'neck' | 'head'
-  | 'shoulderL' | 'shoulderR' | 'upperArmL' | 'upperArmR' | 'foreArmL' | 'foreArmR'
-  | 'handL' | 'handR' | 'fingersL' | 'fingersR';
-export interface Euler3 { readonly x: number; readonly y: number; readonly z: number }
-export interface BoneFrame {
-  readonly roles: Readonly<Record<Role, Euler3>>; // radians, delta from the rest pose, local XYZ
-  /** Root drop as a fraction of hips-to-crown height H; rootY = −drop * H, always >= 0 drop. */
-  readonly drop: number;
-  /** 0..1 weight of the arm IK that plants the hands on the rim. */
-  readonly plant: number;
-  readonly phase: 'rise' | 'idle';
-}
-export const RISE_SECONDS = 3.0;
-export const DIRT_BURST_AT = 0.35;
-export function frameAt(t: number, cik: string): BoneFrame;
-export function twitchTimes(cik: string, horizon: number): { at: number; dur: number }[];
-```
+### 9. Batch 3: selection and the Risen pool (Requirements 10, 12, 19)
 
-**Rise key poses** (6 poses, 5 transitions of 120 to 200 ms, each pose held at least 100 ms; values are the first guess, tuned in Batch 3 with the scene-critic against `horror-direction-sequence.png`):
+| Module | Rule |
+| --- | --- |
+| `model/settle.ts` | `stepSettle(state, value, now)`: settled once the value is unchanged for 0.25 s, from `state.clock.elapsedTime`. |
+| `model/selection.ts` | `assignNearest(candidates, 8)`: nearest to the destination Selection_Pose, ties by lower `cik`, order-independent. Only Newly_Undead firms are candidates (Already_Undead never get a character, 26.1). |
+| `SelectionController` | Selection_Event on Settled_Shock, Camera_Rig target change (destination pose, at move start) or first Firm list load; writes `selectionStore` (`risen`, `modelByCik`, `version`) and `settledShock` to the main store. |
+| `model/risenPool.ts` | Phases `idle, waiting, stirring, rising, up, lowering`; 8 slots; times from `riseTimeline`; lowering takes at most 1.2 s with no Rise_Cut; Reduced_Motion goes straight to `up`. Emits `started` at Stir start and `finished` at keys time 3.2. |
+| `model/modelAssignment.ts` | Rank 0 lights off: Hero; lights on: Walker; others by `fnv1a32(cik) & 1` (Crawler or Walker). Fallback Hero/Crawler to Walker; Walker failure: no Risen_Zombie. `CharacterId` has no `watcher`. |
+| `r3f/Characters.tsx` | `SkeletonUtils.clone` per slot, `frustumCulled = false`, `raycast = () => null`, scale to 1.80 to 1.85 m, base colour x0.9 / 0.85 / 0.75, roughness at least 0.75, no shadows in low quality. Models load after the first frame; Hero only in lights off. |
+| `model/horrorQuality.ts` | Low quality: grass x0.5, no character shadows, Rise_Budget stays 8. |
 
-| # | Transition | Hold until | What moves | `drop` | `plant` |
-| --- | --- | --- | --- | --- | --- |
-| 0 | start | 0.20 s | buried, fingers just under the soil | 1.25 | 0 |
-| 1 | 0.20 to 0.35 s | 0.90 s | arm raised, fingers and hand break the surface; Dirt_Burst at 0.35 s | 1.10 | 0 |
-| 2 | 0.90 to 1.05 s | 1.40 s | head and shoulders jerk up | 0.60 | 0 |
-| 3 | 1.40 to 1.55 s | 1.95 s | arms swing down and plant on the rim | 0.45 | 1 |
-| 4 | 1.95 to 2.15 s | 2.60 s | torso hauls out to the waist | 0.00 | 1 |
-| 5 | 2.60 to 2.70 s | 3.00 s | settle: small forward lean, head rises | 0.00 | 1 |
+### 10. Batch 3: rise, Stir and Stare (Requirement 27)
 
-Transitions use `easeOutCubic` on the segment, so the motion is a fast jerk then a still pose. At `t >= 3.0` the frame is `phase: 'idle'`.
+`model/riseTimeline.ts` (pure): `riseClock(s, {reduced, lights})` returns `{phase, a, keysTime, cutNow, showCharacter, tornMound, dirtU}` from seconds since Stir start.
 
-**Idle_Loop (11.9, 11.10):** breathing is a sine on `chest` and `spine` with period `3 + 2 * u0` seconds (u0 from the CIK stream), amplitude 1.5 degrees; the shoulders receive the inverse of the chest rotation so the arm chain does not move. Head twitches: `twitchTimes(cik)` draws intervals `1 + 3 * u` seconds from `mulberry32(fnv1a32(cik + ':twitch'))`; each twitch lasts `0.10 + 0.15 * u` (at most 0.25 s) as a smoothstep pulse of up to 18 degrees on `head`/`neck`. `drop` stays 0 and `plant` stays 1, so the root never moves (11.7).
+| Constant | Value |
+| --- | --- |
+| `STIR_S` | 1.4 (a = s / 1.4) |
+| `SOIL_BREAK_T` | 0.55 (Torn_Mound swap, Dirt_Burst) |
+| `RISE_CUT_T` | first t > 0.8: Static_Cut 0.32 s, glitch 0.2 s, keys time jumps to 1.95 |
+| keys time | t before the cut, t + 1.15 after; end 3.2 (t = 2.05) |
+| `STARE_S` | 2.8 (smoothstep) |
+| Reduced_Motion | Stir without shake; torn mound at t = 0.55, no burst; cut at most 0.15 s, no glitch; zombie at final pose with head at Stare target; `finished` in that frame |
 
-**Reduced_Motion (11.15):** `Characters` evaluates `frameAt(RISE_SECONDS, cik)` once, with breathing and twitch amplitude forced to 0, and never advances.
+- `model/stir.ts`: `stirOffset(a, rand)` gives mound offsets at most 1.5 cm x a in x/z, 1 cm x a in y; camera shake at most 6 mm x a in x/y (lights off, motion allowed).
+- `model/boneAnimator.ts`: `frameAt(keysTime, model)` interpolates the five Rise_Keys (0.0, 0.7, 1.5, 2.3, 3.2 s; root height -1.8 to -0.95 m) with `jerk` (first 40 % of an interval moves 8 %, then cubic ease-out) and returns world-space aim directions; `Characters` applies them with the prototype `aim()`. Root offset 0.05 m for the Crawler. After 3.2 s: `stare(t, headDir, headToCamera)` (target = normalize(unit(head to camera) + (0, 0.15, 0))), finger curl + 0.15 sin(5t + pitX), twitches (first at 2 s, then every 1.2 to 3.5 s, 0.18 s, offsets x -0.6..0.6, y -0.3..0.2) from `mulberry32(fnv1a32(cik))`. No breathing. Lights on: no Stare, no twitch.
+- `model/dirtBurst.ts`: `clodAt(u, rest, h)`: outward 35 % to 100 % of rest offset, height 0.03 + 4 h u (1 - u), hidden while u <= 0.02, u over 0.45 s.
+- Auto_Aim: on Stir start the Flashlight aims at Pit + 0.5 m for 2.2 s or until the first pointer move; a new Stir replaces a running one.
+- Events: `riseEvents` at Stir start, `riseFinishedEvents` at keys time 3.2, once per zombie.
 
-**`model/twoBoneIk.ts`** (pure plain vectors):
+### 11. Batch 3: unease and the Flash_Limiter (Requirement 28)
 
-```ts
-export type V3 = readonly [number, number, number];
-export function solveTwoBone(shoulder: V3, target: V3, upperLen: number, lowerLen: number, pole: V3):
-  { elbow: V3; wrist: V3; reached: boolean };
-```
+`model/unease.ts`: `uneaseAt(S, {lights, reduced}, stirA)` with S = Shock_pp in [0, 5]:
 
-`wrist` is `target` when `|target − shoulder| <= upperLen + lowerLen` (and above `|upperLen − lowerLen|`), otherwise the nearest reachable point on the line; `|elbow − shoulder| = upperLen` and `|wrist − elbow| = lowerLen` hold within 1e-9. `Characters.tsx` reads the arm bone world positions once per rise start, then each frame blends the animated arm direction toward the IK direction with weight `plant` using `Quaternion.setFromUnitVectors` on the bone's rest direction. The two **rim anchors** per Pit are `pitCentre ± right * (PIT_R + 0.08)` at `y = 0.05`, where `right` is perpendicular to the character's facing. They are constants for the life of the Pit, so the hands cannot slide (11.7).
+| Output | Formula | Zero when |
+| --- | --- | --- |
+| rumble gain | 0.03 + 0.07 S (tc 0.4 s); during a Stir 0.25 + 0.5 a, max 0.75 (tc 0.1 s), a = largest running | never |
+| Camera_Jitter amplitude | x 0.0006 S, y 0.0005 S (sin(23t), sin(31t)) | lights on, Reduced_Motion |
+| Random_Glitch chance | 0.002 + 0.0025 S, one frame at strength 0.6 | lights on, Reduced_Motion |
+| Flash_Dip chance | 0.004 S, Flashlight x0.3 for one frame | lights on, Reduced_Motion |
 
-**`model/characterScale.ts`** (pure): `scaleForHeight(measured: number, u: number)` returns `target / measured` with `target = 1.6 + 0.3 * u`, `u` from the CIK stream (11.16). `Characters.tsx` measures each model once with `Box3.setFromObject(scene, true)` in the bind pose.
+Applied from the live Shock_pp from the next frame (28.9), not the Settled_Shock.
 
-**Below the waist and through the ground (11.6).** The root is placed so that hips world height is `−drop * H` and `drop >= 0`, so the hips are at or below the rim at every frame, and the Bone_Animator never rotates leg bones. Everything below the hips is therefore under the ground plane or the Pit disc. The arm IK targets the rim at `y = 0.05`; with a two-bone solution whose wrist equals the target, no arm part is below the target height unless the solution folds down, which the pole vector (pointing up and back) prevents (a property checks the elbow height is at least the rim height).
+`fx/flashLimiter.ts`: `createFlashLimiter()` with `offer({t, kind})`, kinds `static > glitch | dip | flicker`; accepts only if fewer than 3 flashes were accepted in (t - 1000 ms, t]; same-frame candidates: Static_Cut first; a Static_Cut during an accepted one merges (ends later, counts once). `fx/staticCutBus.ts` carries `{staticS, glitchS}` requests; `FlashBus` (priority -30) drains them into the limiter; `CctvPass` sets the grade shader's `stat` and `glitch` uniforms from the accepted ones. The random `GlitchScheduler` is replaced by `uneaseAt` offers; `trigger` is not built.
 
-**Dirt_Burst** (`model/dirtBurst.ts`, `r3f/DirtBurst.tsx`): `dirtParticles(seed, count, t)` returns positions for a ballistic burst (initial speed 1.2 to 2.4 m/s, upward bias, gravity 9.8, lifetime 0.9 s). One InstancedMesh of 320 small `IcosahedronGeometry` instances (8 pooled bursts x 40). `count` is 40, or 20 in low quality (19.1). A burst is triggered once per Risen_Zombie at `DIRT_BURST_AT` and the pooled bursts are recycled by slot index, so the 8 slots never exceed 40 particles each (11.5). Particles are soil-coloured and never brighter than the soil, so no luminance flash (19.3). Reduced_Motion draws none.
+### 12. Batch 3: audio (Requirement 29)
 
-### 8. Models for each zombie, Standing_Zombies (Requirements 12 and 13)
+- `audio/growl.ts`: `growlParams({d, ndcX, uRate})`: gain min(1, 2.2 / d) before master gain; rate 0.85 + 0.2 uRate; pan clamp(ndcX, -1, 1); `lowpassHz` 2000 when d > 10, else null. Engine adds a `StereoPanner` and a `BiquadFilter` per Growl. `createGrowlLimiter` and `pickGrowl` stay (Properties 39, 40).
+- `audio/duck.ts`: `duckAt(now, lastStirStart)`: wind 0.1 (tc 0.15 s) from Stir start; from +3.5 s back to 0.35 (tc 0.8 s); no crows until +5 s; the latest Stir replaces the reference.
+- Rumble_Bed: Manifest entry `freesound-lennartgreen-low-rumble-loopable` (present as mp3; confirm the ogg is listed in `groupAssets.json`), loaded after the Interaction_Gate, skipped silently on failure. Gain from `uneaseAt`.
+- Removed: digging on rise start, Footstep_Bed (`footsteps.ts`, `setFootstepDistance`, `setReducedMotion` for it, `nearbyStanding`). Their files, Manifest entries and `CREDITS.md` rows stay.
+- Muted or blocked audio does not change any visual timing (29.4).
 
-> **Kept in part (control-room direction, 2026-11-13).** `modelAssignment.ts` (`wantedModel`, `resolveModel`) and `characterLoader.ts` stay; `CharacterId` loses `'watcher'`. The Standing_Zombie part (`standing.ts`, the Walker clips Idle and Walk1_InPlace, the 13-character bound) is **superseded**: Already_Undead firms show a Torn_Mound and no character (26.1, 26.3), and at most 8 skinned characters exist (26.4). See section 17.6.
+### 13. Batch 3: removals (Requirement 26)
 
-**`model/modelAssignment.ts`** (pure):
+Not built: Watcher (`watcher.ts`, `farSpots.ts`, `coneInput.ts`, `Watcher.tsx`, `GlitchScheduler.trigger`), Standing_Zombies (`standing.ts`), Mutant (removed from the scene and from `groupAssets.json`; file, Manifest entry and credits stay), Footstep_Bed, digging sound, Content_Notice. The Watcher_Model is never requested. The bundle check counts only files a graveyard session requests (26.11). The Greenall_Corpse stays static.
 
-```ts
-export type CharacterId = 'hero' | 'walker' | 'crawler' | 'watcher';
-export function wantedModel(rank: number, cik: string, lights: 'off' | 'on'): CharacterId;
-//  rank 0 (nearest) and lights off -> 'hero'; rank 0 and lights on -> 'walker';
-//  rank >= 1 -> fnv1a32(cik) & 1 ? 'crawler' : 'walker'
-export function resolveModel(wanted: CharacterId, loaded: ReadonlySet<CharacterId>, failed: ReadonlySet<CharacterId>): CharacterId | null;
-//  hero or crawler failed -> 'walker'; walker failed -> null (no Risen, no Standing, no event)
-```
+### 14. Evidence and gates (Requirements 21, 38)
 
-`rank` is the index in the `assignNearest` result, so the nearest zombie (ties by lower cik) is rank 0 (12.1). The assignment is recomputed only at a Selection_Event or when `settings.lights` changes (12.5). A lights change swaps the model of rank 0 within one frame of the model being loaded: the `Characters` component keeps the same `RisenSlot` (phase and t) and the same Bone_Animator time, so phase and position are kept (12.4). If the Hero_Model is not loaded yet, the Walker stays until it arrives (the 500 ms bound holds for a cached model; Decision 11).
-
-**Loading (5.1 to 5.5, 12.6, 12.7).** `characterLoader.ts` wraps `useGLTF(url, false)` in one `Suspense` + `ModelBoundary` per model id, started only when a character of that id is first needed after the first frame. The Hero and Watcher are never requested in lights on; the Watcher is never requested under Reduced_Motion. `reportAssetError(name, error)` logs the failed asset and adds it to `failed`; `resolveModel` applies the fallback chain. Each instance is `SkeletonUtils.clone(gltf.scene)` (three examples path `three/examples/jsm/utils/SkeletonUtils.js`, as the existing code imports `three/examples/jsm/...`), so the geometry, materials and textures are shared and loaded once. At most 13 skinned characters exist (8 + 4 + 1, 12.8).
-
-**Standing_Zombies (`model/standing.ts`, pure).**
-
-```ts
-export function standingPlacement(
-  layout: GraveyardLayout, firmIndex: number, pose: Vec3, taken: readonly Footprint[],
-): { x: number; z: number; yaw: number } | null;
-```
-
-- Position: on the camera-facing side of the headstone, at `pitCentre`-line offset `depth/2 + 1.1 m` in front of the stone along the standing yaw, then nudged sideways in steps of 0.35 m (alternating left and right, up to 6 steps) until the clearances hold: outside every headstone footprint including its own, outside every Pit disc (radius plus 0.1), and at least 0.7 m from the centre of every other zombie already placed (Risen pits and earlier Standing_Zombies). `null` (no valid spot) drops that zombie and the next candidate is used, so the result still has at most 4 entries (13.7, 13.8).
-- Facing: `yaw = atan2(pose.x − x, pose.z − z)` fixed until the next Selection_Event (13.6).
-- Clip: Idle when `fnv1a32(cik) & 1 == 0`, Walk1_InPlace when 1 (13.4). The root stays fixed (13.5); the pipeline test checks that the kept `Walk1_InPlace` clip has no root translation larger than 1 cm.
-- Walker only, in both Lights_Mode values (13.3). Reduced_Motion: the action is played, set to time 0 and paused (13.11).
-- Timing (13.10): a change of the Standing set is applied when `cameraStateRef.atRest` is true and no character to be removed is inside the viewport (`inViewport(position, camera)` pure frustum test); additions are applied at the same moment. For the first load, `atRest` is true and the set appears at once.
-- No blood decal is drawn on characters (13.13, 16.4, 19.6).
-
-### 9. The Watcher (Requirement 14)
-
-> **Superseded (control-room direction, 2026-11-13)** by Requirement 26.2. Nothing in this section is built: no `farSpots.ts`, `watcher.ts`, `coneInput.ts`, `Watcher.tsx` or `watcherEvents.ts`, and no `GlitchScheduler.trigger`. The Watcher_Model is never requested (section 20). The touch Cone_Target survives in a simpler form: a tap aims the Flashlight at the tap point (33.8, section 22.4). The random-glitch scheduler is replaced by the per-frame Random_Glitch of section 18.1.
-
-**`model/farSpots.ts`** (pure). `farSpots(layout, framed: number | 'overview', occupied: readonly Footprint[])` returns candidate ground positions. For a framed Plot, candidates lie along the anchors of its farthest two rows (`rowAnchors`), every 1.0 m in x across the plot rectangle, shifted `0.9 m` toward −z so they stand behind the stones. In the overview the plot used is the one farthest from the camera (smallest `rect.z1`). A candidate is rejected when it is inside any headstone oriented footprint (with 0.3 m margin), any Pit disc (radius plus 0.3 m), or within 0.7 m of a zombie. The list is sorted by distance to the Selection_Pose, then by x (deterministic).
-
-**`model/watcher.ts`** (pure state machine):
-
-```ts
-export interface WatcherInputs {
-  now: number;                       // render-loop seconds
-  enabled: boolean;                  // lights off && !reducedMotion && coneActive
-  coneCoversWatcher: boolean;        // same coneCovers test as the Mutant
-  spots: readonly Spot[];            // farSpots result, with distance to the Selection_Pose
-  coneCoversSpot: (s: Spot) => boolean;
-}
-export type WatcherEvent = 'appear' | 'vanishGlitch' | 'hideQuiet';
-export function createWatcher(rand: () => number): {
-  tick(i: WatcherInputs): { shown: Spot | null; events: WatcherEvent[] };
-  onTargetChange(now: number): void;   // hide quietly, schedule 20-60 s (14.15)
-};
-```
-
-Behaviour:
-
-- Hidden with no schedule until `enabled` becomes true; then `nextAt = now + 20 + 40 * rand()` (14.8, 14.12). `enabled` false while shown: `hideQuiet`, schedule cleared (14.9, 14.11, 14.13, 14.14).
-- At `nextAt`: choose a spot (below), show it, event `appear`. If every spot is covered by the cone, retry after 1 s (14.7).
-- Spot choice: `target = max(nearestFarDist, lastDist − (0.5 + rand()))`; the first appearance uses the farthest spot distance. Pick the spot with distance closest to `target` that is not the previous spot and not covered by the cone; `lastDist` is stored (14.3, 14.5, 14.6).
-- Shown and `coneCoversWatcher`: hide, event `vanishGlitch`, `nextAt = now + 20 + 40 * rand()` (14.4, 14.5).
-- `onTargetChange`: hide quietly, keep `lastDist` clamped into the new `[nearest, farthest]` range, schedule 20 to 60 s (14.15).
-- No audio or jump scare is attached to any event (14.16, 14.19).
-
-**Cone_Active** (`r3f/coneInput.ts`, pure reducer): `ConeInput { inside: boolean; tapped: boolean; touch: boolean; target: Vec3 | null }`. Pointer enter/move with `pointerType` mouse or pen sets `inside`; leave clears it; a touch `pointerup` that passes `isTap` sets `touch = true`, `tapped = true` and stores the ray hit of that tap as `target`, which stays until the next tap (14.10). `coneActive = touch ? tapped : inside`. `Flashlight.tsx` uses `target` for touch devices instead of the live pointer ray.
-
-**Rendering** (`r3f/Watcher.tsx`): one Watcher_Model clone, facing the Selection_Pose, `visible` toggled by the state machine in `useFrame`, frame-accurate against the cone test (hidden within one frame, well under 100 ms). Standing pose is the rest pose (no clip, `removeAnimations`); a slow 0.5 degree sway on the head only when motion is allowed (it is hidden under Reduced_Motion anyway).
-
-**Vanish_Glitch** (`fx/glitchScheduler.ts`): `trigger(now)` is added to `GlitchScheduler`.
-
-```ts
-trigger(now: number): boolean; // true when a glitch was started
-```
-
-It starts the standard glitch (0.15 to 0.4 s, 3 steps) immediately when no glitch is running **and** the last glitch ended at least 1 s ago. Otherwise it returns false and does nothing: an in-progress random glitch continues unchanged and is not extended (14.18); a glitch that ended less than 1 s ago is not repeated, so the CCTV amount never changes more than 4 times in any second (14.17, 19.3). After the glitch `nextAt = end + 20 + 40 * rand()` as before. `CctvPass` subscribes to `watcherEvents.vanish` (new tiny emitter in `scenes/graveyard/watcherEvents.ts`) and calls `scheduler.trigger(clock)`. It returns early when lights are on or Reduced_Motion is true (the existing `enabled` gate).
-
-### 10. Audio: Growl and Footstep_Bed (Requirement 17)
-
-> **Kept in part (control-room direction, 2026-11-13).** `growl.ts` (`createGrowlLimiter`, `pickGrowl`) and the lazy Growl loading stay. **Superseded:** the fixed gain 0.4 and 3 s fade (replaced by the positional Growl of section 19.2), `footsteps.ts`, the Footstep_Bed engine code and `setReducedMotion` for it (26.5), `setFootstepDistance`, `nearbyStanding`, and the digging sound on rise start (26.6). See section 19.
-
-**`audio/growl.ts`** (pure):
-
-```ts
-export const GROWL_MIN_GAP_MS = 1000;
-export function createGrowlLimiter(): { accept(nowMs: number): boolean };
-export function pickGrowl(u: number): 0 | 1; // u < 0.5 -> 0 (tonsil5), else 1 (ezcah)
-```
-
-`accept` returns true for the first event and for any event at least 1,000 ms after the last **accepted** one, and false otherwise; rejected events are dropped, never queued (17.2). The limiter uses the engine clock (`ctx.currentTime * 1000`), so it is independent of frame rate.
-
-**`audio/footsteps.ts`** (pure):
-
-```ts
-export const FOOTSTEP_MAX_GAIN = 0.15;
-export function footstepGain(distance: number): number; // 0.15 * clamp((12 - d) / 10, 0, 1)
-export type FootstepState = 'stopped' | 'fadingIn' | 'playing' | 'fadingOut';
-export function nextFootstep(s: FootstepState, wantPlayback: boolean, elapsed: number): FootstepState;
-```
-
-`footstepGain` is 0.15 at 2 m or less, falls linearly to 0 at 12 m and is 0 beyond (17.15, 17.21). `wantPlayback = gate && !muted && !reducedMotion && nearbyStanding`.
-
-**Engine additions** (`audioEngine.ts`). The structural `AudioParamLike` gains `linearRampToValueAtTime(value, endTime)`; the test fake is updated.
-
-- `setLights(l)`, `playGrowl()`, `setFootstepDistance(d: number | null)`.
-- Loading: `growls` (both files) lazily at the first `riseFinished` event or the first `setLights('off')` after the gate; `footsteps` lazily when `setFootstepDistance` first receives a number after the gate (17.6, 17.13). A failed or undecodable growl falls back to the other; both failing skips silently (17.7); a failed footstep file is skipped (17.20).
-- `playGrowl()`: ignored before the gate, when muted, when lights are on, or when the limiter rejects. Otherwise a new buffer source goes through a per-play `GainNode` at 0.4 (after the master gain), is faded out with `linearRampToValueAtTime` to 0 over the last 0.3 s, and stopped at `start + 3.0 s` (17.3). The file comes from `pickGrowl(growlSource())`; `growlSource` is an engine option (default `Math.random`), separate from the existing `rand` used by crows, so tests inject a seeded source.
-- Footstep_Bed: a looping source through its own gain node. When `setFootstepDistance` first receives a number while stopped it fades in over 1.0 s (`linearRampToValueAtTime`), then every call sets `gain.setTargetAtTime(footstepGain(d), now, 0.08)` (time constant 0.08 s reaches 95 percent in 0.24 s, inside 250 ms, 17.16). `null` fades out over 1.0 s and stops the source at the end (17.17). Mute, missing gate and `dispose()` follow the existing rules (silent, nothing queued, restart with a fade-in on unmute while a zombie is nearby, 17.18). The Growl never reads Reduced_Motion (17.8). The Footstep_Bed does (17.19, confirmed): the engine gains `setReducedMotion(r: boolean)`; while `r` is true `wantPlayback` is false, `footsteps` is never loaded, and a playing bed fades out over 1.0 s and stops (as for `null`); when `r` becomes false and a Nearby_Standing_Zombie exists (gate passed, not muted) it restarts with the 1.0 s fade-in. `useGraveyardAudio` mirrors `settings.reducedMotion` into `setReducedMotion` next to `setLights`.
-- Digging (17.9): `useGraveyardAudio` still subscribes to `riseEvents` and calls `playDig`; the event now comes from `risenPool.started` once per Risen_Zombie. It also subscribes to `riseFinishedEvents` and calls `playGrowl`, and mirrors `settings.lights` into `setLights`.
-- **Nearby_Standing_Zombie.** `Characters.tsx` computes, once per frame, the distance from the camera to the nearest Standing_Zombie that is inside the framed Plot rectangle or inside the camera frustum (`nearbyStanding`, pure) and calls `getAudioEngine()?.setFootstepDistance(d)` only when the value changed by 0.05 m or the nearby state flipped.
-
-### 11. Content_Notice (Requirement 18)
-
-> **Superseded (control-room direction, 2026-11-13)** by the Opening and the Warning_Replay menu item (Requirement 34, section 23) and the OSD data footer (30.8). `contentNotice.ts`, `ContentNotice.tsx` and `NoticeLink.tsx` are not built, and the main store gets no `contentNotice` slice.
-
-- `state/contentNotice.ts` holds a store slice `contentNotice: { open: boolean; dismissed: boolean }` with `dismissContentNotice()` and `openContentNotice()`, and a storage helper beside `settingsStorage.ts` using key `zfr.contentNotice.v1` (value `"dismissed"`). `readDismissed()` and `writeDismissed()` never throw (18.3): an unreadable store means "not dismissed", an unwritable store keeps the in-memory dismissal for the current page.
-- `ui/ContentNotice.tsx`: a `role="note"` single line "Contains horror and gore" and a dismiss button named "Dismiss content notice". It docks at the top edge, under the REC header, outside the 3D stage panels (18.7). At 390 px the text keeps one line with `font-size: clamp(12px, 3.4vw, 14px)` and `white-space: nowrap`.
-- `ui/NoticeLink.tsx`: a button with the text "Contains horror and gore" in the footer next to `FOOTER_TEXT`, always rendered in the graveyard and the Table_View (18.4). Activation opens the notice and moves focus to its dismiss button (18.5); dismissing a notice that was opened from the link returns focus to the link (18.6).
-- Both use the existing focus-ring utility (2 CSS pixels) and the HUD token colours: text `#E6E2D6` on the panel background `rgba(6,8,11,0.78)` over the near-black stage gives a contrast above 12:1, and the colour tokens are the same in both Lights_Mode values (18.9, 18.10). `contrast.test.ts` gets two rows for these pairs.
-- The dismiss click is a normal `pointerdown`/`keydown`, so the Audio_Engine's capture listeners treat it as the Interaction_Gate with no extra code (18.11).
-
-### 12. Quality, accessibility and counters (Requirement 19)
-
-> **Kept with changes (control-room direction, 2026-11-13).** `standingBudget` is removed from `HorrorQuality` and the Watcher note no longer applies (19.1, 19.2). Characters stay decorative for focus and hover events (19.5); a Risen_Zombie is still readable through the Hover_Tag by a pure capsule test (33.2, section 22), never by raycasting its mesh.
-
-`model/horrorQuality.ts` (pure):
-
-```ts
-export interface HorrorQuality {
-  grassScale: 1 | 0.5; dirtParticles: 40 | 20; characterShadows: boolean;
-  risenBudget: 8; standingBudget: 4;
-}
-export function horrorQuality(lowQuality: boolean): HorrorQuality;
-```
-
-Low quality halves grass and Dirt_Burst, turns off character `castShadow`, keeps both budgets and does not touch the Watcher rules (19.1, 19.2). Characters are decorative: their meshes set `raycast = () => null`, are not in the DOM and never receive focus or hover (19.5). The Risen_Counter, Already_Undead line and Table_View still read `useShockView()` (live shock), so the Rise_Budget cannot change them (19.7). The same pure helpers drive the existing live region and file card; neither needs a change (19.4).
-
-### 13. Evidence scripts (Requirements 21 and 22)
-
-> **Updated (control-room direction, 2026-11-13).** Batch names and files follow Requirement 38 (section "Delivery in Batches 1, 2, 2b, 3 and 4"). The DEV helper gains `?horror=stir|risen|fall|osd` and loses `watcher` and `notice`; `HorrorStats` writes only `data-risen-count`; the DEVLOG line drops the Standing_Zombie and Watcher counts (38.8).
-
-- **Screenshots.** `web/scripts/horror-screenshots.mjs --batch 2|3a|3b` (files: `horror-batch3a-rise.png`; `horror-batch3b-standing.png`, `-watcher.png`, `-notice.png`) uses `lib/browser.mjs` (headed Chrome, 1920 x 1080), `/?firms=3000`, lights off, and writes the files listed in 22.5 and 22.6 to `reference/progress/horror-batch<N>-<name>.png`. State is reached through the UI (slider keys, plot chips) plus a development-only helper: `?horror=rise` waits for the first `rise finished` frame, `?horror=watcher` makes the Watcher state machine schedule its first appearance after 1 s, `?horror=notice` clears the stored dismissal. The helper sits behind `import.meta.env.DEV` and the marker `__zfr_horror_debug__` is added to `FORBIDDEN_MARKERS` in `check-bundle.mjs`, so it is tree-shaken from production and checked.
-- **Measurement.** `measure-fps.mjs` gains `--horror`. It evaluates, inside the page on the dev server, `await import('/src/engine/index.ts')` and `await import('/src/state/store.ts')` (Vite serves the same module instances the app uses) to find the lowest slider step `k` (0.25 pp) with at least 8 Newly_Undead firms among the 3,000, sets it with the slider keys, waits 2 s after the Settled_Shock, then records at least 10 s of frames. Counts of Risen_Zombies, Standing_Zombies and Watchers at the start of the window come from `data-risen-count`, `data-standing-count` and `data-watcher-count` attributes that a development-only `HorrorStats` component writes to `document.body`. The DEVLOG line has every field of 21.5. This depends on Base_Spec task 21.1 (Decision 10).
-- **Reference rule.** After any change under `web/src/scenes/**` or `web/src/fx/**`, the agent names `reference/graveyard/horror-direction.png` and `horror-direction-sequence.png` (and `graveyard-rate-shock-3pp.png` for unchanged parts) and offers the scene-critic (22.7).
+- `horror-screenshots.mjs --batch 2b|3` writes `horror-batch2b-look.png`, `horror-batch3-stir.png`, `horror-batch3-risen.png` (lights off, 1920 x 1080). The DEV helper `HorrorDebug` gains `?horror=stir|risen`; it stays behind `import.meta.env.DEV` with the existing bundle marker.
+- `measure-fps.mjs --horror` runs at the end of Batch 3 (3,000 firms, lowest 0.25 pp step with 8 Newly_Undead, 10 s window) and writes the DEVLOG line of 38.5, counting only Risen_Zombies. If the base script is missing it is finished in Batch 3.
+- After any change under `web/src/scenes/**` or `web/src/fx/**`: name `reference/graveyard/horror-direction.png`, `horror-direction-sequence.png` and the Prototype; offer the scene-critic.
 
 ## Data Models
 
-### New and changed types
-
-```ts
-// layout/layout.ts (changed)
-export interface StoneLayout {
-  readonly firmIndex: number; readonly plot: number;
-  readonly x: number; readonly z: number;           // jittered base centre
-  readonly yaw: number;                              // final yaw (standing yaw, plus +-90 deg when fallen)
-  readonly standingYaw: number;                      // new
-  readonly pitch: number; readonly roll: number;     // pitch = -PI/2 when fallen
-  readonly width: number; readonly height: number; readonly depth: number;
-  readonly sink: number; readonly lean: number;
-  readonly fallen: boolean;                          // new
-  readonly baseY: number;                            // new: instance y of the model origin
-  readonly pitCentre: { readonly x: number; readonly z: number }; // new
-}
-export interface PlotLayout { /* Base_Spec fields */ readonly rowAnchors: readonly number[] } // new
-
-// model/dressing.ts (changed)
-export interface DressingPlan {
-  readonly undead: readonly number[];   // zombie or newly undead (live shock)
-  readonly mounds: readonly number[];   // = undead (unchanged name, kept for the Base_Spec tests)
-  readonly torn: readonly number[];     // = undead
-  readonly closed: readonly number[];   // every other firm; torn and closed partition all firms
-  readonly blood: readonly BloodPlan[]; // lights off only
-  readonly stains: readonly { firm: number; count: number; seeds: readonly number[] }[]; // lights off only, count 0..3
-}
-
-// selectionStore.ts (new, own zustand store)
-export interface SelectionState {
-  readonly risen: readonly string[];                  // ordered nearest first
-  readonly standing: readonly string[];
-  readonly modelByCik: Readonly<Record<string, CharacterId>>;
-  readonly version: number;                           // bumps on every Selection_Event
-}
-
-// state/store.ts (changed, 20.5)
-settledShock: number;                    // last Settled_Shock value, 0 initially
-contentNotice: { open: boolean; dismissed: boolean };
-```
-
-### Constants
-
-| Constant | Value | Where |
-| --- | --- | --- |
-| `OFFSET_MAX` | 0.30 m | `jitter.ts` |
-| `YAW_MAX` | 20 degrees | `jitter.ts` |
-| `HEIGHT_FACTOR` | [0.90, 1.10] | `jitter.ts` |
-| `FALLEN_RATE` | 0.05 | `jitter.ts` |
-| `MIN_GAP` | 0.15 m | `layout.ts` |
-| `PIT_FRONT`, `PIT_R` | 0.45 m, 0.25 to 0.45 m | `tornMound.ts` |
-| `CAMERA_HEIGHT`, `CAMERA_BACK` | 1.5 m, 2.6 m | `camera.ts` |
-| `SETTLE_SECONDS` | 0.25 s | `settle.ts` |
-| `RISEN_BUDGET`, `STANDING_BUDGET` | 8, 4 | `selection.ts` |
-| `RISE_SECONDS`, `LOWER_SECONDS` | 3.0 s, 1.2 s | `risenPool.ts` |
-| `DIRT_BURST_AT` | 0.35 s | `boneAnimator.ts` |
-| `GROWL_MIN_GAP_MS`, growl gain, growl max length | 1000 ms, 0.4, 3.0 s | `growl.ts`, `audioEngine.ts` |
-| `FOOTSTEP_MAX_GAIN`, near / far distance | 0.15, 2 m / 12 m | `footsteps.ts` |
-| Watcher schedule | 20 to 60 s; distance step 0.5 to 1.5 m | `watcher.ts` |
-| Grass cap per Plot | 1,500 | `grass.ts` |
-
-### Initial values and invariants
-
-| Value | Initial | Invariant |
-| --- | --- | --- |
-| Risen pool | 8 idle slots | active slots at most 8 at every step; each slot holds a distinct cik |
-| `selectionStore` | empty sets, `version 0` | `risen.length <= 8`, `standing.length <= 4`, disjoint |
-| Camera | `(0, 1.5, 5.6)`, target `(0, 0.2, −2)` | eye height 1.5 +- 0.1 at every plot pose |
-| `contentNotice` | `open = !dismissed`, `dismissed` from storage | the Notice_Link is always rendered |
-| Skinned characters | 0 | at most 13 in any frame |
+| Type | Change |
+| --- | --- |
+| `StoneLayout` | Batch 2 (delivered): `fallen`, `standingYaw`, `baseY`, `pitCentre`; `PlotLayout.rowAnchors`. |
+| `DressingPlan` | Batch 2 (delivered): `torn` / `closed` partition, `stains`; `mounds` equals `undead`. |
+| `selectionStore` | `{ risen: string[], modelByCik: Record<string, CharacterId>, version }`; `risen.length <= 8`. |
+| main store | Adds `settledShock: number` only (20.5). |
+| `RisenSlot` | `{ cik, phase: idle | waiting | stirring | rising | up | lowering, t }`, 8 slots. |
 
 ## Correctness Properties
 
-*A property is a characteristic or behavior that should hold true across all valid executions of a system-essentially, a formal statement about what the system should do. Properties serve as the bridge between human-readable specifications and machine-verifiable correctness guarantees.*
+A correctness property is a characteristic or behavior that should hold true across all valid executions of a system, a formal statement about what the system should do. Such statements bridge human-readable specifications and machine-verifiable correctness guarantees.
 
-**Reflection result.** Criteria that restate one another were merged: the five requirements about the pool and its events (10.5, 10.7, 10.9, 11.8, 11.15, 12.6, 15.3) become one pool property; the blood, stain, torn and closed rules (7.1, 7.4, 7.6, 7.10, 7.11, 10.6, 16.4) become one dressing property; the Watcher rules split into enabling, appearance and vanishing; the Growl limiter and the Growl choice stay separate because one is about time and the other about values. Criteria about visuals, timing of real network loads, document edits and workflow (for example 2.x, 4.1 to 4.4, 7.3, 18.7, 18.12, 21.x, 22.x) are not properties; they are examples, screenshots or process rules, as the prework shows. Property-based tests use fast-check 4.10.2 in `web/` and the same library in `tools/` (the `.property.test.mjs` files already use it).
+PBT applies to the pure modules (layout, selection, pool, timeline, animator, limiter, unease, audio parameters, asset tooling). It does not apply to R3F rendering, CSS, real model files, audio output, screenshots or frame rate; those use examples and the Playwright scripts. Property numbers are stable: retired properties keep their number and carry a one-line note. Properties 1 to 21, 29, 30, 39, 40, 44 and 45 are unchanged from the earlier pass; 46 and up are new for Batches 2b and 3. Tests use fast-check 4.10.2, at least 100 runs, tagged with the feature name and the property number.
 
 ### Property 1: Animation edits keep exactly what they are told to keep
 
@@ -773,7 +407,7 @@ For any manifest-like file list and the categories of `groupAssets.json`, `compu
 
 ### Property 4: Requested character models follow lights, motion and need
 
-For any Selection result, lights mode and Reduced_Motion value, the set of character model ids the scene requests never contains `hero` or `watcher` when lights are on, never contains `watcher` when Reduced_Motion is true, contains `hero` only when a Risen_Zombie of rank 0 exists in lights off, and contains no id before the first frame.
+For any Selection result, lights mode and Reduced_Motion value, the set of character model ids the scene requests never contains `hero` or `watcher` when lights are on, never contains `watcher` when Reduced_Motion is true, contains `hero` only when a Risen_Zombie of rank 0 exists in lights off, and contains no id before the first frame. (Since Batch 3 `watcher` is never requested at all, 26.2.)
 
 **Validates: Requirements 5.1, 5.3, 5.4, 14.13**
 
@@ -827,7 +461,7 @@ For any firm, a fallen stone has `pitch = −90 degrees`, its face normal is wit
 
 ### Property 13: Fallen share is about five percent
 
-For any generated list of 2,500 to 3,000 firms with hash-uniform ciks, the fallen share lies between 3 percent and 7 percent. (Requirement 8.6 gives no hard guarantee below 2,500 firms; see the design risks.)
+For any generated list of 2,500 to 3,000 firms with hash-uniform ciks, the fallen share lies between 3 percent and 7 percent. (Requirement 8.6 gives no hard guarantee below 2,500 firms.)
 
 **Validates: Requirements 8.6**
 
@@ -851,7 +485,7 @@ For any layout (with tilted and fallen stones) and any ray, `pickStone` returns 
 
 ### Property 17: Plot camera pose sits among the graves
 
-For any generated layout and any plot, `plotPose` has an eye height within 1.5 +- 0.1 m, the horizontal distance to the nearest headstone base of that plot is at most 4.0 m, and the camera position lies inside the plot rectangle extended by `PLOT_GAP`. The Base_Spec overview property (all plots inside the frustum for aspect ratios 0.5 to 3) still holds unchanged.
+For any generated layout and any plot, `plotPose` has an eye height within 1.5 +- 0.1 m, the horizontal distance to the nearest headstone base of that plot is at most 4.0 m, and the camera position lies inside the plot rectangle extended by `PLOT_GAP`. The Base_Spec overview property (all plots inside the frustum for aspect ratios 0.5 to 3) still holds unchanged. (Batch 2 values; Property 46 replaces the numbers for Batch 2b.)
 
 **Validates: Requirements 9.1, 9.2, 9.4, 9.6**
 
@@ -879,47 +513,9 @@ For any sequence of `desired` lists (up to 40 ciks), time steps and `ready` answ
 
 **Validates: Requirements 10.5, 10.7, 10.9, 11.8, 11.15, 12.6, 15.3**
 
-### Property 22: Rise_Sequence shape
+*Property 21 note:* the `rising` phase now begins with the Stir (`riseTimeline`); the budget, lowering, `started`/`finished` and Reduced_Motion rules are unchanged.
 
-For any cik, `frameAt(t)` has `phase = 'rise'` for `t < 3.0` and `'idle'` for `t >= 3.0`; the pose table has at least 4 key poses, each transition lasts at most 200 ms and each pose is held at least 100 ms; `drop` ends at 0 and `plant` at 1.
-
-**Validates: Requirements 11.3, 11.4**
-
-### Property 23: The Bone_Animator is pure and smooth
-
-For any cik and any `t` in [0, 10] s, `frameAt` called twice gives equal frames; the change of any role rotation between `t` and `t + 1/60` is at most 25 degrees outside the key pose transitions and at most 90 degrees inside them.
-
-**Validates: Requirements 11.12, 11.13**
-
-### Property 24: Nothing below the waist rises above the rim
-
-For any cik and any `t` in [0, 10] s, `drop >= 0` (hips at or below the rim), no leg role is rotated, and for any hand anchor within reach the IK elbow is at or above rim height.
-
-**Validates: Requirements 11.6**
-
-### Property 25: Idle schedules stay in range and follow the cik
-
-For any cik: breathing period is between 3 s and 5 s; twitch intervals are between 1 s and 4 s, each twitch lasts at most 0.25 s; and the same cik gives the same schedule.
-
-**Validates: Requirements 11.9, 11.10**
-
-### Property 26: Planted hands stay planted
-
-For any shoulder position, segment lengths, pole vector and target within reach, `solveTwoBone` returns `wrist` equal to the target and segment lengths preserved within 1e-9; for any target out of reach it returns the nearest reachable point on the line to the target and `reached = false`; and during the Idle_Loop the anchors and `plant` are constant, so the wrist target does not change.
-
-**Validates: Requirements 11.7**
-
-### Property 27: Dirt_Burst particle budget
-
-For any seed, count (40 normal, 20 low quality) and time, `dirtParticles` returns at most `count` positions and a burst is started at most once per Risen_Zombie rise; the pooled instance count never exceeds 8 x 40.
-
-**Validates: Requirements 11.5, 19.1**
-
-### Property 28: Characters are scaled into the height range
-
-For any measured model height greater than 0 and any `u` in [0, 1), `scaleForHeight(measured, u) * measured` lies in [1.6, 1.9].
-
-**Validates: Requirements 11.16**
+**Properties 22 to 28 (retired).** Superseded by the prototype Rise_Keys (Requirement 27): Rise_Sequence shape (22), smoothness (23), nothing below the waist (24, kept as an example test of the root range), idle schedules (25), planted hands by IK (26, IK not built), ballistic Dirt_Burst (27), height range 1.6 m to 1.9 m (28). Replaced by Properties 52 to 56.
 
 ### Property 29: Model assignment follows rank, hash and lights
 
@@ -929,57 +525,11 @@ For any ordered list of ciks and either lights mode: rank 0 gets `hero` in light
 
 ### Property 30: Model fallback chain
 
-For any wanted model id and any subset of failed ids, `resolveModel` returns `walker` when `hero` or `crawler` failed and `walker` did not, returns `null` when `walker` failed (so no Risen_Zombie, no Standing_Zombie and no rise event exist), and returns the wanted id otherwise.
+For any wanted model id and any subset of failed ids, `resolveModel` returns `walker` when `hero` or `crawler` failed and `walker` did not, returns `null` when `walker` failed (so no Risen_Zombie and no rise event exist), and returns the wanted id otherwise.
 
 **Validates: Requirements 5.11, 12.7**
 
-### Property 31: Standing_Zombies are the nearest already-undead firms, placed with clearance
-
-For any layout, firm list and Selection_Pose: the assignment has at most 4 entries, every entry is a `zombie` firm at shock 0, entries are the nearest by `assignNearest`, and when fewer than 4 exist each one is assigned; every placement is outside every headstone footprint (its own included), outside every Pit disc, at least 0.7 m from every other zombie, and faces the Selection_Pose (`yaw = atan2(pose.x − x, pose.z − z)`); with no already-undead firm the result is empty and no error is raised.
-
-**Validates: Requirements 13.1, 13.6, 13.7, 13.8, 13.9**
-
-### Property 32: Standing clip follows one hash bit
-
-For any cik, the clip is `Idle` when `fnv1a32(cik) & 1` is 0 and `Walk1_InPlace` when it is 1, and the same cik always gives the same clip.
-
-**Validates: Requirements 13.4**
-
-### Property 33: The Watcher is only enabled in the right conditions
-
-For any sequence of inputs, the Watcher state machine never has a spot while `enabled` is false (lights on, Reduced_Motion, or Cone_Active false); at most one spot exists at any time; when `enabled` turns false while a spot exists the next tick hides it with a `hideQuiet` event and no `vanishGlitch`; and when `enabled` turns true again a new first appearance is scheduled 20 to 60 s later.
-
-**Validates: Requirements 14.1, 14.2, 14.8, 14.9, 14.11, 14.12, 14.13, 14.14, 16.6**
-
-### Property 34: Appearances shrink in distance, change spot and avoid the cone
-
-For any sequence of appearances on a generated spot list: each appearance is on a spot different from the previous one, never on a spot the cone covers at that moment (all covered means a retry one second later), faces the Selection_Pose, and its distance is smaller than the previous distance by 0.5 m to 1.5 m until it reaches the nearest Far_Spot distance, where it stays; delays between a vanish and the next appearance are between 20 s and 60 s inclusive; a camera target change hides the Watcher quietly and schedules the next appearance 20 to 60 s later while keeping `lastDist` clamped to the new range.
-
-**Validates: Requirements 14.3, 14.5, 14.6, 14.7, 14.15**
-
-### Property 35: Vanishing happens in the same tick as the cone cover
-
-For any state with a Watcher shown, a tick with `coneCoversWatcher = true` returns no spot and exactly one `vanishGlitch` event.
-
-**Validates: Requirements 14.4**
-
-### Property 36: Far spots are valid
-
-For any layout, framed plot and occupied footprints, every Far_Spot lies within the farthest two rows of the framed plot (or the farthest plot in the overview), outside every headstone footprint with margin, outside every Pit disc with margin, and the list is sorted by distance to the Selection_Pose.
-
-**Validates: Requirements 14.3**
-
-### Property 37: Cone_Active and the touch target
-
-For any sequence of pointer events with pointer types mouse, pen and touch, `coneActive` is true for a mouse or pen only while the pointer is inside the canvas, and for touch only after at least one tap; the touch Cone_Target equals the ray hit of the most recent tap and does not change between taps.
-
-**Validates: Requirements 14.1, 14.10**
-
-### Property 38: A vanish glitch never breaks the flash and change limits
-
-For any random sequence of `update` and `trigger` calls (lights off, motion allowed), the glitch amount changes at most 4 times in any 1-second window, every glitch lasts at most 0.4 s, `trigger` returns false and changes nothing while a glitch is running or when the last glitch ended less than 1 s ago, and a glitch in progress is never extended or restarted.
-
-**Validates: Requirements 14.17, 14.18, 19.3**
+**Properties 31 to 38 (retired).** Standing_Zombies (31, 32), the Watcher, Far_Spots, Cone_Active and the vanish glitch (33 to 38) are not built (Requirement 26).
 
 ### Property 39: Growl limiter
 
@@ -993,29 +543,13 @@ For any `u` in [0, 1), `pickGrowl(u)` is one of the two Growl files; the same `u
 
 **Validates: Requirements 17.11**
 
-### Property 41: Growl and Footstep_Bed are silent before the gate, when muted, (Footstep_Bed) in reduced motion, and (Growl) in lights on
-
-For any interleaving of pointer movements, clicks, key presses, mute and unmute, lights changes, Reduced_Motion changes, rise-finished events and standing-zombie distances, no Growl or Footstep_Bed source starts before the Interaction_Gate or while muted, no Footstep_Bed source starts or is loaded while Reduced_Motion is true (and a playing one fades out over 1 s when Reduced_Motion becomes true), no Growl starts in lights on, no event received while muted is replayed, and the Footstep_Bed restarts with a fade-in when the engine is unmuted while a zombie is nearby.
-
-**Validates: Requirements 17.4, 17.5, 17.18, 17.19**
-
-### Property 42: Footstep gain
-
-For any distance, `footstepGain` is within [0, 0.15], equals 0.15 at 2 m or less, equals 0 at 12 m or more, and a larger distance never gives a higher gain.
-
-**Validates: Requirements 17.15, 17.21**
-
-### Property 43: Content notice dismissal round trip
-
-For any storage behaviour (working, empty, corrupt value, throwing on read, throwing on write), `readDismissed` never throws; after `writeDismissed` on a working storage `readDismissed` returns true; with a throwing storage the in-memory dismissal still hides the notice for the current page.
-
-**Validates: Requirements 18.2, 18.3**
+**Properties 41 to 43 (retired).** Footstep_Bed silence and gain (41 part, 42) and the Content_Notice storage round trip (43) are not built. The Growl silence rules (before the gate, muted, lights on, no replay) become example tests in `audioEngine.horror.test.ts`.
 
 ### Property 44: Horror quality
 
-For any quality flag, `horrorQuality(true)` has half the grass scale and half the Dirt_Burst particles of `horrorQuality(false)`, no character shadows, and the same Rise and Standing budgets; the Watcher module takes no quality input.
+For any quality flag, `horrorQuality(true)` has half the grass scale of `horrorQuality(false)`, no character shadows, and the same Rise_Budget of 8.
 
-**Validates: Requirements 19.1, 19.2**
+**Validates: Requirements 19.1**
 
 ### Property 45: The measurement step finder
 
@@ -1023,145 +557,190 @@ For any firm list and any `minCount`, `findShockStep` returns the smallest slide
 
 **Validates: Requirements 21.4**
 
+### Property 46: The plot pose matches the prototype camera
+
+For any generated layout and plot at aspect ratios 1440/900 and 390/844 (pointer centred, sway 0): FOV is 46, eye height is 1.2 ± 0.05 m, the look point height is 0.6 ± 0.05 m, the nearest headstone base is at most 4.0 m away, the camera lies inside the plot rectangle extended by `PLOT_GAP` (margin 0.04 m; if it fails, `CAMERA_BACK` drops to 2.9), the overview ignores the eye height, and the first-row mound bases project below the viewport centre.
+
+**Validates: Requirements 23.1, 23.3, 9.2, 9.4, 9.6**
+
+### Property 47: Grade steps stay in range
+
+For any rgb in [0, 1]^3 and any pixel position, `gradeColour` steps (a) to (c) return channels in [0, 1], the vignette factor is in [0, 1], a grey input stays grey after (a), and the vignette factor is 1 at the centre.
+
+**Validates: Requirements 23.11**
+
+### Property 48: Flash_Limiter never exceeds 3 flashes per second
+
+For any sequence of non-decreasing candidate times and kinds, any window (t - 1000 ms, t] contains at most 3 accepted flashes, and rejected candidates are not queued.
+
+**Validates: Requirements 28.6, 28.7**
+
+### Property 49: Accepted flashes come from candidates, Static_Cut wins, overlaps merge
+
+For any candidate sequence, every accepted flash starts at the time of one of its candidates; when a Static_Cut and another kind arrive on the same frame with one slot left, the Static_Cut is accepted; a Static_Cut starting during an accepted one merges into one flash ending at the later end and counts once.
+
+**Validates: Requirements 28.6, 28.7**
+
+### Property 50: Unease values are non-negative, bounded and monotone in the shock
+
+For any Shock_pp in [0, 5], lights mode, Reduced_Motion value and Stir progress: every chance is in [0, 1], every gain and Camera_Jitter amplitude is at least 0, the rumble gain is at most 0.75, and no value decreases as Shock_pp increases.
+
+**Validates: Requirements 28.2, 28.3, 28.4, 28.5, 28.10**
+
+### Property 51: Unease is pure and switches off where required
+
+For any inputs and an identical random source, `uneaseAt` returns equal outputs; with lights on or Reduced_Motion true, Camera_Jitter, Random_Glitch and Flash_Dip are 0 while the rumble gain is unchanged; at Shock_pp 0 with no Stir the rumble gain is 0.03.
+
+**Validates: Requirements 28.1, 28.8, 28.10**
+
+### Property 52: Rise timeline shape
+
+For any frame times, no rendered keys time lies in (0.8 s, 1.95 s); keys time equals t before the cut and t + 1.15 after; it reaches 3.2 at t = 2.05; the character is hidden during the Stir; the mound offsets of the Stir are at most 1.5 cm x a (x, z) and 1 cm x a (y), a in [0, 1].
+
+**Validates: Requirements 27.1, 27.3, 27.4, 27.5, 27.6, 27.7**
+
+### Property 53: Bone_Animator is pure and smooth
+
+For any cik and t in [0, 10] s, `frameAt` is deterministic, and bone angle change between samples 1/60 s apart is at most 25 degrees (90 degrees within 200 ms after a Rise_Keys interval starts), except at the Rise_Cut jump and for the head across a twitch start or end.
+
+**Validates: Requirements 27.12, 11.12**
+
+### Property 54: Stare and idle follow the specification
+
+For any cik and head geometry: the Stare head direction equals the last key direction at 0 s and the normalised target at 2.8 s and stays there; twitch intervals are in [1.2, 3.5] s after a first twitch at 2 s, each lasts 0.18 s with offsets in range; the schedule is identical for the same cik; no chest or spine bone moves periodically (no breathing).
+
+**Validates: Requirements 27.8, 27.9, 11.10**
+
+### Property 55: Reduced_Motion rise ends in the final pose in one step
+
+For any firm with Reduced_Motion true, the Stir has no shake, the cut lasts at most 0.15 s with no glitch, and the first frame after it shows keys time 3.2 with the head at the Stare target and one `finished` event.
+
+**Validates: Requirements 27.15**
+
+### Property 56: Clod arc
+
+For any seed, rest offset and u in [0, 1]: the Clod is hidden while u <= 0.02; its outward distance is 35 % to 100 % of the rest offset; its height is in [0.03, 0.03 + h] with h in [0.08, 0.30].
+
+**Validates: Requirements 27.4**
+
+### Property 57: Growl parameters
+
+For any distance d > 0, ndcX and uniform draws: gain is min(1, 2.2 / d), rate is in [0.85, 1.05], pan is in [-1, 1], and a 2,000 Hz low-pass applies if and only if d > 10.
+
+**Validates: Requirements 29.1, 29.6**
+
+### Property 58: Duck schedule follows the latest Stir
+
+For any sequence of Stir start times: wind target is 0.1 from the latest start, 0.35 from +3.5 s; crow sounds are blocked until +5 s after the latest start; an earlier Stir never overrides a later one.
+
+**Validates: Requirements 29.3**
+
+### Property 59: Already-undead firms never get a character
+
+For any firm list and shock, the candidate list for `assignNearest` contains only Newly_Undead firms, no `zombie`-at-delta-0 firm, and the assignment has at most 8 entries.
+
+**Validates: Requirements 26.1, 26.4**
+
 ## Error Handling
 
-| Condition | Source | Handling |
-| --- | --- | --- |
-| A required zip is missing or a conversion step fails | `run-fetch.mjs` | That pick is skipped and listed with its cause; other picks are untouched; `--strict` exits non-zero (1.9). |
-| `keepAnimations` names a clip the model does not have | `keep-animations.mjs` | Strict mode throws `EditTargetMissing` naming the pick and clip. |
-| A converted glb still lists `KHR_materials_pbrSpecularGlossiness` | `convertModel` guard | `ForbiddenExtension` error, work files removed. |
-| A converted model is over 5,000,000 bytes | `modelSizeWarning` | Warning with the three suggestions (1.10); the group check also fails (5.10). |
-| No Poly Haven set satisfies requirement 2.1 | Batch 1 | The batch stops and asks the user (2.6). |
-| Group total over 25,000,000 bytes | `check-bundle.mjs` | `pnpm build` exits non-zero with the measured size and the budget (5.7). |
-| A Character_Model fails to load | `reportAssetError` + `resolveModel` | Console report with the asset name, fallback chain Hero to Walker and Crawler to Walker; Walker failure means no Risen, no Standing, no events; Torn_Mounds stay (12.7). |
-| The Watcher_Model fails to load | `Watcher.tsx` | The Watcher is never shown; the schedule keeps running without effect; no error shown. |
-| Ground_Texture fails to load | `Ground.tsx` | Flat `#0b0806` ground and the existing HUD notice (6.3). |
-| A Growl file fails to fetch or decode | `audioEngine` | The other file is used; both failing skips the Growl silently (17.7). |
-| The Footstep_Bed fails | `audioEngine` | Skipped silently, other sounds keep working (17.20). |
-| Browser blocks audio | `audioEngine` | Existing `audioBlocked` flow; Growl and footsteps start only after a successful resume. |
-| Content notice storage unreadable or unwritable | `contentNotice.ts` | Notice shows each load; dismissal holds for the page; no error (18.3). |
-| Standing placement finds no valid spot | `standingPlacement` | That firm is skipped and the next candidate is used; fewer than 4 zombies is valid. |
-| No Far_Spot is free of the cone | `watcher.ts` | Retry every second (14.7). |
-| `?horror=` flag in a production build | `import.meta.env.DEV` | Ignored; the helper is not in the bundle and `check-bundle` fails if its marker appears. |
-| Skinned bounds culling a rising character | `Characters.tsx` | `frustumCulled = false` on character meshes. |
-| Any uncaught render error in the scene | `SceneHost` boundary | Existing "The scene failed to load" with Retry. |
+| Condition | Handling |
+| --- | --- |
+| Required zip missing or conversion step fails (Batch 1) | Pick skipped and listed with its cause; `--strict` exits non-zero (1.9). |
+| Converted model over 5,000,000 bytes | Warning with texture, decimation, KTX2 suggestions (1.10); group check also fails (5.10). |
+| Group total over 25,000,000 bytes | `pnpm build` fails with measured size and budget (5.7); fallback order of section 2 (5.13). |
+| Character_Model fails to load | Console report of the asset name; Hero/Crawler fall back to Walker; Walker failure: no Risen_Zombie, no rise event, Torn_Mounds stay (12.7). |
+| Ground_Texture fails to load | Flat `#0b0806` ground and the HUD notice (6.3). |
+| Growl file fails | The other file; both failing skips silently (17.7). |
+| Rumble_Bed fails to load or decode | Skipped, no error shown, other sounds continue (29.5). |
+| Browser blocks audio or audio muted | Visual choreography unchanged (29.4). |
+| Flash candidate over the limit | Dropped, not queued (28.6). |
+| `?horror=` in a production build | Ignored; helper not in the bundle; `check-bundle` fails on the marker. |
+| Skinned bounds culling a rising character | `frustumCulled = false`. |
+| Uncaught render error | Existing `SceneHost` boundary with Retry. |
 
 ## Testing Strategy
 
-### Dual approach
+Unit and example tests cover wiring and edge cases; the properties above cover the pure modules (fast-check, at least 100 runs, tagged with the property number). Properties 1 to 21 and the Batch 1 and 2 test files are delivered and unchanged.
 
-Unit and example tests cover concrete wiring, files and edge cases. Property tests (fast-check 4.10.2 in `web/`, the same library in `tools/`) cover the 45 properties above, each as **one** test with at least 100 runs (`numRuns: 100` or more) and a comment `// Feature: graveyard-horror-pass, Property N: <title>`. Property-based testing fits here because the layout, selection, pool, animator, IK, scheduling, limiter and gain code is pure and has wide input spaces. It does not apply to R3F rendering, CSS, real model files, audio output, screenshots or frame rate; those use examples, `vitest-axe` and the Playwright scripts.
+| Test file | Content |
+| --- | --- |
+| `scenes/graveyard/look.test.ts` | Example: every value listed in `horror-direction-params.md` equals the constant (23.17). |
+| `layout/camera.property.test.ts` | Property 46 (replaces the Batch 2 eye-height cases). |
+| `fx/cctvGrade.property.test.ts` | Property 47. |
+| `fx/flashLimiter.property.test.ts` | Properties 48, 49. |
+| `model/unease.property.test.ts` | Properties 50, 51. |
+| `model/riseTimeline.property.test.ts`, `boneAnimator.property.test.ts` | Properties 52 to 55 (Reduced_Motion example included). |
+| `model/dirtBurst.property.test.ts` | Property 56. |
+| `audio/growl.property.test.ts`, `audio/duck.property.test.ts` | Properties 39, 40, 57, 58. |
+| `model/selection.property.test.ts`, `settle.property.test.ts`, `risenPool.property.test.ts` | Properties 19 to 21, 59. |
+| `r3f/soilMaterials.test.tsx` | Example: six materials, both modes (24.5). |
+| `ui/controls/LightsButton.test.tsx` and a Playwright check | Requirement 25 (see section 8 for the limit of jsdom tests). |
+| `horror.purity.test.ts` | No `react`/`three` imports, no `setTimeout`/`setInterval` in the pure modules. |
+| `Horror.scene.test.tsx` | No `Hands`, `Watcher` or `Standing` import; characters have `raycast` null; at most 8 characters. |
 
-Where a Base_Spec property already exists (for example overview containment, plot navigation clamp, crow delay, shock rules) it is kept and not repeated.
-
-### Test files and where they run
-
-| File | Environment | Content |
-| --- | --- | --- |
-| `tools/asset-lib/edits/horror-edits.property.test.mjs` | node | Property 1 on synthetic gltf-transform documents (arbitrary clip names, skins, spec-gloss materials). |
-| `tools/asset-lib/licenses.property.test.mjs` (extended), `licenses.test.mjs` | node | Property 2 and the two named example tests of 4.7. |
-| `tools/asset-lib/credits.table.property.test.mjs`, `manual-readme.property.test.mjs` (existing, fixtures extended) | node | 3.4, 3.10 with the six new picks; `manual-readme.test.mjs` for the "flac" header text. |
-| `tools/asset-lib/skeleton-report.test.mjs` | node | 1.7 per real glb (skinned mesh, at least 15 joints, kept clips); Walk1_InPlace root travel below 1 cm (13.5); skipped with a clear message when the glb is absent. |
-| `web/scripts/check-bundle.test.mjs` | node | Property 3 (`computeGroupBudget`), the horror marker, and that `groupAssets.json` equals the `assets.ts` list (via `assets.test.ts`). |
-| `web/src/scenes/graveyard/model/requestedModels.property.test.ts` | node | Property 4. |
-| `web/src/scenes/graveyard/model/grass.property.test.ts` | node | Properties 5 and 6. |
-| `web/src/scenes/graveyard/model/dressing.property.test.ts`, `tornMound.property.test.ts` | node | Properties 7, 8, 9. |
-| `web/src/scenes/graveyard/layout/jitter.property.test.ts`, `layout.property.test.ts` | node | Properties 10 to 15. The firm-list arbitrary produces 1 to 400 firms, 1 to 12 sectors, null, zero and positive debts and all four statuses; Property 13 uses its own arbitrary of 2,500 to 3,000 distinct 10-digit ciks. The Base_Spec layout properties 11 to 14 were not found in the repository at the time of writing (only `pointerPick.test.ts` and `placement.test.ts` call `computeLayout`), so these files create them for the new algorithm. |
-| `web/src/scenes/graveyard/layout/pick.property.test.ts` | node | Property 16 against a brute-force oriented-box reference. |
-| `web/src/scenes/graveyard/layout/camera.property.test.ts` | node | Properties 17 and 18 (replaces the plot pose test of `camera.test.ts`). |
-| `web/src/scenes/graveyard/model/selection.property.test.ts`, `settle.property.test.ts`, `risenPool.property.test.ts` | node | Properties 19, 20, 21. |
-| `web/src/scenes/graveyard/model/boneAnimator.property.test.ts`, `twoBoneIk.property.test.ts`, `characterScale.property.test.ts`, `dirtBurst.property.test.ts` | node | Properties 22 to 28. |
-| `web/src/scenes/graveyard/model/modelAssignment.property.test.ts`, `standing.property.test.ts` | node | Properties 29 to 32. |
-| `web/src/scenes/graveyard/model/watcher.property.test.ts`, `farSpots.property.test.ts`, `r3f/coneInput.property.test.ts` | node | Properties 33 to 37, driven by an explicit clock and a seeded `rand`. |
-| `web/src/fx/glitchScheduler.property.test.ts` | node | Property 38. |
-| `web/src/audio/growl.property.test.ts`, `footsteps.property.test.ts`, `audioEngine.horror.test.ts` | node | Properties 39, 40, 41, 42; the engine test uses the recording fake `AudioContext` and fake timers of `audioEngine.test.ts`. |
-| `web/src/state/contentNotice.property.test.ts` | node | Property 43 with a stub storage. |
-| `web/src/scenes/graveyard/model/horrorQuality.property.test.ts`, `web/scripts/measure-fps.test.mjs` | node | Properties 44 and 45 plus the DEVLOG formatter fields (21.5). |
-| `web/src/scenes/graveyard/horror.purity.test.ts` | node | Scans the new pure modules for `react` and `three` imports and for `setTimeout`/`setInterval` (11.14, 14.16, 20.8). |
-| `web/src/ui/ContentNotice.test.tsx` | jsdom + vitest-axe | 18.1, 18.4 to 18.6, 18.8, 18.10, 18.11 and two contrast rows (18.9). |
-| `web/src/scenes/graveyard/Horror.scene.test.tsx` | jsdom with mocked Canvas | 3 stone InstancedMesh with a fallen stone (8.15), no `Hands` import (15.1), characters have `raycast` null (10.13, 19.5), no model request before the first frame (5.1). |
-
-### Superseded Base_Spec tests (requirement 20.4)
+### Tests superseded by Batches 2b and 3 (Requirement 20.4)
 
 | Test file | Change |
 | --- | --- |
-| `web/src/scenes/graveyard/layout/camera.test.ts` | `plotPose` test now asserts `(0, 1.5, 5.6)` for plot 1 and target `(0, 0.2, −2)`; the rest of the file (overview, smoothing, sway, labels, flicker) is unchanged. |
-| `web/src/scenes/graveyard/model/handPool.test.ts` | Deleted with `handPool.ts`; its `assignHands` cases move to `selection.property.test.ts` (as `assignNearest`) and its pool cases to `risenPool.property.test.ts`. |
-| `web/src/scenes/graveyard/model/dressing.test.ts` | Mound cases now assert the `torn`/`closed` partition; `mounds` still equals `undead`. |
-| `web/src/scenes/graveyard/model/placement.test.ts` | `INITIAL_CAMERA` default is `(0, 1.5, 5.6)`; the cases that pass an explicit camera are unchanged. |
-| `web/src/audio/useGraveyardAudio.test.tsx` | Adds the `riseFinishedEvents` subscription and the lights mirror; existing dig and leave cases are unchanged. |
-| `web/src/audio/audioEngine.test.ts` | The fake `AudioParam` gains `linearRampToValueAtTime`; existing cases are unchanged. |
-| `tools/asset-lib/budgets.test.mjs`, `budgets.property.test.mjs` | `LIMITS.graveyard` constant of 40,000,000 (Decision 6). |
-| `tools/asset-lib/manual-readme.test.mjs` | Header text now mentions flac. |
-| Base_Spec layout, spacing and height properties (3.2, 3.5, 3.10) | Not present in the repository; replaced by Properties 11, 12 and 14 here. |
+| `layout/camera.test.ts` | Plot pose cases assert FOV 46, eye 1.2, look 0.6, back 3.0; target easing cases removed. |
+| `model/sceneParams.test.ts`, `r3f/lightsBlend.test.ts` | Plot_Fog, hemisphere, moon, background and environment values for lights-off framed plots. |
+| `r3f/TornMounds.test.ts`, `model/tornMound.test.ts`, `r3f/Grass.test.ts` | No `emissiveMap`, black emissive, Clod and Pit colours. |
+| `fx/glitchScheduler` tests | Random glitch offered through the Flash_Limiter; no vanish trigger. |
+| `r3f/flashlightState.test.ts` | New Flashlight values and Flash_Dip offers. |
+| `model/handPool.test.ts` | Deleted; cases move to `selection.property.test.ts` and `risenPool.property.test.ts`. |
+| `audio/audioEngine.test.ts`, `useGraveyardAudio.test.tsx` | Rumble_Bed, duck, positional Growl; no digging, no footsteps; `linearRampToValueAtTime` on the fake param. |
+| Mutant tests (props / `Creatures`) | Mutant no longer rendered; tests assert absence. |
+| Standing / Watcher tests | Not built; none added. |
 
-### Commands (PowerShell)
-
-```powershell
-Set-Location web
-pnpm typecheck; pnpm lint; pnpm format; pnpm test; pnpm build
-Set-Location ..\tools
-pnpm test
-# Dev server in a separate terminal (long-running): Set-Location web; pnpm dev
-Set-Location web
-node scripts/horror-screenshots.mjs --batch 2 --url http://localhost:5173
-node scripts/horror-screenshots.mjs --batch 3a --url http://localhost:5173
-node scripts/horror-screenshots.mjs --batch 3b --url http://localhost:5173
-node scripts/measure-fps.mjs --horror --url http://localhost:5173 --seconds 10
-```
+Commands (PowerShell): `Set-Location web; pnpm typecheck; pnpm lint; pnpm format; pnpm test; pnpm build`, then `node scripts/horror-screenshots.mjs --batch 2b --url http://localhost:5173` (dev server started separately).
 
 ## Requirement to Component Mapping
 
 | Req | Primary files |
 | --- | --- |
-| 1 | `tools/asset-lib/edits/{keep-animations,remove-animations,spec-gloss}.mjs`, `edits/index.mjs`, `picks.mjs`, `convert-model.mjs`, `skeleton-report.mjs`, `tools/picks.json` |
-| 2 | `tools/asset-lib/polyhaven.mjs`, `tools/preview`, `reference/progress/horror-batch1-assets.png` |
-| 3 | `tools/picks.json`, `manifest.json`, `CREDITS.md`, `manual-readme.mjs` |
-| 4 | `.kiro/steering/asset-licensing.md`, `licenses.mjs` tests |
-| 5 | `groupAssets.json`, `assets.ts`, `check-bundle.mjs`, `budgets.mjs`, `r3f/characterLoader.ts` |
-| 6 | `r3f/Ground.tsx`, `model/grass.ts`, `model/grassTexture.ts`, `r3f/Grass.tsx` |
-| 7 | `model/dressing.ts`, `model/tornMound.ts`, `r3f/Mounds.tsx`, `r3f/TornMounds.tsx` |
-| 8 | `layout/jitter.ts`, `layout/extents.ts`, `layout/layout.ts`, `layout/pick.ts`, `layout/grid.ts`, `r3f/Stones.tsx` |
-| 9 | `layout/camera.ts`, `r3f/CameraRig.tsx`, `GraveyardScene.tsx`, `model/placement.ts` |
-| 10 | `model/selection.ts`, `model/settle.ts`, `model/risenPool.ts`, `r3f/SelectionController.tsx`, `selectionStore.ts` |
-| 11 | `model/boneAnimator.ts`, `model/twoBoneIk.ts`, `model/characterScale.ts`, `model/dirtBurst.ts`, `r3f/Characters.tsx`, `r3f/DirtBurst.tsx` |
+| 1 to 5 | `tools/asset-lib/*`, `tools/picks.json`, `manifest.json`, `CREDITS.md`, `groupAssets.json`, `check-bundle.mjs` (delivered) |
+| 6 to 9 | `model/grass.ts`, `r3f/{Ground,Grass,Mounds,TornMounds}.tsx`, `layout/{jitter,extents,layout,pick,camera}.ts` (delivered) |
+| 10 | `model/{settle,selection,risenPool}.ts`, `r3f/SelectionController.tsx`, `selectionStore.ts` |
+| 11, 27 | `model/{riseTimeline,boneAnimator,stir,dirtBurst}.ts`, `r3f/Characters.tsx` |
 | 12 | `model/modelAssignment.ts`, `r3f/characterLoader.ts` |
-| 13 | `model/standing.ts`, `r3f/Characters.tsx` |
-| 14 | `model/watcher.ts`, `model/farSpots.ts`, `r3f/coneInput.ts`, `r3f/Watcher.tsx`, `r3f/Flashlight.tsx`, `fx/glitchScheduler.ts`, `fx/CctvPass.tsx` |
-| 15 | `GraveyardScene.tsx` (no `Hands`), `riseEvents.ts` |
-| 16 | `model/dressing.ts`, `model/modelAssignment.ts`, `audio/audioEngine.ts` |
-| 17 | `audio/growl.ts`, `audio/footsteps.ts`, `audio/audioEngine.ts`, `audio/useGraveyardAudio.ts` |
-| 18 | `state/contentNotice.ts`, `ui/ContentNotice.tsx`, `ui/NoticeLink.tsx`, `ui/Hud.tsx` |
-| 19 | `model/horrorQuality.ts`, `r3f/Characters.tsx` |
-| 20 | Supersession table above; `horror.purity.test.ts` |
-| 21 | `web/scripts/measure-fps.mjs`, `horror-screenshots.mjs`, `check-bundle.mjs` |
-| 22 | `tasks.md` batch structure, Batch reports |
+| 15, 26 | `GraveyardScene.tsx` (no Hands, Mutant, Watcher), `riseEvents.ts` |
+| 16, 19 | `model/dressing.ts`, `model/horrorQuality.ts` |
+| 23 | `look.ts`, `layout/camera.ts`, `model/sceneParams.ts`, `r3f/{SceneLights,Flashlight,Props,Stones}.tsx`, `fx/CctvGradeEffect.ts` |
+| 24 | `r3f/{soil,TornMounds,Mounds,Grass,Ground}.tsx` |
+| 25 | `ui/controls/*`, `scenes/graveyard/dev/HorrorDebug.tsx` (section 8) |
+| 28 | `model/unease.ts`, `fx/{flashLimiter,staticCutBus,FlashBus}`, `r3f/CameraRig.tsx` |
+| 29 | `audio/{audioEngine,growl,duck,useGraveyardAudio}.ts` |
+| 20, 21, 22, 38 | Test table above, evidence scripts, `tasks.md` batches |
 
-Steering compliance: the engine in `web/src/engine` is not touched; `/pipeline`, `/data` and `data-contract.md` are not touched; no asset is added without a `CREDITS.md` row; `structure.md` gets no new top-level folder; commits use `feat(graveyard-horror-pass): ...`.
+Moved to the future control-room-experience spec (2026-11-13); not designed here: Requirements 30 to 37 (OSD, camera switcher, rate console, controls hint and menu, hover tag, Firm_Lookup, Status_Word, Opening, Framed_Set, Plot_Fall, Fall_Armed, Jump_Scare, jump-scare face and OSD font assets, steering exceptions). Requirement 35 is cancelled.
+
+Steering compliance: engine, `/pipeline`, `/data` and `data-contract.md` untouched; every asset has a `CREDITS.md` row; commits use `feat(graveyard-horror-pass): ...`.
 
 ## Decisions
 
-1. **Band-packed layout instead of a larger fixed pitch.** With 0.30 m jitter, 20 degree yaw, fallen stones and a reserved mound zone, a fixed pitch large enough for the worst case would make every plot about twice as large. Extent-based columns and rows grow only where a fallen or wide stone needs room, and the 0.15 m gap holds by construction (Property 14). Cost: stone positions depend on neighbours' extents (jitter values do not, Property 11).
-2. **Fallen stones fall backwards.** The base stays at the standing anchor, the body lies away from the camera, so the mound at the standing position stays clear (7.9, 8.11) and the Pit is never covered.
-3. **Exact planted hands by analytic two-bone IK.** Breathing alone would drift the hands a few centimetres; the IK removes the drift and is testable with plain numbers (Property 26).
-4. **Settled_Shock from the render clock.** The 250 ms debounce is a pure tracker called every frame, so there is no timer, tests are deterministic, and the tolerance is one frame.
-5. **`.ogg` is the counted audio file.** The engine requests `.ogg` first; the `.mp3` fallbacks are manifest entries but not counted. The report prints the `.mp3` total as an information line so a Safari-only worst case is visible.
-6. **Pipeline ceiling raised to 40,000,000 (confirmed).** `LIMITS.graveyard` (26,214,400) counts every file of the manifest group on disk, including both HDRIs, both audio formats and unused sources. It is 23.48 MB today and the new files add up to about 11 MB, so it must change. The session budget that matters to visitors is the 25 MB Group_Budget, enforced separately. `LIMITS.total` (62,914,560) is unaffected: lab 21.1 MB plus graveyard about 34 MB is 55 MB. If the visitor group exceeds 25 MB, the fallback order of section 2 applies (5.13).
-7. **A separate selection store.** Requirement 20.5 limits changes to the main store, so assignments live in `selectionStore.ts`; only `settledShock` and the notice fields go into the main store.
-8. **9.3 is evaluated at the framed pose (confirmed).** The pointer offset (9.7) can move the look target 1.3 m down and then pitch the mound bases above the centre. Requirement 9.3 now states the condition itself: pointer centred, no handheld sway. The property uses the neutral pointer and no sway.
-9. **Dev-only horror helper.** `?horror=rise|watcher|notice` makes screenshots reproducible; it sits behind `import.meta.env.DEV` with a bundle marker.
-10. **The measurement script is a Base_Spec task.** `web/scripts/measure-fps.mjs` (Base_Spec task 21.1) is not in the repository yet. Batch 3b builds the `--horror` mode on top of it; if task 21.1 is still open, task 3.53 finishes the base script.
-11. **Model swap time.** The 500 ms swap bound (12.4) holds for a cached model. If the Hero_Model has never been loaded when lights go off, the Walker stays until it arrives and the swap happens in the first frame after loading.
+1. **Band-packed layout** (Batch 2): extents instead of a larger fixed pitch; 0.15 m gap by construction.
+2. **Fallen stones fall backwards** (Batch 2): the Pit is never covered.
+3. **Settled_Shock from the render clock**: no timer, deterministic tests.
+4. **`.ogg` is the counted audio file**; mp3 fallbacks reported separately.
+5. **Pipeline ceiling 40,000,000 bytes on disk**; the 25 MB Group_Budget is the visitor limit.
+6. **Separate `selectionStore`**: only `settledShock` goes into the main store (20.5).
+7. **9.3 and 23.3 are evaluated at the framed pose** (pointer centred, no sway).
+8. **Dev-only `HorrorDebug`** behind `import.meta.env.DEV` with a bundle marker.
+9. **Camera move kept**: the 1.2 s Base_Spec move stays; only pose constants and the fog end state change.
+10. **One grade effect**: glitch folded into `CctvGradeEffect`; the lights-off chain is ToneMapping + grade.
+11. **Pit material is `MeshStandardMaterial`** so 24.1 applies to it.
+12. **Flash_Limiter is the only place that counts flashes**; Static_Cuts, glitches, dips and flickers are candidates.
+13. **No IK, no clips**: prototype Rise_Keys with a fixed root keep hands planted.
 
 ## Risks and requirement notes
 
-- **Fallen share (8.6).** A per-cik rule cannot guarantee 3 to 7 percent for every list; for hash-uniform ciks the share is binomial. At 1,000 firms the standard deviation is 0.69 percentage points, so 3 percent is 2.9 sigma away (about 0.4 percent chance of a miss per list); at 2,500 or more it is 4.6 sigma. Requirement 8.6 (confirmed) therefore requires the 3 to 7 percent share only for lists of 2,500 to 3,000 firms; below 2,500 it is a statistical expectation with no hard guarantee. Property 13 generates 2,500 to 3,000 firms (the real data set is 3,000). The design does not change.
-- **Character triangle counts are unknown** until Batch 1 inspects the files. The pipeline adds a `decimate` edit with target 30,000 triangles when a model exceeds it.
-- **Bone maps and axis signs** (`boneMaps.ts`) are filled from the Batch 1 skeleton report and tuned in Batch 3 against the reference frames. The Crawler uses Mixamo bone names by design (requirement 1.6).
-- **Hips-based drop** assumes an upright bind pose. If a model's bind pose is a T-pose, the arm roles include the rotation to the raised-arm start pose, which the first key pose sets.
-- **Characters and shadows.** Shadow casting by skinned characters costs a shadow pass per light; low quality turns it off (19.1). The scene-critic review in Batch 3 decides whether lights-off normal quality keeps it.
-- **Texture generation for specGloss.** `metalRough` creates new textures and sets IOR 1000; the glTF loader supports both extensions. The Batch 1 screenshot confirms the Hero material looks right.
+- **Requirement 25 root cause is not proven** (section 8): ranked hypotheses and a first instrumentation task; the "fails before the fix" clause of 25.4 may not hold for jsdom tests.
+- **Camera margin:** with `CAMERA_BACK` 3.0 the camera is only 0.04 m inside the extended plot boundary; Property 46 decides, fallback 2.9.
+- **Fallen share (8.6):** guaranteed only for 2,500 to 3,000 firms.
+- **Prototype values** (`KEYS`, shader constants) are read from the Prototype at task time; bone maps and axis signs are tuned against `horror-direction-sequence.png`.
+- **Convolution effect and glitch:** folding the glitch into the grade shader must be checked against postprocessing 6.39.6 with context7 at task time.
+- **Character triangle counts** are unknown until measured; the pipeline decimates above 30,000.
 
 ## Delivery in four batches
 
-The tasks file follows requirement 22: Batch 1 (assets and licensing, requirements 1 to 5), Batch 2 (ground, graves, stones, camera, requirements 6 to 9), Batch 3a (rising zombies: selection, Settled_Shock, Risen pool, Bone_Animator, IK, Dirt_Burst, torn mound swap, lowering, model assignment with the Hero swap in lights on, character loader, retiring the Craggle hand; requirements 10, 11, 12, 15 and the matching parts of 19), and Batch 3b (Standing_Zombies, Watcher, Growl and Footstep_Bed, Content_Notice, fps measurement and final checks; requirements 13, 14, 16, 17, 18, 21 and the rest of 19), each ending with a STOP task. Standing_Zombies are in 3b. The 3a STOP comes after the 3a checks and `horror-batch3a-rise.png`, before any 3b work. Each batch runs the full check before its report, saves its screenshots to `reference/progress/`, and waits for approval.
+Batch 1 (assets and licensing) and Batch 2 (ground, graves, stones, camera) are delivered. Batch 2b (Requirements 23 to 25) and Batch 3 (Requirements 26 to 29 and the Risen_Zombie parts of 10, 11, 12, 15, 16, 19, with the fps measurement) each end with a STOP task. Each batch runs the full check before its report, saves its screenshots to `reference/progress/`, and waits for approval. No Batch 4 exists in this spec.

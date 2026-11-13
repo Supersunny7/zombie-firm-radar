@@ -4,19 +4,20 @@
 
 The graveyard of the `graveyard-scene` spec works, but the picture is stiff, clean and not scary. The Horror_Pass makes the graveyard look and behave like the reference frames `reference/graveyard/horror-direction.png` and `reference/graveyard/horror-direction-sequence.png` and like the interactive prototype in `reference/graveyard/prototype/demo/` (`main.js`, `index.html`; reference only, never imported).
 
-Premise (Control_Room_Direction, decided with the user on 2026-11-13): the viewer is a night guard watching a CCTV feed of a graveyard of US public firms. Every piece of UI belongs to the monitor: an on-screen display, a camera switcher and a rate-shock console. The emotional line is quiet, then unease that the viewer causes with the rate-shock lever, then one release (one jump scare per plot). Where `reference/graveyard/control-room-direction.md` disagrees with this spec or the Base_Spec, the direction file wins for the graveyard; this document records each such change as a supersession.
+Premise (Control_Room_Direction, decided with the user on 2026-11-13): the viewer is a night guard watching a CCTV feed of a graveyard of US public firms. The emotional line is quiet, then unease that the viewer causes with the rate-shock lever. Where `reference/graveyard/control-room-direction.md` disagrees with this spec or the Base_Spec about the look (Batch 2b) or the zombies (Batch 3), the direction file wins for the graveyard; this document records each such change as a supersession.
+
+Scope change (decided with the user on 2026-11-13): the experience plan (role, task list, capture, lab, two scares) is still being decided, so this spec stops at Batch 3. It delivers the look (Batch 2b: Requirements 23 to 25) and the zombies with the unease effects and sound (Batch 3: Requirements 26 to 29, plus the Risen_Zombie parts of Requirements 10, 11, 12, 15, 16 and 19). The control-room UI (OSD, camera switcher, rate console, hover tag, Opening, jump-scare face and font assets, steering exceptions; Requirements 30 to 37) is moved to a future control-room-experience spec and is not designed, tasked or delivered here. The plot-fall jump scare (Requirement 35) is cancelled; the graveyard scare will happen during capture in the future spec.
 
 Every spooky element stays tied to a financial fact (`product.md`, `design-system.md`):
 
 - A zombie that climbs out of a grave is a Newly_Undead firm at the current rate shock.
 - A torn-open grave marks a `zombie` or Newly_Undead firm; a closed mound marks every other firm. A firm that is already `zombie` at shock 0 has a torn grave and no character.
-- The jump scare fires only when every shock-eligible firm framed in the plot has turned undead ("the plot falls").
 - The unease effects (rumble, camera jitter, glitches, flashlight dips) grow with the rate shock the viewer sets.
 - The dead-grass cards and the stone jitter are atmosphere only and carry no data.
 
 **Superseded (control-room direction, 2026-11-13):** the earlier picture of a gaunt zombie shambling between stones (Standing_Zombies) and a hooded woman standing far back (Watcher) no longer holds; see Requirement 20 criterion 9.
 
-The Horror_Pass is an extension of `graveyard-scene`. It reuses the Shock_Model, the shared `icr()`, the store, the Table_View, keyboard navigation, the Audio_Engine and the CCTV_Pass, except where the supersession lists in Requirement 20 say otherwise. The HUD of the graveyard is replaced by the OSD (Requirements 30 to 35).
+The Horror_Pass is an extension of `graveyard-scene`. It reuses the Shock_Model, the shared `icr()`, the store, the Table_View, keyboard navigation, the Audio_Engine and the CCTV_Pass, except where the supersession lists in Requirement 20 say otherwise. The HUD, the File_Card, the Plot navigation and the Camera_Rig move of the Base_Spec stay as they are in this spec (Requirement 20 criterion 10); the Content_Notice has an open question (Requirement 18).
 
 Scope boundaries:
 
@@ -24,7 +25,7 @@ Scope boundaries:
 - The engine in `web/src/engine` is not touched. Selection and placement rules live in pure modules under `web/src/scenes/graveyard` (no React, no three.js imports), and rendering lives in `web/src/scenes/graveyard/r3f` and `web/src/fx`.
 - The lab, the Theatre.js cinematics and the capture interaction are out of scope. The lab's failure jump scare is separate and is not part of this spec.
 - Animation uses rigged models and procedural keyframes on bones. No Mixamo animation clip is used anywhere (`animation-direction.md`, `asset-licensing.md`).
-- **Superseded (control-room direction, 2026-11-13):** the work is delivered in four batches (1, 2, 3a, 3b); replaced by Requirement 38 (Batches 1, 2, 2b, 3 and 4, with a STOP after each). Batches 1 and 2 are complete.
+- **Superseded (control-room direction, 2026-11-13):** the work is delivered in four batches (1, 2, 3a, 3b); replaced by Requirement 38 (Batches 1, 2, 2b and 3, with a STOP after each). Batches 1 and 2 are complete.
 - Removed after user testing and not built: deliberate frame-rate drops, the approaching walker, the hooded Watcher, breathing (chest motion and breath sounds), random lens attacks, "motion detected" alerts, the large case-file card, and the digging (shovel) sound for zombies.
 
 ## Glossary
@@ -73,17 +74,17 @@ Scope boundaries:
 - **Footstep_Distance**: **Superseded (control-room direction, 2026-11-13):** retired (Requirement 26).
 - **Content_Notice**: **Superseded (control-room direction, 2026-11-13):** replaced by the Opening and the Warning_Replay menu item (Requirement 34). Former meaning: the dismissible one-line note with the text "Contains horror and gore".
 - **Notice_Link**: **Superseded (control-room direction, 2026-11-13):** replaced by the Warning_Replay menu item (Requirement 34). Former meaning: the footer control that reopens the Content_Notice.
-- **Batch**: One of the delivery groups 1, 2, 2b, 3 and 4 in Requirement 38. (Before 2026-11-13: 1, 2, 3a, 3b in Requirement 22.)
+- **Batch**: One of the delivery groups 1, 2, 2b and 3 in Requirement 38. The former Batch 4 (control-room UI) is moved to the future control-room-experience spec. (Before 2026-11-13: 1, 2, 3a, 3b in Requirement 22.)
 - **Measurement_Script**: The existing headed-Playwright fps script of Base_Spec Requirement 21.5 to 21.8.
 - **Control_Room_Direction**: The file `reference/graveyard/control-room-direction.md` with its exact look values in `reference/graveyard/horror-direction-params.md` and the Prototype.
 - **Prototype**: The reference-only files `reference/graveyard/prototype/demo/main.js` and `index.html`. No app code imports them.
 - **Shock_pp**: The current Shock_Slider value in percentage points, from 0 to 5 (delta x 100).
-- **Framed_Set**: The Firms whose Headstone base projects inside the camera viewport at the Plot_Camera_Pose of the framed Plot, with no sway, no jitter and the pointer centred. It is computed once per Selection_Event caused by a Camera_Rig target change or by the first Firm list load, and is empty in the overview.
-- **Plot_Fall**: The event that occurs when the Framed_Set is not empty, every shock-eligible Firm in the Framed_Set that is not `zombie` at delta 0 is Newly_Undead, and the last Risen_Zombie assigned among them has finished its Rise_Sequence.
-- **Fall_Armed**: The per-Plot flag that allows the next Plot_Fall. It is true at page load and becomes true again only after the Plot_Fall condition stops holding at a lower shock for that Plot.
-- **Jump_Scare**: The one graveyard scare that follows a Plot_Fall (Requirement 35).
-- **Jump_Scare_Face**: The image `jumpscare-face.webp`, an own render of the Hero_Model, used by the Jump_Scare.
-- **Static_Cut**: A short full-feed static of the CCTV_Pass, used for the Rise_Cut, camera switches, the Opening and the Jump_Scare.
+- **Framed_Set** (moved to the future control-room-experience spec): The Firms whose Headstone base projects inside the camera viewport at the Plot_Camera_Pose of the framed Plot, with no sway, no jitter and the pointer centred. It is computed once per Selection_Event caused by a Camera_Rig target change or by the first Firm list load, and is empty in the overview.
+- **Plot_Fall** (moved to the future control-room-experience spec): The event that occurs when the Framed_Set is not empty, every shock-eligible Firm in the Framed_Set that is not `zombie` at delta 0 is Newly_Undead, and the last Risen_Zombie assigned among them has finished its Rise_Sequence.
+- **Fall_Armed** (moved to the future control-room-experience spec): The per-Plot flag that allows the next Plot_Fall. It is true at page load and becomes true again only after the Plot_Fall condition stops holding at a lower shock for that Plot.
+- **Jump_Scare** (moved to the future control-room-experience spec): The one graveyard scare that follows a Plot_Fall (Requirement 35).
+- **Jump_Scare_Face** (moved to the future control-room-experience spec): The image `jumpscare-face.webp`, an own render of the Hero_Model, used by the Jump_Scare.
+- **Static_Cut**: A short full-feed static of the CCTV_Pass: the whole feed is replaced by animated noise for the stated duration (0.32 s for the Rise_Cut), accompanied by a tracking glitch of the stated length. It is allowed in both Lights_Mode values and under Reduced_Motion (Requirement 27 criteria 14 and 15). Camera switches, the Opening and the scares that will also use it belong to the future control-room-experience spec.
 - **Stir**: The 1.4 s phase before the soil breaks, in which the Closed_Mound of a Firm shakes and the rumble swells.
 - **Rise_Cut**: The Static_Cut during the Rise_Sequence after which the Risen_Zombie is shown already hauled out to the waist.
 - **Rise_Keys**: The five key poses of the Prototype `KEYS` table (times 0.0, 0.7, 1.5, 2.3 and 3.2 s, root height -1.8 m to -0.95 m) with the Jerk_Easing.
@@ -94,24 +95,24 @@ Scope boundaries:
 - **Camera_Jitter**: The camera offset of 0.0006 x Shock_pp x sin(23 t) m in x and 0.0005 x Shock_pp x sin(31 t) m in y.
 - **Random_Glitch**: A CCTV_Pass tracking glitch that starts on a frame with chance 0.002 + 0.0025 x Shock_pp.
 - **Flash_Dip**: A frame on which the Flashlight intensity is multiplied by 0.3, with chance 0.004 x Shock_pp per frame.
-- **Flash_Limiter**: The pure rule that counts every Static_Cut, Random_Glitch, Flash_Dip, Flashlight flicker and Jump_Scare flicker as a flash candidate and drops every candidate that would make more than 3 flashes in any 1 s window.
+- **Flash_Limiter**: The pure rule that counts every Static_Cut, Random_Glitch, Flash_Dip and Flashlight flicker as a flash candidate and drops every candidate that would make more than 3 flashes in any 1 s window.
 - **Rumble_Bed**: The loop `freesound-lennartgreen-low-rumble-loopable`.
 - **CCTV_Grade**: The six-step colour grade of Requirement 23, applied after tone mapping.
 - **Lantern_Light**: The point light of the lantern prop.
-- **OSD**: The on-screen display of the CCTV monitor, rendered in the DOM over the 3D stage: viewfinder corners, REC line, Camera_Switcher, timestamp, source line, Rate_Console, Controls_Hint, OSD_Menu, Hover_Tag, the data footer line and the live region.
-- **Camera_Switcher**: The row of small boxes, one per camera, that switches the camera with a Static_Cut. CAM 00 is the overview; CAM nn (nn = Plot number, two digits) is Plot nn.
-- **Camera_Switch**: A change of camera through the Camera_Switcher, a number key, the arrow keys or keyboard focus. It is 0.28 s of Static_Cut followed by a 0.12 s glitch, with the cut to the new pose on one frame inside the Static_Cut (Requirement 31 criterion 5).
-- **Rate_Console**: The bottom-centre panel that holds the Shock_Slider, its tick labels, the disclosure lines and the Risen_LED.
-- **Risen_LED**: The red two-digit `RISEN` counter in the Rate_Console. It shows the Base_Spec Risen_Counter value.
-- **Controls_Hint**: The three-line hint at the bottom left that fades after 14 s.
-- **OSD_Menu**: The `≡ MENU` button at the bottom right and the menu it opens.
-- **Warning_Replay**: The OSD_Menu item "Content warning" that shows the Opening again.
-- **Hover_Tag**: The small two-line tag next to the pointer or the focused stone that names a Firm, its shocked ICR and a Status_Word.
-- **Status_Word**: The word on line 2 of the Hover_Tag: RESTING, ENDANGERED, RISEN, ZOMBIE or NO DATA.
-- **Firm_Lookup**: The pure function that maps a pick result (Headstone instance, Mound instance or Risen_Zombie slot) to its Firm.
-- **Opening**: The black intro screen with four typed lines, the connect button and the warning line.
-- **Opening_Key**: The localStorage key `zfr.opening.v1` that records that the Opening has been completed once.
-- **OSD_Font**: The VT323 font (Google Fonts, SIL OFL), added through the Asset_Pipeline.
+- **OSD** (moved to the future control-room-experience spec): The on-screen display of the CCTV monitor, rendered in the DOM over the 3D stage: viewfinder corners, REC line, Camera_Switcher, timestamp, source line, Rate_Console, Controls_Hint, OSD_Menu, Hover_Tag, the data footer line and the live region.
+- **Camera_Switcher** (moved to the future control-room-experience spec): The row of small boxes, one per camera, that switches the camera with a Static_Cut. CAM 00 is the overview; CAM nn (nn = Plot number, two digits) is Plot nn.
+- **Camera_Switch** (moved to the future control-room-experience spec): A change of camera through the Camera_Switcher, a number key, the arrow keys or keyboard focus. It is 0.28 s of Static_Cut followed by a 0.12 s glitch, with the cut to the new pose on one frame inside the Static_Cut (Requirement 31 criterion 5).
+- **Rate_Console** (moved to the future control-room-experience spec): The bottom-centre panel that holds the Shock_Slider, its tick labels, the disclosure lines and the Risen_LED.
+- **Risen_LED** (moved to the future control-room-experience spec): The red two-digit `RISEN` counter in the Rate_Console. It shows the Base_Spec Risen_Counter value.
+- **Controls_Hint** (moved to the future control-room-experience spec): The three-line hint at the bottom left that fades after 14 s.
+- **OSD_Menu** (moved to the future control-room-experience spec): The `≡ MENU` button at the bottom right and the menu it opens.
+- **Warning_Replay** (moved to the future control-room-experience spec): The OSD_Menu item "Content warning" that shows the Opening again.
+- **Hover_Tag** (moved to the future control-room-experience spec): The small two-line tag next to the pointer or the focused stone that names a Firm, its shocked ICR and a Status_Word.
+- **Status_Word** (moved to the future control-room-experience spec): The word on line 2 of the Hover_Tag: RESTING, ENDANGERED, RISEN, ZOMBIE or NO DATA.
+- **Firm_Lookup** (moved to the future control-room-experience spec): The pure function that maps a pick result (Headstone instance, Mound instance or Risen_Zombie slot) to its Firm.
+- **Opening** (moved to the future control-room-experience spec): The black intro screen with four typed lines, the connect button and the warning line.
+- **Opening_Key** (moved to the future control-room-experience spec): The localStorage key `zfr.opening.v1` that records that the Opening has been completed once.
+- **OSD_Font** (moved to the future control-room-experience spec): The VT323 font (Google Fonts, SIL OFL), added through the Asset_Pipeline.
 
 ## Requirements
 
@@ -271,7 +272,7 @@ Scope boundaries:
 2. THE Camera_Rig SHALL place the Plot_Camera_Pose so that the horizontal distance from the camera to the nearest Headstone of the framed Plot is at most 4.0 m.
 3. (Re-checked with the Requirement 23 camera values: FOV 46 degrees, eye height 1.2 m, look-at height 0.6 m.) WHEN a Plot is framed at its Plot_Camera_Pose with the pointer centred and no handheld sway, THE bases of the nearest-row mounds of that Plot SHALL project into the lower half of the viewport (below the vertical centre) at 1440 x 900 and at 390 x 844 pixels.
 4. THE Camera_Rig SHALL keep the Plot_Camera_Pose inside the Plot boundary extended by the Plot gap, so that the camera is among the graves and not on the path outside.
-5. **Superseded in part (control-room direction, 2026-11-13):** the field of view becomes 46 degrees (Requirement 23 criterion 1) and the 1.5 s move limit is replaced by the Camera_Switch cut (Requirement 31). The look-target smoothing, the handheld sway amplitudes and the camera-local Flashlight offset of the Base_Spec stay. Former text: THE Camera_Rig SHALL keep the field of view 52 degrees, the look-target smoothing, the handheld sway amplitudes, the camera-local Flashlight offset and the 1.5 s move limit of the Base_Spec.
+5. **Superseded in part (control-room direction, 2026-11-13):** the field of view becomes 46 degrees (Requirement 23 criterion 1). The look-target smoothing, the handheld sway amplitudes, the camera-local Flashlight offset and the 1.5 s move limit of the Base_Spec stay; the cut-based camera switch that would replace the move limit is moved to the future control-room-experience spec. Former text: THE Camera_Rig SHALL keep the field of view 52 degrees, the look-target smoothing, the handheld sway amplitudes, the camera-local Flashlight offset and the 1.5 s move limit of the Base_Spec.
 6. THE Camera_Rig SHALL keep the overview pose rule (all Plots fully inside the viewport) and SHALL NOT apply the Plot eye height (1.2 m since Requirement 23) to the overview.
 7. WHEN the Plot_Camera_Pose changes eye height or distance, THE Camera_Rig SHALL set the look target so that the pointer offset keeps the Base_Spec ranges (pointer.x * 3.2 and 0.2 + pointer.y * 1.3 relative to the plot look point).
 8. THE Camera_Rig tests SHALL cover criteria 1, 2, 4 and 6 with a property test over generated Plot sizes, with at least 100 cases.
@@ -296,7 +297,7 @@ Scope boundaries:
 10. WHILE the Shock_Slider value is changing, THE Graveyard_Scene SHALL keep the Torn_Mounds, Broken_Stones, blood decals and counters updating on the Base_Spec and Requirement 7 timings, and SHALL keep the current Risen_Zombies as they are.
 11. THE assignment function SHALL be a pure module that takes the list of Newly_Undead Firms with their Headstone base positions, the Selection_Pose and the budget, and returns the ordered list of assigned Firms.
 12. THE assignment function tests SHALL include fast-check properties, each running at least 100 cases: the result has at most 8 entries, every entry is Newly_Undead, no unassigned Newly_Undead Firm is nearer than the farthest assigned one (ties by `cik`), and the result is independent of the order of the input list.
-13. **Superseded (control-room direction, 2026-11-13):** replaced by Requirement 33 criteria 2 and 3 (the skinned mesh is never raycast; a Risen_Zombie resolves to its Firm through the Firm_Lookup). Former text: THE Graveyard_Scene SHALL let a Risen_Zombie never intercept the pointer ray used for Headstone picking.
+13. **Superseded (control-room direction, 2026-11-13):** replaced by Requirement 33 criteria 2 and 3 (the skinned mesh is never raycast; a Risen_Zombie resolves to its Firm through the Firm_Lookup). Open question (2026-11-13): Requirement 33 is moved to the future control-room-experience spec; until it ships, this criterion is neither enforced nor removed. Decision pending with the user. Former text: THE Graveyard_Scene SHALL let a Risen_Zombie never intercept the pointer ray used for Headstone picking.
 
 ### Requirement 11: Rise sequence and idle
 
@@ -448,6 +449,8 @@ Replaced by Requirement 26 criterion 2: the Watcher is not built. Every criterio
 
 Replaced by Requirement 34 (the Opening and the Warning_Replay menu item) and Requirement 30 criterion 8 (the data footer line). Every criterion below is superseded and kept only for traceability.
 
+Open question (2026-11-13): the Opening that replaces this is moved out of this spec; until the future spec ships, the Content_Notice of this requirement is neither built nor removed from the app. Decision pending with the user.
+
 **User Story:** As a visitor, I want a short warning that the site contains horror and gore, so that I can decide how to continue.
 
 #### Acceptance Criteria
@@ -493,9 +496,9 @@ Replaced by Requirement 34 (the Opening and the Warning_Replay menu item) and Re
 6. THE Horror_Pass SHALL NOT change `data-contract.md`, the JSON Schemas, `/data`, `/pipeline` or the engine in `web/src/engine`.
 7. THE Horror_Pass SHALL keep the budgets of the Base_Spec: 400 KB gzip JS on the initial closure, 25 MB before the first frame, and the lab outside the initial closure.
 8. **Superseded in part (control-room direction, 2026-11-13):** the module list is replaced by criterion 11. Former text: THE new pure modules (selection, standing placement, Far_Spots, Watcher schedule, Growl_Limiter, Growl choice, Footstep_Bed gain, Bone_Animator, Stone_Jitter, camera pose) SHALL import neither React nor three.js.
-9. THE following criteria of this spec are superseded by the Control_Room_Direction (2026-11-13) and are marked in place: the Batch bullet of the Introduction; 5.4; 9.1; 9.5 (field of view and move limit only); 9.10; 10.13; 11.2; 11.3; 11.4; 11.9; 11.13; 11.15; 11.16; 12.8; Requirement 13 (all criteria); Requirement 14 (all criteria); 16.2; 16.5 (Footstep_Bed part); 16.6; 17.3; 17.9; 17.12 to 17.21; Requirement 18 (all criteria); 19.1 (Standing_Budget part); 19.2; 19.3; 20.8 (module list); 21.5; 21.10; 22.1; 22.2; 22.5; 22.6; 22.7. Done tasks and tests that cite these ids keep their ids; tests that assert a superseded criterion SHALL be updated in the same change to assert the replacing criterion, or removed when the behaviour is retired.
-10. THE following Base_Spec criteria are newly superseded in the graveyard by the Control_Room_Direction, and this list overrides criterion 1 where they overlap: 7.3 (lights-off Plot_Fog, Requirement 23 criterion 4); 7.5, 7.6, 7.7 and 7.8 inside lights-off framed Plots only, with the lights-off overview keeping its Base_Spec background, environment, moon and hemisphere values (Requirement 23 criteria 5, 7, 8 and 18); 7.11 and 7.12 (Ground_Fog layers) inside lights-off framed Plots only (Requirement 23 criterion 19); 10.6 (volumetric Flashlight cone) inside lights-off framed Plots only (Requirement 23 criterion 19); 7.15 (fog switches at the cut, Requirement 23 criterion 6); 9.1 to 9.5 and 9.8 for the Mutant only (Requirement 26 criterion 7; the Greenall_Corpse criteria 9.6 to 9.8 stay); 10.1 (Flashlight values, Requirement 23 criterion 9); 10.5 (flicker, Requirement 23 criterion 9 and Requirement 28); 11.2, 11.3, 11.4, 11.8, 11.9 and 11.10 (Camera_Switch, Requirement 31); 11.6 and 11.7 (OSD labels, Requirement 30); 12.1 to 12.12 (File_Card removed from the graveyard, Requirement 33; 12.13 stays as Requirement 30 criterion 8); 13.2 (console label, Requirement 32 criterion 2); 15.1, 15.3 and 15.4 for lights off (CCTV_Grade, Requirement 23 criteria 11 and 12); 15.5 (Random_Glitch, Requirement 28 criterion 3); 15.6, 17.4 and 17.5 for Static_Cuts only (Static_Cuts are allowed in lights on and in Reduced_Motion, Requirement 31 criterion 6 and Requirement 35 criterion 9); 16.4 (no digging sound, Requirement 26 criterion 6); 18.4 and 18.5 (Enter on a focused Headstone starts the lab route, Requirement 33 criterion 9); 18.8 (the move to another Plot is a Camera_Switch, Requirement 31); 1.2, 1.4 and 1.5 for the HUD text only (the "Mock data" and "Sample data" labels become the ` · MOCK` and ` · SAMPLE` suffixes of the OSD source line, Requirement 30 criterion 4); 17.7 for the graveyard text label (the Status_Word of the Hover_Tag and the live-region words are the text label, Requirement 33 criteria 5 and 7). The Base_Spec rules for flashes (17.6), Reduced_Motion camera cuts (10.10) and the Lights_Mode button label (17.1) stay.
-11. THE pure modules of the Horror_Pass (rise selection, Framed_Set, Plot_Fall and Fall_Armed, Growl_Limiter, Growl choice, Bone_Animator, Stone_Jitter, camera pose, Unease_Effects, Flash_Limiter, Firm_Lookup, Status_Word, Opening typing schedule, Jump_Scare timeline, Camera_Switch keys) SHALL import neither React nor three.js.
+9. THE following criteria of this spec are superseded by the Control_Room_Direction (2026-11-13) and are marked in place: the Batch bullet of the Introduction; 5.4; 9.1; 9.5 (field of view only); 9.10; 10.13; 11.2; 11.3; 11.4; 11.9; 11.13; 11.15; 11.16; 12.8; Requirement 13 (all criteria); Requirement 14 (all criteria); 16.2; 16.5 (Footstep_Bed part); 16.6; 17.3; 17.9; 17.12 to 17.21; Requirement 18 (all criteria); 19.1 (Standing_Budget part); 19.2; 19.3; 20.8 (module list); 21.5; 21.10; 22.1; 22.2; 22.5; 22.6; 22.7. Done tasks and tests that cite these ids keep their ids; tests that assert a superseded criterion SHALL be updated in the same change to assert the replacing criterion, or removed when the behaviour is retired.
+10. THE following Base_Spec criteria are newly superseded in the graveyard by the Control_Room_Direction, and this list overrides criterion 1 where they overlap: 7.3 (lights-off Plot_Fog, Requirement 23 criterion 4); 7.5, 7.6, 7.7 and 7.8 inside lights-off framed Plots only, with the lights-off overview keeping its Base_Spec background, environment, moon and hemisphere values (Requirement 23 criteria 5, 7, 8 and 18); 7.11 and 7.12 (Ground_Fog layers) inside lights-off framed Plots only (Requirement 23 criterion 19); 10.6 (volumetric Flashlight cone) inside lights-off framed Plots only (Requirement 23 criterion 19); 9.1 to 9.5 and 9.8 for the Mutant only (Requirement 26 criterion 7; the Greenall_Corpse criteria 9.6 to 9.8 stay); 10.1 (Flashlight values, Requirement 23 criterion 9); 10.5 (flicker, Requirement 23 criterion 9 and Requirement 28); 15.1, 15.3 and 15.4 for lights off (CCTV_Grade, Requirement 23 criteria 11 and 12); 15.5 (Random_Glitch, Requirement 28 criterion 3); 15.6, 17.4 and 17.5 for Static_Cuts only (Static_Cuts are allowed in lights on and in Reduced_Motion, Requirement 27 criteria 14 and 15); 16.4 (no digging sound, Requirement 26 criterion 6). The Base_Spec rules for flashes (17.6), Reduced_Motion camera cuts (10.10) and the Lights_Mode button label (17.1) stay. Supersessions that only Requirements 30 to 37 would cause take effect when the future control-room-experience spec is delivered; until then these Base_Spec behaviours stay.
+11. THE pure modules of the Horror_Pass (rise selection, Growl_Limiter, Growl choice, Bone_Animator, Stone_Jitter, camera pose, Unease_Effects, Flash_Limiter) SHALL import neither React nor three.js.
 
 ### Requirement 21: Quality gates and evidence
 
@@ -507,15 +510,18 @@ Replaced by Requirement 34 (the Opening and the Warning_Replay menu item) and Re
 2. WHEN each Batch is complete, THE full check of criterion 1 SHALL pass before the Batch report is written.
 3. WHEN the Measurement_Script runs, THE Measurement_Script SHALL drive headed (not headless) Playwright on the user's machine against the dev server with `?firms=3000`, in lights off, normal quality, at 1920 x 1080 pixels, with a Plot framed.
 4. WHEN the Measurement_Script runs for the Horror_Pass, THE Measurement_Script SHALL first set the Shock_Slider to the lowest value in steps of 0.25 pp at which at least 8 Newly_Undead Firms exist among the 3,000 Firms, SHALL wait at least 2 s after the Settled_Shock, and SHALL then record frames for a continuous window of at least 10 s.
-5. **Superseded (control-room direction, 2026-11-13):** replaced by Requirement 38 criterion 8 (no Standing_Zombie or Watcher counts). Former text: THE Measurement_Script entry in `DEVLOG.md` SHALL contain the average frames per second (rounded to 1 decimal), the minimum 1-second frames per second, the GPU name reported by the WebGL renderer information, the browser name and version, the viewport, the quality setting, the shock value used, the number of Risen_Zombies, Standing_Zombies and Watchers shown at the start of the window, and the date in YYYY-MM-DD form.
+5. **Superseded (control-room direction, 2026-11-13):** replaced by Requirement 38 criterion 5 (only Risen_Zombies are counted). Former text: THE Measurement_Script entry in `DEVLOG.md` SHALL contain the average frames per second (rounded to 1 decimal), the minimum 1-second frames per second, the GPU name reported by the WebGL renderer information, the browser name and version, the viewport, the quality setting, the shock value used, the number of Risen_Zombies, Standing_Zombies and Watchers shown at the start of the window, and the date in YYYY-MM-DD form.
 6. THE average frames per second in that entry SHALL be at least 50.
 7. IF the average frames per second is below 50, THEN THE agent SHALL report the number, the GPU name and the cost of the largest contributors (Character_Models, Grass_Cards, Torn_Mounds, post-processing), and SHALL NOT mark the Horror_Pass complete.
 8. IF the machine is not an integrated-GPU laptop, THEN THE Measurement_Script entry SHALL state that fact (Base_Spec Requirement 21.7).
 9. THE agent SHALL report the measured numbers and the GPU name to the user, AND the final acceptance of the Horror_Pass SHALL be recorded only after the user gives a sign-off.
-10. **Superseded (control-room direction, 2026-11-13):** replaced by Requirement 38 criterion 7 (Batch names 1, 2, 2b, 3 and 4). Former text: WHEN each Batch is complete, THE Playwright run SHALL save lights-off screenshots at 1920 x 1080 pixels to `reference/progress/horror-batch<N>-<name>.png`, where `<N>` is 1, 2 or 3, and each Batch SHALL save at least the screenshots listed in Requirement 22.
+10. **Superseded (control-room direction, 2026-11-13):** replaced by Requirement 38 criterion 6 (Batch names 1, 2, 2b and 3). Former text: WHEN each Batch is complete, THE Playwright run SHALL save lights-off screenshots at 1920 x 1080 pixels to `reference/progress/horror-batch<N>-<name>.png`, where `<N>` is 1, 2 or 3, and each Batch SHALL save at least the screenshots listed in Requirement 22.
 11. THE screenshots SHALL be taken in lights off and SHALL NOT be committed under any path other than `reference/progress/`.
+12. THE Measurement_Script SHALL run at the end of Batch 3, before the Batch 3 STOP task, and THE Measurement_Script entry SHALL count only Risen_Zombies.
 
-### Requirement 22: Delivery in four batches (1, 2, 3a, 3b) and workflow rules
+### Requirement 22: Workflow rules (batch delivery is defined in Requirement 38)
+
+The batch split 1, 2, 3a, 3b is superseded; the active batch split is Requirement 38 (Batches 1, 2, 2b and 3). Criteria 3, 4 and 8 to 12 stay in force.
 
 **User Story:** As the project owner, I want the work delivered in reviewable batches with a stop after each, so that I can approve each step before the next one starts.
 
@@ -526,8 +532,8 @@ Replaced by Requirement 34 (the Opening and the Warning_Replay menu item) and Re
 3. WHEN a Batch is complete, THE agent SHALL stop, report what was done, the check results, the screenshots and the open decisions, and SHALL start the next Batch only after the user approves.
 4. THE Batch 1 deliverables SHALL include the two Growl files with their Manifest entries and `CREDITS.md` rows (Requirement 3 criteria 9 to 11 and 13), `reference/progress/horror-batch1-assets.png` (Requirement 2 criterion 4), the byte breakdown (Requirement 5 criterion 8) and the asset-auditor report.
 5. **Superseded (control-room direction, 2026-11-13):** replaced by Requirement 38 criterion 3 (Batch 2 is delivered; its screenshots stay valid). Former text: THE Batch 2 deliverables SHALL include at least `reference/progress/horror-batch2-ground-graves.png`, taken at the Plot_Camera_Pose of Plot 1 with the nearest mounds in the lower half, and `reference/progress/horror-batch2-stones.png`, showing tilted, rotated and at least one Fallen_Stone.
-6. **Superseded (control-room direction, 2026-11-13):** replaced by Requirement 38 criteria 4 to 6. Former text: THE Batch 3a deliverables SHALL include at least `reference/progress/horror-batch3a-rise.png` (a Risen_Zombie at the waist-high pose, lights off, with its Torn_Mound), the results of typecheck, lint, format and test, and the Batch 3a report. THE Batch 3b deliverables SHALL include at least `reference/progress/horror-batch3b-standing.png` (Standing_Zombies among stones), `reference/progress/horror-batch3b-watcher.png` (the Watcher in the far rows), `reference/progress/horror-batch3b-notice.png` (the Content_Notice), and the Measurement_Script numbers of Requirement 21. The Standing_Zombies belong to Batch 3b.
-7. **Superseded (control-room direction, 2026-11-13):** replaced by Requirement 38 criterion 9 (adds the Prototype as the OSD reference). Former text: WHEN files under `web/src/scenes/**` or `web/src/fx/**` change, THE agent SHALL name `reference/graveyard/horror-direction.png` and `reference/graveyard/horror-direction-sequence.png` as the matching references (and `reference/graveyard/graveyard-rate-shock-3pp.png` for unchanged parts), and SHALL offer a scene-critic review.
+6. **Superseded (control-room direction, 2026-11-13):** replaced by Requirement 38 criteria 4 and 5. Former text: THE Batch 3a deliverables SHALL include at least `reference/progress/horror-batch3a-rise.png` (a Risen_Zombie at the waist-high pose, lights off, with its Torn_Mound), the results of typecheck, lint, format and test, and the Batch 3a report. THE Batch 3b deliverables SHALL include at least `reference/progress/horror-batch3b-standing.png` (Standing_Zombies among stones), `reference/progress/horror-batch3b-watcher.png` (the Watcher in the far rows), `reference/progress/horror-batch3b-notice.png` (the Content_Notice), and the Measurement_Script numbers of Requirement 21. The Standing_Zombies belong to Batch 3b.
+7. **Superseded (control-room direction, 2026-11-13):** replaced by Requirement 38 criterion 7 (adds the Prototype and the Control_Room_Direction as references). Former text: WHEN files under `web/src/scenes/**` or `web/src/fx/**` change, THE agent SHALL name `reference/graveyard/horror-direction.png` and `reference/graveyard/horror-direction-sequence.png` as the matching references (and `reference/graveyard/graveyard-rate-shock-3pp.png` for unchanged parts), and SHALL offer a scene-critic review.
 8. BEFORE using an API of `three`, `@react-three/fiber`, `@react-three/drei`, `@react-three/postprocessing`, `three-custom-shader-material` or `@theatre/core`, THE agent SHALL look it up with the context7 MCP server.
 9. THE agent SHALL NOT edit `/pipeline`, `/data` generation code or `data-contract.md`.
 10. THE agent SHALL pin every new dependency to an exact version, and SHALL add no dependency without naming it in the Batch report.
@@ -545,7 +551,7 @@ Replaced by Requirement 34 (the Opening and the Warning_Replay menu item) and Re
 3. WHEN a Plot is framed at the criterion 1 pose with the pointer centred and no sway, THE bases of the nearest-row mounds SHALL project into the lower half of the viewport at 1440 x 900 and 390 x 844 pixels (Requirement 9 criterion 3, re-checked).
 4. WHILE Lights_Mode is "lights off" and a Plot is framed, THE Graveyard_Scene SHALL use FogExp2 with colour `#0a0d13` and density 0.075 (Plot_Fog).
 5. WHILE Lights_Mode is "lights off" and a Plot is framed, THE Graveyard_Scene SHALL set the scene background to the fog colour `#0a0d13`, so that no horizon is visible.
-6. WHEN a Camera_Switch cuts between the overview and a framed Plot, THE Graveyard_Scene SHALL switch between Overview_Fog and Plot_Fog on the cut frame of Requirement 31 criterion 5, so that the new fog is first visible when the Static_Cut clears. The Overview_Fog values of Base_Spec Requirement 7.14 stay unchanged.
+6. WHEN the existing Base_Spec camera move between the overview and a framed Plot ends, THE Graveyard_Scene SHALL show Plot_Fog for the framed Plot or Overview_Fog for the overview, with the fog interpolated during the move as in Base_Spec Requirement 7. The Overview_Fog values of Base_Spec Requirement 7.14 stay unchanged. The cut-based switch will be specified in the future control-room-experience spec.
 7. WHILE Lights_Mode is "lights off" and a Plot is framed, THE Graveyard_Scene SHALL use one hemisphere light with sky colour `#3a4a66`, ground colour `#0a0806` and intensity 0.18, and SHALL set the environment lighting intensity to 0.
 8. WHILE Lights_Mode is "lights off" and a Plot is framed, THE Graveyard_Scene SHALL use one shadow-casting directional moon light of colour `#7f9cd6` and intensity 1.1, placed at the offset (-4, 9, -22) m from the centre of the framed Plot, so that it lights the stones from behind and draws rim light on their edges.
 9. THE Flashlight SHALL be a shadow-casting spot light of colour `#ffe7c4`, intensity 55, distance 26, angle 0.36 rad, penumbra 0.95 and decay 2, attached at the camera-local offset of Base_Spec Requirement 10.2, in both Lights_Mode values; its base flicker SHALL multiply the intensity by 0.35 for one frame, starting on any frame with chance 0.006, subject to the Flash_Limiter.
@@ -581,7 +587,7 @@ Replaced by Requirement 34 (the Opening and the Warning_Replay menu item) and Re
 1. WHEN the user activates the Lights_Mode control by pointer, touch, Enter or Space, THE Shock_Slider value SHALL stay bit-for-bit equal to its value before the activation for at least 500 ms after the activation, no Settled_Shock SHALL be produced by that activation, and the Lights_Mode SHALL switch to the other mode as it did before the fix.
 2. WHEN the user drags the Shock_Slider thumb, or presses Arrow Left, Arrow Right, Arrow Up, Arrow Down, Home or End on the focused Shock_Slider, THE Shock_Slider SHALL keep changing its value as in Base_Spec Requirement 13.7 (preservation).
 3. THE design SHALL name the root cause of the observed jump to +0.25 pp in its bug analysis, and each fix task in the tasks document SHALL reference that root cause.
-4. THE HUD or OSD tests SHALL include, for each of pointer, Enter and Space activation, one test of criterion 1 that fails on the code before the fix and passes after it. Each of these tests SHALL start with the Shock_Slider at 0 pp and again at one value in (0, 5] pp other than 0.25 pp. THE tests SHALL also include one preservation test for criterion 2 that passes both before and after the fix.
+4. THE HUD tests SHALL include, for each of pointer, Enter and Space activation, one test of criterion 1 that fails on the code before the fix and passes after it. Each of these tests SHALL start with the Shock_Slider at 0 pp and again at one value in (0, 5] pp other than 0.25 pp. THE tests SHALL also include one preservation test for criterion 2 that passes both before and after the fix.
 
 ### Requirement 26: Retired characters, props and sounds (Batch 3)
 
@@ -597,7 +603,7 @@ Replaced by Requirement 34 (the Opening and the Warning_Replay menu item) and Re
 6. WHILE the Graveyard_Scene is active, THE Audio_Engine SHALL NOT load or play any sound whose Manifest title or `CREDITS.md` title names digging or a shovel.
 7. THE Graveyard_Scene SHALL NOT load, render or animate the Mutant, and the Mutant file SHALL be excluded from the Graveyard_Asset_Group (Requirement 5 criterion 13, step 1, approved by the user on 2026-11-13).
 8. THE Graveyard_Scene SHALL keep the Greenall_Corpse as a static prop under Base_Spec Requirement 9 criteria 6 to 8.
-9. THE Graveyard_Scene SHALL include none of these removed elements: deliberate frame-rate drops (frames skipped, delayed or throttled on purpose; Static_Cuts and Random_Glitches do not count), an approaching walker (any character whose root moves across the ground toward the camera), breathing (periodic chest or spine bone motion, or breath sounds), random lens attacks (a character or hand striking the camera lens at any time other than the Jump_Scare of Requirement 35), "motion detected" alerts (any OSD text that announces detected motion) and a case-file card (any panel in the graveyard that shows a Firm's filing details beyond the two Hover_Tag lines).
+9. THE Graveyard_Scene SHALL include none of these removed elements: deliberate frame-rate drops (frames skipped, delayed or throttled on purpose; Static_Cuts and Random_Glitches do not count), an approaching walker (any character whose root moves across the ground toward the camera), breathing (periodic chest or spine bone motion, or breath sounds), random lens attacks (a character or hand striking the camera lens at any time), "motion detected" alerts (any OSD text that announces detected motion) and a case-file card (any new panel in the graveyard that shows a Firm's filing details; the Base_Spec File_Card stays as it is until the future control-room-experience spec ships).
 10. THE Watcher_Model, the Crawler_Model, the Mutant and the Footstep_Bed files, their Manifest entries and their `CREDITS.md` rows SHALL stay in the repository.
 11. THE Asset_Pipeline bundle check SHALL count toward the Group_Budget only files that the Graveyard_Scene or the Audio_Engine requests in a graveyard session, and SHALL exclude the Watcher_Model, the Mutant and the Footstep_Bed from the Graveyard_Asset_Group even though the glossary includes the Character_Models in that group. The Crawler_Model is still used by Risen_Zombies and stays in the group.
 
@@ -633,12 +639,12 @@ The times below are measured from the start of the Stir (s = 0) and from the end
 
 #### Acceptance Criteria
 
-1. WHILE Shock_pp is 0, no Stir runs and no Jump_Scare runs, THE Graveyard_Scene SHALL move nothing on its own except the Flashlight following the pointer, the Lantern_Light flicker, the grain and the handheld sway, and THE Audio_Engine SHALL play the wind loop, the crows and the Rumble_Bed at gain 0.03.
-2. WHILE no Stir runs and no Jump_Scare runs, THE Audio_Engine SHALL set the Rumble_Bed's own gain to 0.03 + 0.07 x Shock_pp, with a smoothing time constant of 0.4 s; the master gain then scales this value. WHILE a Stir runs and no Jump_Scare runs, THE Audio_Engine SHALL set the Rumble_Bed's own gain to 0.25 + 0.5 x a, with a time constant of 0.1 s. Here a = (seconds since that Stir started) / 1.4, clamped to [0, 1], so the gain is at most 0.75. If more than one Stir runs at once, a is the largest of their values. WHILE a Jump_Scare runs, Requirement 35 sets the Rumble_Bed gain and this criterion does not apply.
+1. WHILE Shock_pp is 0 and no Stir runs, THE Graveyard_Scene SHALL move nothing on its own except the Flashlight following the pointer, the Lantern_Light flicker, the grain and the handheld sway, and THE Audio_Engine SHALL play the wind loop, the crows and the Rumble_Bed at gain 0.03.
+2. WHILE no Stir runs, THE Audio_Engine SHALL set the Rumble_Bed's own gain to 0.03 + 0.07 x Shock_pp, with a smoothing time constant of 0.4 s; the master gain then scales this value. WHILE a Stir runs, THE Audio_Engine SHALL set the Rumble_Bed's own gain to 0.25 + 0.5 x a, with a time constant of 0.1 s. Here a = (seconds since that Stir started) / 1.4, clamped to [0, 1], so the gain is at most 0.75. If more than one Stir runs at once, a is the largest of their values.
 3. WHILE Lights_Mode is "lights off" and Reduced_Motion is false, THE CCTV_Pass SHALL offer a Random_Glitch to the Flash_Limiter on a rendered frame with chance 0.002 + 0.0025 x Shock_pp. An accepted Random_Glitch lasts one rendered frame at strength 0.6.
 4. WHILE Lights_Mode is "lights off" and Reduced_Motion is false, THE Camera_Rig SHALL add the Camera_Jitter to the camera position on every rendered frame, with t equal to the frame time in seconds.
 5. WHILE Lights_Mode is "lights off" and Reduced_Motion is false, THE Flashlight SHALL offer a Flash_Dip to the Flash_Limiter on a rendered frame with chance 0.004 x Shock_pp. An accepted Flash_Dip multiplies the Flashlight intensity by 0.3 for that one rendered frame.
-6. THE Flash_Limiter SHALL accept a flash candidate at time t only if fewer than 3 flashes were accepted in the window (t − 1,000 ms, t], and SHALL drop (not queue) every other candidate. IF a Static_Cut or Jump_Scare flicker candidate and a Random_Glitch, Flash_Dip or Flashlight flicker candidate arrive on the same rendered frame and only one slot remains, THEN THE Flash_Limiter SHALL accept the Static_Cut or Jump_Scare flicker and drop the other. A Static_Cut that starts while another accepted Static_Cut is shown SHALL merge with it into one flash that ends at the later end, and the merged flash counts once.
+6. THE Flash_Limiter SHALL accept a flash candidate at time t only if fewer than 3 flashes were accepted in the window (t − 1,000 ms, t], and SHALL drop (not queue) every other candidate. IF a Static_Cut candidate and a Random_Glitch, Flash_Dip or Flashlight flicker candidate arrive on the same rendered frame and only one slot remains, THEN THE Flash_Limiter SHALL accept the Static_Cut and drop the other. A Static_Cut that starts while another accepted Static_Cut is shown SHALL merge with it into one flash that ends at the later end, and the merged flash counts once.
 7. THE Flash_Limiter SHALL be a pure function with fast-check properties of at least 100 cases each, over any sequence of candidate times and kinds: (a) any 1,000 ms window holds at most 3 accepted flashes, so that Base_Spec Requirement 17.6 holds; (b) every accepted flash starts at the time of one of its candidates; (c) the same-frame priority of criterion 6 holds.
 8. WHILE Lights_Mode is "lights on", THE Graveyard_Scene SHALL apply no Camera_Jitter, no Random_Glitch and no Flash_Dip. WHILE Reduced_Motion is true, THE Graveyard_Scene SHALL apply no Camera_Jitter, no Random_Glitch and no Flash_Dip. The Rumble_Bed of criterion 2 plays in both cases.
 9. WHEN the Shock_Slider value changes, THE Graveyard_Scene SHALL apply the new Shock_pp to criteria 2 to 5 from the next rendered frame on, without waiting for the Settled_Shock.
@@ -653,11 +659,13 @@ The times below are measured from the start of the Stir (s = 0) and from the end
 1. WHEN a rise-finished event occurs while Lights_Mode is "lights off", the Audio_Engine is not muted and the Growl_Limiter allows a start, THE Audio_Engine SHALL start exactly one Growl within 200 ms of the event. The Growl file SHALL be chosen with the Growl_Source. The playback rate SHALL be drawn uniformly from [0.85, 1.05]. The gain SHALL be min(1, 2.2 / d), applied before the master gain so that the master gain scales it. The pan SHALL be the zombie root's projected screen x (normalized device coordinates) clamped to [-1, 1]. Here d is the distance in metres from the camera to the zombie root, and both d and the pan are measured at the moment of the rise-finished event.
 2. THE Audio_Engine SHALL keep the Growl_Limiter, the Growl choice and Requirement 17 criteria 1, 2 and 4 to 8, 10 and 11.
 3. WHEN a Stir starts, THE Audio_Engine SHALL lower the wind gain to 0.1 with a time constant of 0.15 s. 3.5 s after the Stir start it SHALL begin raising the wind gain back to 0.35 with a time constant of 0.8 s. It SHALL start no crow sound during the 5 s after the Stir start. If another Stir starts before these 5 s have passed, the later Stir's start time SHALL replace the earlier one as the reference for all three timings.
-4. WHILE the Audio_Engine is muted, or its audio output has not started because the Interaction_Gate has not been passed or the browser is blocking playback, THE Graveyard_Scene SHALL run every visual step of Requirements 27, 28 and 35 with the same timings and outcomes as when sound plays.
+4. WHILE the Audio_Engine is muted, or its audio output has not started because the Interaction_Gate has not been passed or the browser is blocking playback, THE Graveyard_Scene SHALL run every visual step of Requirements 27 and 28 with the same timings and outcomes as when sound plays.
 5. THE Audio_Engine SHALL load the Rumble_Bed only from the Manifest entry `freesound-lennartgreen-low-rumble-loopable`, and only after the Interaction_Gate. IF the Rumble_Bed fails to load or decode, THEN THE Audio_Engine SHALL skip it and show the user no error, and every other sound SHALL keep playing.
 6. IF d is above 10 m at the moment of the rise-finished event, THEN THE Audio_Engine SHALL route that Growl through a low-pass filter with a cutoff of 2,000 Hz. IF d is 10 m or less, THEN THE Audio_Engine SHALL play the Growl unfiltered.
 
-### Requirement 30: OSD layout and style (Batch 4)
+### Requirement 30: OSD layout and style (Moved to the future control-room-experience spec, 2026-11-13)
+
+**Moved to the future control-room-experience spec (2026-11-13).** Not designed, not tasked and not delivered by this spec; kept here only as a draft for that spec.
 
 **User Story:** As a night guard, I want every control to look like part of the CCTV monitor, so that nothing feels like a web page floating over a game.
 
@@ -675,7 +683,9 @@ The times below are measured from the start of the Stir (s = 0) and from the end
 10. THE OSD SHALL keep one polite ARIA live region that announces, in words, each change of the Risen_Counter after a Settled_Shock ("{n} firms risen at +x.xx pp"), each Plot_Fall (naming the Plot number and sector), each Camera_Switch ("Camera nn, Plot n, {sector}", or "Camera 00, overview") and both lines of the Hover_Tag each time keyboard focus moves to a Headstone.
 11. THE OSD SHALL give every control an accessible name and a visible focus ring of at least 2 CSS pixels in `#e0342a` or `#e9e6da` with a contrast of at least 3:1 against the background directly behind the control.
 
-### Requirement 31: Camera switcher (Batch 4)
+### Requirement 31: Camera switcher (Moved to the future control-room-experience spec, 2026-11-13)
+
+**Moved to the future control-room-experience spec (2026-11-13).** Not designed, not tasked and not delivered by this spec; kept here only as a draft for that spec.
 
 **User Story:** As a night guard, I want to switch between cameras like on a real monitor, so that moving between plots feels like CCTV and not a game camera.
 
@@ -694,7 +704,9 @@ The times below are measured from the start of the Stir (s = 0) and from the end
 11. THE Camera_Switch key mapping SHALL be a pure function with example tests for every digit, for a missing Plot, for each modifier of criterion 3 and for each ignored focus target of criterion 3.
 12. IF a Camera_Switch is requested while another Camera_Switch is in progress, THEN THE Camera_Rig SHALL change the in-progress switch's destination to the newest request when its cut frame has not yet occurred, and otherwise SHALL start the new Camera_Switch when the current one ends, so that at most one Static_Cut is shown at a time.
 
-### Requirement 32: Rate console, controls hint and menu (Batch 4)
+### Requirement 32: Rate console, controls hint and menu (Moved to the future control-room-experience spec, 2026-11-13)
+
+**Moved to the future control-room-experience spec (2026-11-13).** Not designed, not tasked and not delivered by this spec; kept here only as a draft for that spec.
 
 **User Story:** As a night guard, I want a metal lever to raise rates and a red counter of the risen, so that I control the shock like a piece of equipment.
 
@@ -712,7 +724,9 @@ The times below are measured from the start of the Stir (s = 0) and from the end
 10. IF one or more loaded Firms are not shock-eligible, THEN THE Rate_Console SHALL show the line "{N} not shock-eligible" (Base_Spec Requirement 13.6) in the dim colour of Requirement 30 criterion 6, with {N} the count of those Firms. IF that count is 0, THEN THE Rate_Console SHALL not show the line.
 11. IF the loaded data is sample or fixture data, THEN THE OSD_Menu SHALL show the note "Look-dev sample · fictional firms" in the open menu. IF the loaded data is mock data, THEN THE OSD_Menu SHALL show "Mock data". IF the data is neither, THEN THE OSD_Menu SHALL show no note.
 
-### Requirement 33: Reading a firm with the hover tag (Batch 4)
+### Requirement 33: Reading a firm with the hover tag (Moved to the future control-room-experience spec, 2026-11-13)
+
+**Moved to the future control-room-experience spec (2026-11-13).** Not designed, not tasked and not delivered by this spec; kept here only as a draft for that spec.
 
 **User Story:** As a viewer, I want to sweep my flashlight over a grave and read the firm, its coverage and its status at once, so that every grave tells me its fact without a card in the way.
 
@@ -732,7 +746,9 @@ The times below are measured from the start of the Stir (s = 0) and from the end
 12. THE Firm_Lookup and the Status_Word mapping SHALL be pure functions, each tested with fast-check properties of at least 100 cases: every instance index of a generated layout maps to the Firm rendered at that index, and every Firm and shock in [0, 0.05] gives exactly one Status_Word that agrees with the Shock_Model and the order in criterion 5.
 13. THE Table_View SHALL keep showing every fiscal year of every Firm; THE Hover_Tag SHALL NOT replace or shorten the Table_View.
 
-### Requirement 34: Opening and content warning (Batch 4)
+### Requirement 34: Opening and content warning (Moved to the future control-room-experience spec, 2026-11-13)
+
+**Moved to the future control-room-experience spec (2026-11-13).** Not designed, not tasked and not delivered by this spec; kept here only as a draft for that spec.
 
 **User Story:** As a first-time visitor, I want a short typed intro and a clear warning before the feed connects, so that I know what I am watching and can choose to continue.
 
@@ -752,7 +768,9 @@ The times below are measured from the start of the Stir (s = 0) and from the end
 12. WHILE the Opening is shown, THE OSD SHALL keep focus inside the Opening (Tab and Shift+Tab cycle only within it) and keep the data footer line of Requirement 30 criterion 8 visible.
 13. THE Opening typing schedule SHALL be a pure function from the four line texts to character times and the button time, with example tests for criterion 4 and criterion 6.
 
-### Requirement 35: The plot falls: one jump scare (Batch 4)
+### Requirement 35: The plot falls: one jump scare (Cancelled in this spec, 2026-11-13)
+
+**Cancelled in this spec (2026-11-13).** The plot-fall jump scare is cancelled; the graveyard scare will happen during capture in the future spec. The text below is kept only as a draft for that spec.
 
 **User Story:** As a viewer, I want one hard scare when every firm I am watching has turned undead, so that pushing the rates too far has a release.
 
@@ -793,7 +811,9 @@ The times below are measured from the start of the Stir (s = 0) and from the end
 15. THE Graveyard_Scene SHALL advance the Jump_Scare timeline with the render-loop clock, by at most 0.25 s per frame. WHILE the document is hidden, THE Graveyard_Scene SHALL pause the timeline, and SHALL resume it from the same T when the document becomes visible.
 16. THE Framed_Set, the Plot_Fall and Fall_Armed rules and the Jump_Scare timeline SHALL be pure modules. They SHALL have example tests for criteria 2, 3, 8, 9, 10, 12 and 15, and a fast-check property of at least 100 cases: for any sequence of Settled_Shock values and Camera_Switches, no Plot raises a second Plot_Fall without a re-arming (criterion 3) in between.
 
-### Requirement 36: Jump-scare face and OSD font assets (Batch 4)
+### Requirement 36: Jump-scare face and OSD font assets (Moved to the future control-room-experience spec, 2026-11-13)
+
+**Moved to the future control-room-experience spec (2026-11-13).** Not designed, not tasked and not delivered by this spec; kept here only as a draft for that spec.
 
 **User Story:** As a maintainer, I want the new face image and the font listed and budgeted like every other asset, so that licensing and size stay correct.
 
@@ -808,7 +828,9 @@ The times below are measured from the start of the Stir (s = 0) and from the end
 7. WHEN the assets of this requirement are added, THE asset-auditor agent SHALL be run, and its report SHALL show no missing `CREDITS.md` row, no forbidden license and no missing attribution for the Jump_Scare_Face, the OSD_Font file and its license text.
 8. THE app SHALL make no network request to `fonts.googleapis.com` or `fonts.gstatic.com` in any page session, as checked in the browser network log from page load through the Opening, one Camera_Switch and one Jump_Scare.
 
-### Requirement 37: Steering exceptions for the graveyard (Batch 4)
+### Requirement 37: Steering exceptions for the graveyard (Moved to the future control-room-experience spec, 2026-11-13)
+
+**Moved to the future control-room-experience spec (2026-11-13).** Not designed, not tasked and not delivered by this spec; kept here only as a draft for that spec.
 
 **User Story:** As a maintainer, I want the steering files to allow the control-room look in the graveyard, so that reviews and agents do not flag it as a violation.
 
@@ -820,19 +842,18 @@ The times below are measured from the start of the Stir (s = 0) and from the end
 4. WHEN the steering changes of this requirement are compared with the previous commit of `.kiro/steering/design-system.md` and `.kiro/steering/product.md`, THE diff SHALL contain only added lines that belong to the new exception section or paragraph. No existing line, including the front-matter `inclusion` and `fileMatchPattern` lines, SHALL be removed or altered.
 5. THE graveyard exception in both files SHALL state that these rules still apply in the graveyard: no jump scares in lights on, no blood in lights on, and no more than 3 flashes per second.
 
-### Requirement 38: Delivery in Batches 1, 2, 2b, 3 and 4
+### Requirement 38: Delivery in Batches 1, 2, 2b and 3
 
 **User Story:** As the project owner, I want the remaining work delivered in reviewable batches with a stop after each, so that I can approve each step before the next one starts.
 
 #### Acceptance Criteria
 
-1. THE tasks of the Horror_Pass SHALL be split into five Batches: Batch 1 (assets and licensing, Requirements 1 to 5; done), Batch 2 (ground, graves, stones and camera, Requirements 6 to 9; done), Batch 2b (prototype look in lights off and the Lights toggle bug, Requirements 23 to 25), Batch 3 (zombies and unease, Requirements 10 to 12, 15, 16, 19 as far as they concern Risen_Zombies, and 26 to 29), and Batch 4 (control-room UI, plot fall and jump scare, assets and steering, Requirements 30 to 37, and the quality gates of Requirement 21).
-2. THE tasks file SHALL end each of Batches 2b, 3 and 4 with a task `STOP: wait for the user to review Batch <name> before continuing.`, and SHALL contain no task of the next Batch before that task; the existing Batch 1 and Batch 2 STOP tasks stay.
+1. THE tasks of the Horror_Pass SHALL be split into four Batches: Batch 1 (assets and licensing, Requirements 1 to 5; done), Batch 2 (ground, graves, stones and camera, Requirements 6 to 9; done), Batch 2b (prototype look in lights off, no glowing soil and the Lights toggle bug, Requirements 23 to 25, with the workflow rules of Requirements 20 to 22), and Batch 3 (zombies and unease, Requirements 26 to 29, the Risen_Zombie parts of Requirements 10, 11, 12, 15, 16 and 19, and the quality gates and fps measurement of Requirement 21).
+2. THE tasks file SHALL end each of Batches 2b and 3 with a task `STOP: wait for the user to review Batch <name> before continuing.`, and SHALL contain no task of the next Batch before that task; the existing Batch 1 and Batch 2 STOP tasks stay.
 3. THE Batch 2 deliverables `reference/progress/horror-batch2-ground-graves.png` and `reference/progress/horror-batch2-stones.png` SHALL stay as delivered.
-4. THE Batch 2b deliverables SHALL include `reference/progress/horror-batch2b-look.png` at 1920 x 1080 pixels in lights off at the Plot_Camera_Pose of Plot 1, compared in the Batch report with `reference/graveyard/horror-direction.png`.
-5. THE Batch 3 deliverables SHALL include `reference/progress/horror-batch3-stir.png` (a Closed_Mound during the Stir) and `reference/progress/horror-batch3-risen.png` (a Risen_Zombie at the waist-high pose staring at the lens, with its Torn_Mound), both in lights off at 1920 x 1080 pixels.
-6. THE Batch 4 deliverables SHALL include `reference/progress/horror-batch4-osd.png` (desktop, 1920 x 1080), `reference/progress/horror-batch4-phone.png` (390 x 844), `reference/progress/horror-batch4-jumpscare.png`, `reference/progress/horror-batch4-opening.png`, the asset-auditor report and the Measurement_Script numbers of Requirement 21, which run in Batch 4.
-7. WHEN each Batch is complete, THE Playwright run SHALL save the screenshots of criteria 4 to 6 to `reference/progress/horror-batch<N>-<name>.png` with `<N>` one of 1, 2, 2b, 3 or 4, in lights off; the phone screenshot is the only one at a size other than 1920 x 1080.
-8. THE Measurement_Script entry in `DEVLOG.md` SHALL contain the average frames per second (rounded to 1 decimal), the minimum 1-second frames per second, the GPU name reported by the WebGL renderer information, the browser name and version, the viewport, the quality setting, the shock value used, the number of Risen_Zombies shown at the start of the window, and the date in YYYY-MM-DD form.
-9. WHEN files under `web/src/scenes/**` or `web/src/fx/**` change, THE agent SHALL name `reference/graveyard/horror-direction.png` and `reference/graveyard/horror-direction-sequence.png` as the matching references, and the Prototype with `reference/graveyard/control-room-direction.md` for the OSD, and SHALL offer a scene-critic review.
-10. Requirement 22 criteria 3, 4 and 8 to 12 SHALL keep applying to every Batch.
+4. THE Batch 2b deliverables SHALL include `reference/progress/horror-batch2b-look.png` at 1920 x 1080 pixels in lights off at the Plot_Camera_Pose of Plot 1, compared in the Batch report with `reference/graveyard/horror-direction.png`, and the result of the full check of Requirement 21 criterion 1.
+5. THE Batch 3 deliverables SHALL include `reference/progress/horror-batch3-stir.png` (a Closed_Mound during the Stir), `reference/progress/horror-batch3-risen.png` (a Risen_Zombie at the waist-high pose staring at the lens, with its Torn_Mound), both in lights off at 1920 x 1080 pixels, the result of the full check of Requirement 21 criterion 1, and the Measurement_Script entry in `DEVLOG.md` with the average frames per second (rounded to 1 decimal), the minimum 1-second frames per second, the GPU name reported by the WebGL renderer information, the browser name and version, the viewport, the quality setting, the shock value used, the number of Risen_Zombies shown at the start of the window (only Risen_Zombies are counted) and the date in YYYY-MM-DD form.
+6. WHEN each Batch is complete, THE Playwright run SHALL save the screenshots of criteria 4 and 5 to `reference/progress/horror-batch<N>-<name>.png` with `<N>` one of 1, 2, 2b or 3, in lights off.
+7. WHEN files under `web/src/scenes/**` or `web/src/fx/**` change, THE agent SHALL name `reference/graveyard/horror-direction.png` and `reference/graveyard/horror-direction-sequence.png` as the matching references, and the Prototype with `reference/graveyard/control-room-direction.md` for the look values, and SHALL offer a scene-critic review.
+8. Requirement 22 criteria 3, 4 and 8 to 12 SHALL keep applying to every Batch.
+9. THE Horror_Pass SHALL NOT deliver Requirements 30 to 37 (OSD, camera switcher, rate console, hover tag, Opening, jump-scare face and font assets, steering exceptions) and SHALL NOT contain a Batch 4; these are delivered by the future control-room-experience spec. THE plot-fall jump scare of Requirement 35 is cancelled in this spec.
