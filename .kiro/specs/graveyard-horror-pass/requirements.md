@@ -59,8 +59,12 @@ Scope boundaries:
 - **Cone_Target**: The point the Flashlight aims at: on pointer devices, the pointer ray hit (Base_Spec Requirement 10.3); on touch devices, the ray hit of the most recent tap.
 - **Far_Spots**: Positions for the Watcher on the ground within the farthest two rows of the framed Plot (or, in the overview, of the Plot farthest from the camera), outside every Headstone footprint and every zombie footprint.
 - **Vanish_Glitch**: The CCTV_Pass tracking glitch of at most 0.4 s that plays when the Watcher vanishes.
-- **Growl**: The sound `freesound-indieground-pas-zombie-route` played when a Risen_Zombie finishes its Rise_Sequence.
+- **Growl**: One of the two CC0 sounds `freesound-tonsil5-zombie-growl-5` (https://freesound.org/people/tonsil5/sounds/555417/, source file `freesound-tonsil5-zombie-growl-5.wav`) and `freesound-ezcah-zombie-growl-01` (https://freesound.org/people/Ezcah/sounds/204821/, source file `freesound-ezcah-zombie-growl-01.flac`), played when a Risen_Zombie finishes its Rise_Sequence. Both source files are already in `tools/cache/manual`.
+- **Growl_Source**: The injectable random source (a function that returns a number in [0, 1)) that picks which of the two Growl files plays for one rise. Production code supplies a non-seeded source and tests supply a seeded one.
 - **Growl_Limiter**: The Audio_Engine rule that allows at most one Growl start per 1,000 ms.
+- **Footstep_Bed**: The quiet looping shambling-footsteps sound `freesound-indieground-pas-zombie-route`, played near Standing_Zombies. It is not a growl. It is already listed in the Manifest and in `CREDITS.md`.
+- **Nearby_Standing_Zombie**: A Standing_Zombie whose position is inside the framed Plot or inside the camera viewport at the current frame.
+- **Footstep_Distance**: The straight-line distance in metres from the camera to the nearest Nearby_Standing_Zombie.
 - **Content_Notice**: The dismissible one-line note with the text "Contains horror and gore".
 - **Notice_Link**: The footer control with the text "Contains horror and gore" that reopens the Content_Notice.
 - **Batch**: One of the three delivery groups in Requirement 22.
@@ -104,18 +108,20 @@ Scope boundaries:
 
 #### Acceptance Criteria
 
-1. THE Manifest SHALL contain one entry for each new glb and each Ground_Texture map, with the fields already used by existing entries (`pick`, `title`, `author`, `sourceUrl`, `license`, `changes`, `group`, `bytes`, `sha256`, `inputsSha256`, `recipe`).
+1. THE Manifest SHALL contain one entry for each new glb, each Ground_Texture map and each of the two Growl files, with the fields already used by existing entries (`pick`, `title`, `author`, `sourceUrl`, `license`, `changes`, `group`, `bytes`, `sha256`, `inputsSha256`, `recipe`).
 2. THE Manifest SHALL record the license "CC BY 4.0" for the four Character_Models, with these titles, authors and URLs: "Possessed undead" by giantSwing (`https://sketchfab.com/3d-models/possessed-undead-7394bdf26d664810b42b83153411cf74`), "Zombie" by pxltiger (`https://sketchfab.com/3d-models/zombie-73ef58af341e46afba1da53366ed79cf`), "Zombie Walk Test" by OSCAR CREATIVO (`https://sketchfab.com/3d-models/zombie-walk-test-165fd9342c364216bfdd8c2f1102223c`) and "Terrifying Hooded Horror Woman" by Purple.Point (`https://sketchfab.com/3d-models/terrifying-hooded-horror-woman-f59d17be392f4494a5b85d927df48ffd`).
-3. THE Manifest SHALL record the license "CC0" for the Ground_Texture maps.
+3. THE Manifest SHALL record the license "CC0" for the Ground_Texture maps and for the two Growl files.
 4. THE file `CREDITS.md` SHALL contain exactly one row in the format `| Path | Title | Author | Source URL | License | Changes we made |` for each new Manifest file, and no row for a file that does not exist in the repository.
 5. THE `CREDITS.md` row of the Crawler_Model SHALL state in the "Changes we made" cell that the rig uses Mixamo bone names, that the mesh and skeleton are kept, and that the Mixamo animation clip was removed.
 6. THE `CREDITS.md` rows of the Hero_Model and the Watcher_Model SHALL state that the embedded animation was removed, and the row of the Walker_Model SHALL state which four clips were kept.
-7. THE `CREDITS.md` row of each Character_Model SHALL record that the Sketchfab model page showed no AI-generated tag, with the date of the check in YYYY-MM-DD form.
-8. IF the model page of a Character_Model cannot be checked for an AI-generated tag, or shows one, THEN THE Asset_Pipeline SHALL NOT add that model to the Manifest, and THE agent SHALL report the pick name and stop Batch 1 for a user decision.
-9. THE file `tools/picks.json` SHALL contain one pick for each of the four Character_Models and one for the Ground_Texture, so that `tools/fetch-assets.mjs` reproduces the files from the cache.
-10. WHEN the manual-download README generator runs, THE file `tools/cache/manual/README.md` SHALL list the four Character_Models with expected file name, source page, credit line and notes, and its checklist count SHALL equal the number of listed downloads.
-11. THE Graveyard_Scene SHALL NOT add a `CREDITS.md` row or a Manifest entry for the Growl, because `freesound-indieground-pas-zombie-route` is already listed.
+7. THE `CREDITS.md` row of each of the four Character_Models SHALL state in the "Changes we made" cell: "no AI-generated tag on the Sketchfab model page, checked 2026-11-12". The user read the tags of all four model pages through the Sketchfab API on that date, and none has an AI-generated tag.
+8. IF a later re-check of a Character_Model page shows an AI-generated tag, THEN THE agent SHALL report the pick name and the finding in the next Batch report and SHALL NOT stop a Batch for it. Batch 1 SHALL NOT run an AI-tag check or stop for one.
+9. THE file `tools/picks.json` SHALL contain one pick for each of the four Character_Models, one for the Ground_Texture and one for each of the two Growl files (`freesound-tonsil5-zombie-growl-5` and `freesound-ezcah-zombie-growl-01`), each in the pick and recipe format already used for Freesound picks, so that `tools/fetch-assets.mjs` reproduces the files from the cache.
+10. WHEN the manual-download README generator runs, THE file `tools/cache/manual/README.md` SHALL list the four Character_Models and the two Growl files with expected file name, source page, credit line and notes, and its checklist count SHALL equal the number of listed downloads.
+11. THE `CREDITS.md` SHALL contain one row for each of the two Growl files, with the CC0 license, the source URLs `https://freesound.org/people/tonsil5/sounds/555417/` and `https://freesound.org/people/Ezcah/sounds/204821/`, and the author names of those Freesound pages.
 12. THE Credits_Dialog SHALL show the new `CREDITS.md` rows without code change, because it renders the full text of `CREDITS.md`.
+13. WHEN the Asset_Pipeline runs with the two Growl source files present under `tools/cache/manual`, THE Asset_Pipeline SHALL convert each file through the existing sound-conversion path into the one output format the Audio_Engine requests for the other Freesound sounds, SHALL write it under `web/public/assets` with its Manifest entry, and SHALL count both files in the sounds category of the Graveyard_Asset_Group (one file per sound).
+14. THE Graveyard_Scene SHALL NOT add a `CREDITS.md` row or a Manifest entry for the Footstep_Bed, because `freesound-indieground-pas-zombie-route` is already listed.
 
 ### Requirement 4: Update the asset licensing rule
 
@@ -123,7 +129,7 @@ Scope boundaries:
 
 #### Acceptance Criteria
 
-1. THE file `.kiro/steering/asset-licensing.md` SHALL state that a CC BY upload from Sketchfab is allowed WHEN its model page has no AI-generated tag.
+1. THE file `.kiro/steering/asset-licensing.md` SHALL state that a CC BY upload from Sketchfab is allowed WHEN its model page has no AI-generated tag, and that the four Character_Models were checked on 2026-11-12 with no such tag found.
 2. THE file `.kiro/steering/asset-licensing.md` SHALL state that Mixamo animation clips and other Mixamo-hosted files stay forbidden, and that a CC BY uploader's mesh and skeleton on a Mixamo-style rig are allowed.
 3. THE Forbidden list in `.kiro/steering/asset-licensing.md` SHALL keep every other existing entry unchanged.
 4. THE "Current sources" list in `.kiro/steering/asset-licensing.md` SHALL name the four Character_Models' Sketchfab CC BY uploads.
@@ -354,26 +360,37 @@ Scope boundaries:
 2. WHILE Lights_Mode is "lights on", THE Graveyard_Scene SHALL run the same Rise_Sequence timing and motion as in "lights off", including the Dirt_Burst.
 3. WHILE Lights_Mode is "lights on", THE Graveyard_Scene SHALL use the Walker_Model in place of the Hero_Model (Requirement 12 criterion 3).
 4. WHILE Lights_Mode is "lights on", THE Graveyard_Scene SHALL draw no blood decal on Headstones, Mounds or characters, as in Base_Spec Requirement 6.2.
-5. WHILE Lights_Mode is "lights on", THE Audio_Engine SHALL play no Growl.
+5. WHILE Lights_Mode is "lights on", THE Audio_Engine SHALL play no Growl, and SHALL keep playing the Footstep_Bed under the rules of Requirement 17 criteria 11 to 20.
 6. WHILE Lights_Mode is "lights on", THE Graveyard_Scene SHALL show no Watcher and SHALL start no Vanish_Glitch.
 7. THE Graveyard_Scene SHALL show the same Firm statuses, figures and labels in both Lights_Mode values (Base_Spec Requirement 17.3).
 
-### Requirement 17: Growl when a zombie finishes rising
+### Requirement 17: Growl when a zombie finishes rising, and footsteps near standing zombies
 
-**User Story:** As a viewer, I want a low growl when a zombie finishes hauling itself out, so that the scene sounds as unsettling as it looks.
+**User Story:** As a viewer, I want a low growl when a zombie finishes hauling itself out and a faint shuffle near the zombies that stand among the stones, so that the scene sounds as unsettling as it looks.
 
 #### Acceptance Criteria
 
-1. WHEN a rise-finished event occurs, Lights_Mode is "lights off" and the Audio_Engine is not muted, THE Audio_Engine SHALL start the Growl within 200 ms of the event.
+1. WHEN a rise-finished event occurs, Lights_Mode is "lights off" and the Audio_Engine is not muted, THE Audio_Engine SHALL start one Growl within 200 ms of the event, choosing one of the two Growl files with the Growl_Source once per rise.
 2. THE Growl_Limiter SHALL allow at most one Growl start in any window of 1,000 ms, and SHALL drop (not queue) every rise-finished event that arrives inside the window after a Growl start.
 3. THE Audio_Engine SHALL play the Growl at a gain no higher than 0.4 of full scale after the master gain, and SHALL stop it, with a fade-out, no later than 3 s after its start.
 4. WHILE Lights_Mode is "lights on", THE Audio_Engine SHALL play no Growl.
 5. WHILE the Interaction_Gate has not occurred, or the Audio_Engine is muted, THE Audio_Engine SHALL play no Growl and SHALL NOT replay or queue Growls triggered during that time (Base_Spec Requirements 16.1 and 16.8).
-6. THE Audio_Engine SHALL load the Growl only from the Manifest entry `freesound-indieground-pas-zombie-route`, and SHALL load it lazily at the first rise-finished event or the first Lights_Mode change to "lights off" after the Interaction_Gate, whichever is first.
-7. IF the Growl fails to load or decode, THEN THE Audio_Engine SHALL skip it, keep all other sounds working, and show no error to the user.
+6. THE Audio_Engine SHALL load the Growl only from the Manifest entries `freesound-tonsil5-zombie-growl-5` and `freesound-ezcah-zombie-growl-01`, and SHALL load them lazily at the first rise-finished event or the first Lights_Mode change to "lights off" after the Interaction_Gate, whichever is first.
+7. IF one Growl file fails to load or decode, THEN THE Audio_Engine SHALL play the other file for every Growl; IF both fail, THEN THE Audio_Engine SHALL skip the Growl, keep all other sounds working, and show no error to the user.
 8. WHILE Reduced_Motion is true, THE Audio_Engine SHALL play the Growl on the same rise-finished events and with the same limiter as in standard motion (Base_Spec Requirement 16.7).
 9. THE Audio_Engine SHALL keep playing the digging sound once per Risen_Zombie at the start of its Rise_Sequence, in place of once per Craggle_Hand (Base_Spec Requirement 16.4).
 10. THE Growl_Limiter SHALL be a pure function of the event times, with a fast-check property of at least 100 cases: for any sequence of event times the number of accepted Growls in any 1,000 ms window is at most 1, and the first event after a gap of at least 1,000 ms is accepted.
+11. THE Growl choice SHALL be a pure function of the value returned by the Growl_Source, with fast-check properties of at least 100 cases: the chosen file is always one of the two Growl files, the same Growl_Source value always gives the same file, and values below 0.5 and from 0.5 up select different files.
+12. WHILE a Nearby_Standing_Zombie exists, the Audio_Engine is not muted and the Interaction_Gate has occurred, THE Audio_Engine SHALL play the Footstep_Bed as a continuous loop, in "lights on" and in "lights off".
+13. THE Audio_Engine SHALL load the Footstep_Bed only from the Manifest entry `freesound-indieground-pas-zombie-route`, and SHALL load it lazily when the first Nearby_Standing_Zombie exists after the Interaction_Gate.
+14. WHEN the first Nearby_Standing_Zombie appears while the Footstep_Bed is stopped, THE Audio_Engine SHALL start the loop with a fade-in of 1 s.
+15. THE Audio_Engine SHALL set the Footstep_Bed gain after the master gain to 0.15 multiplied by an attenuation factor that is 1 at a Footstep_Distance of 2 m or less, falls linearly to 0 at 12 m, and is 0 beyond 12 m, so that the gain is never above 0.15.
+16. WHILE the Footstep_Bed plays, THE Audio_Engine SHALL update the gain of criterion 15 from the current Footstep_Distance at every rendered frame, with a smoothing time of at most 250 ms.
+17. WHEN no Nearby_Standing_Zombie exists, THE Audio_Engine SHALL fade the Footstep_Bed out over 1 s with a tolerance of 0.1 s and SHALL then stop the loop.
+18. WHILE the Interaction_Gate has not occurred, or the Audio_Engine is muted, THE Audio_Engine SHALL play no Footstep_Bed, and WHEN the Audio_Engine is unmuted while a Nearby_Standing_Zombie exists, THE Audio_Engine SHALL start the Footstep_Bed as in criterion 14.
+19. WHILE Reduced_Motion is true, THE Audio_Engine SHALL play the Footstep_Bed under criteria 12 to 18, because the sound follows the presence of a Standing_Zombie and not its animation.
+20. IF the Footstep_Bed fails to load or decode, THEN THE Audio_Engine SHALL skip it, keep all other sounds working, and show no error to the user.
+21. THE Footstep_Bed gain function (criterion 15) SHALL be a pure function of the Footstep_Distance, with a fast-check property of at least 100 cases: the gain is within [0, 0.15] for every distance, and a larger distance never gives a higher gain.
 
 ### Requirement 18: Content notice
 
@@ -421,7 +438,7 @@ Scope boundaries:
 5. THE Horror_Pass SHALL NOT change the store shape used by the Table_View and the HUD, except for the fields needed for the Content_Notice dismissal and the Settled_Shock value.
 6. THE Horror_Pass SHALL NOT change `data-contract.md`, the JSON Schemas, `/data`, `/pipeline` or the engine in `web/src/engine`.
 7. THE Horror_Pass SHALL keep the budgets of the Base_Spec: 400 KB gzip JS on the initial closure, 25 MB before the first frame, and the lab outside the initial closure.
-8. THE new pure modules (selection, standing placement, Far_Spots, Watcher schedule, Growl_Limiter, Bone_Animator, Stone_Jitter, camera pose) SHALL import neither React nor three.js.
+8. THE new pure modules (selection, standing placement, Far_Spots, Watcher schedule, Growl_Limiter, Growl choice, Footstep_Bed gain, Bone_Animator, Stone_Jitter, camera pose) SHALL import neither React nor three.js.
 
 ### Requirement 21: Quality gates and evidence
 
@@ -450,7 +467,7 @@ Scope boundaries:
 1. THE tasks of the Horror_Pass SHALL be split into three Batches: Batch 1 contains the assets and licensing (Requirements 1 to 5), Batch 2 contains the ground, graves, stones and camera (Requirements 6 to 9), and Batch 3 contains the zombies, the Watcher, the sound and the notice (Requirements 10 to 19).
 2. THE tasks file SHALL end each Batch with a line `STOP` that tells the agent to stop and wait for the user, and SHALL contain no task of the next Batch before that line.
 3. WHEN a Batch is complete, THE agent SHALL stop, report what was done, the check results, the screenshots and the open decisions, and SHALL start the next Batch only after the user approves.
-4. THE Batch 1 deliverables SHALL include `reference/progress/horror-batch1-assets.png` (Requirement 2 criterion 4), the byte breakdown (Requirement 5 criterion 8) and the asset-auditor report.
+4. THE Batch 1 deliverables SHALL include the two Growl files with their Manifest entries and `CREDITS.md` rows (Requirement 3 criteria 9 to 11 and 13), `reference/progress/horror-batch1-assets.png` (Requirement 2 criterion 4), the byte breakdown (Requirement 5 criterion 8) and the asset-auditor report.
 5. THE Batch 2 deliverables SHALL include at least `reference/progress/horror-batch2-ground-graves.png`, taken at the Plot_Camera_Pose of Plot 1 with the nearest mounds in the lower half, and `reference/progress/horror-batch2-stones.png`, showing tilted, rotated and at least one Fallen_Stone.
 6. THE Batch 3 deliverables SHALL include at least `reference/progress/horror-batch3-rise.png` (a Risen_Zombie at the waist-high pose), `reference/progress/horror-batch3-standing.png` (Standing_Zombies among stones), `reference/progress/horror-batch3-watcher.png` (the Watcher in the far rows), `reference/progress/horror-batch3-notice.png` (the Content_Notice), and the Measurement_Script numbers of Requirement 21.
 7. WHEN files under `web/src/scenes/**` or `web/src/fx/**` change, THE agent SHALL name `reference/graveyard/horror-direction.png` and `reference/graveyard/horror-direction-sequence.png` as the matching references (and `reference/graveyard/graveyard-rate-shock-3pp.png` for unchanged parts), and SHALL offer a scene-critic review.
