@@ -290,3 +290,15 @@
 2026-11-12 | graveyard-scene | 12.2 | Added 13-slot Decal engraving pool with canvas textures, pure pool selection and crack polyline. | r3f/Engravings.tsx, engravingPool.ts, engravingCanvas.ts, GraveyardScene.tsx
 2026-11-12 | graveyard-scene | 13.4 | Added SceneLights, Sky (1k to 2k HDRI), Ground, GroundFog and HUD notices region. | scenes/graveyard/r3f/*, GraveyardScene.tsx, GraveyardHud.tsx
 2026-11-12 | graveyard-scene | 13.5 | Added props.json, pure resolveProps and lazy Props (gate, statue, rubble, cobwebs, lantern). | graveyard/props.json, props.ts, r3f/Props.tsx, GraveyardScene.tsx
+2026-11-12 | graveyard-scene | 14.1 | Added pure camera math (plot pose, smoothing, overview, labels, flicker); sky gradient dome replaces HDRI background. | layout/camera.ts, r3f/Sky.tsx
+2026-11-12 | graveyard-scene | 15.1 | Added glitch scheduler and cctvParams; moved Debug bar to top centre. | fx/glitchScheduler.ts, fx/cctvParams.ts, ui/DebugBar.tsx
+2026-11-12 | graveyard-scene | 16.1 | Added pure planDressing for mounds and lights-off blood quads. | model/dressing.ts, dressing.test.ts
+2026-11-12 | graveyard-scene | 17.1 | Added hand budget pool (8 slots, one start per hand) and handPose. | model/handPool.ts, handPose.ts, handPool.test.ts
+2026-11-12 | graveyard-scene | 14.2 | Added CameraRig: 1.2 s plot moves, sway, reduced-motion cuts, fog state and pose refs. | r3f/CameraRig.tsx, r3f/cameraState.ts, GraveyardScene.tsx
+2026-11-12 | graveyard-scene | 16.3 | Added Mutant placement, corpse anchor and exact coneCovers test. | model/placement.ts, coneCovers.ts, placement.test.ts
+2026-11-12 | graveyard-scene | 14.3 | Added Flashlight spot light with flicker, pointer aim, additive cone and shared cone state. | r3f/Flashlight.tsx, flashlightState.ts, GraveyardScene.tsx
+2026-11-12 | graveyard-scene | 14.4 | Added PlotNav chips, Overview button, arrow keys and plot label in the REC line. | ui/graveyard/PlotNav.tsx, state/useLayout.ts, ui/Hud.tsx
+2026-11-12 | graveyard-scene | 15.2 | Added CctvPass post-processing chain and custom tracking glitch effect. | fx/TrackingGlitchEffect.ts, fx/CctvPass.tsx, GraveyardScene.tsx
+2026-11-12 | graveyard-scene | 16.2 | Added instanced Mounds and BloodDecals with runtime atlas and 0.35 s lights fade. | r3f/Mounds.tsx, BloodDecals.tsx, useVisibleStones.ts, GraveyardScene.tsx
+2026-11-12 | graveyard-scene | 16.4 | Added Creatures: Mutant visible only inside flashlight cone, half-buried corpse at nearest zombie stone. | r3f/Creatures.tsx, GraveyardScene.tsx
+2026-11-12 | graveyard-scene | 17.2 | Added riseEvents emitter and instanced Craggle Hands driven by the hand pool. | scenes/graveyard/riseEvents.ts, r3f/Hands.tsx, GraveyardScene.tsx

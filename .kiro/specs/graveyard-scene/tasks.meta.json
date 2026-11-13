@@ -566,6 +566,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502856754
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794508607854
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794508882978
       }
     ],
     "14.2 Implement `r3f/CameraRig.tsx`": [
@@ -573,6 +583,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502856852
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794508890922
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509108850
       }
     ],
     "14.3 Implement `r3f/Flashlight.tsx`": [
@@ -580,6 +600,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502856946
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509113872
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509307764
       }
     ],
     "14.4 Implement `ui/graveyard/PlotNav.tsx` and the REC label": [
@@ -587,6 +617,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502857048
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509114416
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509308984
       }
     ],
     "15.1 Implement `fx/glitchScheduler.ts` and `fx/cctvParams.ts`": [
@@ -594,6 +634,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502857157
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794508608142
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794508883198
       }
     ],
     "15.2 Implement `fx/TrackingGlitchEffect.ts` and `fx/CctvPass.tsx`": [
@@ -601,6 +651,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502857254
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509313733
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509519381
       }
     ],
     "16.1 Implement `model/dressing.ts`": [
@@ -608,6 +668,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502857365
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794508608331
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794508884191
       }
     ],
     "16.2 Implement `r3f/Mounds.tsx` and `r3f/BloodDecals.tsx`": [
@@ -615,6 +685,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502857472
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509523000
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509802286
       }
     ],
     "16.3 Implement `model/placement.ts` and `model/coneCovers.ts`": [
@@ -622,6 +702,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502857582
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794508892122
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509109137
       }
     ],
     "16.4 Implement `r3f/Creatures.tsx`": [
@@ -629,6 +719,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502857686
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509805869
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509987840
       }
     ],
     "17.1 Implement `model/handPool.ts` and `model/handPose.ts`": [
@@ -636,6 +736,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502857801
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794508608580
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794508885170
       }
     ],
     "17.2 Implement `scenes/graveyard/riseEvents.ts` and `r3f/Hands.tsx`": [
@@ -643,6 +753,16 @@
         "executionId": "968bb361-9a8c-4bd6-97b0-4585a6449801",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794502857908
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509991233
+      },
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794510191440
       }
     ],
     "18.1 Implement `web/src/audio/scheduler.ts`": [
@@ -828,6 +948,34 @@
         "executionId": "d9274682-a96b-4efc-b4de-535b984e2e3d",
         "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
         "timestamp": 1794508001869
+      }
+    ],
+    "14. Camera rig, flashlight and plot navigation": [
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509309098
+      }
+    ],
+    "15. CCTV post-processing": [
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509519530
+      }
+    ],
+    "16. Dressing plan, mounds, blood decals, Mutant and corpse": [
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794509987991
+      }
+    ],
+    "17. Craggle hands and the hand budget": [
+      {
+        "executionId": "97bc9377-1534-4f8d-9497-0bf6d46b03fb",
+        "chatSessionId": "sess_8ba6aaf7-a399-40ba-a06a-8d9f917f00e2",
+        "timestamp": 1794510191612
       }
     ]
   }

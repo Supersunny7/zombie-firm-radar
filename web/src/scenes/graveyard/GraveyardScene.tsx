@@ -7,6 +7,7 @@ import { GraveyardHud } from '../../ui/graveyard/GraveyardHud';
 import { hasWebGL } from '../webgl';
 import { computeLayout } from './layout/layout';
 import { CAMERA_FAR } from './model/sceneParams';
+import { CAMERA_FOV, CAMERA_NEAR, CameraRig } from './r3f/CameraRig';
 import { ModelBoundary } from './r3f/ModelBoundary';
 import { PointerInput } from './r3f/PointerInput';
 
@@ -20,6 +21,15 @@ const Ground = lazy(() => import('./r3f/Ground').then((m) => ({ default: m.Groun
 const GroundFog = lazy(() => import('./r3f/GroundFog').then((m) => ({ default: m.GroundFog })));
 const Engravings = lazy(() => import('./r3f/Engravings').then((m) => ({ default: m.Engravings })));
 
+const Mounds = lazy(() => import('./r3f/Mounds').then((m) => ({ default: m.Mounds })));
+const BloodDecals = lazy(() =>
+  import('./r3f/BloodDecals').then((m) => ({ default: m.BloodDecals })),
+);
+
+const CctvPass = lazy(() => import('../../fx/CctvPass').then((m) => ({ default: m.CctvPass })));
+const Flashlight = lazy(() => import('./r3f/Flashlight').then((m) => ({ default: m.Flashlight })));
+const Creatures = lazy(() => import('./r3f/Creatures').then((m) => ({ default: m.Creatures })));
+const Hands = lazy(() => import('./r3f/Hands').then((m) => ({ default: m.Hands })));
 const Props = lazy(() => import('./r3f/Props').then((m) => ({ default: m.Props })));
 
 export { ModelBoundary };
@@ -48,14 +58,21 @@ export function SceneContent() {
   const layout = useMemo(() => computeLayout(firms ?? []), [firms]);
   return (
     <>
+      <CameraRig layout={layout} />
       <SceneLights />
       <Sky />
       <Ground />
       <GroundFog />
       <Stones layout={layout} />
+      <Mounds layout={layout} />
+      <BloodDecals layout={layout} />
+      <Hands layout={layout} />
       <Engravings layout={layout} />
       <Props layout={layout} />
+      <Creatures layout={layout} />
+      <Flashlight layout={layout} />
       <PointerInput layout={layout} />
+      <CctvPass />
     </>
   );
 }
@@ -88,7 +105,7 @@ export default function GraveyardScene() {
           shadows={!lowQuality}
           dpr={lowQuality ? 1 : [1, 1.5]}
           gl={{ antialias: !lowQuality, powerPreference: 'high-performance' }}
-          camera={{ fov: 50, near: 0.1, far: CAMERA_FAR, position: [0, 6, 20] }}
+          camera={{ fov: CAMERA_FOV, near: CAMERA_NEAR, far: CAMERA_FAR, position: [0, 2.15, 9.4] }}
           style={{ background: STAGE_BACKGROUND }}
           aria-hidden="true"
           onCreated={onCreated}

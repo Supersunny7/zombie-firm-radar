@@ -49,6 +49,26 @@ describe('Hud', () => {
     expect(screen.getByText(/REC/)).toBeInTheDocument();
   });
 
+  it('shows the plot label and the overview label next to REC', () => {
+    const firms = [
+      { cik: '0000000001', sector: 'Retail Trade', status: 'healthy', total_debt_usd: 1e8 },
+      { cik: '0000000002', sector: 'Manufacturing', status: 'healthy', total_debt_usd: 1e8 },
+    ];
+    useStore.setState({ data: { index: { firms }, source: 'real' } as never, framedPlot: 1 });
+    render(<Hud />);
+    expect(screen.getByTestId('cam-label')).toHaveTextContent(
+      '\u2014 PLOT 2 \u2014 RETAIL TRADE \u00b7 1 GRAVES',
+    );
+    act(() => useStore.getState().setFramedPlot('overview'));
+    expect(screen.getByTestId('cam-label')).toHaveTextContent('OVERVIEW \u00b7 2 PLOTS');
+    useStore.setState({ framedPlot: 0 });
+  });
+
+  it('shows no plot label without firms', () => {
+    render(<Hud />);
+    expect(screen.queryByTestId('cam-label')).not.toBeInTheDocument();
+  });
+
   it.each(['graveyard', 'capture', 'lab', 'outcome'] as const)(
     'shows the footer in the %s state',
     (state) => {

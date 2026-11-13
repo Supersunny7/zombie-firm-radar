@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react';
+import { overviewLabel, plotLabel } from '../scenes/graveyard/layout/camera';
 import { useStore } from '../state/store';
+import { useLayout } from '../state/useLayout';
 import { Clock } from './Clock';
 import { LightsButton } from './controls/LightsButton';
 import { SoundButton } from './controls/SoundButton';
@@ -20,6 +22,14 @@ export const FOOTER_TEXT = 'Data: SEC EDGAR. Not investment advice.';
 export function Hud({ children }: { children?: ReactNode }) {
   const source = useStore((s) => s.data?.source ?? null);
   const toggleOverlay = useStore((s) => s.toggleOverlay);
+  const { plots } = useLayout();
+  const framedPlot = useStore((s) => s.framedPlot);
+  const camLabel =
+    plots.length === 0
+      ? ''
+      : framedPlot === 'overview'
+        ? overviewLabel(plots.length)
+        : plotLabel(plots, framedPlot);
   const dataLabel =
     source === 'mock'
       ? 'Mock data'
@@ -35,6 +45,11 @@ export function Hud({ children }: { children?: ReactNode }) {
         <div className={`${panel} flex items-center gap-3 px-3 py-2`}>
           <span aria-hidden="true" className="inline-block size-2.5 rounded-full bg-rec" />
           <span className="font-mono text-sm">REC · CAM 03</span>
+          {camLabel && (
+            <span data-testid="cam-label" className="font-mono text-sm">
+              {`\u2014 ${camLabel}`}
+            </span>
+          )}
           <Clock />
         </div>
       </header>

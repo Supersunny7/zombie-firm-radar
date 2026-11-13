@@ -426,23 +426,23 @@ What to check:
 
 ### Batch 5: Camera, flashlight, CCTV, mounds, blood, creatures, hands
 
-- [ ] 14. Camera rig, flashlight and plot navigation
-  - [~] 14.1 Implement `layout/camera.ts`
+- [x] 14. Camera rig, flashlight and plot navigation
+  - [x] 14.1 Implement `layout/camera.ts`
     - Pure: plot pose `(centerX, 2.15, frontZ + 6.4)`, `smooth` with lambda 4, `swayAmplitude`, `overviewPose(bounds, fov, aspect)`, `nextPlot` (clamped), `plotLabel`/`overviewLabel`, `flickerFactor(t)`.
     - _Requirements: 10.5, 10.7, 10.8, 10.9, 10.10, 11.3, 11.4, 11.5, 11.6, 11.7_
     - _Design: Sections 10, 11_
 
-  - [~] 14.2 Implement `r3f/CameraRig.tsx`
+  - [x] 14.2 Implement `r3f/CameraRig.tsx`
     - Look up `useFrame` and camera APIs with context7 first. FOV 52, near 0.1, far 360, 1.2 s plot moves, instant cuts under Reduced_Motion, sway, `CameraFogState` and `atRest` published through a mutable ref, target state to the store only on change, focus pan.
     - _Requirements: 10.7, 10.8, 10.9, 10.10, 11.1, 11.8, 11.9, 11.10_
     - _Design: Section 10_
 
-  - [~] 14.3 Implement `r3f/Flashlight.tsx`
+  - [x] 14.3 Implement `r3f/Flashlight.tsx`
     - Look up `SpotLight`, `ConeGeometry` shadow settings with context7 first. Parameters per 10.1, offset `(0.28, -0.32, 0.1)`, aim from ray hit with last-valid-target fallback `(0, 0.2, -2)`, flicker via `flickerFactor`, additive cone at opacity 0.11, same parameters in lights on.
     - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.11_
     - _Design: Section 10_
 
-  - [~] 14.4 Implement `ui/graveyard/PlotNav.tsx` and the REC label
+  - [x] 14.4 Implement `ui/graveyard/PlotNav.tsx` and the REC label
     - Sector chips, "← Overview", arrow keys when no stone has focus, label "PLOT {n} — {SECTOR} · {count} GRAVES" or "OVERVIEW · {plotCount} PLOTS" in `Hud.tsx` next to "REC · CAM 03" and the 1 s clock.
     - _Requirements: 11.2, 11.3, 11.4, 11.5, 11.6, 11.7_
     - _Design: Section 12 (panels)_
@@ -472,13 +472,13 @@ What to check:
     - **Property 28: Plot labels**
     - **Validates: Requirements 11.6, 11.7**
 
-- [ ] 15. CCTV post-processing
-  - [~] 15.1 Implement `fx/glitchScheduler.ts` and `fx/cctvParams.ts`
+- [x] 15. CCTV post-processing
+  - [x] 15.1 Implement `fx/glitchScheduler.ts` and `fx/cctvParams.ts`
     - Scheduler per design (first glitch 20 to 60 s after enabling, at most 0.4 s, reset to 0 on disable); `cctvParams(lights, lowQuality)` with grain, desaturation, vignette, chromatic aberration 0.0022, bloom (0.55, 0.6, 0.82), scanline opacity at most 0.15.
     - _Requirements: 15.1, 15.2, 15.3, 15.4, 15.5, 15.6, 15.7, 15.9_
     - _Design: Section 11_
 
-  - [~] 15.2 Implement `fx/TrackingGlitchEffect.ts` and `fx/CctvPass.tsx`
+  - [x] 15.2 Implement `fx/TrackingGlitchEffect.ts` and `fx/CctvPass.tsx`
     - Look up `EffectComposer`, `Bloom`, `ChromaticAberration`, `HueSaturation`, `ToneMapping`, `Vignette`, `Noise`, `Scanline` and the custom `Effect` API (`postprocessing`) with context7 first. Effects in the design order, canvas-only (HUD text untouched), low quality drops bloom and aberration only.
     - _Requirements: 15.1, 15.2, 15.3, 15.4, 15.5, 15.6, 15.7, 15.8, 15.9, 17.4_
     - _Design: Section 11_
@@ -488,23 +488,23 @@ What to check:
     - **Property 35: CCTV values and glitch scheduling**
     - **Validates: Requirements 15.1, 15.2, 15.3, 15.4, 15.5, 15.6, 15.7, 15.9**
 
-- [ ] 16. Dressing plan, mounds, blood decals, Mutant and corpse
-  - [~] 16.1 Implement `model/dressing.ts`
+- [x] 16. Dressing plan, mounds, blood decals, Mutant and corpse
+  - [x] 16.1 Implement `model/dressing.ts`
     - `planDressing(firms, batch, lights)`: mounds equal the zombie or newly undead set, 1 to 5 blood quads per undead stone in lights off only, none otherwise.
     - _Requirements: 6.1, 6.2, 6.4, 7.10, 14.1_
     - _Design: Section 6_
 
-  - [~] 16.2 Implement `r3f/Mounds.tsx` and `r3f/BloodDecals.tsx`
+  - [x] 16.2 Implement `r3f/Mounds.tsx` and `r3f/BloodDecals.tsx`
     - Look up `InstancedMesh`, instanced attributes and `polygonOffset` usage with context7 first. One mound InstancedMesh (half-ellipsoid, soil PBR), one blood quad InstancedMesh with a runtime atlas of the 7 existing decal images, 0.35 s fade on lights change, quads removed within 1 s on lights on or when a firm stops being undead.
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 7.10, 14.1_
     - _Design: Sections 6, 9 (mounds)_
 
-  - [~] 16.3 Implement `model/placement.ts` and `model/coneCovers.ts`
+  - [x] 16.3 Implement `model/placement.ts` and `model/coneCovers.ts`
     - Mutant position (at least 20 units behind the last row), corpse anchor (nearest zombie stone to `(0, 2.15, 9.4)`, ties lower index, none when no zombie), `coneCovers(origin, dir, halfAngle, range, sphere)`.
     - _Requirements: 9.1, 9.3, 9.4, 9.6, 9.7_
     - _Design: Section 8 (Mutant and corpse)_
 
-  - [~] 16.4 Implement `r3f/Creatures.tsx`
+  - [x] 16.4 Implement `r3f/Creatures.tsx`
     - Look up `useGLTF` and visibility handling with context7 first. Mutant `visible` set each frame from `coneCovers` (both lights modes, no audio call), corpse half-buried at 50% plus or minus 10%, omitted without a zombie, no blood layer in lights on, omit on load failure.
     - _Requirements: 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8_
     - _Design: Section 8_
@@ -524,13 +524,13 @@ What to check:
     - **Property 23: Corpse goes to the nearest zombie stone**
     - **Validates: Requirements 9.6, 9.7**
 
-- [ ] 17. Craggle hands and the hand budget
-  - [~] 17.1 Implement `model/handPool.ts` and `model/handPose.ts`
+- [x] 17. Craggle hands and the hand budget
+  - [x] 17.1 Implement `model/handPool.ts` and `model/handPose.ts`
     - `HAND_BUDGET = 8`, `assignHands` (distance ascending then CIK string order), `stepHandPool` (8 slots, rising/up/lowering, `started` list, reduced motion enters `up` directly), `handPose(progress)`. Orientation derives from `HAND_WRIST_END` as confirmed in batch 1.
     - _Requirements: 14.3, 14.4, 14.5, 14.6, 14.7, 14.8_
     - _Design: Section 9 (hand budget, pose)_
 
-  - [~] 17.2 Implement `scenes/graveyard/riseEvents.ts` and `r3f/Hands.tsx`
+  - [x] 17.2 Implement `scenes/graveyard/riseEvents.ts` and `r3f/Hands.tsx`
     - Typed emitter (no replay); one InstancedMesh with 8 slots, wrist pivot from the geometry, reassign on camera rest within 1 s, emit exactly one event per hand start, no hand and no events when the model fails to load (mounds and Broken stones remain).
     - _Requirements: 14.2, 14.3, 14.4, 14.6, 14.7, 14.8, 14.9, 14.10_
     - _Design: Section 9_

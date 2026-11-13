@@ -55,7 +55,7 @@ export default function DebugBar() {
   return (
     <section
       aria-label="Debug bar"
-      className="pointer-events-auto fixed inset-x-0 bottom-14 z-50 mx-3 flex flex-wrap items-center gap-3 rounded-panel border border-panel-border bg-panel px-3 py-2 font-ui text-sm text-text"
+      className="pointer-events-auto z-50 m-3 flex flex-wrap items-center gap-x-3 gap-y-1 rounded-panel border border-panel-border bg-panel px-3 py-1.5 font-ui text-xs text-text min-[901px]:fixed min-[901px]:top-3 min-[901px]:left-1/2 min-[901px]:m-0 min-[901px]:w-max min-[901px]:max-w-[40vw] min-[901px]:-translate-x-1/2 max-[900px]:relative"
     >
       <span className="font-mono text-text-2">Debug</span>
 

@@ -2,6 +2,7 @@ import type { Loader } from '../../data/loader';
 import { useStore } from '../../state/store';
 import { FileCard } from './FileCard';
 import { LiveRegion } from './LiveRegion';
+import { PlotNav } from './PlotNav';
 import { ShockPanel } from './ShockPanel';
 
 /** Non-blocking asset notices (for example a failed environment asset). Renders nothing when empty. */
@@ -34,6 +35,7 @@ export interface GraveyardHudProps {
 export function GraveyardHud({ loader }: GraveyardHudProps) {
   return (
     <div className="pointer-events-none flex flex-col items-start gap-3 p-3 min-[900px]:absolute min-[900px]:bottom-0 min-[900px]:left-0">
+      <PlotNav />
       <ShockPanel />
       <FileCard loader={loader} />
       <Notices />
