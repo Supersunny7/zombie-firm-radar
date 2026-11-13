@@ -54,6 +54,7 @@ function makeLoader(
 }
 
 function resetStore(): void {
+  window.history.replaceState(null, '', '/?debug=1');
   window.localStorage.clear();
   useStore.setState({
     machine: initialMachine(),
@@ -98,7 +99,7 @@ describe('App startup', () => {
   ] as const)('renders the graveyard from the %s source', async (kind, mockLabel) => {
     const { loader } = makeLoader(kind);
     render(<App loader={loader} />);
-    expect(await screen.findByText('Graveyard scene placeholder')).toBeInTheDocument();
+    expect(await screen.findByRole('navigation', { name: 'Plots' })).toBeInTheDocument();
     expect(useStore.getState().data?.source).toBe(kind);
     expect(screen.queryByText('Loading feed…')).not.toBeInTheDocument();
     expect(screen.getAllByTestId('canvas')).toHaveLength(1);
@@ -121,12 +122,12 @@ describe('App error handling', () => {
 
     expect(await screen.findByRole('alert')).toBeInTheDocument();
     expect(screen.queryByTestId('canvas')).not.toBeInTheDocument();
-    expect(screen.queryByText(/scene placeholder/)).not.toBeInTheDocument();
+    expect(screen.queryByRole('navigation', { name: 'Plots' })).not.toBeInTheDocument();
     expect(footer()).toBeInTheDocument();
 
     healthy = true;
     await user.click(screen.getByRole('button', { name: 'Retry' }));
-    expect(await screen.findByText('Graveyard scene placeholder')).toBeInTheDocument();
+    expect(await screen.findByRole('navigation', { name: 'Plots' })).toBeInTheDocument();
     expect(screen.queryByRole('alert')).not.toBeInTheDocument();
     expect(footer()).toBeInTheDocument();
   });
@@ -149,18 +150,18 @@ describe('App game flow via the Debug bar', () => {
     const click = (name: string) => user.click(within(bar).getByRole('button', { name }));
     const state = () => useStore.getState().machine.state;
 
-    expect(await screen.findByText('Graveyard scene placeholder')).toBeInTheDocument();
+    expect(await screen.findByRole('navigation', { name: 'Plots' })).toBeInTheDocument();
     expect(useStore.getState().firm).toBeNull();
 
     await click('Capture');
     expect(state()).toBe('capture');
-    expect(await screen.findByText('Graveyard scene placeholder')).toBeInTheDocument();
+    expect(await screen.findByRole('navigation', { name: 'Plots' })).toBeInTheDocument();
     expect(footer()).toBeInTheDocument();
 
     await click('Lab');
     expect(state()).toBe('lab');
     expect(await screen.findByText('Lab scene placeholder')).toBeInTheDocument();
-    expect(screen.queryByText('Graveyard scene placeholder')).not.toBeInTheDocument();
+    expect(screen.queryByRole('navigation', { name: 'Plots' })).not.toBeInTheDocument();
     await waitFor(() => expect(useStore.getState().firm?.cik).toBe(FIRST));
     expect(fetchMock).toHaveBeenCalledWith(`/data/mock/firms/${FIRST}.json`);
     expect(footer()).toBeInTheDocument();
@@ -172,7 +173,7 @@ describe('App game flow via the Debug bar', () => {
 
     await click('Graveyard');
     expect(state()).toBe('graveyard');
-    expect(await screen.findByText('Graveyard scene placeholder')).toBeInTheDocument();
+    expect(await screen.findByRole('navigation', { name: 'Plots' })).toBeInTheDocument();
     expect(screen.queryByText('Lab scene placeholder')).not.toBeInTheDocument();
     await waitFor(() => expect(useStore.getState().firm).toBeNull());
     expect(footer()).toBeInTheDocument();
@@ -182,7 +183,7 @@ describe('App game flow via the Debug bar', () => {
     useStore.setState({ debugBar: false });
     const { loader } = makeLoader('real');
     render(<App loader={loader} />);
-    await screen.findByText('Graveyard scene placeholder');
+    await screen.findByRole('navigation', { name: 'Plots' });
     expect(screen.queryByRole('region', { name: 'Debug bar' })).not.toBeInTheDocument();
     expect(footer()).toBeInTheDocument();
   });
@@ -193,7 +194,7 @@ describe('App accessibility', () => {
     const { loader } = makeLoader('mock');
     const { container } = render(<App loader={loader} />);
     await screen.findByRole('region', { name: 'Debug bar' });
-    await screen.findByText('Graveyard scene placeholder');
+    await screen.findByRole('navigation', { name: 'Plots' });
     expect((await axe(container)).violations).toEqual([]);
   });
 

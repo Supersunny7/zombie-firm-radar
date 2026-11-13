@@ -49,7 +49,7 @@ describe('SceneHost', () => {
     const { SceneHost } = await setup();
     render(<SceneHost />);
     expect(screen.getByText('Loading feed…')).toBeInTheDocument();
-    expect(await screen.findByText('Graveyard scene placeholder')).toBeInTheDocument();
+    expect(await screen.findByTestId('graveyard-notices')).toBeInTheDocument();
     expect(screen.getAllByTestId('canvas')).toHaveLength(1);
     expect(screen.queryByText('Loading feed…')).not.toBeInTheDocument();
   });
@@ -57,17 +57,17 @@ describe('SceneHost', () => {
   it('selects the scene per state with exactly one canvas', async () => {
     const { SceneHost, useStore } = await setup();
     render(<SceneHost />);
-    await screen.findByText('Graveyard scene placeholder');
+    await screen.findByTestId('graveyard-notices');
 
     act(() => void useStore.getState().selectFirm(CIK));
     expect(useStore.getState().machine.state).toBe('capture');
-    expect(await screen.findByText('Graveyard scene placeholder')).toBeInTheDocument();
+    expect(await screen.findByTestId('graveyard-notices')).toBeInTheDocument();
     expect(screen.getAllByTestId('canvas')).toHaveLength(1);
 
     act(() => void useStore.getState().send({ type: 'captureDone' }));
     expect(useStore.getState().machine.state).toBe('lab');
     expect(await screen.findByText('Lab scene placeholder')).toBeInTheDocument();
-    expect(screen.queryByText('Graveyard scene placeholder')).not.toBeInTheDocument();
+    expect(screen.queryByTestId('graveyard-notices')).not.toBeInTheDocument();
     expect(screen.getAllByTestId('canvas')).toHaveLength(1);
 
     act(
@@ -81,7 +81,7 @@ describe('SceneHost', () => {
   it('preloads the lab chunk only after the first capture, never at start', async () => {
     const { SceneHost, useStore } = await setup();
     render(<SceneHost />);
-    await screen.findByText('Graveyard scene placeholder');
+    await screen.findByTestId('graveyard-notices');
     expect(h.labLoads).toBe(0);
 
     act(() => void useStore.getState().selectFirm(CIK));
@@ -95,7 +95,7 @@ describe('SceneHost', () => {
     const { SceneHost, useStore } = await setup();
     h.labFail = true;
     render(<SceneHost />);
-    await screen.findByText('Graveyard scene placeholder');
+    await screen.findByTestId('graveyard-notices');
 
     act(() => void useStore.getState().selectFirm(CIK));
     act(() => void useStore.getState().send({ type: 'captureDone' }));
@@ -117,19 +117,5 @@ describe('ScenePlaceholder', () => {
     render(<SceneHost />);
     expect(await screen.findByText('3D view unavailable. Use Table view.')).toBeInTheDocument();
     expect(screen.queryByTestId('canvas')).not.toBeInTheDocument();
-  });
-
-  it('adds the Low quality label when the setting is on', async () => {
-    const { SceneHost, useStore } = await setup();
-    act(() => useStore.getState().setSetting('lowQuality', true));
-    render(<SceneHost />);
-    expect(await screen.findByText('Graveyard scene placeholder Low quality')).toBeInTheDocument();
-  });
-
-  it('omits the Low quality label by default', async () => {
-    const { SceneHost } = await setup();
-    render(<SceneHost />);
-    const label = await screen.findByText('Graveyard scene placeholder');
-    expect(label.textContent).not.toMatch(/Low quality/);
   });
 });

@@ -302,3 +302,7 @@
 2026-11-12 | graveyard-scene | 16.2 | Added instanced Mounds and BloodDecals with runtime atlas and 0.35 s lights fade. | r3f/Mounds.tsx, BloodDecals.tsx, useVisibleStones.ts, GraveyardScene.tsx
 2026-11-12 | graveyard-scene | 16.4 | Added Creatures: Mutant visible only inside flashlight cone, half-buried corpse at nearest zombie stone. | r3f/Creatures.tsx, GraveyardScene.tsx
 2026-11-12 | graveyard-scene | 17.2 | Added riseEvents emitter and instanced Craggle Hands driven by the hand pool. | scenes/graveyard/riseEvents.ts, r3f/Hands.tsx, GraveyardScene.tsx
+2026-11-12 | graveyard-scene | 14.3 | Tuned flashlight (intensity 70, penumbra 0.85, angle 0.27, range 28); off in overview. | r3f/Flashlight.tsx, flashlightState.ts, Creatures.tsx
+2026-11-12 | graveyard-scene | 14.4 | HUD pass: debug bar via ?debug=1, chip row under REC, wide bottom-centre shock panel, favicon 404 fixed. | ui/*, index.html, GraveyardScene.tsx
+2026-11-12 | graveyard-scene | 13.5 | Props load fixed; gate as fog-exempt silhouette; overview light lift and sky haze. | r3f/Props.tsx, Sky.tsx, StoneMaterial.tsx, sceneParams.ts
+2026-11-12 | graveyard-scene | 13.4 | Sky shader fixed, moonlight 0.22 behind stones, overview fog scaled to distance. | r3f/Sky.tsx, sceneParams.ts, lightsBlend.ts, SceneLights.tsx

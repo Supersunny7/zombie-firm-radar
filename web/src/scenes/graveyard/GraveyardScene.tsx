@@ -36,7 +36,6 @@ export { ModelBoundary };
 
 const STAGE_BACKGROUND = '#05070A';
 const READY_ATTR = 'data-graveyard-ready';
-const LABEL = 'Graveyard scene placeholder';
 
 /** Sets `body[data-graveyard-ready="true"]` after the first rendered frame. */
 function ReadyFlag() {
@@ -82,7 +81,6 @@ export default function GraveyardScene() {
   const webgl = useMemo(() => hasWebGL(), []);
   const [contextLost, setContextLost] = useState(false);
   const [canvasKey, setCanvasKey] = useState(0);
-  const text = lowQuality ? `${LABEL} Low quality` : LABEL;
 
   const onCreated = (state: RootState) => {
     state.gl.toneMapping = ACESFilmicToneMapping;
@@ -119,7 +117,6 @@ export default function GraveyardScene() {
         </Canvas>
       ) : null}
       <div className="pointer-events-none absolute bottom-16 left-4 font-mono text-sm text-text-2">
-        <p>{text}</p>
         {webgl ? null : <p role="status">3D view unavailable. Use Table view.</p>}
         {contextLost ? <p role="status">3D view lost. Waiting for the graphics card…</p> : null}
       </div>

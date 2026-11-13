@@ -23,6 +23,11 @@ export function debugButtonStates(state: GameState): DebugButtonStates {
   };
 }
 
+/** The bar is only shown when the URL has ?debug=1 (the store flag still gates dev-only use). */
+export function hasDebugParam(search: string = window.location.search): boolean {
+  return new URLSearchParams(search).get('debug') === '1';
+}
+
 const RESULTS: readonly Result[] = ['revived', 'undead', 'liquidated'];
 
 const control =
@@ -51,6 +56,8 @@ export default function DebugBar() {
 
   const graveyardEvent =
     state === 'outcome' ? { type: 'continue' as const } : { type: 'cancel' as const };
+
+  if (!hasDebugParam()) return null;
 
   return (
     <section

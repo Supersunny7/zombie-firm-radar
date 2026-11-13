@@ -13,6 +13,9 @@ const FALLBACK_PARAMS = sceneParams('off', 0, defaultCameraFog(0));
 /** Zenith colours: near black lights off, a slightly lighter dark blue lights on (scene-reference). */
 const TOP_OFF = '#030406';
 const TOP_ON = '#0b111a';
+/** Moonlit haze just above the horizon, so far silhouettes (the gate) read against it. */
+const HAZE_OFF = '#34404f';
+const HAZE_ON = '#4d5b6e';
 /** Dome radius: inside the camera far plane (360) so it is never clipped. */
 const DOME_RADIUS = Math.min(300, CAMERA_FAR - 60);
 
@@ -27,12 +30,18 @@ const DOME_VERTEX = /* glsl */ `
 const DOME_FRAGMENT = /* glsl */ `
   uniform vec3 horizonColor;
   uniform vec3 topColor;
+  uniform vec3 hazeColor;
   varying vec3 vDir;
+  #include <common>
+  #include <dithering_pars_fragment>
   void main() {
     float h = normalize(vDir).y;
     // At or below the horizon the colour is exactly the fog colour; it fades to the zenith colour.
     float t = pow(clamp(h, 0.0, 1.0), 0.55);
-    gl_FragColor = vec4(mix(horizonColor, topColor, t), 1.0);
+    vec3 sky = mix(horizonColor, topColor, t);
+    // Haze: zero at and below the horizon (the fogged ground keeps its colour), then a band that fades with height.
+    float haze = smoothstep(0.0, 0.012, h) * exp(-h * 12.0);
+    gl_FragColor = vec4(mix(sky, hazeColor, haze), 1.0);
     #include <tonemapping_fragment>
     #include <colorspace_fragment>
     #include <dithering_fragment>
@@ -51,6 +60,7 @@ function SkyDome() {
         uniforms: {
           horizonColor: { value: new Color(FALLBACK_PARAMS.fogColor) },
           topColor: { value: new Color(TOP_OFF) },
+          hazeColor: { value: new Color(HAZE_OFF) },
         },
         vertexShader: DOME_VERTEX,
         fragmentShader: DOME_FRAGMENT,
@@ -64,12 +74,15 @@ function SkyDome() {
   );
   const off = useMemo(() => new Color(TOP_OFF), []);
   const on = useMemo(() => new Color(TOP_ON), []);
+  const hazeOff = useMemo(() => new Color(HAZE_OFF), []);
+  const hazeOn = useMemo(() => new Color(HAZE_ON), []);
   useEffect(() => () => material.dispose(), [material]);
   useFrame(() => {
     const p = blendedParamsRef.current ?? FALLBACK_PARAMS;
     const u = material.uniforms as Record<string, { value: Color }>;
     u.horizonColor?.value.set(p.fogColor);
     u.topColor?.value.copy(off).lerp(on, lightsBlendRef.current);
+    u.hazeColor?.value.copy(hazeOff).lerp(hazeOn, lightsBlendRef.current);
   });
   return (
     <mesh renderOrder={-1000} frustumCulled={false}>

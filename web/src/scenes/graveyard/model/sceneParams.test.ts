@@ -3,6 +3,7 @@ import {
   FOG_DISTANCE_M,
   GROUND_NEAREST_EDGE_M,
   GROUND_SIZE_M,
+  OVERVIEW_LIFT,
   plotFogWeight,
   sceneParams,
   type CameraFogState,
@@ -59,18 +60,63 @@ describe('sceneParams', () => {
     expect(p.groundFogFactor).toBe(0.75);
   });
 
+  it('puts the moon behind the stones (negative z)', () => {
+    expect(sceneParams('off', 0, overview).moon.position[2]).toBeLessThan(0);
+  });
+
+  it('scales overview fog to the camera distance and keeps plot values', () => {
+    const o = sceneParams('off', 0, overview, 80);
+    expect(o.fogDensity).toBeCloseTo(1.6 / 80, 12);
+    expect(o.fogDensity * 80).toBeCloseTo(1.6, 12);
+    // Layers follow the same scaling, never above the plot factor.
+    expect(sceneParams('off', 0, overview, 20).groundFogFactor).toBe(1);
+    expect(sceneParams('off', 0, overview, 80).groundFogFactor).toBeCloseTo(
+      0.5 * (0.02 / 0.02),
+      12,
+    );
+    expect(sceneParams('off', 0, plot, 80).fogDensity).toBe(0.085);
+    expect(sceneParams('on', 0, plot, 80).fogLayers[0].opacity).toBe(0.26);
+    // Continuous during a move: halfway is the mean of the overview and plot densities.
+    const mid = sceneParams('off', 0, { from: 'overview', to: 1, progress: 0.5 }, 80);
+    expect(mid.fogDensity).toBeCloseTo((1.6 / 80 + 0.085) / 2, 12);
+  });
+
   it('has the lights colours and intensities', () => {
-    const off = sceneParams('off', 0, overview);
-    const on = sceneParams('on', 0, overview);
+    const off = sceneParams('off', 0, plot);
+    const on = sceneParams('on', 0, plot);
     expect([off.backgroundIntensity, on.backgroundIntensity]).toEqual([0.045, 0.12]);
-    expect([off.envIntensity, on.envIntensity]).toEqual([0.05, 0.3]);
-    expect([off.moon.intensity, on.moon.intensity]).toEqual([0.12, 0.7]);
-    expect(off.moon.color).toBe('#8ea9d6');
-    expect(off.moon.position).toEqual([-14, 18, -22]);
+    expect([off.envIntensity, on.envIntensity]).toEqual([0.1, 0.3]);
+    expect([off.moon.intensity, on.moon.intensity]).toEqual([0.22, 0.7]);
+    expect(off.moon.color).toBe('#6f90e0');
+    expect(off.moon.position).toEqual([-8, 16, -26]);
     expect([off.hemi.intensity, on.hemi.intensity]).toEqual([0.03, 0.35]);
     expect(off.hemi.skyColor).toBe('#3a4a66');
     expect(off.hemi.groundColor).toBe('#0b0806');
     expect(off.fogLayerColor).toBe('#2b323c');
+  });
+});
+
+describe('overview light lift', () => {
+  it('uses the lifted levels in the overview and the plot levels at a plot', () => {
+    for (const lights of ['off', 'on'] as const) {
+      const o = sceneParams(lights, 0, overview);
+      const p = sceneParams(lights, 0, plot);
+      expect(o.moon.intensity).toBe(OVERVIEW_LIFT[lights].moon);
+      expect(o.hemi.intensity).toBe(OVERVIEW_LIFT[lights].hemi);
+      expect(o.envIntensity).toBe(OVERVIEW_LIFT[lights].env);
+      expect(o.moon.intensity).toBeGreaterThan(p.moon.intensity);
+      expect(o.hemi.intensity).toBeGreaterThan(p.hemi.intensity);
+      expect(o.envIntensity).toBeGreaterThan(p.envIntensity);
+      expect([o.stoneLift, p.stoneLift]).toEqual([1, 0]);
+    }
+  });
+
+  it('blends with the camera move and is continuous', () => {
+    const half = sceneParams('off', 0, { from: 'overview', to: 1, progress: 0.5 });
+    const o = sceneParams('off', 0, overview);
+    const p = sceneParams('off', 0, plot);
+    expect(half.stoneLift).toBe(0.5);
+    expect(half.moon.intensity).toBeCloseTo((o.moon.intensity + p.moon.intensity) / 2, 12);
   });
 });
 

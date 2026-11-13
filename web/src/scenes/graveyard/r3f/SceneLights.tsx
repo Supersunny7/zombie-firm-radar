@@ -3,10 +3,13 @@ import { useFrame } from '@react-three/fiber';
 import { FogExp2, Object3D, Vector3 } from 'three';
 import type { DirectionalLight, HemisphereLight } from 'three';
 import { useStore } from '../../../state/store';
-import { FOG_COLOR, sceneParams } from '../model/sceneParams';
+import { CAMERA_FOV } from './CameraRig';
+import { CAMERA_FAR, FOG_COLOR, sceneParams } from '../model/sceneParams';
+import { cameraStateRef } from './cameraState';
 import {
   applyToScene,
   blendParams,
+  cameraFarEdgeDistance,
   cameraFogRef,
   defaultCameraFog,
   easeStep,
@@ -55,7 +58,10 @@ export function SceneLights() {
     const lb = easeStep(lightsBlendRef.current, goal, Math.min(dt, 0.1));
 
     const cam = cameraFogRef.current ?? defaultCameraFog(st.framedPlot);
-    const p = blendParams(lb, st.machine.ctx.rateShock, cam);
+    // Overview fog scales with the camera distance (density about 1.6 / far-edge distance).
+    const rig = cameraStateRef.current;
+    const dist = cameraFarEdgeDistance(rig.position, rig.lookAt, CAMERA_FOV, CAMERA_FAR);
+    const p = blendParams(lb, st.machine.ctx.rateShock, cam, dist);
     publishBlend(lb, p);
     applyToScene(state.scene, p);
     if (hemi.current) hemi.current.intensity = p.hemi.intensity;

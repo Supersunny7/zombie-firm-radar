@@ -113,15 +113,17 @@ export function Flashlight({ layout }: { layout: GraveyardLayout }) {
     target.position.set(a[0], a[1], a[2]);
     target.updateMatrixWorld();
     spot.updateMatrixWorld();
-    spot.intensity = FLASHLIGHT_INTENSITY * flickerFactor(state.clock.elapsedTime);
+    const active = useStore.getState().framedPlot !== 'overview';
+    spot.intensity = active ? FLASHLIGHT_INTENSITY * flickerFactor(state.clock.elapsedTime) : 0;
 
     const c = cone.current;
     if (c) {
+      c.visible = active;
       c.position.copy(_origin);
       _aim.set(a[0], a[1], a[2]);
       c.lookAt(_aim);
     }
-    writeFlashlightState([_origin.x, _origin.y, _origin.z], a);
+    writeFlashlightState([_origin.x, _origin.y, _origin.z], a, active);
   }, -5);
 
   return (

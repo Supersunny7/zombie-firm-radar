@@ -4,7 +4,7 @@ import { useLayout } from '../../state/useLayout';
 import { useStore } from '../../state/store';
 
 const chip =
-  'rounded-panel border border-panel-border bg-panel px-2 py-1 text-xs text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text aria-pressed:border-text aria-pressed:font-semibold';
+  'shrink-0 snap-start whitespace-nowrap rounded-panel border border-panel-border bg-panel px-2 py-1 text-xs text-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text aria-pressed:border-text aria-pressed:font-semibold';
 
 function isTyping(t: EventTarget | null): boolean {
   if (!(t instanceof HTMLElement)) return false;
@@ -38,7 +38,10 @@ export function PlotNav() {
 
   if (count === 0) return null;
   return (
-    <nav aria-label="Plots" className="pointer-events-auto flex max-w-full flex-wrap gap-1">
+    <nav
+      aria-label="Plots"
+      className="pointer-events-auto flex max-w-full snap-x flex-nowrap gap-1 overflow-x-auto p-1"
+    >
       <button
         type="button"
         className={chip}

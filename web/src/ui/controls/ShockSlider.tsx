@@ -3,6 +3,9 @@ import { useStore } from '../../state/store';
 
 export const SHOCK_STEPS = 20;
 
+/** Tick labels every 1 pp, 0 to +5 pp. Decorative: the slider has aria-valuetext. */
+const TICKS = ['0', '+1', '+2', '+3', '+4', '+5 pp'];
+
 /** Percentage points for slider step k, formatted with exactly two decimals. */
 export function shockPoints(k: number): string {
   return (k * 0.25).toFixed(2);
@@ -43,6 +46,15 @@ export function ShockSlider() {
         className="w-full accent-rec focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-text"
         onChange={(e) => setRateShock(shockValue(Number(e.target.value)))}
       />
+      <div
+        aria-hidden="true"
+        data-testid="shock-ticks"
+        className="flex justify-between font-mono text-xs text-text-2"
+      >
+        {TICKS.map((t) => (
+          <span key={t}>{t}</span>
+        ))}
+      </div>
       <p className="text-xs text-text-2">
         Approximation based on index data; simplified rate shock
       </p>

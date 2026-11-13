@@ -41,16 +41,18 @@ export function Hud({ children }: { children?: ReactNode }) {
     <div className="pointer-events-none fixed inset-0 z-10 flex flex-col font-ui text-text max-[900px]:static max-[900px]:min-h-screen">
       <SkipLink />
 
-      <header className="pointer-events-auto m-3 self-start">
-        <div className={`${panel} flex items-center gap-3 px-3 py-2`}>
-          <span aria-hidden="true" className="inline-block size-2.5 rounded-full bg-rec" />
-          <span className="font-mono text-sm">REC · CAM 03</span>
+      <header className="pointer-events-auto m-3 min-w-0 self-start min-[901px]:max-w-[calc(100vw-13rem)]">
+        <div className={`${panel} flex min-w-0 items-center gap-3 px-3 py-2`}>
+          <span aria-hidden="true" className="inline-block size-2.5 shrink-0 rounded-full bg-rec" />
+          <span className="shrink-0 font-mono text-sm whitespace-nowrap">REC · CAM 03</span>
           {camLabel && (
-            <span data-testid="cam-label" className="font-mono text-sm">
+            <span data-testid="cam-label" className="min-w-0 truncate font-mono text-sm">
               {`\u2014 ${camLabel}`}
             </span>
           )}
-          <Clock />
+          <span className="shrink-0 whitespace-nowrap">
+            <Clock />
+          </span>
         </div>
       </header>
 

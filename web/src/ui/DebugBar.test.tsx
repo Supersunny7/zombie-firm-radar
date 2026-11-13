@@ -34,7 +34,10 @@ function goTo(state: GameState): void {
   useStore.getState().send({ type: 'pullSwitch', treatment: [], result: 'undead' });
 }
 
-beforeEach(reset);
+beforeEach(() => {
+  window.history.replaceState(null, '', '/?debug=1');
+  reset();
+});
 afterEach(() => {
   cleanup();
   reset();
@@ -183,5 +186,13 @@ describe('debug bar visibility', () => {
 
   it('is shown in development', () => {
     expect(initialDebugBar(true, '')).toBe(true);
+  });
+});
+
+describe('debug param gate', () => {
+  it('renders nothing without ?debug=1', () => {
+    window.history.replaceState(null, '', '/');
+    const { container } = render(<DebugBar />);
+    expect(container).toBeEmptyDOMElement();
   });
 });

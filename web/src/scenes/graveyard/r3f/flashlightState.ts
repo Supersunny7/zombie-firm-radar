@@ -3,13 +3,13 @@
 import type { Ray } from '../layout/pick';
 
 export const FLASHLIGHT_COLOR = '#fff1d6';
-export const FLASHLIGHT_INTENSITY = 240;
-export const FLASHLIGHT_DISTANCE = 34;
-export const FLASHLIGHT_ANGLE = 0.32;
-export const FLASHLIGHT_PENUMBRA = 0.5;
+export const FLASHLIGHT_INTENSITY = 70;
+export const FLASHLIGHT_DISTANCE = 28;
+export const FLASHLIGHT_ANGLE = 0.27;
+export const FLASHLIGHT_PENUMBRA = 0.85;
 export const FLASHLIGHT_DECAY = 1.7;
 export const FLASHLIGHT_SHADOW_MAP = 1024;
-export const CONE_OPACITY = 0.11;
+export const CONE_OPACITY = 0.08;
 /** Offset from the camera in camera-local metres (10.2). */
 export const FLASHLIGHT_OFFSET: readonly [number, number, number] = [0.28, -0.32, 0.1];
 /** Aim used until a valid ray hit exists (10.4). */
@@ -26,8 +26,10 @@ export interface FlashlightState {
   direction: [number, number, number];
   /** Half cone angle in radians. */
   halfAngle: number;
-  /** Light range in metres. */
+  /** Light range in metres (0 when inactive). */
   range: number;
+  /** False in the overview, where the flashlight is off (moonlight and lantern only). */
+  active: boolean;
 }
 
 export const flashlightStateRef: { current: FlashlightState } = {
@@ -36,12 +38,14 @@ export const flashlightStateRef: { current: FlashlightState } = {
     direction: [0, -0.1, -1],
     halfAngle: FLASHLIGHT_ANGLE,
     range: FLASHLIGHT_DISTANCE,
+    active: true,
   },
 };
 
 export function writeFlashlightState(
   origin: readonly [number, number, number],
   target: readonly [number, number, number],
+  active = true,
 ): void {
   const s = flashlightStateRef.current;
   s.origin[0] = origin[0];
@@ -57,7 +61,8 @@ export function writeFlashlightState(
     s.direction[2] = dz / len;
   }
   s.halfAngle = FLASHLIGHT_ANGLE;
-  s.range = FLASHLIGHT_DISTANCE;
+  s.range = active ? FLASHLIGHT_DISTANCE : 0;
+  s.active = active;
 }
 
 /**

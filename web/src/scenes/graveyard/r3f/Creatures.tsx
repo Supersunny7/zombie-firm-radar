@@ -107,7 +107,7 @@ function Mutant({ url, layout }: { url: string; layout: GraveyardLayout }) {
     _sphere.center.y = built.sphere.center.y;
     _sphere.center.z = built.sphere.center.z;
     _sphere.radius = built.sphere.radius;
-    const vis = coneCovers(_origin, _dir, s.halfAngle, s.range, _sphere);
+    const vis = s.active && coneCovers(_origin, _dir, s.halfAngle, s.range, _sphere);
     if (g.visible !== vis) g.visible = vis;
   });
 

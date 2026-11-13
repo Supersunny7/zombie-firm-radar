@@ -41,15 +41,25 @@ export function ShockPanel() {
   return (
     <section
       aria-label="Interest rate shock"
-      className="pointer-events-auto flex w-full max-w-sm flex-col gap-3 rounded-panel border border-panel-border bg-panel p-3 font-ui text-text"
+      className="pointer-events-auto flex w-full flex-col gap-4 rounded-panel border border-panel-border bg-panel p-4 font-ui text-text min-[900px]:flex-row min-[900px]:items-center min-[900px]:gap-8"
     >
-      <ShockSlider />
-      <div className="flex flex-col gap-1 font-mono text-sm">
-        <p role="status" aria-live="polite" aria-atomic="true">
-          Risen from the grave: {risenShown}
+      <div className="min-w-0 flex-1">
+        <ShockSlider />
+      </div>
+      <div className="flex shrink-0 flex-col gap-1 font-mono min-[900px]:items-end min-[900px]:text-right">
+        <p
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          className="flex flex-col min-[900px]:items-end"
+        >
+          <span data-testid="risen-count" className="text-5xl leading-none text-rec">
+            {risenShown}
+          </span>
+          <span className="text-xs tracking-wider text-text-2 uppercase">Risen from the grave</span>
         </p>
-        <p>{alreadyUndead} already undead</p>
-        {notEligible > 0 && <p>{notEligible} not shock-eligible</p>}
+        <p className="text-xs text-text-2">{alreadyUndead} already undead</p>
+        {notEligible > 0 && <p className="text-xs text-text-2">{notEligible} not shock-eligible</p>}
       </div>
     </section>
   );

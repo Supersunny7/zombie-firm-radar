@@ -6,6 +6,7 @@ import {
   Box3,
   DoubleSide,
   IcosahedronGeometry,
+  MeshBasicMaterial,
   Matrix4,
   Mesh,
   MeshStandardMaterial,
@@ -55,13 +56,44 @@ function shade(root: Object3D, cast: boolean): void {
   });
 }
 
-function GltfProp({ url, p, cast = true }: { url: string; p: Placement; cast?: boolean }) {
+/** Cool near-black of the gate silhouette; darker than the horizon fog (#171b21) it stands against. */
+export const SILHOUETTE_COLOR = '#0a0f18';
+
+/**
+ * The gate sits about 110 m behind the plot camera, where Plot_Fog (0.085) would hide it fully.
+ * Unlit, fog-exempt, depth-tested material: a dark silhouette at the horizon in both lights modes.
+ */
+function silhouetteMaterial(): MeshBasicMaterial {
+  return new MeshBasicMaterial({ color: SILHOUETTE_COLOR, fog: false });
+}
+
+function GltfProp({
+  url,
+  p,
+  cast = true,
+  silhouette = false,
+}: {
+  url: string;
+  p: Placement;
+  cast?: boolean;
+  silhouette?: boolean;
+}) {
   const { scene } = useGLTF(url, false);
+  const material = useMemo(() => (silhouette ? silhouetteMaterial() : null), [silhouette]);
+  useEffect(() => () => material?.dispose(), [material]);
   const object = useMemo(() => {
     const clone = scene.clone(true);
-    shade(clone, cast);
+    shade(clone, cast && !silhouette);
+    if (material) {
+      clone.traverse((o) => {
+        if (o instanceof Mesh) {
+          o.material = material;
+          o.receiveShadow = false;
+        }
+      });
+    }
     return clone;
-  }, [scene, cast]);
+  }, [scene, cast, silhouette, material]);
   return (
     <group position={[p.x, p.y, p.z]} rotation-y={p.yaw} scale={p.scale}>
       <primitive object={object} />
@@ -253,7 +285,9 @@ function PropsContent({ layout }: { layout: GraveyardLayout }) {
   const stumpKeys = ASSET_KEYS.stumps;
   return (
     <>
-      <PropSlot assetKey={ASSET_KEYS.gate}>{(u) => <GltfProp url={u} p={r.gate} />}</PropSlot>
+      <PropSlot assetKey={ASSET_KEYS.gate}>
+        {(u) => <GltfProp url={u} p={r.gate} silhouette />}
+      </PropSlot>
       <PropSlot assetKey={ASSET_KEYS.statue}>{(u) => <GltfProp url={u} p={r.statue} />}</PropSlot>
       <PropSlot assetKey={ASSET_KEYS.trunk}>{(u) => <GltfProp url={u} p={r.trunk} />}</PropSlot>
       {r.stumps.map((s, i) => {
@@ -289,16 +323,23 @@ function PropsContent({ layout }: { layout: GraveyardLayout }) {
  * the first rendered frame (8.7). Missing or failed assets are skipped with a console warning.
  */
 export function Props({ layout }: { layout: GraveyardLayout }) {
+  const [framed, setFramed] = useState(false);
   const [go, setGo] = useState(false);
-  const scheduled = useRef(false);
-  const raf = useRef(0);
+  const seen = useRef(false);
 
   useFrame(() => {
-    if (scheduled.current) return;
-    scheduled.current = true;
-    raf.current = requestAnimationFrame(() => setGo(true));
+    if (seen.current) return;
+    seen.current = true;
+    setFramed(true);
   });
-  useEffect(() => () => cancelAnimationFrame(raf.current), []);
+
+  // The rAF lives in an effect keyed on 'framed': if React re-runs the cleanup (StrictMode,
+  // Suspense re-suspending) the effect schedules again instead of leaving the props unloaded.
+  useEffect(() => {
+    if (!framed) return undefined;
+    const id = requestAnimationFrame(() => setGo(true));
+    return () => cancelAnimationFrame(id);
+  }, [framed]);
 
   return go ? <PropsContent layout={layout} /> : null;
 }

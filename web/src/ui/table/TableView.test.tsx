@@ -277,7 +277,7 @@ describe('TableView shock parity', () => {
     const headers = screen.getAllByRole('columnheader').map((h) => h.textContent);
     expect(headers).toContain('Shocked ICR');
     expect(headers).toContain('Newly undead');
-    expect(screen.getByText(/Risen from the grave: \d+/)).toBeInTheDocument();
+    expect(screen.getByText('Risen from the grave')).toBeInTheDocument();
     expect(screen.getByRole('slider', { name: 'Interest rate shock' })).toBeInTheDocument();
   });
 

@@ -37,8 +37,9 @@ export function blendParams(
   lb: number,
   delta: number,
   cam: CameraFogState,
-  off: SceneParams = sceneParams('off', delta, cam),
-  on: SceneParams = sceneParams('on', delta, cam),
+  overviewDistance?: number,
+  off: SceneParams = sceneParams('off', delta, cam, overviewDistance),
+  on: SceneParams = sceneParams('on', delta, cam, overviewDistance),
 ): SceneParams {
   const layer = (i: 0 | 1 | 2): FogLayerParams => ({
     y: off.fogLayers[i].y,
@@ -48,6 +49,7 @@ export function blendParams(
     fogColor: off.fogColor,
     fogDensity: lerp(off.fogDensity, on.fogDensity, lb),
     groundFogFactor: off.groundFogFactor,
+    stoneLift: off.stoneLift,
     backgroundIntensity: lerp(off.backgroundIntensity, on.backgroundIntensity, lb),
     envIntensity: lerp(off.envIntensity, on.envIntensity, lb),
     moon: {
@@ -79,6 +81,23 @@ export function applyToScene(scene: Scene, p: SceneParams): void {
 }
 
 /** Camera fog state when no rig has published one: at rest on the framed plot or overview. */
+/**
+ * Distance from the camera to the far edge of what it sees on the ground: the top view ray, at
+ * (pitch - half the vertical FOV) below horizontal, meets the ground at height / sin(angle). Capped
+ * so a flat view does not give an infinite distance. Used to scale the overview fog.
+ */
+export function cameraFarEdgeDistance(
+  pos: readonly number[],
+  look: readonly number[],
+  fovDeg: number,
+  maxDistance: number,
+): number {
+  const horizontal = Math.hypot(pos[0]! - look[0]!, pos[2]! - look[2]!);
+  const pitch = Math.atan2(pos[1]! - look[1]!, horizontal);
+  const angle = pitch - (fovDeg * Math.PI) / 360;
+  if (!(angle > 0.05) || !(pos[1]! > 0)) return maxDistance;
+  return Math.min(maxDistance, pos[1]! / Math.sin(angle));
+}
 export function defaultCameraFog(framed: number | 'overview'): CameraFogState {
   return { from: framed, to: framed, progress: 1 };
 }

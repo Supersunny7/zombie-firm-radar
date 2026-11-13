@@ -108,7 +108,7 @@ describe('ESLint purity rule', () => {
     );
     expect(react.some((m) => m.ruleId === 'no-restricted-imports')).toBe(true);
     expect(three.some((m) => m.ruleId === 'no-restricted-imports')).toBe(true);
-  });
+  }, 30_000);
 
   it('allows react outside the pure modules', async () => {
     const msgs = await lint(

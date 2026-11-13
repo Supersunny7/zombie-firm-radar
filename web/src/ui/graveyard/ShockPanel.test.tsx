@@ -40,7 +40,8 @@ describe('ShockPanel', () => {
   it('shows counters from the batch and hides the ineligible line at zero', () => {
     load([firm(1, { latest_icr: 0.5, status: 'zombie' })], 0);
     render(<ShockPanel />);
-    expect(screen.getByText(/Risen from the grave: 0/)).toBeInTheDocument();
+    expect(screen.getByTestId('risen-count')).toHaveTextContent('0');
+    expect(screen.getByText('Risen from the grave')).toBeInTheDocument();
     expect(screen.getByText('1 already undead')).toBeInTheDocument();
     expect(screen.queryByText(/not shock-eligible/)).not.toBeInTheDocument();
   });
@@ -55,11 +56,12 @@ describe('ShockPanel', () => {
     load([firm(1, {})], 0);
     render(<ShockPanel />);
     act(() => load([firm(1, {})], 0.0125)); // risen 1, within the first second
-    expect(screen.getByText(/Risen from the grave: 0/)).toBeInTheDocument();
+    expect(screen.getByTestId('risen-count')).toHaveTextContent('0');
+    expect(screen.getByText('Risen from the grave')).toBeInTheDocument();
     act(() => {
       vi.advanceTimersByTime(1000);
     });
-    expect(screen.getByText(/Risen from the grave: 1/)).toBeInTheDocument();
+    expect(screen.getByTestId('risen-count')).toHaveTextContent('1');
   });
 
   it('has no axe violations inside the HUD', async () => {

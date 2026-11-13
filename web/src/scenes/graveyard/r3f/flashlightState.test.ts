@@ -31,5 +31,17 @@ describe('flashlightState', () => {
     const s = flashlightStateRef.current;
     expect(s.direction).toEqual([0, 0, -1]);
     expect(s.halfAngle).toBe(FLASHLIGHT_ANGLE);
+    expect(s.halfAngle).toBe(0.27);
+    expect(s.range).toBe(28);
+    expect(s.active).toBe(true);
+  });
+
+  it('reports an inactive cone (range 0) in the overview', () => {
+    writeFlashlightState([0, 0, 0], [0, 0, -4], false);
+    const s = flashlightStateRef.current;
+    expect(s.active).toBe(false);
+    expect(s.range).toBe(0);
+    writeFlashlightState([0, 0, 0], [0, 0, -4]);
+    expect(flashlightStateRef.current.range).toBe(28);
   });
 });

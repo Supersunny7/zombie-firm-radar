@@ -29,16 +29,22 @@ export interface GraveyardHudProps {
 }
 
 /**
- * Graveyard panels. The shock panel docks bottom-left; under 900 px everything stacks
- * below the stage. Mountable on its own; not mounted by SceneHost.
+ * Graveyard panels. Desktop: plot chips in one row under the REC line, shock panel wide at
+ * the bottom centre. Under 900 px everything stacks below the stage. Mountable on its own.
  */
 export function GraveyardHud({ loader }: GraveyardHudProps) {
   return (
-    <div className="pointer-events-none flex flex-col items-start gap-3 p-3 min-[900px]:absolute min-[900px]:bottom-0 min-[900px]:left-0">
-      <PlotNav />
-      <ShockPanel />
+    <div className="pointer-events-none flex flex-col gap-3 p-3 min-[900px]:absolute min-[900px]:inset-0 min-[900px]:p-0">
+      <div className="min-w-0 min-[900px]:absolute min-[900px]:top-14 min-[900px]:right-44 min-[900px]:left-3">
+        <PlotNav />
+      </div>
+      <div className="min-[900px]:absolute min-[900px]:bottom-14 min-[900px]:left-1/2 min-[900px]:w-[min(52rem,calc(100%-2rem))] min-[900px]:-translate-x-1/2">
+        <ShockPanel />
+      </div>
       <FileCard loader={loader} />
-      <Notices />
+      <div className="min-[900px]:absolute min-[900px]:top-24 min-[900px]:left-3">
+        <Notices />
+      </div>
       <LiveRegion />
     </div>
   );

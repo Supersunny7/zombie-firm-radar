@@ -24,6 +24,13 @@ describe('ShockSlider', () => {
     expect(screen.getByText('Debt reprices at once; simplified model')).toBeInTheDocument();
   });
 
+  it('shows decorative tick labels 0 to +5 pp', () => {
+    render(<ShockSlider />);
+    const ticks = screen.getByTestId('shock-ticks');
+    expect(ticks).toHaveAttribute('aria-hidden', 'true');
+    expect(ticks.textContent).toBe('0+1+2+3+4+5 pp');
+  });
+
   it('stores k / 400 and updates label and value text', () => {
     render(<ShockSlider />);
     const slider = screen.getByRole('slider', { name: 'Interest rate shock' });
