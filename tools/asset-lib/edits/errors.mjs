@@ -35,6 +35,16 @@ export class SplitImpossible extends Error {
   }
 }
 
+/** The written GLB declares an extension the pick forbids (pick.forbidExtensions). */
+export class ForbiddenExtension extends Error {
+  constructor({ pick, extension }) {
+    super(`pick ${pick ?? '(unknown)'}: the converted model still uses forbidden extension ${extension}`);
+    this.name = 'ForbiddenExtension';
+    this.pick = pick ?? null;
+    this.extension = extension;
+  }
+}
+
 /** decimate could not reach the target within the fixed 5-step error search. */
 export class DecimateUnreachable extends Error {
   constructor({ pick, target, reached }) {

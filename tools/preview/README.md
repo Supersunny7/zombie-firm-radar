@@ -46,3 +46,13 @@ await page.screenshot({ path: "reference/progress/name.png" });
 ```powershell
 pnpm --dir tools exec vitest run preview/serve.test.mjs
 ```
+
+## Scene: horror-assets
+
+`horror-assets.html?shot=assets|ground|possessed-undead|zombie-pxltiger|zombie-walk-oscar|hooded-woman` shows the Ground_Texture (`polyhaven-brown-mud-leaves-01`) and the four Character_Models in the lights-off look (fog, moon, hemisphere, flashlight from `scene-reference.md`). Walker plays `Idle` at t = 0.5 s; the others stay in bind pose. Models are shown at native scale. `window.__stats` lists clips, texture slots and size per model.
+
+Write the six 1920x1080 screenshots to `reference/progress/` (starts the server itself, no dev server needed):
+
+```powershell
+node tools/preview/screenshot.mjs --scene horror-assets
+```

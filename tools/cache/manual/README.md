@@ -7,7 +7,7 @@ Run `node tools/fetch-assets.mjs` afterwards. Missing files are listed by name a
 How to use this list:
 
 - The site gives your download its own file name. Rename it to the Expected file name shown in each block. The script looks for exactly that name.
-- Sketchfab files are named `<id>.zip`. Freesound files are named `<id>.<ext>` with the original extension shown on the sound page (wav, mp3 or m4a).
+- Sketchfab files are named `<id>.zip`. Freesound files are named `<id>.<ext>` with the original extension shown on the sound page (wav, mp3, m4a or flac).
 - Sketchfab and Freesound both need a free login to download. Do not use the Freesound preview MP3; download the original file.
 - Everything under `tools/cache/manual/` except this README is git-ignored. Never use `git add -f`.
 - Credit-line titles follow the names recorded in `reference/candidates/README.md` and the model or sound page; if a title differs slightly on the site, the site wording wins.
@@ -15,9 +15,10 @@ How to use this list:
 
 ## Checklist
 
-Files to download: **31** (17 Sketchfab zips, 14 Freesound sounds).
+Files to download: **37** (21 Sketchfab zips, 16 Freesound sounds).
 
 - [ ] `freesound-bigkahuna360-electrical-shock-zap/freesound-bigkahuna360-electrical-shock-zap.wav`
+- [ ] `freesound-ezcah-zombie-growl-01/freesound-ezcah-zombie-growl-01.flac`
 - [ ] `freesound-giddster-crows-cawing/freesound-giddster-crows-cawing.wav`
 - [ ] `freesound-guyburns-digging-with-shovel/freesound-guyburns-digging-with-shovel.m4a`
 - [ ] `freesound-indieground-pas-zombie-route/freesound-indieground-pas-zombie-route.wav`
@@ -29,16 +30,19 @@ Files to download: **31** (17 Sketchfab zips, 14 Freesound sounds).
 - [ ] `freesound-smice-6-hum-loop/freesound-smice-6-hum-loop.wav`
 - [ ] `freesound-thegreatperson-heart-rate-cardiac-arrest-flatline/freesound-thegreatperson-heart-rate-cardiac-arrest-flatline.mp3`
 - [ ] `freesound-tomhannen-howling-wind-tower/freesound-tomhannen-howling-wind-tower.m4a`
+- [ ] `freesound-tonsil5-zombie-growl-5/freesound-tonsil5-zombie-growl-5.wav`
 - [ ] `freesound-zazz-cloth-rustle-8/freesound-zazz-cloth-rustle-8.wav`
 - [ ] `freesound-zhro-heartbeat-loopable/freesound-zhro-heartbeat-loopable.mp3`
 - [ ] `sketchfab-autopsy-lab-assets/sketchfab-autopsy-lab-assets.zip`
 - [ ] `sketchfab-cobwebs-asset-pack-emarshall/sketchfab-cobwebs-asset-pack-emarshall.zip`
 - [ ] `sketchfab-crutch-and-iv-drip/sketchfab-crutch-and-iv-drip.zip`
 - [ ] `sketchfab-damaged-tombstone-drydoctoregg/sketchfab-damaged-tombstone-drydoctoregg.zip`
+- [ ] `sketchfab-hooded-horror-woman-purplepoint/sketchfab-hooded-horror-woman-purplepoint.zip`
 - [ ] `sketchfab-human-skull-danieledefilippis/sketchfab-human-skull-danieledefilippis.zip`
 - [ ] `sketchfab-knife-switch-type-d/sketchfab-knife-switch-type-d.zip`
 - [ ] `sketchfab-medical-props-cart/sketchfab-medical-props-cart.zip`
 - [ ] `sketchfab-morgue-refrigerator-porteous/sketchfab-morgue-refrigerator-porteous.zip`
+- [ ] `sketchfab-possessed-undead-giantswing/sketchfab-possessed-undead-giantswing.zip`
 - [ ] `sketchfab-rusty-chains-amanda98/sketchfab-rusty-chains-amanda98.zip`
 - [ ] `sketchfab-small-destroyed-tombstone-04/sketchfab-small-destroyed-tombstone-04.zip`
 - [ ] `sketchfab-small-gravestone-drydoctoregg/sketchfab-small-gravestone-drydoctoregg.zip`
@@ -48,6 +52,8 @@ Files to download: **31** (17 Sketchfab zips, 14 Freesound sounds).
 - [ ] `sketchfab-zombie-hand-craggle/sketchfab-zombie-hand-craggle.zip`
 - [ ] `sketchfab-zombie-hand-ruella/sketchfab-zombie-hand-ruella.zip`
 - [ ] `sketchfab-zombie-mutant/sketchfab-zombie-mutant.zip`
+- [ ] `sketchfab-zombie-pxltiger/sketchfab-zombie-pxltiger.zip`
+- [ ] `sketchfab-zombie-walk-oscar/sketchfab-zombie-walk-oscar.zip`
 
 ## Downloads
 
@@ -60,6 +66,16 @@ Files to download: **31** (17 Sketchfab zips, 14 Freesound sounds).
 - Put it at: tools/cache/manual/freesound-bigkahuna360-electrical-shock-zap/freesound-bigkahuna360-electrical-shock-zap.wav
 - Credit line: "Electrical shock zap" by BigKahuna360 (Freesound user), CC0 (https://creativecommons.org/publicdomain/zero/1.0/), https://freesound.org/people/BigKahuna360/sounds/160421/
 - Notes: No edits planned.
+
+### freesound-ezcah-zombie-growl-01
+- Candidate: freesound-ezcah-zombie-growl-01 (graveyard, zombie growl when a zombie rises)
+- Title: Zombie growl 01
+- Source page: https://freesound.org/people/Ezcah/sounds/204821/
+- Download option: Freesound "Download" of the original file (not the preview MP3). Login required.
+- Expected file name: freesound-ezcah-zombie-growl-01.flac
+- Put it at: tools/cache/manual/freesound-ezcah-zombie-growl-01/freesound-ezcah-zombie-growl-01.flac
+- Credit line: "Zombie growl 01" by Ezcah (Freesound user), CC0 (https://creativecommons.org/publicdomain/zero/1.0/), https://freesound.org/people/Ezcah/sounds/204821/
+- Notes: The original is FLAC; keep it as is.
 
 ### freesound-giddster-crows-cawing
 - Candidate: freesound-giddster-crows-cawing (graveyard, crows (optional ambience))
@@ -171,6 +187,16 @@ Files to download: **31** (17 Sketchfab zips, 14 Freesound sounds).
 - Credit line: "Howling wind, tower" by tomhannen (Freesound user), CC0 (https://creativecommons.org/publicdomain/zero/1.0/), https://freesound.org/people/tomhannen/sounds/486599/
 - Notes: The original is M4A; keep it as is. Needs a crossfade loop.
 
+### freesound-tonsil5-zombie-growl-5
+- Candidate: freesound-tonsil5-zombie-growl-5 (graveyard, zombie growl when a zombie rises)
+- Title: Zombie growl 5
+- Source page: https://freesound.org/people/tonsil5/sounds/555417/
+- Download option: Freesound "Download" of the original file (not the preview MP3). Login required.
+- Expected file name: freesound-tonsil5-zombie-growl-5.wav
+- Put it at: tools/cache/manual/freesound-tonsil5-zombie-growl-5/freesound-tonsil5-zombie-growl-5.wav
+- Credit line: "Zombie growl 5" by tonsil5 (Freesound user), CC0 (https://creativecommons.org/publicdomain/zero/1.0/), https://freesound.org/people/tonsil5/sounds/555417/
+- Notes: No edits planned.
+
 ### freesound-zazz-cloth-rustle-8
 - Candidate: freesound-zazz-cloth-rustle-8 (lab, cloth rustle (PACK))
 - Title: Cloth rustle 8
@@ -231,6 +257,16 @@ Files to download: **31** (17 Sketchfab zips, 14 Freesound sounds).
 - Credit line: "Damaged tombstone" by Peter Tilley (drydoctoregg), CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), https://sketchfab.com/3d-models/damaged-tombstone-0cefd7412d36424c844b64cca189aba5
 - Notes: Decimate to at most 20,000 triangles if needed. Check the stone face is blank.
 
+### sketchfab-hooded-horror-woman-purplepoint
+- Candidate: sketchfab-hooded-horror-woman-purplepoint (graveyard, Watcher (far-off figure outside the flashlight cone))
+- Title: Terrifying Hooded Horror Woman
+- Source page: https://sketchfab.com/3d-models/terrifying-hooded-horror-woman-f59d17be392f4494a5b85d927df48ffd
+- Download option: Sketchfab "Download 3D Model" > "glTF" (autoconverted) zip. Login required.
+- Expected file name: sketchfab-hooded-horror-woman-purplepoint.zip
+- Put it at: tools/cache/manual/sketchfab-hooded-horror-woman-purplepoint/sketchfab-hooded-horror-woman-purplepoint.zip
+- Credit line: "Terrifying Hooded Horror Woman" by Purple.Point, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), https://sketchfab.com/3d-models/terrifying-hooded-horror-woman-f59d17be392f4494a5b85d927df48ffd
+- Notes: Remove the embedded run animation; keep mesh, skin and skeleton.
+
 ### sketchfab-human-skull-danieledefilippis
 - Candidate: sketchfab-human-skull-danieledefilippis (lab and graveyard, human skull)
 - Title: Human skull
@@ -270,6 +306,16 @@ Files to download: **31** (17 Sketchfab zips, 14 Freesound sounds).
 - Put it at: tools/cache/manual/sketchfab-morgue-refrigerator-porteous/sketchfab-morgue-refrigerator-porteous.zip
 - Credit line: "Morgue refrigerator" by RyanPorteous, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), https://sketchfab.com/3d-models/morgue-refrigerator-d895d249fbda465faa22958ab1a63158
 - Notes: Decimate to about 39K triangles (user accepted; 30K unreachable without distortion). The author asks for credit.
+
+### sketchfab-possessed-undead-giantswing
+- Candidate: sketchfab-possessed-undead-giantswing (graveyard, Hero (nearest risen zombie, lights off))
+- Title: Possessed undead
+- Source page: https://sketchfab.com/3d-models/possessed-undead-7394bdf26d664810b42b83153411cf74
+- Download option: Sketchfab "Download 3D Model" > "glTF" (autoconverted) zip. Login required.
+- Expected file name: sketchfab-possessed-undead-giantswing.zip
+- Put it at: tools/cache/manual/sketchfab-possessed-undead-giantswing/sketchfab-possessed-undead-giantswing.zip
+- Credit line: "Possessed undead" by giantSwing, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), https://sketchfab.com/3d-models/possessed-undead-7394bdf26d664810b42b83153411cf74
+- Notes: Remove the embedded animation; keep mesh, skin and skeleton. The zip has no spec-gloss material and 7,675 triangles, so no conversion or decimation edit is needed.
 
 ### sketchfab-rusty-chains-amanda98
 - Candidate: sketchfab-rusty-chains-amanda98 (lab, rusty chains)
@@ -360,6 +406,26 @@ Files to download: **31** (17 Sketchfab zips, 14 Freesound sounds).
 - Put it at: tools/cache/manual/sketchfab-zombie-mutant/sketchfab-zombie-mutant.zip
 - Credit line: "Zombie mutant" by Regulator, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), https://sketchfab.com/3d-models/zombie-mutant-795f6432ebcb4c39a2aa5039752be92a
 - Notes: Re-tint paler. The model page says credit is optional, but the license is CC BY 4.0, so we credit anyway.
+
+### sketchfab-zombie-pxltiger
+- Candidate: sketchfab-zombie-pxltiger (graveyard, Walker (risen and standing zombies))
+- Title: Zombie
+- Source page: https://sketchfab.com/3d-models/zombie-73ef58af341e46afba1da53366ed79cf
+- Download option: Sketchfab "Download 3D Model" > "glTF" (autoconverted) zip. Login required.
+- Expected file name: sketchfab-zombie-pxltiger.zip
+- Put it at: tools/cache/manual/sketchfab-zombie-pxltiger/sketchfab-zombie-pxltiger.zip
+- Credit line: "Zombie" by pxltiger, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), https://sketchfab.com/3d-models/zombie-73ef58af341e46afba1da53366ed79cf
+- Notes: Keep only the clips Idle, Walk1_InPlace, Attack and FallingForward (the zip has 10 clips).
+
+### sketchfab-zombie-walk-oscar
+- Candidate: sketchfab-zombie-walk-oscar (graveyard, Crawler (risen zombie, Mixamo-style rig))
+- Title: Zombie Walk Test
+- Source page: https://sketchfab.com/3d-models/zombie-walk-test-165fd9342c364216bfdd8c2f1102223c
+- Download option: Sketchfab "Download 3D Model" > "glTF" (autoconverted) zip. Login required.
+- Expected file name: sketchfab-zombie-walk-oscar.zip
+- Put it at: tools/cache/manual/sketchfab-zombie-walk-oscar/sketchfab-zombie-walk-oscar.zip
+- Credit line: "Zombie Walk Test" by OSCAR CREATIVO, CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), https://sketchfab.com/3d-models/zombie-walk-test-165fd9342c364216bfdd8c2f1102223c
+- Notes: The uploader's own mesh and skeleton on a Mixamo-style rig (mixamorig: bone names) is allowed; the embedded Mixamo animation clip is removed. The zip uses KHR_materials_pbrSpecularGlossiness (required), so it is converted to metal/rough.
 
 ## Automatic, do not download
 

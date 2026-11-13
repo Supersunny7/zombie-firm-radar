@@ -6,7 +6,20 @@ const tex = (dir: string, suffix: string): string => `textures/${dir}/${dir}_${s
 const model = (name: string): string => `models/${name}/${name}.glb`;
 const audioBase = (name: string): string => `audio/${name}/${name}`;
 
+/** Poly Haven slug of the Ground_Texture (horror-pass Requirement 2/6). */
+export const GROUND_SLUG = 'polyhaven-brown-mud-leaves-01';
 export const ASSET_KEYS = {
+  forestFloor: {
+    diffuse: tex(GROUND_SLUG, 'diffuse'),
+    normal: tex(GROUND_SLUG, 'nor-gl'),
+    rough: tex(GROUND_SLUG, 'rough'),
+  },
+  characters: {
+    hero: model('sketchfab-possessed-undead-giantswing'),
+    walker: model('sketchfab-zombie-pxltiger'),
+    crawler: model('sketchfab-zombie-walk-oscar'),
+    watcher: model('sketchfab-hooded-horror-woman-purplepoint'),
+  },
   soil: {
     diffuse: tex('polyhaven-excavated-soil-wall', 'diffuse'),
     normal: tex('polyhaven-excavated-soil-wall', 'nor-gl'),
@@ -40,6 +53,11 @@ export const ASSET_KEYS = {
     crows: audioBase('freesound-giddster-crows-cawing'),
     digging: audioBase('freesound-guyburns-digging-with-shovel'),
     gate: audioBase('freesound-launemax-open-close-iron-gate'),
+    growls: [
+      audioBase('freesound-tonsil5-zombie-growl-5'),
+      audioBase('freesound-ezcah-zombie-growl-01'),
+    ],
+    footsteps: audioBase('freesound-indieground-pas-zombie-route'),
   },
 } as const;
 

@@ -1,4 +1,17 @@
-// Bundle budget check (app-shell Requirement 15). Runs after `vite build`.
+// Bundle budget check (app-shell Requirement 15, graveyard-horror-pass Requirement 5). Runs after `vite build`.
+//
+// Checks: 400 KB gzip initial JS, 25 MB initial download, dev-only markers, and the
+// Graveyard_Asset_Group (src/scenes/graveyard/groupAssets.json) against the 25,000,000 byte Group_Budget.
+//
+// Requirement 5.13 fallback order when the group is over 25,000,000 bytes. Apply in this order and stop
+// at the first step after which the total is at most the budget:
+//   1. Stop loading and shipping unused assets: the Craggle hand (already outside the group) and the
+//      Mutant, which the Watcher replaces. The Mutant leaves groupAssets.json and the scene ONLY after the
+//      user approves superseding Base_Spec Requirement 9 for it. If over budget, report and ask; do not
+//      remove the Mutant on your own.
+//   2. Reduce texture quality (lower resolution or stronger compression of the largest texture files),
+//      never below the texel density of Requirement 6.1 for the Ground_Texture.
+// Always print the per-file and per-category breakdown before and after each step (5.14).
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { dirname, join, resolve } from 'node:path';
@@ -20,6 +33,7 @@ export const FORBIDDEN_MARKERS = [
   'dev/sample/generate',
   'Larkspur',
   '__zfr_hand_closeup__',
+  '__zfr_horror_debug__',
 ];
 const BINARY_EXT = /\.(glb|ktx2|hdr|png|jpe?g|webp|gif|mp3|ogg|wav|woff2?|ico)$/i;
 
@@ -75,6 +89,84 @@ export function computeInitialDownload({
     mb,
     over,
     message: over ? `Initial download ${mb} MB exceeds the ${limitMb} MB limit` : null,
+  };
+}
+
+// Graveyard_Asset_Group budget (graveyard-horror-pass Requirements 5.6 to 5.10, 5.13, 5.14).
+export const GROUP_BUDGET_BYTES = 25_000_000;
+export const GROUP_FILE_LIMIT_BYTES = 5_000_000;
+const GROUP_ASSETS = join(
+  dirname(fileURLToPath(import.meta.url)),
+  '..',
+  'src',
+  'scenes',
+  'graveyard',
+  'groupAssets.json',
+);
+const FALLBACK_HINT =
+  'Fallback order (Requirement 5.13): 1) stop loading and shipping unused assets (the Craggle hand is already outside the group; ' +
+  'the Mutant only after the user approves superseding Base_Spec Requirement 9 for it: report and ask, do not remove it yourself); ' +
+  '2) reduce texture quality for the largest texture files. Report the breakdown before and after each step.';
+
+/**
+ * Pure group accounting. `files` is the manifest `files` map, `groups` is the parsed groupAssets.json
+ * ({ categories: { name: key[] }, hdri: key[] }). HDRI bytes are reported separately and are not in the group.
+ */
+export function computeGroupBudget(files, groups, budget = GROUP_BUDGET_BYTES) {
+  const problems = [];
+  const bytesOf = (key) => {
+    const bytes = files?.[key]?.bytes;
+    if (!files || !Object.prototype.hasOwnProperty.call(files, key)) {
+      problems.push(`group file "${key}" is missing from the manifest`);
+      return 0;
+    }
+    if (typeof bytes !== 'number' || !Number.isFinite(bytes)) {
+      problems.push(`group file "${key}" has non-finite bytes`);
+      return 0;
+    }
+    return bytes;
+  };
+  const categories = {};
+  const perFile = [];
+  let groupBytes = 0;
+  for (const [name, keys] of Object.entries(groups.categories)) {
+    let sum = 0;
+    for (const key of keys) {
+      const bytes = bytesOf(key);
+      sum += bytes;
+      perFile.push({ category: name, key, bytes });
+      if (bytes > GROUP_FILE_LIMIT_BYTES) {
+        problems.push(`group file "${key}" is ${bytes} bytes, above ${GROUP_FILE_LIMIT_BYTES}`);
+      }
+    }
+    categories[name] = sum;
+    groupBytes += sum;
+  }
+  let hdriBytes = 0;
+  for (const key of groups.hdri ?? []) {
+    const bytes = bytesOf(key);
+    hdriBytes += bytes;
+    perFile.push({ category: 'hdri', key, bytes });
+  }
+  const totalWithHdri = groupBytes + hdriBytes;
+  const over = groupBytes > budget;
+  const mb = (groupBytes / BYTES_PER_MB).toFixed(1);
+  const messages = [...problems];
+  if (over) {
+    messages.push(
+      `Graveyard asset group ${groupBytes} bytes (${mb} MB) exceeds the ${budget} byte (25 MB) Group_Budget. ${FALLBACK_HINT}`,
+    );
+  }
+  return {
+    categories,
+    hdriBytes,
+    totalWithoutHdri: groupBytes,
+    totalWithHdri,
+    perFile,
+    over,
+    mb,
+    ok: messages.length === 0,
+    messages,
   };
 }
 
@@ -175,6 +267,25 @@ function main() {
     failures.push('lab chunk is inside the initial JS closure');
   } else {
     console.log('Lab chunk is outside the initial JS closure.');
+  }
+
+  try {
+    const assets = JSON.parse(readFileSync(ASSET_MANIFEST, 'utf8'));
+    const groups = JSON.parse(readFileSync(GROUP_ASSETS, 'utf8'));
+    const group = computeGroupBudget(assets.files, groups);
+    console.log('Graveyard asset group (bytes per category):');
+    for (const [name, bytes] of Object.entries(group.categories)) {
+      console.log(`  ${name}: ${bytes}`);
+    }
+    console.log(`  hdri (separate, not in group): ${group.hdriBytes}`);
+    console.log(`  total without HDRI: ${group.totalWithoutHdri} (budget ${GROUP_BUDGET_BYTES})`);
+    console.log(`  total with HDRI: ${group.totalWithHdri}`);
+    if (!group.ok) {
+      for (const f of group.perFile) console.log(`  ${f.category}\t${f.bytes}\t${f.key}`);
+    }
+    failures.push(...group.messages);
+  } catch (err) {
+    failures.push(`graveyard group budget check failed: ${err.message}`);
   }
 
   failures.push(...checkForbidden(DIST));

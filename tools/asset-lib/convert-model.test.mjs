@@ -153,3 +153,35 @@ describe('convertModel', () => {
     expect(r.files[0].fileName).toBe('fbxprop.glb');
   });
 });
+
+describe('convertModel forbidExtensions', () => {
+  async function writeSpecGloss(name) {
+    const { KHRMaterialsPBRSpecularGlossiness } = await import('@gltf-transform/extensions');
+    const doc = await buildDoc({ texture: false });
+    const ext = doc.createExtension(KHRMaterialsPBRSpecularGlossiness);
+    for (const m of doc.getRoot().listMaterials()) m.setExtension('KHR_materials_pbrSpecularGlossiness', ext.createPBRSpecularGlossiness());
+    const p = path.join(dir, name);
+    await io.write(p, doc);
+    return p;
+  }
+
+  it('throws ForbiddenExtension and leaves no output when the written GLB still declares it', async () => {
+    const src = await writeSpecGloss('sg-bad.glb');
+    const out = path.join(dir, 'out-sg-bad');
+    const pick = { id: 'sg-bad', kind: 'model', edits: [], forbidExtensions: ['KHR_materials_pbrSpecularGlossiness'] };
+    await expect(convertModel(pick, { path: src }, out)).rejects.toMatchObject({ name: 'ForbiddenExtension' });
+    expect(await readdir(out)).toEqual([]);
+  });
+
+  it('passes when specGlossToMetalRough removed the extension', async () => {
+    const src = await writeSpecGloss('sg-ok.glb');
+    const pick = {
+      id: 'sg-ok',
+      kind: 'model',
+      edits: [{ op: 'specGlossToMetalRough' }],
+      forbidExtensions: ['KHR_materials_pbrSpecularGlossiness'],
+    };
+    const r = await convertModel(pick, { path: src }, path.join(dir, 'out-sg-ok'));
+    expect(await readExtensionsUsed(r.files[0].path)).not.toContain('KHR_materials_pbrSpecularGlossiness');
+  });
+});

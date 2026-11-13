@@ -79,6 +79,32 @@
       "inputsSha256": "e1c4433c97ba42b2074e8cac9b9eff3d906553953523ba783ebd99f75c8e9e5b",
       "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
+    "audio/freesound-ezcah-zombie-growl-01/freesound-ezcah-zombie-growl-01.mp3": {
+      "pick": "freesound-ezcah-zombie-growl-01",
+      "title": "Zombie growl 01",
+      "author": "Ezcah",
+      "sourceUrl": "https://freesound.org/people/Ezcah/sounds/204821/",
+      "license": "CC0",
+      "changes": "Original file kept; converted to web audio by the pipeline",
+      "group": "graveyard",
+      "bytes": 28728,
+      "sha256": "d60b1132966f6233c6814038e88b8baf336c74f3204d0db8299906545f5744db",
+      "inputsSha256": "7640a26dd4ec4db968b80c2397612ffbd19fe7047d5ec24da4f00f4366a692e1",
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
+    },
+    "audio/freesound-ezcah-zombie-growl-01/freesound-ezcah-zombie-growl-01.ogg": {
+      "pick": "freesound-ezcah-zombie-growl-01",
+      "title": "Zombie growl 01",
+      "author": "Ezcah",
+      "sourceUrl": "https://freesound.org/people/Ezcah/sounds/204821/",
+      "license": "CC0",
+      "changes": "Original file kept; converted to web audio by the pipeline",
+      "group": "graveyard",
+      "bytes": 27647,
+      "sha256": "1a411d86cdca63c02a29b06b7a3921b361aa30f2bfaa553f07cf6ebf7a2d51d1",
+      "inputsSha256": "7640a26dd4ec4db968b80c2397612ffbd19fe7047d5ec24da4f00f4366a692e1",
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
+    },
     "audio/freesound-giddster-crows-cawing/freesound-giddster-crows-cawing.mp3": {
       "pick": "freesound-giddster-crows-cawing",
       "title": "Crows cawing",
@@ -363,6 +389,32 @@
       "bytes": 241168,
       "sha256": "36abab1125fb4d019b7327cf557e69cdf7ff8dd35196abd5b19265ac387e66f9",
       "inputsSha256": "72f33aa8e7313c0d4fbedb95df13fcacb497185656a8f188b7d45df82290d998",
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
+    },
+    "audio/freesound-tonsil5-zombie-growl-5/freesound-tonsil5-zombie-growl-5.mp3": {
+      "pick": "freesound-tonsil5-zombie-growl-5",
+      "title": "Zombie growl 5",
+      "author": "tonsil5",
+      "sourceUrl": "https://freesound.org/people/tonsil5/sounds/555417/",
+      "license": "CC0",
+      "changes": "Original file kept; converted to web audio by the pipeline",
+      "group": "graveyard",
+      "bytes": 25633,
+      "sha256": "89beb0ed6b5c8691ac903ef7fbf64c1f3e2baad7ac4ebce567fa0911c367f23d",
+      "inputsSha256": "b85acf53401bf244eacdcb36d63f80be2127ec514849d2b4ac3bef5f7fbe51c9",
+      "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
+    },
+    "audio/freesound-tonsil5-zombie-growl-5/freesound-tonsil5-zombie-growl-5.ogg": {
+      "pick": "freesound-tonsil5-zombie-growl-5",
+      "title": "Zombie growl 5",
+      "author": "tonsil5",
+      "sourceUrl": "https://freesound.org/people/tonsil5/sounds/555417/",
+      "license": "CC0",
+      "changes": "Original file kept; converted to web audio by the pipeline",
+      "group": "graveyard",
+      "bytes": 28536,
+      "sha256": "6e385b8e0a596e90fb2d7ff682dab4ebb587d5463f828b451e36bc9c25cff8d6",
+      "inputsSha256": "b85acf53401bf244eacdcb36d63f80be2127ec514849d2b4ac3bef5f7fbe51c9",
       "recipe": "d4c6d4d74b2b593fcd7f68f06839f88ccf1c4da1bf52726892702f8bb609d06f"
     },
     "audio/freesound-zazz-cloth-rustle-8/freesound-zazz-cloth-rustle-8.mp3": {
@@ -785,6 +837,19 @@
       "inputsSha256": "fffc1506b3edda373f054e8be592897f9976236d73191d854a3895e14a035793",
       "recipe": "d975418b82fba14007f1b096c11bf4f0fb82370e7e332bcd34de7636e9c08e28"
     },
+    "models/sketchfab-hooded-horror-woman-purplepoint/sketchfab-hooded-horror-woman-purplepoint.glb": {
+      "pick": "sketchfab-hooded-horror-woman-purplepoint",
+      "title": "Terrifying Hooded Horror Woman",
+      "author": "Purple.Point",
+      "sourceUrl": "https://sketchfab.com/3d-models/terrifying-hooded-horror-woman-f59d17be392f4494a5b85d927df48ffd",
+      "license": "CC BY 4.0",
+      "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; embedded animation removed (mesh, skin and skeleton kept); no AI-generated tag on the Sketchfab model page, checked 2026-11-12",
+      "group": "graveyard",
+      "bytes": 656380,
+      "sha256": "5174ae95dbfe50ac7dd4a2f96a43d3028945a7034f47579defacf52b956fa27a",
+      "inputsSha256": "9e112b5b8e010c8e2e7db4b2b97fdb63ac7a20fc18759c62f65c4e3d673d9eb7",
+      "recipe": "ccd414501925c06a57518b57691ad573ce6ed4ab080601c6e720d0ad1842d306"
+    },
     "models/sketchfab-human-skull-danieledefilippis/sketchfab-human-skull-danieledefilippis.glb": {
       "pick": "sketchfab-human-skull-danieledefilippis",
       "title": "Human skull",
@@ -836,6 +901,19 @@
       "sha256": "0afcf6d01ab2ee4333d8a4bac50d8a4aaa8fe7ac5ebcd14c74655e79ad3baf46",
       "inputsSha256": "831c3964d2764121feb73d9aa101261ed90bbd8133823264c76c09b9491453c8",
       "recipe": "c4eb813f90bb607e7af3157f4452fab12869430a1659a21c4845e37de436680a"
+    },
+    "models/sketchfab-possessed-undead-giantswing/sketchfab-possessed-undead-giantswing.glb": {
+      "pick": "sketchfab-possessed-undead-giantswing",
+      "title": "Possessed undead",
+      "author": "giantSwing",
+      "sourceUrl": "https://sketchfab.com/3d-models/possessed-undead-7394bdf26d664810b42b83153411cf74",
+      "license": "CC BY 4.0",
+      "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; embedded animation removed (mesh, skin and skeleton kept); no AI-generated tag on the Sketchfab model page, checked 2026-11-12",
+      "group": "graveyard",
+      "bytes": 839732,
+      "sha256": "a34ef29d6fb360a85d3442534aafae9ddcce61f3640ce7df8e312ffba19a71bb",
+      "inputsSha256": "961ad9e9668577c59ce335bfccba5893b460b282cc62e36ea2c78ccc1015d219",
+      "recipe": "ccd414501925c06a57518b57691ad573ce6ed4ab080601c6e720d0ad1842d306"
     },
     "models/sketchfab-rusty-chains-amanda98/sketchfab-rusty-chains-amanda98.glb": {
       "pick": "sketchfab-rusty-chains-amanda98",
@@ -954,6 +1032,32 @@
       "inputsSha256": "a9f79b2b4a4b76d7dff56229aaaffe2783f38e6ee22681b7e9b9c689ad3db7d0",
       "recipe": "985fde230bbd3a5afb1e3cc22a556b277284cd3811f9216cfa68f5291876f78e"
     },
+    "models/sketchfab-zombie-pxltiger/sketchfab-zombie-pxltiger.glb": {
+      "pick": "sketchfab-zombie-pxltiger",
+      "title": "Zombie",
+      "author": "pxltiger",
+      "sourceUrl": "https://sketchfab.com/3d-models/zombie-73ef58af341e46afba1da53366ed79cf",
+      "license": "CC BY 4.0",
+      "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; kept four animation clips (Idle, Walk1_InPlace, Attack, FallingForward) and removed the other six; no AI-generated tag on the Sketchfab model page, checked 2026-11-12",
+      "group": "graveyard",
+      "bytes": 1602976,
+      "sha256": "cfff8c1fb9fca7dd96ed36f5346a89fe8c5a795940871f460489e89299409108",
+      "inputsSha256": "3288366cfb39978af33ace26e545b74f4df5ddd195aa38c334ae0191fa024b3a",
+      "recipe": "12211139af3065478486c3a76b1e4784ec046bd098c1bea18ae719561fa3cab3"
+    },
+    "models/sketchfab-zombie-walk-oscar/sketchfab-zombie-walk-oscar.glb": {
+      "pick": "sketchfab-zombie-walk-oscar",
+      "title": "Zombie Walk Test",
+      "author": "OSCAR CREATIVO",
+      "sourceUrl": "https://sketchfab.com/3d-models/zombie-walk-test-165fd9342c364216bfdd8c2f1102223c",
+      "license": "CC BY 4.0",
+      "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; specular-glossiness material converted to metallic-roughness; the rig uses Mixamo bone names, the mesh and skeleton are kept, and the Mixamo animation clip was removed; no AI-generated tag on the Sketchfab model page, checked 2026-11-12",
+      "group": "graveyard",
+      "bytes": 659492,
+      "sha256": "5ecbcefa7aa64f82949cbb540c999d155d81a521317b0004c254e0aa8f4eb2c1",
+      "inputsSha256": "e771de8f604456a4afa957b87d2b4ec62d51180d237adc4fe187c86bb845748b",
+      "recipe": "4e5a1384e4380fb64589c43498423954f60d05cd7f68b0b0bf3d226167129ff5"
+    },
     "textures/oga-blood-splatter-exilegl/oga-blood-splatter-exilegl_color.webp": {
       "pick": "oga-blood-splatter-exilegl",
       "title": "Blood splatter",
@@ -1044,6 +1148,45 @@
       "sha256": "ce13d7baabd648e081f93702d955458c590ab08556ee88db1a6bc6bcf268f668",
       "inputsSha256": "ff7f9b288b54e26288f77990ea872bbc5e60ba76aa5df907ee968871210c431d",
       "recipe": "daa3eb5c502861b7b8cbc7eec74caecbf3cbbd1ffd8570ccd68c1c6594439c4d"
+    },
+    "textures/polyhaven-brown-mud-leaves-01/polyhaven-brown-mud-leaves-01_diffuse.webp": {
+      "pick": "polyhaven-brown-mud-leaves-01",
+      "title": "brown mud leaves 01",
+      "author": "Rob Tuytel",
+      "sourceUrl": "https://polyhaven.com/a/brown_mud_leaves_01",
+      "license": "CC0",
+      "changes": "Converted to WebP, longest side limited to 1024 px",
+      "group": "graveyard",
+      "bytes": 361918,
+      "sha256": "9d0615290032da6b945442ee4854e95a16a9513ccc9eee16ab575bb5bb407d2d",
+      "inputsSha256": "46814700478d6711a44d56550e298400fed75bd056094629397e37934f5a24da",
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
+    },
+    "textures/polyhaven-brown-mud-leaves-01/polyhaven-brown-mud-leaves-01_nor-gl.webp": {
+      "pick": "polyhaven-brown-mud-leaves-01",
+      "title": "brown mud leaves 01",
+      "author": "Rob Tuytel",
+      "sourceUrl": "https://polyhaven.com/a/brown_mud_leaves_01",
+      "license": "CC0",
+      "changes": "Converted to WebP, longest side limited to 1024 px",
+      "group": "graveyard",
+      "bytes": 621430,
+      "sha256": "8170b8c8d90f6e4e3436683c4ddd616441f0699208b71d62b1cbaaf53271aca8",
+      "inputsSha256": "46814700478d6711a44d56550e298400fed75bd056094629397e37934f5a24da",
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
+    },
+    "textures/polyhaven-brown-mud-leaves-01/polyhaven-brown-mud-leaves-01_rough.webp": {
+      "pick": "polyhaven-brown-mud-leaves-01",
+      "title": "brown mud leaves 01",
+      "author": "Rob Tuytel",
+      "sourceUrl": "https://polyhaven.com/a/brown_mud_leaves_01",
+      "license": "CC0",
+      "changes": "Converted to WebP, longest side limited to 1024 px",
+      "group": "graveyard",
+      "bytes": 147734,
+      "sha256": "b507fb2a9b6c98c4540f902a412f8aec5889935d1c247cc0e317fb4ffc932da4",
+      "inputsSha256": "46814700478d6711a44d56550e298400fed75bd056094629397e37934f5a24da",
+      "recipe": "62c55e024097dd160bf2d13b5902b09e1dba4c567e8b2397514191260e477bc9"
     },
     "textures/polyhaven-dark-brick-wall/polyhaven-dark-brick-wall_diffuse.webp": {
       "pick": "polyhaven-dark-brick-wall",

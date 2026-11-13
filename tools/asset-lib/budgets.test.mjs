@@ -3,7 +3,7 @@ import { account, accountBudgets, formatReport, LIMITS } from './budgets.mjs';
 
 describe('budgets', () => {
   it('has the exact limits', () => {
-    expect(LIMITS).toEqual({ graveyard: 26214400, lab: 26214400, total: 62914560 });
+    expect(LIMITS).toEqual({ graveyard: 40000000, lab: 26214400, total: 62914560 });
     expect(accountBudgets).toBe(account);
   });
 
@@ -47,7 +47,7 @@ describe('budgets', () => {
     const ok = account([{ path: 'a', bytes: LIMITS.graveyard, group: 'graveyard' }]);
     expect(ok.exceeded).toEqual([]);
     expect(ok.exitCode).toBe(0);
-    expect(formatReport(ok)).toContain(`graveyard ${LIMITS.graveyard} / 26214400`);
+    expect(formatReport(ok)).toContain(`graveyard ${LIMITS.graveyard} / 40000000`);
 
     const bad = account([
       { path: 'a', bytes: 10, group: 'graveyard' },
@@ -62,7 +62,7 @@ describe('budgets', () => {
     expect(bad.exitCode).toBe(1);
     const text = formatReport(bad);
     expect(text).toContain('budget exceeded: graveyard');
-    expect(text).toContain('limit 26214400');
+    expect(text).toContain('limit 40000000');
   });
 
   it('lists files over 5 MiB with MB and suggestion by kind', () => {

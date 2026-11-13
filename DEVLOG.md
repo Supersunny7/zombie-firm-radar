@@ -315,3 +315,19 @@
 2026-11-12 | graveyard-scene | 18.3 | Wired audio engine into scene (dig per rise, mute, leave, delayed dispose); Sound button retries blocked resume. | audio/useGraveyardAudio.ts, GraveyardScene.tsx, SoundButton.tsx
 2026-11-12 | graveyard-scene | 19.2 | Keyboard: arrows via nextFocus, Enter/Esc card, flashlight aims at focus, plot framing, announcements. | StoneFocusProxy.tsx, PlotNav.tsx, r3f/Flashlight.tsx, tests
 2026-11-12 | graveyard-scene | 20.1 | Low quality via pure qualityParams (dpr, shadows, one fog layer); stone-proxy check moved to state. | model/quality.ts, GroundFog.tsx, SceneLights.tsx, state/stoneProxy.ts
+2026-11-12 | graveyard-horror-pass | 1.1 | Added keep/remove animation and spec-gloss edits plus skeleton report. | tools/asset-lib/edits, picks.mjs, convert-model.mjs, skeleton-report.mjs
+2026-11-12 | graveyard-horror-pass | 1.3 | Added Mixamo-refusal and CC BY acceptance license tests. | tools/asset-lib/licenses.property.test.mjs, licenses.test.mjs
+2026-11-12 | graveyard-horror-pass | 1.4 | Picked Poly Haven brown_mud_leaves_01 as ground texture. | tools/picks.json
+2026-11-12 | graveyard-horror-pass | 1.9 | Raised graveyard pipeline ceiling to 40 MB on disk. | tools/asset-lib/budgets.mjs, budgets tests
+2026-11-12 | graveyard-horror-pass | 1.12 | Allowed CC BY Sketchfab uploads and kept Mixamo clips forbidden. | .kiro/steering/asset-licensing.md
+2026-11-12 | graveyard-horror-pass | 1.2 | Added property tests for keep/remove animation and spec-gloss edits. | tools/asset-lib/edits/horror-edits.property.test.mjs, convert-model.test.mjs
+2026-11-12 | graveyard-horror-pass | 1.5 | Added four character picks and two growl picks. | tools/picks.json
+2026-11-12 | graveyard-horror-pass | 1.7 | Updated manual README generator for flac and new picks. | tools/asset-lib/manual-readme.mjs, tests, tools/cache/manual/README.md
+2026-11-12 | graveyard-horror-pass | 1.6 | Converted four characters, ground texture and two growls; added manifest entries and CREDITS rows. | web/public/assets, manifest.json, CREDITS.md
+2026-11-13 | graveyard-horror-pass | 1.8 | Added converted character model tests for skeleton, extensions and clips. | tools/asset-lib/skeleton-report.test.mjs
+2026-11-13 | graveyard-horror-pass | 1.10 | Added graveyard group asset list and 25 MB group budget in check-bundle. | groupAssets.json, assets.ts, check-bundle.mjs
+2026-11-13 | graveyard-horror-pass | 1.13 | Added horror-assets preview scene and six batch 1 screenshots. | tools/preview, reference/progress/horror-batch1-*.png
+2026-11-13 | graveyard-horror-pass | 1.14 | Asset auditor found no issues in new files. | none
+2026-11-13 | graveyard-horror-pass | 1.11 | Added group budget accounting property tests. | web/scripts/check-bundle.test.mjs
+2026-11-13 | graveyard-horror-pass | 1.15 | Batch 1 full check passed: typecheck, lint, format, web 750 tests, tools 379 tests, check-bundle OK. | web/scripts/check-bundle.test.mjs (format)
+2026-11-13 | graveyard-horror-pass | 1.16 | Batch 1 report delivered in chat with size breakdown. | none

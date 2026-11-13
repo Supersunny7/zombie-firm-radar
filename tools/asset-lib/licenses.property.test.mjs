@@ -48,6 +48,43 @@ const messyAlias = fc
     return { alias, text: `${lead}${body}${trail}` };
   });
 
+// Feature: graveyard-horror-pass, Property 2: Mixamo hosts are refused, animation-free CC BY Sketchfab picks are accepted
+// **Validates: Requirements 4.5, 4.6, 4.7**
+describe('Property 2: Mixamo hosts refused, animation-free CC BY Sketchfab picks accepted', () => {
+  const slug = fc.stringMatching(/^[a-z][a-z0-9-]{0,20}$/);
+  const ccBy = fc.constantFrom('CC BY', 'cc by 4.0', 'CC-BY-4.0', 'cc by 3.0');
+  const subs = fc.array(fc.stringMatching(/^[a-z][a-z0-9]{0,8}$/), { maxLength: 2 });
+  const edits = fc.constantFrom(
+    [{ op: 'removeAnimations' }],
+    [{ op: 'removeAnimations' }, { op: 'decimate', targetTriangles: 30000 }],
+    [{ op: 'specGlossToMetalRough' }, { op: 'removeAnimations' }],
+  );
+  const pickOf = (license, sourceUrl, e) => ({
+    edits: e,
+    credits: { title: 'T', author: 'Some Author', sourceUrl, license },
+  });
+
+  it('refuses any mixamo.com host or subdomain, even with removeAnimations', () => {
+    fc.assert(
+      fc.property(ccBy, subs, slug, edits, (lic, s, path, e) => {
+        const url = `https://${[...s, 'mixamo.com'].join('.')}/${path}`;
+        expect(checkLicense(pickOf(lic, url, e))).toEqual({ ok: false, reason: 'forbidden' });
+      }),
+      { numRuns: NUM_RUNS },
+    );
+  });
+
+  it('accepts CC BY Sketchfab picks whose edits remove animations', () => {
+    fc.assert(
+      fc.property(ccBy, slug, edits, (lic, path, e) => {
+        const r = checkLicense(pickOf(lic, `https://sketchfab.com/3d-models/${path}`, e));
+        expect(r).toEqual({ ok: true, canonical: 'CC BY' });
+      }),
+      { numRuns: NUM_RUNS },
+    );
+  });
+});
+
 describe('Property 7: License allow-list is exact', () => {
   it('accepts every messy spelling of an allowed alias with a non-forbidden host', () => {
     fc.assert(

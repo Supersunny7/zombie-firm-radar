@@ -21,7 +21,7 @@ Run \`node tools/fetch-assets.mjs\` afterwards. Missing files are listed by name
 How to use this list:
 
 - The site gives your download its own file name. Rename it to the Expected file name shown in each block. The script looks for exactly that name.
-- Sketchfab files are named \`<id>.zip\`. Freesound files are named \`<id>.<ext>\` with the original extension shown on the sound page (wav, mp3 or m4a).
+- Sketchfab files are named \`<id>.zip\`. Freesound files are named \`<id>.<ext>\` with the original extension shown on the sound page (wav, mp3, m4a or flac).
 - Sketchfab and Freesound both need a free login to download. Do not use the Freesound preview MP3; download the original file.
 - Everything under \`tools/cache/manual/\` except this README is git-ignored. Never use \`git add -f\`.
 - Credit-line titles follow the names recorded in \`reference/candidates/README.md\` and the model or sound page; if a title differs slightly on the site, the site wording wins.

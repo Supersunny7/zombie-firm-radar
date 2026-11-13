@@ -19,7 +19,7 @@ Scope boundaries:
 - The engine in `web/src/engine` is not touched. Selection and placement rules live in pure modules under `web/src/scenes/graveyard` (no React, no three.js imports), and rendering lives in `web/src/scenes/graveyard/r3f` and `web/src/fx`.
 - The lab, the Theatre.js cinematics and the capture interaction are out of scope.
 - Animation uses rigged models and procedural keyframes on bones. No Mixamo animation clip is used anywhere (`animation-direction.md`, `asset-licensing.md`).
-- The work is delivered in three batches with a STOP after each (Requirement 22).
+- The work is delivered in four batches (1, 2, 3a, 3b) with a STOP after each (Requirement 22).
 
 ## Glossary
 
@@ -67,7 +67,7 @@ Scope boundaries:
 - **Footstep_Distance**: The straight-line distance in metres from the camera to the nearest Nearby_Standing_Zombie.
 - **Content_Notice**: The dismissible one-line note with the text "Contains horror and gore".
 - **Notice_Link**: The footer control with the text "Contains horror and gore" that reopens the Content_Notice.
-- **Batch**: One of the three delivery groups in Requirement 22.
+- **Batch**: One of the four delivery groups (1, 2, 3a, 3b) in Requirement 22.
 - **Measurement_Script**: The existing headed-Playwright fps script of Base_Spec Requirement 21.5 to 21.8.
 
 ## Requirements
@@ -155,6 +155,9 @@ Scope boundaries:
 9. THE initial download before the first frame SHALL stay at or below 25 MB and the Base_Spec Requirement 8.10 check SHALL continue to pass.
 10. THE Graveyard_Asset_Group SHALL contain no file with a Manifest bytes value above 5,000,000, except the 2k sky HDRI which is outside the group.
 11. IF a Character_Model fails to load, THEN THE Graveyard_Scene SHALL report the failed asset name in the developer console, SHALL use the fallback of Requirement 12 criterion 6, and SHALL keep running.
+12. THE Asset_Pipeline ceiling `LIMITS.graveyard` in `tools/asset-lib/budgets.mjs` SHALL be 40,000,000 bytes, counted on disk over every file of the graveyard Manifest group (both HDRI files, both audio formats and unused sources), and the Group_Budget of criterion 6 SHALL stay the binding limit for the visitor session.
+13. IF the Graveyard_Asset_Group exceeds the Group_Budget, THEN THE agent SHALL reduce it in this fixed order and SHALL stop at the first step after which the total is at most the Group_Budget: first, stop loading and shipping the assets the Graveyard_Scene no longer uses, namely the Craggle_Hand (Requirement 15) and the Mutant, which the Watcher replaces (the Mutant file leaves `groupAssets.json` and the scene only after the user approves superseding Base_Spec Requirement 9 for the Mutant); second, reduce texture quality (a lower texture resolution or a stronger compression for the largest texture files in the group, never below the resolution that keeps Requirement 6 criterion 1).
+14. WHENEVER criterion 13 is applied, or the Group_Budget check fails, THE agent SHALL report the per-file and per-category byte breakdown (criterion 8) before and after each step, and SHALL name each file that was removed or recompressed.
 
 ### Requirement 6: Ground texture and dead grass
 
@@ -203,7 +206,7 @@ Scope boundaries:
 3. THE Layout_Engine SHALL apply a yaw offset in the closed range -20 degrees to +20 degrees to each Headstone.
 4. THE Layout_Engine SHALL apply a total tilt of at most 8 degrees (the angle between the stone's up axis and vertical) to each upright Headstone.
 5. THE Layout_Engine SHALL multiply the Base_Spec height of each Headstone by a seeded factor in the closed range 0.90 to 1.10.
-6. THE Layout_Engine SHALL set the Fallen_Stone flag for between 3 percent and 7 percent of the Firms of any generated list of at least 1,000 Firms, chosen by the seeded generator.
+6. THE Layout_Engine SHALL set the Fallen_Stone flag for between 3 percent and 7 percent of the Firms of any generated list of 2,500 to 3,000 Firms, chosen by the seeded generator. For a list of fewer than 2,500 Firms the 3 to 7 percent share is a statistical expectation only and carries no hard guarantee.
 7. THE Layout_Engine SHALL lay a Fallen_Stone flat on the ground with its engraved face up or at most 15 degrees from up, at yaw within the range of criterion 3 plus or minus 90 degrees, and sunk into the ground by 0 m to 0.08 m.
 8. WHEN the Layout_Engine runs twice on the same Firm list in the same order, THE Layout_Engine SHALL return identical Stone_Jitter values, equal to the bit.
 9. THE Layout_Engine SHALL keep the Base_Spec Requirement 3.2 rule (at least 0.15 m between footprint edges) using the oriented footprint of each Headstone after yaw, tilt and the Fallen_Stone lying footprint, and MAY enlarge the cell pitch to satisfy it.
@@ -223,7 +226,7 @@ Scope boundaries:
 
 1. THE Camera_Rig SHALL place the Plot_Camera_Pose at an eye height of 1.5 m, with a tolerance of 0.1 m.
 2. THE Camera_Rig SHALL place the Plot_Camera_Pose so that the horizontal distance from the camera to the nearest Headstone of the framed Plot is at most 4.0 m.
-3. WHEN a Plot is framed at its Plot_Camera_Pose, THE bases of the nearest-row mounds of that Plot SHALL project into the lower half of the viewport (below the vertical centre) at 1440 x 900 and at 390 x 844 pixels.
+3. WHEN a Plot is framed at its Plot_Camera_Pose with the pointer centred and no handheld sway, THE bases of the nearest-row mounds of that Plot SHALL project into the lower half of the viewport (below the vertical centre) at 1440 x 900 and at 390 x 844 pixels.
 4. THE Camera_Rig SHALL keep the Plot_Camera_Pose inside the Plot boundary extended by the Plot gap, so that the camera is among the graves and not on the path outside.
 5. THE Camera_Rig SHALL keep the field of view 52 degrees, the look-target smoothing, the handheld sway amplitudes, the camera-local Flashlight offset and the 1.5 s move limit of the Base_Spec.
 6. THE Camera_Rig SHALL keep the overview pose rule (all Plots fully inside the viewport) and SHALL NOT apply the 1.5 m eye height to the overview.
@@ -360,7 +363,7 @@ Scope boundaries:
 2. WHILE Lights_Mode is "lights on", THE Graveyard_Scene SHALL run the same Rise_Sequence timing and motion as in "lights off", including the Dirt_Burst.
 3. WHILE Lights_Mode is "lights on", THE Graveyard_Scene SHALL use the Walker_Model in place of the Hero_Model (Requirement 12 criterion 3).
 4. WHILE Lights_Mode is "lights on", THE Graveyard_Scene SHALL draw no blood decal on Headstones, Mounds or characters, as in Base_Spec Requirement 6.2.
-5. WHILE Lights_Mode is "lights on", THE Audio_Engine SHALL play no Growl, and SHALL keep playing the Footstep_Bed under the rules of Requirement 17 criteria 11 to 20.
+5. WHILE Lights_Mode is "lights on", THE Audio_Engine SHALL play no Growl, and SHALL keep playing the Footstep_Bed under the rules of Requirement 17 criteria 11 to 20 (silent while Reduced_Motion is true, criterion 19).
 6. WHILE Lights_Mode is "lights on", THE Graveyard_Scene SHALL show no Watcher and SHALL start no Vanish_Glitch.
 7. THE Graveyard_Scene SHALL show the same Firm statuses, figures and labels in both Lights_Mode values (Base_Spec Requirement 17.3).
 
@@ -381,14 +384,14 @@ Scope boundaries:
 9. THE Audio_Engine SHALL keep playing the digging sound once per Risen_Zombie at the start of its Rise_Sequence, in place of once per Craggle_Hand (Base_Spec Requirement 16.4).
 10. THE Growl_Limiter SHALL be a pure function of the event times, with a fast-check property of at least 100 cases: for any sequence of event times the number of accepted Growls in any 1,000 ms window is at most 1, and the first event after a gap of at least 1,000 ms is accepted.
 11. THE Growl choice SHALL be a pure function of the value returned by the Growl_Source, with fast-check properties of at least 100 cases: the chosen file is always one of the two Growl files, the same Growl_Source value always gives the same file, and values below 0.5 and from 0.5 up select different files.
-12. WHILE a Nearby_Standing_Zombie exists, the Audio_Engine is not muted and the Interaction_Gate has occurred, THE Audio_Engine SHALL play the Footstep_Bed as a continuous loop, in "lights on" and in "lights off".
+12. WHILE a Nearby_Standing_Zombie exists, the Audio_Engine is not muted, the Interaction_Gate has occurred and Reduced_Motion is false, THE Audio_Engine SHALL play the Footstep_Bed as a continuous loop, in "lights on" and in "lights off".
 13. THE Audio_Engine SHALL load the Footstep_Bed only from the Manifest entry `freesound-indieground-pas-zombie-route`, and SHALL load it lazily when the first Nearby_Standing_Zombie exists after the Interaction_Gate.
 14. WHEN the first Nearby_Standing_Zombie appears while the Footstep_Bed is stopped, THE Audio_Engine SHALL start the loop with a fade-in of 1 s.
 15. THE Audio_Engine SHALL set the Footstep_Bed gain after the master gain to 0.15 multiplied by an attenuation factor that is 1 at a Footstep_Distance of 2 m or less, falls linearly to 0 at 12 m, and is 0 beyond 12 m, so that the gain is never above 0.15.
 16. WHILE the Footstep_Bed plays, THE Audio_Engine SHALL update the gain of criterion 15 from the current Footstep_Distance at every rendered frame, with a smoothing time of at most 250 ms.
 17. WHEN no Nearby_Standing_Zombie exists, THE Audio_Engine SHALL fade the Footstep_Bed out over 1 s with a tolerance of 0.1 s and SHALL then stop the loop.
 18. WHILE the Interaction_Gate has not occurred, or the Audio_Engine is muted, THE Audio_Engine SHALL play no Footstep_Bed, and WHEN the Audio_Engine is unmuted while a Nearby_Standing_Zombie exists, THE Audio_Engine SHALL start the Footstep_Bed as in criterion 14.
-19. WHILE Reduced_Motion is true, THE Audio_Engine SHALL play the Footstep_Bed under criteria 12 to 18, because the sound follows the presence of a Standing_Zombie and not its animation.
+19. WHILE Reduced_Motion is true, THE Audio_Engine SHALL play no Footstep_Bed and SHALL NOT load it, because the Standing_Zombies do not move; WHEN Reduced_Motion changes to true while the Footstep_Bed plays, THE Audio_Engine SHALL fade it out over 1 s and stop it as in criterion 17; WHEN Reduced_Motion changes to false while a Nearby_Standing_Zombie exists, the Audio_Engine is not muted and the Interaction_Gate has occurred, THE Audio_Engine SHALL start the Footstep_Bed as in criterion 14. The Growl is not affected (criterion 8).
 20. IF the Footstep_Bed fails to load or decode, THEN THE Audio_Engine SHALL skip it, keep all other sounds working, and show no error to the user.
 21. THE Footstep_Bed gain function (criterion 15) SHALL be a pure function of the Footstep_Distance, with a fast-check property of at least 100 cases: the gain is within [0, 0.15] for every distance, and a larger distance never gives a higher gain.
 
@@ -458,18 +461,18 @@ Scope boundaries:
 10. WHEN each Batch is complete, THE Playwright run SHALL save lights-off screenshots at 1920 x 1080 pixels to `reference/progress/horror-batch<N>-<name>.png`, where `<N>` is 1, 2 or 3, and each Batch SHALL save at least the screenshots listed in Requirement 22.
 11. THE screenshots SHALL be taken in lights off and SHALL NOT be committed under any path other than `reference/progress/`.
 
-### Requirement 22: Delivery in three batches and workflow rules
+### Requirement 22: Delivery in four batches (1, 2, 3a, 3b) and workflow rules
 
-**User Story:** As the project owner, I want the work delivered in three reviewable batches with a stop after each, so that I can approve each step before the next one starts.
+**User Story:** As the project owner, I want the work delivered in reviewable batches with a stop after each, so that I can approve each step before the next one starts.
 
 #### Acceptance Criteria
 
-1. THE tasks of the Horror_Pass SHALL be split into three Batches: Batch 1 contains the assets and licensing (Requirements 1 to 5), Batch 2 contains the ground, graves, stones and camera (Requirements 6 to 9), and Batch 3 contains the zombies, the Watcher, the sound and the notice (Requirements 10 to 19).
-2. THE tasks file SHALL end each Batch with a line `STOP` that tells the agent to stop and wait for the user, and SHALL contain no task of the next Batch before that line.
+1. THE tasks of the Horror_Pass SHALL be split into four Batches: Batch 1 contains the assets and licensing (Requirements 1 to 5), Batch 2 contains the ground, graves, stones and camera (Requirements 6 to 9), Batch 3a contains the rising zombies (the Rise_Sequence, the Bone_Animator, the rise selection with Risen_Zombies, the Torn_Mound swap, the Dirt_Burst, the lowering and the Hero_Model swap in lights on; Requirements 10, 11, 12, 15 and 19 as far as they concern Risen_Zombies), and Batch 3b contains the Standing_Zombies (Requirement 13), the Watcher (Requirement 14), the sound (Requirement 17), the Content_Notice (Requirement 18), the remaining parts of Requirements 16 and 19, and the quality gates of Requirement 21.
+2. THE tasks file SHALL end each Batch (1, 2, 3a and 3b) with a task `STOP: wait for the user to review Batch <name> before continuing.` that tells the agent to stop and wait for the user, and SHALL contain no task of the next Batch before that task. The Batch 3a STOP task SHALL come after the Batch 3a typecheck, lint, format and test checks and the Batch 3a screenshot, and before any Standing_Zombie, Watcher, sound or Content_Notice work.
 3. WHEN a Batch is complete, THE agent SHALL stop, report what was done, the check results, the screenshots and the open decisions, and SHALL start the next Batch only after the user approves.
 4. THE Batch 1 deliverables SHALL include the two Growl files with their Manifest entries and `CREDITS.md` rows (Requirement 3 criteria 9 to 11 and 13), `reference/progress/horror-batch1-assets.png` (Requirement 2 criterion 4), the byte breakdown (Requirement 5 criterion 8) and the asset-auditor report.
 5. THE Batch 2 deliverables SHALL include at least `reference/progress/horror-batch2-ground-graves.png`, taken at the Plot_Camera_Pose of Plot 1 with the nearest mounds in the lower half, and `reference/progress/horror-batch2-stones.png`, showing tilted, rotated and at least one Fallen_Stone.
-6. THE Batch 3 deliverables SHALL include at least `reference/progress/horror-batch3-rise.png` (a Risen_Zombie at the waist-high pose), `reference/progress/horror-batch3-standing.png` (Standing_Zombies among stones), `reference/progress/horror-batch3-watcher.png` (the Watcher in the far rows), `reference/progress/horror-batch3-notice.png` (the Content_Notice), and the Measurement_Script numbers of Requirement 21.
+6. THE Batch 3a deliverables SHALL include at least `reference/progress/horror-batch3a-rise.png` (a Risen_Zombie at the waist-high pose, lights off, with its Torn_Mound), the results of typecheck, lint, format and test, and the Batch 3a report. THE Batch 3b deliverables SHALL include at least `reference/progress/horror-batch3b-standing.png` (Standing_Zombies among stones), `reference/progress/horror-batch3b-watcher.png` (the Watcher in the far rows), `reference/progress/horror-batch3b-notice.png` (the Content_Notice), and the Measurement_Script numbers of Requirement 21. The Standing_Zombies belong to Batch 3b.
 7. WHEN files under `web/src/scenes/**` or `web/src/fx/**` change, THE agent SHALL name `reference/graveyard/horror-direction.png` and `reference/graveyard/horror-direction-sequence.png` as the matching references (and `reference/graveyard/graveyard-rate-shock-3pp.png` for unchanged parts), and SHALL offer a scene-critic review.
 8. BEFORE using an API of `three`, `@react-three/fiber`, `@react-three/drei`, `@react-three/postprocessing`, `three-custom-shader-material` or `@theatre/core`, THE agent SHALL look it up with the context7 MCP server.
 9. THE agent SHALL NOT edit `/pipeline`, `/data` generation code or `data-contract.md`.

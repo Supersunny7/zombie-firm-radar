@@ -214,7 +214,8 @@ Credits use the exact titles, authors, URLs and `CC BY 4.0` / `CC0` of requireme
 - `assets.ts` keeps `ASSET_KEYS` and gains `GROUND_SLUG` and `ASSET_KEYS.forestFloor`, `ASSET_KEYS.characters`, `ASSET_KEYS.audio.growls`, `ASSET_KEYS.audio.footsteps`. `assets.test.ts` asserts that `groupAssets.json` equals the set derived from `ASSET_KEYS` (all keys except `craggleHand`, `ruella`, the mp3 fallbacks and the HDRI) so the two cannot drift.
 - `check-bundle.mjs` reads the same JSON with `readFileSync` (no TypeScript import) and exports `computeGroupBudget(files, groups)`: bytes per category, HDRI bytes separately, total, `over` and a message `Graveyard asset group <mb> MB exceeds the 25 MB Group_Budget` (5.7). Any key missing from the manifest, any file above 5,000,000 bytes in the group (5.10) and any non-finite `bytes` also fail. The result prints `ground`, `characters`, `stones`, `props`, `sounds`, `hdri`, and the total with and without HDRI, which is the breakdown of 5.8.
 - `pnpm build` already runs `check-bundle`, so 21.1 enforces the budget.
-- **Pipeline ceiling.** `budgets.mjs` `LIMITS.graveyard` is 26,214,400 and counts every file in the manifest group (both HDRIs, both audio formats, unused sources). It is 23.48 MB today, so the new files would exceed it. See Decision 6: it becomes 40,000,000, while the real session budget is the 25 MB Group_Budget above.
+- **Pipeline ceiling.** `budgets.mjs` `LIMITS.graveyard` is 26,214,400 and counts every file in the manifest group (both HDRIs, both audio formats, unused sources). It is 23.48 MB today, so the new files would exceed it. See Decision 6: it becomes 40,000,000 bytes on disk (confirmed, 5.12), while the real session budget is the 25 MB Group_Budget above.
+- **Fallback order when the group exceeds 25 MB (5.13, 5.14).** Apply in this order and stop at the first step that brings the total to at most 25,000,000 bytes: (1) stop loading and shipping what the graveyard no longer uses: the Craggle_Hand is already outside `groupAssets.json` (15.1, 15.6); the Mutant (570,220 bytes) is removed from `groupAssets.json` and from the scene because the Watcher replaces it, after the user approves superseding Base_Spec Requirement 9 for the Mutant; (2) reduce texture quality: re-encode the largest texture files in the group at a lower resolution or stronger compression (for example the stump, statue or soil sets), never below the texel density of 6.1 for the Ground_Texture. After each step `computeGroupBudget` is rerun and the report prints the per-file and per-category breakdown before and after, naming each removed or recompressed file.
 
 **Estimated Graveyard_Asset_Group** (sizes from the manifest; ground and characters are bounds):
 
@@ -532,14 +533,14 @@ export type FootstepState = 'stopped' | 'fadingIn' | 'playing' | 'fadingOut';
 export function nextFootstep(s: FootstepState, wantPlayback: boolean, elapsed: number): FootstepState;
 ```
 
-`footstepGain` is 0.15 at 2 m or less, falls linearly to 0 at 12 m and is 0 beyond (17.15, 17.21). `wantPlayback = gate && !muted && nearbyStanding`.
+`footstepGain` is 0.15 at 2 m or less, falls linearly to 0 at 12 m and is 0 beyond (17.15, 17.21). `wantPlayback = gate && !muted && !reducedMotion && nearbyStanding`.
 
 **Engine additions** (`audioEngine.ts`). The structural `AudioParamLike` gains `linearRampToValueAtTime(value, endTime)`; the test fake is updated.
 
 - `setLights(l)`, `playGrowl()`, `setFootstepDistance(d: number | null)`.
 - Loading: `growls` (both files) lazily at the first `riseFinished` event or the first `setLights('off')` after the gate; `footsteps` lazily when `setFootstepDistance` first receives a number after the gate (17.6, 17.13). A failed or undecodable growl falls back to the other; both failing skips silently (17.7); a failed footstep file is skipped (17.20).
 - `playGrowl()`: ignored before the gate, when muted, when lights are on, or when the limiter rejects. Otherwise a new buffer source goes through a per-play `GainNode` at 0.4 (after the master gain), is faded out with `linearRampToValueAtTime` to 0 over the last 0.3 s, and stopped at `start + 3.0 s` (17.3). The file comes from `pickGrowl(growlSource())`; `growlSource` is an engine option (default `Math.random`), separate from the existing `rand` used by crows, so tests inject a seeded source.
-- Footstep_Bed: a looping source through its own gain node. When `setFootstepDistance` first receives a number while stopped it fades in over 1.0 s (`linearRampToValueAtTime`), then every call sets `gain.setTargetAtTime(footstepGain(d), now, 0.08)` (time constant 0.08 s reaches 95 percent in 0.24 s, inside 250 ms, 17.16). `null` fades out over 1.0 s and stops the source at the end (17.17). Mute, missing gate and `dispose()` follow the existing rules (silent, nothing queued, restart with a fade-in on unmute while a zombie is nearby, 17.18). Reduced_Motion is never read (17.8, 17.19).
+- Footstep_Bed: a looping source through its own gain node. When `setFootstepDistance` first receives a number while stopped it fades in over 1.0 s (`linearRampToValueAtTime`), then every call sets `gain.setTargetAtTime(footstepGain(d), now, 0.08)` (time constant 0.08 s reaches 95 percent in 0.24 s, inside 250 ms, 17.16). `null` fades out over 1.0 s and stops the source at the end (17.17). Mute, missing gate and `dispose()` follow the existing rules (silent, nothing queued, restart with a fade-in on unmute while a zombie is nearby, 17.18). The Growl never reads Reduced_Motion (17.8). The Footstep_Bed does (17.19, confirmed): the engine gains `setReducedMotion(r: boolean)`; while `r` is true `wantPlayback` is false, `footsteps` is never loaded, and a playing bed fades out over 1.0 s and stops (as for `null`); when `r` becomes false and a Nearby_Standing_Zombie exists (gate passed, not muted) it restarts with the 1.0 s fade-in. `useGraveyardAudio` mirrors `settings.reducedMotion` into `setReducedMotion` next to `setLights`.
 - Digging (17.9): `useGraveyardAudio` still subscribes to `riseEvents` and calls `playDig`; the event now comes from `risenPool.started` once per Risen_Zombie. It also subscribes to `riseFinishedEvents` and calls `playGrowl`, and mirrors `settings.lights` into `setLights`.
 - **Nearby_Standing_Zombie.** `Characters.tsx` computes, once per frame, the distance from the camera to the nearest Standing_Zombie that is inside the framed Plot rectangle or inside the camera frustum (`nearbyStanding`, pure) and calls `getAudioEngine()?.setFootstepDistance(d)` only when the value changed by 0.05 m or the nearby state flipped.
 
@@ -567,7 +568,7 @@ Low quality halves grass and Dirt_Burst, turns off character `castShadow`, keeps
 
 ### 13. Evidence scripts (Requirements 21 and 22)
 
-- **Screenshots.** `web/scripts/horror-screenshots.mjs --batch 2|3` uses `lib/browser.mjs` (headed Chrome, 1920 x 1080), `/?firms=3000`, lights off, and writes the files listed in 22.5 and 22.6 to `reference/progress/horror-batch<N>-<name>.png`. State is reached through the UI (slider keys, plot chips) plus a development-only helper: `?horror=rise` waits for the first `rise finished` frame, `?horror=watcher` makes the Watcher state machine schedule its first appearance after 1 s, `?horror=notice` clears the stored dismissal. The helper sits behind `import.meta.env.DEV` and the marker `__zfr_horror_debug__` is added to `FORBIDDEN_MARKERS` in `check-bundle.mjs`, so it is tree-shaken from production and checked.
+- **Screenshots.** `web/scripts/horror-screenshots.mjs --batch 2|3a|3b` (files: `horror-batch3a-rise.png`; `horror-batch3b-standing.png`, `-watcher.png`, `-notice.png`) uses `lib/browser.mjs` (headed Chrome, 1920 x 1080), `/?firms=3000`, lights off, and writes the files listed in 22.5 and 22.6 to `reference/progress/horror-batch<N>-<name>.png`. State is reached through the UI (slider keys, plot chips) plus a development-only helper: `?horror=rise` waits for the first `rise finished` frame, `?horror=watcher` makes the Watcher state machine schedule its first appearance after 1 s, `?horror=notice` clears the stored dismissal. The helper sits behind `import.meta.env.DEV` and the marker `__zfr_horror_debug__` is added to `FORBIDDEN_MARKERS` in `check-bundle.mjs`, so it is tree-shaken from production and checked.
 - **Measurement.** `measure-fps.mjs` gains `--horror`. It evaluates, inside the page on the dev server, `await import('/src/engine/index.ts')` and `await import('/src/state/store.ts')` (Vite serves the same module instances the app uses) to find the lowest slider step `k` (0.25 pp) with at least 8 Newly_Undead firms among the 3,000, sets it with the slider keys, waits 2 s after the Settled_Shock, then records at least 10 s of frames. Counts of Risen_Zombies, Standing_Zombies and Watchers at the start of the window come from `data-risen-count`, `data-standing-count` and `data-watcher-count` attributes that a development-only `HorrorStats` component writes to `document.body`. The DEVLOG line has every field of 21.5. This depends on Base_Spec task 21.1 (Decision 10).
 - **Reference rule.** After any change under `web/src/scenes/**` or `web/src/fx/**`, the agent names `reference/graveyard/horror-direction.png` and `horror-direction-sequence.png` (and `graveyard-rate-shock-3pp.png` for unchanged parts) and offers the scene-critic (22.7).
 
@@ -724,7 +725,7 @@ For any firm, a fallen stone has `pitch = −90 degrees`, its face normal is wit
 
 ### Property 13: Fallen share is about five percent
 
-For any generated list of 2,500 to 3,000 firms with hash-uniform ciks, the fallen share lies between 3 percent and 7 percent. (The statistical caveat for lists of exactly 1,000 is explained in the design risks.)
+For any generated list of 2,500 to 3,000 firms with hash-uniform ciks, the fallen share lies between 3 percent and 7 percent. (Requirement 8.6 gives no hard guarantee below 2,500 firms; see the design risks.)
 
 **Validates: Requirements 8.6**
 
@@ -890,11 +891,11 @@ For any `u` in [0, 1), `pickGrowl(u)` is one of the two Growl files; the same `u
 
 **Validates: Requirements 17.11**
 
-### Property 41: Growl and Footstep_Bed are silent before the gate, when muted, and (Growl) in lights on
+### Property 41: Growl and Footstep_Bed are silent before the gate, when muted, (Footstep_Bed) in reduced motion, and (Growl) in lights on
 
-For any interleaving of pointer movements, clicks, key presses, mute and unmute, lights changes, rise-finished events and standing-zombie distances, no Growl or Footstep_Bed source starts before the Interaction_Gate or while muted, no Growl starts in lights on, no event received while muted is replayed, and the Footstep_Bed restarts with a fade-in when the engine is unmuted while a zombie is nearby.
+For any interleaving of pointer movements, clicks, key presses, mute and unmute, lights changes, Reduced_Motion changes, rise-finished events and standing-zombie distances, no Growl or Footstep_Bed source starts before the Interaction_Gate or while muted, no Footstep_Bed source starts or is loaded while Reduced_Motion is true (and a playing one fades out over 1 s when Reduced_Motion becomes true), no Growl starts in lights on, no event received while muted is replayed, and the Footstep_Bed restarts with a fade-in when the engine is unmuted while a zombie is nearby.
 
-**Validates: Requirements 17.4, 17.5, 17.18**
+**Validates: Requirements 17.4, 17.5, 17.18, 17.19**
 
 ### Property 42: Footstep gain
 
@@ -1002,7 +1003,8 @@ pnpm test
 # Dev server in a separate terminal (long-running): Set-Location web; pnpm dev
 Set-Location web
 node scripts/horror-screenshots.mjs --batch 2 --url http://localhost:5173
-node scripts/horror-screenshots.mjs --batch 3 --url http://localhost:5173
+node scripts/horror-screenshots.mjs --batch 3a --url http://localhost:5173
+node scripts/horror-screenshots.mjs --batch 3b --url http://localhost:5173
 node scripts/measure-fps.mjs --horror --url http://localhost:5173 --seconds 10
 ```
 
@@ -1042,22 +1044,22 @@ Steering compliance: the engine in `web/src/engine` is not touched; `/pipeline`,
 3. **Exact planted hands by analytic two-bone IK.** Breathing alone would drift the hands a few centimetres; the IK removes the drift and is testable with plain numbers (Property 26).
 4. **Settled_Shock from the render clock.** The 250 ms debounce is a pure tracker called every frame, so there is no timer, tests are deterministic, and the tolerance is one frame.
 5. **`.ogg` is the counted audio file.** The engine requests `.ogg` first; the `.mp3` fallbacks are manifest entries but not counted. The report prints the `.mp3` total as an information line so a Safari-only worst case is visible.
-6. **Pipeline ceiling raised to 40,000,000.** `LIMITS.graveyard` (26,214,400) counts every file of the manifest group on disk, including both HDRIs, both audio formats and unused sources. It is 23.48 MB today and the new files add up to about 11 MB, so it must change. The session budget that matters to visitors is the 25 MB Group_Budget, enforced separately. `LIMITS.total` (62,914,560) is unaffected: lab 21.1 MB plus graveyard about 34 MB is 55 MB. **This needs the user's confirmation.**
+6. **Pipeline ceiling raised to 40,000,000 (confirmed).** `LIMITS.graveyard` (26,214,400) counts every file of the manifest group on disk, including both HDRIs, both audio formats and unused sources. It is 23.48 MB today and the new files add up to about 11 MB, so it must change. The session budget that matters to visitors is the 25 MB Group_Budget, enforced separately. `LIMITS.total` (62,914,560) is unaffected: lab 21.1 MB plus graveyard about 34 MB is 55 MB. If the visitor group exceeds 25 MB, the fallback order of section 2 applies (5.13).
 7. **A separate selection store.** Requirement 20.5 limits changes to the main store, so assignments live in `selectionStore.ts`; only `settledShock` and the notice fields go into the main store.
-8. **9.3 is evaluated at the framed pose.** The pointer offset (9.7) can move the look target 1.3 m down and then pitch the mound bases above the centre. The property uses the neutral pointer and no sway.
+8. **9.3 is evaluated at the framed pose (confirmed).** The pointer offset (9.7) can move the look target 1.3 m down and then pitch the mound bases above the centre. Requirement 9.3 now states the condition itself: pointer centred, no handheld sway. The property uses the neutral pointer and no sway.
 9. **Dev-only horror helper.** `?horror=rise|watcher|notice` makes screenshots reproducible; it sits behind `import.meta.env.DEV` with a bundle marker.
-10. **The measurement script is a Base_Spec task.** `web/scripts/measure-fps.mjs` (Base_Spec task 21.1) is not in the repository yet. Batch 3 builds the `--horror` mode on top of it; if task 21.1 is still open, Batch 3's first task finishes the base script.
+10. **The measurement script is a Base_Spec task.** `web/scripts/measure-fps.mjs` (Base_Spec task 21.1) is not in the repository yet. Batch 3b builds the `--horror` mode on top of it; if task 21.1 is still open, task 3.53 finishes the base script.
 11. **Model swap time.** The 500 ms swap bound (12.4) holds for a cached model. If the Hero_Model has never been loaded when lights go off, the Walker stays until it arrives and the swap happens in the first frame after loading.
 
 ## Risks and requirement notes
 
-- **Fallen share (8.6).** A per-cik rule cannot guarantee 3 to 7 percent for every list; for hash-uniform ciks the share is binomial. At 1,000 firms the standard deviation is 0.69 percentage points, so 3 percent is 2.9 sigma away (about 0.4 percent chance of a miss per list); at 2,500 or more it is 4.6 sigma. Property 13 therefore generates 2,500 to 3,000 firms (the real data set is 3,000). Suggested wording for the requirement: "at least 3 percent and at most 7 percent of the Firms of a list of 3,000 hash-distributed ciks". The design does not change.
+- **Fallen share (8.6).** A per-cik rule cannot guarantee 3 to 7 percent for every list; for hash-uniform ciks the share is binomial. At 1,000 firms the standard deviation is 0.69 percentage points, so 3 percent is 2.9 sigma away (about 0.4 percent chance of a miss per list); at 2,500 or more it is 4.6 sigma. Requirement 8.6 (confirmed) therefore requires the 3 to 7 percent share only for lists of 2,500 to 3,000 firms; below 2,500 it is a statistical expectation with no hard guarantee. Property 13 generates 2,500 to 3,000 firms (the real data set is 3,000). The design does not change.
 - **Character triangle counts are unknown** until Batch 1 inspects the files. The pipeline adds a `decimate` edit with target 30,000 triangles when a model exceeds it.
 - **Bone maps and axis signs** (`boneMaps.ts`) are filled from the Batch 1 skeleton report and tuned in Batch 3 against the reference frames. The Crawler uses Mixamo bone names by design (requirement 1.6).
 - **Hips-based drop** assumes an upright bind pose. If a model's bind pose is a T-pose, the arm roles include the rotation to the raised-arm start pose, which the first key pose sets.
 - **Characters and shadows.** Shadow casting by skinned characters costs a shadow pass per light; low quality turns it off (19.1). The scene-critic review in Batch 3 decides whether lights-off normal quality keeps it.
 - **Texture generation for specGloss.** `metalRough` creates new textures and sets IOR 1000; the glTF loader supports both extensions. The Batch 1 screenshot confirms the Hero material looks right.
 
-## Delivery in three batches
+## Delivery in four batches
 
-The tasks file follows requirement 22: Batch 1 (assets and licensing, requirements 1 to 5), Batch 2 (ground, graves, stones, camera, requirements 6 to 9), Batch 3 (zombies, Watcher, sound, notice, requirements 10 to 19, plus the quality gates of 21), each ending with a `STOP` line. Each batch runs the full check before its report, saves its screenshots to `reference/progress/`, and waits for approval.
+The tasks file follows requirement 22: Batch 1 (assets and licensing, requirements 1 to 5), Batch 2 (ground, graves, stones, camera, requirements 6 to 9), Batch 3a (rising zombies: selection, Settled_Shock, Risen pool, Bone_Animator, IK, Dirt_Burst, torn mound swap, lowering, model assignment with the Hero swap in lights on, character loader, retiring the Craggle hand; requirements 10, 11, 12, 15 and the matching parts of 19), and Batch 3b (Standing_Zombies, Watcher, Growl and Footstep_Bed, Content_Notice, fps measurement and final checks; requirements 13, 14, 16, 17, 18, 21 and the rest of 19), each ending with a STOP task. Standing_Zombies are in 3b. The 3a STOP comes after the 3a checks and `horror-batch3a-rise.png`, before any 3b work. Each batch runs the full check before its report, saves its screenshots to `reference/progress/`, and waits for approval.

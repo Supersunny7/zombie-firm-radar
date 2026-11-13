@@ -1,0 +1,57 @@
+{
+  "categories": {
+    "ground": [
+      "textures/polyhaven-brown-mud-leaves-01/polyhaven-brown-mud-leaves-01_diffuse.webp",
+      "textures/polyhaven-brown-mud-leaves-01/polyhaven-brown-mud-leaves-01_nor-gl.webp",
+      "textures/polyhaven-brown-mud-leaves-01/polyhaven-brown-mud-leaves-01_rough.webp"
+    ],
+    "characters": [
+      "models/sketchfab-possessed-undead-giantswing/sketchfab-possessed-undead-giantswing.glb",
+      "models/sketchfab-zombie-pxltiger/sketchfab-zombie-pxltiger.glb",
+      "models/sketchfab-zombie-walk-oscar/sketchfab-zombie-walk-oscar.glb",
+      "models/sketchfab-hooded-horror-woman-purplepoint/sketchfab-hooded-horror-woman-purplepoint.glb"
+    ],
+    "stones": [
+      "models/sketchfab-small-gravestone-drydoctoregg/sketchfab-small-gravestone-drydoctoregg.glb",
+      "models/own-headstone-cracked/own-headstone-cracked.glb",
+      "models/sketchfab-damaged-tombstone-drydoctoregg/sketchfab-damaged-tombstone-drydoctoregg.glb"
+    ],
+    "props": [
+      "textures/polyhaven-excavated-soil-wall/polyhaven-excavated-soil-wall_diffuse.webp",
+      "textures/polyhaven-excavated-soil-wall/polyhaven-excavated-soil-wall_nor-gl.webp",
+      "textures/polyhaven-excavated-soil-wall/polyhaven-excavated-soil-wall_rough.webp",
+      "textures/polyhaven-lichen-rock/polyhaven-lichen-rock_diffuse.webp",
+      "textures/polyhaven-lichen-rock/polyhaven-lichen-rock_nor-gl.webp",
+      "textures/polyhaven-lichen-rock/polyhaven-lichen-rock_rough.webp",
+      "models/sketchfab-zombie-mutant/sketchfab-zombie-mutant.glb",
+      "models/sketchfab-zombie-corpse-greenall/sketchfab-zombie-corpse-greenall.glb",
+      "models/polyhaven-large-iron-gate/polyhaven-large-iron-gate.glb",
+      "models/polyhaven-gothic-statue/polyhaven-gothic-statue.glb",
+      "models/polyhaven-dead-tree-trunk/polyhaven-dead-tree-trunk.glb",
+      "models/polyhaven-tree-stump-01/polyhaven-tree-stump-01.glb",
+      "models/polyhaven-tree-stump-02/polyhaven-tree-stump-02.glb",
+      "models/polyhaven-lantern-01/polyhaven-lantern-01.glb",
+      "models/sketchfab-cobwebs-asset-pack-emarshall/sketchfab-cobwebs-asset-pack-emarshall.glb",
+      "textures/oga-blood-splatter-exilegl/oga-blood-splatter-exilegl_color.webp",
+      "textures/own-handprint-decal/own-handprint-decal_handprint-0.webp",
+      "textures/own-handprint-decal/own-handprint-decal_handprint-1.webp",
+      "textures/own-handprint-decal/own-handprint-decal_handprint-2.webp",
+      "textures/own-drag-mark-decal/own-drag-mark-decal_drag-mark-0.webp",
+      "textures/own-drag-mark-decal/own-drag-mark-decal_drag-mark-1.webp",
+      "textures/own-drag-mark-decal/own-drag-mark-decal_drag-mark-2.webp"
+    ],
+    "sounds": [
+      "audio/freesound-tomhannen-howling-wind-tower/freesound-tomhannen-howling-wind-tower.ogg",
+      "audio/freesound-giddster-crows-cawing/freesound-giddster-crows-cawing.ogg",
+      "audio/freesound-guyburns-digging-with-shovel/freesound-guyburns-digging-with-shovel.ogg",
+      "audio/freesound-launemax-open-close-iron-gate/freesound-launemax-open-close-iron-gate.ogg",
+      "audio/freesound-tonsil5-zombie-growl-5/freesound-tonsil5-zombie-growl-5.ogg",
+      "audio/freesound-ezcah-zombie-growl-01/freesound-ezcah-zombie-growl-01.ogg",
+      "audio/freesound-indieground-pas-zombie-route/freesound-indieground-pas-zombie-route.ogg"
+    ]
+  },
+  "hdri": [
+    "hdri/polyhaven-moonlit-golf-environment/polyhaven-moonlit-golf-environment_1k.hdr",
+    "hdri/polyhaven-moonlit-golf/polyhaven-moonlit-golf_2k.hdr"
+  ]
+}

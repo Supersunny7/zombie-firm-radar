@@ -1,0 +1,965 @@
+{
+  "pbtResults": {
+    "1.2 Write property test for the animation edits": {
+      "status": "passed",
+      "lastRunTimestamp": 1794549155568
+    },
+    "1.11 Write property test for group budget accounting": {
+      "status": "passed",
+      "lastRunTimestamp": 1794549728934
+    }
+  },
+  "executionHistory": {
+    "1.1 Add the three edit operations and the pipeline guards": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548954117
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548971465
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549102198
+      }
+    ],
+    "1.2 Write property test for the animation edits": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548954221
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549109948
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549220084
+      }
+    ],
+    "1.3 Write property test and named example tests for the license check": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548954291
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548971626
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549102457
+      }
+    ],
+    "1.4 Choose the Ground_Texture from Poly Haven": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548954445
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548971937
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549102979
+      }
+    ],
+    "1.5 Add the four model picks and two Growl picks": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548954504
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549110715
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549220832
+      }
+    ],
+    "1.6 Run the pipeline and write Manifest and CREDITS.md rows": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548954567
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549308360
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549390359
+      }
+    ],
+    "1.7 Update the manual-download README generator": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548954631
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549111179
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549304210
+      }
+    ],
+    "1.8 Write tests for the converted character models": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548954694
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549390682
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549644481
+      }
+    ],
+    "1.9 Raise the pipeline ceiling (confirmed)": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548954756
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548972483
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549104048
+      }
+    ],
+    "1.10 Add the group budget list and the bundle check": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548954823
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549391194
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549644710
+      }
+    ],
+    "1.11 Write property test for group budget accounting": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548954886
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549650113
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549740205
+      }
+    ],
+    "1.12 Update the asset licensing steering file": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548954952
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548973157
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549104250
+      }
+    ],
+    "1.13 Preview scene and Batch 1 screenshot": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548955016
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549396287
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549645011
+      }
+    ],
+    "1.14 Run the asset-auditor agent": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548955105
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549650581
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549739951
+      }
+    ],
+    "1.15 Run the full check for Batch 1": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548955199
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794549740395
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794550046438
+      }
+    ],
+    "1.16 Write the Batch 1 report": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548955255
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794550046696
+      },
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794550049817
+      }
+    ],
+    "1.17 STOP: wait for the user to review Batch 1 before continuing.": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548955320
+      }
+    ],
+    "2.1 Implement Stone_Jitter": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548955385
+      }
+    ],
+    "2.2 Write property test for jitter bounds and locality": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548955450
+      }
+    ],
+    "2.3 Write property test for fallen stones": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548955521
+      }
+    ],
+    "2.4 Write property test for the fallen share": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548955588
+      }
+    ],
+    "2.5 Implement extents and the band-packed layout": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548955655
+      }
+    ],
+    "2.6 Write property test for spacing and own-Pit clearance": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548955970
+      }
+    ],
+    "2.7 Write property test for reading order and navigation": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548956085
+      }
+    ],
+    "2.8 Update picking and the spatial grid": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548956202
+      }
+    ],
+    "2.9 Write property test for picking": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548956350
+      }
+    ],
+    "2.10 Move the camera inside the plot": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548956450
+      }
+    ],
+    "2.11 Write property test for the plot camera pose": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548956535
+      }
+    ],
+    "2.12 Write property test for nearest-mound projection (pointer centred, no sway)": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548956622
+      }
+    ],
+    "2.13 Add closed and torn mounds to the dressing plan": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548956705
+      }
+    ],
+    "2.14 Write property test for the dressing plan": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548956789
+      }
+    ],
+    "2.15 Implement torn mound geometry and pit rules": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548956882
+      }
+    ],
+    "2.16 Write property test for the torn mound set": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548956972
+      }
+    ],
+    "2.17 Write property test for pit and clod geometry": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548957114
+      }
+    ],
+    "2.18 Write property test for mound placement": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548957230
+      }
+    ],
+    "2.19 Use the Ground_Texture": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548957336
+      }
+    ],
+    "2.20 Implement grass placement and texture": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548957423
+      }
+    ],
+    "2.21 Write property test for grass determinism and plot locality": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548957531
+      }
+    ],
+    "2.22 Write property test for grass clearance, cap, density and quality": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548957625
+      }
+    ],
+    "2.23 Implement the Grass component": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548957721
+      }
+    ],
+    "2.24 Implement closed and torn mounds and wire the Batch 2 scene": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548957882
+      }
+    ],
+    "2.25 Write the scene tests for Batch 2": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548957967
+      }
+    ],
+    "2.26 Add the Batch 2 screenshot script": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548958057
+      }
+    ],
+    "2.27 Capture Batch 2 screenshots and offer the scene review": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548958158
+      }
+    ],
+    "2.28 Run the full check for Batch 2": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548958252
+      }
+    ],
+    "2.29 Write the Batch 2 report": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548958352
+      }
+    ],
+    "2.30 STOP: wait for the user to review Batch 2 before continuing.": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548958455
+      }
+    ],
+    "3.1 Implement the Settled_Shock tracker": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548958551
+      }
+    ],
+    "3.2 Write property test for Settled_Shock timing": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548958638
+      }
+    ],
+    "3.3 Implement nearest assignment, selection pose and selection store": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548958734
+      }
+    ],
+    "3.4 Write property test for nearest assignment": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548958822
+      }
+    ],
+    "3.5 Implement the Risen pool": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548958925
+      }
+    ],
+    "3.6 Write property test for the Risen pool": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548959021
+      }
+    ],
+    "3.7 Implement the Bone_Animator and bone maps": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548959119
+      }
+    ],
+    "3.8 Write property test for Rise_Sequence shape": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548959214
+      }
+    ],
+    "3.9 Write property test for Bone_Animator purity and smoothness": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548959308
+      }
+    ],
+    "3.10 Write property test for nothing below the waist": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548959402
+      }
+    ],
+    "3.11 Write property test for idle schedules": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548959530
+      }
+    ],
+    "3.12 Implement the two-bone IK solver": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548959649
+      }
+    ],
+    "3.13 Write property test for planted hands": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548959736
+      }
+    ],
+    "3.14 Implement character scaling": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548959834
+      }
+    ],
+    "3.15 Write property test for character scale": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548959921
+      }
+    ],
+    "3.16 Implement the Dirt_Burst particle function": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548960022
+      }
+    ],
+    "3.17 Write property test for Dirt_Burst budget": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548960120
+      }
+    ],
+    "3.18 Implement model assignment and requested models": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548960220
+      }
+    ],
+    "3.19 Write property test for model assignment": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548960313
+      }
+    ],
+    "3.20 Write property test for the fallback chain": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548960409
+      }
+    ],
+    "3.21 Write property test for requested models": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548960504
+      }
+    ],
+    "3.22 Implement horror quality settings": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548960592
+      }
+    ],
+    "3.23 Write property test for horror quality": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548960687
+      }
+    ],
+    "3.24 Implement Standing_Zombie placement": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548960789
+      }
+    ],
+    "3.25 Write property test for Standing_Zombie placement": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548960885
+      }
+    ],
+    "3.26 Write property test for the standing clip bit": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548960975
+      }
+    ],
+    "3.27 Implement the character loader and bone-map tests": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548961140
+      }
+    ],
+    "3.28 Implement SelectionController and the settled shock store field": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548961219
+      }
+    ],
+    "3.29 Implement Characters and Dirt_Burst rendering": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548961303
+      }
+    ],
+    "3.30 Wire the scene and retire the Craggle hand": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548961401
+      }
+    ],
+    "3.31 Implement the Growl limiter and choice": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548961497
+      }
+    ],
+    "3.32 Write property test for the Growl limiter": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548961590
+      }
+    ],
+    "3.33 Write property test for the Growl choice": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548961685
+      }
+    ],
+    "3.34 Implement the Footstep_Bed gain and state": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548961784
+      }
+    ],
+    "3.35 Write property test for the footstep gain": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548961871
+      }
+    ],
+    "3.36 Extend the Audio_Engine": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548961972
+      }
+    ],
+    "3.37 Write property test for gate, mute and lights behaviour": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548962069
+      }
+    ],
+    "3.38 Wire audio to the scene": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548962158
+      }
+    ],
+    "3.39 Implement Far_Spots": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548962254
+      }
+    ],
+    "3.40 Write property test for Far_Spots": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548962352
+      }
+    ],
+    "3.41 Implement the Watcher state machine": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548962447
+      }
+    ],
+    "3.42 Write property test for Watcher enabling": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548962553
+      }
+    ],
+    "3.43 Write property test for Watcher appearances": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548962654
+      }
+    ],
+    "3.44 Write property test for Watcher vanishing": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548962756
+      }
+    ],
+    "3.45 Implement Cone_Active and the touch Cone_Target": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548962857
+      }
+    ],
+    "3.46 Write property test for Cone_Active": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548962970
+      }
+    ],
+    "3.47 Add the Vanish_Glitch trigger": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548963071
+      }
+    ],
+    "3.48 Write property test for the Vanish_Glitch limits": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548963173
+      }
+    ],
+    "3.49 Implement the Watcher scene component": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548963280
+      }
+    ],
+    "3.50 Implement the Content_Notice state": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548963374
+      }
+    ],
+    "3.51 Write property test for notice dismissal": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548963471
+      }
+    ],
+    "3.52 Implement the Content_Notice UI and footer link": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548963570
+      }
+    ],
+    "3.53 Implement the fps measurement and dev helpers": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548963681
+      }
+    ],
+    "3.54 Write property test for the shock step finder": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548963878
+      }
+    ],
+    "3.55 Extend the screenshot script and the scene tests for Batch 3b": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548963970
+      }
+    ],
+    "3.56 Run the headed fps measurement and record the numbers": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548964067
+      }
+    ],
+    "3.57 Capture Batch 3b screenshots and offer the scene review": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548964166
+      }
+    ],
+    "3.58 Run the final full check": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548964270
+      }
+    ],
+    "3.59 Write the Batch 3b report": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548964373
+      }
+    ],
+    "3.60 STOP: wait for the user to review Batch 3b before continuing.": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548964467
+      }
+    ],
+    "3.61 Add the Batch 3a screenshot script and scene tests": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548964553
+      }
+    ],
+    "3.62 Capture the Batch 3a screenshot and offer the scene review": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548964652
+      }
+    ],
+    "3.63 Run the full check for Batch 3a": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548964743
+      }
+    ],
+    "3.64 Write the Batch 3a report": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548964843
+      }
+    ],
+    "3.65 STOP: wait for the user to review Batch 3a before continuing.": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548964941
+      }
+    ],
+    "3.66 Add Standing_Zombies to the controller and Characters (Batch 3b starts here)": [
+      {
+        "executionId": "f4a12976-d5be-45b2-9269-5357946a6363",
+        "chatSessionId": "sess_a149dcc6-349c-441d-9bf6-ca836922ab70",
+        "timestamp": 1794548965038
+      }
+    ]
+  }
+}

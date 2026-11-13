@@ -1,9 +1,20 @@
 import { describe, it, expect } from 'vitest';
+import { readFileSync } from 'node:fs';
 import fc from 'fast-check';
 import { render, check, manualPicks, HOOK_ID } from './manual-readme.mjs';
 
 // Feature: asset-pipeline, Property 15: Manual README lists every manual pick
 // **Validates: Requirements 15.1, 40.1, 40.2, 40.3, 40.5, 40.6**
+
+// The four Sketchfab characters and two growls added by graveyard-horror-pass (task 1.7).
+const SIX_NEW_IDS = [
+  'sketchfab-hooded-horror-woman-purplepoint',
+  'sketchfab-possessed-undead-giantswing',
+  'sketchfab-zombie-pxltiger',
+  'sketchfab-zombie-walk-oscar',
+  'freesound-ezcah-zombie-growl-01',
+  'freesound-tonsil5-zombie-growl-5',
+];
 
 const word = fc.stringMatching(/^[a-z0-9]{1,8}$/);
 
@@ -14,7 +25,7 @@ const pickArb = (i) =>
       prefix: fc.constantFrom('sketchfab', 'freesound', 'polyhaven', 'rocketbox'),
       slug: word,
       manual: fc.boolean(),
-      ext: fc.constantFrom('zip', 'wav', 'mp3', 'm4a'),
+      ext: fc.constantFrom('zip', 'wav', 'mp3', 'm4a', 'flac'),
       note: fc.option(word, { nil: undefined }),
       author: word,
       title: word,
@@ -101,6 +112,26 @@ describe('Property 15: Manual README lists every manual pick', () => {
         expect(check(picks, text, opts).upToDate).toBe(true);
       }),
       { numRuns: 100 },
+    );
+  });
+
+  it('keeps the six graveyard-horror-pass picks complete, with any subset of other picks', () => {
+    const real = JSON.parse(readFileSync(new URL('../picks.json', import.meta.url), 'utf8')).picks;
+    const six = SIX_NEW_IDS.map((id) => real.find((p) => p.id === id));
+    expect(six.every(Boolean)).toBe(true);
+    fc.assert(
+      fc.property(picksArb, ({ picks, passed }) => {
+        const all = [...picks, ...six];
+        const opts = { hookCheckPassed: passed };
+        const text = render(all, opts);
+        for (const p of six) {
+          const b = blockOf(text, p.id);
+          expect(b).toContain(`- Expected file name: ${p.expectedFile}`);
+          expect(b).toContain(`- Put it at: ${p.targetFolder}/${p.expectedFile}`);
+        }
+        expect(check(all, text, opts).upToDate).toBe(true);
+      }),
+      { numRuns: 50 },
     );
   });
 

@@ -1,7 +1,9 @@
 // Budget accounting for web/public/assets (Requirement 16.8, 17). Pure, no I/O.
 
 export const LIMITS = Object.freeze({
-  graveyard: 26_214_400,
+  // Pipeline ceiling on disk (all manifest files of the group). The 25 MB visitor
+  // Group_Budget is the binding limit and is checked by web/scripts/check-bundle.mjs.
+  graveyard: 40_000_000,
   lab: 26_214_400,
   total: 62_914_560,
 });

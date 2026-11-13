@@ -57,6 +57,27 @@ describe('manual-readme render', () => {
   });
 });
 
+describe('manual-readme header and flac', () => {
+  it('lists wav, mp3, m4a or flac as Freesound extensions', () => {
+    const md = render(picks);
+    expect(md).toContain('(wav, mp3, m4a or flac)');
+    expect(md).not.toContain('(wav, mp3 or m4a)');
+  });
+  it('renders a flac Freesound pick with its exact file name and path', () => {
+    const flac = pick('freesound-flac', {
+      kind: 'audio',
+      expectedFile: 'freesound-flac.flac',
+      source: { type: 'manual', pageUrl: 'https://freesound.org/people/u/sounds/2/', downloadOption: 'Freesound "Download" of the original file.' },
+      credits: { title: 'Growl', author: 'u', sourceUrl: 'https://freesound.org/people/u/sounds/2/', license: 'CC0', changes: 'x' },
+    });
+    const md = render([flac]);
+    expect(md).toContain('- Expected file name: freesound-flac.flac');
+    expect(md).toContain('- Put it at: tools/cache/manual/freesound-flac/freesound-flac.flac');
+    expect(md).toContain('- [ ] `freesound-flac/freesound-flac.flac`');
+    expect(md).toContain('Files to download: **1** (1 Freesound sounds).');
+  });
+});
+
 describe('manual-readme description', () => {
   it('uses description verbatim for the Candidate line, else group and role, else group', () => {
     const md = render([

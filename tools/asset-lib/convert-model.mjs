@@ -14,7 +14,7 @@ import sharp from 'sharp';
 import { assertAvatarMaterials, normalizeAvatarMaterials } from './avatar-materials.mjs';
 import { bip01Message, checkBip01, collectJointNames } from './bip01.mjs';
 import { LIMIT_DEFAULT, WARN_BYTES } from './convert-texture.mjs';
-import { applyEdits } from './edits/index.mjs';
+import { applyEdits, ForbiddenExtension } from './edits/index.mjs';
 
 export const MESHOPT_LEVEL = 'medium';
 export const LICENSE_FILE_NAME = 'LICENSE';
@@ -38,7 +38,7 @@ export function isRocketbox(pick) {
 export function modelSizeWarning(fileName, bytes) {
   if (bytes <= WARN_BYTES) return null;
   const mb = (bytes / 1_048_576).toFixed(2);
-  return `${fileName} is ${mb} MB (over 5 MB). Suggestion: decimate the mesh with an Edit_List entry, or lower the texture limit.`;
+  return `${fileName} is ${mb} MB (over 5 MB). Suggestions: (1) lower the texture size limit, (2) decimate triangles with an Edit_List entry, (3) compress textures with KTX2.`;
 }
 
 /** Joint names of the skins, or animated node names when the file has no skin. */
@@ -137,6 +137,12 @@ export async function convertModel(pick, input, workDir, options = {}) {
     // writeBinary always yields one self-contained GLB; io.write(tmpOut) would pick glTF+.bin
     // from the ".tmp" extension and leave scene.bin and textures beside a JSON file.
     await writeFile(tmpOut, await io.writeBinary(doc));
+    // Post-write guard: the bytes on disk must not declare any forbidden extension.
+    if (Array.isArray(pick.forbidExtensions) && pick.forbidExtensions.length > 0) {
+      const declared = await readExtensionsUsed(tmpOut);
+      const hit = pick.forbidExtensions.find((e) => declared.includes(e));
+      if (hit) throw new ForbiddenExtension({ pick: pick.id, extension: hit });
+    }
     await rename(tmpOut, outPath);
     created.push(outPath);
     await rm(tmpFbx, { force: true });

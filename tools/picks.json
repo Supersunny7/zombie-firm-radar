@@ -25,6 +25,30 @@
       }
     },
     {
+      "id": "freesound-ezcah-zombie-growl-01",
+      "kind": "audio",
+      "category": 10,
+      "group": "graveyard",
+      "description": "graveyard, zombie growl when a zombie rises",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/Ezcah/sounds/204821/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required.",
+        "note": "The original is FLAC; keep it as is."
+      },
+      "manual": true,
+      "expectedFile": "freesound-ezcah-zombie-growl-01.flac",
+      "targetFolder": "tools/cache/manual/freesound-ezcah-zombie-growl-01",
+      "edits": [],
+      "credits": {
+        "title": "Zombie growl 01",
+        "author": "Ezcah",
+        "sourceUrl": "https://freesound.org/people/Ezcah/sounds/204821/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
       "id": "freesound-giddster-crows-cawing",
       "kind": "audio",
       "category": 10,
@@ -283,6 +307,29 @@
       }
     },
     {
+      "id": "freesound-tonsil5-zombie-growl-5",
+      "kind": "audio",
+      "category": 10,
+      "group": "graveyard",
+      "description": "graveyard, zombie growl when a zombie rises",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://freesound.org/people/tonsil5/sounds/555417/",
+        "downloadOption": "Freesound \"Download\" of the original file (not the preview MP3). Login required."
+      },
+      "manual": true,
+      "expectedFile": "freesound-tonsil5-zombie-growl-5.wav",
+      "targetFolder": "tools/cache/manual/freesound-tonsil5-zombie-growl-5",
+      "edits": [],
+      "credits": {
+        "title": "Zombie growl 5",
+        "author": "tonsil5",
+        "sourceUrl": "https://freesound.org/people/tonsil5/sounds/555417/",
+        "license": "CC0",
+        "changes": "Original file kept; converted to web audio by the pipeline"
+      }
+    },
+    {
       "id": "freesound-zazz-cloth-rustle-8",
       "kind": "audio",
       "category": 10,
@@ -417,6 +464,28 @@
         "sourceUrl": "https://sketchfab.com/3d-models/small-gravestone-a6b9ef8756bf453e9d8b22a40d1e905a",
         "license": "CC BY 4.0",
         "changes": "Derived by our script from the intact scan: diagonal fracture through the slab with the top piece offset 2.76 cm (2.14 model units; scale assumption: stone height 0.9 m = 69.8 model units), one upper corner chipped off, dark crack line in the base colour texture, displaced crack normal map, chipped edge, at most 20,000 triangles, Meshopt-compressed"
+      }
+    },
+    {
+      "id": "polyhaven-brown-mud-leaves-01",
+      "kind": "texture",
+      "category": 1,
+      "group": "graveyard",
+      "source": {
+        "type": "polyhaven",
+        "id": "brown_mud_leaves_01",
+        "resolution": "1k"
+      },
+      "manual": false,
+      "expectedFile": null,
+      "targetFolder": null,
+      "edits": [],
+      "credits": {
+        "title": "brown mud leaves 01",
+        "author": "Rob Tuytel",
+        "sourceUrl": "https://polyhaven.com/a/brown_mud_leaves_01",
+        "license": "CC0",
+        "changes": "Converted to WebP, longest side limited to 1024 px"
       }
     },
     {
@@ -1081,6 +1150,32 @@
       }
     },
     {
+      "id": "sketchfab-hooded-horror-woman-purplepoint",
+      "kind": "model",
+      "category": 6,
+      "group": "graveyard",
+      "description": "graveyard, Watcher (far-off figure outside the flashlight cone)",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/terrifying-hooded-horror-woman-f59d17be392f4494a5b85d927df48ffd",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Remove the embedded run animation; keep mesh, skin and skeleton.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-hooded-horror-woman-purplepoint.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-hooded-horror-woman-purplepoint",
+      "edits": [{ "op": "removeAnimations" }],
+      "forbidExtensions": ["KHR_materials_pbrSpecularGlossiness"],
+      "credits": {
+        "title": "Terrifying Hooded Horror Woman",
+        "author": "Purple.Point",
+        "sourceUrl": "https://sketchfab.com/3d-models/terrifying-hooded-horror-woman-f59d17be392f4494a5b85d927df48ffd",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; embedded animation removed (mesh, skin and skeleton kept); no AI-generated tag on the Sketchfab model page, checked 2026-11-12"
+      }
+    },
+    {
       "id": "sketchfab-human-skull-danieledefilippis",
       "kind": "model",
       "category": 8,
@@ -1229,6 +1324,32 @@
         "sourceUrl": "https://sketchfab.com/3d-models/morgue-refrigerator-d895d249fbda465faa22958ab1a63158",
         "license": "CC BY 4.0",
         "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; decimated to about 39,000 triangles"
+      }
+    },
+    {
+      "id": "sketchfab-possessed-undead-giantswing",
+      "kind": "model",
+      "category": 6,
+      "group": "graveyard",
+      "description": "graveyard, Hero (nearest risen zombie, lights off)",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/possessed-undead-7394bdf26d664810b42b83153411cf74",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Remove the embedded animation; keep mesh, skin and skeleton. The zip has no spec-gloss material and 7,675 triangles, so no conversion or decimation edit is needed.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-possessed-undead-giantswing.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-possessed-undead-giantswing",
+      "edits": [{ "op": "removeAnimations" }],
+      "forbidExtensions": ["KHR_materials_pbrSpecularGlossiness"],
+      "credits": {
+        "title": "Possessed undead",
+        "author": "giantSwing",
+        "sourceUrl": "https://sketchfab.com/3d-models/possessed-undead-7394bdf26d664810b42b83153411cf74",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; embedded animation removed (mesh, skin and skeleton kept); no AI-generated tag on the Sketchfab model page, checked 2026-11-12"
       }
     },
     {
@@ -1495,6 +1616,58 @@
         "sourceUrl": "https://sketchfab.com/3d-models/zombie-mutant-795f6432ebcb4c39a2aa5039752be92a",
         "license": "CC BY 4.0",
         "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP"
+      }
+    },
+    {
+      "id": "sketchfab-zombie-pxltiger",
+      "kind": "model",
+      "category": 6,
+      "group": "graveyard",
+      "description": "graveyard, Walker (risen and standing zombies)",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/zombie-73ef58af341e46afba1da53366ed79cf",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "Keep only the clips Idle, Walk1_InPlace, Attack and FallingForward (the zip has 10 clips).",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-zombie-pxltiger.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-zombie-pxltiger",
+      "edits": [{ "op": "keepAnimations", "names": ["Idle", "Walk1_InPlace", "Attack", "FallingForward"] }],
+      "forbidExtensions": ["KHR_materials_pbrSpecularGlossiness"],
+      "credits": {
+        "title": "Zombie",
+        "author": "pxltiger",
+        "sourceUrl": "https://sketchfab.com/3d-models/zombie-73ef58af341e46afba1da53366ed79cf",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; kept four animation clips (Idle, Walk1_InPlace, Attack, FallingForward) and removed the other six; no AI-generated tag on the Sketchfab model page, checked 2026-11-12"
+      }
+    },
+    {
+      "id": "sketchfab-zombie-walk-oscar",
+      "kind": "model",
+      "category": 6,
+      "group": "graveyard",
+      "description": "graveyard, Crawler (risen zombie, Mixamo-style rig)",
+      "source": {
+        "type": "manual",
+        "pageUrl": "https://sketchfab.com/3d-models/zombie-walk-test-165fd9342c364216bfdd8c2f1102223c",
+        "downloadOption": "Sketchfab \"Download 3D Model\" > \"glTF\" (autoconverted) zip. Login required.",
+        "note": "The uploader's own mesh and skeleton on a Mixamo-style rig (mixamorig: bone names) is allowed; the embedded Mixamo animation clip is removed. The zip uses KHR_materials_pbrSpecularGlossiness (required), so it is converted to metal/rough.",
+        "entry": "scene.gltf"
+      },
+      "manual": true,
+      "expectedFile": "sketchfab-zombie-walk-oscar.zip",
+      "targetFolder": "tools/cache/manual/sketchfab-zombie-walk-oscar",
+      "edits": [{ "op": "specGlossToMetalRough" }, { "op": "removeAnimations" }],
+      "forbidExtensions": ["KHR_materials_pbrSpecularGlossiness"],
+      "credits": {
+        "title": "Zombie Walk Test",
+        "author": "OSCAR CREATIVO",
+        "sourceUrl": "https://sketchfab.com/3d-models/zombie-walk-test-165fd9342c364216bfdd8c2f1102223c",
+        "license": "CC BY 4.0",
+        "changes": "Converted to a Meshopt-compressed glb; textures resized to 1k WebP; specular-glossiness material converted to metallic-roughness; the rig uses Mixamo bone names, the mesh and skeleton are kept, and the Mixamo animation clip was removed; no AI-generated tag on the Sketchfab model page, checked 2026-11-12"
       }
     }
   ]

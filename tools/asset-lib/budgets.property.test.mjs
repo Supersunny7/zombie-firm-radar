@@ -35,11 +35,11 @@ const filesArb = fc
 const sum = (xs) => xs.reduce((a, f) => a + f.bytes, 0);
 
 describe('Property 2: Budget accounting invariants', () => {
-  it('limits are exactly 26,214,400 / 26,214,400 / 62,914,560', () => {
+  it('limits are exactly 40,000,000 / 26,214,400 / 62,914,560', () => {
     fc.assert(
       fc.property(filesArb, (files) => {
         const r = accountBudgets(files.map(({ path, bytes, group }) => ({ path, bytes, group })));
-        expect(r.limit).toEqual({ graveyard: 26_214_400, lab: 26_214_400, total: 62_914_560 });
+        expect(r.limit).toEqual({ graveyard: 40_000_000, lab: 26_214_400, total: 62_914_560 });
         expect(LIMITS).toEqual(r.limit);
       }),
       { numRuns: 100 },

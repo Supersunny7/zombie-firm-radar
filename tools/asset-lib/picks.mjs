@@ -11,6 +11,7 @@ export const ID_PATTERN = /^[a-z0-9][a-z0-9-]*$/;
 const PICK_KEYS = [
   'id', 'kind', 'category', 'group', 'source', 'manual',
   'expectedFile', 'targetFolder', 'edits', 'credits', 'role', 'description', 'sizeException',
+  'forbidExtensions',
 ];
 const CREDIT_KEYS = ['title', 'author', 'sourceUrl', 'license', 'changes'];
 
@@ -65,6 +66,9 @@ export const EDIT_SPECS = {
     required: { axis: (v) => v === 'x' || v === 'y' || v === 'z', at: isFrac, seed: isInt, amplitude: (v) => isNum(v) && v >= 0 && v <= 0.5 },
     optional: { mesh: isStr, keep: (v) => v === 'below' || v === 'above' },
   },
+  keepAnimations: { required: { names: (v) => Array.isArray(v) && v.length > 0 && v.every(isStr) }, optional: {} },
+  removeAnimations: { required: {}, optional: {} },
+  specGlossToMetalRough: { required: {}, optional: {} },
   tint: {
     required: { hue: (v) => isNum(v) && v >= 0 && v <= 360, maxSaturation: isFrac, meanValue: isFrac },
     optional: {
@@ -189,6 +193,10 @@ export function validatePick(p, index = 0) {
   if (!GROUPS.includes(p.group)) errors.push(err(id, 'InvalidField', `group must be one of ${GROUPS.join(', ')}`, 'group'));
   if ('role' in p && !isStr(p.role)) errors.push(err(id, 'InvalidField', 'role must be a non-empty string', 'role'));
   if ('description' in p && !isStr(p.description)) errors.push(err(id, 'InvalidField', 'description must be a non-empty string', 'description'));
+
+  if ('forbidExtensions' in p && !(Array.isArray(p.forbidExtensions) && p.forbidExtensions.length > 0 && p.forbidExtensions.every(isStr))) {
+    errors.push(err(id, 'InvalidField', 'forbidExtensions must be a non-empty array of non-empty strings', 'forbidExtensions'));
+  }
 
   validateSource(p.source, id, errors);
   validateEdits(p.edits, id, errors);
