@@ -49,9 +49,8 @@ The picture has two warm pools (flashlight, lantern) in a cold, almost black fie
 6. Red channel ghost: 40% of red shifted 2 px right.
 
 ## Sound for one rise (no shovel)
-- t = -0.4 s: wind ducks by 6 dB; crows are not scheduled for 5 s.
-- t = 0: soil crumble (freesound-abstraktgeneriert-crumble-9), pitch 0.85 to 1.1 at random, with a quiet low rumble under it (freesound-lennartgreen-low-rumble-loopable, 1.5 s, fade out).
-- t = 0.9 to 2.2 s: wet mud squelch (freesound-ahill86-mudsquelch) as the torso hauls out, pitch 0.8 to 1.0.
+- The digging (shovel) sound is not used for zombies. Sound files for the rise are still to be chosen; until then a rise plays only the growl.
+- t = -0.4 s: wind ducks by 6 dB; crows are not scheduled for 5 s (silence before the scare).
 - t = 3.0 s: growl (one of the two growl files), pitch 0.85 to 1.05, after 0.3 s of near silence.
-- All positional: volume falls with distance from the camera, panned left/right by screen position, low-pass beyond 10 m.
-- At most one full sequence per second; extra rises play only the crumble, quieter.
+- Positional: volume falls with distance from the camera, panned by screen position, low-pass beyond 10 m.
+- At most one growl per second.
