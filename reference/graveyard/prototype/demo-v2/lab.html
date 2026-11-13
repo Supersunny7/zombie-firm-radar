@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Zombie Firm Radar — morgue lab demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<style>
+[hidden]{display:none!important}
+:root{--osd:#e9e6da;--dim:#8d8a80;--red:#e0342a;--grn:#5dff8a;--amb:#e0a030}
+html,body{margin:0;height:100%;background:#000;overflow:hidden;font-family:'VT323',monospace;color:var(--osd)}
+#stage canvas{display:block;width:100vw;height:100vh}
+button,input{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer;padding:0}
+button:focus-visible,input:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.osd{text-shadow:0 0 6px rgba(0,0,0,.9);letter-spacing:.06em}
+.vf{position:fixed;inset:14px;pointer-events:none}.vf i{position:absolute;width:38px;height:38px;border:2px solid rgba(233,230,218,.55)}
+.vf i:nth-child(1){left:0;top:0;border-right:0;border-bottom:0}.vf i:nth-child(2){right:0;top:0;border-left:0;border-bottom:0}.vf i:nth-child(3){left:0;bottom:0;border-right:0;border-top:0}.vf i:nth-child(4){right:0;bottom:0;border-left:0;border-top:0}
+.tl{position:fixed;left:34px;top:26px;font-size:24px;line-height:1.05}.tl .rec{color:var(--red);margin-right:10px}.tl .rec::before{content:'●';margin-right:6px;animation:blink 1.1s steps(1) infinite}.tl small{display:block;font-size:19px;color:var(--dim)}
+.tr{position:fixed;right:34px;top:26px;font-size:24px;text-align:right;line-height:1.05}.tr small{display:block;font-size:19px;color:var(--dim)}
+@keyframes blink{50%{opacity:0}}
+.panel{position:fixed;background:linear-gradient(#141518,#0b0c0e);border:1px solid #2c2d31;box-shadow:inset 0 1px 0 #303236,0 10px 30px rgba(0,0,0,.6)}
+.mon{left:34px;bottom:30px;width:330px;padding:10px 12px}
+.mon canvas{display:block;width:100%;height:90px;background:#020604;border:1px solid #16301e}
+.mon .row{display:flex;justify-content:space-between;align-items:flex-end;margin-top:6px;font-size:18px;color:var(--dim)}
+.big{font-size:56px;line-height:.85}.big.ok{color:var(--grn);text-shadow:0 0 10px rgba(93,255,138,.5)}.big.warn{color:var(--amb)}.big.bad{color:var(--red);text-shadow:0 0 10px rgba(224,52,42,.6)}
+.mon b{color:var(--osd);font-weight:400}
+.tx{right:34px;top:96px;width:330px;padding:12px 14px}
+.tx h3{margin:0 0 6px;font-weight:400;font-size:20px;color:var(--dim);letter-spacing:.12em}
+.tool{margin:8px 0}.tool label{display:flex;justify-content:space-between;font-size:20px}.tool label b{font-weight:400;color:var(--amb)}
+.tool small{display:block;color:#6d6b64;font-size:15px}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:20px;background:transparent;margin:2px 0 0}
+input[type=range]::-webkit-slider-runnable-track{height:5px;background:repeating-linear-gradient(90deg,#3a3b40 0 2px,#16171a 2px 10%);border:1px solid #2a2b2f}
+input[type=range]::-moz-range-track{height:5px;background:#16171a;border:1px solid #2a2b2f}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:22px;margin-top:-10px;background:linear-gradient(#c9c4b6,#7c786e);border:1px solid #000}
+input[type=range]::-moz-range-thumb{width:12px;height:22px;background:linear-gradient(#c9c4b6,#7c786e);border:1px solid #000;border-radius:0}
+.chk{display:flex;gap:8px;align-items:center;font-size:20px;margin-top:6px}.chk input{accent-color:var(--amb);width:16px;height:16px}
+ul{margin:4px 0 0;padding-left:18px;font-size:17px;color:#cfa77a}ul .dim{color:#6d6b64;list-style:none;margin-left:-18px}
+.odds{margin-top:10px;font-size:19px}.odds .bar{height:8px;background:#1b1c1f;border:1px solid #2a2b2f;margin-top:3px}.odds .bar i{display:block;height:100%;background:var(--grn);transition:width .3s}
+#pull{margin-top:14px;width:100%;padding:10px 0;font-size:26px;letter-spacing:.12em;color:#000;background:var(--red);box-shadow:0 0 16px rgba(224,52,42,.5)}
+#pull:hover{filter:brightness(1.15)}body.busy #pull{opacity:.4;pointer-events:none}
+#back{position:fixed;right:34px;bottom:30px;font-size:20px;border:1px solid rgba(233,230,218,.35);padding:2px 10px;background:rgba(0,0,0,.4)}
+#mute{position:fixed;right:200px;bottom:30px;font-size:20px;border:1px solid rgba(233,230,218,.35);padding:2px 10px;background:rgba(0,0,0,.4)}
+#result{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);width:min(520px,90vw);padding:22px 26px;background:rgba(5,6,8,.92);border:1px solid #333;z-index:6;text-align:left}
+#result h2{margin:0;font-weight:400;font-size:64px;letter-spacing:.15em}#result.ok h2{color:var(--grn)}#result.bad h2{color:var(--red)}
+#result p{font-size:21px;margin:8px 0;line-height:1.25}#result .dim{color:var(--dim)}
+#result .btns{display:flex;gap:12px;margin-top:14px}#result button{font-size:22px;border:1px solid #555;padding:4px 14px}
+#dark{position:fixed;inset:0;background:#000;z-index:7}
+#s2{position:fixed;inset:0;z-index:8;background:#000;overflow:hidden}#s2 img{width:100%;height:100%;object-fit:cover}
+#s2.go img{animation:breath 1s ease-in-out forwards}
+@keyframes breath{0%{opacity:0;transform:scale(1.0)}8%{opacity:1}100%{transform:scale(1.03)}}
+#s2::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.25) 0 1px,transparent 1px 3px)}
+#hands{position:fixed;inset:0;pointer-events:none;z-index:5;transition:opacity 6s}#hands.fade{opacity:0}
+#hands .hp{position:absolute;width:min(40vw,480px);opacity:.55}
+#hands .a{left:6%;top:12%;transform:rotate(-18deg)}#hands .b{right:8%;top:20%;transform:rotate(16deg) scaleX(-1)}
+#jump{position:fixed;inset:0;z-index:8;background:#000;overflow:hidden}#jump img{width:100%;height:100%;object-fit:cover}
+#jump.go img{animation:lunge .75s cubic-bezier(.15,.9,.2,1) forwards,flick .75s steps(1) forwards}
+#jump::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.25) 0 1px,transparent 1px 3px)}
+@keyframes lunge{0%{transform:scale(.7) translateY(8%)}35%{transform:scale(1.25)}100%{transform:scale(1.45) translate(-2%,3%)}}
+@keyframes flick{0%{opacity:1}12%{opacity:.2}16%{opacity:1}55%{opacity:1}60%{opacity:.4}64%{opacity:1}}
+body.shake #stage,body.shake #jump{animation:shake .45s}@keyframes shake{20%{transform:translate(-14px,9px)}40%{transform:translate(11px,-7px)}60%{transform:translate(-6px,4px)}80%{transform:translate(3px,-2px)}}
+#lost{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:7;font-size:64px;letter-spacing:.2em;text-shadow:0 0 10px #000}#lost small{font-size:22px;color:#aaa;animation:blink 1s steps(1) infinite}
+#intro{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:9;transition:opacity .5s;text-align:center}#intro.out{opacity:0}
+#intro .box{font-size:26px;line-height:1.4}#intro .dim{color:var(--dim);font-size:20px}
+#enter{margin-top:22px;font-size:26px;border:1px solid var(--red);color:var(--red);padding:6px 18px}#enter:hover{background:var(--red);color:#000}
+#loading{position:fixed;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;z-index:10;font-size:24px;color:var(--dim)}
+.track{width:220px;height:3px;background:#222}#bar{height:3px;width:0;background:var(--red)}
+@media (max-width:760px){.tl{left:18px;top:16px;font-size:20px}.tr{display:none}
+ .tx{left:8px;right:8px;top:auto;bottom:8px;width:auto;padding:8px 10px}.tx .tool small,.odds,.tx h3{display:none}#pull{margin-top:6px;font-size:22px;padding:6px 0}
+ .mon{left:8px;right:8px;top:64px;bottom:auto;width:auto}.mon canvas{height:50px}.big{font-size:40px}#back,#mute{top:16px;bottom:auto;font-size:16px}#back{right:18px}#mute{right:96px}}
+.hp{display:block;aspect-ratio:1;background:radial-gradient(circle at 40% 45%,#8a1208,#4a0603 70%);-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
+</style></head><body>
+<div id="stage"></div>
+<div class="vf"><i></i><i></i><i></i><i></i></div>
+<div class="tl osd"><span class="rec">REC</span>CAM 12<small>MORGUE LAB · PATIENT <span id="pname"></span></small></div>
+<div class="tr osd"><span id="clock"></span><small>RATE SHOCK <span id="shock"></span></small></div>
+<div class="panel mon" role="group" aria-label="Patient monitor">
+  <canvas id="ecg" width="660" height="180"></canvas>
+  <div class="row"><div>INTEREST COVERAGE<br><span class="big" id="icr">0.93</span></div><div style="text-align:right">ON ARRIVAL <b id="icr0"></b><br>DEBT <b id="debt"></b><br>INTEREST <b id="int"></b></div></div>
+</div>
+<div class="panel tx" role="group" aria-label="Treatment">
+  <h3>TREATMENT</h3>
+  <div class="tool"><label for="cut">CUT COSTS <b id="v-cut">0%</b></label><input id="cut" type="range" min="0" max="10" step="1" value="0"><small>of revenue · costs jobs</small></div>
+  <div class="tool"><label for="sell">SELL ASSETS <b id="v-sell">0%</b></label><input id="sell" type="range" min="0" max="40" step="2" value="0"><small>sold at 80¢ on the dollar · loses profit</small></div>
+  <div class="tool"><label for="swap">DEBT → EQUITY <b id="v-swap">0%</b></label><input id="swap" type="range" min="0" max="50" step="5" value="0"><small>creditors become owners · dilutes shareholders</small></div>
+  <label class="chk"><input id="refi" type="checkbox"> REFINANCE <small style="color:#6d6b64;font-size:15px">&nbsp;new loan, 2% fee</small></label>
+  <ul id="pain"></ul>
+  <div class="odds">SURVIVES 3 YEARS IN <b id="odds">0%</b> OF 1,000 FUTURES<div class="bar"><i id="oddsbar"></i></div></div>
+  <button id="pull">⚡ PULL THE SWITCH</button>
+</div>
+<button id="mute">SOUND ON</button><button id="back">◂ GRAVEYARD</button>
+<div id="result" hidden><h2 id="r-title"></h2><p id="r-line"></p><p class="dim" id="r-odds"></p><ul id="r-pain"></ul><div class="btns"><button id="again">TRY AGAIN</button></div></div>
+<div id="dark" hidden></div>
+<div id="s2" hidden><img alt=""></div>
+<div id="hands" hidden><i class="a hp" style="--m:url(assets/own-handprint-decal_handprint-0.webp)"></i><i class="b hp" style="--m:url(assets/own-handprint-decal_handprint-1.webp)"></i></div>
+<div id="lost" hidden><div>NO SIGNAL</div><small>CAM 12 LINK LOST · RECONNECTING…</small></div>
+<div id="intro"><div class="box"><div class="dim">TRANSFER COMPLETE · CAM 12</div><div>The patient is strapped down.</div><div>Pick a treatment. Then pull the switch.</div><button id="enter">▸ BEGIN PROCEDURE</button><div class="dim" style="font-size:16px;margin-top:10px">Contains horror and gore · headphones recommended</div></div></div>
+<div id="loading"><div>PREPARING THE TABLE…</div><div class="track"><div id="bar"></div></div></div>
+<script type="module" src="lab.js"></script>
+</body></html>
