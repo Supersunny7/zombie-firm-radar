@@ -1,5 +1,7 @@
 # Implementation Plan: Graveyard Scene
 
+> Spec closed (2026-11-13): the optional tests were skipped on purpose, and the remaining work moved to the graveyard-horror-pass spec.
+
 ## Overview
 
 Language: TypeScript (web app, React 19, R3F 9, drei 10), Vitest + fast-check. Scripts are Node `.mjs` with Playwright. Build order follows `design.md`: hand close-up check first, then pure engine and layout, then data wiring and HUD, then scene assets, then camera, effects and creatures, then audio and keyboard, then measurement scripts and the final check.
@@ -642,29 +644,29 @@ What to check:
 
 ### Batch 7: Measurement scripts, docs and final check
 
-- [ ] 21. Frame-rate measurement script
-  - [~] 21.1 Implement `web/scripts/measure-fps.mjs`
+- [ ] 21. Frame-rate measurement script — Superseded by graveyard-horror-pass Requirement 21 (2026-11-13)
+  - [~] 21.1 Implement `web/scripts/measure-fps.mjs` — Superseded by graveyard-horror-pass Requirement 21 (2026-11-13)
     - Uses `lib/browser.mjs` (headed Chrome, 1920 x 1080), checks the dev server, opens `/?firms=3000`, requires the "Sample data" label and `data-graveyard-ready="true"`, counts `requestAnimationFrame` frames over at least 10.0 s, reads the GPU via `WEBGL_debug_renderer_info`, appends one `DEVLOG.md` line (average fps to 1 decimal, GPU, browser name and version, resolution, quality, date YYYY-MM-DD, "dev server", and "Machine is not an integrated-GPU laptop." when the renderer does not match). Any failure exits non-zero with the cause on stderr and writes nothing. `--quality low` pre-seeds a v2 settings blob.
     - _Requirements: 4.7, 21.5, 21.6, 21.7, 21.8_
     - _Design: Section 17_
 
-  - [ ]* 21.2 Write tests for the script helpers
+  - [ ]* 21.2 Write tests for the script helpers — Superseded by graveyard-horror-pass Requirement 21 (2026-11-13)
     - File `web/scripts/measure-fps.test.mjs`: DEVLOG line formatter, integrated-GPU test, failure paths exit non-zero and write nothing.
     - _Requirements: 21.6, 21.7, 21.8_
 
-- [ ] 22. Screenshots and docs
-  - [~] 22.1 Implement `web/scripts/screenshots.mjs`
+- [ ] 22. Screenshots and docs — Superseded by graveyard-horror-pass Requirement 21 (2026-11-13)
+  - [~] 22.1 Implement `web/scripts/screenshots.mjs` — Superseded by graveyard-horror-pass Requirement 21 (2026-11-13)
     - Same launcher at 1920 x 1080 against `/?firms=3000`; lights off then lights on (v2 settings blob), wait for the ready flag plus 2 s, save `reference/progress/graveyard-lights-off-1920x1080.png` and `graveyard-lights-on-1920x1080.png`, verify the image size, non-zero exit on failure.
     - _Requirements: 21.10_
     - _Design: Section 17_
 
-  - [~] 22.2 Update `.kiro/steering/structure.md`
+  - [~] 22.2 Update `.kiro/steering/structure.md` — Superseded by graveyard-horror-pass Requirement 21 (2026-11-13)
     - Add `web/src/audio` and `web/src/data` to the project structure (docs-only; no top-level folder changed). Do not edit `/pipeline`, `/data` or `data-contract.md`.
     - _Requirements: 21.12_
     - _Design: Requirement to Component Mapping (steering compliance)_
 
-- [ ] 23. Final check
-  - [~] 23.1 Run the full check and fix failures
+- [ ] 23. Final check — Superseded by graveyard-horror-pass Requirement 21 (2026-11-13)
+  - [~] 23.1 Run the full check and fix failures — Superseded by graveyard-horror-pass Requirement 21 (2026-11-13)
     - Run: `Set-Location web; pnpm typecheck; pnpm lint; pnpm format; pnpm test; pnpm build`. Fix every failure; confirm the bundle guard and 25 MB check pass, no skipped Shock_Model or layout tests, and `git status` shows no changes under `/pipeline`, `/data`, `web/public/assets` or `CREDITS.md`.
     - Name `reference/graveyard/graveyard-rate-shock-3pp.png` as the matching reference and offer the scene-critic agent for a last review. The fps measurement and screenshots are run by the user with `pnpm dev` active.
     - _Requirements: 21.1, 21.2, 21.3, 21.4, 21.11, 21.12, 21.13_

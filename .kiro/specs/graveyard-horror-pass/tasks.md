@@ -386,19 +386,24 @@ Rules that apply to every task:
     - **Property 21: The Risen pool respects the budget and the choreography**
     - **Validates: Requirements 10.5, 10.7, 10.9, 11.8, 11.15, 12.6, 15.3**
   - [ ] 4.27 Implement model assignment and requested models
-    - Create `model/modelAssignment.ts`: `wantedModel` (rank 0 Hero in lights off, Walker in lights on; others by `fnv1a32(cik) & 1`), `resolveModel` fallback chain (Hero/Crawler to Walker, Walker failure to none) and `requestedModels(selection, lights, reduced, firstFrameDone)`; `CharacterId` has no `watcher`.
-    - _Requirements: 5.1, 5.3, 5.11, 12.1, 12.2, 12.3, 12.5, 12.7, 16.3, 26.2_
+    - Create `model/modelAssignment.ts` (pure, no React or three.js imports): export `modelFor(cik, storyCik): 'hero' | 'walker' | 'crawler'`. The Firm whose `cik` equals `storyCik` gets `hero`; every other Firm gets `['hero','walker','crawler'][fnv1a32(cik) % 3]` (`fnv1a32` from `layout/jitter`). `storyCik` is `null` until the control-room-ui spec defines the Story_Firm. The result depends on nothing but `(cik, storyCik)`: not on distance, camera, selection, Lights_Mode, Reduced_Motion or call order. Replaces `wantedModel` and the Hero-by-distance rule.
+    - Keep `resolveModel(wanted, failed)` only as the load-failure fallback (Hero/Crawler to Walker, Walker failure to none). Add `requestedModels(ciks, storyCik, failed)`, which maps `modelFor` over the assigned Firms, does not read Lights_Mode (the Hero_Model may load in lights on) and never returns the Watcher_Model; `CharacterId` has no `watcher`.
+    - _Requirements: 5.1, 5.3, 5.11, 12.1, 12.2, 12.3, 12.5, 12.7, 12.9, 16.3, 26.2_
+  - [ ] 4.57 Write property test for modelFor
+    - File `model/modelFor.property.test.ts`, fast-check with at least 100 runs, first line comment `// Feature: graveyard-horror-pass, Property 60: modelFor is a pure function of the cik and the story firm`. Check: the result is always one of hero, walker, crawler; the same input gives the same model; the result is independent of call order and of the other Firms (permutations, Firms added or removed); `cik === storyCik` gives hero; `storyCik` null is accepted.
+    - **Property 60: modelFor is a pure function of the cik and the story firm**
+    - **Validates: Requirements 12.1, 12.2, 12.9**
   - [ ] 4.28 Write property test for model assignment
     - File `model/modelAssignment.property.test.ts`.
-    - **Property 29: Model assignment follows rank, hash and lights**
-    - **Validates: Requirements 12.1, 12.2, 12.3, 12.5, 16.3, 19.6**
+    - **Property 29: Model assignment does not change with lights, selection or rank**
+    - **Validates: Requirements 12.2, 12.3, 12.4, 12.5, 16.3, 19.6**
   - [ ] 4.29 Write property test for the fallback chain
-    - File `model/modelFallback.property.test.ts`.
+    - File `model/modelFallback.property.test.ts`; `resolveModel` returns Walker when Hero or Crawler failed and Walker did not, none when Walker failed, otherwise the wanted model.
     - **Property 30: Model fallback chain**
     - **Validates: Requirements 5.11, 12.7**
   - [ ] 4.30 Write property test for requested models
-    - File `model/requestedModels.property.test.ts`.
-    - **Property 4: Requested character models follow lights, motion and need**
+    - File `model/requestedModels.property.test.ts`; the result equals the `modelFor` set of the assigned Firms, is the same for both Lights_Mode and Reduced_Motion values, never contains `watcher`, and is empty before the first frame.
+    - **Property 4: Requested character models follow need only**
     - **Validates: Requirements 5.1, 5.3, 26.2**
   - [ ] 4.31 Implement horror quality settings
     - Create `model/horrorQuality.ts` (low quality: grass x0.5, no character shadows, Rise_Budget stays 8).
@@ -408,14 +413,14 @@ Rules that apply to every task:
     - **Property 44: Horror quality**
     - **Validates: Requirements 19.1**
   - [ ] 4.33 Implement the character loader and bone-map test
-    - Look up `useGLTF`, `useGLTF.preload` and `SkeletonUtils.clone` with context7 before use. Create `r3f/characterLoader.ts` (`useGLTF(path, false, true)` per model id, loaded only when first needed after the first frame, Hero only in lights off, Watcher never requested, `reportAssetError`, shared geometry and materials via `SkeletonUtils.clone`). Add the Vitest test asserting every bone name of each bone map exists in the loaded model.
+    - Look up `useGLTF`, `useGLTF.preload` and `SkeletonUtils.clone` with context7 before use. Create `r3f/characterLoader.ts` (`useGLTF(path, false, true)` per model id, loaded only when first needed after the first frame, models chosen by `modelFor` (no Lights_Mode condition; Hero may load in lights on), Watcher never requested, `reportAssetError`, shared geometry and materials via `SkeletonUtils.clone`). Add the Vitest test asserting every bone name of each bone map exists in the loaded model.
     - _Requirements: 5.1, 5.2, 5.3, 5.5, 5.11, 11.11, 12.6, 12.7, 26.2_
   - [ ] 4.34 Implement SelectionController and the settled shock field
     - Add `settledShock: number` to the main store (`state/store.ts`, the only main-store change). Create `r3f/SelectionController.tsx` (`useFrame` priority -8): Selection_Event on Settled_Shock, Camera_Rig target change (destination pose at move start) or first Firm list load; writes `selectionStore`; Newly_Undead only.
     - Matching reference: `reference/graveyard/horror-direction-sequence.png`. Offer scene-critic.
     - _Requirements: 10.1, 10.3, 10.4, 10.8, 10.10, 12.5, 20.5, 26.1_
   - [ ] 4.35 Implement Characters
-    - Look up `useFrame` priorities and `Object3D.raycast` with context7 before use. Create `r3f/Characters.tsx` (`useFrame` priority -4): one clone per slot, `frameAt` bone aim, Stare and twitches, Reduced_Motion final pose, scale to 1.80 to 1.85 m, base colour x0.9 / 0.85 / 0.75, roughness at least 0.75, `frustumCulled = false`, `raycast = () => null`, shadows by quality, model swap keeping phase, no blood. Generalise `riseEvents.ts` to `createEmitter<T>()`, emit the rise event at the Stir start and add `riseFinishedEvents` at keys time 3.2.
+    - Look up `useFrame` priorities and `Object3D.raycast` with context7 before use. Create `r3f/Characters.tsx` (`useFrame` priority -4): one clone per slot, `frameAt` bone aim, Stare and twitches, Reduced_Motion final pose, scale to 1.80 to 1.85 m, base colour x0.9 / 0.85 / 0.75, roughness at least 0.75, `frustumCulled = false`, `raycast = () => null`, shadows by quality. The model of a slot is `modelFor(cik, storyCik)` (with the `resolveModel` fallback) and never changes at a Selection_Event, a Lights_Mode change or a camera move; a Lights_Mode change keeps model, phase and position. In lights on: same model as lights off, blood material colour set to grey (desaturated, not removed), no Stare (head keeps the last Rise_Keys direction), no head twitch, no camera shake (27.14). Generalise `riseEvents.ts` to `createEmitter<T>()`, emit the rise event at the Stir start and add `riseFinishedEvents` at keys time 3.2.
     - Matching references: `reference/graveyard/horror-direction-sequence.png` and `horror-direction.png`. Offer scene-critic.
     - _Requirements: 10.9, 11.1, 11.6, 11.8, 11.12, 12.4, 15.3, 16.1, 16.3, 16.4, 19.5, 19.6, 26.4, 27.8, 27.9, 27.11, 27.13, 27.14, 27.15_
   - [ ] 4.36 Add the Stir mound motion, the soil break and the Clod burst
@@ -451,7 +456,7 @@ Rules that apply to every task:
     - File `audio/audioEngine.horror.test.ts` with the recording fake `AudioContext`: Growl silent before the gate, when muted, in lights on and not replayed; rumble gain 0.03 at shock 0; Rumble_Bed load failure skipped without error; visual timings unchanged when audio is muted or blocked (29.4).
     - _Requirements: 17.4, 17.5, 17.7, 28.1, 29.4, 29.5_
   - [ ] 4.45 Write the Batch 3 scene tests
-    - Extend `Horror.scene.test.tsx`: no `Hands`, `Watcher`, `Standing` or Mutant import; characters have null `raycast`; at most 8 characters; Walker failure gives no Risen_Zombie and the Torn_Mounds stay; lights on uses the Walker, no Stare, no shake, no blood; Reduced_Motion shows the final pose with one `finished` event.
+    - Extend `Horror.scene.test.tsx`: no `Hands`, `Watcher`, `Standing` or Mutant import; characters have null `raycast`; at most 8 characters; Walker failure gives no Risen_Zombie and the Torn_Mounds stay; lights on keeps the same model as lights off (`modelFor`), blood material colour grey, no Stare, no twitch, no camera shake; Reduced_Motion shows the final pose with one `finished` event.
     - _Requirements: 10.13, 12.7, 15.1, 26.4, 27.14, 27.15_
   - [ ] 4.46 Extend the purity test for the Batch 3 pure modules
     - Add `riseTimeline`, `stir`, `boneAnimator`, `dirtBurst`, `unease`, `flashLimiter`, `staticCutBus`, `settle`, `selection`, `risenPool`, `modelAssignment`, `horrorQuality`, `audio/growl` and `audio/duck` to `horror.purity.test.ts` (no `react`/`three` imports, no `setTimeout`/`setInterval`).
@@ -476,13 +481,13 @@ Rules that apply to every task:
     - With the dev server running, run `Set-Location web; node scripts/horror-screenshots.mjs --batch 3 --url http://localhost:5173`. Name `reference/graveyard/horror-direction.png` and `horror-direction-sequence.png`, the Prototype and `control-room-direction.md` as the matching references and offer the scene-critic.
     - _Requirements: 38.5, 38.7_
   - [ ] 4.53 Verify the superseded tests are updated
-    - Check the table of superseded tests in the design (`audioEngine.test.ts`, `useGraveyardAudio.test.tsx`, `glitchScheduler` tests, `flashlightState.test.ts`, `handPool.test.ts` deleted, Mutant tests, Standing/Watcher tests not added) against the repository and fix any remaining test that still asserts a superseded criterion.
+    - Check the table of superseded tests in the design (`audioEngine.test.ts`, `useGraveyardAudio.test.tsx`, `glitchScheduler` tests, `flashlightState.test.ts`, `handPool.test.ts` deleted, Mutant tests, Standing/Watcher tests not added; the old `model/modelAssignment.test.ts` cases and lights-on character tests: Hero for rank 0 by distance, Walker swap in lights on, no Hero request in lights on, are replaced by `modelFor`, same-model-in-both-modes, grey blood, no Stare/twitch/shake) against the repository and fix any remaining test that still asserts a superseded criterion.
     - _Requirements: 20.2, 20.4, 20.9_
   - [ ] 4.54 Run the full check for Batch 3
     - Run `Set-Location web; pnpm typecheck; pnpm lint; pnpm format; pnpm test; pnpm build` (`check-bundle` enforces the Group_Budget; if it fails apply the fallback order of Requirement 5.13). All must exit 0.
     - _Requirements: 21.1, 21.2, 5.13_
   - [ ] 4.55 Write the Batch 3 report
-    - Report: what was done; check results; `horror-batch3-stir.png` and `horror-batch3-risen.png`; measured fps numbers and GPU name; superseded tests updated (task 4.53); open decisions (Requirement 10.13 raycast wording, prototype key values read at task time); no new dependencies; final acceptance only after the user signs off.
+    - Report: what was done; check results; `horror-batch3-stir.png` and `horror-batch3-risen.png`; measured fps numbers and GPU name; superseded tests updated (task 4.53); that `modelFor(cik, storyCik)` is exported from `model/modelAssignment.ts` for the future lab and failure scare (`storyCik` is null until the control-room-ui spec); open decisions (Requirement 10.13 raycast wording, prototype key values read at task time); no new dependencies; final acceptance only after the user signs off.
     - _Requirements: 20.4, 21.9, 22.3, 38.5_
   - [ ] 4.56 STOP: wait for the user to review Batch 3 before continuing.
 
@@ -528,7 +533,7 @@ Rules that apply to every task:
     { "id": 25, "tasks": ["3.29"] },
     { "id": 26, "tasks": ["3.30"] },
     { "id": 27, "tasks": ["4.1", "4.3", "4.7", "4.9", "4.12", "4.15", "4.20", "4.22", "4.27", "4.31"] },
-    { "id": 28, "tasks": ["4.2", "4.4", "4.5", "4.6", "4.8", "4.10", "4.11", "4.13", "4.14", "4.16", "4.17", "4.18", "4.19", "4.21", "4.23", "4.24", "4.25", "4.28", "4.29", "4.30", "4.32"] },
+    { "id": 28, "tasks": ["4.2", "4.4", "4.5", "4.6", "4.8", "4.10", "4.11", "4.13", "4.14", "4.16", "4.17", "4.18", "4.19", "4.21", "4.23", "4.24", "4.25", "4.28", "4.29", "4.30", "4.32", "4.57"] },
     { "id": 29, "tasks": ["4.26", "4.33", "4.34", "4.37", "4.38", "4.39", "4.41", "4.42", "4.47"] },
     { "id": 30, "tasks": ["4.35", "4.36", "4.43", "4.44", "4.48", "4.49"] },
     { "id": 31, "tasks": ["4.40"] },

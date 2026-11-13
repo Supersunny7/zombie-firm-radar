@@ -315,8 +315,8 @@ Result: every soil, Closed_Mound, Torn_Mound heap, Pit, Clod and Grass_Card mate
 | `model/selection.ts` | `assignNearest(candidates, 8)`: nearest to the destination Selection_Pose, ties by lower `cik`, order-independent. Only Newly_Undead firms are candidates (Already_Undead never get a character, 26.1). |
 | `SelectionController` | Selection_Event on Settled_Shock, Camera_Rig target change (destination pose, at move start) or first Firm list load; writes `selectionStore` (`risen`, `modelByCik`, `version`) and `settledShock` to the main store. |
 | `model/risenPool.ts` | Phases `idle, waiting, stirring, rising, up, lowering`; 8 slots; times from `riseTimeline`; lowering takes at most 1.2 s with no Rise_Cut; Reduced_Motion goes straight to `up`. Emits `started` at Stir start and `finished` at keys time 3.2. |
-| `model/modelAssignment.ts` | Rank 0 lights off: Hero; lights on: Walker; others by `fnv1a32(cik) & 1` (Crawler or Walker). Fallback Hero/Crawler to Walker; Walker failure: no Risen_Zombie. `CharacterId` has no `watcher`. |
-| `r3f/Characters.tsx` | `SkeletonUtils.clone` per slot, `frustumCulled = false`, `raycast = () => null`, scale to 1.80 to 1.85 m, base colour x0.9 / 0.85 / 0.75, roughness at least 0.75, no shadows in low quality. Models load after the first frame; Hero only in lights off. |
+| `model/modelAssignment.ts` | Pure module (no React, no three.js), exported so the future lab and failure scare import the same function. `modelFor(cik, storyCik): 'hero' \| 'walker' \| 'crawler'`: the Firm whose `cik` equals `storyCik` gets `hero`; every other Firm gets `['hero','walker','crawler'][fnv1a32(cik) % 3]`, with `fnv1a32` imported from `layout/jitter`. `storyCik` is `null` until the control-room-ui spec defines it. Input is only `(cik, storyCik)`: no distance, camera, selection, Lights_Mode, Reduced_Motion or call order. `resolveModel(wanted, failed)` is only the load-failure fallback: Hero/Crawler fail to Walker; Walker failure: no Risen_Zombie. `requestedModels(ciks, storyCik, failed)` maps `modelFor` over the assigned Firms and does not read Lights_Mode (Hero may load in lights on); `CharacterId` has no `watcher` and the Watcher_Model is never requested. Replaces `wantedModel` and the Hero-by-distance rule. |
+| `r3f/Characters.tsx` | `SkeletonUtils.clone` per slot, `frustumCulled = false`, `raycast = () => null`, scale to 1.80 to 1.85 m, base colour x0.9 / 0.85 / 0.75, roughness at least 0.75, no shadows in low quality. Models load after the first frame, each only when a Firm that uses it is first assigned; the model of a slot never changes at a Selection_Event, a Lights_Mode change or a camera move. |
 | `model/horrorQuality.ts` | Low quality: grass x0.5, no character shadows, Rise_Budget stays 8. |
 
 ### 10. Batch 3: rise, Stir and Stare (Requirement 27)
@@ -333,7 +333,7 @@ Result: every soil, Closed_Mound, Torn_Mound heap, Pit, Clod and Grass_Card mate
 | Reduced_Motion | Stir without shake; torn mound at t = 0.55, no burst; cut at most 0.15 s, no glitch; zombie at final pose with head at Stare target; `finished` in that frame |
 
 - `model/stir.ts`: `stirOffset(a, rand)` gives mound offsets at most 1.5 cm x a in x/z, 1 cm x a in y; camera shake at most 6 mm x a in x/y (lights off, motion allowed).
-- `model/boneAnimator.ts`: `frameAt(keysTime, model)` interpolates the five Rise_Keys (0.0, 0.7, 1.5, 2.3, 3.2 s; root height -1.8 to -0.95 m) with `jerk` (first 40 % of an interval moves 8 %, then cubic ease-out) and returns world-space aim directions; `Characters` applies them with the prototype `aim()`. Root offset 0.05 m for the Crawler. After 3.2 s: `stare(t, headDir, headToCamera)` (target = normalize(unit(head to camera) + (0, 0.15, 0))), finger curl + 0.15 sin(5t + pitX), twitches (first at 2 s, then every 1.2 to 3.5 s, 0.18 s, offsets x -0.6..0.6, y -0.3..0.2) from `mulberry32(fnv1a32(cik))`. No breathing. Lights on: no Stare, no twitch.
+- `model/boneAnimator.ts`: `frameAt(keysTime, model)` interpolates the five Rise_Keys (0.0, 0.7, 1.5, 2.3, 3.2 s; root height -1.8 to -0.95 m) with `jerk` (first 40 % of an interval moves 8 %, then cubic ease-out) and returns world-space aim directions; `Characters` applies them with the prototype `aim()`. Root offset 0.05 m for the Crawler. After 3.2 s: `stare(t, headDir, headToCamera)` (target = normalize(unit(head to camera) + (0, 0.15, 0))), finger curl + 0.15 sin(5t + pitX), twitches (first at 2 s, then every 1.2 to 3.5 s, 0.18 s, offsets x -0.6..0.6, y -0.3..0.2) from `mulberry32(fnv1a32(cik))`. No breathing. Lights on: same model as lights off and the same phase and position on a Lights_Mode change (12.3, 12.4); blood material colour set to grey (desaturated, not removed); no Stare (head keeps the last Rise_Keys direction), no twitch, no camera shake (27.14).
 - `model/dirtBurst.ts`: `clodAt(u, rest, h)`: outward 35 % to 100 % of rest offset, height 0.03 + 4 h u (1 - u), hidden while u <= 0.02, u over 0.45 s.
 - Auto_Aim: on Stir start the Flashlight aims at Pit + 0.5 m for 2.2 s or until the first pointer move; a new Stir replaces a running one.
 - Events: `riseEvents` at Stir start, `riseFinishedEvents` at keys time 3.2, once per zombie.
@@ -385,7 +385,7 @@ Not built: Watcher (`watcher.ts`, `farSpots.ts`, `coneInput.ts`, `Watcher.tsx`, 
 
 A correctness property is a characteristic or behavior that should hold true across all valid executions of a system, a formal statement about what the system should do. Such statements bridge human-readable specifications and machine-verifiable correctness guarantees.
 
-PBT applies to the pure modules (layout, selection, pool, timeline, animator, limiter, unease, audio parameters, asset tooling). It does not apply to R3F rendering, CSS, real model files, audio output, screenshots or frame rate; those use examples and the Playwright scripts. Property numbers are stable: retired properties keep their number and carry a one-line note. Properties 1 to 21, 29, 30, 39, 40, 44 and 45 are unchanged from the earlier pass; 46 and up are new for Batches 2b and 3. Tests use fast-check 4.10.2, at least 100 runs, tagged with the feature name and the property number.
+PBT applies to the pure modules (layout, selection, pool, timeline, animator, limiter, unease, audio parameters, asset tooling). It does not apply to R3F rendering, CSS, real model files, audio output, screenshots or frame rate; those use examples and the Playwright scripts. Property numbers are stable: retired properties keep their number and carry a one-line note. Properties 1 to 3, 5 to 21, 39, 40, 44 and 45 are unchanged from the earlier pass (Properties 4, 29 and 30 follow the `modelFor` rule); 46 and up are new for Batches 2b and 3. Tests use fast-check 4.10.2, at least 100 runs, tagged with the feature name and the property number.
 
 ### Property 1: Animation edits keep exactly what they are told to keep
 
@@ -405,11 +405,11 @@ For any manifest-like file list and the categories of `groupAssets.json`, `compu
 
 **Validates: Requirements 3.13, 5.6, 5.7, 5.8, 5.10**
 
-### Property 4: Requested character models follow lights, motion and need
+### Property 4: Requested character models follow need only
 
-For any Selection result, lights mode and Reduced_Motion value, the set of character model ids the scene requests never contains `hero` or `watcher` when lights are on, never contains `watcher` when Reduced_Motion is true, contains `hero` only when a Risen_Zombie of rank 0 exists in lights off, and contains no id before the first frame. (Since Batch 3 `watcher` is never requested at all, 26.2.)
+For any assigned Firm list, `storyCik`, lights mode and Reduced_Motion value, `requestedModels` returns exactly the set of `modelFor` results of the assigned Firms, never contains `watcher`, is the same for both lights modes and both Reduced_Motion values, and is empty before the first frame.
 
-**Validates: Requirements 5.1, 5.3, 5.4, 14.13**
+**Validates: Requirements 5.1, 5.3, 26.2**
 
 ### Property 5: Grass placement is deterministic and local to its plot
 
@@ -517,11 +517,11 @@ For any sequence of `desired` lists (up to 40 ciks), time steps and `ready` answ
 
 **Properties 22 to 28 (retired).** Superseded by the prototype Rise_Keys (Requirement 27): Rise_Sequence shape (22), smoothness (23), nothing below the waist (24, kept as an example test of the root range), idle schedules (25), planted hands by IK (26, IK not built), ballistic Dirt_Burst (27), height range 1.6 m to 1.9 m (28). Replaced by Properties 52 to 56.
 
-### Property 29: Model assignment follows rank, hash and lights
+### Property 29: Model assignment does not change with lights, selection or rank
 
-For any ordered list of ciks and either lights mode: rank 0 gets `hero` in lights off and `walker` in lights on; every other cik gets `crawler` when `fnv1a32(cik) & 1` is 1 and `walker` otherwise; the result depends only on rank, cik and lights; and a lights change alters only the model of rank 0.
+For any ordered list of ciks, `storyCik`, and either lights mode: the model of each cik equals `modelFor(cik, storyCik)`; a Lights_Mode, Reduced_Motion, Selection_Event or camera change leaves every model unchanged, so a Risen_Zombie keeps its model, phase and position; the model changes only when `storyCik` changes.
 
-**Validates: Requirements 12.1, 12.2, 12.3, 12.5, 16.3, 19.6**
+**Validates: Requirements 12.2, 12.3, 12.4, 12.5, 16.3, 19.6**
 
 ### Property 30: Model fallback chain
 
@@ -641,6 +641,12 @@ For any firm list and shock, the candidate list for `assignNearest` contains onl
 
 **Validates: Requirements 26.1, 26.4**
 
+### Property 60: modelFor is a pure function of the cik and the story firm
+
+For any cik, any `storyCik` (a cik or null) and any list of other Firms: `modelFor(cik, storyCik)` is always one of `hero`, `walker`, `crawler`; the same input always gives the same model; the result is independent of call order and of the other Firms (computing it for a list in any permutation, or for the list with Firms added or removed, gives the same model for each shared cik); and when `cik` equals `storyCik` the result is `hero`.
+
+**Validates: Requirements 12.1, 12.2, 12.9**
+
 ## Error Handling
 
 | Condition | Handling |
@@ -673,6 +679,7 @@ Unit and example tests cover wiring and edge cases; the properties above cover t
 | `model/dirtBurst.property.test.ts` | Property 56. |
 | `audio/growl.property.test.ts`, `audio/duck.property.test.ts` | Properties 39, 40, 57, 58. |
 | `model/selection.property.test.ts`, `settle.property.test.ts`, `risenPool.property.test.ts` | Properties 19 to 21, 59. |
+| `model/modelAssignment.property.test.ts` | Properties 4, 29, 30, 60 (`modelFor`, `resolveModel`, `requestedModels`). |
 | `r3f/soilMaterials.test.tsx` | Example: six materials, both modes (24.5). |
 | `ui/controls/LightsButton.test.tsx` and a Playwright check | Requirement 25 (see section 8 for the limit of jsdom tests). |
 | `horror.purity.test.ts` | No `react`/`three` imports, no `setTimeout`/`setInterval` in the pure modules. |
@@ -689,6 +696,7 @@ Unit and example tests cover wiring and edge cases; the properties above cover t
 | `r3f/flashlightState.test.ts` | New Flashlight values and Flash_Dip offers. |
 | `model/handPool.test.ts` | Deleted; cases move to `selection.property.test.ts` and `risenPool.property.test.ts`. |
 | `audio/audioEngine.test.ts`, `useGraveyardAudio.test.tsx` | Rumble_Bed, duck, positional Growl; no digging, no footsteps; `linearRampToValueAtTime` on the fake param. |
+| `model/modelAssignment.test.ts`, lights-on character tests | Old cases (Hero for rank 0 by distance, Walker swap in lights on, no Hero request in lights on) removed; now assert `modelFor` is the same in both lights modes, blood colour grey in lights on, no Stare, twitch or camera shake in lights on. |
 | Mutant tests (props / `Creatures`) | Mutant no longer rendered; tests assert absence. |
 | Standing / Watcher tests | Not built; none added. |
 
@@ -702,7 +710,7 @@ Commands (PowerShell): `Set-Location web; pnpm typecheck; pnpm lint; pnpm format
 | 6 to 9 | `model/grass.ts`, `r3f/{Ground,Grass,Mounds,TornMounds}.tsx`, `layout/{jitter,extents,layout,pick,camera}.ts` (delivered) |
 | 10 | `model/{settle,selection,risenPool}.ts`, `r3f/SelectionController.tsx`, `selectionStore.ts` |
 | 11, 27 | `model/{riseTimeline,boneAnimator,stir,dirtBurst}.ts`, `r3f/Characters.tsx` |
-| 12 | `model/modelAssignment.ts`, `r3f/characterLoader.ts` |
+| 12 | `model/modelAssignment.ts` (`modelFor`, shared with the future lab), `r3f/characterLoader.ts` |
 | 15, 26 | `GraveyardScene.tsx` (no Hands, Mutant, Watcher), `riseEvents.ts` |
 | 16, 19 | `model/dressing.ts`, `model/horrorQuality.ts` |
 | 23 | `look.ts`, `layout/camera.ts`, `model/sceneParams.ts`, `r3f/{SceneLights,Flashlight,Props,Stones}.tsx`, `fx/CctvGradeEffect.ts` |
@@ -731,6 +739,7 @@ Steering compliance: engine, `/pipeline`, `/data` and `data-contract.md` untouch
 11. **Pit material is `MeshStandardMaterial`** so 24.1 applies to it.
 12. **Flash_Limiter is the only place that counts flashes**; Static_Cuts, glitches, dips and flickers are candidates.
 13. **No IK, no clips**: prototype Rise_Keys with a fixed root keep hands planted.
+14. **One model per Firm everywhere** (2026-11-14): `modelFor(cik, storyCik)` replaces Hero-by-distance and the lights-on Walker swap; the story firm is always Hero, so the captured zombie looks the same in the graveyard, the lab and the failure scare. `storyCik` is null until the control-room-ui spec.
 
 ## Risks and requirement notes
 
