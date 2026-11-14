@@ -1,0 +1,101 @@
+{
+  "cik": "9999000014",
+  "name": "Marlowe Fabrication Group",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 4.29 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-22",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 217423081,
+      "ebit_usd": 7093434,
+      "interest_expense_usd": 5536025,
+      "total_debt_usd": 76227712,
+      "total_assets_usd": 236130528,
+      "equity_usd": 25151501,
+      "icr": 1.281322609634169,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 234442409,
+      "ebit_usd": 20680263,
+      "interest_expense_usd": 5444111,
+      "total_debt_usd": 74303365,
+      "total_assets_usd": 400856513,
+      "equity_usd": 59355247,
+      "icr": 3.7986483008887952,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 247034628,
+      "ebit_usd": 12189027,
+      "interest_expense_usd": 5636256,
+      "total_debt_usd": 73550640,
+      "total_assets_usd": 362532125,
+      "equity_usd": 53645742,
+      "icr": 2.1626106053380116,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 271125075,
+      "ebit_usd": 23782715,
+      "interest_expense_usd": 6043693,
+      "total_debt_usd": 75851156,
+      "total_assets_usd": 273701851,
+      "equity_usd": 19557152,
+      "icr": 3.935129563993406,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 282567599,
+      "ebit_usd": 25698781,
+      "interest_expense_usd": 5987989,
+      "total_debt_usd": 73098870,
+      "total_assets_usd": 306319295,
+      "equity_usd": 17724265,
+      "icr": 4.291721477778266,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.069769,
+    "margin_change_mean": 0.014581,
+    "margin_change_sd": 0.041767,
+    "revenue_growth_median": 0.065994,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

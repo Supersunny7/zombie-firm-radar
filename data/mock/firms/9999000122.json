@@ -1,0 +1,106 @@
+{
+  "cik": "9999000122",
+  "name": "Everard Utilities Co.",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.91 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-29",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 110194769,
+      "ebit_usd": 17282378,
+      "interest_expense_usd": 4406562,
+      "total_debt_usd": 57874199,
+      "total_assets_usd": 115230085,
+      "equity_usd": 11505305,
+      "icr": 3.9219641071656315,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 112322357,
+      "ebit_usd": 15677977,
+      "interest_expense_usd": 4635776,
+      "total_debt_usd": 60351620,
+      "total_assets_usd": 181042747,
+      "equity_usd": 25121105,
+      "icr": 3.38195309695723,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 110529464,
+      "ebit_usd": 31701532,
+      "interest_expense_usd": 4718004,
+      "total_debt_usd": 59867372,
+      "total_assets_usd": 148222568,
+      "equity_usd": 51676430,
+      "icr": 6.719267724232536,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 113112958,
+      "ebit_usd": 10764459,
+      "interest_expense_usd": 4809466,
+      "total_debt_usd": 58500645,
+      "total_assets_usd": 156783588,
+      "equity_usd": 17414064,
+      "icr": 2.238181744085518,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 115631189,
+      "ebit_usd": 30391695,
+      "interest_expense_usd": 5140978,
+      "total_debt_usd": 60627996,
+      "total_assets_usd": 115832435,
+      "equity_usd": 24605854,
+      "icr": 5.911656303528239,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.188246,
+    "margin_change_mean": 0.0265,
+    "margin_change_sd": 0.167341,
+    "revenue_growth_median": 0.020785,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

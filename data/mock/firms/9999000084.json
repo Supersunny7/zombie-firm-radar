@@ -1,0 +1,111 @@
+{
+  "cik": "9999000084",
+  "name": "Ketteridge Outfitters Co.",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.63 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-17",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 5434245703,
+      "ebit_usd": 390586425,
+      "interest_expense_usd": 84391768,
+      "total_debt_usd": 1760225176,
+      "total_assets_usd": 5357502686,
+      "equity_usd": 418223729,
+      "icr": 4.628252663221844,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 5634169091,
+      "ebit_usd": 536843904,
+      "interest_expense_usd": 87728267,
+      "total_debt_usd": 1798989745,
+      "total_assets_usd": 5913254070,
+      "equity_usd": 669019003,
+      "icr": 6.119394835418326,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 5568849796,
+      "ebit_usd": 497542239,
+      "interest_expense_usd": 97138572,
+      "total_debt_usd": 1873888103,
+      "total_assets_usd": 6886596852,
+      "equity_usd": 1521759239,
+      "icr": 5.121984282412551,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 5712145938,
+      "ebit_usd": 552000175,
+      "interest_expense_usd": 100109560,
+      "total_debt_usd": 1813074953,
+      "total_assets_usd": 9295097280,
+      "equity_usd": 783479456,
+      "icr": 5.513960654706703,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 5765923676,
+      "ebit_usd": 578572971,
+      "interest_expense_usd": 102856293,
+      "total_debt_usd": 1870879882,
+      "total_assets_usd": 6638491111,
+      "equity_usd": 1360988673,
+      "icr": 5.625061472903753,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.090696,
+    "margin_change_mean": 0.007117,
+    "margin_change_sd": 0.012214,
+    "revenue_growth_median": 0.017573,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

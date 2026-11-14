@@ -1,0 +1,101 @@
+{
+  "cik": "9999000119",
+  "name": "Lowmoor Contracting Corp.",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.93 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-28",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 86471081,
+      "ebit_usd": 10302939,
+      "interest_expense_usd": 1931738,
+      "total_debt_usd": 41166629,
+      "total_assets_usd": 100179577,
+      "equity_usd": 18028791,
+      "icr": 5.333507442520673,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 88624997,
+      "ebit_usd": 12443872,
+      "interest_expense_usd": 2010134,
+      "total_debt_usd": 42268749,
+      "total_assets_usd": 84868745,
+      "equity_usd": 6807365,
+      "icr": 6.190568389968032,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 92110740,
+      "ebit_usd": 14023721,
+      "interest_expense_usd": 2136876,
+      "total_debt_usd": 44087985,
+      "total_assets_usd": 110721019,
+      "equity_usd": 38619366,
+      "icr": 6.562721000189061,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 96559621,
+      "ebit_usd": 14850492,
+      "interest_expense_usd": 2410296,
+      "total_debt_usd": 45309952,
+      "total_assets_usd": 90733641,
+      "equity_usd": 5611439,
+      "icr": 6.161273138236964,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 98198238,
+      "ebit_usd": 5096575,
+      "interest_expense_usd": 2641814,
+      "total_debt_usd": 45353450,
+      "total_assets_usd": 98662769,
+      "equity_usd": 8995676,
+      "icr": 1.9291952423599845,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.123501,
+    "margin_change_mean": -0.016812,
+    "margin_change_sd": 0.057291,
+    "revenue_growth_median": 0.03212,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

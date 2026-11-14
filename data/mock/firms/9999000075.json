@@ -1,0 +1,101 @@
+{
+  "cik": "9999000075",
+  "name": "Hollinger Coal Co.",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "healthy",
+  "reasons": [
+    "ICR 4.23 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-16",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1448720278,
+      "ebit_usd": 97518599,
+      "interest_expense_usd": 32977489,
+      "total_debt_usd": 709827331,
+      "total_assets_usd": 2499882960,
+      "equity_usd": 678522682,
+      "icr": 2.957126268770797,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1433234834,
+      "ebit_usd": 51088002,
+      "interest_expense_usd": 33327148,
+      "total_debt_usd": 732348109,
+      "total_assets_usd": 2149272012,
+      "equity_usd": 240928178,
+      "icr": 1.5329245094719777,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1386787699,
+      "ebit_usd": 86711896,
+      "interest_expense_usd": 36236435,
+      "total_debt_usd": 740780197,
+      "total_assets_usd": 1454628767,
+      "equity_usd": 188337596,
+      "icr": 2.3929477610035312,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1395499382,
+      "ebit_usd": 227599512,
+      "interest_expense_usd": 38629916,
+      "total_debt_usd": 754896633,
+      "total_assets_usd": 2018300239,
+      "equity_usd": 560520501,
+      "icr": 5.891794121426513,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1407724859,
+      "ebit_usd": 175823412,
+      "interest_expense_usd": 41520172,
+      "total_debt_usd": 785039124,
+      "total_assets_usd": 2052241087,
+      "equity_usd": 644389034,
+      "icr": 4.234650376689191,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.090696,
+    "margin_change_mean": 0.014396,
+    "margin_change_sd": 0.064471,
+    "revenue_growth_median": -0.002204,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

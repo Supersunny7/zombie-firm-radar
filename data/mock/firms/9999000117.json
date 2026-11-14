@@ -1,0 +1,111 @@
+{
+  "cik": "9999000117",
+  "name": "Calloway Telecom Inc.",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 4.65 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-24",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1694111964,
+      "ebit_usd": 30876201,
+      "interest_expense_usd": 67566375,
+      "total_debt_usd": 1007478627,
+      "total_assets_usd": 3029821838,
+      "equity_usd": 530414922,
+      "icr": 0.45697584042358347,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1628042093,
+      "ebit_usd": 368816084,
+      "interest_expense_usd": 73140330,
+      "total_debt_usd": 1050010641,
+      "total_assets_usd": 2455090296,
+      "equity_usd": 571132509,
+      "icr": 5.0425816235721115,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1633849906,
+      "ebit_usd": 312303570,
+      "interest_expense_usd": 71635289,
+      "total_debt_usd": 1014956002,
+      "total_assets_usd": 1866399919,
+      "equity_usd": 455378551,
+      "icr": 4.359633001550395,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1634649780,
+      "ebit_usd": 209659544,
+      "interest_expense_usd": 75020427,
+      "total_debt_usd": 1006037801,
+      "total_assets_usd": 2203104440,
+      "equity_usd": 461239699,
+      "icr": 2.7946994223320005,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1589758678,
+      "ebit_usd": 347269898,
+      "interest_expense_usd": 74658283,
+      "total_debt_usd": 995001706,
+      "total_assets_usd": 2531342820,
+      "equity_usd": 494978598,
+      "icr": 4.651458405492663,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.156523,
+    "margin_change_mean": 0.050054,
+    "margin_change_sd": 0.124784,
+    "revenue_growth_median": -0.013486,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

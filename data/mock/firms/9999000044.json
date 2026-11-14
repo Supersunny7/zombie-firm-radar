@@ -1,0 +1,101 @@
+{
+  "cik": "9999000044",
+  "name": "Thornbury Works Corp.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 6.60 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-10",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 511784488,
+      "ebit_usd": 20922282,
+      "interest_expense_usd": 9394125,
+      "total_debt_usd": 151950965,
+      "total_assets_usd": 726421547,
+      "equity_usd": 104963721,
+      "icr": 2.227166660013572,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 522995984,
+      "ebit_usd": 5808367,
+      "interest_expense_usd": 9626760,
+      "total_debt_usd": 156533469,
+      "total_assets_usd": 492669647,
+      "equity_usd": 114008519,
+      "icr": 0.6033563732761593,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 539704057,
+      "ebit_usd": 54537347,
+      "interest_expense_usd": 10211460,
+      "total_debt_usd": 156505033,
+      "total_assets_usd": 582662882,
+      "equity_usd": 164866158,
+      "icr": 5.340798181650812,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 579419697,
+      "ebit_usd": 43882685,
+      "interest_expense_usd": 11097768,
+      "total_debt_usd": 158490040,
+      "total_assets_usd": 564713349,
+      "equity_usd": 118694673,
+      "icr": 3.9541901578767913,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 597933207,
+      "ebit_usd": 74749040,
+      "interest_expense_usd": 11318964,
+      "total_debt_usd": 158170175,
+      "total_assets_usd": 938815038,
+      "equity_usd": 140746530,
+      "icr": 6.603876467846351,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.070757,
+    "margin_change_mean": 0.021033,
+    "margin_change_sd": 0.058527,
+    "revenue_growth_median": 0.031949,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

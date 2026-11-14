@@ -1,0 +1,101 @@
+{
+  "cik": "9999000020",
+  "name": "Ainsley Industries Co.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.82 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-22",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": null,
+      "ebit_usd": 299145666,
+      "interest_expense_usd": 66257061,
+      "total_debt_usd": 871750862,
+      "total_assets_usd": 1640105426,
+      "equity_usd": 330248449,
+      "icr": 4.514925073419722,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": null,
+      "ebit_usd": 323966563,
+      "interest_expense_usd": 67989280,
+      "total_debt_usd": 890478517,
+      "total_assets_usd": 1681531251,
+      "equity_usd": 97963545,
+      "icr": 4.764965344536668,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1053052936,
+      "ebit_usd": 291512970,
+      "interest_expense_usd": 72026088,
+      "total_debt_usd": 885654358,
+      "total_assets_usd": 1587691122,
+      "equity_usd": 520032028,
+      "icr": 4.047324769325248,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1035060348,
+      "ebit_usd": 310518105,
+      "interest_expense_usd": 74473971,
+      "total_debt_usd": 921406037,
+      "total_assets_usd": 1407038915,
+      "equity_usd": 71379158,
+      "icr": 4.169485000336561,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 987163337,
+      "ebit_usd": 296149001,
+      "interest_expense_usd": 77583984,
+      "total_debt_usd": 926554393,
+      "total_assets_usd": 1111865272,
+      "equity_usd": 186295528,
+      "icr": 3.817140932076909,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.07,
+    "margin_change_mean": -0.002,
+    "margin_change_sd": 0.018,
+    "revenue_growth_median": 0.02,
+    "history_years": 3,
+    "used_sector_fallback": true
+  }
+}

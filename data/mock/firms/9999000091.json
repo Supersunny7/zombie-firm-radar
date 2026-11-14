@@ -1,0 +1,111 @@
+{
+  "cik": "9999000091",
+  "name": "Quillon Outfitters Inc.",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 4.12 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-07",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1761555426,
+      "ebit_usd": 222278001,
+      "interest_expense_usd": 81736763,
+      "total_debt_usd": 1264213500,
+      "total_assets_usd": 3019773318,
+      "equity_usd": 322403615,
+      "icr": 2.7194372867445216,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1779170732,
+      "ebit_usd": 533751220,
+      "interest_expense_usd": 82636652,
+      "total_debt_usd": 1308404283,
+      "total_assets_usd": 2928290720,
+      "equity_usd": 828747534,
+      "icr": 6.459013126524051,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1738809959,
+      "ebit_usd": 466478168,
+      "interest_expense_usd": 86221361,
+      "total_debt_usd": 1315491951,
+      "total_assets_usd": 1599352945,
+      "equity_usd": 548756042,
+      "icr": 5.4102389777864905,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1774050356,
+      "ebit_usd": 223548817,
+      "interest_expense_usd": 93144854,
+      "total_debt_usd": 1319708584,
+      "total_assets_usd": 2587417450,
+      "equity_usd": 200958704,
+      "icr": 2.4000125331668887,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1731221244,
+      "ebit_usd": 390877415,
+      "interest_expense_usd": 94953909,
+      "total_debt_usd": 1333979008,
+      "total_assets_usd": 1992023122,
+      "equity_usd": 298810596,
+      "icr": 4.116496299272945,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.20925,
+    "margin_change_mean": 0.0249,
+    "margin_change_sd": 0.140157,
+    "revenue_growth_median": -0.006343,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

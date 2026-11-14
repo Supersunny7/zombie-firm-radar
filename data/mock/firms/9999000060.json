@@ -1,0 +1,71 @@
+{
+  "cik": "9999000060",
+  "name": "Nettlefold Freight Holdings",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.56 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-06",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2022,
+      "revenue_usd": 97565033,
+      "ebit_usd": 15990660,
+      "interest_expense_usd": 2391783,
+      "total_debt_usd": 29856967,
+      "total_assets_usd": 112781401,
+      "equity_usd": 21049527,
+      "icr": 6.685665045700216,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 102070860,
+      "ebit_usd": 14734389,
+      "interest_expense_usd": 2423149,
+      "total_debt_usd": 29797732,
+      "total_assets_usd": 92918778,
+      "equity_usd": 27555757,
+      "icr": 6.080678076337856,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 108227721,
+      "ebit_usd": 9495020,
+      "interest_expense_usd": 2665030,
+      "total_debt_usd": 31055773,
+      "total_assets_usd": 120351687,
+      "equity_usd": 17433013,
+      "icr": 3.562819180271892,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.11,
+    "margin_change_mean": -0.001,
+    "margin_change_sd": 0.016,
+    "revenue_growth_median": 0.02,
+    "history_years": 3,
+    "used_sector_fallback": true
+  }
+}

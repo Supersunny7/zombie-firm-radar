@@ -1,0 +1,57 @@
+{
+  "dgs10": {
+    "value": 0.042,
+    "date": "2025-03-28",
+    "source": "FRED DGS10"
+  },
+  "sector_medians": {
+    "Agriculture, Forestry and Fishing": {
+      "margin_mean": 0.06,
+      "margin_change_mean": -0.002,
+      "margin_change_sd": 0.022,
+      "revenue_growth_median": 0.015
+    },
+    "Mining": {
+      "margin_mean": 0.09,
+      "margin_change_mean": -0.004,
+      "margin_change_sd": 0.045,
+      "revenue_growth_median": 0.01
+    },
+    "Construction": {
+      "margin_mean": 0.055,
+      "margin_change_mean": -0.001,
+      "margin_change_sd": 0.02,
+      "revenue_growth_median": 0.025
+    },
+    "Manufacturing": {
+      "margin_mean": 0.07,
+      "margin_change_mean": -0.002,
+      "margin_change_sd": 0.018,
+      "revenue_growth_median": 0.02
+    },
+    "Transportation, Communications, Electric, Gas and Sanitary Services": {
+      "margin_mean": 0.11,
+      "margin_change_mean": -0.001,
+      "margin_change_sd": 0.016,
+      "revenue_growth_median": 0.02
+    },
+    "Wholesale Trade": {
+      "margin_mean": 0.035,
+      "margin_change_mean": -0.001,
+      "margin_change_sd": 0.012,
+      "revenue_growth_median": 0.02
+    },
+    "Retail Trade": {
+      "margin_mean": 0.045,
+      "margin_change_mean": -0.002,
+      "margin_change_sd": 0.015,
+      "revenue_growth_median": 0.018
+    },
+    "Services": {
+      "margin_mean": 0.08,
+      "margin_change_mean": -0.002,
+      "margin_change_sd": 0.025,
+      "revenue_growth_median": 0.03
+    }
+  }
+}

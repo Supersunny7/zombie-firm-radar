@@ -1,0 +1,106 @@
+{
+  "cik": "9999000063",
+  "name": "Saltmarsh Systems Corp.",
+  "ticker": null,
+  "sector": "Services",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, -0.11)",
+    "ICR below 1 in 2 of the last 3 years (FY2023, FY2024)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-19",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 196871824,
+      "ebit_usd": 18594854,
+      "interest_expense_usd": 4011962,
+      "total_debt_usd": 61260868,
+      "total_assets_usd": 259978395,
+      "equity_usd": -23211665,
+      "icr": 4.634852972186676,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 201235462,
+      "ebit_usd": 21607405,
+      "interest_expense_usd": 4298973,
+      "total_debt_usd": 63462446,
+      "total_assets_usd": 243150352,
+      "equity_usd": -9927562,
+      "icr": 5.026178345386212,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 208852407,
+      "ebit_usd": 31591079,
+      "interest_expense_usd": 4550007,
+      "total_debt_usd": 63741682,
+      "total_assets_usd": 221084651,
+      "equity_usd": 16658780,
+      "icr": 6.943083604047202,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 210604560,
+      "ebit_usd": 4465368,
+      "interest_expense_usd": 4876195,
+      "total_debt_usd": 66001481,
+      "total_assets_usd": 193239250,
+      "equity_usd": -17418133,
+      "icr": 0.9157484473036865,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 221884302,
+      "ebit_usd": -554045,
+      "interest_expense_usd": 5190717,
+      "total_debt_usd": 67845792,
+      "total_assets_usd": 294521996,
+      "equity_usd": 22386958,
+      "icr": -0.1067376626388994,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.074358,
+    "margin_change_mean": -0.024237,
+    "margin_change_sd": 0.075763,
+    "revenue_growth_median": 0.030008,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

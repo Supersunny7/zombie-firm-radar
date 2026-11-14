@@ -1,0 +1,110 @@
+{
+  "cik": "9999000053",
+  "name": "Underhill Power Co.",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in 2 of the last 3 years (FY2022, FY2023)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-20",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 370523058,
+      "ebit_usd": 30744901,
+      "interest_expense_usd": 8904642,
+      "total_debt_usd": 165501716,
+      "total_assets_usd": 603776155,
+      "equity_usd": -23703922,
+      "icr": 3.452682432376282,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 397306895,
+      "ebit_usd": 34295999,
+      "interest_expense_usd": 9463153,
+      "total_debt_usd": 168802562,
+      "total_assets_usd": 483380531,
+      "equity_usd": 5494094,
+      "icr": 3.6241619468690827,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 411551849,
+      "ebit_usd": 7453550,
+      "interest_expense_usd": 9395558,
+      "total_debt_usd": 163307785,
+      "total_assets_usd": 443853207,
+      "equity_usd": 16848835,
+      "icr": 0.7933057302184713,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 423758404,
+      "ebit_usd": 6895291,
+      "interest_expense_usd": 9843709,
+      "total_debt_usd": 164042818,
+      "total_assets_usd": 687947872,
+      "equity_usd": -26679536,
+      "icr": 0.7004769238911878,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 449200962,
+      "ebit_usd": 44838259,
+      "interest_expense_usd": 10505797,
+      "total_debt_usd": 166546401,
+      "total_assets_usd": 414465184,
+      "equity_usd": 9559363,
+      "icr": 4.267954063837327,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.0607,
+    "margin_change_mean": 0.00421,
+    "margin_change_sd": 0.062119,
+    "revenue_growth_median": 0.047947,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

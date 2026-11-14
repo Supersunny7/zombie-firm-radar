@@ -1,0 +1,111 @@
+{
+  "cik": "9999000046",
+  "name": "Dunmore Systems Holdings",
+  "ticker": null,
+  "sector": "Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.37 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-25",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 280004570,
+      "ebit_usd": 74366449,
+      "interest_expense_usd": 12023918,
+      "total_debt_usd": 148686748,
+      "total_assets_usd": 299482659,
+      "equity_usd": 77363551,
+      "icr": 6.184876593469783,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 274870236,
+      "ebit_usd": 5006926,
+      "interest_expense_usd": 12283363,
+      "total_debt_usd": 154797497,
+      "total_assets_usd": 452710597,
+      "equity_usd": 116983214,
+      "icr": 0.4076184999173272,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 271770219,
+      "ebit_usd": 60140673,
+      "interest_expense_usd": 13101120,
+      "total_debt_usd": 153244297,
+      "total_assets_usd": 401870596,
+      "equity_usd": 93439638,
+      "icr": 4.590498598593097,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 263196791,
+      "ebit_usd": 31873146,
+      "interest_expense_usd": 13360736,
+      "total_debt_usd": 152285346,
+      "total_assets_usd": 253369607,
+      "equity_usd": 70219198,
+      "icr": 2.3855830996136738,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 253031941,
+      "ebit_usd": 75909582,
+      "interest_expense_usd": 14124041,
+      "total_debt_usd": 156812035,
+      "total_assets_usd": 446993885,
+      "equity_usd": 46738194,
+      "icr": 5.374494594004648,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.18524,
+    "margin_change_mean": 0.008602,
+    "margin_change_sd": 0.219227,
+    "revenue_growth_median": -0.024942,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

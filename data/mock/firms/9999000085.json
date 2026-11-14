@@ -1,0 +1,111 @@
+{
+  "cik": "9999000085",
+  "name": "Penhallow Freight Inc.",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 6 years (first filing proxy), under 10, so not a zombie"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-22",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 3563222139,
+      "ebit_usd": 177454824,
+      "interest_expense_usd": 41702700,
+      "total_debt_usd": 1153043225,
+      "total_assets_usd": 3321681729,
+      "equity_usd": -162048216,
+      "icr": 4.255235848038616,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 3689192614,
+      "ebit_usd": 143710631,
+      "interest_expense_usd": 40271572,
+      "total_debt_usd": 1114916632,
+      "total_assets_usd": 4180703832,
+      "equity_usd": 243308476,
+      "icr": 3.5685379006312443,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 3777371134,
+      "ebit_usd": 34704971,
+      "interest_expense_usd": 42235188,
+      "total_debt_usd": 1085547077,
+      "total_assets_usd": 4356177270,
+      "equity_usd": 382346794,
+      "icr": 0.8217075060728982,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 3781963222,
+      "ebit_usd": 21574038,
+      "interest_expense_usd": 46845575,
+      "total_debt_usd": 1061714271,
+      "total_assets_usd": 4238026212,
+      "equity_usd": -536850147,
+      "icr": 0.46053523731964013,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 3807753129,
+      "ebit_usd": 41016671,
+      "interest_expense_usd": 47075312,
+      "total_debt_usd": 1033801681,
+      "total_assets_usd": 6164655531,
+      "equity_usd": -774252854,
+      "icr": 0.8712989730158347,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.022884,
+    "margin_change_mean": -0.009757,
+    "margin_change_sd": 0.01484,
+    "revenue_growth_median": 0.015361,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

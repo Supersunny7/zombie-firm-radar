@@ -1,0 +1,94 @@
+{
+  "cik": "9999000018",
+  "name": "Ravenscar Fabrication Inc.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.52 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-03",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2021,
+      "revenue_usd": 724954478,
+      "ebit_usd": 65443626,
+      "interest_expense_usd": 39568491,
+      "total_debt_usd": 577850277,
+      "total_assets_usd": 908882117,
+      "equity_usd": 67775683,
+      "icr": 1.6539328224571415,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 769093983,
+      "ebit_usd": 63727400,
+      "interest_expense_usd": 38955760,
+      "total_debt_usd": 572770756,
+      "total_assets_usd": 885753294,
+      "equity_usd": 90307469,
+      "icr": 1.635891585737257,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 800996069,
+      "ebit_usd": 88229841,
+      "interest_expense_usd": 43763761,
+      "total_debt_usd": 596386071,
+      "total_assets_usd": 1089831081,
+      "equity_usd": 214343139,
+      "icr": 2.0160479580354167,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 858587084,
+      "ebit_usd": 253239346,
+      "interest_expense_usd": 45841716,
+      "total_debt_usd": 604817262,
+      "total_assets_usd": 1497368937,
+      "equity_usd": 363417482,
+      "icr": 5.524211746349112,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.144558,
+    "margin_change_mean": 0.068225,
+    "margin_change_sd": 0.102436,
+    "revenue_growth_median": 0.060886,
+    "history_years": 4,
+    "used_sector_fallback": false
+  }
+}

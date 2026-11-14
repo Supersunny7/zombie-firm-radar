@@ -1,0 +1,106 @@
+{
+  "cik": "9999000061",
+  "name": "Kingsmoor Stores Holdings",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.86 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-30",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1115012127,
+      "ebit_usd": 334503638,
+      "interest_expense_usd": 72855680,
+      "total_debt_usd": 962610751,
+      "total_assets_usd": 1155132902,
+      "equity_usd": 188770728,
+      "icr": 4.591318590396796,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1075126811,
+      "ebit_usd": 322538043,
+      "interest_expense_usd": 72287786,
+      "total_debt_usd": 937903949,
+      "total_assets_usd": 1269152529,
+      "equity_usd": 121816001,
+      "icr": 4.46186085986919,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1020190127,
+      "ebit_usd": 306057038,
+      "interest_expense_usd": 75833782,
+      "total_debt_usd": 970420553,
+      "total_assets_usd": 1164504664,
+      "equity_usd": 315744009,
+      "icr": 4.035893106320347,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 968305641,
+      "ebit_usd": 225985698,
+      "interest_expense_usd": 83055261,
+      "total_debt_usd": 1018757335,
+      "total_assets_usd": 1711877821,
+      "equity_usd": 279202565,
+      "icr": 2.720907685787659,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 951021603,
+      "ebit_usd": 245875549,
+      "interest_expense_usd": 85983272,
+      "total_debt_usd": 1022434799,
+      "total_assets_usd": 1449518619,
+      "equity_usd": 156020031,
+      "icr": 2.8595742320669073,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.278384,
+    "margin_change_mean": -0.010365,
+    "margin_change_sd": 0.039332,
+    "revenue_growth_median": -0.043314,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

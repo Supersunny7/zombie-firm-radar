@@ -1,0 +1,111 @@
+{
+  "cik": "9999000006",
+  "name": "Garrowby Trading Holdings",
+  "ticker": null,
+  "sector": "Wholesale Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.66 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-22",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 7218880397,
+      "ebit_usd": 803703962,
+      "interest_expense_usd": 126659102,
+      "total_debt_usd": 1816432819,
+      "total_assets_usd": 11035186617,
+      "equity_usd": 1706068655,
+      "icr": 6.345410233525894,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 7435370959,
+      "ebit_usd": 830595120,
+      "interest_expense_usd": 132271910,
+      "total_debt_usd": 1894238516,
+      "total_assets_usd": 7616222840,
+      "equity_usd": 1522114597,
+      "icr": 6.279452077164381,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 7415679587,
+      "ebit_usd": 302475899,
+      "interest_expense_usd": 133239597,
+      "total_debt_usd": 1826649406,
+      "total_assets_usd": 10699454386,
+      "equity_usd": 3656709812,
+      "icr": 2.2701652197281863,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 7386450106,
+      "ebit_usd": 399149271,
+      "interest_expense_usd": 128992321,
+      "total_debt_usd": 1755710154,
+      "total_assets_usd": 9707771960,
+      "equity_usd": 642454546,
+      "icr": 3.0943645939978084,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 7782123354,
+      "ebit_usd": 229305785,
+      "interest_expense_usd": 138039956,
+      "total_debt_usd": 1754023098,
+      "total_assets_usd": 9289628603,
+      "equity_usd": 2477402078,
+      "icr": 1.661155158583215,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.069467,
+    "margin_change_mean": -0.020467,
+    "margin_change_sd": 0.037119,
+    "revenue_growth_median": 0.013671,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "cik": "9999000065",
+  "name": "Dovecote Supply Inc.",
+  "ticker": null,
+  "sector": "Wholesale Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.60 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-08",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 518467757,
+      "ebit_usd": 73359945,
+      "interest_expense_usd": 11898558,
+      "total_debt_usd": 156447813,
+      "total_assets_usd": 511853239,
+      "equity_usd": 46134677,
+      "icr": 6.165448367777003,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 493287213,
+      "ebit_usd": 73109655,
+      "interest_expense_usd": 12233672,
+      "total_debt_usd": 163474586,
+      "total_assets_usd": 518309501,
+      "equity_usd": 147462158,
+      "icr": 5.976100634380258,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 479620232,
+      "ebit_usd": 44135916,
+      "interest_expense_usd": 12983064,
+      "total_debt_usd": 163164863,
+      "total_assets_usd": 709156225,
+      "equity_usd": 193265632,
+      "icr": 3.3994992245282005,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 461625470,
+      "ebit_usd": 42746637,
+      "interest_expense_usd": 12904216,
+      "total_debt_usd": 160021020,
+      "total_assets_usd": 694636199,
+      "equity_usd": 170356729,
+      "icr": 3.312610157796491,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 436957015,
+      "ebit_usd": 35765679,
+      "interest_expense_usd": 13753116,
+      "total_debt_usd": 164693336,
+      "total_assets_usd": 417063629,
+      "equity_usd": 119314074,
+      "icr": 2.600550958779087,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.111235,
+    "margin_change_mean": -0.014911,
+    "margin_change_sd": 0.028452,
+    "revenue_growth_median": -0.043043,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

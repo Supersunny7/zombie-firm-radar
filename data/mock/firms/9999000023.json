@@ -1,0 +1,111 @@
+{
+  "cik": "9999000023",
+  "name": "Zelmont Coal Co.",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 21 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-25",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 145470521,
+      "ebit_usd": 11569764,
+      "interest_expense_usd": 3680301,
+      "total_debt_usd": 79586034,
+      "total_assets_usd": 226574334,
+      "equity_usd": -26112227,
+      "icr": 3.1437004744992327,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 143841273,
+      "ebit_usd": 11275910,
+      "interest_expense_usd": 3665047,
+      "total_debt_usd": 78225400,
+      "total_assets_usd": 252529407,
+      "equity_usd": -2337263,
+      "icr": 3.0766072031272724,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 138526186,
+      "ebit_usd": 3301656,
+      "interest_expense_usd": 3752178,
+      "total_debt_usd": 76395987,
+      "total_assets_usd": 221772906,
+      "equity_usd": 9933892,
+      "icr": 0.8799305363444911,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 138620328,
+      "ebit_usd": 2541215,
+      "interest_expense_usd": 3976116,
+      "total_debt_usd": 73720865,
+      "total_assets_usd": 148735740,
+      "equity_usd": -6645497,
+      "icr": 0.6391199351326772,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 131988801,
+      "ebit_usd": 1635350,
+      "interest_expense_usd": 4174622,
+      "total_debt_usd": 76701303,
+      "total_assets_usd": 167140865,
+      "equity_usd": 17458517,
+      "icr": 0.3917360661635952,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.042496,
+    "margin_change_mean": -0.016786,
+    "margin_change_sd": 0.025274,
+    "revenue_growth_median": -0.024075,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

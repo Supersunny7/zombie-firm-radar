@@ -1,0 +1,106 @@
+{
+  "cik": "9999000106",
+  "name": "Dunmore Coal Co.",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.62 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-29",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 4594492408,
+      "ebit_usd": 584111865,
+      "interest_expense_usd": 195980355,
+      "total_debt_usd": 3839873188,
+      "total_assets_usd": 6661588439,
+      "equity_usd": 347994060,
+      "icr": 2.980461306950893,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 4850496144,
+      "ebit_usd": 632794305,
+      "interest_expense_usd": 188649177,
+      "total_debt_usd": 3851136417,
+      "total_assets_usd": 8127498695,
+      "equity_usd": 1679346230,
+      "icr": 3.3543443711922474,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 5031790310,
+      "ebit_usd": 387527037,
+      "interest_expense_usd": 199515023,
+      "total_debt_usd": 3797257306,
+      "total_assets_usd": 7494751897,
+      "equity_usd": 1029943289,
+      "icr": 1.942345148615701,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 5143603131,
+      "ebit_usd": 820370442,
+      "interest_expense_usd": 220366717,
+      "total_debt_usd": 3874650138,
+      "total_assets_usd": 5162026967,
+      "equity_usd": 796451043,
+      "icr": 3.7227511176290746,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 5399939135,
+      "ebit_usd": 811538941,
+      "interest_expense_usd": 224019591,
+      "total_debt_usd": 3814423777,
+      "total_assets_usd": 6426074195,
+      "equity_usd": 503367323,
+      "icr": 3.622624866768907,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.128878,
+    "margin_change_mean": 0.005788,
+    "margin_change_sd": 0.056629,
+    "revenue_growth_median": 0.043606,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

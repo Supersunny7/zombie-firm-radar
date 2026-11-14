@@ -1,0 +1,100 @@
+{
+  "cik": "9999000086",
+  "name": "Dalbury Resources Corp.",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.84)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-25",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 4109661324,
+      "ebit_usd": 706581453,
+      "interest_expense_usd": 177608811,
+      "total_debt_usd": 2698631574,
+      "total_assets_usd": 6978745213,
+      "equity_usd": 2121679640,
+      "icr": 3.978301802831167,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 4057658633,
+      "ebit_usd": 964416687,
+      "interest_expense_usd": 189228991,
+      "total_debt_usd": 2769719565,
+      "total_assets_usd": 4575499090,
+      "equity_usd": 1486338442,
+      "icr": 5.096558840711675,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 4144261830,
+      "ebit_usd": 270205411,
+      "interest_expense_usd": 199237502,
+      "total_debt_usd": 2801795194,
+      "total_assets_usd": 7230656660,
+      "equity_usd": 1226425468,
+      "icr": 1.3561975445767234,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 4050505922,
+      "ebit_usd": 752094236,
+      "interest_expense_usd": 214775936,
+      "total_debt_usd": 2917054655,
+      "total_assets_usd": 4535384638,
+      "equity_usd": 1453580903,
+      "icr": 3.5017621154727503,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 4011604399,
+      "ebit_usd": 179032957,
+      "interest_expense_usd": 214141444,
+      "total_debt_usd": 2846034429,
+      "total_assets_usd": 5188191571,
+      "equity_usd": 1677209410,
+      "icr": 0.8360500128130265,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.141024,
+    "margin_change_mean": -0.031826,
+    "margin_change_sd": 0.146549,
+    "revenue_growth_median": -0.011129,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

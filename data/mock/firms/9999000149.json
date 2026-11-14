@@ -1,0 +1,106 @@
+{
+  "cik": "9999000149",
+  "name": "Upperton Works Group",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 5 years (first filing proxy), under 10, so not a zombie"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-27",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1661964242,
+      "ebit_usd": 23228247,
+      "interest_expense_usd": 19790552,
+      "total_debt_usd": 428974022,
+      "total_assets_usd": 1590048778,
+      "equity_usd": 81552569,
+      "icr": 1.1737038461585103,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1779734663,
+      "ebit_usd": 100605638,
+      "interest_expense_usd": 19778819,
+      "total_debt_usd": 422424466,
+      "total_assets_usd": 2729370340,
+      "equity_usd": -48645311,
+      "icr": 5.086534135329313,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1878566341,
+      "ebit_usd": -21504275,
+      "interest_expense_usd": 20721993,
+      "total_debt_usd": 422514949,
+      "total_assets_usd": 2610897502,
+      "equity_usd": 141030650,
+      "icr": -1.0377512915866731,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1987269513,
+      "ebit_usd": 17500810,
+      "interest_expense_usd": 22956915,
+      "total_debt_usd": 442584293,
+      "total_assets_usd": 3438537637,
+      "equity_usd": -367712144,
+      "icr": 0.76233283087035,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 2123972851,
+      "ebit_usd": -11712724,
+      "interest_expense_usd": 25011702,
+      "total_debt_usd": 443577757,
+      "total_assets_usd": 2279708892,
+      "equity_usd": -181206629,
+      "icr": -0.46828976292776875,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.01247,
+    "margin_change_mean": -0.004873,
+    "margin_change_sd": 0.048138,
+    "revenue_growth_median": 0.063327,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

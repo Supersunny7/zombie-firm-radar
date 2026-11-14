@@ -1,0 +1,106 @@
+{
+  "cik": "9999000100",
+  "name": "Applegarth Farms Co.",
+  "ticker": null,
+  "sector": "Agriculture, Forestry and Fishing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.02 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-25",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 14448616886,
+      "ebit_usd": 3404415624,
+      "interest_expense_usd": 643310709,
+      "total_debt_usd": 9001245986,
+      "total_assets_usd": 17009863079,
+      "equity_usd": 5684409683,
+      "icr": 5.292023864008146,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 15231970565,
+      "ebit_usd": 1301377158,
+      "interest_expense_usd": 597592887,
+      "total_debt_usd": 8791070018,
+      "total_assets_usd": 18766661927,
+      "equity_usd": 4066874220,
+      "icr": 2.177698540779318,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 16117206583,
+      "ebit_usd": 3782699462,
+      "interest_expense_usd": 647420644,
+      "total_debt_usd": 8977914788,
+      "total_assets_usd": 28012816640,
+      "equity_usd": 2166905077,
+      "icr": 5.8427229608081515,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 17046970232,
+      "ebit_usd": 3363853095,
+      "interest_expense_usd": 647034693,
+      "total_debt_usd": 8694202729,
+      "total_assets_usd": 28087540509,
+      "equity_usd": 3352528636,
+      "icr": 5.198875935698861,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 17993487611,
+      "ebit_usd": 2055637666,
+      "interest_expense_usd": 679962566,
+      "total_debt_usd": 8744005501,
+      "total_assets_usd": 26043411267,
+      "equity_usd": 2804542488,
+      "icr": 3.023162992769811,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.173466,
+    "margin_change_mean": -0.030345,
+    "margin_change_sd": 0.128389,
+    "revenue_growth_median": 0.056606,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

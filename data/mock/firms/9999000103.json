@@ -1,0 +1,101 @@
+{
+  "cik": "9999000103",
+  "name": "Cinderford Homes Holdings",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.65 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-13",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": null,
+      "ebit_usd": 483159478,
+      "interest_expense_usd": 85181880,
+      "total_debt_usd": 1242580305,
+      "total_assets_usd": 1927693935,
+      "equity_usd": 318295954,
+      "icr": 5.672092210221235,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": null,
+      "ebit_usd": 515369783,
+      "interest_expense_usd": 84772986,
+      "total_debt_usd": 1209977520,
+      "total_assets_usd": 2136047578,
+      "equity_usd": 559708264,
+      "icr": 6.0794105211771114,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1941357383,
+      "ebit_usd": 299946432,
+      "interest_expense_usd": 87826804,
+      "total_debt_usd": 1227058091,
+      "total_assets_usd": 2626080122,
+      "equity_usd": 678563581,
+      "icr": 3.415203768544282,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1978841457,
+      "ebit_usd": 245344763,
+      "interest_expense_usd": 99002790,
+      "total_debt_usd": 1280956089,
+      "total_assets_usd": 3079632373,
+      "equity_usd": 234609530,
+      "icr": 2.478160090235841,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 2018422505,
+      "ebit_usd": 279063580,
+      "interest_expense_usd": 105143344,
+      "total_debt_usd": 1321157536,
+      "total_assets_usd": 1884064442,
+      "equity_usd": 235346218,
+      "icr": 2.6541250200297988,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.055,
+    "margin_change_mean": -0.001,
+    "margin_change_sd": 0.02,
+    "revenue_growth_median": 0.025,
+    "history_years": 3,
+    "used_sector_fallback": true
+  }
+}

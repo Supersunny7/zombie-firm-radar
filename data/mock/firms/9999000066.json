@@ -1,0 +1,105 @@
+{
+  "cik": "9999000066",
+  "name": "Garrowby Timber Corp.",
+  "ticker": null,
+  "sector": "Agriculture, Forestry and Fishing",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, -0.19)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-27",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 515999005,
+      "ebit_usd": 49622160,
+      "interest_expense_usd": 11146820,
+      "total_debt_usd": 181540829,
+      "total_assets_usd": 691455117,
+      "equity_usd": 214610135,
+      "icr": 4.451687566498786,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 522926856,
+      "ebit_usd": 54228864,
+      "interest_expense_usd": 11711965,
+      "total_debt_usd": 190096663,
+      "total_assets_usd": 878511507,
+      "equity_usd": 222128009,
+      "icr": 4.630210558177044,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 523268487,
+      "ebit_usd": 23629791,
+      "interest_expense_usd": 12044785,
+      "total_debt_usd": 184796590,
+      "total_assets_usd": 755296251,
+      "equity_usd": 255088197,
+      "icr": 1.96182754611228,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 536997011,
+      "ebit_usd": 59768667,
+      "interest_expense_usd": 12170459,
+      "total_debt_usd": 181809104,
+      "total_assets_usd": 947868291,
+      "equity_usd": 265408188,
+      "icr": 4.91096243781767,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 554807610,
+      "ebit_usd": -2403295,
+      "interest_expense_usd": 12560127,
+      "total_debt_usd": 176810077,
+      "total_assets_usd": 785929327,
+      "equity_usd": 188382727,
+      "icr": -0.19134320855195175,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.0704,
+    "margin_change_mean": -0.025125,
+    "margin_change_sd": 0.078963,
+    "revenue_growth_median": 0.019831,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "cik": "9999000092",
+  "name": "Brackenfell Retail Holdings",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 6.69 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-05",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 3156578439,
+      "ebit_usd": 433101458,
+      "interest_expense_usd": 65248411,
+      "total_debt_usd": 1539406726,
+      "total_assets_usd": 3668137872,
+      "equity_usd": 768363965,
+      "icr": 6.63773188284999,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 3165896605,
+      "ebit_usd": 339464119,
+      "interest_expense_usd": 64817058,
+      "total_debt_usd": 1503363301,
+      "total_assets_usd": 3693573902,
+      "equity_usd": 455989444,
+      "icr": 5.237265150170808,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 3198925205,
+      "ebit_usd": 33126000,
+      "interest_expense_usd": 69844385,
+      "total_debt_usd": 1544143559,
+      "total_assets_usd": 5113615052,
+      "equity_usd": 499016957,
+      "icr": 0.47428293627325946,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 3151230490,
+      "ebit_usd": 197795910,
+      "interest_expense_usd": 82435432,
+      "total_debt_usd": 1597888206,
+      "total_assets_usd": 4341709529,
+      "equity_usd": 408788656,
+      "icr": 2.3994040572262665,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 3051197458,
+      "ebit_usd": 569203155,
+      "interest_expense_usd": 85043784,
+      "total_debt_usd": 1629140810,
+      "total_assets_usd": 4171071410,
+      "equity_usd": 287871995,
+      "icr": 6.693060071268701,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.100821,
+    "margin_change_mean": 0.012336,
+    "margin_change_sd": 0.096165,
+    "revenue_growth_median": -0.005979,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "cik": "9999000077",
+  "name": "Rowntree Homes Corp.",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.82 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-20",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1727100869,
+      "ebit_usd": 71778533,
+      "interest_expense_usd": 37861700,
+      "total_debt_usd": 1032349566,
+      "total_assets_usd": 2900252607,
+      "equity_usd": 930674003,
+      "icr": 1.8958085083342797,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1785189000,
+      "ebit_usd": 282904362,
+      "interest_expense_usd": 41352154,
+      "total_debt_usd": 1083760676,
+      "total_assets_usd": 2684733871,
+      "equity_usd": 635387128,
+      "icr": 6.84134524165295,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1926272912,
+      "ebit_usd": 28963845,
+      "interest_expense_usd": 42941927,
+      "total_debt_usd": 1085478139,
+      "total_assets_usd": 2754592091,
+      "equity_usd": 501165470,
+      "icr": 0.6744887112308677,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 2031032737,
+      "ebit_usd": 179022302,
+      "interest_expense_usd": 44729094,
+      "total_debt_usd": 1043781785,
+      "total_assets_usd": 3299483592,
+      "equity_usd": 858946706,
+      "icr": 4.002368167797004,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 2102421562,
+      "ebit_usd": 137071184,
+      "interest_expense_usd": 48625327,
+      "total_debt_usd": 1032804113,
+      "total_assets_usd": 2827052736,
+      "equity_usd": 358112002,
+      "icr": 2.818925701003512,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.073682,
+    "margin_change_mean": 0.005909,
+    "margin_change_sd": 0.115433,
+    "revenue_growth_median": 0.044767,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

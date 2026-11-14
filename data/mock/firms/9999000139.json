@@ -1,0 +1,111 @@
+{
+  "cik": "9999000139",
+  "name": "Birchall Distribution Holdings",
+  "ticker": null,
+  "sector": "Wholesale Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.91 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-25",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2756080465,
+      "ebit_usd": 138372492,
+      "interest_expense_usd": 60203384,
+      "total_debt_usd": 998938711,
+      "total_assets_usd": 3590318222,
+      "equity_usd": 981843498,
+      "icr": 2.2984171786755376,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 2718118078,
+      "ebit_usd": 106652809,
+      "interest_expense_usd": 62945116,
+      "total_debt_usd": 1027447798,
+      "total_assets_usd": 4408692952,
+      "equity_usd": 1209115710,
+      "icr": 1.694377829091617,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 2694611139,
+      "ebit_usd": 199565334,
+      "interest_expense_usd": 63359466,
+      "total_debt_usd": 1012470248,
+      "total_assets_usd": 4154624517,
+      "equity_usd": 749625020,
+      "icr": 3.149731943763541,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 2683470305,
+      "ebit_usd": 219152411,
+      "interest_expense_usd": 68728206,
+      "total_debt_usd": 1061462691,
+      "total_assets_usd": 2480845761,
+      "equity_usd": 412366653,
+      "icr": 3.1886822565978226,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 2786035685,
+      "ebit_usd": 137098797,
+      "interest_expense_usd": 71932478,
+      "total_debt_usd": 1034337975,
+      "total_assets_usd": 3664912092,
+      "equity_usd": 640409568,
+      "icr": 1.9059373569752456,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.058876,
+    "margin_change_mean": -0.000249,
+    "margin_change_sd": 0.028543,
+    "revenue_growth_median": -0.006391,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

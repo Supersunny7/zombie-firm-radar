@@ -1,0 +1,100 @@
+{
+  "cik": "9999000128",
+  "name": "Stonebrook Drilling Inc.",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.76)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-28",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 4635428589,
+      "ebit_usd": 586243723,
+      "interest_expense_usd": 84775488,
+      "total_debt_usd": 2357177025,
+      "total_assets_usd": 6705120849,
+      "equity_usd": 2039998691,
+      "icr": 6.915250349251897,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 4697977432,
+      "ebit_usd": 491988970,
+      "interest_expense_usd": 84840249,
+      "total_debt_usd": 2436411855,
+      "total_assets_usd": 6910140725,
+      "equity_usd": 1872214379,
+      "icr": 5.799004314567724,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 4838351575,
+      "ebit_usd": 354107146,
+      "interest_expense_usd": 89742018,
+      "total_debt_usd": 2424072475,
+      "total_assets_usd": 8290604945,
+      "equity_usd": 1474076988,
+      "icr": 3.945834447359987,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 4758815626,
+      "ebit_usd": 305740934,
+      "interest_expense_usd": 103000619,
+      "total_debt_usd": 2522439774,
+      "total_assets_usd": 5472143943,
+      "equity_usd": 593999811,
+      "icr": 2.968340743660968,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 4831761055,
+      "ebit_usd": 85282114,
+      "interest_expense_usd": 111646836,
+      "total_debt_usd": 2508130400,
+      "total_assets_usd": 5012768993,
+      "equity_usd": 1372737721,
+      "icr": 0.7638560755989539,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.077256,
+    "margin_change_mean": -0.027205,
+    "margin_change_sd": 0.015898,
+    "revenue_growth_median": 0.014411,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "cik": "9999000002",
+  "name": "Everard Minerals Co.",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.68 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-22",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1053012876,
+      "ebit_usd": -14167641,
+      "interest_expense_usd": 17366496,
+      "total_debt_usd": 302822972,
+      "total_assets_usd": 1354856748,
+      "equity_usd": 87340909,
+      "icr": -0.815803084283669,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1047960507,
+      "ebit_usd": 43470285,
+      "interest_expense_usd": 18696150,
+      "total_debt_usd": 312321624,
+      "total_assets_usd": 1507205944,
+      "equity_usd": 89769907,
+      "icr": 2.3250928667132005,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1044962600,
+      "ebit_usd": 97934871,
+      "interest_expense_usd": 19966542,
+      "total_debt_usd": 325749659,
+      "total_assets_usd": 1614021921,
+      "equity_usd": 564565236,
+      "icr": 4.904949039247757,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1046321198,
+      "ebit_usd": 135088167,
+      "interest_expense_usd": 20131599,
+      "total_debt_usd": 315833155,
+      "total_assets_usd": 1407872925,
+      "equity_usd": 71690172,
+      "icr": 6.7102552062555985,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1031548223,
+      "ebit_usd": 36142611,
+      "interest_expense_usd": 21459824,
+      "total_debt_usd": 322038517,
+      "total_assets_usd": 1075311818,
+      "equity_usd": 246916146,
+      "icr": 1.6841988545665612,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.057178,
+    "margin_change_mean": 0.012123,
+    "margin_change_sd": 0.071322,
+    "revenue_growth_median": -0.003829,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

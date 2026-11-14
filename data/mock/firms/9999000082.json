@@ -1,0 +1,101 @@
+{
+  "cik": "9999000082",
+  "name": "Oakhaven Retail Co.",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 26 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-09",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 84118328,
+      "ebit_usd": 2118362,
+      "interest_expense_usd": 3114085,
+      "total_debt_usd": 47034463,
+      "total_assets_usd": 83833363,
+      "equity_usd": 276910,
+      "icr": 0.6802518235693631,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 83063911,
+      "ebit_usd": 16615490,
+      "interest_expense_usd": 3376847,
+      "total_debt_usd": 48604255,
+      "total_assets_usd": 87540595,
+      "equity_usd": 3902710,
+      "icr": 4.920415405258218,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 84939947,
+      "ebit_usd": 3125858,
+      "interest_expense_usd": 3576908,
+      "total_debt_usd": 50869544,
+      "total_assets_usd": 136546749,
+      "equity_usd": 4734774,
+      "icr": 0.8738994684794801,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 84931210,
+      "ebit_usd": 1605807,
+      "interest_expense_usd": 3640989,
+      "total_debt_usd": 49558328,
+      "total_assets_usd": 128482643,
+      "equity_usd": -3302845,
+      "icr": 0.44103593831236515,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 82697671,
+      "ebit_usd": -1444863,
+      "interest_expense_usd": 3882957,
+      "total_debt_usd": 50376272,
+      "total_assets_usd": 142607883,
+      "equity_usd": -6123702,
+      "icr": -0.37210378585186493,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.05269,
+    "margin_change_mean": -0.010664,
+    "margin_change_sd": 0.13953,
+    "revenue_growth_median": -0.006319,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

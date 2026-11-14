@@ -1,0 +1,111 @@
+{
+  "cik": "9999000137",
+  "name": "Rowntree Drilling Co.",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 22 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-05",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 382784351,
+      "ebit_usd": 114835305,
+      "interest_expense_usd": 20004335,
+      "total_debt_usd": 281078344,
+      "total_assets_usd": 427095351,
+      "equity_usd": -5236965,
+      "icr": 5.740520992074968,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 386670418,
+      "ebit_usd": 14405044,
+      "interest_expense_usd": 20616148,
+      "total_debt_usd": 278231322,
+      "total_assets_usd": 635645073,
+      "equity_usd": 11799555,
+      "icr": 0.6987262605992157,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 392476717,
+      "ebit_usd": 10278512,
+      "interest_expense_usd": 20735671,
+      "total_debt_usd": 274953851,
+      "total_assets_usd": 679763760,
+      "equity_usd": -29824329,
+      "icr": 0.49569227829666085,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 385816312,
+      "ebit_usd": 8874896,
+      "interest_expense_usd": 21835195,
+      "total_debt_usd": 279669862,
+      "total_assets_usd": 687490149,
+      "equity_usd": 10300670,
+      "icr": 0.40644912949025647,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 379880830,
+      "ebit_usd": 9742473,
+      "interest_expense_usd": 22243277,
+      "total_debt_usd": 276524633,
+      "total_assets_usd": 619952190,
+      "equity_usd": 15080017,
+      "icr": 0.43799629883672264,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.082418,
+    "margin_change_mean": -0.068588,
+    "margin_change_sd": 0.12956,
+    "revenue_growth_median": -0.002616,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

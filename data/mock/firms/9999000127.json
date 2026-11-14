@@ -1,0 +1,101 @@
+{
+  "cik": "9999000127",
+  "name": "Elmstead Minerals Holdings",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 15 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-02",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1587794012,
+      "ebit_usd": 85608986,
+      "interest_expense_usd": 35019706,
+      "total_debt_usd": 489175155,
+      "total_assets_usd": 2094645247,
+      "equity_usd": -31684193,
+      "icr": 2.4445946519368267,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1646671385,
+      "ebit_usd": 28304228,
+      "interest_expense_usd": 35145934,
+      "total_debt_usd": 511066914,
+      "total_assets_usd": 2752267054,
+      "equity_usd": -76624997,
+      "icr": 0.805334352474457,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1656744733,
+      "ebit_usd": 26848602,
+      "interest_expense_usd": 36030165,
+      "total_debt_usd": 506629851,
+      "total_assets_usd": 2916945678,
+      "equity_usd": 333287635,
+      "icr": 0.7451701095457098,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1703454796,
+      "ebit_usd": 17156598,
+      "interest_expense_usd": 40335084,
+      "total_debt_usd": 524618493,
+      "total_assets_usd": 2208696786,
+      "equity_usd": -139694877,
+      "icr": 0.4253517359725841,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1711860976,
+      "ebit_usd": 31565342,
+      "interest_expense_usd": 43565412,
+      "total_debt_usd": 543443919,
+      "total_assets_usd": 2213895681,
+      "equity_usd": 2837136,
+      "icr": 0.7245505218681279,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.023164,
+    "margin_change_mean": -0.008869,
+    "margin_change_sd": 0.019518,
+    "revenue_growth_median": 0.017156,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

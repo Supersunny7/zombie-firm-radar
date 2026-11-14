@@ -1,0 +1,105 @@
+{
+  "cik": "9999000072",
+  "name": "Yarrowdale Partners Holdings",
+  "ticker": null,
+  "sector": "Services",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.92)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-09",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2443663749,
+      "ebit_usd": 472708242,
+      "interest_expense_usd": 70813497,
+      "total_debt_usd": 1813718746,
+      "total_assets_usd": 2575982863,
+      "equity_usd": 527195950,
+      "icr": 6.675397516380246,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 2412522361,
+      "ebit_usd": 325482939,
+      "interest_expense_usd": 68063881,
+      "total_debt_usd": 1763892343,
+      "total_assets_usd": 4241310544,
+      "equity_usd": 1005682217,
+      "icr": 4.782021451289268,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 2448114599,
+      "ebit_usd": 332966028,
+      "interest_expense_usd": 74548542,
+      "total_debt_usd": 1796253469,
+      "total_assets_usd": 4142081981,
+      "equity_usd": 1200439901,
+      "icr": 4.4664324622203875,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 2461446033,
+      "ebit_usd": 144248557,
+      "interest_expense_usd": 77084037,
+      "total_debt_usd": 1741431569,
+      "total_assets_usd": 4291853018,
+      "equity_usd": 1212858747,
+      "icr": 1.871315548769196,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 2431632252,
+      "ebit_usd": 78568492,
+      "interest_expense_usd": 85643142,
+      "total_debt_usd": 1804052622,
+      "total_assets_usd": 3564324784,
+      "equity_usd": 743864463,
+      "icr": 0.917393852738378,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.111056,
+    "margin_change_mean": -0.040283,
+    "margin_change_sd": 0.034732,
+    "revenue_growth_median": -0.003333,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

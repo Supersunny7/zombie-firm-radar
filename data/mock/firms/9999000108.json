@@ -1,0 +1,101 @@
+{
+  "cik": "9999000108",
+  "name": "Kestrel Ridge Resources Holdings",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "healthy",
+  "reasons": [
+    "ICR 6.22 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-30",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 6789220521,
+      "ebit_usd": 153301678,
+      "interest_expense_usd": 107928935,
+      "total_debt_usd": 3147298188,
+      "total_assets_usd": 9210810451,
+      "equity_usd": 1847579207,
+      "icr": 1.4203946142894859,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 7409524313,
+      "ebit_usd": 519009610,
+      "interest_expense_usd": 121033926,
+      "total_debt_usd": 3286586433,
+      "total_assets_usd": 7802815437,
+      "equity_usd": 1217305359,
+      "icr": 4.288133312307823,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 8063477160,
+      "ebit_usd": 708006508,
+      "interest_expense_usd": 123069373,
+      "total_debt_usd": 3313196245,
+      "total_assets_usd": 11948003820,
+      "equity_usd": 1819755239,
+      "icr": 5.752905785909871,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 8715843617,
+      "ebit_usd": 235272122,
+      "interest_expense_usd": 137809054,
+      "total_debt_usd": 3216877514,
+      "total_assets_usd": 13309550651,
+      "equity_usd": 3513732218,
+      "icr": 1.7072326902410926,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 9175366474,
+      "ebit_usd": 859335630,
+      "interest_expense_usd": 138146201,
+      "total_debt_usd": 3137874983,
+      "total_assets_usd": 11797315019,
+      "equity_usd": 2178390619,
+      "icr": 6.220479635194601,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.060216,
+    "margin_change_mean": 0.017769,
+    "margin_change_sd": 0.056117,
+    "revenue_growth_median": 0.084581,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

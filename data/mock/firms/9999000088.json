@@ -1,0 +1,100 @@
+{
+  "cik": "9999000088",
+  "name": "Fenwick Retail Holdings",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "insufficient_data",
+  "reasons": [
+    "Fewer than 3 consecutive fiscal years with both EBIT and interest expense available"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-27",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 437128351,
+      "ebit_usd": 119026796,
+      "interest_expense_usd": 24319290,
+      "total_debt_usd": 361585033,
+      "total_assets_usd": 485387551,
+      "equity_usd": 94866392,
+      "icr": 4.894336800128622,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 422344701,
+      "ebit_usd": null,
+      "interest_expense_usd": null,
+      "total_debt_usd": 379053498,
+      "total_assets_usd": 454864197,
+      "equity_usd": 95157995,
+      "icr": null,
+      "ebit_tag": null,
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 415650927,
+      "ebit_usd": 79038065,
+      "interest_expense_usd": 25530303,
+      "total_debt_usd": 364399689,
+      "total_assets_usd": 711795024,
+      "equity_usd": 239425059,
+      "icr": 3.095852994772526,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 422502249,
+      "ebit_usd": null,
+      "interest_expense_usd": null,
+      "total_debt_usd": 366979532,
+      "total_assets_usd": 653663590,
+      "equity_usd": 201890029,
+      "icr": null,
+      "ebit_tag": null,
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 428332270,
+      "ebit_usd": 128499681,
+      "interest_expense_usd": 29400275,
+      "total_debt_usd": 380522476,
+      "total_assets_usd": 666962914,
+      "equity_usd": 200077155,
+      "icr": 4.370696566613748,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.045,
+    "margin_change_mean": -0.002,
+    "margin_change_sd": 0.015,
+    "revenue_growth_median": 0.018,
+    "history_years": 3,
+    "used_sector_fallback": true
+  }
+}

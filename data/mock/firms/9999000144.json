@@ -1,0 +1,105 @@
+{
+  "cik": "9999000144",
+  "name": "Ketteridge Power Inc.",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "insufficient_data",
+  "reasons": [
+    "Fewer than 3 consecutive fiscal years with both EBIT and interest expense available"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-02",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 4486197980,
+      "ebit_usd": 1192072113,
+      "interest_expense_usd": 245175868,
+      "total_debt_usd": 3611149426,
+      "total_assets_usd": 5803257894,
+      "equity_usd": 1970914218,
+      "icr": 4.862110299534047,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 4783747421,
+      "ebit_usd": null,
+      "interest_expense_usd": null,
+      "total_debt_usd": 3643666460,
+      "total_assets_usd": 4966708097,
+      "equity_usd": 643293892,
+      "icr": null,
+      "ebit_tag": null,
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 4896038279,
+      "ebit_usd": 181659006,
+      "interest_expense_usd": 259906475,
+      "total_debt_usd": 3657318510,
+      "total_assets_usd": 7083973464,
+      "equity_usd": 1727749518,
+      "icr": 0.6989399013625959,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 5040877807,
+      "ebit_usd": null,
+      "interest_expense_usd": null,
+      "total_debt_usd": 3627069330,
+      "total_assets_usd": 7379844660,
+      "equity_usd": 1912340616,
+      "icr": null,
+      "ebit_tag": null,
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 5273790613,
+      "ebit_usd": 1582137184,
+      "interest_expense_usd": 272345505,
+      "total_debt_usd": 3483562511,
+      "total_assets_usd": 7129978949,
+      "equity_usd": 999256752,
+      "icr": 5.80930162221697,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.11,
+    "margin_change_mean": -0.001,
+    "margin_change_sd": 0.016,
+    "revenue_growth_median": 0.02,
+    "history_years": 3,
+    "used_sector_fallback": true
+  }
+}

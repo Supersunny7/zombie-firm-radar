@@ -1,0 +1,101 @@
+{
+  "cik": "9999000055",
+  "name": "Redfern Industries Co.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 26 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-14",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 137332129,
+      "ebit_usd": 9931595,
+      "interest_expense_usd": 2866548,
+      "total_debt_usd": 46895469,
+      "total_assets_usd": 163676751,
+      "equity_usd": -15101607,
+      "icr": 3.46465330425306,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 134072636,
+      "ebit_usd": 9548853,
+      "interest_expense_usd": 2694684,
+      "total_debt_usd": 46485060,
+      "total_assets_usd": 127628072,
+      "equity_usd": 14057010,
+      "icr": 3.543589155537347,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 126043090,
+      "ebit_usd": 2752108,
+      "interest_expense_usd": 3032724,
+      "total_debt_usd": 47281723,
+      "total_assets_usd": 182425529,
+      "equity_usd": 6944966,
+      "icr": 0.9074706435534523,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 123067764,
+      "ebit_usd": 2523080,
+      "interest_expense_usd": 3131544,
+      "total_debt_usd": 48548851,
+      "total_assets_usd": 197178439,
+      "equity_usd": 18917255,
+      "icr": 0.8056984030880614,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 120107108,
+      "ebit_usd": -1499135,
+      "interest_expense_usd": 3308125,
+      "total_debt_usd": 49134704,
+      "total_assets_usd": 144973694,
+      "equity_usd": 3189866,
+      "icr": -0.45316757982240696,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.034679,
+    "margin_change_mean": -0.0212,
+    "margin_change_sd": 0.024029,
+    "revenue_growth_median": -0.023896,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

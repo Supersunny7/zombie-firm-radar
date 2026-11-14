@@ -1,0 +1,100 @@
+{
+  "cik": "9999000095",
+  "name": "Whitlock Health Inc.",
+  "ticker": null,
+  "sector": "Services",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, -0.70)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-01",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 332442416,
+      "ebit_usd": 11376848,
+      "interest_expense_usd": 9508613,
+      "total_debt_usd": 251625491,
+      "total_assets_usd": 410673665,
+      "equity_usd": 126831400,
+      "icr": 1.196478182464677,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 357332993,
+      "ebit_usd": 58486090,
+      "interest_expense_usd": 9821812,
+      "total_debt_usd": 252093003,
+      "total_assets_usd": 351789449,
+      "equity_usd": 114092589,
+      "icr": 5.954714873385888,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 386560852,
+      "ebit_usd": 12105057,
+      "interest_expense_usd": 9930242,
+      "total_debt_usd": 252274909,
+      "total_assets_usd": 676427678,
+      "equity_usd": 55449249,
+      "icr": 1.2190092648295983,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 400838767,
+      "ebit_usd": 46875191,
+      "interest_expense_usd": 10947299,
+      "total_debt_usd": 243957927,
+      "total_assets_usd": 647625043,
+      "equity_usd": 220761907,
+      "icr": 4.281895561635797,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 424614083,
+      "ebit_usd": -8475250,
+      "interest_expense_usd": 12132136,
+      "total_debt_usd": 255916305,
+      "total_assets_usd": 398694685,
+      "equity_usd": 62521418,
+      "icr": -0.6985785520373329,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.065239,
+    "margin_change_mean": -0.013545,
+    "margin_change_sd": 0.14097,
+    "revenue_growth_median": 0.067093,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

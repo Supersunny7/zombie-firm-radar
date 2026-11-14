@@ -1,0 +1,100 @@
+{
+  "cik": "9999000076",
+  "name": "Ingleby Mills Corp.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "insufficient_data",
+  "reasons": [
+    "Fewer than 3 consecutive fiscal years with both EBIT and interest expense available"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-16",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 636039477,
+      "ebit_usd": 166994356,
+      "interest_expense_usd": 25563618,
+      "total_debt_usd": 507525603,
+      "total_assets_usd": 886130516,
+      "equity_usd": 197724995,
+      "icr": 6.532500837713973,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 658165214,
+      "ebit_usd": 173873146,
+      "interest_expense_usd": 26382732,
+      "total_debt_usd": 501966377,
+      "total_assets_usd": 665450653,
+      "equity_usd": 155382790,
+      "icr": 6.5904147455237005,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 686483003,
+      "ebit_usd": 9840191,
+      "interest_expense_usd": null,
+      "total_debt_usd": 497161907,
+      "total_assets_usd": 730071323,
+      "equity_usd": 93871656,
+      "icr": null,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 701186128,
+      "ebit_usd": 64611921,
+      "interest_expense_usd": 30115140,
+      "total_debt_usd": 518286888,
+      "total_assets_usd": 1151922360,
+      "equity_usd": 310884964,
+      "icr": 2.145496285257183,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 738278225,
+      "ebit_usd": 221483468,
+      "interest_expense_usd": 33274606,
+      "total_debt_usd": 534793990,
+      "total_assets_usd": 1105602876,
+      "equity_usd": 180601552,
+      "icr": 6.656231121113801,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.186643,
+    "margin_change_mean": 0.009362,
+    "margin_change_sd": 0.192641,
+    "revenue_growth_median": 0.038906,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

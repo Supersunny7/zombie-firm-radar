@@ -1,0 +1,106 @@
+{
+  "cik": "9999000037",
+  "name": "Juniper Hollow Contracting Corp.",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.35 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-09",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 175883731,
+      "ebit_usd": 10621501,
+      "interest_expense_usd": 6876527,
+      "total_debt_usd": 155836757,
+      "total_assets_usd": 205054193,
+      "equity_usd": 50016189,
+      "icr": 1.5446025297363044,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 175965904,
+      "ebit_usd": 40068489,
+      "interest_expense_usd": 6768718,
+      "total_debt_usd": 149687862,
+      "total_assets_usd": 316280114,
+      "equity_usd": 22131164,
+      "icr": 5.919657016291711,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 178679368,
+      "ebit_usd": 47663630,
+      "interest_expense_usd": 6947801,
+      "total_debt_usd": 149349727,
+      "total_assets_usd": 245399473,
+      "equity_usd": 60927568,
+      "icr": 6.860246860841293,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 180887462,
+      "ebit_usd": 36713465,
+      "interest_expense_usd": 7334733,
+      "total_debt_usd": 145514007,
+      "total_assets_usd": 280130344,
+      "equity_usd": 40161153,
+      "icr": 5.005426237055937,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 185626086,
+      "ebit_usd": 18864101,
+      "interest_expense_usd": 8030138,
+      "total_debt_usd": 147031560,
+      "total_assets_usd": 252927579,
+      "equity_usd": 15502474,
+      "icr": 2.349162741661476,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.171888,
+    "margin_change_mean": 0.010309,
+    "margin_change_sd": 0.120324,
+    "revenue_growth_median": 0.013889,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

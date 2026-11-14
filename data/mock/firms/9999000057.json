@@ -1,0 +1,101 @@
+{
+  "cik": "9999000057",
+  "name": "Calloway Telecom Group",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 4.35 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-03",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 9593860069,
+      "ebit_usd": 1171591824,
+      "interest_expense_usd": 282535736,
+      "total_debt_usd": 6826205754,
+      "total_assets_usd": 16209958776,
+      "equity_usd": 2198325294,
+      "icr": 4.146703141297496,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 9363331449,
+      "ebit_usd": 1394189805,
+      "interest_expense_usd": 287015343,
+      "total_debt_usd": 7094671342,
+      "total_assets_usd": 16190296106,
+      "equity_usd": 3813769153,
+      "icr": 4.857544514615025,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 9198131933,
+      "ebit_usd": 1710006486,
+      "interest_expense_usd": 295734017,
+      "total_debt_usd": 6875490236,
+      "total_assets_usd": 15329450544,
+      "equity_usd": 5356433738,
+      "icr": 5.782244813588692,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 9257759196,
+      "ebit_usd": 487977163,
+      "interest_expense_usd": 308134587,
+      "total_debt_usd": 6862388543,
+      "total_assets_usd": 14259138500,
+      "equity_usd": 3886009011,
+      "icr": 1.583649429786342,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 9124480459,
+      "ebit_usd": 1485946453,
+      "interest_expense_usd": 341961373,
+      "total_debt_usd": 6911949759,
+      "total_assets_usd": 9393084640,
+      "equity_usd": 2701397633,
+      "icr": 4.345363454251893,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.134498,
+    "margin_change_mean": 0.010183,
+    "margin_change_sd": 0.102543,
+    "revenue_growth_median": -0.01602,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

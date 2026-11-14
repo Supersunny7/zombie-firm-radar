@@ -1,0 +1,111 @@
+{
+  "cik": "9999000068",
+  "name": "Stonebrook Builders Inc.",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.49)",
+    "ICR below 1 in 2 of the last 3 years (FY2023, FY2024)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-27",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2923085720,
+      "ebit_usd": 188344699,
+      "interest_expense_usd": 54969734,
+      "total_debt_usd": 755467148,
+      "total_assets_usd": 3254501369,
+      "equity_usd": -423845379,
+      "icr": 3.4263345534835588,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 3095055447,
+      "ebit_usd": 175417363,
+      "interest_expense_usd": 53837632,
+      "total_debt_usd": 750363659,
+      "total_assets_usd": 5471425418,
+      "equity_usd": 218956204,
+      "icr": 3.2582666897385084,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 3327091422,
+      "ebit_usd": 224995231,
+      "interest_expense_usd": 57332307,
+      "total_debt_usd": 783460392,
+      "total_assets_usd": 5621619538,
+      "equity_usd": -282826049,
+      "icr": 3.9244056758434644,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 3608954890,
+      "ebit_usd": 33442660,
+      "interest_expense_usd": 61156621,
+      "total_debt_usd": 779146766,
+      "total_assets_usd": 6322136663,
+      "equity_usd": -686316824,
+      "icr": 0.5468362943073654,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 3925733536,
+      "ebit_usd": 30852947,
+      "interest_expense_usd": 62792885,
+      "total_debt_usd": 785199982,
+      "total_assets_usd": 5167166863,
+      "equity_usd": -685969592,
+      "icr": 0.49134463243725784,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.041172,
+    "margin_change_mean": -0.014144,
+    "margin_change_sd": 0.030483,
+    "revenue_growth_median": 0.079844,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}
