@@ -1,0 +1,101 @@
+{
+  "cik": "9999000031",
+  "name": "Quillon Works Corp.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 31 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-13",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 105570070,
+      "ebit_usd": 1404810,
+      "interest_expense_usd": 3842559,
+      "total_debt_usd": 64940430,
+      "total_assets_usd": 115403112,
+      "equity_usd": -8686916,
+      "icr": 0.3655923045033271,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 101749405,
+      "ebit_usd": 10875032,
+      "interest_expense_usd": 3506663,
+      "total_debt_usd": 62984970,
+      "total_assets_usd": 156137668,
+      "equity_usd": -9502069,
+      "icr": 3.1012481096700766,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 101258598,
+      "ebit_usd": 316026,
+      "interest_expense_usd": 3866329,
+      "total_debt_usd": 63890716,
+      "total_assets_usd": 108274843,
+      "equity_usd": 11610393,
+      "icr": 0.08173800005121137,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 99746735,
+      "ebit_usd": 2114511,
+      "interest_expense_usd": 4087997,
+      "total_debt_usd": 66383169,
+      "total_assets_usd": 122154715,
+      "equity_usd": -13604496,
+      "icr": 0.5172486672568497,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 99499688,
+      "ebit_usd": 3911518,
+      "interest_expense_usd": 4512628,
+      "total_debt_usd": 67455970,
+      "total_assets_usd": 121423259,
+      "equity_usd": -7802080,
+      "icr": 0.8667938061812319,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.036764,
+    "margin_change_mean": 0.006501,
+    "margin_change_sd": 0.081666,
+    "revenue_growth_median": -0.009877,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

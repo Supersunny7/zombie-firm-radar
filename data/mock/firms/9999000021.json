@@ -1,0 +1,101 @@
+{
+  "cik": "9999000021",
+  "name": "Penhallow Systems Group",
+  "ticker": null,
+  "sector": "Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 4.93 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-05",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1105229987,
+      "ebit_usd": 35364694,
+      "interest_expense_usd": 16074709,
+      "total_debt_usd": 283058438,
+      "total_assets_usd": 1173615653,
+      "equity_usd": 354437420,
+      "icr": 2.200020790423018,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1050495459,
+      "ebit_usd": 54664621,
+      "interest_expense_usd": 17167929,
+      "total_debt_usd": 286306245,
+      "total_assets_usd": 1108462330,
+      "equity_usd": 209534262,
+      "icr": 3.1841127138864564,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1016534438,
+      "ebit_usd": 96146480,
+      "interest_expense_usd": 18492752,
+      "total_debt_usd": 291387588,
+      "total_assets_usd": 1635690172,
+      "equity_usd": 156432037,
+      "icr": 5.199143967322981,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1007481733,
+      "ebit_usd": 79929610,
+      "interest_expense_usd": 18617919,
+      "total_debt_usd": 297218216,
+      "total_assets_usd": 1564869728,
+      "equity_usd": 203518683,
+      "icr": 4.293154890189392,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 974581948,
+      "ebit_usd": 102596104,
+      "interest_expense_usd": 20812942,
+      "total_debt_usd": 300695102,
+      "total_assets_usd": 1224241484,
+      "equity_usd": 157541464,
+      "icr": 4.929437846893534,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.072645,
+    "margin_change_mean": 0.018319,
+    "margin_change_sd": 0.024321,
+    "revenue_growth_median": -0.032492,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

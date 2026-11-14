@@ -1,0 +1,101 @@
+{
+  "cik": "9999000008",
+  "name": "Thornbury Markets Co.",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 6 years (first filing proxy), under 10, so not a zombie"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-01",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 134676534,
+      "ebit_usd": 30564946,
+      "interest_expense_usd": 6612068,
+      "total_debt_usd": 80606008,
+      "total_assets_usd": 157600390,
+      "equity_usd": 13863254,
+      "icr": 4.622600070053726,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 134722300,
+      "ebit_usd": 19799181,
+      "interest_expense_usd": 6955641,
+      "total_debt_usd": 81430204,
+      "total_assets_usd": 221658440,
+      "equity_usd": -26980422,
+      "icr": 2.846492652510387,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 137991359,
+      "ebit_usd": 3894120,
+      "interest_expense_usd": 7076554,
+      "total_debt_usd": 80651577,
+      "total_assets_usd": 243524099,
+      "equity_usd": -33330190,
+      "icr": 0.5502847855043571,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 142144368,
+      "ebit_usd": 3558924,
+      "interest_expense_usd": 6965470,
+      "total_debt_usd": 77944043,
+      "total_assets_usd": 137440293,
+      "equity_usd": 13671111,
+      "icr": 0.5109380989366116,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 142861097,
+      "ebit_usd": 4799506,
+      "interest_expense_usd": 7073222,
+      "total_debt_usd": 76489428,
+      "total_assets_usd": 128710116,
+      "equity_usd": -14001253,
+      "icr": 0.6785459299877764,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.092153,
+    "margin_change_mean": -0.048339,
+    "margin_change_sd": 0.061196,
+    "revenue_growth_median": 0.014654,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

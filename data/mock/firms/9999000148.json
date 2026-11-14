@@ -1,0 +1,106 @@
+{
+  "cik": "9999000148",
+  "name": "Fairlight Freight Inc.",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 25 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-19",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 5820431752,
+      "ebit_usd": 166215674,
+      "interest_expense_usd": 315595078,
+      "total_debt_usd": 4058683537,
+      "total_assets_usd": 10384038013,
+      "equity_usd": -963552608,
+      "icr": 0.5266738475560129,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 5768776331,
+      "ebit_usd": 1385860098,
+      "interest_expense_usd": 323952712,
+      "total_debt_usd": 4192216435,
+      "total_assets_usd": 7790859187,
+      "equity_usd": 424472821,
+      "icr": 4.277970353895355,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 5545892937,
+      "ebit_usd": 185923410,
+      "interest_expense_usd": 352572040,
+      "total_debt_usd": 4346586837,
+      "total_assets_usd": 9181655409,
+      "equity_usd": -314585043,
+      "icr": 0.52733452715082,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 5488703842,
+      "ebit_usd": -162227028,
+      "interest_expense_usd": 361903084,
+      "total_debt_usd": 4298998219,
+      "total_assets_usd": 7533071898,
+      "equity_usd": -223008046,
+      "icr": -0.4482609714373144,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 5271569157,
+      "ebit_usd": 358191153,
+      "interest_expense_usd": 399578087,
+      "total_debt_usd": 4458311646,
+      "total_assets_usd": 8284787624,
+      "equity_usd": -1220515719,
+      "icr": 0.89642341422992,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.068142,
+    "margin_change_mean": 0.009848,
+    "margin_change_sd": 0.183153,
+    "revenue_growth_median": -0.024474,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

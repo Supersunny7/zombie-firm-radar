@@ -1,0 +1,101 @@
+{
+  "cik": "9999000120",
+  "name": "Everard Consulting Co.",
+  "ticker": null,
+  "sector": "Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.70 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-05",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 3419682308,
+      "ebit_usd": 258022132,
+      "interest_expense_usd": 85618618,
+      "total_debt_usd": 1925686734,
+      "total_assets_usd": 5118852408,
+      "equity_usd": 1597444139,
+      "icr": 3.013621780253449,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 3628106499,
+      "ebit_usd": 350665829,
+      "interest_expense_usd": 81804453,
+      "total_debt_usd": 1874668997,
+      "total_assets_usd": 4925034962,
+      "equity_usd": 501936520,
+      "icr": 4.286634970837101,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 3819064526,
+      "ebit_usd": 443572085,
+      "interest_expense_usd": 90308040,
+      "total_debt_usd": 1890227292,
+      "total_assets_usd": 6563903595,
+      "equity_usd": 1744723302,
+      "icr": 4.911767379737175,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 4119502042,
+      "ebit_usd": 405196457,
+      "interest_expense_usd": 94613977,
+      "total_debt_usd": 1893471843,
+      "total_assets_usd": 4795028173,
+      "equity_usd": 1113728461,
+      "icr": 4.282627893339691,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 4352199742,
+      "ebit_usd": 279179735,
+      "interest_expense_usd": 103271059,
+      "total_debt_usd": 1914805365,
+      "total_assets_usd": 6287639820,
+      "equity_usd": 1969643737,
+      "icr": 2.7033685691167357,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.090152,
+    "margin_change_mean": -0.002826,
+    "margin_change_sd": 0.027595,
+    "revenue_growth_median": 0.058718,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

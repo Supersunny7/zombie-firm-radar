@@ -1,0 +1,106 @@
+{
+  "cik": "9999000025",
+  "name": "Redfern Freight Co.",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.76 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-20",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 6216803972,
+      "ebit_usd": 108204637,
+      "interest_expense_usd": 84231161,
+      "total_debt_usd": 2321240993,
+      "total_assets_usd": 10840811159,
+      "equity_usd": 2170303354,
+      "icr": 1.2846152862596778,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 6290771605,
+      "ebit_usd": 247317892,
+      "interest_expense_usd": 84539175,
+      "total_debt_usd": 2270687246,
+      "total_assets_usd": 5818347120,
+      "equity_usd": 575724613,
+      "icr": 2.9254826771138944,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 6175919576,
+      "ebit_usd": 214599730,
+      "interest_expense_usd": 92364266,
+      "total_debt_usd": 2350050841,
+      "total_assets_usd": 7998980364,
+      "equity_usd": 2216598521,
+      "icr": 2.3234064351250296,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 6045949437,
+      "ebit_usd": 736832914,
+      "interest_expense_usd": 109159169,
+      "total_debt_usd": 2447299884,
+      "total_assets_usd": 8321265811,
+      "equity_usd": 1105855413,
+      "icr": 6.7500780809351895,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 5861934868,
+      "ebit_usd": 429192870,
+      "interest_expense_usd": 114129883,
+      "total_debt_usd": 2483652120,
+      "total_assets_usd": 9192359649,
+      "equity_usd": 2963818061,
+      "icr": 3.760565232507949,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.057311,
+    "margin_change_mean": 0.013953,
+    "margin_change_sd": 0.056804,
+    "revenue_growth_median": -0.019651,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

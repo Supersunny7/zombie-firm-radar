@@ -1,0 +1,111 @@
+{
+  "cik": "9999000048",
+  "name": "Ironbridge Drilling Inc.",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 6 years (first filing proxy), under 10, so not a zombie"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-14",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 530412764,
+      "ebit_usd": 60812489,
+      "interest_expense_usd": 11097792,
+      "total_debt_usd": 169229543,
+      "total_assets_usd": 755118834,
+      "equity_usd": -70539920,
+      "icr": 5.4796926271460125,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 555112643,
+      "ebit_usd": 77623141,
+      "interest_expense_usd": 11451034,
+      "total_debt_usd": 166391302,
+      "total_assets_usd": 724238462,
+      "equity_usd": -103123155,
+      "icr": 6.778701469229766,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 603710850,
+      "ebit_usd": 9657105,
+      "interest_expense_usd": 12264383,
+      "total_debt_usd": 174143558,
+      "total_assets_usd": 696466140,
+      "equity_usd": -93289234,
+      "icr": 0.7874105855957042,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 644001649,
+      "ebit_usd": 7678287,
+      "interest_expense_usd": 12370488,
+      "total_debt_usd": 168416206,
+      "total_assets_usd": 904813770,
+      "equity_usd": -23737732,
+      "icr": 0.6206939451378151,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 675421295,
+      "ebit_usd": 6541104,
+      "interest_expense_usd": 12243216,
+      "total_debt_usd": 164100796,
+      "total_assets_usd": 1062450299,
+      "equity_usd": 99532702,
+      "icr": 0.5342635464407391,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.058418,
+    "margin_change_mean": -0.026242,
+    "margin_change_sd": 0.066425,
+    "revenue_growth_median": 0.057763,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

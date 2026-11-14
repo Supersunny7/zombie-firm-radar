@@ -1,0 +1,111 @@
+{
+  "cik": "9999000049",
+  "name": "Foxglove Telecom Group",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 10 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-07",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 195032407,
+      "ebit_usd": 54018548,
+      "interest_expense_usd": 12184331,
+      "total_debt_usd": 156647493,
+      "total_assets_usd": 187976992,
+      "equity_usd": 7000876,
+      "icr": 4.4334439043062766,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 199294455,
+      "ebit_usd": 9695971,
+      "interest_expense_usd": 12811774,
+      "total_debt_usd": 157553712,
+      "total_assets_usd": 350710026,
+      "equity_usd": -22100725,
+      "icr": 0.7568015951577042,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 196696730,
+      "ebit_usd": 4595572,
+      "interest_expense_usd": 12860315,
+      "total_debt_usd": 154642631,
+      "total_assets_usd": 306440478,
+      "equity_usd": 19932070,
+      "icr": 0.35734521277278203,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 197231298,
+      "ebit_usd": -401728,
+      "interest_expense_usd": 13070840,
+      "total_debt_usd": 155212764,
+      "total_assets_usd": 307248085,
+      "equity_usd": -34965201,
+      "icr": -0.030734673517539807,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 202018652,
+      "ebit_usd": 11795096,
+      "interest_expense_usd": 13609742,
+      "total_debt_usd": 155569191,
+      "total_assets_usd": 355256282,
+      "equity_usd": 34961043,
+      "icr": 0.8666656575855737,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.081067,
+    "margin_change_mean": -0.054646,
+    "margin_change_sd": 0.122639,
+    "revenue_growth_median": 0.012285,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

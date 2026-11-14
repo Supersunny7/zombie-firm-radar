@@ -1,0 +1,101 @@
+{
+  "cik": "9999000118",
+  "name": "Osgood Growers Holdings",
+  "ticker": null,
+  "sector": "Agriculture, Forestry and Fishing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.51 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-22",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 11041402034,
+      "ebit_usd": 1335765060,
+      "interest_expense_usd": 230028281,
+      "total_debt_usd": 3480773181,
+      "total_assets_usd": 13668687076,
+      "equity_usd": 3924010715,
+      "icr": 5.806960145044078,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 10939361529,
+      "ebit_usd": 836318481,
+      "interest_expense_usd": 234004867,
+      "total_debt_usd": 3525169816,
+      "total_assets_usd": 13103598440,
+      "equity_usd": 854663079,
+      "icr": 3.57393626774438,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 11056695335,
+      "ebit_usd": 459522851,
+      "interest_expense_usd": 255946685,
+      "total_debt_usd": 3603359221,
+      "total_assets_usd": 13255176075,
+      "equity_usd": 2026389287,
+      "icr": 1.7953850466943926,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 11363852908,
+      "ebit_usd": 1753106204,
+      "interest_expense_usd": 256995688,
+      "total_debt_usd": 3459961673,
+      "total_assets_usd": 12239032482,
+      "equity_usd": 2493714177,
+      "icr": 6.821539371508832,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 11357785144,
+      "ebit_usd": 1447447819,
+      "interest_expense_usd": 262555614,
+      "total_debt_usd": 3512409578,
+      "total_assets_usd": 17860983894,
+      "equity_usd": 5445321705,
+      "icr": 5.512918946764551,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.10414,
+    "margin_change_mean": 0.001616,
+    "margin_change_sd": 0.074415,
+    "revenue_growth_median": 0.005096,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

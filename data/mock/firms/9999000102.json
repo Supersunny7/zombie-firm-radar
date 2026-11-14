@@ -1,0 +1,100 @@
+{
+  "cik": "9999000102",
+  "name": "Cinderford Works Holdings",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.56)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-17",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 11942330868,
+      "ebit_usd": 1009068968,
+      "interest_expense_usd": 227815830,
+      "total_debt_usd": 3507757720,
+      "total_assets_usd": 11867224656,
+      "equity_usd": 3507755155,
+      "icr": 4.4293189283641965,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 12433408553,
+      "ebit_usd": 949454770,
+      "interest_expense_usd": 219923853,
+      "total_debt_usd": 3536777630,
+      "total_assets_usd": 17304363971,
+      "equity_usd": 5270926801,
+      "icr": 4.317197780269883,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 12689245381,
+      "ebit_usd": 940428899,
+      "interest_expense_usd": 225866277,
+      "total_debt_usd": 3449880063,
+      "total_assets_usd": 22501350017,
+      "equity_usd": 4975361692,
+      "icr": 4.163653430210832,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 13259453397,
+      "ebit_usd": 1100469350,
+      "interest_expense_usd": 250494184,
+      "total_debt_usd": 3612511230,
+      "total_assets_usd": 16082313040,
+      "equity_usd": 2749360794,
+      "icr": 4.393193216813369,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 13586856078,
+      "ebit_usd": 144649448,
+      "interest_expense_usd": 256149747,
+      "total_debt_usd": 3479942434,
+      "total_assets_usd": 15892703038,
+      "equity_usd": 4610691382,
+      "icr": 0.564706581576284,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.065722,
+    "margin_change_mean": -0.018462,
+    "margin_change_sd": 0.036611,
+    "revenue_growth_median": 0.032906,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

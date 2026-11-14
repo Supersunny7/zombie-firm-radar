@@ -1,0 +1,111 @@
+{
+  "cik": "9999000131",
+  "name": "Wexcombe Industries Holdings",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.15 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-10",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": null,
+      "ebit_usd": 39769045,
+      "interest_expense_usd": 6550636,
+      "total_debt_usd": 153877606,
+      "total_assets_usd": 341946802,
+      "equity_usd": 67447560,
+      "icr": 6.071020432214521,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": null,
+      "ebit_usd": 14564087,
+      "interest_expense_usd": 6569244,
+      "total_debt_usd": 151858309,
+      "total_assets_usd": 449519715,
+      "equity_usd": 83150216,
+      "icr": 2.217011120305472,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 328949916,
+      "ebit_usd": 23290334,
+      "interest_expense_usd": 6352612,
+      "total_debt_usd": 148596507,
+      "total_assets_usd": 417628840,
+      "equity_usd": 55972436,
+      "icr": 3.666261059230439,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 326993505,
+      "ebit_usd": 44953196,
+      "interest_expense_usd": 7286220,
+      "total_debt_usd": 153601199,
+      "total_assets_usd": 325224682,
+      "equity_usd": 98983210,
+      "icr": 6.169618265712537,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 319710362,
+      "ebit_usd": 40618560,
+      "interest_expense_usd": 7888622,
+      "total_debt_usd": 157493367,
+      "total_assets_usd": 344421246,
+      "equity_usd": 63516332,
+      "icr": 5.149005745236621,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.07,
+    "margin_change_mean": -0.002,
+    "margin_change_sd": 0.018,
+    "revenue_growth_median": 0.02,
+    "history_years": 3,
+    "used_sector_fallback": true
+  }
+}

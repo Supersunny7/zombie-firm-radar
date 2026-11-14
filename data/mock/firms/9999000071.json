@@ -1,0 +1,101 @@
+{
+  "cik": "9999000071",
+  "name": "Yarrowdale Civil Co.",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.97 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-11",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 182344040,
+      "ebit_usd": 21162695,
+      "interest_expense_usd": 4724400,
+      "total_debt_usd": 68714914,
+      "total_assets_usd": 323462719,
+      "equity_usd": 67017363,
+      "icr": 4.479446067225468,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 187432657,
+      "ebit_usd": 30135742,
+      "interest_expense_usd": 4761165,
+      "total_debt_usd": 69237505,
+      "total_assets_usd": 300938559,
+      "equity_usd": 83110278,
+      "icr": 6.3294891061326375,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 189042444,
+      "ebit_usd": 19565249,
+      "interest_expense_usd": 4928295,
+      "total_debt_usd": 66482156,
+      "total_assets_usd": 309931175,
+      "equity_usd": 22415698,
+      "icr": 3.9699833309491415,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 188955649,
+      "ebit_usd": 34092937,
+      "interest_expense_usd": 5084880,
+      "total_debt_usd": 67006012,
+      "total_assets_usd": 221795624,
+      "equity_usd": 20928593,
+      "icr": 6.704767270810717,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 185863031,
+      "ebit_usd": 30769886,
+      "interest_expense_usd": 5150575,
+      "total_debt_usd": 64524442,
+      "total_assets_usd": 169065317,
+      "equity_usd": 23626778,
+      "icr": 5.974068138023425,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.145263,
+    "margin_change_mean": 0.012373,
+    "margin_change_sd": 0.060025,
+    "revenue_growth_median": 0.004065,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

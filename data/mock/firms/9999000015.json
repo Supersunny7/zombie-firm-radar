@@ -1,0 +1,105 @@
+{
+  "cik": "9999000015",
+  "name": "Hollinger Industries Inc.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.89)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-22",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 137969744,
+      "ebit_usd": 12585323,
+      "interest_expense_usd": 3886351,
+      "total_debt_usd": 73427986,
+      "total_assets_usd": 231097418,
+      "equity_usd": 48597924,
+      "icr": 3.23833925448319,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 138542297,
+      "ebit_usd": 9907801,
+      "interest_expense_usd": 4083006,
+      "total_debt_usd": 76614096,
+      "total_assets_usd": 171589198,
+      "equity_usd": 8720471,
+      "icr": 2.4265947686581897,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 137739437,
+      "ebit_usd": 16878822,
+      "interest_expense_usd": 4278441,
+      "total_debt_usd": 77898425,
+      "total_assets_usd": 186662433,
+      "equity_usd": 62148361,
+      "icr": 3.945087007159851,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 139711510,
+      "ebit_usd": 26244828,
+      "interest_expense_usd": 4597490,
+      "total_debt_usd": 77866895,
+      "total_assets_usd": 182163491,
+      "equity_usd": 27043631,
+      "icr": 5.708512253425239,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 139320804,
+      "ebit_usd": 4198063,
+      "interest_expense_usd": 4718381,
+      "total_debt_usd": 76004715,
+      "total_assets_usd": 135339424,
+      "equity_usd": 34507180,
+      "icr": 0.88972531044017,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.100651,
+    "margin_change_mean": -0.015271,
+    "margin_change_sd": 0.101979,
+    "revenue_growth_median": 0.000677,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

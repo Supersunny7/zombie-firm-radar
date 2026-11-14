@@ -1,0 +1,100 @@
+{
+  "cik": "9999000058",
+  "name": "Lowmoor Outfitters Co.",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.13)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-13",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 322901654,
+      "ebit_usd": 23491434,
+      "interest_expense_usd": 10535488,
+      "total_debt_usd": 221083180,
+      "total_assets_usd": 373953595,
+      "equity_usd": 35126542,
+      "icr": 2.2297433208599355,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 339928709,
+      "ebit_usd": 40030260,
+      "interest_expense_usd": 10515939,
+      "total_debt_usd": 219420719,
+      "total_assets_usd": 420544358,
+      "equity_usd": 27832149,
+      "icr": 3.806627254113969,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 352108674,
+      "ebit_usd": 16093322,
+      "interest_expense_usd": 11259112,
+      "total_debt_usd": 211348321,
+      "total_assets_usd": 598131174,
+      "equity_usd": 124973772,
+      "icr": 1.4293597932057165,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 363049924,
+      "ebit_usd": 65729135,
+      "interest_expense_usd": 11726969,
+      "total_debt_usd": 206682326,
+      "total_assets_usd": 428115185,
+      "equity_usd": 45171070,
+      "icr": 5.604955125233127,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 383160090,
+      "ebit_usd": 1518965,
+      "interest_expense_usd": 11988282,
+      "total_debt_usd": 204172282,
+      "total_assets_usd": 488655709,
+      "equity_usd": 44508472,
+      "icr": 0.12670414326256255,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.084246,
+    "margin_change_mean": -0.017197,
+    "margin_change_sd": 0.136272,
+    "revenue_growth_median": 0.044281,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

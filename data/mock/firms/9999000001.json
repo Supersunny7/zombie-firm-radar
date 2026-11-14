@@ -1,0 +1,106 @@
+{
+  "cik": "9999000001",
+  "name": "Ashgrove Works",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 24 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-20",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1140000000,
+      "ebit_usd": 92000000,
+      "interest_expense_usd": 58000000,
+      "total_debt_usd": 1000000000,
+      "total_assets_usd": 1550000000,
+      "equity_usd": 260000000,
+      "icr": 1.5862068965517242,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1160000000,
+      "ebit_usd": 70000000,
+      "interest_expense_usd": 59000000,
+      "total_debt_usd": 1020000000,
+      "total_assets_usd": 1560000000,
+      "equity_usd": 235000000,
+      "icr": 1.1864406779661016,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1170000000,
+      "ebit_usd": 52000000,
+      "interest_expense_usd": 60000000,
+      "total_debt_usd": 1030000000,
+      "total_assets_usd": 1580000000,
+      "equity_usd": 195000000,
+      "icr": 0.8666666666666667,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1180000000,
+      "ebit_usd": 45000000,
+      "interest_expense_usd": 60500000,
+      "total_debt_usd": 1040000000,
+      "total_assets_usd": 1590000000,
+      "equity_usd": 165000000,
+      "icr": 0.743801652892562,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1200000000,
+      "ebit_usd": 38000000,
+      "interest_expense_usd": 61000000,
+      "total_debt_usd": 1050000000,
+      "total_assets_usd": 1600000000,
+      "equity_usd": 140000000,
+      "icr": 0.6229508196721312,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.035,
+    "margin_change_mean": -0.004,
+    "margin_change_sd": 0.018,
+    "revenue_growth_median": 0.01,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

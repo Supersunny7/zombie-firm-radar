@@ -1,0 +1,101 @@
+{
+  "cik": "9999000033",
+  "name": "Pemberly Health Co.",
+  "ticker": null,
+  "sector": "Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.19 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-23",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1449433947,
+      "ebit_usd": 95932022,
+      "interest_expense_usd": 43118465,
+      "total_debt_usd": 917804484,
+      "total_assets_usd": 1875042410,
+      "equity_usd": 402075548,
+      "icr": 2.22484780012461,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1429366411,
+      "ebit_usd": 180709097,
+      "interest_expense_usd": 46709676,
+      "total_debt_usd": 963152615,
+      "total_assets_usd": 2000794254,
+      "equity_usd": 697039808,
+      "icr": 3.868772221841145,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1383120144,
+      "ebit_usd": 158468462,
+      "interest_expense_usd": 48606123,
+      "total_debt_usd": 1001463901,
+      "total_assets_usd": 2408023728,
+      "equity_usd": 385739620,
+      "icr": 3.2602571902309507,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1416331703,
+      "ebit_usd": 63886316,
+      "interest_expense_usd": 51433347,
+      "total_debt_usd": 964282440,
+      "total_assets_usd": 1334997552,
+      "equity_usd": 156609030,
+      "icr": 1.2421185811609732,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1399540812,
+      "ebit_usd": 171952167,
+      "interest_expense_usd": 53952568,
+      "total_debt_usd": 955572348,
+      "total_assets_usd": 1956924334,
+      "equity_usd": 591630039,
+      "icr": 3.187098842079213,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.095031,
+    "margin_change_mean": 0.014169,
+    "margin_change_sd": 0.067916,
+    "revenue_growth_median": -0.01285,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

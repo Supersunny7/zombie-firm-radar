@@ -1,0 +1,74 @@
+{
+  "cik": "9999000017",
+  "name": "Rowntree Industries Group",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.69 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-02",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2022,
+      "revenue_usd": 6776646487,
+      "ebit_usd": 2032993946,
+      "interest_expense_usd": 487668496,
+      "total_debt_usd": 5747557417,
+      "total_assets_usd": 8139084188,
+      "equity_usd": 2302876470,
+      "icr": 4.168803116615513,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 6811446788,
+      "ebit_usd": 1373204744,
+      "interest_expense_usd": 494794387,
+      "total_debt_usd": 5784273289,
+      "total_assets_usd": 9450333012,
+      "equity_usd": 1415928816,
+      "icr": 2.7753038031128674,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 6897779233,
+      "ebit_usd": 1405951850,
+      "interest_expense_usd": 522536928,
+      "total_debt_usd": 5888924463,
+      "total_assets_usd": 7066709355,
+      "equity_usd": 2448034653,
+      "icr": 2.6906267761424125,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.07,
+    "margin_change_mean": -0.002,
+    "margin_change_sd": 0.018,
+    "revenue_growth_median": 0.02,
+    "history_years": 3,
+    "used_sector_fallback": true
+  }
+}

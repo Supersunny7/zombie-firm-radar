@@ -1,0 +1,111 @@
+{
+  "cik": "9999000052",
+  "name": "Underhill Timber Group",
+  "ticker": null,
+  "sector": "Agriculture, Forestry and Fishing",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 19 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-15",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2850878328,
+      "ebit_usd": -104513234,
+      "interest_expense_usd": 113805663,
+      "total_debt_usd": 1480984394,
+      "total_assets_usd": 2637223894,
+      "equity_usd": 43587013,
+      "icr": -0.9183482723526685,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 2865064830,
+      "ebit_usd": 380341640,
+      "interest_expense_usd": 115096788,
+      "total_debt_usd": 1480274115,
+      "total_assets_usd": 3409074829,
+      "equity_usd": -410746975,
+      "icr": 3.3045373950835186,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 2869992261,
+      "ebit_usd": 43950484,
+      "interest_expense_usd": 119512803,
+      "total_debt_usd": 1515068234,
+      "total_assets_usd": 3580120411,
+      "equity_usd": -61721774,
+      "icr": 0.36774707727338635,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 2866547515,
+      "ebit_usd": 43821587,
+      "interest_expense_usd": 120476397,
+      "total_debt_usd": 1480040341,
+      "total_assets_usd": 3748069735,
+      "equity_usd": -336859481,
+      "icr": 0.36373586935870933,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 2806301759,
+      "ebit_usd": 72560044,
+      "interest_expense_usd": 127225889,
+      "total_debt_usd": 1530926346,
+      "total_assets_usd": 3929243532,
+      "equity_usd": 181837576,
+      "icr": 0.5703245194065808,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.03051,
+    "margin_change_mean": 0.015629,
+    "margin_change_sd": 0.117794,
+    "revenue_growth_median": 0.00026,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "cik": "9999000028",
+  "name": "Fenwick Consulting Co.",
+  "ticker": null,
+  "sector": "Services",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 23 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-02",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 91638623,
+      "ebit_usd": 7641950,
+      "interest_expense_usd": 3092951,
+      "total_debt_usd": 36961079,
+      "total_assets_usd": 120127233,
+      "equity_usd": -13933076,
+      "icr": 2.4707633583590556,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 93079900,
+      "ebit_usd": 19269852,
+      "interest_expense_usd": 3277230,
+      "total_debt_usd": 38714235,
+      "total_assets_usd": 159243596,
+      "equity_usd": -3989304,
+      "icr": 5.8799205426534,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 91287849,
+      "ebit_usd": 2302845,
+      "interest_expense_usd": 3556568,
+      "total_debt_usd": 40367454,
+      "total_assets_usd": 89531093,
+      "equity_usd": -2493572,
+      "icr": 0.6474907832494697,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 92473710,
+      "ebit_usd": 2474617,
+      "interest_expense_usd": 3708086,
+      "total_debt_usd": 42289043,
+      "total_assets_usd": 125584274,
+      "equity_usd": 9774312,
+      "icr": 0.6673569598979096,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 89821881,
+      "ebit_usd": 2666978,
+      "interest_expense_usd": 3858033,
+      "total_debt_usd": 41589971,
+      "total_assets_usd": 154078178,
+      "equity_usd": -14615822,
+      "icr": 0.6912792088610958,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.074419,
+    "margin_change_mean": -0.013425,
+    "margin_change_sd": 0.125997,
+    "revenue_growth_median": -0.003131,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

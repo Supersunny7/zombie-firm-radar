@@ -1,0 +1,101 @@
+{
+  "cik": "9999000116",
+  "name": "Nettlefold Drilling Holdings",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "healthy",
+  "reasons": [
+    "ICR 4.25 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-10",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": null,
+      "ebit_usd": 74359560,
+      "interest_expense_usd": 24999255,
+      "total_debt_usd": 592490151,
+      "total_assets_usd": 1215999413,
+      "equity_usd": 381291566,
+      "icr": 2.974471039236969,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": null,
+      "ebit_usd": 106803371,
+      "interest_expense_usd": 25642579,
+      "total_debt_usd": 597620440,
+      "total_assets_usd": 1641137114,
+      "equity_usd": 134301378,
+      "icr": 4.165079144340357,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1006428794,
+      "ebit_usd": 155781746,
+      "interest_expense_usd": 28208337,
+      "total_debt_usd": 618730182,
+      "total_assets_usd": 1015108429,
+      "equity_usd": 78567525,
+      "icr": 5.522542714942749,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1078175455,
+      "ebit_usd": 115311783,
+      "interest_expense_usd": 30500256,
+      "total_debt_usd": 637449615,
+      "total_assets_usd": 1732541537,
+      "equity_usd": 441588383,
+      "icr": 3.7806824637799763,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1146452694,
+      "ebit_usd": 135495054,
+      "interest_expense_usd": 31849547,
+      "total_debt_usd": 623441322,
+      "total_assets_usd": 1253497166,
+      "equity_usd": 247080121,
+      "icr": 4.25422232849968,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.09,
+    "margin_change_mean": -0.004,
+    "margin_change_sd": 0.045,
+    "revenue_growth_median": 0.01,
+    "history_years": 3,
+    "used_sector_fallback": true
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "cik": "9999000041",
+  "name": "Netherby Outfitters Inc.",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 6 years (first filing proxy), under 10, so not a zombie"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-29",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 13749129360,
+      "ebit_usd": 2336800419,
+      "interest_expense_usd": 375300051,
+      "total_debt_usd": 6013076428,
+      "total_assets_usd": 18009598193,
+      "equity_usd": 730043706,
+      "icr": 6.226485748599059,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 13783104793,
+      "ebit_usd": 1266343437,
+      "interest_expense_usd": 368030024,
+      "total_debt_usd": 6163685230,
+      "total_assets_usd": 23866499639,
+      "equity_usd": 1417550522,
+      "icr": 3.4408699139176755,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 13453825840,
+      "ebit_usd": -15683554,
+      "interest_expense_usd": 404741623,
+      "total_debt_usd": 6455830255,
+      "total_assets_usd": 12515075020,
+      "equity_usd": 355636832,
+      "icr": -0.03874954565767504,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 13051605105,
+      "ebit_usd": 372735873,
+      "interest_expense_usd": 460568057,
+      "total_debt_usd": 6633552824,
+      "total_assets_usd": 11830099493,
+      "equity_usd": 864201541,
+      "icr": 0.809295971214087,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 12947438765,
+      "ebit_usd": 436212965,
+      "interest_expense_usd": 488537561,
+      "total_debt_usd": 6861670935,
+      "total_assets_usd": 14523142084,
+      "equity_usd": 1738263682,
+      "icr": 0.8928954492405958,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.064584,
+    "margin_change_mean": -0.034067,
+    "margin_change_sd": 0.060612,
+    "revenue_growth_median": -0.015936,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "cik": "9999000039",
+  "name": "Halloran Mills Group",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.83)",
+    "ICR below 1 in 2 of the last 3 years (FY2023, FY2024)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-24",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 119776168,
+      "ebit_usd": 9049686,
+      "interest_expense_usd": 2013355,
+      "total_debt_usd": 49654698,
+      "total_assets_usd": 197372228,
+      "equity_usd": 10008056,
+      "icr": 4.494828780816101,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 122181069,
+      "ebit_usd": 3678799,
+      "interest_expense_usd": 2046930,
+      "total_debt_usd": 51124745,
+      "total_assets_usd": 163329289,
+      "equity_usd": 3584263,
+      "icr": 1.7972275554122514,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 123916959,
+      "ebit_usd": 4722038,
+      "interest_expense_usd": 2326801,
+      "total_debt_usd": 53080952,
+      "total_assets_usd": 128937041,
+      "equity_usd": -6097352,
+      "icr": 2.0294120554357677,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 121065183,
+      "ebit_usd": 1629891,
+      "interest_expense_usd": 2258527,
+      "total_debt_usd": 51611751,
+      "total_assets_usd": 177729903,
+      "equity_usd": 2736919,
+      "icr": 0.7216610649330294,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 120706619,
+      "ebit_usd": 2143636,
+      "interest_expense_usd": 2569196,
+      "total_debt_usd": 52745910,
+      "total_assets_usd": 122457092,
+      "equity_usd": -3902655,
+      "icr": 0.8343606326648493,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.034999,
+    "margin_change_mean": -0.014449,
+    "margin_change_sd": 0.025298,
+    "revenue_growth_median": 0.005623,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "cik": "9999000142",
+  "name": "Ketteridge Freight Holdings",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 4.45 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-11",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 304105578,
+      "ebit_usd": 63718391,
+      "interest_expense_usd": 13059554,
+      "total_debt_usd": 216928883,
+      "total_assets_usd": 457052885,
+      "equity_usd": 85179469,
+      "icr": 4.879063327890064,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 298576920,
+      "ebit_usd": 56791684,
+      "interest_expense_usd": 12163001,
+      "total_debt_usd": 214093575,
+      "total_assets_usd": 521447397,
+      "equity_usd": 106966166,
+      "icr": 4.6692164211776355,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 284005018,
+      "ebit_usd": 23641298,
+      "interest_expense_usd": 13115805,
+      "total_debt_usd": 210138060,
+      "total_assets_usd": 479378063,
+      "equity_usd": 47780444,
+      "icr": 1.802504535558435,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 276471537,
+      "ebit_usd": 82941461,
+      "interest_expense_usd": 12669465,
+      "total_debt_usd": 203473978,
+      "total_assets_usd": 451851316,
+      "equity_usd": 110506278,
+      "icr": 6.5465638051804085,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 267045525,
+      "ebit_usd": 57994364,
+      "interest_expense_usd": 13018955,
+      "total_debt_usd": 197438227,
+      "total_assets_usd": 359615153,
+      "equity_usd": 21285031,
+      "icr": 4.45460975938545,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.20003,
+    "margin_change_mean": 0.001911,
+    "margin_change_sd": 0.147924,
+    "revenue_growth_median": -0.03031,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

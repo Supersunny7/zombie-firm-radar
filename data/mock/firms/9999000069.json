@@ -1,0 +1,101 @@
+{
+  "cik": "9999000069",
+  "name": "Valemont Mills Group",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.51)",
+    "ICR below 1 in 2 of the last 3 years (FY2022, FY2024)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-12",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 292762445,
+      "ebit_usd": 63019382,
+      "interest_expense_usd": 12414739,
+      "total_debt_usd": 218578967,
+      "total_assets_usd": 341062512,
+      "equity_usd": 12750696,
+      "icr": 5.076174537378514,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 292091134,
+      "ebit_usd": 59475063,
+      "interest_expense_usd": 12744355,
+      "total_debt_usd": 217886994,
+      "total_assets_usd": 320826091,
+      "equity_usd": -37133840,
+      "icr": 4.666777016176966,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 306878330,
+      "ebit_usd": 10809153,
+      "interest_expense_usd": 13344488,
+      "total_debt_usd": 216842898,
+      "total_assets_usd": 309520572,
+      "equity_usd": 3873059,
+      "icr": 0.8100088216198329,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 323373694,
+      "ebit_usd": 44435823,
+      "interest_expense_usd": 13261105,
+      "total_debt_usd": 211885066,
+      "total_assets_usd": 320465306,
+      "equity_usd": -42945187,
+      "icr": 3.350838636750105,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 322484267,
+      "ebit_usd": 7126609,
+      "interest_expense_usd": 13946345,
+      "total_debt_usd": 215689117,
+      "total_assets_usd": 532692164,
+      "equity_usd": 46996466,
+      "icr": 0.511001914838619,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.122722,
+    "margin_change_mean": -0.04829,
+    "margin_change_sd": 0.11959,
+    "revenue_growth_median": 0.024166,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

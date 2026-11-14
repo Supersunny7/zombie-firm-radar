@@ -1,0 +1,106 @@
+{
+  "cik": "9999000016",
+  "name": "Ingleby Utilities Holdings",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.49 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-03",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2878451745,
+      "ebit_usd": 188521228,
+      "interest_expense_usd": 151523162,
+      "total_debt_usd": 2263850081,
+      "total_assets_usd": 5177091907,
+      "equity_usd": 1243592032,
+      "icr": 1.244174326298708,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 2815109888,
+      "ebit_usd": 844532966,
+      "interest_expense_usd": 157706109,
+      "total_debt_usd": 2352653436,
+      "total_assets_usd": 2823184123,
+      "equity_usd": 363399762,
+      "icr": 5.3551062248324195,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 2860268484,
+      "ebit_usd": 858080545,
+      "interest_expense_usd": 163470444,
+      "total_debt_usd": 2374021028,
+      "total_assets_usd": 2848825233,
+      "equity_usd": 337373987,
+      "icr": 5.249147943832587,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 2830347166,
+      "ebit_usd": 849104150,
+      "interest_expense_usd": 169745353,
+      "total_debt_usd": 2292400942,
+      "total_assets_usd": 3615128554,
+      "equity_usd": 1264234162,
+      "icr": 5.002223242011226,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 2757427288,
+      "ebit_usd": 623875842,
+      "interest_expense_usd": 178954971,
+      "total_debt_usd": 2351984318,
+      "total_assets_usd": 4742301247,
+      "equity_usd": 1195120915,
+      "icr": 3.4862168874873,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.238349,
+    "margin_change_mean": 0.04019,
+    "margin_change_sd": 0.134128,
+    "revenue_growth_median": -0.016233,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

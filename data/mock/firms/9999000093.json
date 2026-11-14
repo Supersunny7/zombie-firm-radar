@@ -1,0 +1,106 @@
+{
+  "cik": "9999000093",
+  "name": "Pellham Markets Holdings",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.85)",
+    "ICR below 1 in 2 of the last 3 years (FY2023, FY2024)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-18",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 5943358239,
+      "ebit_usd": 1188974748,
+      "interest_expense_usd": 214866740,
+      "total_debt_usd": 2824639925,
+      "total_assets_usd": 9821473045,
+      "equity_usd": -387898049,
+      "icr": 5.533544875302711,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 6236012067,
+      "ebit_usd": 1057717924,
+      "interest_expense_usd": 221455786,
+      "total_debt_usd": 2859656080,
+      "total_assets_usd": 7914747714,
+      "equity_usd": -348349003,
+      "icr": 4.776203607522813,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 6488922461,
+      "ebit_usd": 557651370,
+      "interest_expense_usd": 225524769,
+      "total_debt_usd": 2859444026,
+      "total_assets_usd": 10749799272,
+      "equity_usd": 928072192,
+      "icr": 2.4726834771749617,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 6804060256,
+      "ebit_usd": 93075696,
+      "interest_expense_usd": 240001681,
+      "total_debt_usd": 2894754256,
+      "total_assets_usd": 8736346196,
+      "equity_usd": 888554133,
+      "icr": 0.38781268369532795,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 7304986291,
+      "ebit_usd": 214811741,
+      "interest_expense_usd": 254053068,
+      "total_debt_usd": 2956827681,
+      "total_assets_usd": 11605052405,
+      "equity_usd": -316612043,
+      "icr": 0.8455388580467763,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.099738,
+    "margin_change_mean": -0.042661,
+    "margin_change_sd": 0.045155,
+    "revenue_growth_median": 0.048903,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

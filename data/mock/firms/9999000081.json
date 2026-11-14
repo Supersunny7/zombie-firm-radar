@@ -1,0 +1,101 @@
+{
+  "cik": "9999000081",
+  "name": "Oakhaven Systems Corp.",
+  "ticker": null,
+  "sector": "Services",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.47)",
+    "ICR below 1 in 2 of the last 3 years (FY2023, FY2024)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-13",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 271128501,
+      "ebit_usd": 58855376,
+      "interest_expense_usd": 9239487,
+      "total_debt_usd": 126941960,
+      "total_assets_usd": 342966406,
+      "equity_usd": -27249555,
+      "icr": 6.36998309538181,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 285276334,
+      "ebit_usd": 21116466,
+      "interest_expense_usd": 9301079,
+      "total_debt_usd": 125039715,
+      "total_assets_usd": 498572514,
+      "equity_usd": 16105218,
+      "icr": 2.2703243354883877,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 302377044,
+      "ebit_usd": 21179077,
+      "interest_expense_usd": 9376845,
+      "total_debt_usd": 121055365,
+      "total_assets_usd": 321005662,
+      "equity_usd": -17712664,
+      "icr": 2.258657042960612,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 321998731,
+      "ebit_usd": -6673110,
+      "interest_expense_usd": 9570120,
+      "total_debt_usd": 117332280,
+      "total_assets_usd": 449837765,
+      "equity_usd": -17557372,
+      "icr": -0.6972859274491856,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 336277806,
+      "ebit_usd": 4586081,
+      "interest_expense_usd": 9713016,
+      "total_debt_usd": 118268841,
+      "total_assets_usd": 472691594,
+      "equity_usd": -22073563,
+      "icr": 0.472158287394976,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.07081,
+    "margin_change_mean": -0.050859,
+    "margin_change_sd": 0.080732,
+    "revenue_growth_median": 0.056063,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

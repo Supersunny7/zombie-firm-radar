@@ -1,0 +1,101 @@
+{
+  "cik": "9999000036",
+  "name": "Eastmere Industries Inc.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.21 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-15",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 387912161,
+      "ebit_usd": 116373648,
+      "interest_expense_usd": 19129910,
+      "total_debt_usd": 331085080,
+      "total_assets_usd": 543618009,
+      "equity_usd": 125966677,
+      "icr": 6.083334840571649,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 404164433,
+      "ebit_usd": 42751882,
+      "interest_expense_usd": 19110698,
+      "total_debt_usd": 329682028,
+      "total_assets_usd": 510741893,
+      "equity_usd": 97289887,
+      "icr": 2.2370654384261632,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 412336287,
+      "ebit_usd": 120416247,
+      "interest_expense_usd": 20495353,
+      "total_debt_usd": 343103579,
+      "total_assets_usd": 453089067,
+      "equity_usd": 85441774,
+      "icr": 5.875295097381343,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 407922435,
+      "ebit_usd": 54389085,
+      "interest_expense_usd": 21763543,
+      "total_debt_usd": 356441543,
+      "total_assets_usd": 442678936,
+      "equity_usd": 46991718,
+      "icr": 2.499091485242086,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 411378765,
+      "ebit_usd": 28663195,
+      "interest_expense_usd": 23720043,
+      "total_debt_usd": 368302983,
+      "total_assets_usd": 670963209,
+      "equity_usd": 77764373,
+      "icr": 1.20839557499959,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.180164,
+    "margin_change_mean": -0.057581,
+    "margin_change_sd": 0.171648,
+    "revenue_growth_median": 0.014346,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

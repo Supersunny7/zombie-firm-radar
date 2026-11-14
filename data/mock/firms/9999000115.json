@@ -1,0 +1,101 @@
+{
+  "cik": "9999000115",
+  "name": "Calloway Consulting Group",
+  "ticker": null,
+  "sector": "Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.02 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-18",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 13394504252,
+      "ebit_usd": 979203786,
+      "interest_expense_usd": 319009323,
+      "total_debt_usd": 8638553538,
+      "total_assets_usd": 16794849559,
+      "equity_usd": 5265183969,
+      "icr": 3.069514636097328,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 13336072851,
+      "ebit_usd": 644666177,
+      "interest_expense_usd": 337893927,
+      "total_debt_usd": 8656933572,
+      "total_assets_usd": 14340167411,
+      "equity_usd": 854494681,
+      "icr": 1.9078951276919516,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 13537019654,
+      "ebit_usd": 2157178880,
+      "interest_expense_usd": 350440098,
+      "total_debt_usd": 8402364981,
+      "total_assets_usd": 20527580837,
+      "equity_usd": 2982429027,
+      "icr": 6.155628001222623,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 13398715806,
+      "ebit_usd": 2052726658,
+      "interest_expense_usd": 388244533,
+      "total_debt_usd": 8726362947,
+      "total_assets_usd": 16058254297,
+      "equity_usd": 2901560075,
+      "icr": 5.287200420153759,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 13568049061,
+      "ebit_usd": 791089952,
+      "interest_expense_usd": 392392674,
+      "total_debt_usd": 8538957341,
+      "total_assets_usd": 18832393126,
+      "equity_usd": 2508795835,
+      "icr": 2.0160670787650843,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.098462,
+    "margin_change_mean": -0.0037,
+    "margin_change_sd": 0.085491,
+    "revenue_growth_median": 0.004138,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

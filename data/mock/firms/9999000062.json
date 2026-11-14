@@ -1,0 +1,101 @@
+{
+  "cik": "9999000062",
+  "name": "Saltmarsh Systems Group",
+  "ticker": null,
+  "sector": "Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.52 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-11",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 187766738,
+      "ebit_usd": 14757353,
+      "interest_expense_usd": 4364977,
+      "total_debt_usd": 62858730,
+      "total_assets_usd": 277890051,
+      "equity_usd": 72356520,
+      "icr": 3.3808546986616426,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 181421454,
+      "ebit_usd": 15253254,
+      "interest_expense_usd": 4271737,
+      "total_debt_usd": 62871904,
+      "total_assets_usd": 228107759,
+      "equity_usd": 45215611,
+      "icr": 3.570738086169631,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 175310894,
+      "ebit_usd": 3736664,
+      "interest_expense_usd": 4301144,
+      "total_debt_usd": 62269486,
+      "total_assets_usd": 232283254,
+      "equity_usd": 31621996,
+      "icr": 0.8687604972072547,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 167605914,
+      "ebit_usd": 19158264,
+      "interest_expense_usd": 4574284,
+      "total_debt_usd": 63670987,
+      "total_assets_usd": 181484545,
+      "equity_usd": 13210380,
+      "icr": 4.18825416174422,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 160268504,
+      "ebit_usd": 17659359,
+      "interest_expense_usd": 5023400,
+      "total_debt_usd": 64536602,
+      "total_assets_usd": 145551284,
+      "equity_usd": 8031793,
+      "icr": 3.515419636103038,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.081695,
+    "margin_change_mean": 0.007898,
+    "margin_change_sd": 0.064249,
+    "revenue_growth_median": -0.038786,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

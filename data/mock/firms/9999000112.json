@@ -1,0 +1,101 @@
+{
+  "cik": "9999000112",
+  "name": "Ormsby Fabrication Group",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.52 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-24",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 224686024,
+      "ebit_usd": 2276943,
+      "interest_expense_usd": 3852762,
+      "total_debt_usd": 104828040,
+      "total_assets_usd": 357956806,
+      "equity_usd": 90583573,
+      "icr": 0.5909897886243687,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 236237051,
+      "ebit_usd": 9909481,
+      "interest_expense_usd": 3711794,
+      "total_debt_usd": 104146829,
+      "total_assets_usd": 370048115,
+      "equity_usd": 112596543,
+      "icr": 2.6697281691818024,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 246237875,
+      "ebit_usd": 17007823,
+      "interest_expense_usd": 3979606,
+      "total_debt_usd": 103544616,
+      "total_assets_usd": 418002348,
+      "equity_usd": 33612070,
+      "icr": 4.273745441131609,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 260327985,
+      "ebit_usd": 12141842,
+      "interest_expense_usd": 4251504,
+      "total_debt_usd": 103265267,
+      "total_assets_usd": 263625322,
+      "equity_usd": 48245378,
+      "icr": 2.8558933497416445,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 263123024,
+      "ebit_usd": 16859498,
+      "interest_expense_usd": 4785264,
+      "total_debt_usd": 103572450,
+      "total_assets_usd": 323395986,
+      "equity_usd": 101208333,
+      "icr": 3.5232116765135633,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.046373,
+    "margin_change_mean": 0.013485,
+    "margin_change_sd": 0.024681,
+    "revenue_growth_median": 0.046872,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

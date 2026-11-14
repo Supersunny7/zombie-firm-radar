@@ -1,0 +1,101 @@
+{
+  "cik": "9999000035",
+  "name": "Whitlock Markets Co.",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.40 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-05",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 15214549935,
+      "ebit_usd": 1714696370,
+      "interest_expense_usd": 434025187,
+      "total_debt_usd": 10811147455,
+      "total_assets_usd": 21864573039,
+      "equity_usd": 3988429293,
+      "icr": 3.9506840187134116,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 15634843107,
+      "ebit_usd": 2315047212,
+      "interest_expense_usd": 412161431,
+      "total_debt_usd": 10541331786,
+      "total_assets_usd": 17317177948,
+      "equity_usd": 2600787967,
+      "icr": 5.616845822723281,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 15599839738,
+      "ebit_usd": 2270127790,
+      "interest_expense_usd": 423508128,
+      "total_debt_usd": 10529251877,
+      "total_assets_usd": 23677796525,
+      "equity_usd": 2139202469,
+      "icr": 5.360293321218147,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 16223813948,
+      "ebit_usd": 2138974936,
+      "interest_expense_usd": 449198886,
+      "total_debt_usd": 10392438753,
+      "total_assets_usd": 25729441955,
+      "equity_usd": 8971365330,
+      "icr": 4.761754765349084,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 16270878051,
+      "ebit_usd": 2812311474,
+      "interest_expense_usd": 520679659,
+      "total_debt_usd": 10667438307,
+      "total_assets_usd": 15815036336,
+      "equity_usd": 958679417,
+      "icr": 5.401231688983648,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.142196,
+    "margin_change_mean": 0.015036,
+    "margin_change_sd": 0.027212,
+    "revenue_growth_median": 0.015263,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

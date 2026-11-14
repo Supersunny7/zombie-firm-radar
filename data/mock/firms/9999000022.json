@@ -1,0 +1,101 @@
+{
+  "cik": "9999000022",
+  "name": "Oakhaven Mills Holdings",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.45 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-24",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 14112047932,
+      "ebit_usd": 1575594816,
+      "interest_expense_usd": 230232825,
+      "total_debt_usd": 4753493025,
+      "total_assets_usd": 18557848587,
+      "equity_usd": 5925291968,
+      "icr": 6.84348470293061,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 15283253701,
+      "ebit_usd": 606175244,
+      "interest_expense_usd": 221671119,
+      "total_debt_usd": 4678591487,
+      "total_assets_usd": 26868470205,
+      "equity_usd": 3116050458,
+      "icr": 2.734570235105819,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 15961559581,
+      "ebit_usd": 714683124,
+      "interest_expense_usd": 225088485,
+      "total_debt_usd": 4602987832,
+      "total_assets_usd": 20232154886,
+      "equity_usd": 3954133029,
+      "icr": 3.1751207708381886,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 16589376837,
+      "ebit_usd": 121689317,
+      "interest_expense_usd": 244856980,
+      "total_debt_usd": 4514397016,
+      "total_assets_usd": 24482294007,
+      "equity_usd": 6522909813,
+      "icr": 0.49698120511001975,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 17728355607,
+      "ebit_usd": 849733343,
+      "interest_expense_usd": 246098202,
+      "total_debt_usd": 4348081985,
+      "total_assets_usd": 22512238529,
+      "equity_usd": 3981165491,
+      "icr": 3.45282223150903,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.050271,
+    "margin_change_mean": -0.01593,
+    "margin_change_sd": 0.049135,
+    "revenue_growth_median": 0.05652,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

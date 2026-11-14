@@ -1,0 +1,111 @@
+{
+  "cik": "9999000004",
+  "name": "Hartsmere Telecom Holdings",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.59 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-13",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 351993188,
+      "ebit_usd": 19469604,
+      "interest_expense_usd": 9205086,
+      "total_debt_usd": 155033995,
+      "total_assets_usd": 399567724,
+      "equity_usd": 94691498,
+      "icr": 2.115092026299374,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 359221973,
+      "ebit_usd": 46780053,
+      "interest_expense_usd": 9412949,
+      "total_debt_usd": 158401037,
+      "total_assets_usd": 510688334,
+      "equity_usd": 141415808,
+      "icr": 4.969755280730832,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 351875004,
+      "ebit_usd": 47952359,
+      "interest_expense_usd": 10428579,
+      "total_debt_usd": 165373943,
+      "total_assets_usd": 396643689,
+      "equity_usd": 95729009,
+      "icr": 4.598168072562906,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 352759981,
+      "ebit_usd": 34910638,
+      "interest_expense_usd": 11060443,
+      "total_debt_usd": 165547424,
+      "total_assets_usd": 519791476,
+      "equity_usd": 67313869,
+      "icr": 3.156350789927673,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 358828122,
+      "ebit_usd": 28678009,
+      "interest_expense_usd": 11063731,
+      "total_debt_usd": 165291555,
+      "total_assets_usd": 580123721,
+      "equity_usd": 41732611,
+      "icr": 2.592073957691126,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.10014,
+    "margin_change_mean": 0.006152,
+    "margin_change_sd": 0.049167,
+    "revenue_growth_median": 0.009858,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

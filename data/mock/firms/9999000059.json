@@ -1,0 +1,111 @@
+{
+  "cik": "9999000059",
+  "name": "Osgood Retail Co.",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.58 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-22",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 459304689,
+      "ebit_usd": 45014249,
+      "interest_expense_usd": 7008797,
+      "total_debt_usd": 164580425,
+      "total_assets_usd": 800877452,
+      "equity_usd": 46557455,
+      "icr": 6.422535707625717,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 477316375,
+      "ebit_usd": 46089362,
+      "interest_expense_usd": 7249211,
+      "total_debt_usd": 172692188,
+      "total_assets_usd": 828907687,
+      "equity_usd": 148034865,
+      "icr": 6.357845288266544,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 475538641,
+      "ebit_usd": 25721456,
+      "interest_expense_usd": 7648784,
+      "total_debt_usd": 168941067,
+      "total_assets_usd": 509439194,
+      "equity_usd": 114990341,
+      "icr": 3.362816364012894,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 483497094,
+      "ebit_usd": 28465961,
+      "interest_expense_usd": 8294982,
+      "total_debt_usd": 172282163,
+      "total_assets_usd": 678501292,
+      "equity_usd": 157573508,
+      "icr": 3.4317085920138224,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 504140674,
+      "ebit_usd": 49747866,
+      "interest_expense_usd": 8913236,
+      "total_debt_usd": 173289718,
+      "total_assets_usd": 458956212,
+      "equity_usd": 59029285,
+      "icr": 5.581347335580478,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.081241,
+    "margin_change_mean": 0.000168,
+    "margin_change_sd": 0.033729,
+    "revenue_growth_median": 0.027975,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

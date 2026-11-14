@@ -1,0 +1,111 @@
+{
+  "cik": "9999000097",
+  "name": "Greywater Stores Co.",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 15 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-20",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1010561564,
+      "ebit_usd": 303168469,
+      "interest_expense_usd": 48911486,
+      "total_debt_usd": 592608295,
+      "total_assets_usd": 974063934,
+      "equity_usd": 43491110,
+      "icr": 6.198308286932848,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1003396804,
+      "ebit_usd": 36713569,
+      "interest_expense_usd": 49667034,
+      "total_debt_usd": 612474012,
+      "total_assets_usd": 1119062156,
+      "equity_usd": 81559440,
+      "icr": 0.739193908780621,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 998285189,
+      "ebit_usd": -49687495,
+      "interest_expense_usd": 49763250,
+      "total_debt_usd": 595245707,
+      "total_assets_usd": 1255425076,
+      "equity_usd": -174114721,
+      "icr": -0.9984776918710092,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 971696081,
+      "ebit_usd": 29411609,
+      "interest_expense_usd": 51669061,
+      "total_debt_usd": 577194837,
+      "total_assets_usd": 1032595845,
+      "equity_usd": 7178775,
+      "icr": 0.5692305691407862,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 914677059,
+      "ebit_usd": 33581209,
+      "interest_expense_usd": 52840711,
+      "total_debt_usd": 572475256,
+      "total_assets_usd": 1307095125,
+      "equity_usd": 140798416,
+      "icr": 0.6355177355581003,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.07076,
+    "margin_change_mean": -0.065822,
+    "margin_change_sd": 0.148281,
+    "revenue_growth_median": -0.016862,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

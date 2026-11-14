@@ -1,0 +1,101 @@
+{
+  "cik": "9999000056",
+  "name": "Calloway Contracting Corp.",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 25 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-23",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 155654641,
+      "ebit_usd": 24148511,
+      "interest_expense_usd": 3811989,
+      "total_debt_usd": 84695595,
+      "total_assets_usd": 276292800,
+      "equity_usd": 5599836,
+      "icr": 6.334884754389376,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 159620073,
+      "ebit_usd": 1809096,
+      "interest_expense_usd": 3675279,
+      "total_debt_usd": 85047242,
+      "total_assets_usd": 242035538,
+      "equity_usd": -11163129,
+      "icr": 0.49223365083303877,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 165796074,
+      "ebit_usd": 2079220,
+      "interest_expense_usd": 4248802,
+      "total_debt_usd": 87637833,
+      "total_assets_usd": 245946781,
+      "equity_usd": 13185304,
+      "icr": 0.4893661789840995,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 162833466,
+      "ebit_usd": 2457584,
+      "interest_expense_usd": 4384982,
+      "total_debt_usd": 90083997,
+      "total_assets_usd": 207226853,
+      "equity_usd": -4681162,
+      "icr": 0.5604547521517762,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 160345651,
+      "ebit_usd": 4112384,
+      "interest_expense_usd": 4944881,
+      "total_debt_usd": 92692670,
+      "total_assets_usd": 173961073,
+      "equity_usd": 10651628,
+      "icr": 0.8316446846749194,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.043951,
+    "margin_change_mean": -0.032374,
+    "margin_change_sd": 0.074404,
+    "revenue_growth_median": 0.005099,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

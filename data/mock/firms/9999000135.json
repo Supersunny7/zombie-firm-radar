@@ -1,0 +1,106 @@
+{
+  "cik": "9999000135",
+  "name": "Rowntree Fabrication Inc.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.85 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-24",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 601271360,
+      "ebit_usd": 118492773,
+      "interest_expense_usd": 23866127,
+      "total_debt_usd": 426615237,
+      "total_assets_usd": 807582912,
+      "equity_usd": 103842436,
+      "icr": 4.964893256455059,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 642366089,
+      "ebit_usd": 33979436,
+      "interest_expense_usd": 23600499,
+      "total_debt_usd": 418830037,
+      "total_assets_usd": 655933337,
+      "equity_usd": 222209380,
+      "icr": 1.439776167444595,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 655550999,
+      "ebit_usd": 96338013,
+      "interest_expense_usd": 26068836,
+      "total_debt_usd": 436753797,
+      "total_assets_usd": 1083152653,
+      "equity_usd": 88752751,
+      "icr": 3.695524149985063,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 683117557,
+      "ebit_usd": 104727222,
+      "interest_expense_usd": 26901680,
+      "total_debt_usd": 424642711,
+      "total_assets_usd": 1152020812,
+      "equity_usd": 247747037,
+      "icr": 3.8929621495757885,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 696234465,
+      "ebit_usd": 78897667,
+      "interest_expense_usd": 27691229,
+      "total_debt_usd": 415472403,
+      "total_assets_usd": 1158664895,
+      "equity_usd": 256689855,
+      "icr": 2.8491934034419346,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.132711,
+    "margin_change_mean": -0.020937,
+    "margin_change_sd": 0.099195,
+    "revenue_growth_median": 0.031288,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

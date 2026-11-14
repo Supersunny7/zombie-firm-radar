@@ -1,0 +1,111 @@
+{
+  "cik": "9999000054",
+  "name": "Stonebrook Mills Inc.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 33 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-15",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1209578299,
+      "ebit_usd": 86586131,
+      "interest_expense_usd": 53288793,
+      "total_debt_usd": 808064369,
+      "total_assets_usd": 1379870526,
+      "equity_usd": -172601996,
+      "icr": 1.624846916686591,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1254703863,
+      "ebit_usd": 38782472,
+      "interest_expense_usd": 52550823,
+      "total_debt_usd": 775884565,
+      "total_assets_usd": 2023864595,
+      "equity_usd": 161567099,
+      "icr": 0.7379993268611607,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1257908660,
+      "ebit_usd": 38141561,
+      "interest_expense_usd": 51915361,
+      "total_debt_usd": 748197651,
+      "total_assets_usd": 1982406788,
+      "equity_usd": -117164170,
+      "icr": 0.7346873885746456,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1246745592,
+      "ebit_usd": 37566302,
+      "interest_expense_usd": 54614873,
+      "total_debt_usd": 723984208,
+      "total_assets_usd": 1840013324,
+      "equity_usd": 95896316,
+      "icr": 0.6878401420067387,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1286292067,
+      "ebit_usd": 36897942,
+      "interest_expense_usd": 59897643,
+      "total_debt_usd": 760140915,
+      "total_assets_usd": 1691141664,
+      "equity_usd": 141110574,
+      "icr": 0.6160165935076944,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.038326,
+    "margin_change_mean": -0.010725,
+    "margin_change_sd": 0.019973,
+    "revenue_growth_median": 0.017137,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

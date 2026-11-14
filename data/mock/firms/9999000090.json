@@ -1,0 +1,101 @@
+{
+  "cik": "9999000090",
+  "name": "Quillon Trading Inc.",
+  "ticker": null,
+  "sector": "Wholesale Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.90 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-13",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 423633324,
+      "ebit_usd": 45369494,
+      "interest_expense_usd": 18100126,
+      "total_debt_usd": 234915821,
+      "total_assets_usd": 409198218,
+      "equity_usd": 93949543,
+      "icr": 2.5065844293017627,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 436791353,
+      "ebit_usd": 112762286,
+      "interest_expense_usd": 17940707,
+      "total_debt_usd": 226168173,
+      "total_assets_usd": 401708855,
+      "equity_usd": 84905364,
+      "icr": 6.2852754910940805,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 449048693,
+      "ebit_usd": 89947936,
+      "interest_expense_usd": 18789917,
+      "total_debt_usd": 228650928,
+      "total_assets_usd": 799202577,
+      "equity_usd": 162361116,
+      "icr": 4.787032108763439,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 479500818,
+      "ebit_usd": 127924296,
+      "interest_expense_usd": 19683488,
+      "total_debt_usd": 233428977,
+      "total_assets_usd": 575948693,
+      "equity_usd": 102016085,
+      "icr": 6.499066425625377,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 495704104,
+      "ebit_usd": 40556443,
+      "interest_expense_usd": 21329264,
+      "total_debt_usd": 237270396,
+      "total_assets_usd": 530230196,
+      "equity_usd": 127174649,
+      "icr": 1.901445966443099,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.182833,
+    "margin_change_mean": -0.00632,
+    "margin_change_sd": 0.146789,
+    "revenue_growth_median": 0.032426,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}
