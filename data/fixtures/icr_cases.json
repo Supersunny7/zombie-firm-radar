@@ -1,0 +1,94 @@
+{
+  "cases": [
+    {
+      "ebit": 120,
+      "interest": 100,
+      "expected": 1.2,
+      "note": "normal, above 1"
+    },
+    {
+      "ebit": 50,
+      "interest": 50,
+      "expected": 1.0,
+      "note": "exactly 1"
+    },
+    {
+      "ebit": 38000000.0,
+      "interest": 61000000.0,
+      "expected": 0.6229508196721312,
+      "note": "below 1, Ashgrove Works FY2024"
+    },
+    {
+      "ebit": 99.999,
+      "interest": 100,
+      "expected": 0.9999899999999999,
+      "note": "just below 1"
+    },
+    {
+      "ebit": 1,
+      "interest": 3,
+      "expected": 0.3333333333333333,
+      "note": "repeating decimal"
+    },
+    {
+      "ebit": 0,
+      "interest": 10,
+      "expected": 0.0,
+      "note": "EBIT zero gives 0"
+    },
+    {
+      "ebit": -20,
+      "interest": 40,
+      "expected": -0.5,
+      "note": "negative EBIT gives negative ICR"
+    },
+    {
+      "ebit": 100,
+      "interest": 0,
+      "expected": null,
+      "note": "interest zero gives null"
+    },
+    {
+      "ebit": 100,
+      "interest": -10,
+      "expected": null,
+      "note": "interest negative gives null"
+    },
+    {
+      "ebit": 100,
+      "interest": null,
+      "expected": null,
+      "note": "interest null gives null"
+    },
+    {
+      "ebit": null,
+      "interest": 100,
+      "expected": null,
+      "note": "EBIT null gives null"
+    },
+    {
+      "ebit": null,
+      "interest": null,
+      "expected": null,
+      "note": "both null gives null"
+    },
+    {
+      "ebit": -20,
+      "interest": 0,
+      "expected": null,
+      "note": "negative EBIT with zero interest gives null"
+    },
+    {
+      "ebit": 95000000000.0,
+      "interest": 1900000000.0,
+      "expected": 50.0,
+      "note": "large values"
+    },
+    {
+      "ebit": 1000000.0,
+      "interest": 1,
+      "expected": 1000000.0,
+      "note": "tiny interest, large ratio"
+    }
+  ]
+}
