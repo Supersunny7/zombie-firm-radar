@@ -15,6 +15,9 @@ __pycache__/
 .env.*
 tools/output/
 
+# Pipeline raw-response cache and run report
+pipeline/.cache/
+
 # Asset pipeline download cache (only the manual README is tracked)
 tools/cache/*
 !tools/cache/manual/

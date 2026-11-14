@@ -4,7 +4,7 @@ inclusion: always
 
 # Data Contract
 
-**Version 2: v2 draft, pending partner review.**
+**Version 2: v2**
 
 Any change to this contract must update this file, the JSON Schemas in `/data/schema/` and the TypeScript types in `/web/src/types/data.ts` in the same commit.
 
@@ -15,6 +15,8 @@ Any change to this contract must update this file, the JSON Schemas in `/data/sc
 - Years are sorted ascending.
 - Ratios are decimals (0.06 = 6%).
 - CIKs are 10-digit zero-padded strings.
+## Firm universe
+US filers with a ticker that file 10-Ks. Financial firms (SIC 6000-6799) are excluded and do not appear in any output file.
 
 ## File 1: `/data/firms_index.json`
 
