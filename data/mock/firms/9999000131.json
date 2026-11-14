@@ -1,111 +1,101 @@
 {
   "cik": "9999000131",
-  "name": "Wexcombe Industries Holdings",
+  "name": "Juniper Hollow Mills Holdings",
   "ticker": null,
   "sector": "Manufacturing",
   "status": "healthy",
   "reasons": [
-    "ICR 5.15 in FY2024, at least 1",
+    "ICR 1.71 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-10",
+    "filed": "2025-03-19",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": null,
-      "ebit_usd": 39769045,
-      "interest_expense_usd": 6550636,
-      "total_debt_usd": 153877606,
-      "total_assets_usd": 341946802,
-      "equity_usd": 67447560,
-      "icr": 6.071020432214521,
+      "revenue_usd": 234381058,
+      "ebit_usd": 29789086,
+      "interest_expense_usd": 15295560,
+      "total_debt_usd": 199828577,
+      "total_assets_usd": 239794292,
+      "equity_usd": 55200088,
+      "icr": 1.9475642604782042,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": null,
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": null,
-      "ebit_usd": 14564087,
-      "interest_expense_usd": 6569244,
-      "total_debt_usd": 151858309,
-      "total_assets_usd": 449519715,
-      "equity_usd": 83150216,
-      "icr": 2.217011120305472,
+      "revenue_usd": 245870764,
+      "ebit_usd": 73761229,
+      "interest_expense_usd": 15017699,
+      "total_debt_usd": 197801718,
+      "total_assets_usd": 256261785,
+      "equity_usd": 74737478,
+      "icr": 4.91161988264647,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": null,
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 328949916,
-      "ebit_usd": 23290334,
-      "interest_expense_usd": 6352612,
-      "total_debt_usd": 148596507,
-      "total_assets_usd": 417628840,
-      "equity_usd": 55972436,
-      "icr": 3.666261059230439,
+      "revenue_usd": 254340871,
+      "ebit_usd": 76302261,
+      "interest_expense_usd": 14938765,
+      "total_debt_usd": 189945526,
+      "total_assets_usd": 387195837,
+      "equity_usd": 45922282,
+      "icr": 5.107668605805098,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 326993505,
-      "ebit_usd": 44953196,
-      "interest_expense_usd": 7286220,
-      "total_debt_usd": 153601199,
-      "total_assets_usd": 325224682,
-      "equity_usd": 98983210,
-      "icr": 6.169618265712537,
+      "revenue_usd": 262835474,
+      "ebit_usd": 68893741,
+      "interest_expense_usd": 15770358,
+      "total_debt_usd": 188125127,
+      "total_assets_usd": 435627480,
+      "equity_usd": 42281363,
+      "icr": 4.3685591030970885,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 319710362,
-      "ebit_usd": 40618560,
-      "interest_expense_usd": 7888622,
-      "total_debt_usd": 157493367,
-      "total_assets_usd": 344421246,
-      "equity_usd": 63516332,
-      "icr": 5.149005745236621,
+      "revenue_usd": 270957096,
+      "ebit_usd": 28876671,
+      "interest_expense_usd": 16892119,
+      "total_debt_usd": 195258833,
+      "total_assets_usd": 448570221,
+      "equity_usd": 64799963,
+      "icr": 1.7094759396378867,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.07,
-    "margin_change_mean": -0.002,
-    "margin_change_sd": 0.018,
-    "revenue_growth_median": 0.02,
-    "history_years": 3,
-    "used_sector_fallback": true
+    "margin_mean": 0.219157,
+    "margin_change_mean": -0.005131,
+    "margin_change_sd": 0.135916,
+    "revenue_growth_median": 0.033924,
+    "history_years": 5,
+    "used_sector_fallback": false
   }
 }

@@ -1,94 +1,106 @@
 {
   "cik": "9999000018",
-  "name": "Ravenscar Fabrication Inc.",
+  "name": "Greywater Builders Holdings",
   "ticker": null,
-  "sector": "Manufacturing",
-  "status": "healthy",
+  "sector": "Construction",
+  "status": "zombie",
   "reasons": [
-    "ICR 5.52 in FY2024, at least 1",
-    "No more than one year below 1 in the last 3"
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 33 years (first filing proxy), at least 10"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-03",
+    "filed": "2025-03-04",
     "form": "10-K"
   },
   "years": [
     {
-      "fy": 2021,
-      "revenue_usd": 724954478,
-      "ebit_usd": 65443626,
-      "interest_expense_usd": 39568491,
-      "total_debt_usd": 577850277,
-      "total_assets_usd": 908882117,
-      "equity_usd": 67775683,
-      "icr": 1.6539328224571415,
+      "fy": 2020,
+      "revenue_usd": 6447769828,
+      "ebit_usd": 56114112,
+      "interest_expense_usd": 92401844,
+      "total_debt_usd": 1910278258,
+      "total_assets_usd": 7361158816,
+      "equity_usd": -122202578,
+      "icr": 0.6072834650356111,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 6361546562,
+      "ebit_usd": 37134292,
+      "interest_expense_usd": 87032127,
+      "total_debt_usd": 1867156834,
+      "total_assets_usd": 7532394953,
+      "equity_usd": -643238015,
+      "icr": 0.42667338234764735,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 769093983,
-      "ebit_usd": 63727400,
-      "interest_expense_usd": 38955760,
-      "total_debt_usd": 572770756,
-      "total_assets_usd": 885753294,
-      "equity_usd": 90307469,
-      "icr": 1.635891585737257,
+      "revenue_usd": 6403811455,
+      "ebit_usd": -3268415,
+      "interest_expense_usd": 96425643,
+      "total_debt_usd": 1881925304,
+      "total_assets_usd": 7275505995,
+      "equity_usd": 250647290,
+      "icr": -0.03389570344892592,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 800996069,
-      "ebit_usd": 88229841,
-      "interest_expense_usd": 43763761,
-      "total_debt_usd": 596386071,
-      "total_assets_usd": 1089831081,
-      "equity_usd": 214343139,
-      "icr": 2.0160479580354167,
+      "revenue_usd": 6160823965,
+      "ebit_usd": 44064982,
+      "interest_expense_usd": 100410635,
+      "total_debt_usd": 1892246485,
+      "total_assets_usd": 6908557692,
+      "equity_usd": -960454563,
+      "icr": 0.43884775751094496,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 858587084,
-      "ebit_usd": 253239346,
-      "interest_expense_usd": 45841716,
-      "total_debt_usd": 604817262,
-      "total_assets_usd": 1497368937,
-      "equity_usd": 363417482,
-      "icr": 5.524211746349112,
+      "revenue_usd": 6142761218,
+      "ebit_usd": 102378597,
+      "interest_expense_usd": 113136938,
+      "total_debt_usd": 1977158392,
+      "total_assets_usd": 7298652478,
+      "equity_usd": -439467830,
+      "icr": 0.9049086780128344,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.144558,
-    "margin_change_mean": 0.068225,
-    "margin_change_sd": 0.102436,
-    "revenue_growth_median": 0.060886,
-    "history_years": 4,
+    "margin_mean": 0.00757,
+    "margin_change_mean": 0.001991,
+    "margin_change_sd": 0.007786,
+    "revenue_growth_median": -0.008152,
+    "history_years": 5,
     "used_sector_fallback": false
   }
 }

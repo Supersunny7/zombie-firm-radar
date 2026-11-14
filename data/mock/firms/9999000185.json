@@ -1,0 +1,111 @@
+{
+  "cik": "9999000185",
+  "name": "Fairlight Homes Co.",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 14 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-29",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 37858732,
+      "ebit_usd": -4691220,
+      "interest_expense_usd": 60879,
+      "total_debt_usd": 928491,
+      "total_assets_usd": 45898863,
+      "equity_usd": 25576203,
+      "icr": -77.05809885182083,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 59809644,
+      "ebit_usd": -6116457,
+      "interest_expense_usd": 47280,
+      "total_debt_usd": 766617,
+      "total_assets_usd": 95428847,
+      "equity_usd": 49731710,
+      "icr": -129.36668781725888,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 93887848,
+      "ebit_usd": -12319741,
+      "interest_expense_usd": 142490,
+      "total_debt_usd": 2222735,
+      "total_assets_usd": 103125234,
+      "equity_usd": 60780588,
+      "icr": -86.46039020282124,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 136603270,
+      "ebit_usd": -17680804,
+      "interest_expense_usd": 102300,
+      "total_debt_usd": 1671965,
+      "total_assets_usd": 253139921,
+      "equity_usd": 169758869,
+      "icr": -172.83288367546433,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 202602946,
+      "ebit_usd": -23534813,
+      "interest_expense_usd": 237623,
+      "total_debt_usd": 3934033,
+      "total_assets_usd": 321717151,
+      "equity_usd": 182750328,
+      "icr": -99.0426558035207,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": -0.120598,
+    "margin_change_mean": 0.001938,
+    "margin_change_sd": 0.022144,
+    "revenue_growth_median": 0.526463,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,30 +1,30 @@
 {
   "cik": "9999000061",
-  "name": "Everard Stores Holdings",
+  "name": "Dunmore Health Holdings",
   "ticker": null,
-  "sector": "Retail Trade",
+  "sector": "Services",
   "status": "healthy",
   "reasons": [
-    "ICR 2.86 in FY2024, at least 1",
+    "ICR 3.05 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-30",
+    "filed": "2025-03-12",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 1115012127,
-      "ebit_usd": 334503638,
-      "interest_expense_usd": 72855680,
-      "total_debt_usd": 962610751,
-      "total_assets_usd": 1155132902,
-      "equity_usd": 188770728,
-      "icr": 4.591318590396796,
+      "revenue_usd": 142789228,
+      "ebit_usd": 18800194,
+      "interest_expense_usd": 3817200,
+      "total_debt_usd": 78023915,
+      "total_assets_usd": 243539156,
+      "equity_usd": 64252239,
+      "icr": 4.925126794509064,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent",
         "LongTermDebtCurrent"
@@ -32,15 +32,15 @@
     },
     {
       "fy": 2021,
-      "revenue_usd": 1075126811,
-      "ebit_usd": 322538043,
-      "interest_expense_usd": 72287786,
-      "total_debt_usd": 937903949,
-      "total_assets_usd": 1269152529,
-      "equity_usd": 121816001,
-      "icr": 4.46186085986919,
+      "revenue_usd": 142437945,
+      "ebit_usd": 6856885,
+      "interest_expense_usd": 3761693,
+      "total_debt_usd": 75639482,
+      "total_assets_usd": 150616229,
+      "equity_usd": 50465690,
+      "icr": 1.8228188743738525,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent",
         "LongTermDebtCurrent"
@@ -48,15 +48,15 @@
     },
     {
       "fy": 2022,
-      "revenue_usd": 1020190127,
-      "ebit_usd": 306057038,
-      "interest_expense_usd": 75833782,
-      "total_debt_usd": 970420553,
-      "total_assets_usd": 1164504664,
-      "equity_usd": 315744009,
-      "icr": 4.035893106320347,
+      "revenue_usd": 145642752,
+      "ebit_usd": 5538127,
+      "interest_expense_usd": 3940425,
+      "total_debt_usd": 75868490,
+      "total_assets_usd": 247507618,
+      "equity_usd": 37704459,
+      "icr": 1.405464385186877,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent",
         "LongTermDebtCurrent"
@@ -64,15 +64,15 @@
     },
     {
       "fy": 2023,
-      "revenue_usd": 968305641,
-      "ebit_usd": 225985698,
-      "interest_expense_usd": 83055261,
-      "total_debt_usd": 1018757335,
-      "total_assets_usd": 1711877821,
-      "equity_usd": 279202565,
-      "icr": 2.720907685787659,
+      "revenue_usd": 151345277,
+      "ebit_usd": 16198897,
+      "interest_expense_usd": 4393293,
+      "total_debt_usd": 77596062,
+      "total_assets_usd": 151345998,
+      "equity_usd": 20982511,
+      "icr": 3.6871879476283507,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent",
         "LongTermDebtCurrent"
@@ -80,15 +80,15 @@
     },
     {
       "fy": 2024,
-      "revenue_usd": 951021603,
-      "ebit_usd": 245875549,
-      "interest_expense_usd": 85983272,
-      "total_debt_usd": 1022434799,
-      "total_assets_usd": 1449518619,
-      "equity_usd": 156020031,
-      "icr": 2.8595742320669073,
+      "revenue_usd": 155811057,
+      "ebit_usd": 13509976,
+      "interest_expense_usd": 4430173,
+      "total_debt_usd": 77773975,
+      "total_assets_usd": 227319854,
+      "equity_usd": 26279692,
+      "icr": 3.0495368916744336,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent",
         "LongTermDebtCurrent"
@@ -96,10 +96,10 @@
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.278384,
-    "margin_change_mean": -0.010365,
-    "margin_change_sd": 0.039332,
-    "revenue_growth_median": -0.043314,
+    "margin_mean": 0.082314,
+    "margin_change_mean": -0.011239,
+    "margin_change_sd": 0.062579,
+    "revenue_growth_median": 0.026003,
     "history_years": 5,
     "used_sector_fallback": false
   }

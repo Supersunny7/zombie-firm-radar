@@ -1,0 +1,106 @@
+{
+  "cik": "9999000130",
+  "name": "Wexcombe Resources Inc.",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.79 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-16",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 372493984,
+      "ebit_usd": -4940008,
+      "interest_expense_usd": 12262144,
+      "total_debt_usd": 239248880,
+      "total_assets_usd": 645957642,
+      "equity_usd": 159317500,
+      "icr": -0.4028665786342095,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 379045554,
+      "ebit_usd": 71596309,
+      "interest_expense_usd": 11732852,
+      "total_debt_usd": 239029143,
+      "total_assets_usd": 565401562,
+      "equity_usd": 101826295,
+      "icr": 6.1022084826434355,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 386658651,
+      "ebit_usd": 17413423,
+      "interest_expense_usd": 11913690,
+      "total_debt_usd": 229670895,
+      "total_assets_usd": 376191385,
+      "equity_usd": 46255305,
+      "icr": 1.4616313669400496,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 391381420,
+      "ebit_usd": 83152879,
+      "interest_expense_usd": 12409896,
+      "total_debt_usd": 223757080,
+      "total_assets_usd": 479555264,
+      "equity_usd": 81221320,
+      "icr": 6.700529883570337,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 412260236,
+      "ebit_usd": 48468541,
+      "interest_expense_usd": 12796208,
+      "total_debt_usd": 224065212,
+      "total_assets_usd": 695849353,
+      "equity_usd": 192768781,
+      "icr": 3.787726879713115,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.110137,
+    "margin_change_mean": 0.032707,
+    "margin_change_sd": 0.177307,
+    "revenue_growth_median": 0.018837,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

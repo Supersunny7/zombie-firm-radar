@@ -1,0 +1,101 @@
+{
+  "cik": "9999000167",
+  "name": "Stonebrook Farms Holdings",
+  "ticker": null,
+  "sector": "Agriculture, Forestry and Fishing",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.87)",
+    "ICR below 1 in 2 of the last 3 years (FY2023, FY2024)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-11",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 541967055,
+      "ebit_usd": 104304682,
+      "interest_expense_usd": 18372013,
+      "total_debt_usd": 305994239,
+      "total_assets_usd": 960635715,
+      "equity_usd": -77014234,
+      "icr": 5.677368179523931,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 557869553,
+      "ebit_usd": 58536489,
+      "interest_expense_usd": 19718554,
+      "total_debt_usd": 320038502,
+      "total_assets_usd": 821456789,
+      "equity_usd": -76090817,
+      "icr": 2.9685994723548186,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 571207369,
+      "ebit_usd": 124933921,
+      "interest_expense_usd": 21246176,
+      "total_debt_usd": 329117317,
+      "total_assets_usd": 552225313,
+      "equity_usd": 57633596,
+      "icr": 5.8803015187297705,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 580618666,
+      "ebit_usd": -707117,
+      "interest_expense_usd": 21660150,
+      "total_debt_usd": 333104449,
+      "total_assets_usd": 902101888,
+      "equity_usd": -26094070,
+      "icr": -0.032645988139509655,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 597044180,
+      "ebit_usd": 20176973,
+      "interest_expense_usd": 23272371,
+      "total_debt_usd": 336663495,
+      "total_assets_usd": 614143954,
+      "equity_usd": -6122367,
+      "icr": 0.8669925810309572,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.109736,
+    "margin_change_mean": -0.039665,
+    "margin_change_sd": 0.145961,
+    "revenue_growth_median": 0.026099,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

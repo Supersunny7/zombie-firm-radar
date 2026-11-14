@@ -1,100 +1,110 @@
 {
   "cik": "9999000099",
-  "name": "Applegarth Telecom Inc.",
+  "name": "Upperton Homes Group",
   "ticker": null,
-  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "sector": "Construction",
   "status": "healthy",
   "reasons": [
-    "ICR 2.93 in FY2024, at least 1",
+    "ICR 1.51 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-28",
+    "filed": "2025-02-25",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 3584223966,
-      "ebit_usd": 247266710,
-      "interest_expense_usd": 70653045,
-      "total_debt_usd": 1366235920,
-      "total_assets_usd": 4539926034,
-      "equity_usd": 1318125360,
-      "icr": 3.4997318233064125,
+      "revenue_usd": 173783143,
+      "ebit_usd": 17805100,
+      "interest_expense_usd": 6020582,
+      "total_debt_usd": 80211447,
+      "total_assets_usd": 299550665,
+      "equity_usd": 56419508,
+      "icr": 2.957371895275241,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 3813812285,
-      "ebit_usd": 91665779,
-      "interest_expense_usd": 72784491,
-      "total_debt_usd": 1382407142,
-      "total_assets_usd": 3572048043,
-      "equity_usd": 347081481,
-      "icr": 1.2594136160133345,
+      "revenue_usd": 176905945,
+      "ebit_usd": 7300883,
+      "interest_expense_usd": 5941439,
+      "total_debt_usd": 77081144,
+      "total_assets_usd": 246682262,
+      "equity_usd": 25060436,
+      "icr": 1.228807196371115,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 4026562135,
-      "ebit_usd": 494564570,
-      "interest_expense_usd": 78004046,
-      "total_debt_usd": 1433468715,
-      "total_assets_usd": 6298749938,
-      "equity_usd": 325096154,
-      "icr": 6.340242530496431,
+      "revenue_usd": 178201678,
+      "ebit_usd": 8835535,
+      "interest_expense_usd": 6493452,
+      "total_debt_usd": 80859544,
+      "total_assets_usd": 269228240,
+      "equity_usd": 56639852,
+      "icr": 1.360683808858524,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 4322060354,
-      "ebit_usd": 563779328,
-      "interest_expense_usd": 83085994,
-      "total_debt_usd": 1456675367,
-      "total_assets_usd": 5403656549,
-      "equity_usd": 515218727,
-      "icr": 6.785491764111289,
+      "revenue_usd": 179068203,
+      "ebit_usd": 12171633,
+      "interest_expense_usd": 6544272,
+      "total_debt_usd": 80318094,
+      "total_assets_usd": 253540699,
+      "equity_usd": 59304588,
+      "icr": 1.8598910619851987,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 4696264508,
-      "ebit_usd": 264748014,
-      "interest_expense_usd": 90280166,
-      "total_debt_usd": 1470963978,
-      "total_assets_usd": 8355382177,
-      "equity_usd": 2690797070,
-      "icr": 2.932515808621796,
+      "revenue_usd": 178097533,
+      "ebit_usd": 10151873,
+      "interest_expense_usd": 6710543,
+      "total_debt_usd": 79228540,
+      "total_assets_usd": 292735192,
+      "equity_usd": 70267635,
+      "icr": 1.5128243720366594,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.080533,
-    "margin_change_mean": -0.003153,
-    "margin_change_sd": 0.075905,
-    "revenue_growth_median": 0.068721,
+    "margin_mean": 0.063656,
+    "margin_change_mean": -0.011364,
+    "margin_change_sd": 0.035378,
+    "revenue_growth_median": 0.006094,
     "history_years": 5,
     "used_sector_fallback": false
   }

@@ -1,0 +1,101 @@
+{
+  "cik": "9999000166",
+  "name": "Osgood Outfitters Co.",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.43 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-16",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": null,
+      "ebit_usd": 13246717,
+      "interest_expense_usd": 10226833,
+      "total_debt_usd": 206674071,
+      "total_assets_usd": 372479519,
+      "equity_usd": 50297170,
+      "icr": 1.2952902428347075,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": null,
+      "ebit_usd": 28091344,
+      "interest_expense_usd": 10741799,
+      "total_debt_usd": 210404463,
+      "total_assets_usd": 252485356,
+      "equity_usd": 77414268,
+      "icr": 2.615143329343623,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 259864800,
+      "ebit_usd": 18132062,
+      "interest_expense_usd": 11429914,
+      "total_debt_usd": 215423488,
+      "total_assets_usd": 402206212,
+      "equity_usd": 109300424,
+      "icr": 1.5863690662939371,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 260252771,
+      "ebit_usd": 28270161,
+      "interest_expense_usd": 11545593,
+      "total_debt_usd": 209175584,
+      "total_assets_usd": 262170898,
+      "equity_usd": 20415975,
+      "icr": 2.448567258520199,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 270510214,
+      "ebit_usd": 40870650,
+      "interest_expense_usd": 11904282,
+      "total_debt_usd": 204219315,
+      "total_assets_usd": 447876826,
+      "equity_usd": 100962521,
+      "icr": 3.4332730021012607,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.045,
+    "margin_change_mean": -0.002,
+    "margin_change_sd": 0.015,
+    "revenue_growth_median": 0.018,
+    "history_years": 3,
+    "used_sector_fallback": true
+  }
+}

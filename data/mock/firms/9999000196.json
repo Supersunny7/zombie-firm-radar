@@ -1,0 +1,110 @@
+{
+  "cik": "9999000196",
+  "name": "Moorcroft Mills Co.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "insufficient_data",
+  "reasons": [
+    "Fewer than 3 consecutive fiscal years with both EBIT and interest expense available"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-27",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1830189241,
+      "ebit_usd": 388615317,
+      "interest_expense_usd": 67107074,
+      "total_debt_usd": 1059803623,
+      "total_assets_usd": 1891347686,
+      "equity_usd": 355694794,
+      "icr": 5.790973944118022,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1805412406,
+      "ebit_usd": 227266432,
+      "interest_expense_usd": 66203688,
+      "total_debt_usd": 1048688407,
+      "total_assets_usd": 2838747436,
+      "equity_usd": 379486944,
+      "icr": 3.4328364305021797,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1825391784,
+      "ebit_usd": null,
+      "interest_expense_usd": 70391336,
+      "total_debt_usd": 1045023626,
+      "total_assets_usd": 3051857099,
+      "equity_usd": 617855648,
+      "icr": null,
+      "ebit_tag": null,
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1797184641,
+      "ebit_usd": 466855019,
+      "interest_expense_usd": 67582214,
+      "total_debt_usd": 1013119485,
+      "total_assets_usd": 2184465205,
+      "equity_usd": 294753698,
+      "icr": 6.907956862733145,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1788961182,
+      "ebit_usd": 225619870,
+      "interest_expense_usd": 69234607,
+      "total_debt_usd": 983140154,
+      "total_assets_usd": 2912884993,
+      "equity_usd": 871683424,
+      "icr": 3.2587730295053166,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.181026,
+    "margin_change_mean": -0.110054,
+    "margin_change_sd": 0.033373,
+    "revenue_growth_median": -0.009057,
+    "history_years": 4,
+    "used_sector_fallback": false
+  }
+}

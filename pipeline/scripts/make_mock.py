@@ -33,6 +33,8 @@ OUT_DIR = REPO / "data" / "mock"
 
 FISCAL_YEARS = [2020, 2021, 2022, 2023, 2024]
 LATEST_FY = FISCAL_YEARS[-1]
+N_FIRMS = 200
+DGS10 = 0.042  # mock 10-year Treasury, also written to macro.json
 REFERENCE_YEAR = 2025  # age = years since first filing, measured at the 2025 filings
 GENERATED_AT = "2025-03-31T00:00:00Z"
 DEFINITION_VERSION = "2.0"
@@ -41,15 +43,15 @@ DEFINITION_VERSION = "2.0"
 # by the contract; Public Administration is left out to get to 8 divisions.
 # name -> (SIC code pool, firm count incl. Ashgrove)
 SECTORS = {
-    "Agriculture, Forestry and Fishing": (["0100", "0200", "0700", "0900"], 8),
-    "Mining": (["1000", "1040", "1311", "1400"], 14),
-    "Construction": (["1520", "1531", "1600", "1700"], 12),
-    "Manufacturing": (["2834", "3310", "3490", "3559", "3674"], 36),
+    "Agriculture, Forestry and Fishing": (["0100", "0200", "0700", "0900"], 10),
+    "Mining": (["1000", "1040", "1311", "1400"], 19),
+    "Construction": (["1520", "1531", "1600", "1700"], 16),
+    "Manufacturing": (["2834", "3310", "3490", "3559", "3674"], 48),
     "Transportation, Communications, Electric, Gas and Sanitary Services": (
-        ["4011", "4213", "4813", "4911", "4955"], 18),
-    "Wholesale Trade": (["5000", "5065", "5122", "5140"], 14),
-    "Retail Trade": (["5311", "5400", "5651", "5812", "5961"], 18),
-    "Services": (["7370", "7389", "8011", "8200", "8741"], 30),
+        ["4011", "4213", "4813", "4911", "4955"], 24),
+    "Wholesale Trade": (["5000", "5065", "5122", "5140"], 19),
+    "Retail Trade": (["5311", "5400", "5651", "5812", "5961"], 24),
+    "Services": (["7370", "7389", "8011", "8200", "8741"], 40),
 }
 
 # Mock sector medians (hand-set, plausible). Used for fallback rescue_inputs.
@@ -209,25 +211,45 @@ def pattern_from_flags(rng, flags):
     return [draw_low(rng) if f == "L" else draw_high(rng) for f in flags]
 
 
+# Shaped classes the frontend needs (see the builders below). Counts are part of the contract
+# with the frontend: at least 30 / 3 / 3 once the rules have been applied.
+N_NEAR_LINE_HEALTHY = 24
+N_NEAR_LINE_ENDANGERED = 8
+N_MISLABELED = 4
+N_OVERPRICED_ENDANGERED = 2
+N_OVERPRICED_HEALTHY = 2
+N_NEAR_LINE = N_NEAR_LINE_HEALTHY + N_NEAR_LINE_ENDANGERED
+CRIT_MIN_PP, CRIT_MAX_PP = 0.25, 4.95  # near-line critical points spread evenly over this range
+SHAPED_KINDS = ("near_line_healthy", "near_line_endangered", "mislabeled_growth",
+                "overpriced_endangered", "overpriced_healthy")
+N_SHAPED = N_NEAR_LINE + N_MISLABELED + N_OVERPRICED_ENDANGERED + N_OVERPRICED_HEALTHY
+
+
 def build_archetypes(rng):
-    """List of (archetype, expected_status). 149 firms; Ashgrove is the 150th."""
+    """List of (archetype, expected_status). N_FIRMS - 1 firms; Ashgrove is the last one."""
     arch = []
-    arch += [("zombie", "zombie")] * 22
+    arch += [("zombie", "zombie")] * 26
     arch += [("endangered_a", "endangered")] * 10   # only the latest year below 1
     arch += [("endangered_b", "endangered")] * 4    # L H L
     arch += [("endangered_c", "endangered")] * 4    # L L H: 2 of 3, latest fine
     arch += [("endangered_d", "endangered")] * 6    # H L L
     arch += [("endangered_young", "endangered")] * 6  # 3 years below 1, age < 10
-    arch += [("healthy_clean", "healthy")] * 56
+    arch += [("healthy_clean", "healthy")] * 52
     arch += [("healthy_dip", "healthy")] * 20
-    arch += [("healthy_young", "healthy")] * 6
-    arch += [("healthy_norev", "healthy")] * 4      # revenue missing early: sector fallback
-    arch += [("healthy_nodebt", "healthy")] * 4     # total debt missing in latest year
+    arch += [("healthy_young", "healthy")] * 7
+    arch += [("healthy_norev", "healthy")] * 7      # revenue missing early: sector fallback
+    arch += [("healthy_nodebt", "healthy")] * 8     # total debt missing in latest year
     arch += [("insufficient_new", "insufficient_data")] * 2
-    arch += [("insufficient_mid", "insufficient_data")] * 2
+    arch += [("insufficient_mid", "insufficient_data")] * 3
     arch += [("insufficient_alt", "insufficient_data")] * 2
-    arch += [("insufficient_latest", "insufficient_data")] * 1
-    assert len(arch) == 149, len(arch)
+    arch += [("insufficient_latest", "insufficient_data")] * 2
+    # Shaped classes. "expected" is only a self-check: statuses are always computed by classify().
+    arch += [("near_line_healthy", "healthy")] * N_NEAR_LINE_HEALTHY
+    arch += [("near_line_endangered", "endangered")] * N_NEAR_LINE_ENDANGERED
+    arch += [("mislabeled_growth", "zombie")] * N_MISLABELED
+    arch += [("overpriced_endangered", "endangered")] * N_OVERPRICED_ENDANGERED
+    arch += [("overpriced_healthy", "healthy")] * N_OVERPRICED_HEALTHY
+    assert len(arch) == N_FIRMS - 1, len(arch)
     return arch
 
 
@@ -257,7 +279,7 @@ def icr_pattern(rng, kind):
 def pick_first_filing_year(rng, kind):
     if kind in ("zombie", "endangered_a", "endangered_b", "endangered_c", "endangered_d",
                 "healthy_clean", "healthy_dip", "healthy_norev", "healthy_nodebt",
-                "insufficient_mid", "insufficient_alt", "insufficient_latest"):
+                "insufficient_mid", "insufficient_alt", "insufficient_latest") + SHAPED_KINDS:
         return REFERENCE_YEAR - rng.randint(10, 38)
     if kind in ("endangered_young", "healthy_young"):
         return REFERENCE_YEAR - rng.randint(3, 9)   # first filing 2016..2022
@@ -335,6 +357,99 @@ def build_years(rng, kind, ff, icr_targets):
     for r in rows:
         r["icr"] = icr(r["ebit_usd"], r["interest_expense_usd"])
     return rows
+
+
+def _finish_rows(rng, rows_spec, equity_mode):
+    """rows_spec: list of dict(fy, revenue, ebit, interest, debt). Adds assets, equity and tags."""
+    ebit_tag = EBIT_TAG_FALLBACK if rng.random() < 0.15 else EBIT_TAG_PRIMARY
+    rev_tag = REVENUE_TAGS[0] if rng.random() < 0.7 else rng.choice(REVENUE_TAGS[1:])
+    debt_tags = list(rng.choice(DEBT_TAG_SETS))
+    rows = []
+    for sp in rows_spec:
+        if equity_mode == "growth":
+            assets = sp["revenue"] * rng.uniform(1.0, 2.0)
+            equity = assets * rng.uniform(0.40, 0.70)
+        else:
+            assets = max(sp["revenue"] * rng.uniform(0.9, 1.8), sp["debt"] * 1.2)
+            equity = assets * (rng.uniform(-0.15, 0.12) if equity_mode == "thin" else rng.uniform(0.05, 0.35))
+        rows.append(dict(
+            fy=sp["fy"], revenue_usd=round(sp["revenue"]), ebit_usd=round(sp["ebit"]),
+            interest_expense_usd=round(sp["interest"]), total_debt_usd=round(sp["debt"]),
+            total_assets_usd=round(assets), equity_usd=round(equity),
+            ebit_tag=ebit_tag, revenue_tag=rev_tag, debt_tags=list(debt_tags),
+        ))
+    for r in rows:
+        r["icr"] = icr(r["ebit_usd"], r["interest_expense_usd"])
+    return rows
+
+
+def build_years_priced(rng, ff, icr_targets, rate_latest, lev):
+    """Years whose latest-year implied rate and ICR are set directly (near-line and overpriced firms)."""
+    fys = [fy for fy in FISCAL_YEARS if fy >= max(ff, FISCAL_YEARS[0])]
+    rev_latest = math.exp(rng.uniform(math.log(8e7), math.log(1.5e10)))
+    debt_latest = rev_latest * lev
+    growth = rng.uniform(-0.03, 0.05)
+    spec = []
+    for fy in fys:
+        back = LATEST_FY - fy
+        rev = rev_latest / (1 + growth) ** back * (1 + rng.uniform(-0.02, 0.02) * (back > 0))
+        debt = debt_latest * (1 + rng.uniform(-0.03, 0.03) * (back > 0))
+        rate = rate_latest if back == 0 else rate_latest * (1 - 0.03 * back) * (1 + rng.uniform(-0.01, 0.01))
+        interest = debt * rate
+        spec.append(dict(fy=fy, revenue=rev, ebit=icr_targets[FISCAL_YEARS.index(fy)] * interest,
+                         interest=interest, debt=debt))
+    return spec
+
+
+def near_line_rate(rng, crit_pp):
+    """Implied rate for a firm with latest ICR in (1.02, 1.8] and critical point crit_pp.
+    crit = (icr - 1) * rate * 100  =>  icr = 1 + crit / (100 * rate)."""
+    lo = max(0.035, crit_pp / 100 / 0.78)   # keeps ICR <= 1.78
+    hi = min(0.10, crit_pp / 100 / 0.03)    # keeps ICR >= 1.03
+    if lo > hi:
+        raise MockError(f"cannot place a near-line firm at critical point {crit_pp}")
+    return rng.uniform(lo, hi)
+
+
+def build_near_line(rng, kind, ff, crit_pp):
+    rate = near_line_rate(rng, crit_pp)
+    latest_icr = 1 + crit_pp / 100 / rate
+    if kind == "near_line_endangered":
+        targets = [rng.uniform(1.15, 3.0), rng.uniform(1.15, 3.0), draw_low(rng), draw_low(rng), latest_icr]
+    else:
+        targets = [rng.uniform(1.15, 3.0) for _ in range(4)] + [latest_icr]
+    spec = build_years_priced(rng, ff, targets, rate, rng.uniform(0.25, 0.80))
+    return _finish_rows(rng, spec, "thin" if kind == "near_line_endangered" else "normal")
+
+
+def build_overpriced(rng, kind, ff):
+    """Implied rate 12-16%, latest ICR 0.8-1.5, refinance applies at delta = 0 (checked later)."""
+    if kind == "overpriced_endangered":
+        latest_icr = rng.uniform(0.82, 0.95)
+        rate = rng.uniform(0.140, 0.160)   # icr < 1 -> spread 9%: needs rate > 1.02 * 13.2% = 13.46%
+    else:
+        latest_icr = rng.uniform(1.25, 1.50)
+        rate = rng.uniform(0.120, 0.160)   # 1 <= icr < 1.5 -> spread 6%: needs rate > 10.4%
+    targets = [rng.uniform(1.15, 1.8) for _ in range(4)] + [latest_icr]
+    spec = build_years_priced(rng, ff, targets, rate, rng.uniform(0.25, 0.65))
+    return _finish_rows(rng, spec, "normal")
+
+
+def build_mislabeled_growth(rng, ff):
+    """A fast-growing, unprofitable, nearly debt-free firm: negative EBIT in all 5 years, revenue
+    growth 35-60% a year, debt under 5% of assets, small positive interest. The rules call it a zombie."""
+    rev = rng.uniform(1.5e7, 6e7)
+    rate = rng.uniform(0.05, 0.09)
+    margin = rng.uniform(-0.30, -0.12)
+    spec, growths = [], []
+    for fy in FISCAL_YEARS:
+        if fy != FISCAL_YEARS[0]:
+            rev *= 1 + rng.uniform(0.35, 0.60)
+        margin = min(-0.05, margin + rng.uniform(-0.03, 0.04))
+        debt = rev * rng.uniform(0.008, 0.025)  # assets are at least 1.0 x revenue, so debt < 2.5% of assets
+        interest = debt * rate * rng.uniform(0.95, 1.05)
+        spec.append(dict(fy=fy, revenue=rev, ebit=rev * margin, interest=interest, debt=debt))
+    return _finish_rows(rng, spec, "growth")
 
 
 def key_order(r):
@@ -469,18 +584,29 @@ def make_universe(rng):
     sectors = []
     for name, (_, count) in SECTORS.items():
         sectors += [name] * (count - (1 if name == "Manufacturing" else 0))  # Ashgrove takes one slot
-    assert len(sectors) == 149
+    assert len(sectors) == N_FIRMS - 1
     rng.shuffle(sectors)
 
     archetypes = build_archetypes(rng)
     rng.shuffle(archetypes)
     names = make_names(rng, sectors)
 
+    # Critical points of the near-line firms: evenly spaced, handed out in shuffled order.
+    crit_values = [CRIT_MIN_PP + (CRIT_MAX_PP - CRIT_MIN_PP) * k / (N_NEAR_LINE - 1) for k in range(N_NEAR_LINE)]
+    rng.shuffle(crit_values)
+
     firms = []
     for i, ((kind, expected), sector, name) in enumerate(zip(archetypes, sectors, names), start=2):
         ff = pick_first_filing_year(rng, kind)
-        targets = icr_pattern(rng, kind)
-        years = build_years(rng, kind, ff, targets)
+        if kind.startswith("near_line"):
+            years = build_near_line(rng, kind, ff, crit_values.pop())
+        elif kind.startswith("overpriced"):
+            years = build_overpriced(rng, kind, ff)
+        elif kind == "mislabeled_growth":
+            years = build_mislabeled_growth(rng, ff)
+        else:
+            targets = icr_pattern(rng, kind)
+            years = build_years(rng, kind, ff, targets)
         filed = date(2025, 2, 10) + timedelta(days=rng.randint(0, 48))
         firms.append(dict(
             cik=f"9999{i:06d}", name=name, sector=sector, sic=rng.choice(SECTORS[sector][0]),
@@ -571,6 +697,98 @@ def make_keeper_log(rng, index_rows):
         })
         day -= timedelta(days=7)
     return {"entries": entries}
+
+
+# ---------------------------------------------------------------------------
+# Shaped classes: independent checks on the finished data
+# ---------------------------------------------------------------------------
+
+def spread_for(icr_pre):
+    """Credit spread by pre-refinance ICR (rescue-rules.md, tool 4)."""
+    if icr_pre < 1:
+        return 0.09
+    if icr_pre < 1.5:
+        return 0.06
+    if icr_pre < 3:
+        return 0.035
+    return 0.02
+
+
+def refinance_applies(ebit, debt, rate, delta, dgs10):
+    """Tool 4 with no other tool applied: new rate = dgs10 + delta + spread(icr_pre);
+    applies only if 1.02 * new rate < rate + delta."""
+    icr_pre = ebit / (debt * (rate + delta))
+    new_rate = dgs10 + delta + spread_for(icr_pre)
+    return 1.02 * new_rate < rate + delta
+
+
+def critical_point_pp(row):
+    """(EBIT - interest) / total debt * 100 = (latest_icr - 1) * implied_rate * 100."""
+    return (row["latest_icr"] - 1) * row["implied_rate"] * 100
+
+
+def is_near_line(row):
+    return (row["age_years"] >= 10 and row["shock_eligible"] and row["rescue_eligible"]
+            and row["latest_icr"] is not None and 1.0 <= row["latest_icr"] <= 1.8)
+
+
+def is_mislabeled_growth(row, doc):
+    if doc is None or row["age_years"] < 10 or row["status"] != "zombie" or not row["rescue_eligible"]:
+        return False
+    ys = doc["years"]
+    if len(ys) != len(FISCAL_YEARS) or any(y["ebit_usd"] is None or y["ebit_usd"] >= 0 for y in ys):
+        return False
+    if any(not (y["interest_expense_usd"] and y["interest_expense_usd"] > 0) for y in ys):
+        return False
+    if any(b["revenue_usd"] / a["revenue_usd"] - 1 <= 0.30 for a, b in zip(ys, ys[1:])):
+        return False
+    return all(y["total_debt_usd"] < 0.05 * y["total_assets_usd"] for y in ys)
+
+
+def is_overpriced_debt(row, doc):
+    if doc is None or not row["rescue_eligible"] or row["implied_rate"] is None or row["latest_icr"] is None:
+        return False
+    if not (0.12 <= row["implied_rate"] <= 0.16 and 0.8 <= row["latest_icr"] <= 1.5):
+        return False
+    y = doc["years"][-1]
+    return refinance_applies(y["ebit_usd"], y["total_debt_usd"], y["interest_expense_usd"] / y["total_debt_usd"],
+                             0.0, DGS10)
+
+
+def check_shaped_classes(firms, index_rows, firm_files):
+    """Every firm built as a shaped class must satisfy its class rule on the finished data, and the
+    class sizes must reach the minimums. Returns counts per class. Raises MockError otherwise."""
+    rows = {r["cik"]: r for r in index_rows}
+    pred = {
+        "near_line": lambda r, d: is_near_line(r),
+        "mislabeled_growth": is_mislabeled_growth,
+        "overpriced_debt": is_overpriced_debt,
+    }
+    built = {"near_line": ("near_line_healthy", "near_line_endangered"),
+             "mislabeled_growth": ("mislabeled_growth",),
+             "overpriced_debt": ("overpriced_endangered", "overpriced_healthy")}
+    minimum = {"near_line": 30, "mislabeled_growth": 3, "overpriced_debt": 3}
+    counts = {}
+    for cls, kinds in built.items():
+        for f in firms:
+            if f["kind"] in kinds:
+                row, doc = rows[f["cik"]], firm_files.get(f["cik"])
+                if not pred[cls](row, doc):
+                    raise MockError(f"{f['cik']} built as {f['kind']} but fails the {cls} rule")
+                if cls == "overpriced_debt":  # explicit assert of the delta = 0 refinance condition
+                    y = doc["years"][-1]
+                    r = y["interest_expense_usd"] / y["total_debt_usd"]
+                    assert refinance_applies(y["ebit_usd"], y["total_debt_usd"], r, 0.0, DGS10), f["cik"]
+        counts[cls] = sum(1 for f in firms if pred[cls](rows[f["cik"]], firm_files.get(f["cik"])))
+        if counts[cls] < minimum[cls]:
+            raise MockError(f"only {counts[cls]} {cls} firms, need at least {minimum[cls]}")
+    # Near-line firms: critical points must be spread evenly over 0.25..5 pp (at least 2 per 0.5-pp bin).
+    crit = [critical_point_pp(rows[f["cik"]]) for f in firms if f["kind"].startswith("near_line")]
+    bins = [sum(1 for c in crit if 0.5 * b <= c < 0.5 * (b + 1)) for b in range(10)]
+    if min(crit) < 0.2 or max(crit) > 5.0 or min(bins) < 2:
+        raise MockError(f"near-line critical points are not spread evenly: bins {bins}, range {min(crit):.3f}..{max(crit):.3f}")
+    counts["near_line_bins"] = bins
+    return counts
 
 
 # ---------------------------------------------------------------------------
@@ -701,6 +919,9 @@ def main():
 
     counts = {k: sum(1 for r in index_rows if r["status"] == k)
               for k in ("zombie", "endangered", "healthy", "insufficient_data")}
+    if len(index_rows) != N_FIRMS:
+        raise MockError(f"expected {N_FIRMS} firms, built {len(index_rows)}")
+    class_counts = check_shaped_classes(firms, index_rows, firm_files)
     index = {
         "meta": {
             "generated_at": GENERATED_AT,
@@ -712,7 +933,7 @@ def main():
         "firms": index_rows,
     }
     macro = {
-        "dgs10": {"value": 0.042, "date": "2025-03-28", "source": "FRED DGS10"},
+        "dgs10": {"value": DGS10, "date": "2025-03-28", "source": "FRED DGS10"},
         "sector_medians": {name: dict(SECTOR_MEDIANS[name]) for name in SECTORS},
     }
     keeper = make_keeper_log(rng, index_rows)
@@ -751,6 +972,11 @@ def main():
     print("Status counts:")
     for k, v in counts.items():
         print(f"  {k:<18}{v:>4}  ({v / total:.1%})")
+    print("Shaped classes (counted by the class rules, on the written data):")
+    print(f"  near the line (age>=10, ICR 1.0-1.8)      {class_counts['near_line']:>3}")
+    print(f"    critical points per 0.5-pp bin 0..5: {class_counts['near_line_bins']}")
+    print(f"  mislabeled growth                         {class_counts['mislabeled_growth']:>3}")
+    print(f"  overpriced debt (refinance applies, d=0)  {class_counts['overpriced_debt']:>3}")
     ash = firm_files["9999000001"]
     print(f"Ashgrove Works: status = {ash['status']}")
     for reason in ash["reasons"]:

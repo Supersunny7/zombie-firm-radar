@@ -1,0 +1,111 @@
+{
+  "cik": "9999000171",
+  "name": "Saltmarsh Health Holdings",
+  "ticker": null,
+  "sector": "Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.04 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-09",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2047576651,
+      "ebit_usd": 204434513,
+      "interest_expense_usd": 57243349,
+      "total_debt_usd": 777522908,
+      "total_assets_usd": 3566026214,
+      "equity_usd": 467274847,
+      "icr": 3.5713234213462948,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1951891734,
+      "ebit_usd": 217983721,
+      "interest_expense_usd": 56749681,
+      "total_debt_usd": 765496049,
+      "total_assets_usd": 3027579886,
+      "equity_usd": 957240519,
+      "icr": 3.841144428635643,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1861804662,
+      "ebit_usd": 367804444,
+      "interest_expense_usd": 58071832,
+      "total_debt_usd": 746514278,
+      "total_assets_usd": 1721959461,
+      "equity_usd": 280566554,
+      "icr": 6.33361186194367,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1797929374,
+      "ebit_usd": 437426910,
+      "interest_expense_usd": 62988203,
+      "total_debt_usd": 765037811,
+      "total_assets_usd": 2559372431,
+      "equity_usd": 788588514,
+      "icr": 6.944584686754756,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1801157188,
+      "ebit_usd": 319125652,
+      "interest_expense_usd": 63313933,
+      "total_debt_usd": 746242637,
+      "total_assets_usd": 2086039955,
+      "equity_usd": 672463945,
+      "icr": 5.040370055671632,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.165909,
+    "margin_change_mean": 0.019334,
+    "margin_change_sd": 0.064506,
+    "revenue_growth_median": -0.040231,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

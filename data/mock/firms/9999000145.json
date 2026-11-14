@@ -1,101 +1,100 @@
 {
   "cik": "9999000145",
-  "name": "Gilmore Partners Group",
+  "name": "Ingleby Mills Co.",
   "ticker": null,
-  "sector": "Services",
-  "status": "healthy",
+  "sector": "Manufacturing",
+  "status": "insufficient_data",
   "reasons": [
-    "ICR 4.60 in FY2024, at least 1",
-    "No more than one year below 1 in the last 3"
+    "Fewer than 3 consecutive fiscal years with both EBIT and interest expense available"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-22",
+    "filed": "2025-02-11",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 249454550,
-      "ebit_usd": 13829815,
-      "interest_expense_usd": 4144220,
-      "total_debt_usd": 79268509,
-      "total_assets_usd": 287539454,
-      "equity_usd": 21510767,
-      "icr": 3.3371334050798462,
+      "revenue_usd": 114247317,
+      "ebit_usd": 10762400,
+      "interest_expense_usd": 2692844,
+      "total_debt_usd": 33347515,
+      "total_assets_usd": 180876010,
+      "equity_usd": 49901086,
+      "icr": 3.9966667211320077,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 259147826,
-      "ebit_usd": 23005792,
-      "interest_expense_usd": 3983960,
-      "total_debt_usd": 81248934,
-      "total_assets_usd": 311977339,
-      "equity_usd": 29420844,
-      "icr": 5.7746041626923965,
-      "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_usd": 111699249,
+      "ebit_usd": null,
+      "interest_expense_usd": null,
+      "total_debt_usd": 33796804,
+      "total_assets_usd": 181075751,
+      "equity_usd": 37078041,
+      "icr": null,
+      "ebit_tag": null,
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 265373639,
-      "ebit_usd": 10444265,
-      "interest_expense_usd": 4160885,
-      "total_debt_usd": 79327990,
-      "total_assets_usd": 382581895,
-      "equity_usd": 20170369,
-      "icr": 2.510106623951395,
+      "revenue_usd": 107277970,
+      "ebit_usd": 19466512,
+      "interest_expense_usd": 2905147,
+      "total_debt_usd": 34421076,
+      "total_assets_usd": 114233748,
+      "equity_usd": 23999623,
+      "icr": 6.700697761593475,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 276347112,
-      "ebit_usd": 24094968,
-      "interest_expense_usd": 4727149,
-      "total_debt_usd": 81688350,
-      "total_assets_usd": 267126863,
-      "equity_usd": 63731006,
-      "icr": 5.097145869529393,
-      "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_usd": 106834823,
+      "ebit_usd": null,
+      "interest_expense_usd": null,
+      "total_debt_usd": 35081053,
+      "total_assets_usd": 142917005,
+      "equity_usd": 26922807,
+      "icr": null,
+      "ebit_tag": null,
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 288155982,
-      "ebit_usd": 23294724,
-      "interest_expense_usd": 5058996,
-      "total_debt_usd": 82804449,
-      "total_assets_usd": 355171842,
-      "equity_usd": 100630652,
-      "icr": 4.604614038042331,
+      "revenue_usd": 104975879,
+      "ebit_usd": 7358139,
+      "interest_expense_usd": 3051451,
+      "total_debt_usd": 34055846,
+      "total_assets_usd": 138630704,
+      "equity_usd": 38994430,
+      "icr": 2.4113574165208616,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.070321,
-    "margin_change_mean": 0.00635,
-    "margin_change_sd": 0.043667,
-    "revenue_growth_median": 0.040104,
-    "history_years": 5,
-    "used_sector_fallback": false
+    "margin_mean": 0.07,
+    "margin_change_mean": -0.002,
+    "margin_change_sd": 0.018,
+    "revenue_growth_median": 0.02,
+    "history_years": 3,
+    "used_sector_fallback": true
   }
 }

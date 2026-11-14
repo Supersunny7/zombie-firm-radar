@@ -1,0 +1,101 @@
+{
+  "cik": "9999000199",
+  "name": "Dovecote Industries Group",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 11 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-20",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 207237497,
+      "ebit_usd": 3168119,
+      "interest_expense_usd": 5006188,
+      "total_debt_usd": 131565498,
+      "total_assets_usd": 245517257,
+      "equity_usd": -9442956,
+      "icr": 0.6328405964777991,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 209035429,
+      "ebit_usd": 7776414,
+      "interest_expense_usd": 5004186,
+      "total_debt_usd": 133879951,
+      "total_assets_usd": 343709037,
+      "equity_usd": 40375198,
+      "icr": 1.5539818064316555,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 217755654,
+      "ebit_usd": 4677620,
+      "interest_expense_usd": 5179288,
+      "total_debt_usd": 130394637,
+      "total_assets_usd": 341539180,
+      "equity_usd": 40896167,
+      "icr": 0.9031395821201679,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 226470295,
+      "ebit_usd": 3966518,
+      "interest_expense_usd": 5575903,
+      "total_debt_usd": 132227221,
+      "total_assets_usd": 322144091,
+      "equity_usd": -31772466,
+      "icr": 0.7113678268793413,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 235534158,
+      "ebit_usd": 2258884,
+      "interest_expense_usd": 6259249,
+      "total_debt_usd": 136051368,
+      "total_assets_usd": 326425908,
+      "equity_usd": -26339047,
+      "icr": 0.3608873844130502,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.020215,
+    "margin_change_mean": -0.001424,
+    "margin_change_sd": 0.016307,
+    "revenue_growth_median": 0.040021,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

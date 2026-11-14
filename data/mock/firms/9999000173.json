@@ -1,0 +1,105 @@
+{
+  "cik": "9999000173",
+  "name": "Zelmont Partners Corp.",
+  "ticker": null,
+  "sector": "Services",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.90)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-11",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1079494880,
+      "ebit_usd": 69172574,
+      "interest_expense_usd": 27518658,
+      "total_debt_usd": 408527199,
+      "total_assets_usd": 1536498397,
+      "equity_usd": 465468071,
+      "icr": 2.513660876922123,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1118961155,
+      "ebit_usd": 99278266,
+      "interest_expense_usd": 26182086,
+      "total_debt_usd": 392300359,
+      "total_assets_usd": 1559330902,
+      "equity_usd": 285894240,
+      "icr": 3.7918394279202965,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1107057176,
+      "ebit_usd": 134251146,
+      "interest_expense_usd": 27281215,
+      "total_debt_usd": 395354711,
+      "total_assets_usd": 1275653349,
+      "equity_usd": 156902246,
+      "icr": 4.921010519509487,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1133332847,
+      "ebit_usd": 174536621,
+      "interest_expense_usd": 30035441,
+      "total_debt_usd": 407208449,
+      "total_assets_usd": 1868414716,
+      "equity_usd": 584256422,
+      "icr": 5.811022418482219,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1114714950,
+      "ebit_usd": 27809929,
+      "interest_expense_usd": 30863177,
+      "total_debt_usd": 413865149,
+      "total_assets_usd": 1802260332,
+      "equity_usd": 173212885,
+      "icr": 0.9010714937091537,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.090604,
+    "margin_change_mean": -0.009783,
+    "margin_change_sd": 0.079604,
+    "revenue_growth_median": 0.006548,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "cik": "9999000198",
+  "name": "Nettlefold Mills Co.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.37 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-09",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2977214150,
+      "ebit_usd": 515860839,
+      "interest_expense_usd": 100781156,
+      "total_debt_usd": 1437875984,
+      "total_assets_usd": 4148382295,
+      "equity_usd": 845970415,
+      "icr": 5.118623951882434,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 3091921674,
+      "ebit_usd": 198504567,
+      "interest_expense_usd": 108542342,
+      "total_debt_usd": 1473008641,
+      "total_assets_usd": 3334537856,
+      "equity_usd": 664408615,
+      "icr": 1.8288214842462125,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 3100332053,
+      "ebit_usd": 663939972,
+      "interest_expense_usd": 108954498,
+      "total_debt_usd": 1439134839,
+      "total_assets_usd": 4851541624,
+      "equity_usd": 1297207579,
+      "icr": 6.09373623106409,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 3064136282,
+      "ebit_usd": 255496774,
+      "interest_expense_usd": 107880378,
+      "total_debt_usd": 1408506351,
+      "total_assets_usd": 3048135178,
+      "equity_usd": 424459966,
+      "icr": 2.368334063493919,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 3009106424,
+      "ebit_usd": 272566893,
+      "interest_expense_usd": 114779645,
+      "total_debt_usd": 1389799844,
+      "total_assets_usd": 4372503624,
+      "equity_usd": 665692160,
+      "icr": 2.3746971250869437,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.125117,
+    "margin_change_mean": -0.020672,
+    "margin_change_sd": 0.128872,
+    "revenue_growth_median": -0.004477,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

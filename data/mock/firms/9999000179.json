@@ -1,0 +1,106 @@
+{
+  "cik": "9999000179",
+  "name": "Dunmore Homes Group",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.96 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-10",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": null,
+      "ebit_usd": 2297322088,
+      "interest_expense_usd": 402184595,
+      "total_debt_usd": 6365027335,
+      "total_assets_usd": 8738134022,
+      "equity_usd": 966336210,
+      "icr": 5.712108610226605,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": null,
+      "ebit_usd": 2285034618,
+      "interest_expense_usd": 388213611,
+      "total_debt_usd": 6531874365,
+      "total_assets_usd": 11159029386,
+      "equity_usd": 1604043802,
+      "icr": 5.886023965295745,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 7500285710,
+      "ebit_usd": 2229849858,
+      "interest_expense_usd": 413843274,
+      "total_debt_usd": 6413620720,
+      "total_assets_usd": 10003357326,
+      "equity_usd": 3284584911,
+      "icr": 5.38815053449437,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 7398880112,
+      "ebit_usd": 1477377794,
+      "interest_expense_usd": 434922871,
+      "total_debt_usd": 6596099495,
+      "total_assets_usd": 11073589487,
+      "equity_usd": 820544177,
+      "icr": 3.3968730837335066,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 7215390867,
+      "ebit_usd": 1835471693,
+      "interest_expense_usd": 463474924,
+      "total_debt_usd": 6702485328,
+      "total_assets_usd": 12894134692,
+      "equity_usd": 1046738967,
+      "icr": 3.9602394821256826,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.055,
+    "margin_change_mean": -0.001,
+    "margin_change_sd": 0.02,
+    "revenue_growth_median": 0.025,
+    "history_years": 3,
+    "used_sector_fallback": true
+  }
+}

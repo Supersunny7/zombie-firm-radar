@@ -1,110 +1,101 @@
 {
   "cik": "9999000012",
-  "name": "Yarrowdale Consulting Group",
+  "name": "Wexcombe Health Inc.",
   "ticker": null,
   "sector": "Services",
-  "status": "endangered",
+  "status": "healthy",
   "reasons": [
-    "ICR below 1 in 2 of the last 3 years (FY2022, FY2023)"
+    "ICR 1.63 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-18",
+    "filed": "2025-03-27",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 90049055,
-      "ebit_usd": 7094183,
-      "interest_expense_usd": 2607325,
-      "total_debt_usd": 75462863,
-      "total_assets_usd": 92168890,
-      "equity_usd": -7077253,
-      "icr": 2.720866405223745,
+      "revenue_usd": null,
+      "ebit_usd": 320258969,
+      "interest_expense_usd": 239082288,
+      "total_debt_usd": 3208576291,
+      "total_assets_usd": 13581832018,
+      "equity_usd": 946751709,
+      "icr": 1.3395344827886204,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": null,
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 94481378,
-      "ebit_usd": 6013393,
-      "interest_expense_usd": 2777502,
-      "total_debt_usd": 76758327,
-      "total_assets_usd": 106591306,
-      "equity_usd": 247382,
-      "icr": 2.1650364248162557,
+      "revenue_usd": null,
+      "ebit_usd": 1308760639,
+      "interest_expense_usd": 245816833,
+      "total_debt_usd": 3305173099,
+      "total_assets_usd": 8729135847,
+      "equity_usd": 473827220,
+      "icr": 5.324129446415901,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": null,
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 97507671,
-      "ebit_usd": 2593206,
-      "interest_expense_usd": 2973481,
-      "total_debt_usd": 78072435,
-      "total_assets_usd": 98742446,
-      "equity_usd": -3024705,
-      "icr": 0.8721111720572622,
+      "revenue_usd": 7730223920,
+      "ebit_usd": 1023147065,
+      "interest_expense_usd": 277340707,
+      "total_debt_usd": 3464064006,
+      "total_assets_usd": 8357021204,
+      "equity_usd": 1330357867,
+      "icr": 3.6891341197886254,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 103220576,
-      "ebit_usd": 2512346,
-      "interest_expense_usd": 3271758,
-      "total_debt_usd": 77296397,
-      "total_assets_usd": 113652389,
-      "equity_usd": 10493822,
-      "icr": 0.7678887008146691,
+      "revenue_usd": 7507513089,
+      "ebit_usd": 800921679,
+      "interest_expense_usd": 275555222,
+      "total_debt_usd": 3438256880,
+      "total_assets_usd": 12794740315,
+      "equity_usd": 3017317352,
+      "icr": 2.9065741276352948,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 111730078,
-      "ebit_usd": 9448383,
-      "interest_expense_usd": 3608441,
-      "total_debt_usd": 78153889,
-      "total_assets_usd": 195030584,
-      "equity_usd": 8141047,
-      "icr": 2.6184113859697304,
+      "revenue_usd": 7502173133,
+      "ebit_usd": 495680559,
+      "interest_expense_usd": 303787673,
+      "total_debt_usd": 3562499730,
+      "total_assets_usd": 8596791855,
+      "equity_usd": 1655255129,
+      "icr": 1.6316677833073234,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.055585,
-    "margin_change_mean": 0.001446,
-    "margin_change_sd": 0.041736,
-    "revenue_growth_median": 0.053905,
-    "history_years": 5,
-    "used_sector_fallback": false
+    "margin_mean": 0.08,
+    "margin_change_mean": -0.002,
+    "margin_change_sd": 0.025,
+    "revenue_growth_median": 0.03,
+    "history_years": 3,
+    "used_sector_fallback": true
   }
 }

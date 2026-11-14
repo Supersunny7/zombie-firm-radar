@@ -1,0 +1,100 @@
+{
+  "cik": "9999000165",
+  "name": "Birchall Works Group",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in 2 of the last 3 years (FY2022, FY2023)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-30",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 4869579798,
+      "ebit_usd": 724097843,
+      "interest_expense_usd": 361734487,
+      "total_debt_usd": 4456567148,
+      "total_assets_usd": 6272427217,
+      "equity_usd": 394994109,
+      "icr": 2.0017384822918474,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 5107777678,
+      "ebit_usd": 516888177,
+      "interest_expense_usd": 377956404,
+      "total_debt_usd": 4472691697,
+      "total_assets_usd": 6102958954,
+      "equity_usd": 646129189,
+      "icr": 1.3675867680231184,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 5329757717,
+      "ebit_usd": 318811828,
+      "interest_expense_usd": 377791572,
+      "total_debt_usd": 4355490712,
+      "total_assets_usd": 8725401452,
+      "equity_usd": 648818832,
+      "icr": 0.8438828487153228,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 5333915883,
+      "ebit_usd": 274704351,
+      "interest_expense_usd": 388394602,
+      "total_debt_usd": 4338692104,
+      "total_assets_usd": 5461255241,
+      "equity_usd": -768443565,
+      "icr": 0.707281588326503,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 5628783583,
+      "ebit_usd": 559423248,
+      "interest_expense_usd": 412749592,
+      "total_debt_usd": 4468681418,
+      "total_assets_usd": 9588725825,
+      "equity_usd": -181332364,
+      "icr": 1.3553574827034596,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.09212,
+    "margin_change_mean": -0.012328,
+    "margin_change_sd": 0.043676,
+    "revenue_growth_median": 0.046187,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

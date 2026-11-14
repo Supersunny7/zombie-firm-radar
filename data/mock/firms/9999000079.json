@@ -1,110 +1,105 @@
 {
   "cik": "9999000079",
-  "name": "Ainsley Freight Corp.",
+  "name": "Yarrowdale Industries Corp.",
   "ticker": null,
-  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
-  "status": "healthy",
+  "sector": "Manufacturing",
+  "status": "zombie",
   "reasons": [
-    "ICR 2.41 in FY2024, at least 1",
-    "No more than one year below 1 in the last 3"
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 38 years (first filing proxy), at least 10"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-17",
+    "filed": "2025-02-23",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 180341518,
-      "ebit_usd": 54102455,
-      "interest_expense_usd": 12165014,
-      "total_debt_usd": 156996199,
-      "total_assets_usd": 257537201,
-      "equity_usd": 58038987,
-      "icr": 4.447381236059408,
+      "revenue_usd": 1114451799,
+      "ebit_usd": 21307792,
+      "interest_expense_usd": 38023354,
+      "total_debt_usd": 847470132,
+      "total_assets_usd": 1469694185,
+      "equity_usd": 48392336,
+      "icr": 0.5603869663891302,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 176499379,
-      "ebit_usd": 31616048,
-      "interest_expense_usd": 12534323,
-      "total_debt_usd": 158401055,
-      "total_assets_usd": 287540253,
-      "equity_usd": 32536826,
-      "icr": 2.52235784892411,
+      "revenue_usd": 1067272839,
+      "ebit_usd": 30237210,
+      "interest_expense_usd": 38988487,
+      "total_debt_usd": 831848737,
+      "total_assets_usd": 1857862947,
+      "equity_usd": -51536135,
+      "icr": 0.7755420209047866,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 170630448,
-      "ebit_usd": 31415651,
-      "interest_expense_usd": 12666490,
-      "total_debt_usd": 156400155,
-      "total_assets_usd": 301428679,
-      "equity_usd": 81237898,
-      "icr": 2.4802175661923704,
+      "revenue_usd": 1028620201,
+      "ebit_usd": 38186627,
+      "interest_expense_usd": 42559212,
+      "total_debt_usd": 839132495,
+      "total_assets_usd": 1109422018,
+      "equity_usd": 3574872,
+      "icr": 0.8972587885320809,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 167298421,
-      "ebit_usd": 38544177,
-      "interest_expense_usd": 13218795,
-      "total_debt_usd": 160615572,
-      "total_assets_usd": 192738686,
-      "equity_usd": 53477357,
-      "icr": 2.915861619761862,
+      "revenue_usd": 997516009,
+      "ebit_usd": 3310266,
+      "interest_expense_usd": 44286034,
+      "total_debt_usd": 837090221,
+      "total_assets_usd": 1454596012,
+      "equity_usd": -180714111,
+      "icr": 0.07474740230746334,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 160699124,
-      "ebit_usd": 34575292,
-      "interest_expense_usd": 14371845,
-      "total_debt_usd": 166996923,
-      "total_assets_usd": 278387634,
-      "equity_usd": 69746185,
-      "icr": 2.4057657176235896,
+      "revenue_usd": 953357211,
+      "ebit_usd": 18096262,
+      "interest_expense_usd": 49583217,
+      "total_debt_usd": 876251616,
+      "total_assets_usd": 1566432208,
+      "equity_usd": -164694198,
+      "icr": 0.36496748486488884,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.221758,
-    "margin_change_mean": -0.021211,
-    "margin_change_sd": 0.071201,
-    "revenue_growth_median": -0.027278,
+    "margin_mean": 0.021375,
+    "margin_change_mean": -3.4e-05,
+    "margin_change_sd": 0.022733,
+    "revenue_growth_median": -0.039275,
     "history_years": 5,
     "used_sector_fallback": false
   }

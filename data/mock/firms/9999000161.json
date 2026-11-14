@@ -1,0 +1,111 @@
+{
+  "cik": "9999000161",
+  "name": "Hollinger Civil Group",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.90 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-28",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2712642752,
+      "ebit_usd": 519550173,
+      "interest_expense_usd": 121723434,
+      "total_debt_usd": 1891304753,
+      "total_assets_usd": 3574741873,
+      "equity_usd": 1076887018,
+      "icr": 4.268283895112588,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 2808872593,
+      "ebit_usd": 659380563,
+      "interest_expense_usd": 120631629,
+      "total_debt_usd": 1868389146,
+      "total_assets_usd": 3776858307,
+      "equity_usd": 999486683,
+      "icr": 5.4660669715402745,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 2981223030,
+      "ebit_usd": 759098982,
+      "interest_expense_usd": 127338369,
+      "total_debt_usd": 1858538498,
+      "total_assets_usd": 2877004282,
+      "equity_usd": 991595898,
+      "icr": 5.961274578599323,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 3030441653,
+      "ebit_usd": 649452711,
+      "interest_expense_usd": 125264443,
+      "total_debt_usd": 1816272546,
+      "total_assets_usd": 3852052658,
+      "equity_usd": 619123273,
+      "icr": 5.184653325764598,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 3095353320,
+      "ebit_usd": 524947074,
+      "interest_expense_usd": 134680170,
+      "total_debt_usd": 1816437599,
+      "total_assets_usd": 3971043948,
+      "equity_usd": 786461809,
+      "icr": 3.897731002270045,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.212961,
+    "margin_change_mean": -0.005484,
+    "margin_change_sd": 0.043848,
+    "revenue_growth_median": 0.028447,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,110 +1,100 @@
 {
   "cik": "9999000019",
-  "name": "Birchall Consulting Inc.",
+  "name": "Moorcroft Supply Holdings",
   "ticker": null,
-  "sector": "Services",
-  "status": "zombie",
+  "sector": "Wholesale Trade",
+  "status": "healthy",
   "reasons": [
-    "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 31 years (first filing proxy), at least 10"
+    "ICR 6.04 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-04",
+    "filed": "2025-03-09",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 1061933497,
-      "ebit_usd": -3273314,
-      "interest_expense_usd": 37395166,
-      "total_debt_usd": 920060421,
-      "total_assets_usd": 1104072505,
-      "equity_usd": -49904618,
-      "icr": -0.08753307847329786,
+      "revenue_usd": 1446323938,
+      "ebit_usd": 100597265,
+      "interest_expense_usd": 26645014,
+      "total_debt_usd": 508703182,
+      "total_assets_usd": 2174864533,
+      "equity_usd": 277005388,
+      "icr": 3.7754630190849214,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 1051716884,
-      "ebit_usd": 210976810,
-      "interest_expense_usd": 37422636,
-      "total_debt_usd": 931696578,
-      "total_assets_usd": 1118035893,
-      "equity_usd": 74382869,
-      "icr": 5.637679024000341,
+      "revenue_usd": 1560540523,
+      "ebit_usd": 75721727,
+      "interest_expense_usd": 27401945,
+      "total_debt_usd": 489016869,
+      "total_assets_usd": 2123080104,
+      "equity_usd": 617276692,
+      "icr": 2.7633705198663816,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 1036502476,
-      "ebit_usd": 26376432,
-      "interest_expense_usd": 38569388,
-      "total_debt_usd": 918404520,
-      "total_assets_usd": 1266346467,
-      "equity_usd": 64048056,
-      "icr": 0.6838696014569897,
+      "revenue_usd": 1622903456,
+      "ebit_usd": 129403908,
+      "interest_expense_usd": 27358561,
+      "total_debt_usd": 493816827,
+      "total_assets_usd": 2368354509,
+      "equity_usd": 361847188,
+      "icr": 4.72992377047901,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 1024041716,
-      "ebit_usd": -27575075,
-      "interest_expense_usd": 40574068,
-      "total_debt_usd": 936655222,
-      "total_assets_usd": 1713210681,
-      "equity_usd": -99860171,
-      "icr": -0.6796231277573647,
+      "revenue_usd": 1737249280,
+      "ebit_usd": 47785502,
+      "interest_expense_usd": 31580566,
+      "total_debt_usd": 510346885,
+      "total_assets_usd": 1568115608,
+      "equity_usd": 368138009,
+      "icr": 1.5131300053330266,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 1003728617,
-      "ebit_usd": 26440864,
-      "interest_expense_usd": 44790412,
-      "total_debt_usd": 936140951,
-      "total_assets_usd": 1701653647,
-      "equity_usd": -57719494,
-      "icr": 0.590324197062532,
+      "revenue_usd": 1885307727,
+      "ebit_usd": 196760389,
+      "interest_expense_usd": 32588699,
+      "total_debt_usd": 518235571,
+      "total_assets_usd": 2133998139,
+      "equity_usd": 638769058,
+      "icr": 6.037687757955603,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.044476,
-    "margin_change_mean": 0.007356,
-    "margin_change_sd": 0.16076,
-    "revenue_growth_median": -0.013244,
+    "margin_mean": 0.065937,
+    "margin_change_mean": 0.008703,
+    "margin_change_sd": 0.057005,
+    "revenue_growth_median": 0.074714,
     "history_years": 5,
     "used_sector_fallback": false
   }

@@ -1,0 +1,106 @@
+{
+  "cik": "9999000157",
+  "name": "Everard Health Group",
+  "ticker": null,
+  "sector": "Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.79 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-19",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 633486882,
+      "ebit_usd": 128147675,
+      "interest_expense_usd": 29646027,
+      "total_debt_usd": 364397892,
+      "total_assets_usd": 703287732,
+      "equity_usd": 117256655,
+      "icr": 4.3225918602853595,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 660937013,
+      "ebit_usd": 54613384,
+      "interest_expense_usd": 29966401,
+      "total_debt_usd": 365554614,
+      "total_assets_usd": 1019380622,
+      "equity_usd": 289858211,
+      "icr": 1.8224872583130687,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 689091319,
+      "ebit_usd": 148452143,
+      "interest_expense_usd": 29359626,
+      "total_debt_usd": 357876762,
+      "total_assets_usd": 1023470924,
+      "equity_usd": 252980018,
+      "icr": 5.056336310278612,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 711796927,
+      "ebit_usd": 156273079,
+      "interest_expense_usd": 33100030,
+      "total_debt_usd": 373532599,
+      "total_assets_usd": 805208651,
+      "equity_usd": 55762418,
+      "icr": 4.721236778335246,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 734512950,
+      "ebit_usd": 90315368,
+      "interest_expense_usd": 32370611,
+      "total_debt_usd": 359664977,
+      "total_assets_usd": 985485291,
+      "equity_usd": 142463010,
+      "icr": 2.790042115670909,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.168572,
+    "margin_change_mean": -0.019832,
+    "margin_change_sd": 0.115076,
+    "revenue_growth_median": 0.037774,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "cik": "9999000159",
+  "name": "Mossgrove Supply Corp.",
+  "ticker": null,
+  "sector": "Wholesale Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.85 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-03",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1893246558,
+      "ebit_usd": 157170646,
+      "interest_expense_usd": 37871595,
+      "total_debt_usd": 507640644,
+      "total_assets_usd": 2444383533,
+      "equity_usd": 580666013,
+      "icr": 4.15009312388348,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1901536781,
+      "ebit_usd": 281320883,
+      "interest_expense_usd": 40326497,
+      "total_debt_usd": 528678526,
+      "total_assets_usd": 2780570698,
+      "equity_usd": 810215460,
+      "icr": 6.9760803424110955,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1914095090,
+      "ebit_usd": 207574335,
+      "interest_expense_usd": 39481144,
+      "total_debt_usd": 514997191,
+      "total_assets_usd": 2939864005,
+      "equity_usd": 491412996,
+      "icr": 5.257556240011688,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1856871756,
+      "ebit_usd": 167791918,
+      "interest_expense_usd": 40844506,
+      "total_debt_usd": 512040987,
+      "total_assets_usd": 3298534903,
+      "equity_usd": 1012194113,
+      "icr": 4.108065794699537,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1819164822,
+      "ebit_usd": 254723767,
+      "interest_expense_usd": 43505779,
+      "total_debt_usd": 511606020,
+      "total_assets_usd": 1864154358,
+      "equity_usd": 631006125,
+      "icr": 5.854940949339167,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.113958,
+    "margin_change_mean": 0.014251,
+    "margin_change_sd": 0.050847,
+    "revenue_growth_median": -0.007964,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

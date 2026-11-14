@@ -1,100 +1,104 @@
 {
   "cik": "9999000094",
-  "name": "Whitlock Mills Corp.",
+  "name": "Ketteridge Health Group",
   "ticker": null,
-  "sector": "Manufacturing",
-  "status": "healthy",
+  "sector": "Services",
+  "status": "endangered",
   "reasons": [
-    "ICR 4.44 in FY2024, at least 1",
-    "No more than one year below 1 in the last 3"
+    "ICR below 1 in 2 of the last 3 years (FY2022, FY2023)"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-22",
+    "filed": "2025-02-14",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 13760154085,
-      "ebit_usd": 1957433714,
-      "interest_expense_usd": 475599834,
-      "total_debt_usd": 6902393530,
-      "total_assets_usd": 15485371410,
-      "equity_usd": 4207805435,
-      "icr": 4.115715721633326,
+      "revenue_usd": 1597633574,
+      "ebit_usd": 184662236,
+      "interest_expense_usd": 86433301,
+      "total_debt_usd": 1186568575,
+      "total_assets_usd": 2823016509,
+      "equity_usd": -191203022,
+      "icr": 2.1364709419116132,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 14457587996,
-      "ebit_usd": 2940896136,
-      "interest_expense_usd": 500280457,
-      "total_debt_usd": 7111824623,
-      "total_assets_usd": 19365236731,
-      "equity_usd": 1781969038,
-      "icr": 5.878494941888166,
+      "revenue_usd": 1621247705,
+      "ebit_usd": 138701277,
+      "interest_expense_usd": 92812809,
+      "total_debt_usd": 1232156550,
+      "total_assets_usd": 2496967411,
+      "equity_usd": -206331137,
+      "icr": 1.4944195579728656,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 15142458961,
-      "ebit_usd": 2937458752,
-      "interest_expense_usd": 527464732,
-      "total_debt_usd": 7364559217,
-      "total_assets_usd": 27118439265,
-      "equity_usd": 5687527206,
-      "icr": 5.56901452133486,
+      "revenue_usd": 1683036759,
+      "ebit_usd": 86504750,
+      "interest_expense_usd": 95795564,
+      "total_debt_usd": 1221938464,
+      "total_assets_usd": 1989584702,
+      "equity_usd": 222687463,
+      "icr": 0.903014152095811,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 16570325347,
-      "ebit_usd": 1442520753,
-      "interest_expense_usd": 554789247,
-      "total_debt_usd": 7124359960,
-      "total_assets_usd": 27513459387,
-      "equity_usd": 1816196327,
-      "icr": 2.6001238502735435,
+      "revenue_usd": 1778123842,
+      "ebit_usd": 51877262,
+      "interest_expense_usd": 97913791,
+      "total_debt_usd": 1208854558,
+      "total_assets_usd": 3193607059,
+      "equity_usd": -291664589,
+      "icr": 0.5298258955165979,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 17364130185,
-      "ebit_usd": 2428933467,
-      "interest_expense_usd": 547619852,
-      "total_debt_usd": 6933435859,
-      "total_assets_usd": 16751107456,
-      "equity_usd": 5616537730,
-      "icr": 4.4354372072691035,
+      "revenue_usd": 1845770219,
+      "ebit_usd": 150183351,
+      "interest_expense_usd": 101164204,
+      "total_debt_usd": 1213248361,
+      "total_assets_usd": 2478878568,
+      "equity_usd": 127927597,
+      "icr": 1.4845503158409667,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.153319,
-    "margin_change_mean": -0.000593,
-    "margin_change_sd": 0.077575,
-    "revenue_growth_median": 0.049295,
+    "margin_mean": 0.072615,
+    "margin_change_mean": -0.008555,
+    "margin_change_sd": 0.040798,
+    "revenue_growth_median": 0.038078,
     "history_years": 5,
     "used_sector_fallback": false
   }

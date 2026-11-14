@@ -1,0 +1,106 @@
+{
+  "cik": "9999000192",
+  "name": "Northgate Industries Corp.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.43 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-29",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1401917605,
+      "ebit_usd": 127727003,
+      "interest_expense_usd": 19546215,
+      "total_debt_usd": 387533441,
+      "total_assets_usd": 1771877231,
+      "equity_usd": 612793558,
+      "icr": 6.534615678789986,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1449901883,
+      "ebit_usd": 44023858,
+      "interest_expense_usd": 19401955,
+      "total_debt_usd": 383768621,
+      "total_assets_usd": 2012422004,
+      "equity_usd": 405231432,
+      "icr": 2.269042372276402,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1536874040,
+      "ebit_usd": 103812678,
+      "interest_expense_usd": 21032873,
+      "total_debt_usd": 371081297,
+      "total_assets_usd": 2246765268,
+      "equity_usd": 647772292,
+      "icr": 4.935734552288696,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1600835269,
+      "ebit_usd": 49133201,
+      "interest_expense_usd": 21118946,
+      "total_debt_usd": 366390907,
+      "total_assets_usd": 2529873227,
+      "equity_usd": 765337214,
+      "icr": 2.3264987277300677,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1655476847,
+      "ebit_usd": 121039693,
+      "interest_expense_usd": 22303318,
+      "total_debt_usd": 364286246,
+      "total_assets_usd": 2586238932,
+      "equity_usd": 233479635,
+      "icr": 5.426981447334428,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.058565,
+    "margin_change_mean": -0.004499,
+    "margin_change_sd": 0.052121,
+    "revenue_growth_median": 0.037923,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

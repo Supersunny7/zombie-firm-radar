@@ -1,100 +1,105 @@
 {
   "cik": "9999000055",
-  "name": "Alderwick Industries Co.",
+  "name": "Zelmont Works Co.",
   "ticker": null,
   "sector": "Manufacturing",
-  "status": "zombie",
+  "status": "healthy",
   "reasons": [
-    "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 26 years (first filing proxy), at least 10"
+    "ICR 2.42 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-14",
+    "filed": "2025-02-25",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 137332129,
-      "ebit_usd": 9931595,
-      "interest_expense_usd": 2866548,
-      "total_debt_usd": 46895469,
-      "total_assets_usd": 163676751,
-      "equity_usd": -15101607,
-      "icr": 3.46465330425306,
+      "revenue_usd": 231304147,
+      "ebit_usd": 22706717,
+      "interest_expense_usd": 3265420,
+      "total_debt_usd": 73437759,
+      "total_assets_usd": 393249150,
+      "equity_usd": 121095389,
+      "icr": 6.9536895713262,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 134072636,
-      "ebit_usd": 9548853,
-      "interest_expense_usd": 2694684,
-      "total_debt_usd": 46485060,
-      "total_assets_usd": 127628072,
-      "equity_usd": 14057010,
-      "icr": 3.543589155537347,
+      "revenue_usd": 234136271,
+      "ebit_usd": 3935668,
+      "interest_expense_usd": 3234526,
+      "total_debt_usd": 74407848,
+      "total_assets_usd": 315308992,
+      "equity_usd": 91062331,
+      "icr": 1.2167680828659284,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 126043090,
-      "ebit_usd": 2752108,
-      "interest_expense_usd": 3032724,
-      "total_debt_usd": 47281723,
-      "total_assets_usd": 182425529,
-      "equity_usd": 6944966,
-      "icr": 0.9074706435534523,
+      "revenue_usd": 235604337,
+      "ebit_usd": 25046533,
+      "interest_expense_usd": 3801899,
+      "total_debt_usd": 77768409,
+      "total_assets_usd": 299500906,
+      "equity_usd": 17075511,
+      "icr": 6.587900678055887,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 123067764,
-      "ebit_usd": 2523080,
-      "interest_expense_usd": 3131544,
-      "total_debt_usd": 48548851,
-      "total_assets_usd": 197178439,
-      "equity_usd": 18917255,
-      "icr": 0.8056984030880614,
+      "revenue_usd": 237239048,
+      "ebit_usd": 15464200,
+      "interest_expense_usd": 4228067,
+      "total_debt_usd": 80575027,
+      "total_assets_usd": 275684299,
+      "equity_usd": 17219198,
+      "icr": 3.6575106307444987,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 120107108,
-      "ebit_usd": -1499135,
-      "interest_expense_usd": 3308125,
-      "total_debt_usd": 49134704,
-      "total_assets_usd": 144973694,
-      "equity_usd": 3189866,
-      "icr": -0.45316757982240696,
+      "revenue_usd": 242340918,
+      "ebit_usd": 10720728,
+      "interest_expense_usd": 4439221,
+      "total_debt_usd": 80466667,
+      "total_assets_usd": 348707559,
+      "equity_usd": 30920702,
+      "icr": 2.4150020915831854,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.034679,
-    "margin_change_mean": -0.0212,
-    "margin_change_sd": 0.024029,
-    "revenue_growth_median": -0.023896,
+    "margin_mean": 0.066141,
+    "margin_change_mean": -0.013483,
+    "margin_change_sd": 0.073103,
+    "revenue_growth_median": 0.009591,
     "history_years": 5,
     "used_sector_fallback": false
   }

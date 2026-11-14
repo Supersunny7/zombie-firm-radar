@@ -1,101 +1,77 @@
 {
   "cik": "9999000035",
-  "name": "Whitlock Markets Co.",
+  "name": "Ketteridge Resources Corp.",
   "ticker": null,
-  "sector": "Retail Trade",
-  "status": "healthy",
+  "sector": "Mining",
+  "status": "endangered",
   "reasons": [
-    "ICR 5.40 in FY2024, at least 1",
-    "No more than one year below 1 in the last 3"
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 3 years (first filing proxy), under 10, so not a zombie"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-05",
+    "filed": "2025-03-20",
     "form": "10-K"
   },
   "years": [
     {
-      "fy": 2020,
-      "revenue_usd": 15214549935,
-      "ebit_usd": 1714696370,
-      "interest_expense_usd": 434025187,
-      "total_debt_usd": 10811147455,
-      "total_assets_usd": 21864573039,
-      "equity_usd": 3988429293,
-      "icr": 3.9506840187134116,
-      "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
-      "debt_tags": [
-        "LongTermDebt"
-      ]
-    },
-    {
-      "fy": 2021,
-      "revenue_usd": 15634843107,
-      "ebit_usd": 2315047212,
-      "interest_expense_usd": 412161431,
-      "total_debt_usd": 10541331786,
-      "total_assets_usd": 17317177948,
-      "equity_usd": 2600787967,
-      "icr": 5.616845822723281,
-      "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
-      "debt_tags": [
-        "LongTermDebt"
-      ]
-    },
-    {
       "fy": 2022,
-      "revenue_usd": 15599839738,
-      "ebit_usd": 2270127790,
-      "interest_expense_usd": 423508128,
-      "total_debt_usd": 10529251877,
-      "total_assets_usd": 23677796525,
-      "equity_usd": 2139202469,
-      "icr": 5.360293321218147,
+      "revenue_usd": 7441513613,
+      "ebit_usd": 281140802,
+      "interest_expense_usd": 378325245,
+      "total_debt_usd": 4715401116,
+      "total_assets_usd": 12625780418,
+      "equity_usd": -1530973914,
+      "icr": 0.743119328449784,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 16223813948,
-      "ebit_usd": 2138974936,
-      "interest_expense_usd": 449198886,
-      "total_debt_usd": 10392438753,
-      "total_assets_usd": 25729441955,
-      "equity_usd": 8971365330,
-      "icr": 4.761754765349084,
+      "revenue_usd": 7417302965,
+      "ebit_usd": 140442349,
+      "interest_expense_usd": 393724736,
+      "total_debt_usd": 4691961279,
+      "total_assets_usd": 7330171589,
+      "equity_usd": -216638170,
+      "icr": 0.3567018684850931,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 16270878051,
-      "ebit_usd": 2812311474,
-      "interest_expense_usd": 520679659,
-      "total_debt_usd": 10667438307,
-      "total_assets_usd": 15815036336,
-      "equity_usd": 958679417,
-      "icr": 5.401231688983648,
+      "revenue_usd": 7407817262,
+      "ebit_usd": 152078901,
+      "interest_expense_usd": 422898116,
+      "total_debt_usd": 4884899100,
+      "total_assets_usd": 12625147683,
+      "equity_usd": -1005163476,
+      "icr": 0.35961120479430086,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.142196,
-    "margin_change_mean": 0.015036,
-    "margin_change_sd": 0.027212,
-    "revenue_growth_median": 0.015263,
-    "history_years": 5,
-    "used_sector_fallback": false
+    "margin_mean": 0.09,
+    "margin_change_mean": -0.004,
+    "margin_change_sd": 0.045,
+    "revenue_growth_median": 0.01,
+    "history_years": 3,
+    "used_sector_fallback": true
   }
 }

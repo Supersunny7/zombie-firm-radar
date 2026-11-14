@@ -1,74 +1,101 @@
 {
   "cik": "9999000017",
-  "name": "Rowntree Industries Group",
+  "name": "Redfern Civil Co.",
   "ticker": null,
-  "sector": "Manufacturing",
+  "sector": "Construction",
   "status": "healthy",
   "reasons": [
-    "ICR 2.69 in FY2024, at least 1",
+    "ICR 5.31 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-02",
+    "filed": "2025-03-13",
     "form": "10-K"
   },
   "years": [
     {
-      "fy": 2022,
-      "revenue_usd": 6776646487,
-      "ebit_usd": 2032993946,
-      "interest_expense_usd": 487668496,
-      "total_debt_usd": 5747557417,
-      "total_assets_usd": 8139084188,
-      "equity_usd": 2302876470,
-      "icr": 4.168803116615513,
-      "ebit_tag": "OperatingIncomeLoss",
+      "fy": 2020,
+      "revenue_usd": 148819693,
+      "ebit_usd": 40785479,
+      "interest_expense_usd": 6326236,
+      "total_debt_usd": 82347227,
+      "total_assets_usd": 165909523,
+      "equity_usd": 19772891,
+      "icr": 6.447037227191651,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 154545881,
+      "ebit_usd": 19758823,
+      "interest_expense_usd": 6516761,
+      "total_debt_usd": 83794738,
+      "total_assets_usd": 240271925,
+      "equity_usd": 14543636,
+      "icr": 3.032000559787293,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 159009041,
+      "ebit_usd": 14009487,
+      "interest_expense_usd": 6647942,
+      "total_debt_usd": 83542043,
+      "total_assets_usd": 176396841,
+      "equity_usd": 27925377,
+      "icr": 2.107341941310559,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 6811446788,
-      "ebit_usd": 1373204744,
-      "interest_expense_usd": 494794387,
-      "total_debt_usd": 5784273289,
-      "total_assets_usd": 9450333012,
-      "equity_usd": 1415928816,
-      "icr": 2.7753038031128674,
-      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_usd": 162577627,
+      "ebit_usd": 17394260,
+      "interest_expense_usd": 7114338,
+      "total_debt_usd": 83996492,
+      "total_assets_usd": 195580411,
+      "equity_usd": 21027701,
+      "icr": 2.4449583362499787,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 6897779233,
-      "ebit_usd": 1405951850,
-      "interest_expense_usd": 522536928,
-      "total_debt_usd": 5888924463,
-      "total_assets_usd": 7066709355,
-      "equity_usd": 2448034653,
-      "icr": 2.6906267761424125,
-      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_usd": 168099913,
+      "ebit_usd": 38274193,
+      "interest_expense_usd": 7211932,
+      "total_debt_usd": 83304929,
+      "total_assets_usd": 163886188,
+      "equity_usd": 52120602,
+      "icr": 5.307065152583247,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.07,
-    "margin_change_mean": -0.002,
-    "margin_change_sd": 0.018,
-    "revenue_growth_median": 0.02,
-    "history_years": 3,
-    "used_sector_fallback": true
+    "margin_mean": 0.164939,
+    "margin_change_mean": -0.011593,
+    "margin_change_sd": 0.11157,
+    "revenue_growth_median": 0.031423,
+    "history_years": 5,
+    "used_sector_fallback": false
   }
 }

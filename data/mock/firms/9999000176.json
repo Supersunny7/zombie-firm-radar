@@ -1,0 +1,111 @@
+{
+  "cik": "9999000176",
+  "name": "Ironbridge Contracting Corp.",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "healthy",
+  "reasons": [
+    "ICR 4.14 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-01",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 5621571178,
+      "ebit_usd": 1010755966,
+      "interest_expense_usd": 227423048,
+      "total_debt_usd": 2858885375,
+      "total_assets_usd": 6820519704,
+      "equity_usd": 874273036,
+      "icr": 4.444386683270554,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 5795998697,
+      "ebit_usd": 434265903,
+      "interest_expense_usd": 228783691,
+      "total_debt_usd": 2835574998,
+      "total_assets_usd": 7060415845,
+      "equity_usd": 1426845796,
+      "icr": 1.898150611618553,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 5915898034,
+      "ebit_usd": 1443028922,
+      "interest_expense_usd": 239533956,
+      "total_debt_usd": 2872643057,
+      "total_assets_usd": 10572569136,
+      "equity_usd": 2710502458,
+      "icr": 6.0243188318569745,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 5951643275,
+      "ebit_usd": 433749140,
+      "interest_expense_usd": 241234007,
+      "total_debt_usd": 2800837186,
+      "total_assets_usd": 8153297950,
+      "equity_usd": 2144094164,
+      "icr": 1.7980430926556719,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 6076206228,
+      "ebit_usd": 1089179419,
+      "interest_expense_usd": 263127369,
+      "total_debt_usd": 2900343004,
+      "total_assets_usd": 5880754097,
+      "equity_usd": 1998421271,
+      "icr": 4.139361949079497,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.150156,
+    "margin_change_mean": -0.000137,
+    "margin_change_sd": 0.163433,
+    "revenue_growth_median": 0.020808,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

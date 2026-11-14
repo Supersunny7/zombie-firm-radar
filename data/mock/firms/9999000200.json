@@ -1,0 +1,101 @@
+{
+  "cik": "9999000200",
+  "name": "Oakhaven Distribution Inc.",
+  "ticker": null,
+  "sector": "Wholesale Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.35 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-11",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 487915452,
+      "ebit_usd": 29254677,
+      "interest_expense_usd": 13722261,
+      "total_debt_usd": 191457317,
+      "total_assets_usd": 594506003,
+      "equity_usd": 146301895,
+      "icr": 2.1319137567781286,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 492637688,
+      "ebit_usd": 31908435,
+      "interest_expense_usd": 13982281,
+      "total_debt_usd": 186958391,
+      "total_assets_usd": 551479844,
+      "equity_usd": 122087029,
+      "icr": 2.2820622042998564,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 476275735,
+      "ebit_usd": 36100396,
+      "interest_expense_usd": 14332451,
+      "total_debt_usd": 186901118,
+      "total_assets_usd": 704298344,
+      "equity_usd": 135468266,
+      "icr": 2.5187873309317435,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 478662663,
+      "ebit_usd": 37047465,
+      "interest_expense_usd": 15347803,
+      "total_debt_usd": 192347515,
+      "total_assets_usd": 431122260,
+      "equity_usd": 28369063,
+      "icr": 2.413861123966733,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 474661247,
+      "ebit_usd": 20704770,
+      "interest_expense_usd": 15393287,
+      "total_debt_usd": 187856219,
+      "total_assets_usd": 613474545,
+      "equity_usd": 55328940,
+      "icr": 1.3450519047686176,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.064309,
+    "margin_change_mean": -0.004085,
+    "margin_change_sd": 0.020178,
+    "revenue_growth_median": -0.001674,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

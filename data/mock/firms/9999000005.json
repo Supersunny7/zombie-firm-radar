@@ -1,0 +1,101 @@
+{
+  "cik": "9999000005",
+  "name": "Applegarth Telecom Inc.",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, -0.49)",
+    "ICR below 1 in 2 of the last 3 years (FY2022, FY2024)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-19",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 8315321688,
+      "ebit_usd": 1631144931,
+      "interest_expense_usd": 254734165,
+      "total_debt_usd": 4049888552,
+      "total_assets_usd": 7737180349,
+      "equity_usd": 31838881,
+      "icr": 6.403322188839491,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 8855766634,
+      "ebit_usd": 848595216,
+      "interest_expense_usd": 265671724,
+      "total_debt_usd": 4068437871,
+      "total_assets_usd": 11887770039,
+      "equity_usd": -286011042,
+      "icr": 3.194149543742939,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 9343210672,
+      "ebit_usd": 236910289,
+      "interest_expense_usd": 280714738,
+      "total_debt_usd": 4140171270,
+      "total_assets_usd": 13087186479,
+      "equity_usd": -410030110,
+      "icr": 0.8439538682147854,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 10171480926,
+      "ebit_usd": 1487363699,
+      "interest_expense_usd": 293450592,
+      "total_debt_usd": 4087989527,
+      "total_assets_usd": 11077807202,
+      "equity_usd": -1513153289,
+      "icr": 5.068531942167628,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 10854021873,
+      "ebit_usd": -145283463,
+      "interest_expense_usd": 298803885,
+      "total_debt_usd": 4068578122,
+      "total_assets_usd": 13033056932,
+      "equity_usd": 1301211698,
+      "icr": -0.48621678061515167,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.090037,
+    "margin_change_mean": -0.052387,
+    "margin_change_sd": 0.121302,
+    "revenue_growth_median": 0.066049,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

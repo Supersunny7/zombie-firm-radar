@@ -1,105 +1,100 @@
 {
   "cik": "9999000042",
-  "name": "Mossgrove Mills Corp.",
+  "name": "Penhallow Systems Co.",
   "ticker": null,
-  "sector": "Manufacturing",
+  "sector": "Services",
   "status": "healthy",
   "reasons": [
-    "ICR 2.02 in FY2024, at least 1",
+    "ICR 3.00 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-19",
+    "filed": "2025-02-17",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 3781412659,
-      "ebit_usd": 169922914,
-      "interest_expense_usd": 126095523,
-      "total_debt_usd": 1800250056,
-      "total_assets_usd": 4110498452,
-      "equity_usd": 1436484266,
-      "icr": 1.3475729348455932,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_usd": 176114845,
+      "ebit_usd": 17236497,
+      "interest_expense_usd": 4381627,
+      "total_debt_usd": 92077449,
+      "total_assets_usd": 256404382,
+      "equity_usd": 74691041,
+      "icr": 3.933812029184593,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 3804311765,
-      "ebit_usd": 684802637,
-      "interest_expense_usd": 120829873,
-      "total_debt_usd": 1769258469,
-      "total_assets_usd": 5405676546,
-      "equity_usd": 1290392952,
-      "icr": 5.667494469683006,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_usd": 186085135,
+      "ebit_usd": -3958089,
+      "interest_expense_usd": 4583412,
+      "total_debt_usd": 91713070,
+      "total_assets_usd": 197420154,
+      "equity_usd": 18343756,
+      "icr": -0.8635682325743355,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 3797615385,
-      "ebit_usd": -63931214,
-      "interest_expense_usd": 128093379,
-      "total_debt_usd": 1826547325,
-      "total_assets_usd": 5938321453,
-      "equity_usd": 1715367473,
-      "icr": -0.49909850531774946,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_usd": 187441104,
+      "ebit_usd": 12385535,
+      "interest_expense_usd": 4862163,
+      "total_debt_usd": 90991041,
+      "total_assets_usd": 223258323,
+      "equity_usd": 68565779,
+      "icr": 2.5473302725556506,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 3775739661,
-      "ebit_usd": 219125392,
-      "interest_expense_usd": 130673291,
-      "total_debt_usd": 1758752138,
-      "total_assets_usd": 4800167747,
-      "equity_usd": 851972783,
-      "icr": 1.6768950282273063,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_usd": 191013375,
+      "ebit_usd": 31452906,
+      "interest_expense_usd": 5300953,
+      "total_debt_usd": 93412372,
+      "total_assets_usd": 198076675,
+      "equity_usd": 54718054,
+      "icr": 5.933443665695584,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 3868371435,
-      "ebit_usd": 259689089,
-      "interest_expense_usd": 128860715,
-      "total_debt_usd": 1699630599,
-      "total_assets_usd": 3997680857,
-      "equity_usd": 752319611,
-      "icr": 2.0152696576299456,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_usd": 192620315,
+      "ebit_usd": 16202947,
+      "interest_expense_usd": 5409580,
+      "total_debt_usd": 93599593,
+      "total_assets_usd": 228433482,
+      "equity_usd": 35329726,
+      "icr": 2.9952319773438973,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.066655,
-    "margin_change_mean": 0.005549,
-    "margin_change_sd": 0.144402,
-    "revenue_growth_median": 0.002148,
+    "margin_mean": 0.078292,
+    "margin_change_mean": -0.003438,
+    "margin_change_sd": 0.112522,
+    "revenue_growth_median": 0.013735,
     "history_years": 5,
     "used_sector_fallback": false
   }

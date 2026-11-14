@@ -1,105 +1,100 @@
 {
   "cik": "9999000107",
-  "name": "Ironbridge Works Holdings",
+  "name": "Osgood Stores Group",
   "ticker": null,
-  "sector": "Manufacturing",
+  "sector": "Retail Trade",
   "status": "healthy",
   "reasons": [
-    "ICR 4.27 in FY2024, at least 1",
+    "ICR 2.94 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-11",
+    "filed": "2025-03-05",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 8711693339,
-      "ebit_usd": 1889367013,
-      "interest_expense_usd": 631780664,
-      "total_debt_usd": 7901724654,
-      "total_assets_usd": 14191169921,
-      "equity_usd": 2359467459,
-      "icr": 2.9905426371200243,
+      "revenue_usd": 424848515,
+      "ebit_usd": 80795847,
+      "interest_expense_usd": 15758254,
+      "total_debt_usd": 215884712,
+      "total_assets_usd": 467000593,
+      "equity_usd": 124407633,
+      "icr": 5.127208065055938,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 8865472807,
-      "ebit_usd": 725029626,
-      "interest_expense_usd": 592572182,
-      "total_debt_usd": 7660664845,
-      "total_assets_usd": 9557794985,
-      "equity_usd": 1319390886,
-      "icr": 1.223529635753303,
+      "revenue_usd": 415832632,
+      "ebit_usd": 96391384,
+      "interest_expense_usd": 15248701,
+      "total_debt_usd": 208093218,
+      "total_assets_usd": 544083695,
+      "equity_usd": 107865293,
+      "icr": 6.321284940927099,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 9003510983,
-      "ebit_usd": 2701053295,
-      "interest_expense_usd": 588168548,
-      "total_debt_usd": 7360673512,
-      "total_assets_usd": 15055357859,
-      "equity_usd": 1126940134,
-      "icr": 4.592311683759058,
+      "revenue_usd": 414276372,
+      "ebit_usd": 26341678,
+      "interest_expense_usd": 16256788,
+      "total_debt_usd": 212846555,
+      "total_assets_usd": 490033001,
+      "equity_usd": 29972744,
+      "icr": 1.6203494810906065,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 9260466444,
-      "ebit_usd": 2688106499,
-      "interest_expense_usd": 637357855,
-      "total_debt_usd": 7617977326,
-      "total_assets_usd": 13586844873,
-      "equity_usd": 3345235536,
-      "icr": 4.217578049618608,
+      "revenue_usd": 409831050,
+      "ebit_usd": 77861481,
+      "interest_expense_usd": 16855979,
+      "total_debt_usd": 217443040,
+      "total_assets_usd": 730095228,
+      "equity_usd": 46535475,
+      "icr": 4.619220337187179,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 9493637245,
-      "ebit_usd": 2848091174,
-      "interest_expense_usd": 667461122,
-      "total_debt_usd": 7793771736,
-      "total_assets_usd": 10781743189,
-      "equity_usd": 1038017734,
-      "icr": 4.267051787924211,
+      "revenue_usd": 411826127,
+      "ebit_usd": 54009146,
+      "interest_expense_usd": 18369058,
+      "total_debt_usd": 223964305,
+      "total_assets_usd": 621516386,
+      "equity_usd": 170698093,
+      "icr": 2.940224044150767,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.237787,
-    "margin_change_mean": 0.020781,
-    "margin_change_sd": 0.146438,
-    "revenue_growth_median": 0.021416,
+    "margin_mean": 0.161339,
+    "margin_change_mean": -0.014758,
+    "margin_change_sd": 0.127277,
+    "revenue_growth_median": -0.007236,
     "history_years": 5,
     "used_sector_fallback": false
   }

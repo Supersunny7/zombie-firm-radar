@@ -1,100 +1,110 @@
 {
   "cik": "9999000031",
-  "name": "Quillon Works Corp.",
+  "name": "Bramblecote Stores Inc.",
   "ticker": null,
-  "sector": "Manufacturing",
-  "status": "zombie",
+  "sector": "Retail Trade",
+  "status": "healthy",
   "reasons": [
-    "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 31 years (first filing proxy), at least 10"
+    "ICR 1.34 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-13",
+    "filed": "2025-03-14",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 105570070,
-      "ebit_usd": 1404810,
-      "interest_expense_usd": 3842559,
-      "total_debt_usd": 64940430,
-      "total_assets_usd": 115403112,
-      "equity_usd": -8686916,
-      "icr": 0.3655923045033271,
+      "revenue_usd": 320575416,
+      "ebit_usd": 19553206,
+      "interest_expense_usd": 7515998,
+      "total_debt_usd": 93095974,
+      "total_assets_usd": 500807230,
+      "equity_usd": 72689616,
+      "icr": 2.6015448647006028,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 101749405,
-      "ebit_usd": 10875032,
-      "interest_expense_usd": 3506663,
-      "total_debt_usd": 62984970,
-      "total_assets_usd": 156137668,
-      "equity_usd": -9502069,
-      "icr": 3.1012481096700766,
+      "revenue_usd": 312950577,
+      "ebit_usd": 11605747,
+      "interest_expense_usd": 7811699,
+      "total_debt_usd": 92348474,
+      "total_assets_usd": 452402398,
+      "equity_usd": 67003040,
+      "icr": 1.485687940613175,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 101258598,
-      "ebit_usd": 316026,
-      "interest_expense_usd": 3866329,
-      "total_debt_usd": 63890716,
-      "total_assets_usd": 108274843,
-      "equity_usd": 11610393,
-      "icr": 0.08173800005121137,
+      "revenue_usd": 312986820,
+      "ebit_usd": 15655184,
+      "interest_expense_usd": 8272449,
+      "total_debt_usd": 94406554,
+      "total_assets_usd": 536948762,
+      "equity_usd": 169278883,
+      "icr": 1.8924485360985603,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 99746735,
-      "ebit_usd": 2114511,
-      "interest_expense_usd": 4087997,
-      "total_debt_usd": 66383169,
-      "total_assets_usd": 122154715,
-      "equity_usd": -13604496,
-      "icr": 0.5172486672568497,
+      "revenue_usd": 308483899,
+      "ebit_usd": 24947733,
+      "interest_expense_usd": 8546211,
+      "total_debt_usd": 95499532,
+      "total_assets_usd": 449257568,
+      "equity_usd": 34848185,
+      "icr": 2.919157156311727,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 99499688,
-      "ebit_usd": 3911518,
-      "interest_expense_usd": 4512628,
-      "total_debt_usd": 67455970,
-      "total_assets_usd": 121423259,
-      "equity_usd": -7802080,
-      "icr": 0.8667938061812319,
+      "revenue_usd": 312048641,
+      "ebit_usd": 11621850,
+      "interest_expense_usd": 8685955,
+      "total_debt_usd": 93779226,
+      "total_assets_usd": 352314502,
+      "equity_usd": 28171945,
+      "icr": 1.3380048595692702,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.036764,
-    "margin_change_mean": 0.006501,
-    "margin_change_sd": 0.081666,
-    "revenue_growth_median": -0.009877,
+    "margin_mean": 0.053243,
+    "margin_change_mean": -0.005938,
+    "margin_change_sd": 0.033928,
+    "revenue_growth_median": -0.007136,
     "history_years": 5,
     "used_sector_fallback": false
   }

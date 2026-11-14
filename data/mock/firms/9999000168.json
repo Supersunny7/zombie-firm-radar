@@ -1,0 +1,101 @@
+{
+  "cik": "9999000168",
+  "name": "Kingsmoor Timber Co.",
+  "ticker": null,
+  "sector": "Agriculture, Forestry and Fishing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.87 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-24",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1605006580,
+      "ebit_usd": 18587257,
+      "interest_expense_usd": 33667688,
+      "total_debt_usd": 433061729,
+      "total_assets_usd": 2247656712,
+      "equity_usd": 698721435,
+      "icr": 0.5520799943257166,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1687442506,
+      "ebit_usd": 213084646,
+      "interest_expense_usd": 34435513,
+      "total_debt_usd": 452634216,
+      "total_assets_usd": 2458860750,
+      "equity_usd": 853479182,
+      "icr": 6.187932963275442,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1691973316,
+      "ebit_usd": 197061979,
+      "interest_expense_usd": 35222852,
+      "total_debt_usd": 444265665,
+      "total_assets_usd": 1667988978,
+      "equity_usd": 528754118,
+      "icr": 5.594719558768268,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1764375821,
+      "ebit_usd": 155143030,
+      "interest_expense_usd": 37242325,
+      "total_debt_usd": 438373612,
+      "total_assets_usd": 2179615949,
+      "equity_usd": 362273164,
+      "icr": 4.1657718738021865,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1796940141,
+      "ebit_usd": 111571937,
+      "interest_expense_usd": 38881506,
+      "total_debt_usd": 450600211,
+      "total_assets_usd": 2935670492,
+      "equity_usd": 750206347,
+      "icr": 2.8695374350983216,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.080869,
+    "margin_change_mean": 0.012627,
+    "margin_change_sd": 0.068546,
+    "revenue_growth_median": 0.030624,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "cik": "9999000160",
+  "name": "Penhallow Outfitters Corp.",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.89)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-27",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 622070026,
+      "ebit_usd": 47086989,
+      "interest_expense_usd": 27969123,
+      "total_debt_usd": 208911831,
+      "total_assets_usd": 997703979,
+      "equity_usd": 194068688,
+      "icr": 1.6835346964579476,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 597871577,
+      "ebit_usd": 46863825,
+      "interest_expense_usd": 29399484,
+      "total_debt_usd": 213658869,
+      "total_assets_usd": 852354319,
+      "equity_usd": 149114406,
+      "icr": 1.5940356300130982,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 605245320,
+      "ebit_usd": 42278894,
+      "interest_expense_usd": 30128514,
+      "total_debt_usd": 214185264,
+      "total_assets_usd": 554152657,
+      "equity_usd": 109586261,
+      "icr": 1.4032850740663811,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 581511134,
+      "ebit_usd": 53593525,
+      "interest_expense_usd": 30823156,
+      "total_debt_usd": 209216647,
+      "total_assets_usd": 906751362,
+      "equity_usd": 173105763,
+      "icr": 1.7387422949161988,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 581992509,
+      "ebit_usd": 28419159,
+      "interest_expense_usd": 32026979,
+      "total_debt_usd": 212568188,
+      "total_assets_usd": 1012536655,
+      "equity_usd": 354085101,
+      "icr": 0.8873505990059194,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.072985,
+    "margin_change_mean": -0.006716,
+    "margin_change_sd": 0.027537,
+    "revenue_growth_median": -0.019036,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

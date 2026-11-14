@@ -1,0 +1,101 @@
+{
+  "cik": "9999000188",
+  "name": "Pellham Power Corp.",
+  "ticker": null,
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.32 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-17",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 333650452,
+      "ebit_usd": 16203580,
+      "interest_expense_usd": 9535042,
+      "total_debt_usd": 129390952,
+      "total_assets_usd": 337641583,
+      "equity_usd": 51664121,
+      "icr": 1.6993716440892448,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 335533560,
+      "ebit_usd": 11769041,
+      "interest_expense_usd": 9723770,
+      "total_debt_usd": 125995369,
+      "total_assets_usd": 601616799,
+      "equity_usd": 68427705,
+      "icr": 1.2103372457390498,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 335115383,
+      "ebit_usd": 25129929,
+      "interest_expense_usd": 10048904,
+      "total_debt_usd": 126725381,
+      "total_assets_usd": 599138655,
+      "equity_usd": 189530495,
+      "icr": 2.5007631678041706,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 345240780,
+      "ebit_usd": 24802349,
+      "interest_expense_usd": 10630091,
+      "total_debt_usd": 129452708,
+      "total_assets_usd": 594164970,
+      "equity_usd": 176077825,
+      "icr": 2.333220759822282,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 342681809,
+      "ebit_usd": 14289441,
+      "interest_expense_usd": 10840364,
+      "total_debt_usd": 128898589,
+      "total_assets_usd": 567710195,
+      "equity_usd": 33142871,
+      "icr": 1.3181698511230804,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.054434,
+    "margin_change_mean": -0.001716,
+    "margin_change_sd": 0.029898,
+    "revenue_growth_median": 0.002199,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

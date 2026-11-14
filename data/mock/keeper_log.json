@@ -4,102 +4,106 @@
       "date": "2025-03-28",
       "new_zombies": [
         "9999000001",
-        "9999000067"
+        "9999000020"
       ],
-      "revived": [],
-      "filings_read": 578,
-      "summary": "2 newly dead, 0 back from the grave, 578 filings read. Nobody sent flowers."
+      "revived": [
+        "9999000109"
+      ],
+      "filings_read": 428,
+      "summary": "2 newly dead, 1 back from the grave, 428 filings read. Nobody sent flowers."
     },
     {
       "date": "2025-03-21",
       "new_zombies": [
-        "9999000097",
-        "9999000054"
+        "9999000024",
+        "9999000041"
       ],
       "revived": [],
-      "filings_read": 854,
-      "summary": "854 filings read, 2 added to the graveyard. The ledger did not comment."
+      "filings_read": 1250,
+      "summary": "1250 filings read, 2 added to the graveyard. The ledger did not comment."
     },
     {
       "date": "2025-03-14",
       "new_zombies": [
-        "9999000143",
-        "9999000007"
+        "9999000170",
+        "9999000126"
       ],
       "revived": [
-        "9999000024"
+        "9999000065",
+        "9999000010"
       ],
-      "filings_read": 216,
-      "summary": "Quiet week. 2 zombies noticed, 1 revived, 216 filings read."
+      "filings_read": 459,
+      "summary": "Quiet week. 2 zombies noticed, 2 revived, 459 filings read."
     },
     {
       "date": "2025-03-07",
       "new_zombies": [
-        "9999000023"
+        "9999000068",
+        "9999000137"
       ],
       "revived": [
-        "9999000004"
+        "9999000010"
       ],
-      "filings_read": 1043,
-      "summary": "1 firms climbed out of the ground. 1 walked in. 1043 filings read."
+      "filings_read": 633,
+      "summary": "1 firms climbed out of the ground. 2 walked in. 633 filings read."
     },
     {
       "date": "2025-02-28",
       "new_zombies": [],
       "revived": [],
-      "filings_read": 871,
-      "summary": "871 filings read. The interest bills kept coming."
+      "filings_read": 1392,
+      "summary": "1392 filings read. The interest bills kept coming."
     },
     {
       "date": "2025-02-21",
       "new_zombies": [
-        "9999000031"
+        "9999000007"
       ],
       "revived": [],
-      "filings_read": 462,
+      "filings_read": 192,
       "summary": "1 more firms failed to cover their interest. Paperwork filed accordingly."
     },
     {
       "date": "2025-02-14",
       "new_zombies": [
-        "9999000056"
+        "9999000016"
       ],
       "revived": [
-        "9999000134"
+        "9999000099",
+        "9999000042"
       ],
-      "filings_read": 989,
-      "summary": "1 revived on thin margins. The keeper stays unconvinced."
+      "filings_read": 1376,
+      "summary": "2 revived on thin margins. The keeper stays unconvinced."
     },
     {
       "date": "2025-02-07",
       "new_zombies": [
-        "9999000114",
-        "9999000009"
+        "9999000199",
+        "9999000089"
       ],
-      "revived": [
-        "9999000061",
-        "9999000036"
-      ],
-      "filings_read": 701,
-      "summary": "701 filings read, 2 verdicts delivered, no appeals heard."
+      "revived": [],
+      "filings_read": 977,
+      "summary": "977 filings read, 2 verdicts delivered, no appeals heard."
     },
     {
       "date": "2025-01-31",
       "new_zombies": [],
       "revived": [
-        "9999000036"
+        "9999000026"
       ],
-      "filings_read": 223,
-      "summary": "Another 223 filings read. Debt remains undefeated."
+      "filings_read": 818,
+      "summary": "Another 818 filings read. Debt remains undefeated."
     },
     {
       "date": "2025-01-24",
       "new_zombies": [
-        "9999000082"
+        "9999000142"
       ],
-      "revived": [],
-      "filings_read": 1093,
-      "summary": "1 new residents, 0 departures. The graveyard stays at capacity."
+      "revived": [
+        "9999000168"
+      ],
+      "filings_read": 1005,
+      "summary": "1 new residents, 1 departures. The graveyard stays at capacity."
     }
   ]
 }

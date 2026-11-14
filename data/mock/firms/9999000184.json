@@ -1,0 +1,101 @@
+{
+  "cik": "9999000184",
+  "name": "Quillon Minerals Group",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "healthy",
+  "reasons": [
+    "ICR 6.27 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-10",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 81663456,
+      "ebit_usd": 5066494,
+      "interest_expense_usd": 2621840,
+      "total_debt_usd": 56701187,
+      "total_assets_usd": 86959936,
+      "equity_usd": 21605310,
+      "icr": 1.9324192170384158,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 79897580,
+      "ebit_usd": 8761823,
+      "interest_expense_usd": 2867687,
+      "total_debt_usd": 58673183,
+      "total_assets_usd": 77963947,
+      "equity_usd": 20824865,
+      "icr": 3.055362387875664,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 78614815,
+      "ebit_usd": 14589486,
+      "interest_expense_usd": 2905946,
+      "total_debt_usd": 58133803,
+      "total_assets_usd": 140903532,
+      "equity_usd": 12551692,
+      "icr": 5.020563355272259,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 76724517,
+      "ebit_usd": 19183265,
+      "interest_expense_usd": 3405056,
+      "total_debt_usd": 60981079,
+      "total_assets_usd": 78457981,
+      "equity_usd": 11793483,
+      "icr": 5.633759033625291,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 75586026,
+      "ebit_usd": 22675808,
+      "interest_expense_usd": 3616799,
+      "total_debt_usd": 63185354,
+      "total_assets_usd": 121100787,
+      "equity_usd": 7431387,
+      "icr": 6.269579260556088,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.181463,
+    "margin_change_mean": 0.05949,
+    "margin_change_sd": 0.01324,
+    "revenue_growth_median": -0.018839,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

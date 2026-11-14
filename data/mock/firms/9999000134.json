@@ -1,0 +1,101 @@
+{
+  "cik": "9999000134",
+  "name": "Gilmore Systems Corp.",
+  "ticker": null,
+  "sector": "Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.93 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-07",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 932225280,
+      "ebit_usd": 120047444,
+      "interest_expense_usd": 21316623,
+      "total_debt_usd": 538145106,
+      "total_assets_usd": 1248122411,
+      "equity_usd": 141107692,
+      "icr": 5.631635179737429,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 933816459,
+      "ebit_usd": 112648305,
+      "interest_expense_usd": 19740502,
+      "total_debt_usd": 521126291,
+      "total_assets_usd": 1133320203,
+      "equity_usd": 100600321,
+      "icr": 5.706455945243945,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 962144785,
+      "ebit_usd": 60413547,
+      "interest_expense_usd": 21167915,
+      "total_debt_usd": 509886466,
+      "total_assets_usd": 1263126230,
+      "equity_usd": 134009354,
+      "icr": 2.8540150033671243,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 976209116,
+      "ebit_usd": 151686143,
+      "interest_expense_usd": 22807871,
+      "total_debt_usd": 513141539,
+      "total_assets_usd": 879895563,
+      "equity_usd": 192104754,
+      "icr": 6.650605091549316,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 992584261,
+      "ebit_usd": 46381035,
+      "interest_expense_usd": 23998736,
+      "total_debt_usd": 527017364,
+      "total_assets_usd": 1573636887,
+      "equity_usd": 461143805,
+      "icr": 1.9326449109653108,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.102862,
+    "margin_change_mean": -0.020512,
+    "margin_change_sd": 0.085845,
+    "revenue_growth_median": 0.015696,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

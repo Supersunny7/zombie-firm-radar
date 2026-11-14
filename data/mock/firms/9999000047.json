@@ -1,0 +1,101 @@
+{
+  "cik": "9999000047",
+  "name": "Birchall Drilling Group",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.80 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-14",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2275185665,
+      "ebit_usd": 433134723,
+      "interest_expense_usd": 92367367,
+      "total_debt_usd": 1765750919,
+      "total_assets_usd": 2230478245,
+      "equity_usd": 607891844,
+      "icr": 4.68926133836856,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 2257796008,
+      "ebit_usd": 364505159,
+      "interest_expense_usd": 95851373,
+      "total_debt_usd": 1738548753,
+      "total_assets_usd": 2323462642,
+      "equity_usd": 450869452,
+      "icr": 3.8028162517818083,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 2328380159,
+      "ebit_usd": 180765076,
+      "interest_expense_usd": 99491761,
+      "total_debt_usd": 1804268114,
+      "total_assets_usd": 2757770411,
+      "equity_usd": 663407362,
+      "icr": 1.8168848775327235,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 2300684670,
+      "ebit_usd": 186468615,
+      "interest_expense_usd": 113730404,
+      "total_debt_usd": 1871454664,
+      "total_assets_usd": 3931074204,
+      "equity_usd": 757906861,
+      "icr": 1.6395669798201016,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 2351218368,
+      "ebit_usd": 334215368,
+      "interest_expense_usd": 119196210,
+      "total_debt_usd": 1920706766,
+      "total_assets_usd": 2304848119,
+      "equity_usd": 294877844,
+      "icr": 2.8039093524869623,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.130529,
+    "margin_change_mean": -0.012057,
+    "margin_change_sd": 0.060618,
+    "revenue_growth_median": 0.007161,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

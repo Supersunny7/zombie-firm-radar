@@ -1,0 +1,106 @@
+{
+  "cik": "9999000178",
+  "name": "Elmstead Systems Co.",
+  "ticker": null,
+  "sector": "Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.96 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-24",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 823767848,
+      "ebit_usd": 71798411,
+      "interest_expense_usd": 23057877,
+      "total_debt_usd": 507800655,
+      "total_assets_usd": 1135867638,
+      "equity_usd": 123535209,
+      "icr": 3.1138344176265664,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 893220897,
+      "ebit_usd": 83169479,
+      "interest_expense_usd": 24746180,
+      "total_debt_usd": 507559502,
+      "total_assets_usd": 1514193641,
+      "equity_usd": 80470306,
+      "icr": 3.3609017230134106,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 942699074,
+      "ebit_usd": 147591321,
+      "interest_expense_usd": 24368892,
+      "total_debt_usd": 490212423,
+      "total_assets_usd": 973997871,
+      "equity_usd": 334070827,
+      "icr": 6.056546231154047,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 982770256,
+      "ebit_usd": 13791261,
+      "interest_expense_usd": 25768785,
+      "total_debt_usd": 479102093,
+      "total_assets_usd": 1368749095,
+      "equity_usd": 302805034,
+      "icr": 0.5351925207183807,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1019996606,
+      "ebit_usd": 56772807,
+      "interest_expense_usd": 28957156,
+      "total_debt_usd": 502986251,
+      "total_assets_usd": 1600521350,
+      "equity_usd": 181717283,
+      "icr": 1.9605795196185702,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.081305,
+    "margin_change_mean": -0.007875,
+    "margin_change_sd": 0.092845,
+    "revenue_growth_median": 0.04895,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

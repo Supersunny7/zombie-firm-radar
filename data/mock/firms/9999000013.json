@@ -1,29 +1,30 @@
 {
   "cik": "9999000013",
-  "name": "Wexcombe Systems Inc.",
+  "name": "Juniper Hollow Industries Co.",
   "ticker": null,
-  "sector": "Services",
-  "status": "endangered",
+  "sector": "Manufacturing",
+  "status": "healthy",
   "reasons": [
-    "ICR below 1 in the most recent year (FY2024, 0.57)"
+    "ICR 5.85 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-27",
+    "filed": "2025-02-28",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 160254664,
-      "ebit_usd": 47819050,
-      "interest_expense_usd": 7170585,
-      "total_debt_usd": 111849070,
-      "total_assets_usd": 219804042,
-      "equity_usd": 69258266,
-      "icr": 6.668779464994836,
+      "revenue_usd": 484698334,
+      "ebit_usd": 20684161,
+      "interest_expense_usd": 7044592,
+      "total_debt_usd": 142636147,
+      "total_assets_usd": 648533979,
+      "equity_usd": 214879178,
+      "icr": 2.936175863697997,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
         "LongTermDebtCurrent"
@@ -31,15 +32,15 @@
     },
     {
       "fy": 2021,
-      "revenue_usd": 171851415,
-      "ebit_usd": 49692363,
-      "interest_expense_usd": 7514426,
-      "total_debt_usd": 116171840,
-      "total_assets_usd": 266312304,
-      "equity_usd": 54325762,
-      "icr": 6.612928652168509,
+      "revenue_usd": 482691356,
+      "ebit_usd": 6140191,
+      "interest_expense_usd": 7009165,
+      "total_debt_usd": 141278533,
+      "total_assets_usd": 654398697,
+      "equity_usd": 40504937,
+      "icr": 0.8760231782245104,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
         "LongTermDebtCurrent"
@@ -47,15 +48,15 @@
     },
     {
       "fy": 2022,
-      "revenue_usd": 178549571,
-      "ebit_usd": 38432583,
-      "interest_expense_usd": 7840474,
-      "total_debt_usd": 115791265,
-      "total_assets_usd": 179753405,
-      "equity_usd": 60204591,
-      "icr": 4.901818818607141,
+      "revenue_usd": 478217063,
+      "ebit_usd": 26621978,
+      "interest_expense_usd": 7718507,
+      "total_debt_usd": 144637009,
+      "total_assets_usd": 542357907,
+      "equity_usd": 65242842,
+      "icr": 3.449109782500683,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
         "LongTermDebtCurrent"
@@ -63,15 +64,15 @@
     },
     {
       "fy": 2023,
-      "revenue_usd": 187861989,
-      "ebit_usd": 33504591,
-      "interest_expense_usd": 7963579,
-      "total_debt_usd": 117395950,
-      "total_assets_usd": 212208962,
-      "equity_usd": 65379446,
-      "icr": 4.2072278054879595,
+      "revenue_usd": 460920347,
+      "ebit_usd": 12410056,
+      "interest_expense_usd": 7617633,
+      "total_debt_usd": 140761210,
+      "total_assets_usd": 529469984,
+      "equity_usd": 140659437,
+      "icr": 1.6291223271060709,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
         "LongTermDebtCurrent"
@@ -79,15 +80,15 @@
     },
     {
       "fy": 2024,
-      "revenue_usd": 200230042,
-      "ebit_usd": 5075904,
-      "interest_expense_usd": 8929154,
-      "total_debt_usd": 120207675,
-      "total_assets_usd": 205399351,
-      "equity_usd": 19502625,
-      "icr": 0.5684641568506938,
+      "revenue_usd": 462113681,
+      "ebit_usd": 49123719,
+      "interest_expense_usd": 8403652,
+      "total_debt_usd": 143314539,
+      "total_assets_usd": 560094946,
+      "equity_usd": 159529758,
+      "icr": 5.84552037614123,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
         "LongTermDebtCurrent"
@@ -95,10 +96,10 @@
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.2013,
-    "margin_change_mean": -0.068261,
-    "margin_change_sd": 0.062395,
-    "revenue_growth_median": 0.058996,
+    "margin_mean": 0.048858,
+    "margin_change_mean": 0.015907,
+    "margin_change_sd": 0.054335,
+    "revenue_growth_median": -0.006705,
     "history_years": 5,
     "used_sector_fallback": false
   }

@@ -1,0 +1,100 @@
+{
+  "cik": "9999000187",
+  "name": "Netherby Consulting Corp.",
+  "ticker": null,
+  "sector": "Services",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.83)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-01",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 3003723994,
+      "ebit_usd": 135204544,
+      "interest_expense_usd": 112818847,
+      "total_debt_usd": 905459757,
+      "total_assets_usd": 2730890583,
+      "equity_usd": 919928089,
+      "icr": 1.198421607694679,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 3086086258,
+      "ebit_usd": 191038265,
+      "interest_expense_usd": 113019430,
+      "total_debt_usd": 878796068,
+      "total_assets_usd": 5237599847,
+      "equity_usd": 806954971,
+      "icr": 1.6903134708784144,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 3032220919,
+      "ebit_usd": 199177733,
+      "interest_expense_usd": 119554856,
+      "total_debt_usd": 905541072,
+      "total_assets_usd": 5069150033,
+      "equity_usd": 1612035533,
+      "icr": 1.6659945038117063,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 3088906217,
+      "ebit_usd": 146680070,
+      "interest_expense_usd": 122187690,
+      "total_debt_usd": 902647415,
+      "total_assets_usd": 3635306993,
+      "equity_usd": 271502602,
+      "icr": 1.2004488340846775,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 3093965971,
+      "ebit_usd": 104883215,
+      "interest_expense_usd": 125767013,
+      "total_debt_usd": 894624827,
+      "total_assets_usd": 5542174915,
+      "equity_usd": 1797048370,
+      "icr": 0.8339485251192218,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.050798,
+    "margin_change_mean": -0.002778,
+    "margin_change_sd": 0.016172,
+    "revenue_growth_median": 0.010166,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,100 +1,110 @@
 {
   "cik": "9999000077",
-  "name": "Ravenscar Homes Corp.",
+  "name": "Greywater Systems Corp.",
   "ticker": null,
-  "sector": "Construction",
+  "sector": "Services",
   "status": "healthy",
   "reasons": [
-    "ICR 2.82 in FY2024, at least 1",
+    "ICR 5.98 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-20",
+    "filed": "2025-02-13",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 1727100869,
-      "ebit_usd": 71778533,
-      "interest_expense_usd": 37861700,
-      "total_debt_usd": 1032349566,
-      "total_assets_usd": 2900252607,
-      "equity_usd": 930674003,
-      "icr": 1.8958085083342797,
+      "revenue_usd": 576484816,
+      "ebit_usd": 51960606,
+      "interest_expense_usd": 13887393,
+      "total_debt_usd": 241065463,
+      "total_assets_usd": 718850600,
+      "equity_usd": 67007163,
+      "icr": 3.7415666136905608,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 1785189000,
-      "ebit_usd": 282904362,
-      "interest_expense_usd": 41352154,
-      "total_debt_usd": 1083760676,
-      "total_assets_usd": 2684733871,
-      "equity_usd": 635387128,
-      "icr": 6.84134524165295,
+      "revenue_usd": 619643229,
+      "ebit_usd": 66924176,
+      "interest_expense_usd": 13921143,
+      "total_debt_usd": 243776481,
+      "total_assets_usd": 917111509,
+      "equity_usd": 62400689,
+      "icr": 4.807376520735402,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 1926272912,
-      "ebit_usd": 28963845,
-      "interest_expense_usd": 42941927,
-      "total_debt_usd": 1085478139,
-      "total_assets_usd": 2754592091,
-      "equity_usd": 501165470,
-      "icr": 0.6744887112308677,
+      "revenue_usd": 674403228,
+      "ebit_usd": 75017498,
+      "interest_expense_usd": 13872253,
+      "total_debt_usd": 242076857,
+      "total_assets_usd": 1113330449,
+      "equity_usd": 242679359,
+      "icr": 5.407737157042911,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 2031032737,
-      "ebit_usd": 179022302,
-      "interest_expense_usd": 44729094,
-      "total_debt_usd": 1043781785,
-      "total_assets_usd": 3299483592,
-      "equity_usd": 858946706,
-      "icr": 4.002368167797004,
+      "revenue_usd": 697700527,
+      "ebit_usd": 21629802,
+      "interest_expense_usd": 15186331,
+      "total_debt_usd": 243700170,
+      "total_assets_usd": 998149796,
+      "equity_usd": 262669901,
+      "icr": 1.424294123445617,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 2102421562,
-      "ebit_usd": 137071184,
-      "interest_expense_usd": 48625327,
-      "total_debt_usd": 1032804113,
-      "total_assets_usd": 2827052736,
-      "equity_usd": 358112002,
-      "icr": 2.818925701003512,
+      "revenue_usd": 753609964,
+      "ebit_usd": 92141177,
+      "interest_expense_usd": 15418266,
+      "total_debt_usd": 234343143,
+      "total_assets_usd": 1226661670,
+      "equity_usd": 99795171,
+      "icr": 5.976105030228432,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.073682,
-    "margin_change_mean": 0.005909,
-    "margin_change_sd": 0.115433,
-    "revenue_growth_median": 0.044767,
+    "margin_mean": 0.092528,
+    "margin_change_mean": 0.008033,
+    "margin_change_sd": 0.070329,
+    "revenue_growth_median": 0.077499,
     "history_years": 5,
     "used_sector_fallback": false
   }

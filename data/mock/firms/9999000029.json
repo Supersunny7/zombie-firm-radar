@@ -1,45 +1,28 @@
 {
   "cik": "9999000029",
-  "name": "Upperton Resources Co.",
+  "name": "Lowmoor Wholesale Co.",
   "ticker": null,
-  "sector": "Mining",
-  "status": "zombie",
+  "sector": "Wholesale Trade",
+  "status": "healthy",
   "reasons": [
-    "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 35 years (first filing proxy), at least 10"
+    "ICR 2.51 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-17",
+    "filed": "2025-03-28",
     "form": "10-K"
   },
   "years": [
     {
-      "fy": 2020,
-      "revenue_usd": 672439508,
-      "ebit_usd": 38048030,
-      "interest_expense_usd": 14198929,
-      "total_debt_usd": 221055359,
-      "total_assets_usd": 1201783792,
-      "equity_usd": 96113463,
-      "icr": 2.679640837699801,
-      "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
-      "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
-      ]
-    },
-    {
       "fy": 2021,
-      "revenue_usd": 657884357,
-      "ebit_usd": 23448665,
-      "interest_expense_usd": 14413483,
-      "total_debt_usd": 230760476,
-      "total_assets_usd": 1170477866,
-      "equity_usd": 124419546,
-      "icr": 1.626856256742385,
+      "revenue_usd": 596014676,
+      "ebit_usd": 26994136,
+      "interest_expense_usd": 11666497,
+      "total_debt_usd": 226582732,
+      "total_assets_usd": 865196027,
+      "equity_usd": 284212436,
+      "icr": 2.3138167352205206,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -50,13 +33,13 @@
     },
     {
       "fy": 2022,
-      "revenue_usd": 649945099,
-      "ebit_usd": -8077654,
-      "interest_expense_usd": 15591633,
-      "total_debt_usd": 230753568,
-      "total_assets_usd": 861548763,
-      "equity_usd": -1084455,
-      "icr": -0.5180762015114132,
+      "revenue_usd": 608909202,
+      "ebit_usd": 58395391,
+      "interest_expense_usd": 12851903,
+      "total_debt_usd": 233436115,
+      "total_assets_usd": 969396419,
+      "equity_usd": 197795675,
+      "icr": 4.543715510457868,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -67,13 +50,13 @@
     },
     {
       "fy": 2023,
-      "revenue_usd": 631603765,
-      "ebit_usd": 14334411,
-      "interest_expense_usd": 15669408,
-      "total_debt_usd": 225204505,
-      "total_assets_usd": 690254231,
-      "equity_usd": 14642628,
-      "icr": 0.9148023333108691,
+      "revenue_usd": 634112399,
+      "ebit_usd": 87417362,
+      "interest_expense_usd": 13000193,
+      "total_debt_usd": 234756442,
+      "total_assets_usd": 598700622,
+      "equity_usd": 161691464,
+      "icr": 6.724312631358627,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -84,13 +67,13 @@
     },
     {
       "fy": 2024,
-      "revenue_usd": 637949243,
-      "ebit_usd": 13648417,
-      "interest_expense_usd": 16828303,
-      "total_debt_usd": 235690788,
-      "total_assets_usd": 777077081,
-      "equity_usd": -83417315,
-      "icr": 0.8110394137780856,
+      "revenue_usd": 640088408,
+      "ebit_usd": 36052104,
+      "interest_expense_usd": 14369304,
+      "total_debt_usd": 233255504,
+      "total_assets_usd": 911365682,
+      "equity_usd": 178060299,
+      "icr": 2.5089666138318183,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -101,11 +84,11 @@
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.024777,
-    "margin_change_mean": -0.008797,
-    "margin_change_sd": 0.035,
-    "revenue_growth_median": -0.016857,
-    "history_years": 5,
+    "margin_mean": 0.083844,
+    "margin_change_mean": 0.003678,
+    "margin_change_sd": 0.073922,
+    "revenue_growth_median": 0.021635,
+    "history_years": 4,
     "used_sector_fallback": false
   }
 }

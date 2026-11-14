@@ -1,0 +1,110 @@
+{
+  "cik": "9999000177",
+  "name": "Marlowe Wholesale Group",
+  "ticker": null,
+  "sector": "Wholesale Trade",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, 0.87)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-25",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 4655865807,
+      "ebit_usd": 598638792,
+      "interest_expense_usd": 104327117,
+      "total_debt_usd": 1778837739,
+      "total_assets_usd": 5340249044,
+      "equity_usd": 722366990,
+      "icr": 5.738093884066594,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 4678485369,
+      "ebit_usd": 198252839,
+      "interest_expense_usd": 102775596,
+      "total_debt_usd": 1770527537,
+      "total_assets_usd": 5548635477,
+      "equity_usd": 1438286765,
+      "icr": 1.9289874903766064,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 4492300265,
+      "ebit_usd": 324134716,
+      "interest_expense_usd": 111310469,
+      "total_debt_usd": 1789431977,
+      "total_assets_usd": 6726650717,
+      "equity_usd": 684710156,
+      "icr": 2.9119876945267387,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 4337994584,
+      "ebit_usd": 453476813,
+      "interest_expense_usd": 118621171,
+      "total_debt_usd": 1815997040,
+      "total_assets_usd": 7269818845,
+      "equity_usd": 558224737,
+      "icr": 3.8228994805657415,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 4209177669,
+      "ebit_usd": 100641918,
+      "interest_expense_usd": 115681579,
+      "total_debt_usd": 1768954877,
+      "total_assets_usd": 7132929700,
+      "equity_usd": 1583284273,
+      "icr": 0.8699908738278892,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.07431,
+    "margin_change_mean": -0.026167,
+    "margin_change_sd": 0.066151,
+    "revenue_growth_median": -0.032022,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

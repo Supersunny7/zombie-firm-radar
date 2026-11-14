@@ -1,12 +1,12 @@
 {
   "cik": "9999000085",
-  "name": "Dalbury Freight Inc.",
+  "name": "Valemont Works Holdings",
   "ticker": null,
-  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "sector": "Manufacturing",
   "status": "endangered",
   "reasons": [
     "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 6 years (first filing proxy), under 10, so not a zombie"
+    "Firm age 5 years (first filing proxy), under 10, so not a zombie"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
@@ -16,13 +16,13 @@
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 3563222139,
-      "ebit_usd": 177454824,
-      "interest_expense_usd": 41702700,
-      "total_debt_usd": 1153043225,
-      "total_assets_usd": 3321681729,
-      "equity_usd": -162048216,
-      "icr": 4.255235848038616,
+      "revenue_usd": 384311943,
+      "ebit_usd": 82383945,
+      "interest_expense_usd": 11824595,
+      "total_debt_usd": 219079280,
+      "total_assets_usd": 648306165,
+      "equity_usd": 62387631,
+      "icr": 6.967168431561504,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -33,13 +33,13 @@
     },
     {
       "fy": 2021,
-      "revenue_usd": 3689192614,
-      "ebit_usd": 143710631,
-      "interest_expense_usd": 40271572,
-      "total_debt_usd": 1114916632,
-      "total_assets_usd": 4180703832,
-      "equity_usd": 243308476,
-      "icr": 3.5685379006312443,
+      "revenue_usd": 372259240,
+      "ebit_usd": 51580528,
+      "interest_expense_usd": 11927506,
+      "total_debt_usd": 219319196,
+      "total_assets_usd": 629133898,
+      "equity_usd": 11238228,
+      "icr": 4.32450237291853,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -50,13 +50,13 @@
     },
     {
       "fy": 2022,
-      "revenue_usd": 3777371134,
-      "ebit_usd": 34704971,
-      "interest_expense_usd": 42235188,
-      "total_debt_usd": 1085547077,
-      "total_assets_usd": 4356177270,
-      "equity_usd": 382346794,
-      "icr": 0.8217075060728982,
+      "revenue_usd": 371008962,
+      "ebit_usd": 6113758,
+      "interest_expense_usd": 12290588,
+      "total_debt_usd": 213081913,
+      "total_assets_usd": 499637114,
+      "equity_usd": 43566743,
+      "icr": 0.4974341341520845,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -67,13 +67,13 @@
     },
     {
       "fy": 2023,
-      "revenue_usd": 3781963222,
-      "ebit_usd": 21574038,
-      "interest_expense_usd": 46845575,
-      "total_debt_usd": 1061714271,
-      "total_assets_usd": 4238026212,
-      "equity_usd": -536850147,
-      "icr": 0.46053523731964013,
+      "revenue_usd": 366803116,
+      "ebit_usd": 6456178,
+      "interest_expense_usd": 13185406,
+      "total_debt_usd": 209431414,
+      "total_assets_usd": 638903051,
+      "equity_usd": 26614140,
+      "icr": 0.48964574924731175,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -84,13 +84,13 @@
     },
     {
       "fy": 2024,
-      "revenue_usd": 3807753129,
-      "ebit_usd": 41016671,
-      "interest_expense_usd": 47075312,
-      "total_debt_usd": 1033801681,
-      "total_assets_usd": 6164655531,
-      "equity_usd": -774252854,
-      "icr": 0.8712989730158347,
+      "revenue_usd": 352049969,
+      "ebit_usd": 8603977,
+      "interest_expense_usd": 13825043,
+      "total_debt_usd": 210159184,
+      "total_assets_usd": 508262871,
+      "equity_usd": 14059600,
+      "icr": 0.6223472143992608,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -101,10 +101,10 @@
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.022884,
-    "margin_change_mean": -0.009757,
-    "margin_change_sd": 0.01484,
-    "revenue_growth_median": 0.015361,
+    "margin_mean": 0.08229,
+    "margin_change_mean": -0.047482,
+    "margin_change_sd": 0.062398,
+    "revenue_growth_median": -0.021349,
     "history_years": 5,
     "used_sector_fallback": false
   }

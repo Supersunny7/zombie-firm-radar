@@ -1,105 +1,101 @@
 {
   "cik": "9999000144",
-  "name": "Dalbury Power Inc.",
+  "name": "Valemont Fabrication Co.",
   "ticker": null,
-  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
-  "status": "insufficient_data",
+  "sector": "Manufacturing",
+  "status": "healthy",
   "reasons": [
-    "Fewer than 3 consecutive fiscal years with both EBIT and interest expense available"
+    "ICR 4.46 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-02",
+    "filed": "2025-03-15",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 4486197980,
-      "ebit_usd": 1192072113,
-      "interest_expense_usd": 245175868,
-      "total_debt_usd": 3611149426,
-      "total_assets_usd": 5803257894,
-      "equity_usd": 1970914218,
-      "icr": 4.862110299534047,
+      "revenue_usd": 5452988175,
+      "ebit_usd": 801237580,
+      "interest_expense_usd": 123413681,
+      "total_debt_usd": 2222158324,
+      "total_assets_usd": 8624508654,
+      "equity_usd": 888168990,
+      "icr": 6.492291401631558,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 4783747421,
-      "ebit_usd": null,
-      "interest_expense_usd": null,
-      "total_debt_usd": 3643666460,
-      "total_assets_usd": 4966708097,
-      "equity_usd": 643293892,
-      "icr": null,
-      "ebit_tag": null,
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_usd": 5555501226,
+      "ebit_usd": 851720587,
+      "interest_expense_usd": 125522707,
+      "total_debt_usd": 2206272848,
+      "total_assets_usd": 7143220056,
+      "equity_usd": 1747252652,
+      "icr": 6.785390526990467,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 4896038279,
-      "ebit_usd": 181659006,
-      "interest_expense_usd": 259906475,
-      "total_debt_usd": 3657318510,
-      "total_assets_usd": 7083973464,
-      "equity_usd": 1727749518,
-      "icr": 0.6989399013625959,
+      "revenue_usd": 5483011334,
+      "ebit_usd": 665825460,
+      "interest_expense_usd": 128639847,
+      "total_debt_usd": 2193897925,
+      "total_assets_usd": 7135154771,
+      "equity_usd": 701823700,
+      "icr": 5.1758881522923454,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 5040877807,
-      "ebit_usd": null,
-      "interest_expense_usd": null,
-      "total_debt_usd": 3627069330,
-      "total_assets_usd": 7379844660,
-      "equity_usd": 1912340616,
-      "icr": null,
-      "ebit_tag": null,
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_usd": 5586948423,
+      "ebit_usd": 410700005,
+      "interest_expense_usd": 143931222,
+      "total_debt_usd": 2302151303,
+      "total_assets_usd": 5078161842,
+      "equity_usd": 489056439,
+      "icr": 2.8534462453184757,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 5273790613,
-      "ebit_usd": 1582137184,
-      "interest_expense_usd": 272345505,
-      "total_debt_usd": 3483562511,
-      "total_assets_usd": 7129978949,
-      "equity_usd": 999256752,
-      "icr": 5.80930162221697,
+      "revenue_usd": 5527409046,
+      "ebit_usd": 686492560,
+      "interest_expense_usd": 154009370,
+      "total_debt_usd": 2349509397,
+      "total_assets_usd": 9197957910,
+      "equity_usd": 2748580572,
+      "icr": 4.457472684941182,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.11,
-    "margin_change_mean": -0.001,
-    "margin_change_sd": 0.016,
-    "revenue_growth_median": 0.02,
-    "history_years": 3,
-    "used_sector_fallback": true
+    "margin_mean": 0.123878,
+    "margin_change_mean": -0.005684,
+    "margin_change_sd": 0.043945,
+    "revenue_growth_median": 0.004071,
+    "history_years": 5,
+    "used_sector_fallback": false
   }
 }

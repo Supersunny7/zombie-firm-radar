@@ -1,100 +1,100 @@
 {
   "cik": "9999000010",
-  "name": "Valemont Health Group",
+  "name": "Netherby Systems Group",
   "ticker": null,
   "sector": "Services",
   "status": "healthy",
   "reasons": [
-    "ICR 3.32 in FY2024, at least 1",
+    "ICR 2.09 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-23",
+    "filed": "2025-03-05",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 2843304370,
-      "ebit_usd": 300877076,
-      "interest_expense_usd": 47851320,
-      "total_debt_usd": 789720826,
-      "total_assets_usd": 4712556456,
-      "equity_usd": 1241644743,
-      "icr": 6.287748718321668,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_usd": 3876889690,
+      "ebit_usd": 371949602,
+      "interest_expense_usd": 94617504,
+      "total_debt_usd": 1432569721,
+      "total_assets_usd": 5345374817,
+      "equity_usd": 1690811515,
+      "icr": 3.9310865989447366,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 2840867459,
-      "ebit_usd": 201570449,
-      "interest_expense_usd": 46636162,
-      "total_debt_usd": 771816430,
-      "total_assets_usd": 2811689940,
-      "equity_usd": 640813748,
-      "icr": 4.322192057742659,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_usd": 4150072367,
+      "ebit_usd": 280445353,
+      "interest_expense_usd": 90851399,
+      "total_debt_usd": 1385448046,
+      "total_assets_usd": 5346969808,
+      "equity_usd": 833141886,
+      "icr": 3.0868578369387576,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 2969734018,
-      "ebit_usd": 220564400,
-      "interest_expense_usd": 47462068,
-      "total_debt_usd": 756254929,
-      "total_assets_usd": 4857267635,
-      "equity_usd": 1591313436,
-      "icr": 4.6471721375478205,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_usd": 4480099331,
+      "ebit_usd": 75334907,
+      "interest_expense_usd": 98319758,
+      "total_debt_usd": 1412036114,
+      "total_assets_usd": 7764035799,
+      "equity_usd": 905887540,
+      "icr": 0.7662234787030293,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 3023299874,
-      "ebit_usd": 110539031,
-      "interest_expense_usd": 50922112,
-      "total_debt_usd": 761140113,
-      "total_assets_usd": 4981035414,
-      "equity_usd": 1033283019,
-      "icr": 2.17074717953568,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_usd": 4726568679,
+      "ebit_usd": 660620244,
+      "interest_expense_usd": 100374577,
+      "total_debt_usd": 1384799872,
+      "total_assets_usd": 6508855123,
+      "equity_usd": 505501009,
+      "icr": 6.581549469443841,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 3161778001,
-      "ebit_usd": 165089660,
-      "interest_expense_usd": 49671726,
-      "total_debt_usd": 743733222,
-      "total_assets_usd": 4735713685,
-      "equity_usd": 1072504452,
-      "icr": 3.3236143233677846,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_usd": 5033949222,
+      "ebit_usd": 212678162,
+      "interest_expense_usd": 101678864,
+      "total_debt_usd": 1344370982,
+      "total_assets_usd": 4823914567,
+      "equity_usd": 351471377,
+      "icr": 2.0916654025560315,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.067964,
-    "margin_change_mean": -0.013401,
-    "margin_change_sd": 0.026927,
-    "revenue_growth_median": 0.031699,
+    "margin_mean": 0.07247,
+    "margin_change_mean": -0.013423,
+    "margin_change_sd": 0.095372,
+    "revenue_growth_median": 0.067748,
     "history_years": 5,
     "used_sector_fallback": false
   }

@@ -1,110 +1,100 @@
 {
   "cik": "9999000139",
-  "name": "Penhallow Distribution Holdings",
+  "name": "Nettlefold Growers Group",
   "ticker": null,
-  "sector": "Wholesale Trade",
+  "sector": "Agriculture, Forestry and Fishing",
   "status": "healthy",
   "reasons": [
-    "ICR 1.91 in FY2024, at least 1",
+    "ICR 1.20 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-25",
+    "filed": "2025-02-19",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 2756080465,
-      "ebit_usd": 138372492,
-      "interest_expense_usd": 60203384,
-      "total_debt_usd": 998938711,
-      "total_assets_usd": 3590318222,
-      "equity_usd": 981843498,
-      "icr": 2.2984171786755376,
+      "revenue_usd": 2871413830,
+      "ebit_usd": 546294824,
+      "interest_expense_usd": 83597881,
+      "total_debt_usd": 1322401806,
+      "total_assets_usd": 3551167858,
+      "equity_usd": 853575152,
+      "icr": 6.534792718011596,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 2718118078,
-      "ebit_usd": 106652809,
-      "interest_expense_usd": 62945116,
-      "total_debt_usd": 1027447798,
-      "total_assets_usd": 4408692952,
-      "equity_usd": 1209115710,
-      "icr": 1.694377829091617,
+      "revenue_usd": 3066345523,
+      "ebit_usd": 78048098,
+      "interest_expense_usd": 87816507,
+      "total_debt_usd": 1341159940,
+      "total_assets_usd": 2956264784,
+      "equity_usd": 875959561,
+      "icr": 0.8887634075447797,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 2694611139,
-      "ebit_usd": 199565334,
-      "interest_expense_usd": 63359466,
-      "total_debt_usd": 1012470248,
-      "total_assets_usd": 4154624517,
-      "equity_usd": 749625020,
-      "icr": 3.149731943763541,
+      "revenue_usd": 3283678284,
+      "ebit_usd": 201239950,
+      "interest_expense_usd": 96790013,
+      "total_debt_usd": 1407252659,
+      "total_assets_usd": 5182691430,
+      "equity_usd": 1091667111,
+      "icr": 2.079139611232411,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 2683470305,
-      "ebit_usd": 219152411,
-      "interest_expense_usd": 68728206,
-      "total_debt_usd": 1061462691,
-      "total_assets_usd": 2480845761,
-      "equity_usd": 412366653,
-      "icr": 3.1886822565978226,
+      "revenue_usd": 3556495611,
+      "ebit_usd": 213158482,
+      "interest_expense_usd": 101093734,
+      "total_debt_usd": 1385066460,
+      "total_assets_usd": 3423430229,
+      "equity_usd": 439683106,
+      "icr": 2.1085231850274715,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 2786035685,
-      "ebit_usd": 137098797,
-      "interest_expense_usd": 71932478,
-      "total_debt_usd": 1034337975,
-      "total_assets_usd": 3664912092,
-      "equity_usd": 640409568,
-      "icr": 1.9059373569752456,
+      "revenue_usd": 3740625179,
+      "ebit_usd": 131437945,
+      "interest_expense_usd": 109430129,
+      "total_debt_usd": 1450007528,
+      "total_assets_usd": 5199641872,
+      "equity_usd": 763116907,
+      "icr": 1.2011129494327837,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtNoncurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.058876,
-    "margin_change_mean": -0.000249,
-    "margin_change_sd": 0.028543,
-    "revenue_growth_median": -0.006391,
+    "margin_mean": 0.074413,
+    "margin_change_mean": -0.038779,
+    "margin_change_sd": 0.087644,
+    "revenue_growth_median": 0.069382,
     "history_years": 5,
     "used_sector_fallback": false
   }

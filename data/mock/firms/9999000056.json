@@ -1,100 +1,99 @@
 {
   "cik": "9999000056",
-  "name": "Calloway Contracting Corp.",
+  "name": "Ainsley Health Co.",
   "ticker": null,
-  "sector": "Construction",
-  "status": "zombie",
+  "sector": "Services",
+  "status": "endangered",
   "reasons": [
-    "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 25 years (first filing proxy), at least 10"
+    "ICR below 1 in the most recent year (FY2024, 0.88)"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-23",
+    "filed": "2025-03-09",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 155654641,
-      "ebit_usd": 24148511,
-      "interest_expense_usd": 3811989,
-      "total_debt_usd": 84695595,
-      "total_assets_usd": 276292800,
-      "equity_usd": 5599836,
-      "icr": 6.334884754389376,
+      "revenue_usd": 607719014,
+      "ebit_usd": 45598865,
+      "interest_expense_usd": 12592748,
+      "total_debt_usd": 247874742,
+      "total_assets_usd": 579820632,
+      "equity_usd": 53150235,
+      "icr": 3.6210416503212803,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 159620073,
-      "ebit_usd": 1809096,
-      "interest_expense_usd": 3675279,
-      "total_debt_usd": 85047242,
-      "total_assets_usd": 242035538,
-      "equity_usd": -11163129,
-      "icr": 0.49223365083303877,
+      "revenue_usd": 605739404,
+      "ebit_usd": 14762120,
+      "interest_expense_usd": 12098154,
+      "total_debt_usd": 245089682,
+      "total_assets_usd": 594684246,
+      "equity_usd": 118683435,
+      "icr": 1.2201960728884753,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 165796074,
-      "ebit_usd": 2079220,
-      "interest_expense_usd": 4248802,
-      "total_debt_usd": 87637833,
-      "total_assets_usd": 245946781,
-      "equity_usd": 13185304,
-      "icr": 0.4893661789840995,
+      "revenue_usd": 611448063,
+      "ebit_usd": 15548316,
+      "interest_expense_usd": 12774007,
+      "total_debt_usd": 242076283,
+      "total_assets_usd": 926661152,
+      "equity_usd": 212060894,
+      "icr": 1.2171839267036568,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 162833466,
-      "ebit_usd": 2457584,
-      "interest_expense_usd": 4384982,
-      "total_debt_usd": 90083997,
-      "total_assets_usd": 207226853,
-      "equity_usd": -4681162,
-      "icr": 0.5604547521517762,
+      "revenue_usd": 633227583,
+      "ebit_usd": 79846106,
+      "interest_expense_usd": 13401786,
+      "total_debt_usd": 234661657,
+      "total_assets_usd": 640708287,
+      "equity_usd": 49221624,
+      "icr": 5.957870540538403,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 160345651,
-      "ebit_usd": 4112384,
-      "interest_expense_usd": 4944881,
-      "total_debt_usd": 92692670,
-      "total_assets_usd": 173961073,
-      "equity_usd": 10651628,
-      "icr": 0.8316446846749194,
+      "revenue_usd": 642026002,
+      "ebit_usd": 12773094,
+      "interest_expense_usd": 14517222,
+      "total_debt_usd": 235041549,
+      "total_assets_usd": 1035090697,
+      "equity_usd": 193114276,
+      "icr": 0.8798580058912098,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.043951,
-    "margin_change_mean": -0.032374,
-    "margin_change_sd": 0.074404,
-    "revenue_growth_median": 0.005099,
+    "margin_mean": 0.054164,
+    "margin_change_mean": -0.013784,
+    "margin_change_sd": 0.087976,
+    "revenue_growth_median": 0.011659,
     "history_years": 5,
     "used_sector_fallback": false
   }

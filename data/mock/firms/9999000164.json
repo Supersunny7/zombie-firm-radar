@@ -1,0 +1,101 @@
+{
+  "cik": "9999000164",
+  "name": "Hartsmere Retail Co.",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.35 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-14",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 3043439760,
+      "ebit_usd": 212147621,
+      "interest_expense_usd": 87775728,
+      "total_debt_usd": 1326079810,
+      "total_assets_usd": 3547084566,
+      "equity_usd": 728049157,
+      "icr": 2.416928071505143,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 3254136492,
+      "ebit_usd": 171387380,
+      "interest_expense_usd": 84272559,
+      "total_debt_usd": 1293548631,
+      "total_assets_usd": 4707945027,
+      "equity_usd": 711255487,
+      "icr": 2.033727016643698,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 3378445100,
+      "ebit_usd": 323653641,
+      "interest_expense_usd": 85264135,
+      "total_debt_usd": 1275241748,
+      "total_assets_usd": 5871650369,
+      "equity_usd": 464723852,
+      "icr": 3.7958942643351743,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 3537708082,
+      "ebit_usd": 532928597,
+      "interest_expense_usd": 94694288,
+      "total_debt_usd": 1325558672,
+      "total_assets_usd": 5501539037,
+      "equity_usd": 1835182069,
+      "icr": 5.627885358829669,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 3675234130,
+      "ebit_usd": 313056413,
+      "interest_expense_usd": 93371597,
+      "total_debt_usd": 1278426492,
+      "total_assets_usd": 5741144672,
+      "equity_usd": 529868145,
+      "icr": 3.3528013128017933,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.090799,
+    "margin_change_mean": 0.003868,
+    "margin_change_sd": 0.055928,
+    "revenue_growth_median": 0.043008,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "cik": "9999000158",
+  "name": "Upperton Trading Co.",
+  "ticker": null,
+  "sector": "Wholesale Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.47 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-11",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 924651923,
+      "ebit_usd": 128431745,
+      "interest_expense_usd": 43209671,
+      "total_debt_usd": 507949022,
+      "total_assets_usd": 1159059302,
+      "equity_usd": 276954519,
+      "icr": 2.9722916659096987,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 977452838,
+      "ebit_usd": 112016593,
+      "interest_expense_usd": 43648841,
+      "total_debt_usd": 498007062,
+      "total_assets_usd": 1066744867,
+      "equity_usd": 199581945,
+      "icr": 2.5663131124146,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1018548772,
+      "ebit_usd": 82543614,
+      "interest_expense_usd": 45551745,
+      "total_debt_usd": 504788524,
+      "total_assets_usd": 1744481018,
+      "equity_usd": 198148807,
+      "icr": 1.8120845644881443,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1047624175,
+      "ebit_usd": 84560515,
+      "interest_expense_usd": 46586034,
+      "total_debt_usd": 502325705,
+      "total_assets_usd": 1049066119,
+      "equity_usd": 199020369,
+      "icr": 1.8151473250545431,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1094027439,
+      "ebit_usd": 70943903,
+      "interest_expense_usd": 48275797,
+      "total_debt_usd": 504277916,
+      "total_assets_usd": 1072951214,
+      "equity_usd": 347264843,
+      "icr": 1.4695542571777738,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.09602,
+    "margin_change_mean": -0.018513,
+    "margin_change_sd": 0.014115,
+    "revenue_growth_median": 0.043169,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

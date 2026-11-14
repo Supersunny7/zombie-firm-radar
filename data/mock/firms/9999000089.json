@@ -1,100 +1,110 @@
 {
   "cik": "9999000089",
-  "name": "Fairlight Growers Group",
+  "name": "Dalbury Coal Holdings",
   "ticker": null,
-  "sector": "Agriculture, Forestry and Fishing",
-  "status": "healthy",
+  "sector": "Mining",
+  "status": "zombie",
   "reasons": [
-    "ICR 2.66 in FY2024, at least 1",
-    "No more than one year below 1 in the last 3"
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 13 years (first filing proxy), at least 10"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-19",
+    "filed": "2025-03-19",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 3721068130,
-      "ebit_usd": 367661608,
-      "interest_expense_usd": 203734421,
-      "total_debt_usd": 2778522811,
-      "total_assets_usd": 5253884044,
-      "equity_usd": 775844004,
-      "icr": 1.8046121327725961,
+      "revenue_usd": 1295245766,
+      "ebit_usd": 54803170,
+      "interest_expense_usd": 18295117,
+      "total_debt_usd": 346726838,
+      "total_assets_usd": 2057689692,
+      "equity_usd": -56138423,
+      "icr": 2.9955080363793245,
       "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 3726347230,
-      "ebit_usd": 632737218,
-      "interest_expense_usd": 210740893,
-      "total_debt_usd": 2803080778,
-      "total_assets_usd": 4206215367,
-      "equity_usd": 677737496,
-      "icr": 3.0024415716981894,
+      "revenue_usd": 1243891479,
+      "ebit_usd": 60497840,
+      "interest_expense_usd": 17804765,
+      "total_debt_usd": 345548874,
+      "total_assets_usd": 1716031570,
+      "equity_usd": -230247638,
+      "icr": 3.3978454644023666,
       "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 3563139027,
-      "ebit_usd": 806497567,
-      "interest_expense_usd": 216309659,
-      "total_debt_usd": 2789982175,
-      "total_assets_usd": 4170491097,
-      "equity_usd": 844844352,
-      "icr": 3.728439916776902,
+      "revenue_usd": 1224022286,
+      "ebit_usd": 12580462,
+      "interest_expense_usd": 19620435,
+      "total_debt_usd": 348074418,
+      "total_assets_usd": 1366987140,
+      "equity_usd": -201123528,
+      "icr": 0.641191798245044,
       "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 3443073445,
-      "ebit_usd": 684337868,
-      "interest_expense_usd": 221437863,
-      "total_debt_usd": 2682850332,
-      "total_assets_usd": 3604410111,
-      "equity_usd": 328040929,
-      "icr": 3.090428433189856,
+      "revenue_usd": 1188550733,
+      "ebit_usd": 14186449,
+      "interest_expense_usd": 20177730,
+      "total_debt_usd": 335473022,
+      "total_assets_usd": 1163997900,
+      "equity_usd": 40859553,
+      "icr": 0.7030745777646941,
       "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 3270985055,
-      "ebit_usd": 588314913,
-      "interest_expense_usd": 221176679,
-      "total_debt_usd": 2599671281,
-      "total_assets_usd": 4820018821,
-      "equity_usd": 1135482763,
-      "icr": 2.659931940654557,
+      "revenue_usd": 1148707774,
+      "ebit_usd": 3052398,
+      "interest_expense_usd": 20893244,
+      "total_debt_usd": 329614917,
+      "total_assets_usd": 1276090073,
+      "equity_usd": 77873934,
+      "icr": 0.14609497692172646,
       "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.174713,
-    "margin_change_mean": 0.020263,
-    "margin_change_sd": 0.050706,
-    "revenue_growth_median": -0.038748,
+    "margin_mean": 0.023164,
+    "margin_change_mean": -0.009913,
+    "margin_change_sd": 0.020059,
+    "revenue_growth_median": -0.031251,
     "history_years": 5,
     "used_sector_fallback": false
   }

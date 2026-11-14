@@ -1,100 +1,100 @@
 {
   "cik": "9999000126",
-  "name": "Thornbury Power Group",
+  "name": "Fairlight Works Inc.",
   "ticker": null,
-  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
-  "status": "healthy",
+  "sector": "Manufacturing",
+  "status": "zombie",
   "reasons": [
-    "ICR 5.36 in FY2024, at least 1",
-    "No more than one year below 1 in the last 3"
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 16 years (first filing proxy), at least 10"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-25",
+    "filed": "2025-02-28",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 10693742535,
-      "ebit_usd": 645595338,
-      "interest_expense_usd": 185456198,
-      "total_debt_usd": 3850579007,
-      "total_assets_usd": 17496925945,
-      "equity_usd": 6052002364,
-      "icr": 3.4811203128406634,
+      "revenue_usd": 1988964683,
+      "ebit_usd": 134057466,
+      "interest_expense_usd": 40069150,
+      "total_debt_usd": 826269678,
+      "total_assets_usd": 2363681427,
+      "equity_usd": -174223588,
+      "icr": 3.345652852631014,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 10588956547,
-      "ebit_usd": 221530133,
-      "interest_expense_usd": 189850831,
-      "total_debt_usd": 3919167201,
-      "total_assets_usd": 12960545571,
-      "equity_usd": 1217397713,
-      "icr": 1.1668641734836547,
+      "revenue_usd": 1996272966,
+      "ebit_usd": 121434250,
+      "interest_expense_usd": 39332665,
+      "total_debt_usd": 805575715,
+      "total_assets_usd": 3105710065,
+      "equity_usd": -347218241,
+      "icr": 3.08736389970016,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 10971404142,
-      "ebit_usd": 1100038218,
-      "interest_expense_usd": 199759020,
-      "total_debt_usd": 3869213652,
-      "total_assets_usd": 18151128238,
-      "equity_usd": 3507791894,
-      "icr": 5.506826264966659,
+      "revenue_usd": 1993826587,
+      "ebit_usd": 17039012,
+      "interest_expense_usd": 45231274,
+      "total_debt_usd": 840221464,
+      "total_assets_usd": 2096619095,
+      "equity_usd": -225944288,
+      "icr": 0.37670864632289597,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 11431089731,
-      "ebit_usd": 152260060,
-      "interest_expense_usd": 210515104,
-      "total_debt_usd": 3883162936,
-      "total_assets_usd": 15735173691,
-      "equity_usd": 3156578956,
-      "icr": 0.7232738036696882,
+      "revenue_usd": 1976743457,
+      "ebit_usd": 22398561,
+      "interest_expense_usd": 46284686,
+      "total_debt_usd": 845120178,
+      "total_assets_usd": 2335850853,
+      "equity_usd": -65532901,
+      "icr": 0.4839302787967493,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 11632201199,
-      "ebit_usd": 1269137011,
-      "interest_expense_usd": 236596778,
-      "total_debt_usd": 3934667266,
-      "total_assets_usd": 13400866936,
-      "equity_usd": 1336000035,
-      "icr": 5.364134802376726,
+      "revenue_usd": 1895568804,
+      "ebit_usd": -55623285,
+      "interest_expense_usd": 51913109,
+      "total_debt_usd": 862963844,
+      "total_assets_usd": 1724886953,
+      "equity_usd": 17968290,
+      "icr": -1.071468961722173,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.060796,
-    "margin_change_mean": 0.012184,
-    "margin_change_sd": 0.089428,
-    "revenue_growth_median": 0.026855,
+    "margin_mean": 0.023753,
+    "margin_change_mean": -0.024186,
+    "margin_change_sd": 0.026452,
+    "revenue_growth_median": -0.004897,
     "history_years": 5,
     "used_sector_fallback": false
   }

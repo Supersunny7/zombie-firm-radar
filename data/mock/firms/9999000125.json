@@ -1,105 +1,100 @@
 {
   "cik": "9999000125",
-  "name": "Elmstead Works Corp.",
+  "name": "Quillon Partners Co.",
   "ticker": null,
-  "sector": "Manufacturing",
-  "status": "endangered",
+  "sector": "Services",
+  "status": "zombie",
   "reasons": [
-    "ICR below 1 in the most recent year (FY2024, 0.69)",
-    "ICR below 1 in 2 of the last 3 years (FY2023, FY2024)"
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 24 years (first filing proxy), at least 10"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-15",
+    "filed": "2025-03-16",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 146300502,
-      "ebit_usd": 14772907,
-      "interest_expense_usd": 2123580,
-      "total_debt_usd": 39082943,
-      "total_assets_usd": 136886189,
-      "equity_usd": -18875207,
-      "icr": 6.956604884204975,
+      "revenue_usd": 6144810424,
+      "ebit_usd": 205746086,
+      "interest_expense_usd": 221815445,
+      "total_debt_usd": 4723122629,
+      "total_assets_usd": 9830654725,
+      "equity_usd": -506838113,
+      "icr": 0.9275552746112877,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 145155819,
-      "ebit_usd": 14718291,
-      "interest_expense_usd": 2230754,
-      "total_debt_usd": 40679390,
-      "total_assets_usd": 162436767,
-      "equity_usd": -9266128,
-      "icr": 6.597899633935432,
+      "revenue_usd": 6132825033,
+      "ebit_usd": 1409462487,
+      "interest_expense_usd": 233406968,
+      "total_debt_usd": 4687620751,
+      "total_assets_usd": 6535712047,
+      "equity_usd": 384691322,
+      "icr": 6.038647856477018,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 141717343,
-      "ebit_usd": 15312584,
-      "interest_expense_usd": 2419089,
-      "total_debt_usd": 41715092,
-      "total_assets_usd": 194400503,
-      "equity_usd": 9799371,
-      "icr": 6.329896915739768,
+      "revenue_usd": 6253791747,
+      "ebit_usd": 91885626,
+      "interest_expense_usd": 235929610,
+      "total_debt_usd": 4686128188,
+      "total_assets_usd": 9138667356,
+      "equity_usd": 155067380,
+      "icr": 0.3894620348840487,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 143345289,
-      "ebit_usd": 2273700,
-      "interest_expense_usd": 2621665,
-      "total_debt_usd": 43454998,
-      "total_assets_usd": 192887358,
-      "equity_usd": 20195706,
-      "icr": 0.8672732786225548,
+      "revenue_usd": 6281579171,
+      "ebit_usd": -246963433,
+      "interest_expense_usd": 238164684,
+      "total_debt_usd": 4500424252,
+      "total_assets_usd": 6683822763,
+      "equity_usd": -665606549,
+      "icr": -1.0369439702487544,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 142208560,
-      "ebit_usd": 1809556,
-      "interest_expense_usd": 2632550,
-      "total_debt_usd": 41898383,
-      "total_assets_usd": 149279454,
-      "equity_usd": 11072815,
-      "icr": 0.6873776376517066,
+      "revenue_usd": 6240026134,
+      "ebit_usd": 111048098,
+      "interest_expense_usd": 242518651,
+      "total_debt_usd": 4323756757,
+      "total_assets_usd": 7367982530,
+      "equity_usd": 809210211,
+      "icr": 0.45789508370636617,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.067802,
-    "margin_change_mean": -0.022063,
-    "margin_change_sd": 0.046925,
-    "revenue_growth_median": -0.007877,
+    "margin_mean": 0.051296,
+    "margin_change_mean": -0.003922,
+    "margin_change_sd": 0.174114,
+    "revenue_growth_median": 0.001246,
     "history_years": 5,
     "used_sector_fallback": false
   }

@@ -1,100 +1,100 @@
 {
   "cik": "9999000021",
-  "name": "Penhallow Systems Group",
+  "name": "Nettlefold Systems Corp.",
   "ticker": null,
   "sector": "Services",
   "status": "healthy",
   "reasons": [
-    "ICR 4.93 in FY2024, at least 1",
+    "ICR 4.95 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-05",
+    "filed": "2025-03-06",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 1105229987,
-      "ebit_usd": 35364694,
-      "interest_expense_usd": 16074709,
-      "total_debt_usd": 283058438,
-      "total_assets_usd": 1173615653,
-      "equity_usd": 354437420,
-      "icr": 2.200020790423018,
+      "revenue_usd": 106206628,
+      "ebit_usd": 6454345,
+      "interest_expense_usd": 3154308,
+      "total_debt_usd": 64431685,
+      "total_assets_usd": 184879209,
+      "equity_usd": 14077889,
+      "icr": 2.0461999906160084,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 1050495459,
-      "ebit_usd": 54664621,
-      "interest_expense_usd": 17167929,
-      "total_debt_usd": 286306245,
-      "total_assets_usd": 1108462330,
-      "equity_usd": 209534262,
-      "icr": 3.1841127138864564,
+      "revenue_usd": 109406094,
+      "ebit_usd": 20790568,
+      "interest_expense_usd": 3172364,
+      "total_debt_usd": 64693533,
+      "total_assets_usd": 154660642,
+      "equity_usd": 13327782,
+      "icr": 6.553651472529634,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 1016534438,
-      "ebit_usd": 96146480,
-      "interest_expense_usd": 18492752,
-      "total_debt_usd": 291387588,
-      "total_assets_usd": 1635690172,
-      "equity_usd": 156432037,
-      "icr": 5.199143967322981,
+      "revenue_usd": 116312161,
+      "ebit_usd": 20511481,
+      "interest_expense_usd": 3201935,
+      "total_debt_usd": 63778168,
+      "total_assets_usd": 110023126,
+      "equity_usd": 16916910,
+      "icr": 6.405964206019172,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 1007481733,
-      "ebit_usd": 79929610,
-      "interest_expense_usd": 18617919,
-      "total_debt_usd": 297218216,
-      "total_assets_usd": 1564869728,
-      "equity_usd": 203518683,
-      "icr": 4.293154890189392,
+      "revenue_usd": 121649190,
+      "ebit_usd": 7204523,
+      "interest_expense_usd": 3384588,
+      "total_debt_usd": 61757477,
+      "total_assets_usd": 144464496,
+      "equity_usd": 7904841,
+      "icr": 2.128626290703625,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 974581948,
-      "ebit_usd": 102596104,
-      "interest_expense_usd": 20812942,
-      "total_debt_usd": 300695102,
-      "total_assets_usd": 1224241484,
-      "equity_usd": 157541464,
-      "icr": 4.929437846893534,
+      "revenue_usd": 126272452,
+      "ebit_usd": 17065055,
+      "interest_expense_usd": 3445233,
+      "total_debt_usd": 60623835,
+      "total_assets_usd": 149783566,
+      "equity_usd": 42863219,
+      "icr": 4.953236834780115,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.072645,
-    "margin_change_mean": 0.018319,
-    "margin_change_sd": 0.024321,
-    "revenue_growth_median": -0.032492,
+    "margin_mean": 0.124304,
+    "margin_change_mean": 0.018593,
+    "margin_change_sd": 0.108004,
+    "revenue_growth_median": 0.041945,
     "history_years": 5,
     "used_sector_fallback": false
   }

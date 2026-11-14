@@ -1,0 +1,106 @@
+{
+  "cik": "9999000111",
+  "name": "Tindall Coal Corp.",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.30 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-10",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 722139486,
+      "ebit_usd": 74213845,
+      "interest_expense_usd": 27330268,
+      "total_debt_usd": 415942808,
+      "total_assets_usd": 933053971,
+      "equity_usd": 194554805,
+      "icr": 2.7154451979761047,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 698036171,
+      "ebit_usd": 184532861,
+      "interest_expense_usd": 26728454,
+      "total_debt_usd": 401635503,
+      "total_assets_usd": 802498084,
+      "equity_usd": 71950340,
+      "icr": 6.90398558031078,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 695103110,
+      "ebit_usd": 81274362,
+      "interest_expense_usd": 27693980,
+      "total_debt_usd": 397258176,
+      "total_assets_usd": 797238562,
+      "equity_usd": 230024425,
+      "icr": 2.9347302915651703,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 695218075,
+      "ebit_usd": 97483589,
+      "interest_expense_usd": 27166924,
+      "total_debt_usd": 381416260,
+      "total_assets_usd": 625801451,
+      "equity_usd": 160099907,
+      "icr": 3.5883189793588706,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 665655617,
+      "ebit_usd": 38425647,
+      "interest_expense_usd": 29487035,
+      "total_debt_usd": 394256133,
+      "total_assets_usd": 601203414,
+      "equity_usd": 167091997,
+      "icr": 1.303137022762716,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.1364,
+    "margin_change_mean": -0.011261,
+    "margin_change_sd": 0.135018,
+    "revenue_growth_median": -0.01879,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}
