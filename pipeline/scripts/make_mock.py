@@ -17,6 +17,7 @@ from __future__ import annotations
 import json
 import math
 import random
+import re
 import statistics
 import sys
 from datetime import date, datetime, timedelta
@@ -27,6 +28,7 @@ from jsonschema import Draft202012Validator, FormatChecker
 SEED = 20250331
 REPO = Path(__file__).resolve().parents[2]
 SCHEMA_DIR = REPO / "data" / "schema"
+CHECK_BUNDLE = REPO / "web" / "scripts" / "check-bundle.mjs"
 OUT_DIR = REPO / "data" / "mock"
 
 FISCAL_YEARS = [2020, 2021, 2022, 2023, 2024]
@@ -75,7 +77,7 @@ NAME_PREFIXES = [
     "Ingleby", "Juniper Hollow", "Kestrel Ridge", "Lowmoor", "Marlowe", "Netherby", "Oakhaven",
     "Pellham", "Quillon", "Ravenscar", "Saltmarsh", "Tindall", "Underhill", "Valemont", "Wexcombe",
     "Yarrowdale", "Zelmont", "Applegarth", "Brackenfell", "Cinderford", "Dovecote", "Eastmere",
-    "Foxglove", "Greywater", "Hollinger", "Ironbridge", "Kingsmoor", "Larkspur", "Moorcroft",
+    "Foxglove", "Greywater", "Hollinger", "Ironbridge", "Kingsmoor", "Moorcroft",
     "Northgate", "Ormsby", "Penhallow", "Redfern", "Stonebrook", "Thornbury", "Upperton", "Whitlock",
     "Ainsley", "Birchall", "Cresswell", "Dalbury", "Everard", "Fairlight", "Gilmore", "Halloran",
     "Ketteridge", "Lindhurst", "Mossgrove", "Nettlefold", "Osgood", "Pemberly", "Rowntree",
@@ -105,6 +107,18 @@ DEBT_TAG_SETS = [
 
 class MockError(Exception):
     pass
+
+
+def load_forbidden_markers():
+    """Read FORBIDDEN_MARKERS from web/scripts/check-bundle.mjs (the build fails if any
+    appears in dist/). Fails loudly if the list cannot be found, so the guard never goes silent."""
+    text = CHECK_BUNDLE.read_text(encoding="utf-8")
+    m = re.search(r"FORBIDDEN_MARKERS\s*=\s*\[(.*?)\]", text, re.S)
+    markers = re.findall(r"'([^']+)'|\"([^\"]+)\"", m.group(1)) if m else []
+    markers = [a or b for a, b in markers]
+    if not markers:
+        raise MockError(f"could not read FORBIDDEN_MARKERS from {CHECK_BUNDLE}")
+    return markers
 
 
 # ---------------------------------------------------------------------------
@@ -702,6 +716,13 @@ def main():
         "sector_medians": {name: dict(SECTOR_MEDIANS[name]) for name in SECTORS},
     }
     keeper = make_keeper_log(rng, index_rows)
+
+    # Guard: no generated text may contain a dev-only marker from check-bundle.mjs.
+    markers = load_forbidden_markers()
+    blob = json.dumps([index, firm_files, macro, keeper], ensure_ascii=False)
+    hits = [mk for mk in markers if mk in blob]
+    if hits:
+        raise MockError(f"generated data contains forbidden marker(s) from check-bundle.mjs: {hits}")
 
     # Validate in memory first, so a bad run never overwrites good files.
     problems = validate_all(index, firm_files, macro, keeper) + check_ashgrove(firm_files, index)
