@@ -5,96 +5,96 @@
   "sector": "Wholesale Trade",
   "status": "healthy",
   "reasons": [
-    "ICR 5.52 in FY2024, at least 1",
+    "ICR 3.57 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-16",
+    "filed": "2025-03-28",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 2296827326,
-      "ebit_usd": 411607221,
-      "interest_expense_usd": 89623888,
-      "total_debt_usd": 1225341721,
-      "total_assets_usd": 3426462732,
-      "equity_usd": 589111350,
-      "icr": 4.592606169908629,
+      "revenue_usd": 82070665,
+      "ebit_usd": 20216602,
+      "interest_expense_usd": 3070974,
+      "total_debt_usd": 51822720,
+      "total_assets_usd": 96159820,
+      "equity_usd": 11000514,
+      "icr": 6.583123790693116,
       "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 2438396982,
-      "ebit_usd": 156086984,
-      "interest_expense_usd": 93910378,
-      "total_debt_usd": 1274946794,
-      "total_assets_usd": 3312384836,
-      "equity_usd": 239658820,
-      "icr": 1.662084503589156,
+      "revenue_usd": 78310474,
+      "ebit_usd": 10235689,
+      "interest_expense_usd": 3325770,
+      "total_debt_usd": 53882488,
+      "total_assets_usd": 79556886,
+      "equity_usd": 20642419,
+      "icr": 3.077689978561356,
       "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 2510467985,
-      "ebit_usd": 283157526,
-      "interest_expense_usd": 99507312,
-      "total_debt_usd": 1316742042,
-      "total_assets_usd": 3940789320,
-      "equity_usd": 410651443,
-      "icr": 2.845595165911024,
+      "revenue_usd": 76479738,
+      "ebit_usd": 22943921,
+      "interest_expense_usd": 3453422,
+      "total_debt_usd": 54194097,
+      "total_assets_usd": 131440610,
+      "equity_usd": 29479975,
+      "icr": 6.6438219829490865,
       "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 2680408240,
-      "ebit_usd": 614856531,
-      "interest_expense_usd": 110232533,
-      "total_debt_usd": 1374006880,
-      "total_assets_usd": 3834092622,
-      "equity_usd": 380930045,
-      "icr": 5.577813684096328,
+      "revenue_usd": 74945247,
+      "ebit_usd": 5757272,
+      "interest_expense_usd": 3625789,
+      "total_debt_usd": 54877401,
+      "total_assets_usd": 104135182,
+      "equity_usd": 36197691,
+      "icr": 1.5878673579736713,
       "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 2858365798,
-      "ebit_usd": 670863723,
-      "interest_expense_usd": 121545464,
-      "total_debt_usd": 1428725704,
-      "total_assets_usd": 4343040430,
-      "equity_usd": 1297526326,
-      "icr": 5.519446805517974,
+      "revenue_usd": 74446191,
+      "ebit_usd": 13106744,
+      "interest_expense_usd": 3667832,
+      "total_debt_usd": 53722052,
+      "total_assets_usd": 87376106,
+      "equity_usd": 22884531,
+      "icr": 3.5734308441608014,
       "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
-      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.16402,
-    "margin_change_mean": 0.013874,
-    "margin_change_sd": 0.097473,
-    "revenue_growth_median": 0.064015,
+    "margin_mean": 0.185983,
+    "margin_change_mean": -0.017569,
+    "margin_change_sd": 0.182987,
+    "revenue_growth_median": -0.021721,
     "history_years": 5,
     "used_sector_fallback": false
   }

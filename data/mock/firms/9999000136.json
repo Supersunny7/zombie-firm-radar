@@ -9,97 +9,92 @@
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-12",
+    "filed": "2025-02-16",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 2357012383,
-      "ebit_usd": 142579225,
-      "interest_expense_usd": 99686446,
-      "total_debt_usd": 1532370956,
-      "total_assets_usd": 4160943756,
-      "equity_usd": 354752442,
-      "icr": 1.4302769405581979,
+      "revenue_usd": 8133368764,
+      "ebit_usd": 545618264,
+      "interest_expense_usd": 102852319,
+      "total_debt_usd": 2310324069,
+      "total_assets_usd": 12403940121,
+      "equity_usd": 4137982851,
+      "icr": 5.304870802183857,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 2462025397,
-      "ebit_usd": 434423047,
-      "interest_expense_usd": 107532678,
-      "total_debt_usd": 1588469467,
-      "total_assets_usd": 2888985748,
-      "equity_usd": 474228580,
-      "icr": 4.039916563781663,
+      "revenue_usd": 8593725549,
+      "ebit_usd": 170199727,
+      "interest_expense_usd": 97084825,
+      "total_debt_usd": 2325688034,
+      "total_assets_usd": 9486110080,
+      "equity_usd": 2288372394,
+      "icr": 1.7531032990995246,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 2512979706,
-      "ebit_usd": 136162278,
-      "interest_expense_usd": null,
-      "total_debt_usd": 1532805031,
-      "total_assets_usd": 3562067850,
-      "equity_usd": 996035985,
+      "revenue_usd": 8969140771,
+      "ebit_usd": null,
+      "interest_expense_usd": 107866254,
+      "total_debt_usd": 2256007004,
+      "total_assets_usd": 12632151205,
+      "equity_usd": 1618066389,
       "icr": null,
-      "ebit_tag": "OperatingIncomeLoss",
+      "ebit_tag": null,
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 2563937560,
-      "ebit_usd": 353371978,
-      "interest_expense_usd": 112307324,
-      "total_debt_usd": 1600936569,
-      "total_assets_usd": 2391285302,
-      "equity_usd": 609826243,
-      "icr": 3.146473136516012,
+      "revenue_usd": 9396664601,
+      "ebit_usd": 247681001,
+      "interest_expense_usd": 106180394,
+      "total_debt_usd": 2260071108,
+      "total_assets_usd": 16769813119,
+      "equity_usd": 5240658108,
+      "icr": 2.332643453931806,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 2585410689,
-      "ebit_usd": 265232032,
-      "interest_expense_usd": 114774357,
-      "total_debt_usd": 1564524593,
-      "total_assets_usd": 3884677977,
-      "equity_usd": 1061021400,
-      "icr": 2.310899742178473,
+      "revenue_usd": 9931364520,
+      "ebit_usd": 783773118,
+      "interest_expense_usd": 114062384,
+      "total_debt_usd": 2226874688,
+      "total_assets_usd": 15809386314,
+      "equity_usd": 1346876293,
+      "icr": 6.8714425432314306,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.106307,
-    "margin_change_mean": 0.010524,
-    "margin_change_sd": 0.109832,
-    "revenue_growth_median": 0.020487,
-    "history_years": 5,
+    "margin_mean": 0.048042,
+    "margin_change_mean": 0.002641,
+    "margin_change_sd": 0.070597,
+    "revenue_growth_median": 0.056752,
+    "history_years": 4,
     "used_sector_fallback": false
   }
 }

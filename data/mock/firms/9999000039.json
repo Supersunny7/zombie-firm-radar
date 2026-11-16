@@ -5,88 +5,88 @@
   "sector": "Agriculture, Forestry and Fishing",
   "status": "healthy",
   "reasons": [
-    "ICR 6.59 in FY2024, at least 1",
+    "ICR 1.23 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-28",
+    "filed": "2025-03-04",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
       "revenue_usd": null,
-      "ebit_usd": 29113237,
-      "interest_expense_usd": 4383817,
-      "total_debt_usd": 105323517,
-      "total_assets_usd": 128978663,
-      "equity_usd": 28143554,
-      "icr": 6.641070327525077,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "ebit_usd": 225268432,
+      "interest_expense_usd": 57443614,
+      "total_debt_usd": 1520839329,
+      "total_assets_usd": 7373614226,
+      "equity_usd": 1963412567,
+      "icr": 3.9215574423990804,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": null,
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2021,
       "revenue_usd": null,
-      "ebit_usd": 21648841,
-      "interest_expense_usd": 4436274,
-      "total_debt_usd": 103252061,
-      "total_assets_usd": 172732007,
-      "equity_usd": 22964922,
-      "icr": 4.8799603000175376,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "ebit_usd": 132590484,
+      "interest_expense_usd": 57530480,
+      "total_debt_usd": 1594193179,
+      "total_assets_usd": 7887770819,
+      "equity_usd": 1981489238,
+      "icr": 2.3046997695830105,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": null,
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 130169069,
-      "ebit_usd": 13142520,
-      "interest_expense_usd": 4908762,
-      "total_debt_usd": 107377236,
-      "total_assets_usd": 141654385,
-      "equity_usd": 35471198,
-      "icr": 2.677359383078666,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 5155356950,
+      "ebit_usd": 293163005,
+      "interest_expense_usd": 64772632,
+      "total_debt_usd": 1598679180,
+      "total_assets_usd": 7851607507,
+      "equity_usd": 1086350922,
+      "icr": 4.526031997588118,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 130271029,
-      "ebit_usd": 22487931,
-      "interest_expense_usd": 5429887,
-      "total_debt_usd": 109518605,
-      "total_assets_usd": 206084866,
-      "equity_usd": 21338800,
-      "icr": 4.141509943024597,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 5195833164,
+      "ebit_usd": 219240619,
+      "interest_expense_usd": 73260000,
+      "total_debt_usd": 1620113170,
+      "total_assets_usd": 6064158493,
+      "equity_usd": 838513307,
+      "icr": 2.992637441987442,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 128090949,
-      "ebit_usd": 37119823,
-      "interest_expense_usd": 5629922,
-      "total_debt_usd": 111604505,
-      "total_assets_usd": 185513633,
-      "equity_usd": 46305910,
-      "icr": 6.593310351368989,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 5304814678,
+      "ebit_usd": 86639636,
+      "interest_expense_usd": 70723909,
+      "total_debt_usd": 1585123736,
+      "total_assets_usd": 6513086032,
+      "equity_usd": 2017396663,
+      "icr": 1.225040261844124,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent"
       ]
     }
   ],

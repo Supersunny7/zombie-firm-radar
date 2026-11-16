@@ -33,22 +33,27 @@ OUT_DIR = REPO / "data" / "mock"
 
 FISCAL_YEARS = [2020, 2021, 2022, 2023, 2024]
 LATEST_FY = FISCAL_YEARS[-1]
-N_FIRMS = 200
+N_GENERIC = 199  # randomly generated firms; Ashgrove Works and the Act 1 firms come on top
+N_ACT1 = 3
+N_FIRMS = N_GENERIC + 1 + N_ACT1
+MIN_AGE = 10  # universe rule: only firms with age_years >= 10 appear in any output file
 DGS10 = 0.042  # mock 10-year Treasury, also written to macro.json
 REFERENCE_YEAR = 2025  # age = years since first filing, measured at the 2025 filings
 GENERATED_AT = "2025-03-31T00:00:00Z"
 DEFINITION_VERSION = "2.0"
 
 # Exact SEC SIC division names. Finance, Insurance and Real Estate is excluded
-# by the contract; Public Administration is left out to get to 8 divisions.
-# name -> (SIC code pool, firm count incl. Ashgrove)
+# by the contract (SIC 6000-6799, REITs included); Public Administration is left out
+# to get to 8 divisions. Utilities (SIC 4900-4999) are excluded too, so the
+# Transportation division pools hold no 49xx code.
+# name -> (SIC code pool, firm count incl. Ashgrove and the Act 1 firms)
 SECTORS = {
     "Agriculture, Forestry and Fishing": (["0100", "0200", "0700", "0900"], 10),
     "Mining": (["1000", "1040", "1311", "1400"], 19),
     "Construction": (["1520", "1531", "1600", "1700"], 16),
-    "Manufacturing": (["2834", "3310", "3490", "3559", "3674"], 48),
+    "Manufacturing": (["2834", "3310", "3490", "3559", "3674"], 51),
     "Transportation, Communications, Electric, Gas and Sanitary Services": (
-        ["4011", "4213", "4813", "4911", "4955"], 24),
+        ["4011", "4213", "4412", "4731", "4813"], 24),
     "Wholesale Trade": (["5000", "5065", "5122", "5140"], 19),
     "Retail Trade": (["5311", "5400", "5651", "5812", "5961"], 24),
     "Services": (["7370", "7389", "8011", "8200", "8741"], 40),
@@ -89,7 +94,7 @@ NAME_NOUNS = {
     "Mining": ["Minerals", "Coal", "Resources", "Drilling"],
     "Construction": ["Builders", "Contracting", "Homes", "Civil"],
     "Manufacturing": ["Works", "Industries", "Mills", "Fabrication"],
-    "Transportation, Communications, Electric, Gas and Sanitary Services": ["Freight", "Power", "Telecom", "Utilities"],
+    "Transportation, Communications, Electric, Gas and Sanitary Services": ["Freight", "Logistics", "Telecom", "Carriers"],
     "Wholesale Trade": ["Supply", "Distribution", "Trading", "Wholesale"],
     "Retail Trade": ["Stores", "Outfitters", "Markets", "Retail"],
     "Services": ["Partners", "Systems", "Health", "Consulting"],
@@ -226,21 +231,18 @@ N_SHAPED = N_NEAR_LINE + N_MISLABELED + N_OVERPRICED_ENDANGERED + N_OVERPRICED_H
 
 
 def build_archetypes(rng):
-    """List of (archetype, expected_status). N_FIRMS - 1 firms; Ashgrove is the last one."""
+    """List of (archetype, expected_status). N_GENERIC firms; Ashgrove and the Act 1 firms are added separately."""
     arch = []
     arch += [("zombie", "zombie")] * 26
     arch += [("endangered_a", "endangered")] * 10   # only the latest year below 1
     arch += [("endangered_b", "endangered")] * 4    # L H L
     arch += [("endangered_c", "endangered")] * 4    # L L H: 2 of 3, latest fine
-    arch += [("endangered_d", "endangered")] * 6    # H L L
-    arch += [("endangered_young", "endangered")] * 6  # 3 years below 1, age < 10
-    arch += [("healthy_clean", "healthy")] * 52
+    arch += [("endangered_d", "endangered")] * 12   # H L L
+    arch += [("healthy_clean", "healthy")] * 59
     arch += [("healthy_dip", "healthy")] * 20
-    arch += [("healthy_young", "healthy")] * 7
     arch += [("healthy_norev", "healthy")] * 7      # revenue missing early: sector fallback
     arch += [("healthy_nodebt", "healthy")] * 8     # total debt missing in latest year
-    arch += [("insufficient_new", "insufficient_data")] * 2
-    arch += [("insufficient_mid", "insufficient_data")] * 3
+    arch += [("insufficient_mid", "insufficient_data")] * 5
     arch += [("insufficient_alt", "insufficient_data")] * 2
     arch += [("insufficient_latest", "insufficient_data")] * 2
     # Shaped classes. "expected" is only a self-check: statuses are always computed by classify().
@@ -249,15 +251,13 @@ def build_archetypes(rng):
     arch += [("mislabeled_growth", "zombie")] * N_MISLABELED
     arch += [("overpriced_endangered", "endangered")] * N_OVERPRICED_ENDANGERED
     arch += [("overpriced_healthy", "healthy")] * N_OVERPRICED_HEALTHY
-    assert len(arch) == N_FIRMS - 1, len(arch)
+    assert len(arch) == N_GENERIC, len(arch)
     return arch
 
 
 def icr_pattern(rng, kind):
     if kind == "zombie":
         return pattern_zombie(rng)
-    if kind == "endangered_young":
-        return pattern_from_flags(rng, "HHLLL")
     if kind == "endangered_a":
         return pattern_from_flags(rng, "HHHHL")
     if kind == "endangered_b":
@@ -280,11 +280,7 @@ def pick_first_filing_year(rng, kind):
     if kind in ("zombie", "endangered_a", "endangered_b", "endangered_c", "endangered_d",
                 "healthy_clean", "healthy_dip", "healthy_norev", "healthy_nodebt",
                 "insufficient_mid", "insufficient_alt", "insufficient_latest") + SHAPED_KINDS:
-        return REFERENCE_YEAR - rng.randint(10, 38)
-    if kind in ("endangered_young", "healthy_young"):
-        return REFERENCE_YEAR - rng.randint(3, 9)   # first filing 2016..2022
-    if kind == "insufficient_new":
-        return 2023
+        return REFERENCE_YEAR - rng.randint(MIN_AGE, 38)
     raise MockError(kind)
 
 
@@ -303,7 +299,7 @@ def build_years(rng, kind, ff, icr_targets):
     ebit_tag = EBIT_TAG_FALLBACK if rng.random() < 0.15 else EBIT_TAG_PRIMARY
     rev_tag = REVENUE_TAGS[0] if rng.random() < 0.7 else rng.choice(REVENUE_TAGS[1:])
     debt_tags = list(rng.choice(DEBT_TAG_SETS))
-    zombieish = kind in ("zombie", "endangered_young") or kind.startswith("endangered")
+    zombieish = kind == "zombie" or kind.startswith("endangered")
 
     rows = []
     for fy in fys:
@@ -558,6 +554,92 @@ def make_ashgrove():
         expected_status="zombie", kind="fixture",
     )
 
+# ---------------------------------------------------------------------------
+# Act 1 firms: three hand-built manufacturing firms, one per diagnosis
+# ---------------------------------------------------------------------------
+
+# (fy, revenue, EBIT, interest, debt, assets, equity), in USD millions.
+ACT1_SPECS = [
+    dict(  # temporary profit drop: healthy margin, then one bad year; low debt
+        kind="act1_temporary_drop", expected="endangered", cik="9999000201",
+        name="Harrowgate Tooling Co.", sic="3559", first_filing_year=1998, filed="2025-02-27",
+        rows=[(2020, 402, 36.5, 3.4, 55, 360, 150),
+              (2021, 411, 38.2, 3.4, 54, 365, 158),
+              (2022, 423, 39.0, 3.6, 56, 370, 166),
+              (2023, 431, 38.4, 3.7, 55, 372, 172),
+              (2024, 438, 2.9, 3.9, 57, 375, 160)]),
+    dict(  # too much debt: flat EBIT, interest rising every year, high debt
+        kind="act1_too_much_debt", expected="zombie", cik="9999000202",
+        name="Penrose Steelworks Group", sic="3310", first_filing_year=1994, filed="2025-02-18",
+        rows=[(2020, 905, 52.4, 44.2, 640, 1050, 300),
+              (2021, 902, 51.8, 49.0, 690, 1070, 285),
+              (2022, 898, 52.9, 54.0, 750, 1100, 265),
+              (2023, 907, 52.1, 59.9, 810, 1130, 240),
+              (2024, 901, 52.5, 66.1, 870, 1160, 215)]),
+    dict(  # broken business: EBIT negative in 4 of 5 years, shrinking revenue
+        kind="act1_broken_business", expected="zombie", cik="9999000203",
+        name="Wickersham Appliance Corp.", sic="3630", first_filing_year=1991, filed="2025-03-06",
+        rows=[(2020, 612, 14.2, 10.9, 160, 430, 140),
+              (2021, 571, -9.1, 11.3, 165, 405, 118),
+              (2022, 533, -27.6, 11.9, 170, 370, 84),
+              (2023, 502, -33.8, 12.3, 172, 340, 48),
+              (2024, 468, -41.5, 12.8, 175, 310, 9)]),
+]
+
+
+def make_act1_firms():
+    """Fixed figures, no randomness. Every firm is old enough and rescue-eligible."""
+    firms = []
+    for sp in ACT1_SPECS:
+        years = []
+        for fy, rev, ebit, interest, debt, assets, equity in sp["rows"]:
+            m = 1_000_000
+            r = dict(
+                fy=fy, revenue_usd=round(rev * m), ebit_usd=round(ebit * m),
+                interest_expense_usd=round(interest * m), total_debt_usd=round(debt * m),
+                total_assets_usd=round(assets * m), equity_usd=round(equity * m),
+                ebit_tag=EBIT_TAG_PRIMARY, revenue_tag="Revenues",
+                debt_tags=["LongTermDebtNoncurrent", "LongTermDebtCurrent"],
+            )
+            r["icr"] = icr(r["ebit_usd"], r["interest_expense_usd"])
+            years.append(r)
+        firms.append(dict(
+            cik=sp["cik"], name=sp["name"], sector="Manufacturing", sic=sp["sic"],
+            first_filing_year=sp["first_filing_year"], filed=sp["filed"], form="10-K",
+            years=years, expected_status=sp["expected"], kind=sp["kind"],
+        ))
+    return firms
+
+
+def check_act1(firms, index_rows, firm_files):
+    """Each Act 1 firm must show its diagnosis in the finished data. Raises MockError otherwise."""
+    rows = {r["cik"]: r for r in index_rows}
+    for f in firms:
+        if not f["kind"].startswith("act1_"):
+            continue
+        row, doc = rows[f["cik"]], firm_files.get(f["cik"])
+        if doc is None or not row["rescue_eligible"] or row["age_years"] < MIN_AGE or row["sector"] != "Manufacturing":
+            raise MockError(f"{f['cik']} ({f['kind']}) is not an old, rescue-eligible manufacturing firm")
+        ys = doc["years"]
+        if len(ys) != 5:
+            raise MockError(f"{f['cik']}: expected 5 years")
+        if f["kind"] == "act1_temporary_drop":
+            mean_margin = doc["rescue_inputs"]["margin_mean"]
+            last = ys[-1]
+            if not (last["ebit_usd"] < 0.25 * mean_margin * last["revenue_usd"]
+                    and last["icr"] < 1 and last["total_debt_usd"] < 0.2 * last["revenue_usd"]
+                    and all(y["icr"] > 3 for y in ys[:-1])):
+                raise MockError(f"{f['cik']}: not a temporary profit drop")
+        elif f["kind"] == "act1_too_much_debt":
+            ebits = [y["ebit_usd"] for y in ys]
+            ints = [y["interest_expense_usd"] for y in ys]
+            if not (max(ebits) / min(ebits) < 1.03 and all(b > a for a, b in zip(ints, ints[1:]))
+                    and ys[-1]["total_debt_usd"] > 0.8 * ys[-1]["revenue_usd"] and ys[-1]["icr"] < 1):
+                raise MockError(f"{f['cik']}: not a too-much-debt firm")
+        else:
+            if sum(1 for y in ys if y["ebit_usd"] < 0) < 3:
+                raise MockError(f"{f['cik']}: not a broken business")
+
 
 # ---------------------------------------------------------------------------
 # Whole universe
@@ -583,8 +665,9 @@ def make_names(rng, sectors):
 def make_universe(rng):
     sectors = []
     for name, (_, count) in SECTORS.items():
-        sectors += [name] * (count - (1 if name == "Manufacturing" else 0))  # Ashgrove takes one slot
-    assert len(sectors) == N_FIRMS - 1
+        # Ashgrove and the Act 1 firms (all Manufacturing) take slots
+        sectors += [name] * (count - (1 + N_ACT1 if name == "Manufacturing" else 0))
+    assert len(sectors) == N_GENERIC
     rng.shuffle(sectors)
 
     archetypes = build_archetypes(rng)
@@ -614,6 +697,7 @@ def make_universe(rng):
             expected_status=expected, kind=kind,
         ))
     firms.append(make_ashgrove())
+    firms += make_act1_firms()
     firms.sort(key=lambda f: f["cik"])
     return firms
 
@@ -822,6 +906,10 @@ def cross_checks(index, firm_files, macro, keeper, problems):
             problems.append(f"firms_index.json: {r['cik']} does not start with 9999")
         if r["sector"] not in macro["sector_medians"]:
             problems.append(f"firms_index.json: sector {r['sector']!r} missing from macro.sector_medians")
+        if r["age_years"] < MIN_AGE:
+            problems.append(f"firms_index.json: {r['cik']} is younger than {MIN_AGE} years")
+        if r["sic"].isdigit() and (6000 <= int(r["sic"]) <= 6799 or 4900 <= int(r["sic"]) <= 4999):
+            problems.append(f"firms_index.json: excluded SIC {r['sic']} for {r['cik']}")
         if "Finance" in r["sector"]:
             problems.append(f"firms_index.json: financial sector present for {r['cik']}")
         if r["ticker"] is not None:
@@ -922,6 +1010,7 @@ def main():
     if len(index_rows) != N_FIRMS:
         raise MockError(f"expected {N_FIRMS} firms, built {len(index_rows)}")
     class_counts = check_shaped_classes(firms, index_rows, firm_files)
+    check_act1(firms, index_rows, firm_files)
     index = {
         "meta": {
             "generated_at": GENERATED_AT,
@@ -977,6 +1066,10 @@ def main():
     print(f"    critical points per 0.5-pp bin 0..5: {class_counts['near_line_bins']}")
     print(f"  mislabeled growth                         {class_counts['mislabeled_growth']:>3}")
     print(f"  overpriced debt (refinance applies, d=0)  {class_counts['overpriced_debt']:>3}")
+    for f in firms:
+        if f["kind"].startswith("act1_"):
+            doc = firm_files[f["cik"]]
+            print(f"Act 1: {f['name']} ({f['kind']}), status = {doc['status']}")
     ash = firm_files["9999000001"]
     print(f"Ashgrove Works: status = {ash['status']}")
     for reason in ash["reasons"]:

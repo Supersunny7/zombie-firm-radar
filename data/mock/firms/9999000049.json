@@ -5,101 +5,96 @@
   "sector": "Mining",
   "status": "healthy",
   "reasons": [
-    "ICR 1.05 in FY2024, at least 1",
+    "ICR 1.04 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-28",
+    "filed": "2025-02-25",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 2791435662,
-      "ebit_usd": 241053976,
-      "interest_expense_usd": 83553117,
-      "total_debt_usd": 1921733872,
-      "total_assets_usd": 2864191345,
-      "equity_usd": 685181526,
-      "icr": 2.8850386993940633,
+      "revenue_usd": 148888155,
+      "ebit_usd": 6122943,
+      "interest_expense_usd": 2608391,
+      "total_debt_usd": 49327355,
+      "total_assets_usd": 195749448,
+      "equity_usd": 60560750,
+      "icr": 2.3474022874638045,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 2885273633,
-      "ebit_usd": 111734031,
-      "interest_expense_usd": 85938330,
-      "total_debt_usd": 1913764180,
-      "total_assets_usd": 3489430751,
-      "equity_usd": 236017226,
-      "icr": 1.3001652580402714,
+      "revenue_usd": 141805692,
+      "ebit_usd": 6431854,
+      "interest_expense_usd": 2720457,
+      "total_debt_usd": 49986648,
+      "total_assets_usd": 138429486,
+      "equity_usd": 45896944,
+      "icr": 2.364254976277883,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 2975191148,
-      "ebit_usd": 132486911,
-      "interest_expense_usd": 88632369,
-      "total_debt_usd": 1902638503,
-      "total_assets_usd": 3582739066,
-      "equity_usd": 882804568,
-      "icr": 1.4947914909055404,
+      "revenue_usd": 139894886,
+      "ebit_usd": 5394582,
+      "interest_expense_usd": 2810116,
+      "total_debt_usd": 50151382,
+      "total_assets_usd": 220291231,
+      "equity_usd": 37163175,
+      "icr": 1.9197008237382371,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 2989063459,
-      "ebit_usd": 228024445,
-      "interest_expense_usd": 88509877,
-      "total_debt_usd": 1866757809,
-      "total_assets_usd": 3246462736,
-      "equity_usd": 442253634,
-      "icr": 2.5762598788833477,
+      "revenue_usd": 137182234,
+      "ebit_usd": 7866222,
+      "interest_expense_usd": 2867037,
+      "total_debt_usd": 49277361,
+      "total_assets_usd": 224534190,
+      "equity_usd": 38787860,
+      "icr": 2.7436764855144875,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 3094636683,
-      "ebit_usd": 98867597,
-      "interest_expense_usd": 94086922,
-      "total_debt_usd": 1912270086,
-      "total_assets_usd": 5174551619,
-      "equity_usd": 1618827335,
-      "icr": 1.0508112594011738,
+      "revenue_usd": 137392128,
+      "ebit_usd": 3099916,
+      "interest_expense_usd": 2975513,
+      "total_debt_usd": 49761023,
+      "total_assets_usd": 190558765,
+      "equity_usd": 64474970,
+      "icr": 1.0418089250492268,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.055569,
-    "margin_change_mean": -0.013602,
-    "margin_change_sd": 0.038887,
-    "revenue_growth_median": 0.03239,
+    "margin_mean": 0.040989,
+    "margin_change_mean": -0.00464,
+    "margin_change_sd": 0.022658,
+    "revenue_growth_median": -0.016433,
     "history_years": 5,
     "used_sector_fallback": false
   }

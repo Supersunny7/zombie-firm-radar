@@ -11,22 +11,22 @@ shock eligible (no total debt, or implied rate not above 0) have no critical poi
 
 | Critical point (percentage points) | Firms |
 | --- | ---: |
-| below 0 (already under 1x) | 59 |
+| below 0 (already under 1x) | 62 |
 | 0.0 to 0.5 | 2 |
-| 0.5 to 1.0 | 3 |
-| 1.0 to 1.5 | 4 |
-| 1.5 to 2.0 | 4 |
-| 2.0 to 2.5 | 5 |
-| 2.5 to 3.0 | 5 |
+| 0.5 to 1.0 | 4 |
+| 1.0 to 1.5 | 6 |
+| 1.5 to 2.0 | 6 |
+| 2.0 to 2.5 | 6 |
+| 2.5 to 3.0 | 4 |
 | 3.0 to 3.5 | 4 |
 | 3.5 to 4.0 | 3 |
-| 4.0 to 4.5 | 5 |
+| 4.0 to 4.5 | 4 |
 | 4.5 to 5.0 | 5 |
-| above 5.0 | 91 |
-| **Shock eligible, critical point computed** | **190** |
+| above 5.0 | 87 |
+| **Shock eligible, critical point computed** | **193** |
 | Shock eligible, no ICR (EBIT missing) | 2 |
 | Not shock eligible | 8 |
-| **All firms** | **200** |
+| **All firms** | **203** |
 
 ## Agriculture, Forestry and Fishing
 
@@ -35,10 +35,10 @@ shock eligible (no total debt, or implied rate not above 0) have no critical poi
 | below 0 (already under 1x) | 3 |
 | 0.0 to 0.5 | 0 |
 | 0.5 to 1.0 | 0 |
-| 1.0 to 1.5 | 0 |
+| 1.0 to 1.5 | 1 |
 | 1.5 to 2.0 | 1 |
 | 2.0 to 2.5 | 0 |
-| 2.5 to 3.0 | 1 |
+| 2.5 to 3.0 | 0 |
 | 3.0 to 3.5 | 0 |
 | 3.5 to 4.0 | 0 |
 | 4.0 to 4.5 | 0 |
@@ -63,8 +63,8 @@ shock eligible (no total debt, or implied rate not above 0) have no critical poi
 | 3.0 to 3.5 | 0 |
 | 3.5 to 4.0 | 0 |
 | 4.0 to 4.5 | 1 |
-| 4.5 to 5.0 | 1 |
-| above 5.0 | 8 |
+| 4.5 to 5.0 | 0 |
+| above 5.0 | 9 |
 | **Shock eligible, critical point computed** | **16** |
 | Shock eligible, no ICR (EBIT missing) | 0 |
 | Not shock eligible | 0 |
@@ -74,22 +74,22 @@ shock eligible (no total debt, or implied rate not above 0) have no critical poi
 
 | Critical point (percentage points) | Firms |
 | --- | ---: |
-| below 0 (already under 1x) | 13 |
+| below 0 (already under 1x) | 16 |
 | 0.0 to 0.5 | 1 |
-| 0.5 to 1.0 | 1 |
-| 1.0 to 1.5 | 0 |
-| 1.5 to 2.0 | 1 |
-| 2.0 to 2.5 | 2 |
+| 0.5 to 1.0 | 2 |
+| 1.0 to 1.5 | 1 |
+| 1.5 to 2.0 | 2 |
+| 2.0 to 2.5 | 3 |
 | 2.5 to 3.0 | 1 |
 | 3.0 to 3.5 | 1 |
 | 3.5 to 4.0 | 1 |
 | 4.0 to 4.5 | 0 |
-| 4.5 to 5.0 | 1 |
-| above 5.0 | 22 |
-| **Shock eligible, critical point computed** | **44** |
+| 4.5 to 5.0 | 3 |
+| above 5.0 | 16 |
+| **Shock eligible, critical point computed** | **47** |
 | Shock eligible, no ICR (EBIT missing) | 1 |
 | Not shock eligible | 3 |
-| **All firms** | **48** |
+| **All firms** | **51** |
 
 ## Mining
 
@@ -100,13 +100,13 @@ shock eligible (no total debt, or implied rate not above 0) have no critical poi
 | 0.5 to 1.0 | 0 |
 | 1.0 to 1.5 | 2 |
 | 1.5 to 2.0 | 1 |
-| 2.0 to 2.5 | 1 |
+| 2.0 to 2.5 | 0 |
 | 2.5 to 3.0 | 0 |
 | 3.0 to 3.5 | 0 |
 | 3.5 to 4.0 | 1 |
 | 4.0 to 4.5 | 0 |
 | 4.5 to 5.0 | 0 |
-| above 5.0 | 7 |
+| above 5.0 | 8 |
 | **Shock eligible, critical point computed** | **19** |
 | Shock eligible, no ICR (EBIT missing) | 0 |
 | Not shock eligible | 0 |
@@ -123,11 +123,11 @@ shock eligible (no total debt, or implied rate not above 0) have no critical poi
 | 1.5 to 2.0 | 0 |
 | 2.0 to 2.5 | 0 |
 | 2.5 to 3.0 | 0 |
-| 3.0 to 3.5 | 2 |
+| 3.0 to 3.5 | 3 |
 | 3.5 to 4.0 | 0 |
 | 4.0 to 4.5 | 0 |
 | 4.5 to 5.0 | 1 |
-| above 5.0 | 10 |
+| above 5.0 | 9 |
 | **Shock eligible, critical point computed** | **22** |
 | Shock eligible, no ICR (EBIT missing) | 0 |
 | Not shock eligible | 2 |
@@ -141,14 +141,14 @@ shock eligible (no total debt, or implied rate not above 0) have no critical poi
 | 0.0 to 0.5 | 0 |
 | 0.5 to 1.0 | 0 |
 | 1.0 to 1.5 | 0 |
-| 1.5 to 2.0 | 0 |
+| 1.5 to 2.0 | 1 |
 | 2.0 to 2.5 | 2 |
 | 2.5 to 3.0 | 1 |
 | 3.0 to 3.5 | 0 |
 | 3.5 to 4.0 | 1 |
-| 4.0 to 4.5 | 2 |
-| 4.5 to 5.0 | 1 |
-| above 5.0 | 21 |
+| 4.0 to 4.5 | 1 |
+| 4.5 to 5.0 | 0 |
+| above 5.0 | 22 |
 | **Shock eligible, critical point computed** | **39** |
 | Shock eligible, no ICR (EBIT missing) | 1 |
 | Not shock eligible | 0 |
@@ -163,13 +163,13 @@ shock eligible (no total debt, or implied rate not above 0) have no critical poi
 | 0.5 to 1.0 | 0 |
 | 1.0 to 1.5 | 0 |
 | 1.5 to 2.0 | 1 |
-| 2.0 to 2.5 | 0 |
+| 2.0 to 2.5 | 1 |
 | 2.5 to 3.0 | 1 |
 | 3.0 to 3.5 | 0 |
 | 3.5 to 4.0 | 0 |
 | 4.0 to 4.5 | 1 |
 | 4.5 to 5.0 | 0 |
-| above 5.0 | 11 |
+| above 5.0 | 10 |
 | **Shock eligible, critical point computed** | **22** |
 | Shock eligible, no ICR (EBIT missing) | 0 |
 | Not shock eligible | 2 |
@@ -186,11 +186,11 @@ shock eligible (no total debt, or implied rate not above 0) have no critical poi
 | 1.5 to 2.0 | 0 |
 | 2.0 to 2.5 | 0 |
 | 2.5 to 3.0 | 1 |
-| 3.0 to 3.5 | 1 |
+| 3.0 to 3.5 | 0 |
 | 3.5 to 4.0 | 0 |
 | 4.0 to 4.5 | 1 |
 | 4.5 to 5.0 | 0 |
-| above 5.0 | 8 |
+| above 5.0 | 9 |
 | **Shock eligible, critical point computed** | **18** |
 | Shock eligible, no ICR (EBIT missing) | 0 |
 | Not shock eligible | 1 |

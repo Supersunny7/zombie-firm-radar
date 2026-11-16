@@ -6,100 +6,105 @@
   "status": "zombie",
   "reasons": [
     "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 38 years (first filing proxy), at least 10"
+    "Firm age 26 years (first filing proxy), at least 10"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-22",
+    "filed": "2025-02-14",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 1921378196,
-      "ebit_usd": 221408947,
-      "interest_expense_usd": 36969874,
-      "total_debt_usd": 905640933,
-      "total_assets_usd": 2091176767,
-      "equity_usd": 160508326,
-      "icr": 5.988901855602753,
+      "revenue_usd": 5507865667,
+      "ebit_usd": 846116954,
+      "interest_expense_usd": 180771563,
+      "total_debt_usd": 4477095990,
+      "total_assets_usd": 8187895718,
+      "equity_usd": -333770700,
+      "icr": 4.680586592040475,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 1828186124,
-      "ebit_usd": 20051192,
-      "interest_expense_usd": 37315055,
-      "total_debt_usd": 936873466,
-      "total_assets_usd": 2593146189,
-      "equity_usd": 308180406,
-      "icr": 0.5373485849076197,
+      "revenue_usd": 5766395093,
+      "ebit_usd": 1215318553,
+      "interest_expense_usd": 174240272,
+      "total_debt_usd": 4304727397,
+      "total_assets_usd": 5685790518,
+      "equity_usd": 304313798,
+      "icr": 6.974957850157626,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 1778641814,
-      "ebit_usd": 27743859,
-      "interest_expense_usd": 41239393,
-      "total_debt_usd": 952753161,
-      "total_assets_usd": 2326785351,
-      "equity_usd": 278132539,
-      "icr": 0.6727513908849241,
+      "revenue_usd": 5931953839,
+      "ebit_usd": 135066367,
+      "interest_expense_usd": 188374723,
+      "total_debt_usd": 4316316341,
+      "total_assets_usd": 6894162104,
+      "equity_usd": -619977136,
+      "icr": 0.7170089747125998,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 1703430475,
-      "ebit_usd": -45809333,
-      "interest_expense_usd": 45964652,
-      "total_debt_usd": 983860788,
-      "total_assets_usd": 1707209307,
-      "equity_usd": 126639480,
-      "icr": -0.9966209033846269,
+      "revenue_usd": 5863920717,
+      "ebit_usd": 116491467,
+      "interest_expense_usd": 190019536,
+      "total_debt_usd": 4199409507,
+      "total_assets_usd": 5581789087,
+      "equity_usd": 386070971,
+      "icr": 0.6130499497693753,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 1700186513,
-      "ebit_usd": 42030315,
-      "interest_expense_usd": 50457817,
-      "total_debt_usd": 1009503191,
-      "total_assets_usd": 1724715272,
-      "equity_usd": 65621762,
-      "icr": 0.8329792586944457,
+      "revenue_usd": 5978515606,
+      "ebit_usd": -159256382,
+      "interest_expense_usd": 223706941,
+      "total_debt_usd": 4387184508,
+      "total_assets_usd": 7036700366,
+      "equity_usd": 735878898,
+      "icr": -0.711897365759429,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.027926,
-    "margin_change_mean": -0.022628,
-    "margin_change_sd": 0.066619,
-    "revenue_growth_median": -0.034693,
+    "margin_mean": 0.076075,
+    "margin_change_mean": -0.045064,
+    "margin_change_sd": 0.104328,
+    "revenue_growth_median": 0.024127,
     "history_years": 5,
     "used_sector_fallback": false
   }

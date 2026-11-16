@@ -1,0 +1,110 @@
+{
+  "cik": "9999000054",
+  "name": "Thornbury Consulting Holdings",
+  "ticker": null,
+  "sector": "Services",
+  "status": "insufficient_data",
+  "reasons": [
+    "Fewer than 3 consecutive fiscal years with both EBIT and interest expense available"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-14",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 8876844992,
+      "ebit_usd": 1194615007,
+      "interest_expense_usd": 403502953,
+      "total_debt_usd": 7663102847,
+      "total_assets_usd": 13132612864,
+      "equity_usd": 2988763952,
+      "icr": 2.960610320490021,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 8953029986,
+      "ebit_usd": 1818112442,
+      "interest_expense_usd": 398763175,
+      "total_debt_usd": 7585834728,
+      "total_assets_usd": 15611161868,
+      "equity_usd": 907524562,
+      "icr": 4.559378989797641,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 9265647400,
+      "ebit_usd": null,
+      "interest_expense_usd": 437455278,
+      "total_debt_usd": 7959721818,
+      "total_assets_usd": 16090724625,
+      "equity_usd": 2873647183,
+      "icr": null,
+      "ebit_tag": null,
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 9191317880,
+      "ebit_usd": 2617494357,
+      "interest_expense_usd": 453627999,
+      "total_debt_usd": 7786825275,
+      "total_assets_usd": 9846555403,
+      "equity_usd": 2222559197,
+      "icr": 5.770134036633837,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 9305639882,
+      "ebit_usd": 886502291,
+      "interest_expense_usd": 485411589,
+      "total_debt_usd": 7940822961,
+      "total_assets_usd": 13058793438,
+      "equity_usd": 3032742771,
+      "icr": 1.8262899178536094,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.179423,
+    "margin_change_mean": -0.060509,
+    "margin_change_sd": 0.18244,
+    "revenue_growth_median": 0.01051,
+    "history_years": 4,
+    "used_sector_fallback": false
+  }
+}

@@ -10,101 +10,96 @@
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-26",
+    "filed": "2025-02-18",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 94840270,
-      "ebit_usd": 5503241,
-      "interest_expense_usd": 3262971,
-      "total_debt_usd": 41575054,
-      "total_assets_usd": 129255115,
-      "equity_usd": 18501494,
-      "icr": 1.6865736777924167,
+      "revenue_usd": 233520119,
+      "ebit_usd": 33243046,
+      "interest_expense_usd": 7204318,
+      "total_debt_usd": 176414199,
+      "total_assets_usd": 216443237,
+      "equity_usd": 21069119,
+      "icr": 4.614322410532128,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 91028886,
-      "ebit_usd": 8276649,
-      "interest_expense_usd": 3104525,
-      "total_debt_usd": 39970611,
-      "total_assets_usd": 121534792,
-      "equity_usd": 30673879,
-      "icr": 2.665995281081647,
+      "revenue_usd": 244099682,
+      "ebit_usd": 18533171,
+      "interest_expense_usd": 7172757,
+      "total_debt_usd": 175969563,
+      "total_assets_usd": 257149757,
+      "equity_usd": 15372683,
+      "icr": 2.583828087303111,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 87475229,
-      "ebit_usd": 18561378,
-      "interest_expense_usd": 3278842,
-      "total_debt_usd": 39817962,
-      "total_assets_usd": 144702883,
-      "equity_usd": 39927802,
-      "icr": 5.660955300682375,
+      "revenue_usd": 251723670,
+      "ebit_usd": 11509351,
+      "interest_expense_usd": 6952676,
+      "total_debt_usd": 170166417,
+      "total_assets_usd": 427459886,
+      "equity_usd": 129956448,
+      "icr": 1.655384344100027,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 87326131,
-      "ebit_usd": 15248640,
-      "interest_expense_usd": 3415598,
-      "total_debt_usd": 40552849,
-      "total_assets_usd": 135399187,
-      "equity_usd": 10061233,
-      "icr": 4.464412966631319,
+      "revenue_usd": 257024488,
+      "ebit_usd": 22663672,
+      "interest_expense_usd": 8097483,
+      "total_debt_usd": 174648980,
+      "total_assets_usd": 289826084,
+      "equity_usd": 94149216,
+      "icr": 2.7988539154697825,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 85375299,
-      "ebit_usd": 7425742,
-      "interest_expense_usd": 3644097,
-      "total_debt_usd": 41499438,
-      "total_assets_usd": 120880459,
-      "equity_usd": 16517284,
-      "icr": 2.037745427742456,
+      "revenue_usd": 271174970,
+      "ebit_usd": 17725644,
+      "interest_expense_usd": 8684177,
+      "total_debt_usd": 176671559,
+      "total_assets_usd": 473129638,
+      "equity_usd": 80249729,
+      "icr": 2.0411426436840245,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.124547,
-    "margin_change_mean": 0.007238,
-    "margin_change_sd": 0.090684,
-    "revenue_growth_median": -0.030689,
+    "margin_mean": 0.083509,
+    "margin_change_mean": -0.019248,
+    "margin_change_sd": 0.045337,
+    "revenue_growth_median": 0.038269,
     "history_years": 5,
     "used_sector_fallback": false
   }

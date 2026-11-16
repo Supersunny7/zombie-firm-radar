@@ -1,100 +1,100 @@
 {
   "cik": "9999000113",
-  "name": "Thornbury Utilities Co.",
+  "name": "Thornbury Carriers Co.",
   "ticker": null,
   "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
   "status": "healthy",
   "reasons": [
-    "ICR 4.77 in FY2024, at least 1",
+    "ICR 3.32 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-08",
+    "filed": "2025-03-06",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 2748059964,
-      "ebit_usd": 824417989,
-      "interest_expense_usd": 145408204,
-      "total_debt_usd": 1757246263,
-      "total_assets_usd": 3703706556,
-      "equity_usd": 775404227,
-      "icr": 5.669680020255253,
+      "revenue_usd": 2058610240,
+      "ebit_usd": 235569462,
+      "interest_expense_usd": 86454876,
+      "total_debt_usd": 1818580811,
+      "total_assets_usd": 2643380845,
+      "equity_usd": 387961416,
+      "icr": 2.724767796786846,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 2673735994,
-      "ebit_usd": 500288158,
-      "interest_expense_usd": 139404102,
-      "total_debt_usd": 1737969515,
-      "total_assets_usd": 4257339499,
-      "equity_usd": 832479868,
-      "icr": 3.588762101132433,
+      "revenue_usd": 1989979437,
+      "ebit_usd": 544541661,
+      "interest_expense_usd": 88636915,
+      "total_debt_usd": 1871734505,
+      "total_assets_usd": 3212012296,
+      "equity_usd": 383418659,
+      "icr": 6.143508728840574,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 2660250146,
-      "ebit_usd": 358263280,
-      "interest_expense_usd": 142083958,
-      "total_debt_usd": 1704619740,
-      "total_assets_usd": 3293693576,
-      "equity_usd": 1010304847,
-      "icr": 2.5214900052263465,
+      "revenue_usd": 1927857067,
+      "ebit_usd": 161962354,
+      "interest_expense_usd": 96426797,
+      "total_debt_usd": 1860151133,
+      "total_assets_usd": 2232181359,
+      "equity_usd": 127119482,
+      "icr": 1.6796405049106837,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 2530085969,
-      "ebit_usd": 759025791,
-      "interest_expense_usd": 147819753,
-      "total_debt_usd": 1639988339,
-      "total_assets_usd": 3216097375,
-      "equity_usd": 225213525,
-      "icr": 5.134806246090805,
+      "revenue_usd": 1977051370,
+      "ebit_usd": 185768293,
+      "interest_expense_usd": 95858876,
+      "total_debt_usd": 1854783023,
+      "total_assets_usd": 3106162491,
+      "equity_usd": 1033232265,
+      "icr": 1.9379352309534696,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 2510074355,
-      "ebit_usd": 753022307,
-      "interest_expense_usd": 157790263,
-      "total_debt_usd": 1713446439,
-      "total_assets_usd": 3314963167,
-      "equity_usd": 924476684,
-      "icr": 4.772298953579917,
+      "revenue_usd": 1996503843,
+      "ebit_usd": 354565126,
+      "interest_expense_usd": 106808498,
+      "total_debt_usd": 1858615623,
+      "total_assets_usd": 2541080418,
+      "equity_usd": 311711891,
+      "icr": 3.319634042602116,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.244357,
-    "margin_change_mean": 0.0,
-    "margin_change_sd": 0.11948,
-    "revenue_growth_median": -0.017478,
+    "margin_mean": 0.148728,
+    "margin_change_mean": 0.01579,
+    "margin_change_sd": 0.149893,
+    "revenue_growth_median": -0.010689,
     "history_years": 5,
     "used_sector_fallback": false
   }

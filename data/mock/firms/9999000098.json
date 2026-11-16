@@ -5,98 +5,93 @@
   "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
   "status": "healthy",
   "reasons": [
-    "ICR 5.94 in FY2024, at least 1",
+    "ICR 4.64 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-25",
+    "filed": "2025-03-27",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
       "revenue_usd": null,
-      "ebit_usd": 35748857,
-      "interest_expense_usd": 14800260,
-      "total_debt_usd": 291750610,
-      "total_assets_usd": 715929491,
-      "equity_usd": 250417474,
-      "icr": 2.415420877741337,
+      "ebit_usd": 2435474451,
+      "interest_expense_usd": 375100714,
+      "total_debt_usd": 9313454368,
+      "total_assets_usd": 16464688673,
+      "equity_usd": 3765483468,
+      "icr": 6.492854745672385,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": null,
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2021,
       "revenue_usd": null,
-      "ebit_usd": 90998215,
-      "interest_expense_usd": 14774569,
-      "total_debt_usd": 282219855,
-      "total_assets_usd": 668533533,
-      "equity_usd": 135472348,
-      "icr": 6.159111308086212,
+      "ebit_usd": 1491213857,
+      "interest_expense_usd": 378620001,
+      "total_debt_usd": 9235191148,
+      "total_assets_usd": 20352293159,
+      "equity_usd": 1448089258,
+      "icr": 3.938550137503169,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": null,
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 512413085,
-      "ebit_usd": 105091350,
-      "interest_expense_usd": 15017135,
-      "total_debt_usd": 276403453,
-      "total_assets_usd": 463443246,
-      "equity_usd": 57227179,
-      "icr": 6.9980958418499934,
+      "revenue_usd": 18427541910,
+      "ebit_usd": 1513134966,
+      "interest_expense_usd": 399498661,
+      "total_debt_usd": 9144784388,
+      "total_assets_usd": 18897882305,
+      "equity_usd": 4329072596,
+      "icr": 3.7875845746576857,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 533432690,
-      "ebit_usd": 28193860,
-      "interest_expense_usd": 16027243,
-      "total_debt_usd": 286308947,
-      "total_assets_usd": 589086961,
-      "equity_usd": 74893345,
-      "icr": 1.7591210166339901,
+      "revenue_usd": 19377280895,
+      "ebit_usd": 1975428175,
+      "interest_expense_usd": 437765294,
+      "total_debt_usd": 9317831187,
+      "total_assets_usd": 18182450895,
+      "equity_usd": 1530325149,
+      "icr": 4.512528064867563,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 549968815,
-      "ebit_usd": 103637472,
-      "interest_expense_usd": 17450684,
-      "total_debt_usd": 289587229,
-      "total_assets_usd": 637138334,
-      "equity_usd": 182840467,
-      "icr": 5.938877352887715,
+      "revenue_usd": 20560375975,
+      "ebit_usd": 2000777256,
+      "interest_expense_usd": 431475968,
+      "total_debt_usd": 9242228612,
+      "total_assets_usd": 26274310428,
+      "equity_usd": 3258826573,
+      "icr": 4.637053751276363,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebtCurrent"
       ]
     }
   ],

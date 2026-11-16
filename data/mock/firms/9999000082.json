@@ -5,24 +5,24 @@
   "sector": "Retail Trade",
   "status": "endangered",
   "reasons": [
-    "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 6 years (first filing proxy), under 10, so not a zombie"
+    "ICR below 1 in the most recent year (FY2024, -1.07)",
+    "ICR below 1 in 2 of the last 3 years (FY2023, FY2024)"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-03",
+    "filed": "2025-03-07",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 678680096,
-      "ebit_usd": 90015727,
-      "interest_expense_usd": 16479620,
-      "total_debt_usd": 205679813,
-      "total_assets_usd": 1072633917,
-      "equity_usd": 112164376,
-      "icr": 5.462245306627216,
+      "revenue_usd": 1221691188,
+      "ebit_usd": 290306385,
+      "interest_expense_usd": 74139105,
+      "total_debt_usd": 888897425,
+      "total_assets_usd": 2036286675,
+      "equity_usd": -230917902,
+      "icr": 3.9156985372294417,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
@@ -33,13 +33,13 @@
     },
     {
       "fy": 2021,
-      "revenue_usd": 698078873,
-      "ebit_usd": 88775328,
-      "interest_expense_usd": 16716069,
-      "total_debt_usd": 204354697,
-      "total_assets_usd": 1123004742,
-      "equity_usd": -17481150,
-      "icr": 5.310777791118235,
+      "revenue_usd": 1238023696,
+      "ebit_usd": 140523284,
+      "interest_expense_usd": 71460655,
+      "total_debt_usd": 872515157,
+      "total_assets_usd": 1516588247,
+      "equity_usd": 122569005,
+      "icr": 1.9664427089284306,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
@@ -50,13 +50,13 @@
     },
     {
       "fy": 2022,
-      "revenue_usd": 729970089,
-      "ebit_usd": 15649958,
-      "interest_expense_usd": 17756371,
-      "total_debt_usd": 210533778,
-      "total_assets_usd": 1216697297,
-      "equity_usd": -137975262,
-      "icr": 0.8813714243749469,
+      "revenue_usd": 1239978064,
+      "ebit_usd": 302613855,
+      "interest_expense_usd": 76537712,
+      "total_debt_usd": 886956127,
+      "total_assets_usd": 2007498652,
+      "equity_usd": -41740183,
+      "icr": 3.9537875785991616,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
@@ -67,13 +67,13 @@
     },
     {
       "fy": 2023,
-      "revenue_usd": 736684260,
-      "ebit_usd": -6296105,
-      "interest_expense_usd": 17738322,
-      "total_debt_usd": 206653667,
-      "total_assets_usd": 902443704,
-      "equity_usd": 72934514,
-      "icr": -0.3549436637805989,
+      "revenue_usd": 1261990538,
+      "ebit_usd": 73929485,
+      "interest_expense_usd": 80879159,
+      "total_debt_usd": 900099836,
+      "total_assets_usd": 1669142823,
+      "equity_usd": -182910515,
+      "icr": 0.9140733646847143,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
@@ -84,13 +84,13 @@
     },
     {
       "fy": 2024,
-      "revenue_usd": 734774567,
-      "ebit_usd": 16952463,
-      "interest_expense_usd": 18954270,
-      "total_debt_usd": 210073985,
-      "total_assets_usd": 1189584717,
-      "equity_usd": -24734006,
-      "icr": 0.8943875443369752,
+      "revenue_usd": 1313084123,
+      "ebit_usd": -85600609,
+      "interest_expense_usd": 80293536,
+      "total_debt_usd": 876906234,
+      "total_assets_usd": 1507756636,
+      "equity_usd": 34762395,
+      "icr": -1.0660958934477616,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
@@ -101,10 +101,10 @@
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.059154,
-    "margin_change_mean": -0.02739,
-    "margin_change_sd": 0.058043,
-    "revenue_growth_median": 0.01889,
+    "margin_mean": 0.117714,
+    "margin_change_mean": -0.075704,
+    "margin_change_sd": 0.140522,
+    "revenue_growth_median": 0.015561,
     "history_years": 5,
     "used_sector_fallback": false
   }

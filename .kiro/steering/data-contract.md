@@ -16,7 +16,12 @@ Any change to this contract must update this file, the JSON Schemas in `/data/sc
 - Ratios are decimals (0.06 = 6%).
 - CIKs are 10-digit zero-padded strings.
 ## Firm universe
-US filers with a ticker that file 10-Ks. Financial firms (SIC 6000-6799) are excluded and do not appear in any output file.
+US filers with a ticker that file 10-Ks. These firms are excluded and do not appear in any output file:
+
+- Financial firms (SIC 6000-6799). This range already covers REITs (SIC 6798).
+- Utilities (SIC 4900-4999).
+
+Only firms with `age_years >= 10` appear in any output file.
 
 ## File 1: `/data/firms_index.json`
 

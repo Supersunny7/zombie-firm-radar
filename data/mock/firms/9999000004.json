@@ -5,7 +5,7 @@
   "sector": "Agriculture, Forestry and Fishing",
   "status": "endangered",
   "reasons": [
-    "ICR below 1 in the most recent year (FY2024, 0.84)",
+    "ICR below 1 in the most recent year (FY2024, -0.50)",
     "ICR below 1 in 2 of the last 3 years (FY2023, FY2024)"
   ],
   "as_of_filing": {
@@ -16,13 +16,13 @@
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 91476221,
-      "ebit_usd": 3084801,
-      "interest_expense_usd": 2088713,
-      "total_debt_usd": 46925146,
-      "total_assets_usd": 93283826,
-      "equity_usd": -3347383,
-      "icr": 1.4768907935173479,
+      "revenue_usd": 123528145,
+      "ebit_usd": 6569676,
+      "interest_expense_usd": 3528239,
+      "total_debt_usd": 79281476,
+      "total_assets_usd": 125969109,
+      "equity_usd": -4520257,
+      "icr": 1.862026920511904,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -31,13 +31,13 @@
     },
     {
       "fy": 2021,
-      "revenue_usd": 92545782,
-      "ebit_usd": 5629885,
-      "interest_expense_usd": 2107423,
-      "total_debt_usd": 46292596,
-      "total_assets_usd": 93883618,
-      "equity_usd": 9138317,
-      "icr": 2.67145466287499,
+      "revenue_usd": 119519486,
+      "ebit_usd": 12281515,
+      "interest_expense_usd": 3559860,
+      "total_debt_usd": 78212763,
+      "total_assets_usd": 121247252,
+      "equity_usd": 11801802,
+      "icr": 3.449999438180153,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -46,13 +46,13 @@
     },
     {
       "fy": 2022,
-      "revenue_usd": 97109304,
-      "ebit_usd": 9819689,
-      "interest_expense_usd": 2173607,
-      "total_debt_usd": 44815039,
-      "total_assets_usd": 132989668,
-      "equity_usd": 5422185,
-      "icr": 4.517692940812208,
+      "revenue_usd": 120137086,
+      "ebit_usd": 5572485,
+      "interest_expense_usd": 3671702,
+      "total_debt_usd": 75716386,
+      "total_assets_usd": 164525853,
+      "equity_usd": 6707962,
+      "icr": 1.5176844417112283,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -61,13 +61,13 @@
     },
     {
       "fy": 2023,
-      "revenue_usd": 99609289,
-      "ebit_usd": 2142917,
-      "interest_expense_usd": 2384040,
-      "total_debt_usd": 46320459,
-      "total_assets_usd": 174449690,
-      "equity_usd": -17197733,
-      "icr": 0.8988594990016946,
+      "revenue_usd": 117926613,
+      "ebit_usd": 1690575,
+      "interest_expense_usd": 4027211,
+      "total_debt_usd": 78259839,
+      "total_assets_usd": 206529544,
+      "equity_usd": -20360253,
+      "icr": 0.4197880369317625,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -76,13 +76,13 @@
     },
     {
       "fy": 2024,
-      "revenue_usd": 104979156,
-      "ebit_usd": 2107250,
-      "interest_expense_usd": 2500590,
-      "total_debt_usd": 48216904,
-      "total_assets_usd": 129521987,
-      "equity_usd": 2712267,
-      "icr": 0.8427011225350817,
+      "revenue_usd": 119078247,
+      "ebit_usd": -2105802,
+      "interest_expense_usd": 4224098,
+      "total_debt_usd": 81463940,
+      "total_assets_usd": 146917271,
+      "equity_usd": 3076534,
+      "icr": -0.49852110438725616,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -91,10 +91,10 @@
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.047452,
-    "margin_change_mean": -0.003412,
-    "margin_change_sd": 0.053699,
-    "revenue_growth_median": 0.037527,
+    "margin_mean": 0.039795,
+    "margin_change_mean": -0.017717,
+    "margin_change_sd": 0.046304,
+    "revenue_growth_median": -0.006616,
     "history_years": 5,
     "used_sector_fallback": false
   }

@@ -1,0 +1,106 @@
+{
+  "cik": "9999000203",
+  "name": "Wickersham Appliance Corp.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 34 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-06",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 612000000,
+      "ebit_usd": 14200000,
+      "interest_expense_usd": 10900000,
+      "total_debt_usd": 160000000,
+      "total_assets_usd": 430000000,
+      "equity_usd": 140000000,
+      "icr": 1.3027522935779816,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 571000000,
+      "ebit_usd": -9100000,
+      "interest_expense_usd": 11300000,
+      "total_debt_usd": 165000000,
+      "total_assets_usd": 405000000,
+      "equity_usd": 118000000,
+      "icr": -0.8053097345132744,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 533000000,
+      "ebit_usd": -27600000,
+      "interest_expense_usd": 11900000,
+      "total_debt_usd": 170000000,
+      "total_assets_usd": 370000000,
+      "equity_usd": 84000000,
+      "icr": -2.319327731092437,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 502000000,
+      "ebit_usd": -33800000,
+      "interest_expense_usd": 12300000,
+      "total_debt_usd": 172000000,
+      "total_assets_usd": 340000000,
+      "equity_usd": 48000000,
+      "icr": -2.747967479674797,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 468000000,
+      "ebit_usd": -41500000,
+      "interest_expense_usd": 12800000,
+      "total_debt_usd": 175000000,
+      "total_assets_usd": 310000000,
+      "equity_usd": 9000000,
+      "icr": -3.2421875,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": -0.040105,
+    "margin_change_mean": -0.027969,
+    "margin_change_sd": 0.011328,
+    "revenue_growth_median": -0.066772,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}
