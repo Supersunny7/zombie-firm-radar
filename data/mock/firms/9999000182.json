@@ -1,0 +1,106 @@
+{
+  "cik": "9999000182",
+  "name": "Applegarth Mills Corp.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.11 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-14",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2725045334,
+      "ebit_usd": 242105025,
+      "interest_expense_usd": 126390680,
+      "total_debt_usd": 1866825580,
+      "total_assets_usd": 2875719928,
+      "equity_usd": 443637685,
+      "icr": 1.9155290959744817,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 2897388014,
+      "ebit_usd": 335774391,
+      "interest_expense_usd": 127812670,
+      "total_debt_usd": 1815897941,
+      "total_assets_usd": 2956414320,
+      "equity_usd": 436694554,
+      "icr": 2.627082205543472,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 2954793346,
+      "ebit_usd": 232549392,
+      "interest_expense_usd": 136702665,
+      "total_debt_usd": 1893655861,
+      "total_assets_usd": 4418808338,
+      "equity_usd": 1236985160,
+      "icr": 1.7011328345354497,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 3164788056,
+      "ebit_usd": 311915569,
+      "interest_expense_usd": 140729862,
+      "total_debt_usd": 1891725701,
+      "total_assets_usd": 5675228570,
+      "equity_usd": 299737989,
+      "icr": 2.216413521388943,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 3255383365,
+      "ebit_usd": 158685465,
+      "interest_expense_usd": 142861523,
+      "total_debt_usd": 1847616500,
+      "total_assets_usd": 4761443296,
+      "equity_usd": 606413572,
+      "icr": 1.1107641978589295,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.086148,
+    "margin_change_mean": -0.010025,
+    "margin_change_sd": 0.039106,
+    "revenue_growth_median": 0.045935,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

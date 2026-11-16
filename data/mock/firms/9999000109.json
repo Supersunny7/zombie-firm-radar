@@ -1,100 +1,105 @@
 {
   "cik": "9999000109",
-  "name": "Tindall Contracting Holdings",
+  "name": "Kingsmoor Stores Group",
   "ticker": null,
-  "sector": "Construction",
-  "status": "zombie",
+  "sector": "Retail Trade",
+  "status": "healthy",
   "reasons": [
-    "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 25 years (first filing proxy), at least 10"
+    "ICR 1.97 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-02",
+    "filed": "2025-03-13",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 1600913674,
-      "ebit_usd": 139533486,
-      "interest_expense_usd": 41023044,
-      "total_debt_usd": 1164581084,
-      "total_assets_usd": 1996244450,
-      "equity_usd": 232049806,
-      "icr": 3.401344034830765,
+      "revenue_usd": 165805473,
+      "ebit_usd": 49741642,
+      "interest_expense_usd": 8127266,
+      "total_debt_usd": 138427624,
+      "total_assets_usd": 176145770,
+      "equity_usd": 40524698,
+      "icr": 6.120341330036448,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 1534942810,
-      "ebit_usd": 24678647,
-      "interest_expense_usd": 40071047,
-      "total_debt_usd": 1134837626,
-      "total_assets_usd": 1682561058,
-      "equity_usd": -52420243,
-      "icr": 0.615872278056523,
+      "revenue_usd": 160850384,
+      "ebit_usd": 13991877,
+      "interest_expense_usd": 8191404,
+      "total_debt_usd": 142824155,
+      "total_assets_usd": 251799683,
+      "equity_usd": 57660796,
+      "icr": 1.7081170700407402,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 1509483658,
-      "ebit_usd": 16113156,
-      "interest_expense_usd": 43380579,
-      "total_debt_usd": 1092009458,
-      "total_assets_usd": 2505429478,
-      "equity_usd": -15934996,
-      "icr": 0.3714370893943117,
+      "revenue_usd": 162874564,
+      "ebit_usd": 42967553,
+      "interest_expense_usd": 8742510,
+      "total_debt_usd": 147360784,
+      "total_assets_usd": 284689144,
+      "equity_usd": 86203412,
+      "icr": 4.914784541281623,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 1453492442,
-      "ebit_usd": 40736903,
-      "interest_expense_usd": 46239239,
-      "total_debt_usd": 1116984078,
-      "total_assets_usd": 1715699837,
-      "equity_usd": -166569520,
-      "icr": 0.8810028858822698,
+      "revenue_usd": 162257332,
+      "ebit_usd": 46104033,
+      "interest_expense_usd": 9134991,
+      "total_debt_usd": 141776715,
+      "total_assets_usd": 268673063,
+      "equity_usd": 88138109,
+      "icr": 5.046970818033647,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 1382423138,
-      "ebit_usd": 18990797,
-      "interest_expense_usd": 49892705,
-      "total_debt_usd": 1103306719,
-      "total_assets_usd": 1933467793,
-      "equity_usd": 126409016,
-      "icr": 0.38063273979632894,
+      "revenue_usd": 161239733,
+      "ebit_usd": 17651877,
+      "interest_expense_usd": 8939796,
+      "total_debt_usd": 136194240,
+      "total_assets_usd": 203098672,
+      "equity_usd": 20414846,
+      "icr": 1.9745279422483466,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.031135,
-    "margin_change_mean": -0.018355,
-    "margin_change_sd": 0.037591,
-    "revenue_growth_median": -0.039151,
+    "margin_mean": 0.208882,
+    "margin_change_mean": -0.047631,
+    "margin_change_sd": 0.181188,
+    "revenue_growth_median": -0.005031,
     "history_years": 5,
     "used_sector_fallback": false
   }

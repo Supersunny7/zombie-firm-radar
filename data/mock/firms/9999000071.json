@@ -1,100 +1,110 @@
 {
   "cik": "9999000071",
-  "name": "Yarrowdale Civil Co.",
+  "name": "Wexcombe Fisheries Co.",
   "ticker": null,
-  "sector": "Construction",
+  "sector": "Agriculture, Forestry and Fishing",
   "status": "healthy",
   "reasons": [
-    "ICR 5.97 in FY2024, at least 1",
+    "ICR 1.99 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-11",
+    "filed": "2025-03-11",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 182344040,
-      "ebit_usd": 21162695,
-      "interest_expense_usd": 4724400,
-      "total_debt_usd": 68714914,
-      "total_assets_usd": 323462719,
-      "equity_usd": 67017363,
-      "icr": 4.479446067225468,
+      "revenue_usd": 289714869,
+      "ebit_usd": 12641525,
+      "interest_expense_usd": 7082346,
+      "total_debt_usd": 87672643,
+      "total_assets_usd": 485290869,
+      "equity_usd": 155205657,
+      "icr": 1.7849346812482756,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 187432657,
-      "ebit_usd": 30135742,
-      "interest_expense_usd": 4761165,
-      "total_debt_usd": 69237505,
-      "total_assets_usd": 300938559,
-      "equity_usd": 83110278,
-      "icr": 6.3294891061326375,
+      "revenue_usd": 303671946,
+      "ebit_usd": 20741606,
+      "interest_expense_usd": 7049589,
+      "total_debt_usd": 86012022,
+      "total_assets_usd": 497936880,
+      "equity_usd": 139233766,
+      "icr": 2.9422432995739185,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 189042444,
-      "ebit_usd": 19565249,
-      "interest_expense_usd": 4928295,
-      "total_debt_usd": 66482156,
-      "total_assets_usd": 309931175,
-      "equity_usd": 22415698,
-      "icr": 3.9699833309491415,
+      "revenue_usd": 323974347,
+      "ebit_usd": 40371392,
+      "interest_expense_usd": 7279299,
+      "total_debt_usd": 88604529,
+      "total_assets_usd": 451361221,
+      "equity_usd": 100713601,
+      "icr": 5.546054915452711,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 188955649,
-      "ebit_usd": 34092937,
-      "interest_expense_usd": 5084880,
-      "total_debt_usd": 67006012,
-      "total_assets_usd": 221795624,
-      "equity_usd": 20928593,
-      "icr": 6.704767270810717,
+      "revenue_usd": 347887226,
+      "ebit_usd": 49295075,
+      "interest_expense_usd": 7654354,
+      "total_debt_usd": 87633991,
+      "total_assets_usd": 351738100,
+      "equity_usd": 82130879,
+      "icr": 6.44013524851346,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 185863031,
-      "ebit_usd": 30769886,
-      "interest_expense_usd": 5150575,
-      "total_debt_usd": 64524442,
-      "total_assets_usd": 169065317,
-      "equity_usd": 23626778,
-      "icr": 5.974068138023425,
+      "revenue_usd": 376431248,
+      "ebit_usd": 15689884,
+      "interest_expense_usd": 7895102,
+      "total_debt_usd": 86795220,
+      "total_assets_usd": 400332795,
+      "equity_usd": 51474289,
+      "icr": 1.987293387723173,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.145263,
-    "margin_change_mean": 0.012373,
-    "margin_change_sd": 0.060025,
-    "revenue_growth_median": 0.004065,
+    "margin_mean": 0.083986,
+    "margin_change_mean": -0.000488,
+    "margin_change_sd": 0.068493,
+    "revenue_growth_median": 0.070334,
     "history_years": 5,
     "used_sector_fallback": false
   }

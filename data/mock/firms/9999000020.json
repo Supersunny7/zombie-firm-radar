@@ -1,101 +1,101 @@
 {
   "cik": "9999000020",
-  "name": "Ainsley Industries Co.",
+  "name": "Yarrowdale Outfitters Group",
   "ticker": null,
-  "sector": "Manufacturing",
-  "status": "healthy",
+  "sector": "Retail Trade",
+  "status": "zombie",
   "reasons": [
-    "ICR 3.82 in FY2024, at least 1",
-    "No more than one year below 1 in the last 3"
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 35 years (first filing proxy), at least 10"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-22",
+    "filed": "2025-02-15",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": null,
-      "ebit_usd": 299145666,
-      "interest_expense_usd": 66257061,
-      "total_debt_usd": 871750862,
-      "total_assets_usd": 1640105426,
-      "equity_usd": 330248449,
-      "icr": 4.514925073419722,
-      "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": null,
+      "revenue_usd": 921445254,
+      "ebit_usd": 184774656,
+      "interest_expense_usd": 27177341,
+      "total_debt_usd": 605276865,
+      "total_assets_usd": 1537448473,
+      "equity_usd": -93133322,
+      "icr": 6.798849674072235,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": null,
-      "ebit_usd": 323966563,
-      "interest_expense_usd": 67989280,
-      "total_debt_usd": 890478517,
-      "total_assets_usd": 1681531251,
-      "equity_usd": 97963545,
-      "icr": 4.764965344536668,
-      "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": null,
+      "revenue_usd": 913654444,
+      "ebit_usd": 19054651,
+      "interest_expense_usd": 28276802,
+      "total_debt_usd": 630848115,
+      "total_assets_usd": 1538008281,
+      "equity_usd": 155708284,
+      "icr": 0.6738615986348102,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 1053052936,
-      "ebit_usd": 291512970,
-      "interest_expense_usd": 72026088,
-      "total_debt_usd": 885654358,
-      "total_assets_usd": 1587691122,
-      "equity_usd": 520032028,
-      "icr": 4.047324769325248,
-      "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_usd": 873498905,
+      "ebit_usd": 5673268,
+      "interest_expense_usd": 29281452,
+      "total_debt_usd": 629223571,
+      "total_assets_usd": 1196755254,
+      "equity_usd": 79352552,
+      "icr": 0.193749544933769,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 1035060348,
-      "ebit_usd": 310518105,
-      "interest_expense_usd": 74473971,
-      "total_debt_usd": 921406037,
-      "total_assets_usd": 1407038915,
-      "equity_usd": 71379158,
-      "icr": 4.169485000336561,
-      "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_usd": 837289579,
+      "ebit_usd": -9816748,
+      "interest_expense_usd": 29647641,
+      "total_debt_usd": 615722801,
+      "total_assets_usd": 1268263175,
+      "equity_usd": -31213664,
+      "icr": -0.3311139662005486,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 987163337,
-      "ebit_usd": 296149001,
-      "interest_expense_usd": 77583984,
-      "total_debt_usd": 926554393,
-      "total_assets_usd": 1111865272,
-      "equity_usd": 186295528,
-      "icr": 3.817140932076909,
-      "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "SalesRevenueNet",
+      "revenue_usd": 811217785,
+      "ebit_usd": 18444960,
+      "interest_expense_usd": 32701901,
+      "total_debt_usd": 621264713,
+      "total_assets_usd": 1333496940,
+      "equity_usd": -171244029,
+      "icr": 0.5640332652221044,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.07,
-    "margin_change_mean": -0.002,
-    "margin_change_sd": 0.018,
-    "revenue_growth_median": 0.02,
-    "history_years": 3,
-    "used_sector_fallback": true
+    "margin_mean": 0.047778,
+    "margin_change_mean": -0.044447,
+    "margin_change_sd": 0.093283,
+    "revenue_growth_median": -0.036296,
+    "history_years": 5,
+    "used_sector_fallback": false
   }
 }

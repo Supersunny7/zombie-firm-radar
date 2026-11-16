@@ -1,58 +1,58 @@
 {
   "cik": "9999000116",
-  "name": "Nettlefold Drilling Holdings",
+  "name": "Kestrel Ridge Resources Co.",
   "ticker": null,
   "sector": "Mining",
   "status": "healthy",
   "reasons": [
-    "ICR 4.25 in FY2024, at least 1",
+    "ICR 3.84 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-10",
+    "filed": "2025-02-17",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": null,
-      "ebit_usd": 74359560,
-      "interest_expense_usd": 24999255,
-      "total_debt_usd": 592490151,
-      "total_assets_usd": 1215999413,
-      "equity_usd": 381291566,
-      "icr": 2.974471039236969,
+      "revenue_usd": 1366328388,
+      "ebit_usd": 409898516,
+      "interest_expense_usd": 94888917,
+      "total_debt_usd": 1177532497,
+      "total_assets_usd": 1930169503,
+      "equity_usd": 675463923,
+      "icr": 4.319772308076822,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": null,
+      "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": null,
-      "ebit_usd": 106803371,
-      "interest_expense_usd": 25642579,
-      "total_debt_usd": 597620440,
-      "total_assets_usd": 1641137114,
-      "equity_usd": 134301378,
-      "icr": 4.165079144340357,
+      "revenue_usd": 1432252149,
+      "ebit_usd": 202439911,
+      "interest_expense_usd": 99825518,
+      "total_debt_usd": 1223429105,
+      "total_assets_usd": 2032415366,
+      "equity_usd": 298290199,
+      "icr": 2.027937495901599,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": null,
+      "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 1006428794,
-      "ebit_usd": 155781746,
-      "interest_expense_usd": 28208337,
-      "total_debt_usd": 618730182,
-      "total_assets_usd": 1015108429,
-      "equity_usd": 78567525,
-      "icr": 5.522542714942749,
+      "revenue_usd": 1524594969,
+      "ebit_usd": 64264138,
+      "interest_expense_usd": 99663358,
+      "total_debt_usd": 1200434354,
+      "total_assets_usd": 1610137729,
+      "equity_usd": 320938805,
+      "icr": 0.6448120883103297,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -61,13 +61,13 @@
     },
     {
       "fy": 2023,
-      "revenue_usd": 1078175455,
-      "ebit_usd": 115311783,
-      "interest_expense_usd": 30500256,
-      "total_debt_usd": 637449615,
-      "total_assets_usd": 1732541537,
-      "equity_usd": 441588383,
-      "icr": 3.7806824637799763,
+      "revenue_usd": 1557436147,
+      "ebit_usd": 227472425,
+      "interest_expense_usd": 105196918,
+      "total_debt_usd": 1234225090,
+      "total_assets_usd": 2030300163,
+      "equity_usd": 351301869,
+      "icr": 2.162348758164189,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -76,13 +76,13 @@
     },
     {
       "fy": 2024,
-      "revenue_usd": 1146452694,
-      "ebit_usd": 135495054,
-      "interest_expense_usd": 31849547,
-      "total_debt_usd": 623441322,
-      "total_assets_usd": 1253497166,
-      "equity_usd": 247080121,
-      "icr": 4.25422232849968,
+      "revenue_usd": 1585939807,
+      "ebit_usd": 422270909,
+      "interest_expense_usd": 109876718,
+      "total_debt_usd": 1245251591,
+      "total_assets_usd": 1710036099,
+      "equity_usd": 587657876,
+      "icr": 3.8431336199903603,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -91,11 +91,11 @@
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.09,
-    "margin_change_mean": -0.004,
-    "margin_change_sd": 0.045,
-    "revenue_growth_median": 0.01,
-    "history_years": 3,
-    "used_sector_fallback": true
+    "margin_mean": 0.179162,
+    "margin_change_mean": -0.008435,
+    "margin_change_sd": 0.141387,
+    "revenue_growth_median": 0.034895,
+    "history_years": 5,
+    "used_sector_fallback": false
   }
 }

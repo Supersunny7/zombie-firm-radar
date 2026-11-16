@@ -1,27 +1,28 @@
 {
   "cik": "9999000088",
-  "name": "Upperton Retail Holdings",
+  "name": "Lowmoor Farms Corp.",
   "ticker": null,
-  "sector": "Retail Trade",
-  "status": "insufficient_data",
+  "sector": "Agriculture, Forestry and Fishing",
+  "status": "zombie",
   "reasons": [
-    "Fewer than 3 consecutive fiscal years with both EBIT and interest expense available"
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 19 years (first filing proxy), at least 10"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-27",
+    "filed": "2025-02-14",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 437128351,
-      "ebit_usd": 119026796,
-      "interest_expense_usd": 24319290,
-      "total_debt_usd": 361585033,
-      "total_assets_usd": 485387551,
-      "equity_usd": 94866392,
-      "icr": 4.894336800128622,
+      "revenue_usd": 10374993213,
+      "ebit_usd": 403574446,
+      "interest_expense_usd": 550588825,
+      "total_debt_usd": 7652550055,
+      "total_assets_usd": 9726660128,
+      "equity_usd": -1287785907,
+      "icr": 0.732986990791177,
       "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
@@ -30,14 +31,14 @@
     },
     {
       "fy": 2021,
-      "revenue_usd": 422344701,
-      "ebit_usd": null,
-      "interest_expense_usd": null,
-      "total_debt_usd": 379053498,
-      "total_assets_usd": 454864197,
-      "equity_usd": 95157995,
-      "icr": null,
-      "ebit_tag": null,
+      "revenue_usd": 9686236390,
+      "ebit_usd": 1080450181,
+      "interest_expense_usd": 589311348,
+      "total_debt_usd": 7934882937,
+      "total_assets_usd": 12410229878,
+      "equity_usd": 992380792,
+      "icr": 1.8334114635104566,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebt"
@@ -45,13 +46,13 @@
     },
     {
       "fy": 2022,
-      "revenue_usd": 415650927,
-      "ebit_usd": 79038065,
-      "interest_expense_usd": 25530303,
-      "total_debt_usd": 364399689,
-      "total_assets_usd": 711795024,
-      "equity_usd": 239425059,
-      "icr": 3.095852994772526,
+      "revenue_usd": 9486909211,
+      "ebit_usd": 351028637,
+      "interest_expense_usd": 624098737,
+      "total_debt_usd": 8313551953,
+      "total_assets_usd": 9976262344,
+      "equity_usd": 4560877,
+      "icr": 0.5624568937398763,
       "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
@@ -60,14 +61,14 @@
     },
     {
       "fy": 2023,
-      "revenue_usd": 422502249,
-      "ebit_usd": null,
-      "interest_expense_usd": null,
-      "total_debt_usd": 366979532,
-      "total_assets_usd": 653663590,
-      "equity_usd": 201890029,
-      "icr": null,
-      "ebit_tag": null,
+      "revenue_usd": 8971619467,
+      "ebit_usd": 355624065,
+      "interest_expense_usd": 681691893,
+      "total_debt_usd": 8705498577,
+      "total_assets_usd": 12479693957,
+      "equity_usd": -577226821,
+      "icr": 0.521678589186332,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
         "LongTermDebt"
@@ -75,13 +76,13 @@
     },
     {
       "fy": 2024,
-      "revenue_usd": 428332270,
-      "ebit_usd": 128499681,
-      "interest_expense_usd": 29400275,
-      "total_debt_usd": 380522476,
-      "total_assets_usd": 666962914,
-      "equity_usd": 200077155,
-      "icr": 4.370696566613748,
+      "revenue_usd": 8353655552,
+      "ebit_usd": 622690648,
+      "interest_expense_usd": 710451816,
+      "total_debt_usd": 8750635982,
+      "total_assets_usd": 12095043328,
+      "equity_usd": 1251153791,
+      "icr": 0.8764713299008585,
       "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
       "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
@@ -90,11 +91,11 @@
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.045,
-    "margin_change_mean": -0.002,
-    "margin_change_sd": 0.015,
-    "revenue_growth_median": 0.018,
-    "history_years": 3,
-    "used_sector_fallback": true
+    "margin_mean": 0.060325,
+    "margin_change_mean": 0.008911,
+    "margin_change_sd": 0.062561,
+    "revenue_growth_median": -0.060351,
+    "history_years": 5,
+    "used_sector_fallback": false
   }
 }

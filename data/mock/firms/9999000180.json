@@ -1,0 +1,101 @@
+{
+  "cik": "9999000180",
+  "name": "Cresswell Partners Group",
+  "ticker": null,
+  "sector": "Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.07 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-22",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 220709850,
+      "ebit_usd": 39039240,
+      "interest_expense_usd": 8154038,
+      "total_debt_usd": 137564213,
+      "total_assets_usd": 341055262,
+      "equity_usd": 59534178,
+      "icr": 4.7877186738644095,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 234925622,
+      "ebit_usd": 38034688,
+      "interest_expense_usd": 8282169,
+      "total_debt_usd": 138557716,
+      "total_assets_usd": 380440562,
+      "equity_usd": 97853837,
+      "icr": 4.5923583544358975,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 244605867,
+      "ebit_usd": 56187427,
+      "interest_expense_usd": 8193829,
+      "total_debt_usd": 133636690,
+      "total_assets_usd": 355966003,
+      "equity_usd": 50115468,
+      "icr": 6.857285769571223,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 254558186,
+      "ebit_usd": 44076831,
+      "interest_expense_usd": 9245713,
+      "total_debt_usd": 138602574,
+      "total_assets_usd": 266767458,
+      "equity_usd": 36670788,
+      "icr": 4.767272248230071,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 273657903,
+      "ebit_usd": 19496625,
+      "interest_expense_usd": 9405810,
+      "total_debt_usd": 138746719,
+      "total_assets_usd": 299233946,
+      "equity_usd": 91279967,
+      "icr": 2.072827858525741,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.162576,
+    "margin_change_mean": -0.026409,
+    "margin_change_sd": 0.072147,
+    "revenue_growth_median": 0.052807,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

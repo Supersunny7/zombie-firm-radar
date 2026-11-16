@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "pipeline-tests",
+      "trigger": "PostFileSave",
+      "description": "Run pipeline tests when a Python file under pipeline/ is saved",
+      "matcher": "pipeline[\\\\/].*\\.py$",
+      "action": {
+        "type": "command",
+        "command": "if [ -x .venv/bin/python ] && [ -d pipeline/tests ]; then .venv/bin/python -m pytest pipeline/tests -q; else echo 'skipped: .venv or pipeline/tests not found'; fi",
+        "timeout": 120
+      }
+    }
+  ]
+}

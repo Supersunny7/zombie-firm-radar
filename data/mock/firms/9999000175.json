@@ -1,0 +1,100 @@
+{
+  "cik": "9999000175",
+  "name": "Kestrel Ridge Industries Inc.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in 2 of the last 3 years (FY2022, FY2023)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-19",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 175723882,
+      "ebit_usd": 24542223,
+      "interest_expense_usd": 3758011,
+      "total_debt_usd": 76712644,
+      "total_assets_usd": 313895657,
+      "equity_usd": -41256224,
+      "icr": 6.530641608020838,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 186304015,
+      "ebit_usd": 11206048,
+      "interest_expense_usd": 3649186,
+      "total_debt_usd": 75981339,
+      "total_assets_usd": 204336100,
+      "equity_usd": 22421726,
+      "icr": 3.070834975252015,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 203082086,
+      "ebit_usd": 3493091,
+      "interest_expense_usd": 3962937,
+      "total_debt_usd": 76411966,
+      "total_assets_usd": 227899249,
+      "equity_usd": -14551899,
+      "icr": 0.8814399522374441,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 216564052,
+      "ebit_usd": 1557652,
+      "interest_expense_usd": 4202951,
+      "total_debt_usd": 75751864,
+      "total_assets_usd": 302744449,
+      "equity_usd": -20039617,
+      "icr": 0.37060912677782826,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 224653768,
+      "ebit_usd": 23091403,
+      "interest_expense_usd": 4491031,
+      "total_debt_usd": 76964874,
+      "total_assets_usd": 324906330,
+      "equity_usd": -20325201,
+      "icr": 5.141670810110195,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.065398,
+    "margin_change_mean": -0.009219,
+    "margin_change_sd": 0.075422,
+    "revenue_growth_median": 0.063298,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "cik": "9999000197",
+  "name": "Yarrowdale Consulting Corp.",
+  "ticker": null,
+  "sector": "Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.10 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-12",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 3763401184,
+      "ebit_usd": -98725082,
+      "interest_expense_usd": 117221007,
+      "total_debt_usd": 2733428815,
+      "total_assets_usd": 4747665861,
+      "equity_usd": 420143129,
+      "icr": -0.8422132220720472,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 3618299601,
+      "ebit_usd": 459055938,
+      "interest_expense_usd": 113057205,
+      "total_debt_usd": 2778604067,
+      "total_assets_usd": 3391187387,
+      "equity_usd": 934041107,
+      "icr": 4.060386403502545,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 3528699037,
+      "ebit_usd": 429704314,
+      "interest_expense_usd": 125172924,
+      "total_debt_usd": 2785949671,
+      "total_assets_usd": 4548867489,
+      "equity_usd": 1501755312,
+      "icr": 3.432885485682191,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 3486234888,
+      "ebit_usd": 311510445,
+      "interest_expense_usd": 138127516,
+      "total_debt_usd": 2783193861,
+      "total_assets_usd": 4815648901,
+      "equity_usd": 1210725744,
+      "icr": 2.2552381597885245,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 3433586164,
+      "ebit_usd": 757244389,
+      "interest_expense_usd": 148444979,
+      "total_debt_usd": 2903349303,
+      "total_assets_usd": 5610844192,
+      "equity_usd": 746017810,
+      "icr": 5.101178861697976,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.106461,
+    "margin_change_mean": 0.061693,
+    "margin_change_sd": 0.093992,
+    "revenue_growth_median": -0.019933,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

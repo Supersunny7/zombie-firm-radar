@@ -1,110 +1,100 @@
 {
   "cik": "9999000034",
-  "name": "Pellham Growers Corp.",
+  "name": "Ravenscar Resources Corp.",
   "ticker": null,
-  "sector": "Agriculture, Forestry and Fishing",
+  "sector": "Mining",
   "status": "healthy",
   "reasons": [
-    "ICR 2.72 in FY2024, at least 1",
+    "ICR 1.33 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-13",
+    "filed": "2025-02-10",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 5437163502,
-      "ebit_usd": 720391908,
-      "interest_expense_usd": 116178415,
-      "total_debt_usd": 1850008757,
-      "total_assets_usd": 7653119969,
-      "equity_usd": 2381012949,
-      "icr": 6.200737959800881,
+      "revenue_usd": 193361644,
+      "ebit_usd": 5573081,
+      "interest_expense_usd": 4250582,
+      "total_debt_usd": 97280638,
+      "total_assets_usd": 280631758,
+      "equity_usd": 60551444,
+      "icr": 1.3111336282890202,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 5829359912,
-      "ebit_usd": 514880557,
-      "interest_expense_usd": 115462349,
-      "total_debt_usd": 1855803436,
-      "total_assets_usd": 8585340515,
-      "equity_usd": 2007926395,
-      "icr": 4.459293972964295,
+      "revenue_usd": 201659736,
+      "ebit_usd": 6812786,
+      "interest_expense_usd": 4279752,
+      "total_debt_usd": 95324153,
+      "total_assets_usd": 306472014,
+      "equity_usd": 69430285,
+      "icr": 1.5918646687938927,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 6359752158,
-      "ebit_usd": 581413985,
-      "interest_expense_usd": 128437079,
-      "total_debt_usd": 1885226562,
-      "total_assets_usd": 10177013538,
-      "equity_usd": 2856420720,
-      "icr": 4.526839052451512,
+      "revenue_usd": 208333802,
+      "ebit_usd": 8903704,
+      "interest_expense_usd": 4453772,
+      "total_debt_usd": 95710503,
+      "total_assets_usd": 211355034,
+      "equity_usd": 38309374,
+      "icr": 1.9991378094792458,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 6780102508,
-      "ebit_usd": -45912182,
-      "interest_expense_usd": 138038365,
-      "total_debt_usd": 1970983418,
-      "total_assets_usd": 6764369698,
-      "equity_usd": 437779551,
-      "icr": -0.3326045045520497,
+      "revenue_usd": 216451240,
+      "ebit_usd": 11585646,
+      "interest_expense_usd": 4839515,
+      "total_debt_usd": 99994016,
+      "total_assets_usd": 324166704,
+      "equity_usd": 67536507,
+      "icr": 2.393968403858651,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 7317774950,
-      "ebit_usd": 387507218,
-      "interest_expense_usd": 142544123,
-      "total_debt_usd": 1966133031,
-      "total_assets_usd": 12612259039,
-      "equity_usd": 2832764654,
-      "icr": 2.7185071530448153,
+      "revenue_usd": 222966778,
+      "ebit_usd": 6390477,
+      "interest_expense_usd": 4822654,
+      "total_debt_usd": 97107914,
+      "total_assets_usd": 336682677,
+      "equity_usd": 55444555,
+      "icr": 1.3250954764741572,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.071685,
-    "margin_change_mean": -0.019885,
-    "margin_change_sd": 0.0673,
-    "revenue_growth_median": 0.075717,
+    "margin_mean": 0.037506,
+    "margin_change_mean": -4e-05,
+    "margin_change_sd": 0.016727,
+    "revenue_growth_median": 0.03603,
     "history_years": 5,
     "used_sector_fallback": false
   }

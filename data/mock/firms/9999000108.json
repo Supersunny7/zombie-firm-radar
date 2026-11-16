@@ -1,100 +1,100 @@
 {
   "cik": "9999000108",
-  "name": "Foxglove Resources Holdings",
+  "name": "Stonebrook Carriers Inc.",
   "ticker": null,
-  "sector": "Mining",
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
   "status": "healthy",
   "reasons": [
-    "ICR 6.22 in FY2024, at least 1",
+    "ICR 1.23 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-30",
+    "filed": "2025-02-18",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 6789220521,
-      "ebit_usd": 153301678,
-      "interest_expense_usd": 107928935,
-      "total_debt_usd": 3147298188,
-      "total_assets_usd": 9210810451,
-      "equity_usd": 1847579207,
-      "icr": 1.4203946142894859,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 251760122,
+      "ebit_usd": 8607568,
+      "interest_expense_usd": 7172526,
+      "total_debt_usd": 104258119,
+      "total_assets_usd": 242949393,
+      "equity_usd": 53624086,
+      "icr": 1.2000748411368602,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 7409524313,
-      "ebit_usd": 519009610,
-      "interest_expense_usd": 121033926,
-      "total_debt_usd": 3286586433,
-      "total_assets_usd": 7802815437,
-      "equity_usd": 1217305359,
-      "icr": 4.288133312307823,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 257777131,
+      "ebit_usd": 19802285,
+      "interest_expense_usd": 7408190,
+      "total_debt_usd": 105028577,
+      "total_assets_usd": 304529609,
+      "equity_usd": 56995873,
+      "icr": 2.673026069795726,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 8063477160,
-      "ebit_usd": 708006508,
-      "interest_expense_usd": 123069373,
-      "total_debt_usd": 3313196245,
-      "total_assets_usd": 11948003820,
-      "equity_usd": 1819755239,
-      "icr": 5.752905785909871,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 266703985,
+      "ebit_usd": 20865126,
+      "interest_expense_usd": 7375360,
+      "total_debt_usd": 100731573,
+      "total_assets_usd": 325644612,
+      "equity_usd": 45529200,
+      "icr": 2.829031532020132,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 8715843617,
-      "ebit_usd": 235272122,
-      "interest_expense_usd": 137809054,
-      "total_debt_usd": 3216877514,
-      "total_assets_usd": 13309550651,
-      "equity_usd": 3513732218,
-      "icr": 1.7072326902410926,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 268908890,
+      "ebit_usd": 11225169,
+      "interest_expense_usd": 7618297,
+      "total_debt_usd": 100189578,
+      "total_assets_usd": 443462961,
+      "equity_usd": 50394038,
+      "icr": 1.4734485935636272,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 9175366474,
-      "ebit_usd": 859335630,
-      "interest_expense_usd": 138146201,
-      "total_debt_usd": 3137874983,
-      "total_assets_usd": 11797315019,
-      "equity_usd": 2178390619,
-      "icr": 6.220479635194601,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 278395410,
+      "ebit_usd": 9782425,
+      "interest_expense_usd": 7979933,
+      "total_debt_usd": 102058907,
+      "total_assets_usd": 364507612,
+      "equity_usd": 115883143,
+      "icr": 1.225878086946344,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.060216,
-    "margin_change_mean": 0.017769,
-    "margin_change_sd": 0.056117,
-    "revenue_growth_median": 0.084581,
+    "margin_mean": 0.053225,
+    "margin_change_mean": 0.000237,
+    "margin_change_sd": 0.03263,
+    "revenue_growth_median": 0.029265,
     "history_years": 5,
     "used_sector_fallback": false
   }

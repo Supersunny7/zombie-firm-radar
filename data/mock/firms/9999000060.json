@@ -1,71 +1,106 @@
 {
   "cik": "9999000060",
-  "name": "Kingsmoor Freight Holdings",
+  "name": "Elmstead Minerals Holdings",
   "ticker": null,
-  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "sector": "Mining",
   "status": "healthy",
   "reasons": [
-    "ICR 3.56 in FY2024, at least 1",
+    "ICR 1.16 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-06",
+    "filed": "2025-02-21",
     "form": "10-K"
   },
   "years": [
     {
-      "fy": 2022,
-      "revenue_usd": 97565033,
-      "ebit_usd": 15990660,
-      "interest_expense_usd": 2391783,
-      "total_debt_usd": 29856967,
-      "total_assets_usd": 112781401,
-      "equity_usd": 21049527,
-      "icr": 6.685665045700216,
+      "fy": 2020,
+      "revenue_usd": 314479930,
+      "ebit_usd": 41664250,
+      "interest_expense_usd": 17303492,
+      "total_debt_usd": 216690921,
+      "total_assets_usd": 402865689,
+      "equity_usd": 105088005,
+      "icr": 2.4078521260332884,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 304640549,
+      "ebit_usd": 37057949,
+      "interest_expense_usd": 18195082,
+      "total_debt_usd": 219844299,
+      "total_assets_usd": 450435005,
+      "equity_usd": 122756599,
+      "icr": 2.0367014009609847,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 296916614,
+      "ebit_usd": 33846539,
+      "interest_expense_usd": 19182551,
+      "total_debt_usd": 225590388,
+      "total_assets_usd": 339060849,
+      "equity_usd": 40384529,
+      "icr": 1.7644441033937561,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 102070860,
-      "ebit_usd": 14734389,
-      "interest_expense_usd": 2423149,
-      "total_debt_usd": 29797732,
-      "total_assets_usd": 92918778,
-      "equity_usd": 27555757,
-      "icr": 6.080678076337856,
+      "revenue_usd": 282940281,
+      "ebit_usd": 54733126,
+      "interest_expense_usd": 18615989,
+      "total_debt_usd": 214249778,
+      "total_assets_usd": 310788456,
+      "equity_usd": 78190379,
+      "icr": 2.940113791429507,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 108227721,
-      "ebit_usd": 9495020,
-      "interest_expense_usd": 2665030,
-      "total_debt_usd": 31055773,
-      "total_assets_usd": 120351687,
-      "equity_usd": 17433013,
-      "icr": 3.562819180271892,
+      "revenue_usd": 278975478,
+      "ebit_usd": 22991971,
+      "interest_expense_usd": 19787286,
+      "total_debt_usd": 219063362,
+      "total_assets_usd": 414484444,
+      "equity_usd": 21159092,
+      "icr": 1.16195677365759,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.11,
-    "margin_change_mean": -0.001,
-    "margin_change_sd": 0.016,
-    "revenue_growth_median": 0.02,
-    "history_years": 3,
-    "used_sector_fallback": true
+    "margin_mean": 0.128797,
+    "margin_change_mean": -0.012518,
+    "margin_change_sd": 0.077865,
+    "revenue_growth_median": -0.028321,
+    "history_years": 5,
+    "used_sector_fallback": false
   }
 }

@@ -1,100 +1,109 @@
 {
   "cik": "9999000120",
-  "name": "Everard Consulting Co.",
+  "name": "Dunmore Partners Inc.",
   "ticker": null,
   "sector": "Services",
-  "status": "healthy",
+  "status": "insufficient_data",
   "reasons": [
-    "ICR 2.70 in FY2024, at least 1",
-    "No more than one year below 1 in the last 3"
+    "Fewer than 3 consecutive fiscal years with both EBIT and interest expense available"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-05",
+    "filed": "2025-02-13",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 3419682308,
-      "ebit_usd": 258022132,
-      "interest_expense_usd": 85618618,
-      "total_debt_usd": 1925686734,
-      "total_assets_usd": 5118852408,
-      "equity_usd": 1597444139,
-      "icr": 3.013621780253449,
+      "revenue_usd": 2806577831,
+      "ebit_usd": 309163860,
+      "interest_expense_usd": 86154594,
+      "total_debt_usd": 2374935894,
+      "total_assets_usd": 3474160108,
+      "equity_usd": 390059338,
+      "icr": 3.5884779400155957,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 3628106499,
-      "ebit_usd": 350665829,
-      "interest_expense_usd": 81804453,
-      "total_debt_usd": 1874668997,
-      "total_assets_usd": 4925034962,
-      "equity_usd": 501936520,
-      "icr": 4.286634970837101,
+      "revenue_usd": 2796618057,
+      "ebit_usd": 312307950,
+      "interest_expense_usd": 92945770,
+      "total_debt_usd": 2331971103,
+      "total_assets_usd": 2798365323,
+      "equity_usd": 377323049,
+      "icr": 3.3601093411781946,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 3819064526,
-      "ebit_usd": 443572085,
-      "interest_expense_usd": 90308040,
-      "total_debt_usd": 1890227292,
-      "total_assets_usd": 6563903595,
-      "equity_usd": 1744723302,
-      "icr": 4.911767379737175,
+      "revenue_usd": 2828194070,
+      "ebit_usd": 55919908,
+      "interest_expense_usd": null,
+      "total_debt_usd": 2437131964,
+      "total_assets_usd": 4845036550,
+      "equity_usd": 313808889,
+      "icr": null,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 4119502042,
-      "ebit_usd": 405196457,
-      "interest_expense_usd": 94613977,
-      "total_debt_usd": 1893471843,
-      "total_assets_usd": 4795028173,
-      "equity_usd": 1113728461,
-      "icr": 4.282627893339691,
+      "revenue_usd": 2790454381,
+      "ebit_usd": 292576412,
+      "interest_expense_usd": 106946615,
+      "total_debt_usd": 2500317583,
+      "total_assets_usd": 4177684332,
+      "equity_usd": 1233293667,
+      "icr": 2.735723912346361,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 4352199742,
-      "ebit_usd": 279179735,
-      "interest_expense_usd": 103271059,
-      "total_debt_usd": 1914805365,
-      "total_assets_usd": 6287639820,
-      "equity_usd": 1969643737,
-      "icr": 2.7033685691167357,
+      "revenue_usd": 2822683214,
+      "ebit_usd": 337875414,
+      "interest_expense_usd": 126544546,
+      "total_debt_usd": 2623726742,
+      "total_assets_usd": 3148472090,
+      "equity_usd": 461407980,
+      "icr": 2.6700116652992696,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.090152,
-    "margin_change_mean": -0.002826,
-    "margin_change_sd": 0.027595,
-    "revenue_growth_median": 0.058718,
+    "margin_mean": 0.09323,
+    "margin_change_mean": 0.002386,
+    "margin_change_sd": 0.072764,
+    "revenue_growth_median": 0.003871,
     "history_years": 5,
     "used_sector_fallback": false
   }

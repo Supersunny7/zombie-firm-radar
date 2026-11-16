@@ -1,0 +1,101 @@
+{
+  "cik": "9999000172",
+  "name": "Thornbury Civil Inc.",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, -1.00)",
+    "ICR below 1 in 2 of the last 3 years (FY2023, FY2024)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-11",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 85740241,
+      "ebit_usd": 3189483,
+      "interest_expense_usd": 2208304,
+      "total_debt_usd": 61677849,
+      "total_assets_usd": 119483511,
+      "equity_usd": -3583339,
+      "icr": 1.444313373521037,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 85713704,
+      "ebit_usd": 13625624,
+      "interest_expense_usd": 2179781,
+      "total_debt_usd": 62158057,
+      "total_assets_usd": 98767233,
+      "equity_usd": -8326295,
+      "icr": 6.250914197343678,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 88633424,
+      "ebit_usd": 15872575,
+      "interest_expense_usd": 2549558,
+      "total_debt_usd": 64021714,
+      "total_assets_usd": 146121233,
+      "equity_usd": 12629479,
+      "icr": 6.225618322862237,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 88092880,
+      "ebit_usd": -857581,
+      "interest_expense_usd": 2644179,
+      "total_debt_usd": 65068287,
+      "total_assets_usd": 142427715,
+      "equity_usd": -15453717,
+      "icr": -0.32432789156861164,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 91437399,
+      "ebit_usd": -2822190,
+      "interest_expense_usd": 2815151,
+      "total_debt_usd": 65674851,
+      "total_assets_usd": 149768410,
+      "equity_usd": -254769,
+      "icr": -1.002500398735272,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.06693,
+    "margin_change_mean": -0.017016,
+    "margin_change_sd": 0.129321,
+    "revenue_growth_median": 0.016877,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

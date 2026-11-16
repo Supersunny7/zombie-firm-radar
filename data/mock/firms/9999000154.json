@@ -1,0 +1,106 @@
+{
+  "cik": "9999000154",
+  "name": "Eastmere Industries Holdings",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 17 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-09",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1012528721,
+      "ebit_usd": 268126912,
+      "interest_expense_usd": 48218990,
+      "total_debt_usd": 624123282,
+      "total_assets_usd": 1292326822,
+      "equity_usd": -25023648,
+      "icr": 5.5606082168042095,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1020823679,
+      "ebit_usd": 33877118,
+      "interest_expense_usd": 45846466,
+      "total_debt_usd": 615965859,
+      "total_assets_usd": 925694499,
+      "equity_usd": -89934857,
+      "icr": 0.7389253950348104,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1019655153,
+      "ebit_usd": -14193762,
+      "interest_expense_usd": 49041653,
+      "total_debt_usd": 620315111,
+      "total_assets_usd": 1203525310,
+      "equity_usd": -659906,
+      "icr": -0.2894225853276194,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 995622771,
+      "ebit_usd": -44669371,
+      "interest_expense_usd": 50310291,
+      "total_debt_usd": 617518008,
+      "total_assets_usd": 977718248,
+      "equity_usd": 77528405,
+      "icr": -0.8878774125953675,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 982741821,
+      "ebit_usd": 48329925,
+      "interest_expense_usd": 52103861,
+      "total_debt_usd": 603708255,
+      "total_assets_usd": 1645098001,
+      "equity_usd": -109302835,
+      "icr": 0.9275689761263566,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.057678,
+    "margin_change_mean": -0.053908,
+    "margin_change_sd": 0.134221,
+    "revenue_growth_median": -0.007041,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "cik": "9999000184",
+  "name": "Quillon Minerals Group",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.43 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-25",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 1250079318,
+      "ebit_usd": 302579819,
+      "interest_expense_usd": 58816908,
+      "total_debt_usd": 852877322,
+      "total_assets_usd": 1579372083,
+      "equity_usd": 125585720,
+      "icr": 5.14443600129405,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 1234232163,
+      "ebit_usd": 223810793,
+      "interest_expense_usd": 62064236,
+      "total_debt_usd": 884245523,
+      "total_assets_usd": 1763875091,
+      "equity_usd": 384606936,
+      "icr": 3.6061153318635872,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 1226248821,
+      "ebit_usd": 247027762,
+      "interest_expense_usd": 64898186,
+      "total_debt_usd": 887251923,
+      "total_assets_usd": 1632324125,
+      "equity_usd": 406644906,
+      "icr": 3.806389318801607,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 1167075914,
+      "ebit_usd": 173024064,
+      "interest_expense_usd": 66320412,
+      "total_debt_usd": 887263527,
+      "total_assets_usd": 1224595990,
+      "equity_usd": 217001015,
+      "icr": 2.608911175039142,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 1168422050,
+      "ebit_usd": 164439952,
+      "interest_expense_usd": 67655006,
+      "total_debt_usd": 858576393,
+      "total_assets_usd": 1892543435,
+      "equity_usd": 420711847,
+      "icr": 2.4305659214633724,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.182765,
+    "margin_change_mean": -0.025328,
+    "margin_change_sd": 0.038344,
+    "revenue_growth_median": -0.009573,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "cik": "9999000169",
+  "name": "Pemberly Supply Group",
+  "ticker": null,
+  "sector": "Wholesale Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.74 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-11",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 3966071800,
+      "ebit_usd": 85636166,
+      "interest_expense_usd": 70316197,
+      "total_debt_usd": 1002055776,
+      "total_assets_usd": 4800967537,
+      "equity_usd": 1102296462,
+      "icr": 1.2178725479138184,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 3863876927,
+      "ebit_usd": 233273007,
+      "interest_expense_usd": 71582912,
+      "total_debt_usd": 1023149093,
+      "total_assets_usd": 4710156810,
+      "equity_usd": 1407817748,
+      "icr": 3.258780629097626,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 3856053047,
+      "ebit_usd": 351053523,
+      "interest_expense_usd": 78600751,
+      "total_debt_usd": 1039187499,
+      "total_assets_usd": 5030754962,
+      "equity_usd": 1463003628,
+      "icr": 4.466287135093658,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 3898978494,
+      "ebit_usd": 511682362,
+      "interest_expense_usd": 78416761,
+      "total_debt_usd": 1038128484,
+      "total_assets_usd": 5530848263,
+      "equity_usd": 576945864,
+      "icr": 6.525165735932398,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 3937068656,
+      "ebit_usd": 141330793,
+      "interest_expense_usd": 81324126,
+      "total_debt_usd": 1023800073,
+      "total_assets_usd": 4534016067,
+      "equity_usd": 789691538,
+      "icr": 1.7378704199046664,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.068027,
+    "margin_change_mean": 0.003576,
+    "margin_change_sd": 0.066076,
+    "revenue_growth_median": 0.003872,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

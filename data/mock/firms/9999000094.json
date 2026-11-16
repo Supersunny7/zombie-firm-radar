@@ -1,100 +1,109 @@
 {
   "cik": "9999000094",
-  "name": "Whitlock Mills Corp.",
+  "name": "Ketteridge Health Group",
   "ticker": null,
-  "sector": "Manufacturing",
-  "status": "healthy",
+  "sector": "Services",
+  "status": "endangered",
   "reasons": [
-    "ICR 4.44 in FY2024, at least 1",
-    "No more than one year below 1 in the last 3"
+    "ICR below 1 in 2 of the last 3 years (FY2022, FY2023)"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-22",
+    "filed": "2025-03-29",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 13760154085,
-      "ebit_usd": 1957433714,
-      "interest_expense_usd": 475599834,
-      "total_debt_usd": 6902393530,
-      "total_assets_usd": 15485371410,
-      "equity_usd": 4207805435,
-      "icr": 4.115715721633326,
+      "revenue_usd": 13386176811,
+      "ebit_usd": 465756480,
+      "interest_expense_usd": 349704979,
+      "total_debt_usd": 4448422895,
+      "total_assets_usd": 16955484135,
+      "equity_usd": 1124261206,
+      "icr": 1.3318554437853742,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 14457587996,
-      "ebit_usd": 2940896136,
-      "interest_expense_usd": 500280457,
-      "total_debt_usd": 7111824623,
-      "total_assets_usd": 19365236731,
-      "equity_usd": 1781969038,
-      "icr": 5.878494941888166,
+      "revenue_usd": 13377557277,
+      "ebit_usd": 1062074360,
+      "interest_expense_usd": 383120004,
+      "total_debt_usd": 4660359944,
+      "total_assets_usd": 17466819078,
+      "equity_usd": 96224633,
+      "icr": 2.7721715100002973,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 15142458961,
-      "ebit_usd": 2937458752,
-      "interest_expense_usd": 527464732,
-      "total_debt_usd": 7364559217,
-      "total_assets_usd": 27118439265,
-      "equity_usd": 5687527206,
-      "icr": 5.56901452133486,
+      "revenue_usd": 13543262713,
+      "ebit_usd": 332736960,
+      "interest_expense_usd": 386127175,
+      "total_debt_usd": 4612280017,
+      "total_assets_usd": 24305086801,
+      "equity_usd": -3378833025,
+      "icr": 0.8617289368457426,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 16570325347,
-      "ebit_usd": 1442520753,
-      "interest_expense_usd": 554789247,
-      "total_debt_usd": 7124359960,
-      "total_assets_usd": 27513459387,
-      "equity_usd": 1816196327,
-      "icr": 2.6001238502735435,
+      "revenue_usd": 13557731505,
+      "ebit_usd": 268501162,
+      "interest_expense_usd": 410627823,
+      "total_debt_usd": 4683008120,
+      "total_assets_usd": 14120348665,
+      "equity_usd": -925111186,
+      "icr": 0.6538796130236894,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 17364130185,
-      "ebit_usd": 2428933467,
-      "interest_expense_usd": 547619852,
-      "total_debt_usd": 6933435859,
-      "total_assets_usd": 16751107456,
-      "equity_usd": 5616537730,
-      "icr": 4.4354372072691035,
+      "revenue_usd": 13669390444,
+      "ebit_usd": 591692098,
+      "interest_expense_usd": 407673865,
+      "total_debt_usd": 4554543076,
+      "total_assets_usd": 22819230823,
+      "equity_usd": 800390545,
+      "icr": 1.4513858964199238,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.153319,
-    "margin_change_mean": -0.000593,
-    "margin_change_sd": 0.077575,
-    "revenue_growth_median": 0.049295,
+    "margin_mean": 0.040369,
+    "margin_change_mean": 0.002123,
+    "margin_change_sd": 0.043014,
+    "revenue_growth_median": 0.004652,
     "history_years": 5,
     "used_sector_fallback": false
   }

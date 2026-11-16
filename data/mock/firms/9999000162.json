@@ -1,0 +1,105 @@
+{
+  "cik": "9999000162",
+  "name": "Fenwick Resources Co.",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "endangered",
+  "reasons": [
+    "ICR below 1 in the most recent year (FY2024, -0.13)"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-10",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2209347382,
+      "ebit_usd": 254368998,
+      "interest_expense_usd": 102783612,
+      "total_debt_usd": 1405319274,
+      "total_assets_usd": 3572796947,
+      "equity_usd": 702567593,
+      "icr": 2.4748011190733403,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 2361070273,
+      "ebit_usd": 543837267,
+      "interest_expense_usd": 106480665,
+      "total_debt_usd": 1411127248,
+      "total_assets_usd": 4210894041,
+      "equity_usd": 668955945,
+      "icr": 5.107380452592027,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 2533645352,
+      "ebit_usd": 479266786,
+      "interest_expense_usd": 112874271,
+      "total_debt_usd": 1457328587,
+      "total_assets_usd": 3380804077,
+      "equity_usd": 1115839546,
+      "icr": 4.246023312079686,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 2616128912,
+      "ebit_usd": 259735481,
+      "interest_expense_usd": 122317628,
+      "total_debt_usd": 1524201469,
+      "total_assets_usd": 4388266473,
+      "equity_usd": 766113713,
+      "icr": 2.1234509305559786,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 2688291331,
+      "ebit_usd": -16899243,
+      "interest_expense_usd": 128800717,
+      "total_debt_usd": 1550209731,
+      "total_assets_usd": 2943442468,
+      "equity_usd": 280566974,
+      "icr": -0.13120457240932906,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.125525,
+    "margin_change_mean": -0.030355,
+    "margin_change_sd": 0.100837,
+    "revenue_growth_median": 0.050614,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

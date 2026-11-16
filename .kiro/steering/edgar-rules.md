@@ -33,4 +33,6 @@ These rules apply to any code that calls SEC or FRED.
 
 ## Scope
 
-- Exclude financial firms (SIC 6000-6799). They do not appear in any output file.
+- Exclude financial firms (SIC 6000-6799). This range already covers REITs (SIC 6798). They do not appear in any output file.
+- Exclude utilities (SIC 4900-4999). They do not appear in any output file.
+- Only firms with `age_years >= 10` appear in any output file.

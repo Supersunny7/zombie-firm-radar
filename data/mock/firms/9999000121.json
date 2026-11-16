@@ -1,105 +1,100 @@
 {
   "cik": "9999000121",
-  "name": "Saltmarsh Industries Corp.",
+  "name": "Lindhurst Consulting Inc.",
   "ticker": null,
-  "sector": "Manufacturing",
-  "status": "healthy",
+  "sector": "Services",
+  "status": "zombie",
   "reasons": [
-    "ICR 2.16 in FY2024, at least 1",
-    "No more than one year below 1 in the last 3"
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 11 years (first filing proxy), at least 10"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-25",
+    "filed": "2025-03-19",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 1061091524,
-      "ebit_usd": 84145560,
-      "interest_expense_usd": 27707314,
-      "total_debt_usd": 382120677,
-      "total_assets_usd": 1752562698,
-      "equity_usd": 595202109,
-      "icr": 3.0369439636047,
+      "revenue_usd": 188684579,
+      "ebit_usd": 22731115,
+      "interest_expense_usd": 5408429,
+      "total_debt_usd": 67027675,
+      "total_assets_usd": 201832809,
+      "equity_usd": 23254101,
+      "icr": 4.20290531686743,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 1024684589,
-      "ebit_usd": 179928661,
-      "interest_expense_usd": 28685253,
-      "total_debt_usd": 389922812,
-      "total_assets_usd": 1534085908,
-      "equity_usd": 202228118,
-      "icr": 6.272514347354719,
+      "revenue_usd": 179466660,
+      "ebit_usd": 2319606,
+      "interest_expense_usd": 5195232,
+      "total_debt_usd": 64638004,
+      "total_assets_usd": 320826877,
+      "equity_usd": -36825033,
+      "icr": 0.4464874715893342,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 1003696667,
-      "ebit_usd": 75741935,
-      "interest_expense_usd": 29957609,
-      "total_debt_usd": 403853104,
-      "total_assets_usd": 972229385,
-      "equity_usd": 66136102,
-      "icr": 2.5283037441339196,
+      "revenue_usd": 175386635,
+      "ebit_usd": -2135804,
+      "interest_expense_usd": 5115832,
+      "total_debt_usd": 62738462,
+      "total_assets_usd": 180962731,
+      "equity_usd": 16620013,
+      "icr": -0.4174890809549649,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 1019816452,
-      "ebit_usd": 110971528,
-      "interest_expense_usd": 32641126,
-      "total_debt_usd": 415783873,
-      "total_assets_usd": 1407223879,
-      "equity_usd": 245113416,
-      "icr": 3.3997457073018866,
+      "revenue_usd": 167826343,
+      "ebit_usd": -5722026,
+      "interest_expense_usd": 5287391,
+      "total_debt_usd": 61157560,
+      "total_assets_usd": 223169476,
+      "equity_usd": 26301943,
+      "icr": -1.0822021673827413,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 1024476624,
-      "ebit_usd": 72543226,
-      "interest_expense_usd": 33511824,
-      "total_debt_usd": 406632157,
-      "total_assets_usd": 1565529194,
-      "equity_usd": 454451911,
-      "icr": 2.1647053887606953,
+      "revenue_usd": 162421385,
+      "ebit_usd": 3825431,
+      "interest_expense_usd": 5208937,
+      "total_debt_usd": 59044705,
+      "total_assets_usd": 219564422,
+      "equity_usd": 1862614,
+      "icr": 0.734397632376817,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtNoncurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.101997,
-    "margin_change_mean": -0.002123,
-    "margin_change_sd": 0.085318,
-    "revenue_growth_median": -0.007956,
+    "margin_mean": 0.022135,
+    "margin_change_mean": -0.02423,
+    "margin_change_sd": 0.067458,
+    "revenue_growth_median": -0.037656,
     "history_years": 5,
     "used_sector_fallback": false
   }

@@ -1,105 +1,110 @@
 {
   "cik": "9999000150",
-  "name": "Brackenfell Consulting Inc.",
+  "name": "Alderwick Works Corp.",
   "ticker": null,
-  "sector": "Services",
+  "sector": "Manufacturing",
   "status": "healthy",
   "reasons": [
-    "ICR 5.79 in FY2024, at least 1",
+    "ICR 1.98 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-09",
+    "filed": "2025-03-03",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 821308421,
-      "ebit_usd": 153635571,
-      "interest_expense_usd": 37653780,
-      "total_debt_usd": 614512575,
-      "total_assets_usd": 807820048,
-      "equity_usd": 226004598,
-      "icr": 4.080216408551811,
+      "revenue_usd": 2627557683,
+      "ebit_usd": 396433330,
+      "interest_expense_usd": 75944333,
+      "total_debt_usd": 903044124,
+      "total_assets_usd": 3938516032,
+      "equity_usd": 1150513975,
+      "icr": 5.2200515079907275,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 865643389,
-      "ebit_usd": 155793440,
-      "interest_expense_usd": 39653208,
-      "total_debt_usd": 640939926,
-      "total_assets_usd": 1472779309,
-      "equity_usd": 383943001,
-      "icr": 3.9288987665260273,
+      "revenue_usd": 2605643904,
+      "ebit_usd": 210852761,
+      "interest_expense_usd": 76716571,
+      "total_debt_usd": 922899951,
+      "total_assets_usd": 2734527031,
+      "equity_usd": 928370880,
+      "icr": 2.7484643571986553,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 907026311,
-      "ebit_usd": 174715601,
-      "interest_expense_usd": 40296010,
-      "total_debt_usd": 618647948,
-      "total_assets_usd": 962381480,
-      "equity_usd": 198562706,
-      "icr": 4.335803991511814,
+      "revenue_usd": 2682760512,
+      "ebit_usd": 502866666,
+      "interest_expense_usd": 80361576,
+      "total_debt_usd": 896979929,
+      "total_assets_usd": 3724894323,
+      "equity_usd": 393624674,
+      "icr": 6.257551071422491,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 959528395,
-      "ebit_usd": 29647943,
-      "interest_expense_usd": 43551134,
-      "total_debt_usd": 638981213,
-      "total_assets_usd": 1294635075,
-      "equity_usd": 274237203,
-      "icr": 0.6807616766075483,
+      "revenue_usd": 2689947686,
+      "ebit_usd": 584878515,
+      "interest_expense_usd": 86623501,
+      "total_debt_usd": 941280098,
+      "total_assets_usd": 2977186751,
+      "equity_usd": 487344530,
+      "icr": 6.751961168136116,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 1033979180,
-      "ebit_usd": 258709353,
-      "interest_expense_usd": 44674349,
-      "total_debt_usd": 659523952,
-      "total_assets_usd": 1228189205,
-      "equity_usd": 112112558,
-      "icr": 5.791004430752869,
+      "revenue_usd": 2672866807,
+      "ebit_usd": 181001228,
+      "interest_expense_usd": 91293693,
+      "total_debt_usd": 957311129,
+      "total_assets_usd": 3664038762,
+      "equity_usd": 460731185,
+      "icr": 1.9826257658346673,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.168153,
-    "margin_change_mean": 0.015786,
-    "margin_change_sd": 0.156488,
-    "revenue_growth_median": 0.055932,
+    "margin_mean": 0.140878,
+    "margin_change_mean": -0.020789,
+    "margin_change_sd": 0.112287,
+    "revenue_growth_median": -0.001835,
     "history_years": 5,
     "used_sector_fallback": false
   }

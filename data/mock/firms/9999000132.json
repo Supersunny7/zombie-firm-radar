@@ -1,0 +1,111 @@
+{
+  "cik": "9999000132",
+  "name": "Brackenfell Mills Corp.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 5.10 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-06",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 4034709497,
+      "ebit_usd": 455426145,
+      "interest_expense_usd": 203577896,
+      "total_debt_usd": 2843442798,
+      "total_assets_usd": 5850100239,
+      "equity_usd": 1016662114,
+      "icr": 2.23710999056597,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 4034392811,
+      "ebit_usd": -119845490,
+      "interest_expense_usd": 199206034,
+      "total_debt_usd": 2808521734,
+      "total_assets_usd": 5975265016,
+      "equity_usd": 945584490,
+      "icr": -0.601615762301658,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 4042276344,
+      "ebit_usd": 414826247,
+      "interest_expense_usd": 213568398,
+      "total_debt_usd": 2931790149,
+      "total_assets_usd": 6106172264,
+      "equity_usd": 1855851289,
+      "icr": 1.9423578155041459,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 3964930248,
+      "ebit_usd": 532051157,
+      "interest_expense_usd": 219888015,
+      "total_debt_usd": 2934286967,
+      "total_assets_usd": 5230130144,
+      "equity_usd": 1370083921,
+      "icr": 2.4196460048084023,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 4069944216,
+      "ebit_usd": 1220983265,
+      "interest_expense_usd": 239354713,
+      "total_debt_usd": 3078196587,
+      "total_assets_usd": 4693228055,
+      "equity_usd": 1108015768,
+      "icr": 5.101145700022209,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.123996,
+    "margin_change_mean": 0.046781,
+    "margin_change_sd": 0.138536,
+    "revenue_growth_median": 0.000938,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

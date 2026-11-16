@@ -1,0 +1,101 @@
+{
+  "cik": "9999000176",
+  "name": "Ironbridge Contracting Corp.",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "healthy",
+  "reasons": [
+    "ICR 2.44 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-18",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 848490040,
+      "ebit_usd": 97073201,
+      "interest_expense_usd": 25134107,
+      "total_debt_usd": 485734158,
+      "total_assets_usd": 919020195,
+      "equity_usd": 112319026,
+      "icr": 3.8622100637989645,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 869673861,
+      "ebit_usd": 36674179,
+      "interest_expense_usd": 24821730,
+      "total_debt_usd": 491161751,
+      "total_assets_usd": 1206616086,
+      "equity_usd": 404010832,
+      "icr": 1.4775029379499334,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 884438294,
+      "ebit_usd": 124502047,
+      "interest_expense_usd": 28665842,
+      "total_debt_usd": 501230664,
+      "total_assets_usd": 995045503,
+      "equity_usd": 114880253,
+      "icr": 4.343219606108204,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 929074243,
+      "ebit_usd": 80312024,
+      "interest_expense_usd": 28598133,
+      "total_debt_usd": 485597188,
+      "total_assets_usd": 1589774518,
+      "equity_usd": 232420308,
+      "icr": 2.808296052053468,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 959047439,
+      "ebit_usd": 73825970,
+      "interest_expense_usd": 30220910,
+      "total_debt_usd": 482690342,
+      "total_assets_usd": 1219991481,
+      "equity_usd": 177861630,
+      "icr": 2.442877133746138,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.092154,
+    "margin_change_mean": -0.009357,
+    "margin_change_sd": 0.076661,
+    "revenue_growth_median": 0.028614,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

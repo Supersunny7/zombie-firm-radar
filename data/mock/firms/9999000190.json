@@ -1,0 +1,111 @@
+{
+  "cik": "9999000190",
+  "name": "Juniper Hollow Retail Holdings",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.22 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-26",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 415548131,
+      "ebit_usd": 17484937,
+      "interest_expense_usd": 6547313,
+      "total_debt_usd": 125525998,
+      "total_assets_usd": 380071782,
+      "equity_usd": 123954381,
+      "icr": 2.67055156825403,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 406490094,
+      "ebit_usd": 11997807,
+      "interest_expense_usd": 6609221,
+      "total_debt_usd": 122157378,
+      "total_assets_usd": 435822567,
+      "equity_usd": 106401823,
+      "icr": 1.8153133326907966,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 397993734,
+      "ebit_usd": 8695900,
+      "interest_expense_usd": 6895657,
+      "total_debt_usd": 123754939,
+      "total_assets_usd": 430231150,
+      "equity_usd": 115875183,
+      "icr": 1.2610691048003113,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 385358027,
+      "ebit_usd": 21661621,
+      "interest_expense_usd": 7287768,
+      "total_debt_usd": 126182018,
+      "total_assets_usd": 534475035,
+      "equity_usd": 34030950,
+      "icr": 2.9723258204706844,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 384119671,
+      "ebit_usd": 9022775,
+      "interest_expense_usd": 7395671,
+      "total_debt_usd": 124084222,
+      "total_assets_usd": 465406692,
+      "equity_usd": 127984135,
+      "icr": 1.2200076233785955,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.034629,
+    "margin_change_mean": -0.004647,
+    "margin_change_sd": 0.028176,
+    "revenue_growth_median": -0.02135,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "cik": "9999000111",
+  "name": "Tindall Coal Corp.",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "healthy",
+  "reasons": [
+    "ICR 4.08 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-19",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2965259465,
+      "ebit_usd": 266421602,
+      "interest_expense_usd": 58505532,
+      "total_debt_usd": 1361977936,
+      "total_assets_usd": 4898647116,
+      "equity_usd": 1088789457,
+      "icr": 4.553784794231082,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 3121189594,
+      "ebit_usd": 126811997,
+      "interest_expense_usd": 55391039,
+      "total_debt_usd": 1330847132,
+      "total_assets_usd": 4256860440,
+      "equity_usd": 1167371450,
+      "icr": 2.2893955283994583,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 3290578468,
+      "ebit_usd": 81082868,
+      "interest_expense_usd": 60647363,
+      "total_debt_usd": 1341170867,
+      "total_assets_usd": 4960099536,
+      "equity_usd": 431165983,
+      "icr": 1.336956200387476,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 3549590665,
+      "ebit_usd": 28421666,
+      "interest_expense_usd": 67950467,
+      "total_debt_usd": 1386803045,
+      "total_assets_usd": 4743832612,
+      "equity_usd": 1319688068,
+      "icr": 0.41827035566952026,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 3749581151,
+      "ebit_usd": 295358974,
+      "interest_expense_usd": 72400290,
+      "total_debt_usd": 1431419721,
+      "total_assets_usd": 4939234810,
+      "equity_usd": 537953753,
+      "icr": 4.079527499130183,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.048379,
+    "margin_change_mean": -0.002769,
+    "margin_change_sd": 0.051419,
+    "revenue_growth_median": 0.055306,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

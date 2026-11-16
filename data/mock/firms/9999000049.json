@@ -1,110 +1,100 @@
 {
   "cik": "9999000049",
-  "name": "Foxglove Telecom Group",
+  "name": "Stonebrook Coal Inc.",
   "ticker": null,
-  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
-  "status": "zombie",
+  "sector": "Mining",
+  "status": "healthy",
   "reasons": [
-    "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 10 years (first filing proxy), at least 10"
+    "ICR 1.04 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-07",
+    "filed": "2025-02-25",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 195032407,
-      "ebit_usd": 54018548,
-      "interest_expense_usd": 12184331,
-      "total_debt_usd": 156647493,
-      "total_assets_usd": 187976992,
-      "equity_usd": 7000876,
-      "icr": 4.4334439043062766,
+      "revenue_usd": 148888155,
+      "ebit_usd": 6122943,
+      "interest_expense_usd": 2608391,
+      "total_debt_usd": 49327355,
+      "total_assets_usd": 195749448,
+      "equity_usd": 60560750,
+      "icr": 2.3474022874638045,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 199294455,
-      "ebit_usd": 9695971,
-      "interest_expense_usd": 12811774,
-      "total_debt_usd": 157553712,
-      "total_assets_usd": 350710026,
-      "equity_usd": -22100725,
-      "icr": 0.7568015951577042,
+      "revenue_usd": 141805692,
+      "ebit_usd": 6431854,
+      "interest_expense_usd": 2720457,
+      "total_debt_usd": 49986648,
+      "total_assets_usd": 138429486,
+      "equity_usd": 45896944,
+      "icr": 2.364254976277883,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 196696730,
-      "ebit_usd": 4595572,
-      "interest_expense_usd": 12860315,
-      "total_debt_usd": 154642631,
-      "total_assets_usd": 306440478,
-      "equity_usd": 19932070,
-      "icr": 0.35734521277278203,
+      "revenue_usd": 139894886,
+      "ebit_usd": 5394582,
+      "interest_expense_usd": 2810116,
+      "total_debt_usd": 50151382,
+      "total_assets_usd": 220291231,
+      "equity_usd": 37163175,
+      "icr": 1.9197008237382371,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 197231298,
-      "ebit_usd": -401728,
-      "interest_expense_usd": 13070840,
-      "total_debt_usd": 155212764,
-      "total_assets_usd": 307248085,
-      "equity_usd": -34965201,
-      "icr": -0.030734673517539807,
+      "revenue_usd": 137182234,
+      "ebit_usd": 7866222,
+      "interest_expense_usd": 2867037,
+      "total_debt_usd": 49277361,
+      "total_assets_usd": 224534190,
+      "equity_usd": 38787860,
+      "icr": 2.7436764855144875,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 202018652,
-      "ebit_usd": 11795096,
-      "interest_expense_usd": 13609742,
-      "total_debt_usd": 155569191,
-      "total_assets_usd": 355256282,
-      "equity_usd": 34961043,
-      "icr": 0.8666656575855737,
+      "revenue_usd": 137392128,
+      "ebit_usd": 3099916,
+      "interest_expense_usd": 2975513,
+      "total_debt_usd": 49761023,
+      "total_assets_usd": 190558765,
+      "equity_usd": 64474970,
+      "icr": 1.0418089250492268,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent",
-        "ShortTermBorrowings"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.081067,
-    "margin_change_mean": -0.054646,
-    "margin_change_sd": 0.122639,
-    "revenue_growth_median": 0.012285,
+    "margin_mean": 0.040989,
+    "margin_change_mean": -0.00464,
+    "margin_change_sd": 0.022658,
+    "revenue_growth_median": -0.016433,
     "history_years": 5,
     "used_sector_fallback": false
   }

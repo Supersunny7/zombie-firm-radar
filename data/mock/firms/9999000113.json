@@ -1,105 +1,100 @@
 {
   "cik": "9999000113",
-  "name": "Stonebrook Trading Co.",
+  "name": "Thornbury Carriers Co.",
   "ticker": null,
-  "sector": "Wholesale Trade",
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
   "status": "healthy",
   "reasons": [
-    "ICR 3.59 in FY2024, at least 1",
+    "ICR 3.32 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-14",
+    "filed": "2025-03-06",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 4287702960,
-      "ebit_usd": 436369556,
-      "interest_expense_usd": 196408951,
-      "total_debt_usd": 2397163593,
-      "total_assets_usd": 7070935623,
-      "equity_usd": 803523698,
-      "icr": 2.2217396599200816,
+      "revenue_usd": 2058610240,
+      "ebit_usd": 235569462,
+      "interest_expense_usd": 86454876,
+      "total_debt_usd": 1818580811,
+      "total_assets_usd": 2643380845,
+      "equity_usd": 387961416,
+      "icr": 2.724767796786846,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 4338782603,
-      "ebit_usd": 464078574,
-      "interest_expense_usd": 202727644,
-      "total_debt_usd": 2493949267,
-      "total_assets_usd": 7672442471,
-      "equity_usd": 2632125260,
-      "icr": 2.2891726300533537,
+      "revenue_usd": 1989979437,
+      "ebit_usd": 544541661,
+      "interest_expense_usd": 88636915,
+      "total_debt_usd": 1871734505,
+      "total_assets_usd": 3212012296,
+      "equity_usd": 383418659,
+      "icr": 6.143508728840574,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 4296911565,
-      "ebit_usd": 1058783845,
-      "interest_expense_usd": 219341032,
-      "total_debt_usd": 2538640254,
-      "total_assets_usd": 4412285518,
-      "equity_usd": 402485814,
-      "icr": 4.827112534967921,
+      "revenue_usd": 1927857067,
+      "ebit_usd": 161962354,
+      "interest_expense_usd": 96426797,
+      "total_debt_usd": 1860151133,
+      "total_assets_usd": 2232181359,
+      "equity_usd": 127119482,
+      "icr": 1.6796405049106837,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 4460430618,
-      "ebit_usd": 928983342,
-      "interest_expense_usd": 222379805,
-      "total_debt_usd": 2540244321,
-      "total_assets_usd": 5725103221,
-      "equity_usd": 306326409,
-      "icr": 4.177462706202121,
+      "revenue_usd": 1977051370,
+      "ebit_usd": 185768293,
+      "interest_expense_usd": 95858876,
+      "total_debt_usd": 1854783023,
+      "total_assets_usd": 3106162491,
+      "equity_usd": 1033232265,
+      "icr": 1.9379352309534696,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 4425260761,
-      "ebit_usd": 797050572,
-      "interest_expense_usd": 222314635,
-      "total_debt_usd": 2457444315,
-      "total_assets_usd": 7639158981,
-      "equity_usd": 793675660,
-      "icr": 3.5852366264596123,
+      "revenue_usd": 1996503843,
+      "ebit_usd": 354565126,
+      "interest_expense_usd": 106808498,
+      "total_debt_usd": 1858615623,
+      "total_assets_usd": 2541080418,
+      "equity_usd": 311711891,
+      "icr": 3.319634042602116,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.168705,
-    "margin_change_mean": 0.019585,
-    "margin_change_sd": 0.082026,
-    "revenue_growth_median": 0.002014,
+    "margin_mean": 0.148728,
+    "margin_change_mean": 0.01579,
+    "margin_change_sd": 0.149893,
+    "revenue_growth_median": -0.010689,
     "history_years": 5,
     "used_sector_fallback": false
   }

@@ -1,105 +1,100 @@
 {
   "cik": "9999000009",
-  "name": "Northgate Drilling Group",
+  "name": "Cinderford Trading Inc.",
   "ticker": null,
-  "sector": "Mining",
-  "status": "zombie",
+  "sector": "Wholesale Trade",
+  "status": "healthy",
   "reasons": [
-    "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 18 years (first filing proxy), at least 10"
+    "ICR 2.17 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-17",
+    "filed": "2025-03-22",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 206939633,
-      "ebit_usd": 11435673,
-      "interest_expense_usd": 12382466,
-      "total_debt_usd": 151134591,
-      "total_assets_usd": 241126102,
-      "equity_usd": 11958899,
-      "icr": 0.9235376055141197,
+      "revenue_usd": 268460486,
+      "ebit_usd": 59091822,
+      "interest_expense_usd": 15556013,
+      "total_debt_usd": 184181227,
+      "total_assets_usd": 291559278,
+      "equity_usd": 31055508,
+      "icr": 3.7986482783217013,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 196571082,
-      "ebit_usd": 9097915,
-      "interest_expense_usd": 13303168,
-      "total_debt_usd": 157549583,
-      "total_assets_usd": 192801291,
-      "equity_usd": 9272766,
-      "icr": 0.6838908596809422,
+      "revenue_usd": 277325520,
+      "ebit_usd": 33042313,
+      "interest_expense_usd": 15278900,
+      "total_debt_usd": 179531624,
+      "total_assets_usd": 474179314,
+      "equity_usd": 70212231,
+      "icr": 2.162610724594048,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 191374593,
-      "ebit_usd": 12446890,
-      "interest_expense_usd": 13847425,
-      "total_debt_usd": 161266255,
-      "total_assets_usd": 313073239,
-      "equity_usd": 14352597,
-      "icr": 0.8988595352565549,
+      "revenue_usd": 279670481,
+      "ebit_usd": 61866671,
+      "interest_expense_usd": 15721634,
+      "total_debt_usd": 177712893,
+      "total_assets_usd": 410426402,
+      "equity_usd": 60732904,
+      "icr": 3.93512983446886,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 191187303,
-      "ebit_usd": 12050191,
-      "interest_expense_usd": 14299483,
-      "total_debt_usd": 157579560,
-      "total_assets_usd": 326819067,
-      "equity_usd": -42531160,
-      "icr": 0.8427011661890154,
+      "revenue_usd": 294286837,
+      "ebit_usd": 71980196,
+      "interest_expense_usd": 16771870,
+      "total_debt_usd": 183271393,
+      "total_assets_usd": 297083743,
+      "equity_usd": 21227887,
+      "icr": 4.291721555199271,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 184403573,
-      "ebit_usd": 8486480,
-      "interest_expense_usd": 14593745,
-      "total_debt_usd": 160255292,
-      "total_assets_usd": 258371785,
-      "equity_usd": 6149230,
-      "icr": 0.5815148887417178,
+      "revenue_usd": 293388712,
+      "ebit_usd": 35958010,
+      "interest_expense_usd": 16558572,
+      "total_debt_usd": 176621326,
+      "total_assets_usd": 318049995,
+      "equity_usd": 18403028,
+      "icr": 2.1715646735720933,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.055127,
-    "margin_change_mean": -0.00231,
-    "margin_change_sd": 0.015323,
-    "revenue_growth_median": -0.030959,
+    "margin_mean": 0.185525,
+    "margin_change_mean": -0.024388,
+    "margin_change_sd": 0.105942,
+    "revenue_growth_median": 0.020739,
     "history_years": 5,
     "used_sector_fallback": false
   }

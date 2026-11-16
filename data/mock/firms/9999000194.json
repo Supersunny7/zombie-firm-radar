@@ -1,0 +1,111 @@
+{
+  "cik": "9999000194",
+  "name": "Redfern Works Inc.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 1.35 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-23",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 11342206926,
+      "ebit_usd": 149276908,
+      "interest_expense_usd": 166053529,
+      "total_debt_usd": 3273189768,
+      "total_assets_usd": 15668095030,
+      "equity_usd": 2053165126,
+      "icr": 0.8989685970480037,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 11346016342,
+      "ebit_usd": 965009521,
+      "interest_expense_usd": 167586559,
+      "total_debt_usd": 3311032869,
+      "total_assets_usd": 18582551400,
+      "equity_usd": 2711491137,
+      "icr": 5.758275166924336,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 10975860594,
+      "ebit_usd": 666688998,
+      "interest_expense_usd": 191163578,
+      "total_debt_usd": 3462503072,
+      "total_assets_usd": 13690381005,
+      "equity_usd": 4487527173,
+      "icr": 3.4875314899159293,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 10931355162,
+      "ebit_usd": 1225391426,
+      "interest_expense_usd": 199595827,
+      "total_debt_usd": 3537544338,
+      "total_assets_usd": 18526325244,
+      "equity_usd": 3242531980,
+      "icr": 6.139363955740417,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 11027956546,
+      "ebit_usd": 313398899,
+      "interest_expense_usd": 232300151,
+      "total_debt_usd": 3708425071,
+      "total_assets_usd": 13607658358,
+      "equity_usd": 2896112849,
+      "icr": 1.3491119039350086,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.059895,
+    "margin_change_mean": 0.003814,
+    "margin_change_sd": 0.07151,
+    "revenue_growth_median": -0.001859,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

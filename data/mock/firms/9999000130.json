@@ -1,0 +1,101 @@
+{
+  "cik": "9999000130",
+  "name": "Wexcombe Resources Inc.",
+  "ticker": null,
+  "sector": "Mining",
+  "status": "healthy",
+  "reasons": [
+    "ICR 6.53 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-20",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2664988107,
+      "ebit_usd": 235639575,
+      "interest_expense_usd": 91909189,
+      "total_debt_usd": 2203021606,
+      "total_assets_usd": 3769940189,
+      "equity_usd": 931615962,
+      "icr": 2.5638304239633753,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 2696482939,
+      "ebit_usd": 406022199,
+      "interest_expense_usd": 88788846,
+      "total_debt_usd": 2287141029,
+      "total_assets_usd": 3977855895,
+      "equity_usd": 523643480,
+      "icr": 4.572896453682932,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 2667735657,
+      "ebit_usd": 201199703,
+      "interest_expense_usd": 103856543,
+      "total_debt_usd": 2319296634,
+      "total_assets_usd": 3197468277,
+      "equity_usd": 272132415,
+      "icr": 1.9372848083341268,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 2660079847,
+      "ebit_usd": -106146494,
+      "interest_expense_usd": 112088843,
+      "total_debt_usd": 2394658726,
+      "total_assets_usd": 2873590471,
+      "equity_usd": 185221114,
+      "icr": -0.9469853658851667,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 2737584156,
+      "ebit_usd": 762846785,
+      "interest_expense_usd": 116792104,
+      "total_debt_usd": 2348156041,
+      "total_assets_usd": 3296494951,
+      "equity_usd": 751818524,
+      "icr": 6.531664032698649,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.110634,
+    "margin_change_mean": 0.047559,
+    "margin_change_sd": 0.195997,
+    "revenue_growth_median": 0.004474,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

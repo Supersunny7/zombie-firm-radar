@@ -1,105 +1,100 @@
 {
   "cik": "9999000143",
-  "name": "Redfern Partners Inc.",
+  "name": "Halloran Freight Group",
   "ticker": null,
-  "sector": "Services",
-  "status": "zombie",
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "healthy",
   "reasons": [
-    "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 16 years (first filing proxy), at least 10"
+    "ICR 5.18 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-11",
+    "filed": "2025-02-13",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 13051345465,
-      "ebit_usd": 229034954,
-      "interest_expense_usd": 467813635,
-      "total_debt_usd": 6886060640,
-      "total_assets_usd": 15517518042,
-      "equity_usd": -1814356018,
-      "icr": 0.4895858881924209,
+      "revenue_usd": 359779526,
+      "ebit_usd": 107933858,
+      "interest_expense_usd": 17685951,
+      "total_debt_usd": 231431626,
+      "total_assets_usd": 374005064,
+      "equity_usd": 74866086,
+      "icr": 6.102802048925726,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 12424234204,
-      "ebit_usd": 286036737,
-      "interest_expense_usd": 459307788,
-      "total_debt_usd": 7015797490,
-      "total_assets_usd": 14755153203,
-      "equity_usd": -58358862,
-      "icr": 0.6227561223063781,
+      "revenue_usd": 364237839,
+      "ebit_usd": 109271352,
+      "interest_expense_usd": 17298998,
+      "total_debt_usd": 225852873,
+      "total_assets_usd": 447471029,
+      "equity_usd": 135073228,
+      "icr": 6.316628974695528,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 12127302016,
-      "ebit_usd": 229366646,
-      "interest_expense_usd": 515357519,
-      "total_debt_usd": 7316375058,
-      "total_assets_usd": 21053144001,
-      "equity_usd": -2255141902,
-      "icr": 0.4450631601243796,
+      "revenue_usd": 361568160,
+      "ebit_usd": 66308129,
+      "interest_expense_usd": 17818640,
+      "total_debt_usd": 230004248,
+      "total_assets_usd": 449758351,
+      "equity_usd": 93320102,
+      "icr": 3.7212788967059214,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 11552354532,
-      "ebit_usd": 434145109,
-      "interest_expense_usd": 517763982,
-      "total_debt_usd": 7029473310,
-      "total_assets_usd": 14212051769,
-      "equity_usd": 176035359,
-      "icr": 0.8385000194934379,
+      "revenue_usd": 359292350,
+      "ebit_usd": 2820012,
+      "interest_expense_usd": 18515073,
+      "total_debt_usd": 224141075,
+      "total_assets_usd": 644365470,
+      "equity_usd": 176469797,
+      "icr": 0.152308986305374,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 11483965510,
-      "ebit_usd": 194173867,
-      "interest_expense_usd": 546615117,
-      "total_debt_usd": 7192248642,
-      "total_assets_usd": 13826658649,
-      "equity_usd": -1886060994,
-      "icr": 0.3552295956717933,
+      "revenue_usd": 347632077,
+      "ebit_usd": 94488928,
+      "interest_expense_usd": 18255597,
+      "total_debt_usd": 218289142,
+      "total_assets_usd": 523433909,
+      "equity_usd": 144499951,
+      "icr": 5.1758881399496275,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.022795,
-    "margin_change_mean": -0.00016,
-    "margin_change_sd": 0.016559,
-    "revenue_growth_median": -0.035654,
+    "margin_mean": 0.212609,
+    "margin_change_mean": -0.007048,
+    "margin_change_sd": 0.19484,
+    "revenue_growth_median": -0.006812,
     "history_years": 5,
     "used_sector_fallback": false
   }

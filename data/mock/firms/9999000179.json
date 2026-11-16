@@ -1,0 +1,101 @@
+{
+  "cik": "9999000179",
+  "name": "Dunmore Homes Group",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "healthy",
+  "reasons": [
+    "ICR 4.71 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-16",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": null,
+      "ebit_usd": 281984370,
+      "interest_expense_usd": 52267961,
+      "total_debt_usd": 856352727,
+      "total_assets_usd": 2206862679,
+      "equity_usd": 353289865,
+      "icr": 5.3949755185590655,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": null,
+      "ebit_usd": 271824144,
+      "interest_expense_usd": 54144790,
+      "total_debt_usd": 894201402,
+      "total_assets_usd": 3652518006,
+      "equity_usd": 1188580663,
+      "icr": 5.020319480415383,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": null,
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 2102700817,
+      "ebit_usd": 150797583,
+      "interest_expense_usd": 57899732,
+      "total_debt_usd": 884284569,
+      "total_assets_usd": 2756106031,
+      "equity_usd": 751013945,
+      "icr": 2.604460811666624,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 2086688480,
+      "ebit_usd": 373994739,
+      "interest_expense_usd": 58573870,
+      "total_debt_usd": 866784445,
+      "total_assets_usd": 2353036288,
+      "equity_usd": 556936649,
+      "icr": 6.385009885807443,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 2062509957,
+      "ebit_usd": 302311008,
+      "interest_expense_usd": 64149724,
+      "total_debt_usd": 898456656,
+      "total_assets_usd": 3150512796,
+      "equity_usd": 639401192,
+      "icr": 4.712584702624754,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.055,
+    "margin_change_mean": -0.001,
+    "margin_change_sd": 0.02,
+    "revenue_growth_median": 0.025,
+    "history_years": 3,
+    "used_sector_fallback": true
+  }
+}

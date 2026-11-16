@@ -1,100 +1,100 @@
 {
   "cik": "9999000007",
-  "name": "Elmstead Freight Co.",
+  "name": "Quillon Telecom Group",
   "ticker": null,
   "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
   "status": "zombie",
   "reasons": [
     "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 34 years (first filing proxy), at least 10"
+    "Firm age 10 years (first filing proxy), at least 10"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-05",
+    "filed": "2025-03-15",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 346975153,
-      "ebit_usd": 18041070,
-      "interest_expense_usd": 3719005,
-      "total_debt_usd": 96354615,
-      "total_assets_usd": 378866481,
-      "equity_usd": -32500658,
-      "icr": 4.851047524808383,
+      "revenue_usd": 2788882044,
+      "ebit_usd": 69378330,
+      "interest_expense_usd": 114120519,
+      "total_debt_usd": 2125921467,
+      "total_assets_usd": 4307758462,
+      "equity_usd": 481302715,
+      "icr": 0.6079391384471359,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 329705736,
-      "ebit_usd": 1428097,
-      "interest_expense_usd": 3247456,
-      "total_debt_usd": 92585986,
-      "total_assets_usd": 389081082,
-      "equity_usd": -33243305,
-      "icr": 0.43975869111082644,
+      "revenue_usd": 2752629147,
+      "ebit_usd": 451492991,
+      "interest_expense_usd": 116906184,
+      "total_debt_usd": 2112047915,
+      "total_assets_usd": 4538393687,
+      "equity_usd": 331708428,
+      "icr": 3.862011191811718,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 313349355,
-      "ebit_usd": 3131886,
-      "interest_expense_usd": 3785044,
-      "total_debt_usd": 96605644,
-      "total_assets_usd": 323069293,
-      "equity_usd": -11686367,
-      "icr": 0.8274371447201142,
+      "revenue_usd": 2814395809,
+      "ebit_usd": 60530523,
+      "interest_expense_usd": 122139277,
+      "total_debt_usd": 2184698273,
+      "total_assets_usd": 2829492581,
+      "equity_usd": -208756614,
+      "icr": 0.4955860595113888,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 302915371,
-      "ebit_usd": -2380751,
-      "interest_expense_usd": 4277701,
-      "total_debt_usd": 98379504,
-      "total_assets_usd": 490615909,
-      "equity_usd": -39287742,
-      "icr": -0.5565491837788569,
+      "revenue_usd": 2750366601,
+      "ebit_usd": 122465175,
+      "interest_expense_usd": 137578839,
+      "total_debt_usd": 2255181408,
+      "total_assets_usd": 3317853601,
+      "equity_usd": 145589351,
+      "icr": 0.8901454314496723,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 294891564,
-      "ebit_usd": 3589385,
-      "interest_expense_usd": 4381247,
-      "total_debt_usd": 95518689,
-      "total_assets_usd": 482816139,
-      "equity_usd": -7152094,
-      "icr": 0.8192610459990044,
+      "revenue_usd": 2781431961,
+      "ebit_usd": 124307509,
+      "interest_expense_usd": 146029925,
+      "total_debt_usd": 2299626510,
+      "total_assets_usd": 4310597943,
+      "equity_usd": -613618707,
+      "icr": 0.8512468180751308,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
       "debt_tags": [
         "LongTermDebtNoncurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.014127,
-    "margin_change_mean": -0.009956,
-    "margin_change_sd": 0.029594,
-    "revenue_growth_median": -0.041454,
+    "margin_mean": 0.059925,
+    "margin_change_mean": 0.004954,
+    "margin_change_sd": 0.11562,
+    "revenue_growth_median": -0.000852,
     "history_years": 5,
     "used_sector_fallback": false
   }

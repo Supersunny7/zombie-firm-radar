@@ -1,0 +1,100 @@
+{
+  "cik": "9999000196",
+  "name": "Moorcroft Mills Co.",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "insufficient_data",
+  "reasons": [
+    "Fewer than 3 consecutive fiscal years with both EBIT and interest expense available"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-02-24",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2553809222,
+      "ebit_usd": 529433247,
+      "interest_expense_usd": 94684839,
+      "total_debt_usd": 1874485499,
+      "total_assets_usd": 2920053022,
+      "equity_usd": 302395004,
+      "icr": 5.591531364382423,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 2761849337,
+      "ebit_usd": 178273355,
+      "interest_expense_usd": 98846107,
+      "total_debt_usd": 1885243084,
+      "total_assets_usd": 2727687382,
+      "equity_usd": 621950467,
+      "icr": 1.8035445240144865,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 2960253930,
+      "ebit_usd": 40451559,
+      "interest_expense_usd": null,
+      "total_debt_usd": 1829521722,
+      "total_assets_usd": 3219086718,
+      "equity_usd": 363129013,
+      "icr": null,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 3174016558,
+      "ebit_usd": 264031585,
+      "interest_expense_usd": 105565417,
+      "total_debt_usd": 1819101797,
+      "total_assets_usd": 3979433205,
+      "equity_usd": 214110797,
+      "icr": 2.501118192902132,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 3412069625,
+      "ebit_usd": 196160297,
+      "interest_expense_usd": 110755015,
+      "total_debt_usd": 1864781749,
+      "total_assets_usd": 4434042289,
+      "equity_usd": 832369236,
+      "icr": 1.771118869876908,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.08524,
+    "margin_change_mean": -0.037455,
+    "margin_change_sd": 0.087277,
+    "revenue_growth_median": 0.073606,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

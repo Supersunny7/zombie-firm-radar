@@ -1,0 +1,101 @@
+{
+  "cik": "9999000185",
+  "name": "Fairlight Homes Co.",
+  "ticker": null,
+  "sector": "Construction",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 11 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-26",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 22099674,
+      "ebit_usd": -4817918,
+      "interest_expense_usd": 12189,
+      "total_debt_usd": 216817,
+      "total_assets_usd": 36968140,
+      "equity_usd": 18378873,
+      "icr": -395.26770038559357,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 30646554,
+      "ebit_usd": -5766695,
+      "interest_expense_usd": 15553,
+      "total_debt_usd": 270570,
+      "total_assets_usd": 41075827,
+      "equity_usd": 19334466,
+      "icr": -370.77702051051244,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 42266986,
+      "ebit_usd": -7120107,
+      "interest_expense_usd": 40992,
+      "total_debt_usd": 722973,
+      "total_assets_usd": 69749075,
+      "equity_usd": 47099935,
+      "icr": -173.6950380562061,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 58055034,
+      "ebit_usd": -10537089,
+      "interest_expense_usd": 39363,
+      "total_debt_usd": 709688,
+      "total_assets_usd": 59033488,
+      "equity_usd": 31170040,
+      "icr": -267.6901912963951,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 80058154,
+      "ebit_usd": -14564231,
+      "interest_expense_usd": 74543,
+      "total_debt_usd": 1314465,
+      "total_assets_usd": 107623837,
+      "equity_usd": 54032523,
+      "icr": -195.38026374039146,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": -0.187611,
+    "margin_change_mean": 0.009022,
+    "margin_change_sd": 0.019355,
+    "revenue_growth_median": 0.37909,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

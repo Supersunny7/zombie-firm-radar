@@ -1,0 +1,111 @@
+{
+  "cik": "9999000156",
+  "name": "Calloway Fabrication Holdings",
+  "ticker": null,
+  "sector": "Manufacturing",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.77 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-30",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 94068816,
+      "ebit_usd": 12759928,
+      "interest_expense_usd": 2702666,
+      "total_debt_usd": 34569126,
+      "total_assets_usd": 150960846,
+      "equity_usd": 20339979,
+      "icr": 4.721237474404902,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 94161600,
+      "ebit_usd": 7626144,
+      "interest_expense_usd": 2733344,
+      "total_debt_usd": 35371208,
+      "total_assets_usd": 168750027,
+      "equity_usd": 18204816,
+      "icr": 2.790041794958849,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 92637048,
+      "ebit_usd": 1714913,
+      "interest_expense_usd": 2745842,
+      "total_debt_usd": 34162791,
+      "total_assets_usd": 88605473,
+      "equity_usd": 4497243,
+      "icr": 0.6245490454294166,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 92329933,
+      "ebit_usd": 18911352,
+      "interest_expense_usd": 2903929,
+      "total_debt_usd": 34422599,
+      "total_assets_usd": 118453447,
+      "equity_usd": 23638609,
+      "icr": 6.512332773976223,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 94501711,
+      "ebit_usd": 11142506,
+      "interest_expense_usd": 2955013,
+      "total_debt_usd": 34418807,
+      "total_assets_usd": 161536693,
+      "equity_usd": 55812018,
+      "icr": 3.7707130222438954,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.111576,
+    "margin_change_mean": -0.004434,
+    "margin_change_sd": 0.127904,
+    "revenue_growth_median": -0.001164,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

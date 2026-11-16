@@ -1,105 +1,110 @@
 {
   "cik": "9999000041",
-  "name": "Netherby Outfitters Inc.",
+  "name": "Mossgrove Works Co.",
   "ticker": null,
-  "sector": "Retail Trade",
-  "status": "endangered",
+  "sector": "Manufacturing",
+  "status": "zombie",
   "reasons": [
     "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 6 years (first filing proxy), under 10, so not a zombie"
+    "Firm age 16 years (first filing proxy), at least 10"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-29",
+    "filed": "2025-03-07",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 13749129360,
-      "ebit_usd": 2336800419,
-      "interest_expense_usd": 375300051,
-      "total_debt_usd": 6013076428,
-      "total_assets_usd": 18009598193,
-      "equity_usd": 730043706,
-      "icr": 6.226485748599059,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 99631188,
+      "ebit_usd": -5414388,
+      "interest_expense_usd": 5640620,
+      "total_debt_usd": 81167298,
+      "total_assets_usd": 145347743,
+      "equity_usd": -21072545,
+      "icr": -0.9598923522591488,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 13783104793,
-      "ebit_usd": 1266343437,
-      "interest_expense_usd": 368030024,
-      "total_debt_usd": 6163685230,
-      "total_assets_usd": 23866499639,
-      "equity_usd": 1417550522,
-      "icr": 3.4408699139176755,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 99941030,
+      "ebit_usd": 16264166,
+      "interest_expense_usd": 5596668,
+      "total_debt_usd": 78990898,
+      "total_assets_usd": 179450111,
+      "equity_usd": -6955000,
+      "icr": 2.9060444535927448,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 13453825840,
-      "ebit_usd": -15683554,
-      "interest_expense_usd": 404741623,
-      "total_debt_usd": 6455830255,
-      "total_assets_usd": 12515075020,
-      "equity_usd": 355636832,
-      "icr": -0.03874954565767504,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 95868587,
+      "ebit_usd": 3505676,
+      "interest_expense_usd": 5875600,
+      "total_debt_usd": 81556104,
+      "total_assets_usd": 122767770,
+      "equity_usd": -5020417,
+      "icr": 0.5966498740554156,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 13051605105,
-      "ebit_usd": 372735873,
-      "interest_expense_usd": 460568057,
-      "total_debt_usd": 6633552824,
-      "total_assets_usd": 11830099493,
-      "equity_usd": 864201541,
-      "icr": 0.809295971214087,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 95654602,
+      "ebit_usd": 4458183,
+      "interest_expense_usd": 5922451,
+      "total_debt_usd": 80288254,
+      "total_assets_usd": 135936524,
+      "equity_usd": -8948804,
+      "icr": 0.7527597948889742,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 12947438765,
-      "ebit_usd": 436212965,
-      "interest_expense_usd": 488537561,
-      "total_debt_usd": 6861670935,
-      "total_assets_usd": 14523142084,
-      "equity_usd": 1738263682,
-      "icr": 0.8928954492405958,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 95870344,
+      "ebit_usd": 5413095,
+      "interest_expense_usd": 6203179,
+      "total_debt_usd": 78318025,
+      "total_assets_usd": 155684351,
+      "equity_usd": 17616136,
+      "icr": 0.87263240348215,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.064584,
-    "margin_change_mean": -0.034067,
-    "margin_change_sd": 0.060612,
-    "revenue_growth_median": -0.015936,
+    "margin_mean": 0.049606,
+    "margin_change_mean": 0.027702,
+    "margin_change_sd": 0.141624,
+    "revenue_growth_median": 1.2e-05,
     "history_years": 5,
     "used_sector_fallback": false
   }

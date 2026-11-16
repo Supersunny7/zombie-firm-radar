@@ -1,0 +1,106 @@
+{
+  "cik": "9999000159",
+  "name": "Mossgrove Supply Corp.",
+  "ticker": null,
+  "sector": "Wholesale Trade",
+  "status": "healthy",
+  "reasons": [
+    "ICR 3.27 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-29",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 603116060,
+      "ebit_usd": 49442221,
+      "interest_expense_usd": 22670059,
+      "total_debt_usd": 265666447,
+      "total_assets_usd": 972384348,
+      "equity_usd": 117751869,
+      "icr": 2.180948051348256,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 624539031,
+      "ebit_usd": 96352513,
+      "interest_expense_usd": 23299591,
+      "total_debt_usd": 275283326,
+      "total_assets_usd": 832851462,
+      "equity_usd": 187571429,
+      "icr": 4.1353735780168845,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 638903232,
+      "ebit_usd": 35100394,
+      "interest_expense_usd": 22891459,
+      "total_debt_usd": 264700982,
+      "total_assets_usd": 996242964,
+      "equity_usd": 190190394,
+      "icr": 1.5333401859619344,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 673401404,
+      "ebit_usd": 108944197,
+      "interest_expense_usd": 25316764,
+      "total_debt_usd": 277912289,
+      "total_assets_usd": 644841353,
+      "equity_usd": 135359935,
+      "icr": 4.303243376602159,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 701871608,
+      "ebit_usd": 87606643,
+      "interest_expense_usd": 26802445,
+      "total_debt_usd": 287366756,
+      "total_assets_usd": 928385120,
+      "equity_usd": 232493982,
+      "icr": 3.2686063902005955,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "debt_tags": [
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.115559,
+    "margin_change_mean": 0.01071,
+    "margin_change_sd": 0.095601,
+    "revenue_growth_median": 0.038899,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

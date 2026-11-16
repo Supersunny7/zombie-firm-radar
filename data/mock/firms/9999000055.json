@@ -1,12 +1,12 @@
 {
   "cik": "9999000055",
-  "name": "Alderwick Industries Co.",
+  "name": "Zelmont Works Co.",
   "ticker": null,
   "sector": "Manufacturing",
-  "status": "zombie",
+  "status": "healthy",
   "reasons": [
-    "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 26 years (first filing proxy), at least 10"
+    "ICR 6.65 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
@@ -16,85 +16,95 @@
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 137332129,
-      "ebit_usd": 9931595,
-      "interest_expense_usd": 2866548,
-      "total_debt_usd": 46895469,
-      "total_assets_usd": 163676751,
-      "equity_usd": -15101607,
-      "icr": 3.46465330425306,
+      "revenue_usd": 1009228886,
+      "ebit_usd": 52386203,
+      "interest_expense_usd": 43030280,
+      "total_debt_usd": 519443182,
+      "total_assets_usd": 1298425155,
+      "equity_usd": 420598811,
+      "icr": 1.2174264959465753,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 134072636,
-      "ebit_usd": 9548853,
-      "interest_expense_usd": 2694684,
-      "total_debt_usd": 46485060,
-      "total_assets_usd": 127628072,
-      "equity_usd": 14057010,
-      "icr": 3.543589155537347,
+      "revenue_usd": 1032673511,
+      "ebit_usd": 111397070,
+      "interest_expense_usd": 41519295,
+      "total_debt_usd": 504691874,
+      "total_assets_usd": 1157126548,
+      "equity_usd": 338129236,
+      "icr": 2.6830193046389637,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 126043090,
-      "ebit_usd": 2752108,
-      "interest_expense_usd": 3032724,
-      "total_debt_usd": 47281723,
-      "total_assets_usd": 182425529,
-      "equity_usd": 6944966,
-      "icr": 0.9074706435534523,
+      "revenue_usd": 1061872696,
+      "ebit_usd": 97316507,
+      "interest_expense_usd": 41995138,
+      "total_debt_usd": 497499306,
+      "total_assets_usd": 1237329919,
+      "equity_usd": 410345545,
+      "icr": 2.3173279487734986,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 123067764,
-      "ebit_usd": 2523080,
-      "interest_expense_usd": 3131544,
-      "total_debt_usd": 48548851,
-      "total_assets_usd": 197178439,
-      "equity_usd": 18917255,
-      "icr": 0.8056984030880614,
+      "revenue_usd": 1105879712,
+      "ebit_usd": 50490041,
+      "interest_expense_usd": 43868145,
+      "total_debt_usd": 494645949,
+      "total_assets_usd": 1802253900,
+      "equity_usd": 347405930,
+      "icr": 1.1509499888814538,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 120107108,
-      "ebit_usd": -1499135,
-      "interest_expense_usd": 3308125,
-      "total_debt_usd": 49134704,
-      "total_assets_usd": 144973694,
-      "equity_usd": 3189866,
-      "icr": -0.45316757982240696,
+      "revenue_usd": 1149288803,
+      "ebit_usd": 315060731,
+      "interest_expense_usd": 47382490,
+      "total_debt_usd": 512477895,
+      "total_assets_usd": 1312117865,
+      "equity_usd": 180639887,
+      "icr": 6.649307180775008,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent",
+        "ShortTermBorrowings"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.034679,
-    "margin_change_mean": -0.0212,
-    "margin_change_sd": 0.024029,
-    "revenue_growth_median": -0.023896,
+    "margin_mean": 0.114243,
+    "margin_change_mean": 0.055557,
+    "margin_change_sd": 0.122973,
+    "revenue_growth_median": 0.033764,
     "history_years": 5,
     "used_sector_fallback": false
   }

@@ -1,105 +1,100 @@
 {
   "cik": "9999000016",
-  "name": "Ingleby Utilities Holdings",
+  "name": "Gilmore Coal Co.",
   "ticker": null,
-  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
-  "status": "healthy",
+  "sector": "Mining",
+  "status": "zombie",
   "reasons": [
-    "ICR 3.49 in FY2024, at least 1",
-    "No more than one year below 1 in the last 3"
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 29 years (first filing proxy), at least 10"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-03",
+    "filed": "2025-03-11",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 2878451745,
-      "ebit_usd": 188521228,
-      "interest_expense_usd": 151523162,
-      "total_debt_usd": 2263850081,
-      "total_assets_usd": 5177091907,
-      "equity_usd": 1243592032,
-      "icr": 1.244174326298708,
+      "revenue_usd": 413578454,
+      "ebit_usd": 65556252,
+      "interest_expense_usd": 14245426,
+      "total_debt_usd": 180894352,
+      "total_assets_usd": 503745992,
+      "equity_usd": 2566221,
+      "icr": 4.601915871101363,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 2815109888,
-      "ebit_usd": 844532966,
-      "interest_expense_usd": 157706109,
-      "total_debt_usd": 2352653436,
-      "total_assets_usd": 2823184123,
-      "equity_usd": 363399762,
-      "icr": 5.3551062248324195,
+      "revenue_usd": 407987215,
+      "ebit_usd": 13001829,
+      "interest_expense_usd": 14179700,
+      "total_debt_usd": 180101508,
+      "total_assets_usd": 654469785,
+      "equity_usd": 52905147,
+      "icr": 0.9169325867260943,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 2860268484,
-      "ebit_usd": 858080545,
-      "interest_expense_usd": 163470444,
-      "total_debt_usd": 2374021028,
-      "total_assets_usd": 2848825233,
-      "equity_usd": 337373987,
-      "icr": 5.249147943832587,
+      "revenue_usd": 389513127,
+      "ebit_usd": 9349144,
+      "interest_expense_usd": 15351897,
+      "total_debt_usd": 182601322,
+      "total_assets_usd": 508994342,
+      "equity_usd": -43850248,
+      "icr": 0.6089894949138859,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 2830347166,
-      "ebit_usd": 849104150,
-      "interest_expense_usd": 169745353,
-      "total_debt_usd": 2292400942,
-      "total_assets_usd": 3615128554,
-      "equity_usd": 1264234162,
-      "icr": 5.002223242011226,
+      "revenue_usd": 383112365,
+      "ebit_usd": 14108526,
+      "interest_expense_usd": 16093154,
+      "total_debt_usd": 183915207,
+      "total_assets_usd": 419465854,
+      "equity_usd": -49944579,
+      "icr": 0.8766787417805112,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 2757427288,
-      "ebit_usd": 623875842,
-      "interest_expense_usd": 178954971,
-      "total_debt_usd": 2351984318,
-      "total_assets_usd": 4742301247,
-      "equity_usd": 1195120915,
-      "icr": 3.4862168874873,
+      "revenue_usd": 376024383,
+      "ebit_usd": 12694536,
+      "interest_expense_usd": 16708490,
+      "total_debt_usd": 186858472,
+      "total_assets_usd": 366238148,
+      "equity_usd": 15376263,
+      "icr": 0.7597656041928385,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.238349,
-    "margin_change_mean": 0.04019,
-    "margin_change_sd": 0.134128,
-    "revenue_growth_median": -0.016233,
+    "margin_mean": 0.056993,
+    "margin_change_mean": -0.031187,
+    "margin_change_sd": 0.064247,
+    "revenue_growth_median": -0.017467,
     "history_years": 5,
     "used_sector_fallback": false
   }

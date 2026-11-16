@@ -1,105 +1,100 @@
 {
   "cik": "9999000061",
-  "name": "Everard Stores Holdings",
+  "name": "Dunmore Health Holdings",
   "ticker": null,
-  "sector": "Retail Trade",
+  "sector": "Services",
   "status": "healthy",
   "reasons": [
-    "ICR 2.86 in FY2024, at least 1",
+    "ICR 5.32 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-30",
+    "filed": "2025-03-19",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 1115012127,
-      "ebit_usd": 334503638,
-      "interest_expense_usd": 72855680,
-      "total_debt_usd": 962610751,
-      "total_assets_usd": 1155132902,
-      "equity_usd": 188770728,
-      "icr": 4.591318590396796,
+      "revenue_usd": 122507657,
+      "ebit_usd": 8138650,
+      "interest_expense_usd": 2562067,
+      "total_debt_usd": 38762394,
+      "total_assets_usd": 156059903,
+      "equity_usd": 9378483,
+      "icr": 3.1765953037137593,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 1075126811,
-      "ebit_usd": 322538043,
-      "interest_expense_usd": 72287786,
-      "total_debt_usd": 937903949,
-      "total_assets_usd": 1269152529,
-      "equity_usd": 121816001,
-      "icr": 4.46186085986919,
+      "revenue_usd": 119789068,
+      "ebit_usd": 17010092,
+      "interest_expense_usd": 2519153,
+      "total_debt_usd": 39380823,
+      "total_assets_usd": 145538892,
+      "equity_usd": 23272096,
+      "icr": 6.752306033019829,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 1020190127,
-      "ebit_usd": 306057038,
-      "interest_expense_usd": 75833782,
-      "total_debt_usd": 970420553,
-      "total_assets_usd": 1164504664,
-      "equity_usd": 315744009,
-      "icr": 4.035893106320347,
+      "revenue_usd": 118210988,
+      "ebit_usd": 10130790,
+      "interest_expense_usd": 2823596,
+      "total_debt_usd": 40881720,
+      "total_assets_usd": 209385918,
+      "equity_usd": 36769933,
+      "icr": 3.587903510275549,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 968305641,
-      "ebit_usd": 225985698,
-      "interest_expense_usd": 83055261,
-      "total_debt_usd": 1018757335,
-      "total_assets_usd": 1711877821,
-      "equity_usd": 279202565,
-      "icr": 2.720907685787659,
+      "revenue_usd": 119332810,
+      "ebit_usd": 18981011,
+      "interest_expense_usd": 2972144,
+      "total_debt_usd": 41734258,
+      "total_assets_usd": 121861547,
+      "equity_usd": 26591498,
+      "icr": 6.38630261521649,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 951021603,
-      "ebit_usd": 245875549,
-      "interest_expense_usd": 85983272,
-      "total_debt_usd": 1022434799,
-      "total_assets_usd": 1449518619,
-      "equity_usd": 156020031,
-      "icr": 2.8595742320669073,
+      "revenue_usd": 118583248,
+      "ebit_usd": 17636119,
+      "interest_expense_usd": 3315291,
+      "total_debt_usd": 43667380,
+      "total_assets_usd": 134987642,
+      "equity_usd": 16924744,
+      "icr": 5.3196292572808845,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.278384,
-    "margin_change_mean": -0.010365,
-    "margin_change_sd": 0.039332,
-    "revenue_growth_median": -0.043314,
+    "margin_mean": 0.120384,
+    "margin_change_mean": 0.020572,
+    "margin_change_sd": 0.065001,
+    "revenue_growth_median": -0.009728,
     "history_years": 5,
     "used_sector_fallback": false
   }

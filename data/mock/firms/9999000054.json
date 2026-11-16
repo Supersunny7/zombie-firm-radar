@@ -1,28 +1,27 @@
 {
   "cik": "9999000054",
-  "name": "Stonebrook Mills Inc.",
+  "name": "Thornbury Consulting Holdings",
   "ticker": null,
-  "sector": "Manufacturing",
-  "status": "zombie",
+  "sector": "Services",
+  "status": "insufficient_data",
   "reasons": [
-    "ICR below 1 in FY2022, FY2023, FY2024",
-    "Firm age 33 years (first filing proxy), at least 10"
+    "Fewer than 3 consecutive fiscal years with both EBIT and interest expense available"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-02-15",
+    "filed": "2025-03-14",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 1209578299,
-      "ebit_usd": 86586131,
-      "interest_expense_usd": 53288793,
-      "total_debt_usd": 808064369,
-      "total_assets_usd": 1379870526,
-      "equity_usd": -172601996,
-      "icr": 1.624846916686591,
+      "revenue_usd": 8876844992,
+      "ebit_usd": 1194615007,
+      "interest_expense_usd": 403502953,
+      "total_debt_usd": 7663102847,
+      "total_assets_usd": 13132612864,
+      "equity_usd": 2988763952,
+      "icr": 2.960610320490021,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -33,13 +32,13 @@
     },
     {
       "fy": 2021,
-      "revenue_usd": 1254703863,
-      "ebit_usd": 38782472,
-      "interest_expense_usd": 52550823,
-      "total_debt_usd": 775884565,
-      "total_assets_usd": 2023864595,
-      "equity_usd": 161567099,
-      "icr": 0.7379993268611607,
+      "revenue_usd": 8953029986,
+      "ebit_usd": 1818112442,
+      "interest_expense_usd": 398763175,
+      "total_debt_usd": 7585834728,
+      "total_assets_usd": 15611161868,
+      "equity_usd": 907524562,
+      "icr": 4.559378989797641,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -50,14 +49,14 @@
     },
     {
       "fy": 2022,
-      "revenue_usd": 1257908660,
-      "ebit_usd": 38141561,
-      "interest_expense_usd": 51915361,
-      "total_debt_usd": 748197651,
-      "total_assets_usd": 1982406788,
-      "equity_usd": -117164170,
-      "icr": 0.7346873885746456,
-      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_usd": 9265647400,
+      "ebit_usd": null,
+      "interest_expense_usd": 437455278,
+      "total_debt_usd": 7959721818,
+      "total_assets_usd": 16090724625,
+      "equity_usd": 2873647183,
+      "icr": null,
+      "ebit_tag": null,
       "revenue_tag": "Revenues",
       "debt_tags": [
         "LongTermDebtNoncurrent",
@@ -67,13 +66,13 @@
     },
     {
       "fy": 2023,
-      "revenue_usd": 1246745592,
-      "ebit_usd": 37566302,
-      "interest_expense_usd": 54614873,
-      "total_debt_usd": 723984208,
-      "total_assets_usd": 1840013324,
-      "equity_usd": 95896316,
-      "icr": 0.6878401420067387,
+      "revenue_usd": 9191317880,
+      "ebit_usd": 2617494357,
+      "interest_expense_usd": 453627999,
+      "total_debt_usd": 7786825275,
+      "total_assets_usd": 9846555403,
+      "equity_usd": 2222559197,
+      "icr": 5.770134036633837,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -84,13 +83,13 @@
     },
     {
       "fy": 2024,
-      "revenue_usd": 1286292067,
-      "ebit_usd": 36897942,
-      "interest_expense_usd": 59897643,
-      "total_debt_usd": 760140915,
-      "total_assets_usd": 1691141664,
-      "equity_usd": 141110574,
-      "icr": 0.6160165935076944,
+      "revenue_usd": 9305639882,
+      "ebit_usd": 886502291,
+      "interest_expense_usd": 485411589,
+      "total_debt_usd": 7940822961,
+      "total_assets_usd": 13058793438,
+      "equity_usd": 3032742771,
+      "icr": 1.8262899178536094,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -101,11 +100,11 @@
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.038326,
-    "margin_change_mean": -0.010725,
-    "margin_change_sd": 0.019973,
-    "revenue_growth_median": 0.017137,
-    "history_years": 5,
+    "margin_mean": 0.179423,
+    "margin_change_mean": -0.060509,
+    "margin_change_sd": 0.18244,
+    "revenue_growth_median": 0.01051,
+    "history_years": 4,
     "used_sector_fallback": false
   }
 }

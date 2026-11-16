@@ -1,104 +1,100 @@
 {
   "cik": "9999000066",
-  "name": "Elmstead Timber Corp.",
+  "name": "Quillon Telecom Holdings",
   "ticker": null,
-  "sector": "Agriculture, Forestry and Fishing",
-  "status": "endangered",
+  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "status": "healthy",
   "reasons": [
-    "ICR below 1 in the most recent year (FY2024, -0.19)"
+    "ICR 2.15 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-27",
+    "filed": "2025-03-17",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 515999005,
-      "ebit_usd": 49622160,
-      "interest_expense_usd": 11146820,
-      "total_debt_usd": 181540829,
-      "total_assets_usd": 691455117,
-      "equity_usd": 214610135,
-      "icr": 4.451687566498786,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 546913345,
+      "ebit_usd": 59335993,
+      "interest_expense_usd": 12252981,
+      "total_debt_usd": 193929439,
+      "total_assets_usd": 959603046,
+      "equity_usd": 285374545,
+      "icr": 4.8425761045414175,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 522926856,
-      "ebit_usd": 54228864,
-      "interest_expense_usd": 11711965,
-      "total_debt_usd": 190096663,
-      "total_assets_usd": 878511507,
-      "equity_usd": 222128009,
-      "icr": 4.630210558177044,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 559497935,
+      "ebit_usd": 62846445,
+      "interest_expense_usd": 12157121,
+      "total_debt_usd": 189905899,
+      "total_assets_usd": 718184455,
+      "equity_usd": 249909591,
+      "icr": 5.1695171085325216,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 523268487,
-      "ebit_usd": 23629791,
-      "interest_expense_usd": 12044785,
-      "total_debt_usd": 184796590,
-      "total_assets_usd": 755296251,
-      "equity_usd": 255088197,
-      "icr": 1.96182754611228,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 567311493,
+      "ebit_usd": 54909405,
+      "interest_expense_usd": 12751424,
+      "total_debt_usd": 192705162,
+      "total_assets_usd": 828357018,
+      "equity_usd": 148523377,
+      "icr": 4.306139063370491,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 536997011,
-      "ebit_usd": 59768667,
-      "interest_expense_usd": 12170459,
-      "total_debt_usd": 181809104,
-      "total_assets_usd": 947868291,
-      "equity_usd": 265408188,
-      "icr": 4.91096243781767,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 598066623,
+      "ebit_usd": 75063755,
+      "interest_expense_usd": 13762295,
+      "total_debt_usd": 194062610,
+      "total_assets_usd": 964694174,
+      "equity_usd": 162736561,
+      "icr": 5.454305041419327,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 554807610,
-      "ebit_usd": -2403295,
-      "interest_expense_usd": 12560127,
-      "total_debt_usd": 176810077,
-      "total_assets_usd": 785929327,
-      "equity_usd": 188382727,
-      "icr": -0.19134320855195175,
-      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_usd": 628045617,
+      "ebit_usd": 30497819,
+      "interest_expense_usd": 14183141,
+      "total_debt_usd": 199688722,
+      "total_assets_usd": 609648638,
+      "equity_usd": 41899872,
+      "icr": 2.150286667812158,
+      "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebtNoncurrent",
-        "LongTermDebtCurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.0704,
-    "margin_change_mean": -0.025125,
-    "margin_change_sd": 0.078963,
-    "revenue_growth_median": 0.019831,
+    "margin_mean": 0.098336,
+    "margin_change_mean": -0.014983,
+    "margin_change_sd": 0.045109,
+    "revenue_growth_median": 0.036568,
     "history_years": 5,
     "used_sector_fallback": false
   }

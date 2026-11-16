@@ -1,0 +1,101 @@
+{
+  "cik": "9999000170",
+  "name": "Tindall Stores Co.",
+  "ticker": null,
+  "sector": "Retail Trade",
+  "status": "zombie",
+  "reasons": [
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 38 years (first filing proxy), at least 10"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-08",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 2223293822,
+      "ebit_usd": 263919311,
+      "interest_expense_usd": 59850969,
+      "total_debt_usd": 837419594,
+      "total_assets_usd": 2176771860,
+      "equity_usd": -227233387,
+      "icr": 4.4096079881346615,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 2207892617,
+      "ebit_usd": 325977527,
+      "interest_expense_usd": 55959061,
+      "total_debt_usd": 806006921,
+      "total_assets_usd": 2553995441,
+      "equity_usd": 113499815,
+      "icr": 5.8252858638925336,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 2243693105,
+      "ebit_usd": 43268142,
+      "interest_expense_usd": 60677625,
+      "total_debt_usd": 815962001,
+      "total_assets_usd": 3810487532,
+      "equity_usd": -395158697,
+      "icr": 0.7130823264753688,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 2263588927,
+      "ebit_usd": 43092010,
+      "interest_expense_usd": 62382971,
+      "total_debt_usd": 804388928,
+      "total_assets_usd": 2927838198,
+      "equity_usd": -266750188,
+      "icr": 0.6907655937066544,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 2188381227,
+      "ebit_usd": 44517797,
+      "interest_expense_usd": 64374843,
+      "total_debt_usd": 797387583,
+      "total_assets_usd": 2530769395,
+      "equity_usd": -317563239,
+      "icr": 0.6915402807273643,
+      "ebit_tag": "OperatingIncomeLoss",
+      "revenue_tag": "SalesRevenueNet",
+      "debt_tags": [
+        "LongTermDebtNoncurrent"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.065003,
+    "margin_change_mean": -0.024591,
+    "margin_change_sd": 0.070465,
+    "revenue_growth_median": 0.00097,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

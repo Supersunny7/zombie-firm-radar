@@ -1,100 +1,100 @@
 {
   "cik": "9999000123",
-  "name": "Dovecote Growers Corp.",
+  "name": "Applegarth Works Corp.",
   "ticker": null,
-  "sector": "Agriculture, Forestry and Fishing",
-  "status": "healthy",
+  "sector": "Manufacturing",
+  "status": "zombie",
   "reasons": [
-    "ICR 2.35 in FY2024, at least 1",
-    "No more than one year below 1 in the last 3"
+    "ICR below 1 in FY2022, FY2023, FY2024",
+    "Firm age 34 years (first filing proxy), at least 10"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-19",
+    "filed": "2025-03-30",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 251632006,
-      "ebit_usd": 11277636,
-      "interest_expense_usd": 4835495,
-      "total_debt_usd": 75605636,
-      "total_assets_usd": 234788893,
-      "equity_usd": 71710293,
-      "icr": 2.3322609164108328,
+      "revenue_usd": 13517582652,
+      "ebit_usd": 3435440803,
+      "interest_expense_usd": 604944898,
+      "total_debt_usd": 10521872187,
+      "total_assets_usd": 13156683011,
+      "equity_usd": 1512030221,
+      "icr": 5.6789317743779035,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 259656432,
-      "ebit_usd": 35184317,
-      "interest_expense_usd": 5208066,
-      "total_debt_usd": 78219990,
-      "total_assets_usd": 243072843,
-      "equity_usd": 46082455,
-      "icr": 6.755735622398026,
+      "revenue_usd": 13456437543,
+      "ebit_usd": 559329568,
+      "interest_expense_usd": 623166437,
+      "total_debt_usd": 10478010724,
+      "total_assets_usd": 19464659674,
+      "equity_usd": 1534212113,
+      "icr": 0.8975604827061635,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 257871687,
-      "ebit_usd": 10575892,
-      "interest_expense_usd": 5219656,
-      "total_debt_usd": 75445714,
-      "total_assets_usd": 430025732,
-      "equity_usd": 86944221,
-      "icr": 2.026166475338605,
+      "revenue_usd": 13658429728,
+      "ebit_usd": 329430695,
+      "interest_expense_usd": 664225066,
+      "total_debt_usd": 10830221608,
+      "total_assets_usd": 20089852041,
+      "equity_usd": 981258809,
+      "icr": 0.4959624558944302,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 263158587,
-      "ebit_usd": 26263910,
-      "interest_expense_usd": 5590489,
-      "total_debt_usd": 75866390,
-      "total_assets_usd": 266088270,
-      "equity_usd": 39397205,
-      "icr": 4.697962915229777,
+      "revenue_usd": 14087261678,
+      "ebit_usd": 440667363,
+      "interest_expense_usd": 684560150,
+      "total_debt_usd": 10775371186,
+      "total_assets_usd": 24138783534,
+      "equity_usd": -844355183,
+      "icr": 0.6437233645575191,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 260644218,
-      "ebit_usd": 13844031,
-      "interest_expense_usd": 5899754,
-      "total_debt_usd": 79168047,
-      "total_assets_usd": 359733931,
-      "equity_usd": 77000428,
-      "icr": 2.346543771147068,
+      "revenue_usd": 13877058988,
+      "ebit_usd": 372753559,
+      "interest_expense_usd": 755087867,
+      "total_debt_usd": 11212628804,
+      "total_assets_usd": 15957177219,
+      "equity_usd": -1552716840,
+      "icr": 0.4936558714431045,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": "SalesRevenueNet",
       "debt_tags": [
-        "LongTermDebtNoncurrent"
+        "LongTermDebt"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.07485,
-    "margin_change_mean": 0.002074,
-    "margin_change_sd": 0.087123,
-    "revenue_growth_median": 0.006814,
+    "margin_mean": 0.075595,
+    "margin_change_mean": -0.056821,
+    "margin_change_sd": 0.104325,
+    "revenue_growth_median": 0.005244,
     "history_years": 5,
     "used_sector_fallback": false
   }

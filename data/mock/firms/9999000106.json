@@ -1,30 +1,30 @@
 {
   "cik": "9999000106",
-  "name": "Kestrel Ridge Coal Co.",
+  "name": "Birchall Works Inc.",
   "ticker": null,
-  "sector": "Mining",
+  "sector": "Manufacturing",
   "status": "healthy",
   "reasons": [
-    "ICR 3.62 in FY2024, at least 1",
+    "ICR 6.79 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-29",
+    "filed": "2025-03-23",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 4594492408,
-      "ebit_usd": 584111865,
-      "interest_expense_usd": 195980355,
-      "total_debt_usd": 3839873188,
-      "total_assets_usd": 6661588439,
-      "equity_usd": 347994060,
-      "icr": 2.980461306950893,
+      "revenue_usd": null,
+      "ebit_usd": 91475623,
+      "interest_expense_usd": 17708321,
+      "total_debt_usd": 275951486,
+      "total_assets_usd": 541553770,
+      "equity_usd": 56558526,
+      "icr": 5.165685837748254,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": null,
       "debt_tags": [
         "LongTermDebtNoncurrent",
         "LongTermDebtCurrent"
@@ -32,15 +32,15 @@
     },
     {
       "fy": 2021,
-      "revenue_usd": 4850496144,
-      "ebit_usd": 632794305,
-      "interest_expense_usd": 188649177,
-      "total_debt_usd": 3851136417,
-      "total_assets_usd": 8127498695,
-      "equity_usd": 1679346230,
-      "icr": 3.3543443711922474,
+      "revenue_usd": null,
+      "ebit_usd": 93032667,
+      "interest_expense_usd": 17958743,
+      "total_debt_usd": 275535839,
+      "total_assets_usd": 489641181,
+      "equity_usd": 165530126,
+      "icr": 5.18035516182842,
       "ebit_tag": "OperatingIncomeLoss",
-      "revenue_tag": "Revenues",
+      "revenue_tag": null,
       "debt_tags": [
         "LongTermDebtNoncurrent",
         "LongTermDebtCurrent"
@@ -48,13 +48,13 @@
     },
     {
       "fy": 2022,
-      "revenue_usd": 5031790310,
-      "ebit_usd": 387527037,
-      "interest_expense_usd": 199515023,
-      "total_debt_usd": 3797257306,
-      "total_assets_usd": 7494751897,
-      "equity_usd": 1029943289,
-      "icr": 1.942345148615701,
+      "revenue_usd": 435202148,
+      "ebit_usd": 50805347,
+      "interest_expense_usd": 18136976,
+      "total_debt_usd": 267585459,
+      "total_assets_usd": 769290330,
+      "equity_usd": 222641562,
+      "icr": 2.8012027473598686,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -64,13 +64,13 @@
     },
     {
       "fy": 2023,
-      "revenue_usd": 5143603131,
-      "ebit_usd": 820370442,
-      "interest_expense_usd": 220366717,
-      "total_debt_usd": 3874650138,
-      "total_assets_usd": 5162026967,
-      "equity_usd": 796451043,
-      "icr": 3.7227511176290746,
+      "revenue_usd": 457406652,
+      "ebit_usd": 91073806,
+      "interest_expense_usd": 18830216,
+      "total_debt_usd": 271505509,
+      "total_assets_usd": 657818592,
+      "equity_usd": 180300191,
+      "icr": 4.836577870375995,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -80,13 +80,13 @@
     },
     {
       "fy": 2024,
-      "revenue_usd": 5399939135,
-      "ebit_usd": 811538941,
-      "interest_expense_usd": 224019591,
-      "total_debt_usd": 3814423777,
-      "total_assets_usd": 6426074195,
-      "equity_usd": 503367323,
-      "icr": 3.622624866768907,
+      "revenue_usd": 499049542,
+      "ebit_usd": 134881929,
+      "interest_expense_usd": 19864121,
+      "total_debt_usd": 271963609,
+      "total_assets_usd": 800720478,
+      "equity_usd": 188626136,
+      "icr": 6.79022892581051,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -96,11 +96,11 @@
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.128878,
-    "margin_change_mean": 0.005788,
-    "margin_change_sd": 0.056629,
-    "revenue_growth_median": 0.043606,
-    "history_years": 5,
-    "used_sector_fallback": false
+    "margin_mean": 0.07,
+    "margin_change_mean": -0.002,
+    "margin_change_sd": 0.018,
+    "revenue_growth_median": 0.02,
+    "history_years": 3,
+    "used_sector_fallback": true
   }
 }

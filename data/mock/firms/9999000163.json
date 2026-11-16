@@ -1,0 +1,101 @@
+{
+  "cik": "9999000163",
+  "name": "Foxglove Systems Group",
+  "ticker": null,
+  "sector": "Services",
+  "status": "healthy",
+  "reasons": [
+    "ICR 4.15 in FY2024, at least 1",
+    "No more than one year below 1 in the last 3"
+  ],
+  "as_of_filing": {
+    "fiscal_year": 2024,
+    "filed": "2025-03-25",
+    "form": "10-K"
+  },
+  "years": [
+    {
+      "fy": 2020,
+      "revenue_usd": 14237404145,
+      "ebit_usd": 1158823057,
+      "interest_expense_usd": 323809656,
+      "total_debt_usd": 6579262829,
+      "total_assets_usd": 19611289761,
+      "equity_usd": 4554768366,
+      "icr": 3.578716803306199,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2021,
+      "revenue_usd": 14961629091,
+      "ebit_usd": 564716883,
+      "interest_expense_usd": 317804612,
+      "total_debt_usd": 6397288989,
+      "total_assets_usd": 16275697482,
+      "equity_usd": 5359989651,
+      "icr": 1.7769310503272369,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2022,
+      "revenue_usd": 15507460192,
+      "ebit_usd": 1305758438,
+      "interest_expense_usd": 347220306,
+      "total_debt_usd": 6306142949,
+      "total_assets_usd": 22368806600,
+      "equity_usd": 6003145758,
+      "icr": 3.76060505516633,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2023,
+      "revenue_usd": 16862314062,
+      "ebit_usd": 1306809564,
+      "interest_expense_usd": 335918118,
+      "total_debt_usd": 6138100195,
+      "total_assets_usd": 19007991015,
+      "equity_usd": 5145569086,
+      "icr": 3.8902622215810343,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    },
+    {
+      "fy": 2024,
+      "revenue_usd": 17521820673,
+      "ebit_usd": 1550534367,
+      "interest_expense_usd": 373706044,
+      "total_debt_usd": 6173882534,
+      "total_assets_usd": 31185690065,
+      "equity_usd": 10788165742,
+      "icr": 4.149074899628864,
+      "ebit_tag": "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
+      "revenue_tag": "Revenues",
+      "debt_tags": [
+        "LongTermDebt"
+      ]
+    }
+  ],
+  "rescue_inputs": {
+    "margin_mean": 0.073866,
+    "margin_change_mean": 0.001775,
+    "margin_change_sd": 0.037491,
+    "revenue_growth_median": 0.04499,
+    "history_years": 5,
+    "used_sector_fallback": false
+  }
+}

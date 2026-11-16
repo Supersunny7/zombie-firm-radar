@@ -1,100 +1,105 @@
 {
   "cik": "9999000099",
-  "name": "Applegarth Telecom Inc.",
+  "name": "Upperton Homes Group",
   "ticker": null,
-  "sector": "Transportation, Communications, Electric, Gas and Sanitary Services",
+  "sector": "Construction",
   "status": "healthy",
   "reasons": [
-    "ICR 2.93 in FY2024, at least 1",
+    "ICR 1.75 in FY2024, at least 1",
     "No more than one year below 1 in the last 3"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
-    "filed": "2025-03-28",
+    "filed": "2025-03-23",
     "form": "10-K"
   },
   "years": [
     {
       "fy": 2020,
-      "revenue_usd": 3584223966,
-      "ebit_usd": 247266710,
-      "interest_expense_usd": 70653045,
-      "total_debt_usd": 1366235920,
-      "total_assets_usd": 4539926034,
-      "equity_usd": 1318125360,
-      "icr": 3.4997318233064125,
+      "revenue_usd": 4047027305,
+      "ebit_usd": 254684595,
+      "interest_expense_usd": 122411775,
+      "total_debt_usd": 2403156786,
+      "total_assets_usd": 6159610550,
+      "equity_usd": 635104600,
+      "icr": 2.0805563435380297,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2021,
-      "revenue_usd": 3813812285,
-      "ebit_usd": 91665779,
-      "interest_expense_usd": 72784491,
-      "total_debt_usd": 1382407142,
-      "total_assets_usd": 3572048043,
-      "equity_usd": 347081481,
-      "icr": 1.2594136160133345,
+      "revenue_usd": 3826385403,
+      "ebit_usd": 295418096,
+      "interest_expense_usd": 121316773,
+      "total_debt_usd": 2326152768,
+      "total_assets_usd": 4509182139,
+      "equity_usd": 1212183007,
+      "icr": 2.4350968847481624,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2022,
-      "revenue_usd": 4026562135,
-      "ebit_usd": 494564570,
-      "interest_expense_usd": 78004046,
-      "total_debt_usd": 1433468715,
-      "total_assets_usd": 6298749938,
-      "equity_usd": 325096154,
-      "icr": 6.340242530496431,
+      "revenue_usd": 3840339978,
+      "ebit_usd": 335723093,
+      "interest_expense_usd": 123895085,
+      "total_debt_usd": 2292107215,
+      "total_assets_usd": 4817690137,
+      "equity_usd": 1151467449,
+      "icr": 2.7097369762488963,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2023,
-      "revenue_usd": 4322060354,
-      "ebit_usd": 563779328,
-      "interest_expense_usd": 83085994,
-      "total_debt_usd": 1456675367,
-      "total_assets_usd": 5403656549,
-      "equity_usd": 515218727,
-      "icr": 6.785491764111289,
+      "revenue_usd": 3748007496,
+      "ebit_usd": 389489588,
+      "interest_expense_usd": 135469166,
+      "total_debt_usd": 2409189722,
+      "total_assets_usd": 5378658962,
+      "equity_usd": 271068660,
+      "icr": 2.875116157428769,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     },
     {
       "fy": 2024,
-      "revenue_usd": 4696264508,
-      "ebit_usd": 264748014,
-      "interest_expense_usd": 90280166,
-      "total_debt_usd": 1470963978,
-      "total_assets_usd": 8355382177,
-      "equity_usd": 2690797070,
-      "icr": 2.932515808621796,
+      "revenue_usd": 3635496905,
+      "ebit_usd": 239139749,
+      "interest_expense_usd": 136561746,
+      "total_debt_usd": 2361617604,
+      "total_assets_usd": 4612199511,
+      "equity_usd": 1508347221,
+      "icr": 1.751147418692201,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
-        "LongTermDebt"
+        "LongTermDebtNoncurrent",
+        "LongTermDebtCurrent"
       ]
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.080533,
-    "margin_change_mean": -0.003153,
-    "margin_change_sd": 0.075905,
-    "revenue_growth_median": 0.068721,
+    "margin_mean": 0.079451,
+    "margin_change_mean": 0.000712,
+    "margin_change_sd": 0.026032,
+    "revenue_growth_median": -0.027031,
     "history_years": 5,
     "used_sector_fallback": false
   }
