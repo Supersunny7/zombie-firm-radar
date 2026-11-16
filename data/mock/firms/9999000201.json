@@ -5,7 +5,7 @@
   "sector": "Manufacturing",
   "status": "endangered",
   "reasons": [
-    "ICR below 1 in the most recent year (FY2024, 0.74)"
+    "ICR below 1 in the most recent year (FY2024, -2.46)"
   ],
   "as_of_filing": {
     "fiscal_year": 2024,
@@ -16,12 +16,12 @@
     {
       "fy": 2020,
       "revenue_usd": 402000000,
-      "ebit_usd": 36500000,
-      "interest_expense_usd": 3400000,
-      "total_debt_usd": 55000000,
+      "ebit_usd": 22100000,
+      "interest_expense_usd": 6700000,
+      "total_debt_usd": 95000000,
       "total_assets_usd": 360000000,
       "equity_usd": 150000000,
-      "icr": 10.735294117647058,
+      "icr": 3.298507462686567,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -32,12 +32,12 @@
     {
       "fy": 2021,
       "revenue_usd": 411000000,
-      "ebit_usd": 38200000,
-      "interest_expense_usd": 3400000,
-      "total_debt_usd": 54000000,
+      "ebit_usd": 22600000,
+      "interest_expense_usd": 6800000,
+      "total_debt_usd": 97000000,
       "total_assets_usd": 365000000,
       "equity_usd": 158000000,
-      "icr": 11.235294117647058,
+      "icr": 3.323529411764706,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -48,12 +48,12 @@
     {
       "fy": 2022,
       "revenue_usd": 423000000,
-      "ebit_usd": 39000000,
-      "interest_expense_usd": 3600000,
-      "total_debt_usd": 56000000,
+      "ebit_usd": 23300000,
+      "interest_expense_usd": 6900000,
+      "total_debt_usd": 98000000,
       "total_assets_usd": 370000000,
       "equity_usd": 166000000,
-      "icr": 10.833333333333334,
+      "icr": 3.3768115942028984,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -64,12 +64,12 @@
     {
       "fy": 2023,
       "revenue_usd": 431000000,
-      "ebit_usd": 38400000,
-      "interest_expense_usd": 3700000,
-      "total_debt_usd": 55000000,
+      "ebit_usd": 23700000,
+      "interest_expense_usd": 7000000,
+      "total_debt_usd": 99000000,
       "total_assets_usd": 372000000,
       "equity_usd": 172000000,
-      "icr": 10.378378378378379,
+      "icr": 3.3857142857142857,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -80,12 +80,12 @@
     {
       "fy": 2024,
       "revenue_usd": 438000000,
-      "ebit_usd": 2900000,
-      "interest_expense_usd": 3900000,
-      "total_debt_usd": 57000000,
+      "ebit_usd": -17500000,
+      "interest_expense_usd": 7100000,
+      "total_debt_usd": 100000000,
       "total_assets_usd": 375000000,
-      "equity_usd": 160000000,
-      "icr": 0.7435897435897436,
+      "equity_usd": 150000000,
+      "icr": -2.464788732394366,
       "ebit_tag": "OperatingIncomeLoss",
       "revenue_tag": "Revenues",
       "debt_tags": [
@@ -95,9 +95,9 @@
     }
   ],
   "rescue_inputs": {
-    "margin_mean": 0.074331,
-    "margin_change_mean": -0.021044,
-    "margin_change_sd": 0.04101,
+    "margin_mean": 0.036016,
+    "margin_change_mean": -0.023732,
+    "margin_change_sd": 0.047474,
     "revenue_growth_median": 0.02065,
     "history_years": 5,
     "used_sector_fallback": false
