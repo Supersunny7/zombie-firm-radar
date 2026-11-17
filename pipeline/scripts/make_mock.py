@@ -563,19 +563,19 @@ ACT1_SPECS = [
     dict(  # temporary profit drop: healthy margin, then one bad year; low debt
         kind="act1_temporary_drop", expected="endangered", cik="9999000201",
         name="Harrowgate Tooling Co.", sic="3559", first_filing_year=1998, filed="2025-02-27",
-        rows=[(2020, 402, 36.5, 3.4, 55, 360, 150),
-              (2021, 411, 38.2, 3.4, 54, 365, 158),
-              (2022, 423, 39.0, 3.6, 56, 370, 166),
-              (2023, 431, 38.4, 3.7, 55, 372, 172),
-              (2024, 438, 2.9, 3.9, 57, 375, 160)]),
+        rows=[(2020, 402, 22.1, 6.7, 95, 360, 150),
+              (2021, 411, 22.6, 6.8, 97, 365, 158),
+              (2022, 423, 23.3, 6.9, 98, 370, 166),
+              (2023, 431, 23.7, 7.0, 99, 372, 172),
+              (2024, 438, -17.5, 7.1, 100, 375, 150)]),
     dict(  # too much debt: flat EBIT, interest rising every year, high debt
         kind="act1_too_much_debt", expected="zombie", cik="9999000202",
         name="Penrose Steelworks Group", sic="3310", first_filing_year=1994, filed="2025-02-18",
-        rows=[(2020, 905, 52.4, 44.2, 640, 1050, 300),
-              (2021, 902, 51.8, 49.0, 690, 1070, 285),
-              (2022, 898, 52.9, 54.0, 750, 1100, 265),
-              (2023, 907, 52.1, 59.9, 810, 1130, 240),
-              (2024, 901, 52.5, 66.1, 870, 1160, 215)]),
+        rows=[(2020, 905, 52.4, 49.0, 700, 1300, 320),
+              (2021, 902, 51.8, 60.0, 760, 1330, 300),
+              (2022, 898, 52.9, 68.0, 830, 1370, 280),
+              (2023, 907, 52.1, 75.0, 910, 1410, 255),
+              (2024, 901, 52.5, 82.0, 1000, 1450, 230)]),
     dict(  # broken business: EBIT negative in 4 of 5 years, shrinking revenue
         kind="act1_broken_business", expected="zombie", cik="9999000203",
         name="Wickersham Appliance Corp.", sic="3630", first_filing_year=1991, filed="2025-03-06",
@@ -611,6 +611,68 @@ def make_act1_firms():
     return firms
 
 
+# PROVISIONAL: stand-in for the rescue engine until rescue-engine v2 exists. Replace this block
+# with the real engine once it can be run from Python (or a shared fixture). Assumptions: 3-year
+# projection from the latest year; revenue flat; debt constant; interest = latest implied rate x
+# debt; margin reverts toward the 5-year mean margin with kappa 0.3 per year; CUT COSTS adds
+# 0.08 x (revenue - EBIT) to year-0 EBIT and that gain reverts with the margin; CUT DEBT halves
+# debt and interest; a tool "holds" if ICR >= 1 in all 3 years.
+PROVISIONAL_KAPPA = 0.3
+PROVISIONAL_TOOLS = ("do_nothing", "cut_costs", "cut_debt")
+# (do nothing, cut costs, cut debt): True = holds all 3 years, False = fails at least one year.
+# Extra per-year conditions are in PROVISIONAL_YEAR_RULES.
+ACT1_EXPECTED_HOLDS = {
+    "act1_temporary_drop": (False, True, False),
+    "act1_too_much_debt": (False, False, True),
+    "act1_broken_business": (False, False, False),
+}
+# Year-level requirements: (tool, year) -> must the ICR be >= 1 in that year (1-based).
+PROVISIONAL_YEAR_RULES = {
+    "act1_temporary_drop": {("do_nothing", 1): False, ("cut_debt", 1): False},
+    "act1_too_much_debt": {("cut_costs", 1): True},
+}
+
+
+def provisional_projection(doc):
+    """PROVISIONAL. Returns {tool: [ICR year 1, 2, 3]} for the firm file doc."""
+    last = doc["years"][-1]
+    rev, ebit, debt = last["revenue_usd"], last["ebit_usd"], last["total_debt_usd"]
+    interest = last["interest_expense_usd"] / debt * debt  # latest implied rate x debt
+    mean = doc["rescue_inputs"]["margin_mean"]
+    out = {}
+    for tool in PROVISIONAL_TOOLS:
+        e0 = ebit + (0.08 * (rev - ebit) if tool == "cut_costs" else 0.0)
+        i = interest / 2 if tool == "cut_debt" else interest
+        m, icrs = e0 / rev, []
+        for _ in range(3):
+            m += PROVISIONAL_KAPPA * (mean - m)
+            icrs.append(icr(m * rev, i))
+        out[tool] = icrs
+    return out
+
+
+def provisional_check_act1(firms, firm_files):
+    """PROVISIONAL. Each Act 1 firm must have exactly the tool outcomes in ACT1_EXPECTED_HOLDS."""
+    table = {}
+    for f in firms:
+        if not f["kind"].startswith("act1_"):
+            continue
+        proj = provisional_projection(firm_files[f["cik"]])
+        table[f["name"]] = proj
+        holds = {t: all(v is not None and v >= 1 for v in proj[t]) for t in PROVISIONAL_TOOLS}
+        want = dict(zip(PROVISIONAL_TOOLS, ACT1_EXPECTED_HOLDS[f["kind"]]))
+        if holds != want:
+            raise MockError(f"{f['name']} (PROVISIONAL tool check): holds {holds}, expected {want}; ICR {proj}")
+        for (tool, year), must in PROVISIONAL_YEAR_RULES.get(f["kind"], {}).items():
+            v = proj[tool][year - 1]
+            if (v is not None and v >= 1) != must:
+                raise MockError(f"{f['name']} (PROVISIONAL tool check): {tool} year {year} ICR {v}, "
+                                f"expected {'>= 1' if must else '< 1'}")
+        if f["kind"] == "act1_too_much_debt" and all(v >= 1 for v in proj["cut_costs"]):
+            raise MockError(f"{f['name']} (PROVISIONAL tool check): cut_costs must fail in year 2 or 3")
+    return table
+
+
 def check_act1(firms, index_rows, firm_files):
     """Each Act 1 firm must show its diagnosis in the finished data. Raises MockError otherwise."""
     rows = {r["cik"]: r for r in index_rows}
@@ -627,8 +689,8 @@ def check_act1(firms, index_rows, firm_files):
             mean_margin = doc["rescue_inputs"]["margin_mean"]
             last = ys[-1]
             if not (last["ebit_usd"] < 0.25 * mean_margin * last["revenue_usd"]
-                    and last["icr"] < 1 and last["total_debt_usd"] < 0.2 * last["revenue_usd"]
-                    and all(y["icr"] > 3 for y in ys[:-1])):
+                    and last["icr"] < 1 and last["total_debt_usd"] < 0.25 * last["revenue_usd"]
+                    and all(y["icr"] > 3 for y in ys[:-1]) and last["ebit_usd"] < 0):
                 raise MockError(f"{f['cik']}: not a temporary profit drop")
         elif f["kind"] == "act1_too_much_debt":
             ebits = [y["ebit_usd"] for y in ys]
@@ -1011,6 +1073,7 @@ def main():
         raise MockError(f"expected {N_FIRMS} firms, built {len(index_rows)}")
     class_counts = check_shaped_classes(firms, index_rows, firm_files)
     check_act1(firms, index_rows, firm_files)
+    act1_table = provisional_check_act1(firms, firm_files)
     index = {
         "meta": {
             "generated_at": GENERATED_AT,
@@ -1070,6 +1133,10 @@ def main():
         if f["kind"].startswith("act1_"):
             doc = firm_files[f["cik"]]
             print(f"Act 1: {f['name']} ({f['kind']}), status = {doc['status']}")
+    print("Act 1 tool check (PROVISIONAL until rescue-engine v2): ICR in years 1 / 2 / 3")
+    for name, proj in act1_table.items():
+        for tool, v in proj.items():
+            print(f"  {name:<28}{tool:<12}" + "  ".join(f"{x:>7.2f}" for x in v))
     ash = firm_files["9999000001"]
     print(f"Ashgrove Works: status = {ash['status']}")
     for reason in ash["reasons"]:
