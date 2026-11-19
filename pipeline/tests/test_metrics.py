@@ -359,3 +359,121 @@ def test_property_10_eligibility_flags_follow_the_contract(firm) -> None:
     assert (firm.total_debt_usd is None) == (debt is None)
     if debt is not None:
         assert firm.total_debt_usd == debt
+# ---------------------------------------------------------------------------
+# Property 11: own-history rescue inputs match a reference computation
+# ---------------------------------------------------------------------------
+from hypothesis import strategies as st  # noqa: E402
+from pipeline.metrics import RawStats, finalize_rescue_inputs, own_history_stats  # noqa: E402
+
+_REVENUE = st.one_of(
+    st.none(),
+    st.just(0),
+    st.integers(min_value=-100, max_value=1000),
+    st.integers(min_value=1, max_value=10**9),
+)
+_EBIT = st.one_of(st.none(), st.integers(min_value=-(10**9), max_value=10**9))
+
+
+@st.composite
+def _history_case(draw):
+    first = draw(st.integers(min_value=1995, max_value=2030))
+    n = draw(st.integers(min_value=1, max_value=8))
+    rows = [
+        {**_row(), "revenue": draw(_REVENUE), "ebit": draw(_EBIT)} for _ in range(n)
+    ]
+    fys = list(range(first, first + n))
+    # window: the last 1..5 years (Firm_Window); earlier years are outside it
+    size = draw(st.integers(min_value=1, max_value=min(5, n)))
+    return build_extract(rows, first).years, fys[-size:]
+
+
+def _reference(years, window):
+    usable = {
+        y.fy: (y.revenue, y.ebit / y.revenue)
+        for y in years
+        if y.fy in window and y.revenue is not None and y.revenue > 0 and y.ebit is not None
+    }
+    count = len(usable)
+    pairs = [fy for fy in usable if fy - 1 in usable]
+    if count < 4 or len(pairs) < 2:
+        return None, count
+    margins = [m for _, m in usable.values()]
+    changes = [usable[fy][1] - usable[fy - 1][1] for fy in pairs]
+    growth = sorted(usable[fy][0] / usable[fy - 1][0] - 1 for fy in pairs)
+    mean_c = sum(changes) / len(changes)
+    sd = math.sqrt(sum((c - mean_c) ** 2 for c in changes) / (len(changes) - 1))
+    mid = len(growth) // 2
+    med = growth[mid] if len(growth) % 2 else (growth[mid - 1] + growth[mid]) / 2
+    return (sum(margins) / count, mean_c, sd, med), count
+
+
+@settings(settings.get_profile("pipeline"))
+@given(_history_case())
+def test_property_11_own_history_rescue_inputs_match_reference(case) -> None:
+    """Feature: data-pipeline, Property 11: Own-history rescue inputs match a reference computation.
+    Validates: Requirements 11.1, 11.2, 11.3, 11.4, 11.5.
+    """
+    years, window = case
+    own = own_history_stats(years, window)
+    expected, count = _reference(years, window)
+    assert own.history_years == count and 0 <= count <= 5  # 11.1
+    sector = RawStats(0.11, 0.22, 0.33, 0.44)
+    result = finalize_rescue_inputs(own, {"S": sector}, "S")
+    assert result.history_years == count
+    if expected is None:  # 11.4, 11.5
+        assert own.stats is None
+        assert result.used_sector_fallback is True
+        assert (
+            result.margin_mean, result.margin_change_mean,
+            result.margin_change_sd, result.revenue_growth_median,
+        ) == (0.11, 0.22, 0.33, 0.44)
+    else:  # 11.2, 11.3
+        assert own.stats is not None
+        got = (
+            own.stats.margin_mean, own.stats.margin_change_mean,
+            own.stats.margin_change_sd, own.stats.revenue_growth_median,
+        )
+        assert got == pytest.approx(expected, rel=1e-9, abs=1e-12)
+        assert result.used_sector_fallback is False
+        assert (
+            result.margin_mean, result.margin_change_mean,
+            result.margin_change_sd, result.revenue_growth_median,
+        ) == tuple(round(v, 6) for v in got)
+
+
+# ---------------------------------------------------------------------------
+# Property 12: sector medians cover every output sector
+# ---------------------------------------------------------------------------
+import statistics  # noqa: E402
+
+_STAT = st.floats(min_value=-1, max_value=1, allow_nan=False, allow_infinity=False)
+_RAW = st.builds(RawStats, _STAT, _STAT, _STAT, _STAT)
+_FIELDS = ("margin_mean", "margin_change_mean", "margin_change_sd", "revenue_growth_median")
+
+
+@st.composite
+def _sector_case(draw):
+    names = draw(st.lists(st.sampled_from("ABCDEFGH"), min_size=1, max_size=6, unique=True))
+    stats = {n: draw(st.lists(_RAW, max_size=4)) for n in names}
+    if not any(stats.values()):
+        stats[names[0]] = draw(st.lists(_RAW, min_size=1, max_size=4))
+    return stats
+
+
+@settings(max_examples=100, deadline=None)
+@given(_sector_case())
+def test_property_12_sector_medians_cover_every_output_sector(stats) -> None:
+    """**Validates: Requirements 11.6, 11.7, 11.8, 11.10, 11.12**"""
+    out = sector_medians(stats)
+    assert set(out) == set(stats)
+    everything = [s for items in stats.values() for s in items]
+    for sector, items in stats.items():
+        source = items or everything
+        for f in _FIELDS:
+            expected = round(statistics.median(getattr(s, f) for s in source), 6)
+            got = getattr(out[sector], f)
+            assert got is not None and got == expected
+        fb = finalize_rescue_inputs(OwnHistory(None, 2), out, sector)
+        assert fb.used_sector_fallback is True
+        for f in _FIELDS:
+            assert getattr(fb, f) == round(getattr(out[sector], f), 6)
