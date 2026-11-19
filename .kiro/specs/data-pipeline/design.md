@@ -241,7 +241,7 @@ Per-firm cost: about 18 tags `annual_facts` scans plus `dedupe`. The existing `e
 ```python
 FIRM_COLUMNS = ("cik","name","tickers","sic","sic_division","first_filing_date","last_10k_date","last_filing_date",
                 "is_financial","is_utility","no_sic","age_under_10","parse_error")
-PANEL_COLUMNS = ("cik","fy","fye","age_at_fy") + per-field ("<f>","<f>_tag","<f>_end","<f>_accn","<f>_url") + ("icr","zombie_flag")
+PANEL_COLUMNS = ("cik","fy","fye","age_at_fy") + per-field ("<f>","<f>_tag","<f>_end","<f>_accn","<f>_url") + ("icr","zombie_flag","gap_has_balance_sheet")
 EVENT_COLUMNS = ("cik","date","form","item","event_type","accession","url","source_member")
 
 class GzipCsvWriter: ...     # context manager; gzip.GzipFile(mtime=0), newline="\n", UTF-8, header row, csv.QUOTE_MINIMAL
