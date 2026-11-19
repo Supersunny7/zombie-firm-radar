@@ -426,3 +426,7 @@
 2026-11-18 | data-pipeline | 24.3 | Added Property 36 test that the streaming digest does not depend on chunking. | pipeline/tests/test_bulk_download.py
 2026-11-18 | data-pipeline | 25.1 | Added the streaming zip member reader: sorted order, one member at a time, per-member errors, ignored-name counts. | pipeline/bulk/reader.py
 2026-11-18 | data-pipeline | 25.2 | Added 7 example tests for order, ignored names, corrupt members and the one-member-alive check. | pipeline/tests/test_bulk_reader.py
+2026-11-18 | data-pipeline | 26.1 | Added submissions aggregate with order-independent merge, event rules, filing URLs and orphan page handling. | pipeline/bulk/submissions.py
+2026-11-18 | data-pipeline | 26.2 | Added 10 example tests for older-page bankruptcy, item splitting, form matching, dates and parse errors. | pipeline/tests/test_bulk_submissions.py
+2026-11-18 | data-pipeline | 26.3 | Added Property 32 test for event de-duplication by accession and type. | pipeline/tests/test_bulk_submissions.py
+2026-11-18 | data-pipeline | 26.4 | Added Property 33 test that member order does not change the result. | pipeline/tests/test_bulk_submissions.py

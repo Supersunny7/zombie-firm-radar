@@ -172,18 +172,18 @@ Shortest path to `pipeline/reports/data_shape.md`. Tasks 1 to 6 above are shared
     - Sorted order whatever the zip order; names matching neither pattern are ignored and counted; a corrupt member is yielded as an error and the next member is still read; an instrumented reader proves no more than one member is alive at once on a tiny in-memory zip (22.6)
     - _Requirements: 22.1, 22.2, 22.4, 22.5, 22.6, 28.7_
   - Commit message: `feat(data-pipeline): add streaming zip member reader`
-- [ ] 26. Submissions aggregate and events extractor (`pipeline/bulk/submissions.py`)
-  - [ ] 26.1 Create `pipeline/bulk/submissions.py`
+- [x] 26. Submissions aggregate and events extractor (`pipeline/bulk/submissions.py`)
+  - [x] 26.1 Create `pipeline/bulk/submissions.py`
     - `Filing`, `EventRow`, `SubAgg`, `EVENT_RULES` (one table: 8-K and 8-K/A with item 1.03 or 2.01; forms 25, 25-NSE; forms 15-12B, 15-12G, 15-15D; exact form match), `filing_rows` (main file reads `filings.recent`, older page reads the top-level arrays), `event_rows` (pure; splits `items` on commas), `filing_url`, `merge_member` (min, max, union; order-independent), `aggregate` (skips orphan older pages and lists them; logs a member that fails to parse and sets `parse_error`)
     - Events keyed by (accession, event type); dates and tickers from every page; `last_10k` from forms `10-K` and `10-K/A`
     - _Requirements: 23.3, 23.4, 25.1, 25.2, 25.3, 25.4, 25.5, 25.6, 24.7_
-  - [ ] 26.2 Write example tests `pipeline/tests/test_bulk_submissions.py`
+  - [x] 26.2 Write example tests `pipeline/tests/test_bulk_submissions.py`
     - A firm whose bankruptcy 8-K (item 1.03) exists only on an older page is found (28.6); items "1.03,2.01" give two rows; each of the five form types gives the right event type and `25-NSE/A`, `15F-12B` and `10-K` give none; an 8-K/A is included with its form recorded; the same accession on a page and the main file gives one row; first, last and last 10-K dates take the min and max over all pages; an orphan older page is skipped and listed; a member that fails to parse sets `parse_error` and the run continues; URL format
     - _Requirements: 25.1, 25.2, 25.3, 25.4, 25.6, 22.4, 24.7, 28.5, 28.6_
-  - [ ]* 26.3 Write property test for event de-duplication
+  - [x]* 26.3 Write property test for event de-duplication
     - **Property 32: Events are de-duplicated by accession and type**
     - **Validates: Requirements 25.2, 25.4, 28.5**
-  - [ ]* 26.4 Write property test for member order
+  - [x]* 26.4 Write property test for member order
     - **Property 33: Member order does not change the result**
     - **Validates: Requirements 22.3, 25.1, 25.5, 28.6**
   - Commit message: `feat(data-pipeline): add submissions aggregate and events extractor`
