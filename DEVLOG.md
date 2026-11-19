@@ -447,3 +447,6 @@
 2026-11-18 | data-pipeline | 29.6 | Added Property 34 test that outcome categories partition the zombies. | pipeline/tests/test_bulk_report.py
 2026-11-18 | data-pipeline | 29.7 | Added Property 35 test for the breaking-rate histogram and thresholds against a brute force. | pipeline/tests/test_bulk_report.py
 2026-11-18 | data-pipeline | 29.8 | Added Property 37 test that report output is deterministic whatever the row order. | pipeline/tests/test_bulk_report.py
+2026-11-18 | data-pipeline | 30.1 | Wired the report and all commands into the bulk CLI; all stops at the first failing step. | pipeline/bulk/cli.py, pipeline/bulk/report.py, pipeline/bulk/download.py
+2026-11-18 | data-pipeline | 30.2 | Added static checks for the single icr and extract definitions, no frontend imports, no writes under data or web, and unchanged dependencies. | pipeline/tests/test_bulk_static.py
+2026-11-18 | data-pipeline | 30.3 | Added an offline end-to-end test of all, a second run with zero requests, and report alone. | pipeline/tests/test_bulk_cli.py

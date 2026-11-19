@@ -16,16 +16,16 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 
-import requests
-
 from pipeline.bulk.download import (
     COMPANYFACTS_URL,
     SUBMISSIONS_URL,
     BulkFile,
     fetch_bulk,
+    new_session,
     read_record,
     zip_path,
 )
+from pipeline.bulk import report as report_mod
 from pipeline.bulk.panel import FirmFacts, extract_panel, gap_panel
 from pipeline.bulk.reader import MemberStats, iter_members
 from pipeline.bulk.submissions import EVENT_TYPES, Aggregates, aggregate
@@ -238,13 +238,9 @@ def run_panel(paths: BulkPaths, now: datetime, bulk: dict[str, Any]) -> None:
     })
 
 
-def run_report_step(paths: BulkPaths, bulk: dict[str, Any]) -> None:
-    """Filled in by task 30."""
-    try:
-        from pipeline.bulk import report as report_mod
-    except ImportError as exc:
-        raise PipelineError("the report step is not available yet", None) from exc
-    report_mod.run(paths, bulk)  # pragma: no cover - added with the report module
+def run_report_step(paths: BulkPaths, bulk: dict[str, Any], now: datetime) -> None:
+    """Read the three tables and write data_shape.md and the section CSVs (Requirement 26)."""
+    bulk["report"] = {"files": report_mod.run(paths.out_dir, paths.zip_dir, paths.reports_dir, now.date().isoformat())}
 
 
 def main(
@@ -284,11 +280,11 @@ def main(
     try:
         if ns.command in ("download", "all"):
             run_download(paths, email=email, rate=ns.rate, use_cached=ns.use_cached,
-                         session=session or requests.Session(), now=now, sleep=sleep, stats=stats, bulk=bulk)
+                         session=session or new_session(), now=now, sleep=sleep, stats=stats, bulk=bulk)
         if ns.command in ("panel", "all"):
             run_panel(paths, now, bulk)
         if ns.command in ("report", "all"):
-            run_report_step(paths, bulk)
+            run_report_step(paths, bulk, now)
     except PipelineError as exc:
         code = exc.exit_code
         report.failure = {"requirement": exc.requirement, "message": redact(exc.message, secrets)}

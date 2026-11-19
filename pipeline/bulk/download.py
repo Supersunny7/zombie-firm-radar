@@ -51,6 +51,11 @@ class BulkFile:
     from_cache: bool
 
 
+def new_session() -> Any:
+    """The real HTTP session; the only place outside tests that builds one."""
+    return requests.Session()
+
+
 def zip_path(cache_dir: Path, url: str) -> Path:
     return cache_dir / url.rsplit("/", 1)[-1]
 

@@ -199,3 +199,59 @@ def test_panel_output_is_byte_identical_on_a_second_run(tmp_path: Path) -> None:
     first = {n: (tmp_path / "out" / n).read_bytes() for n in ("panel.csv.gz", "firms.csv.gz", "events.csv.gz")}
     _run(tmp_path, "panel", session)
     assert first == {n: (tmp_path / "out" / n).read_bytes() for n in first}
+
+
+# --- report and all (task 30) ------------------------------------------------------------
+REPORT_FILES = {
+    "data_shape.md", "s1_firm_counts.csv", "s2_zombies.csv", "s3_outcomes.csv", "s3_outcomes_cik.csv", "s4_reversals.csv",
+    "s5_zombie_then_bankrupt.csv", "s6_histogram.csv", "s6_thresholds.csv", "s7_data_quality.csv", "s8_largest_firms.csv",
+}
+
+
+def _report_files(tmp_path: Path) -> dict[str, bytes]:
+    d = tmp_path / "reports"
+    return {p.name: p.read_bytes() for p in sorted(d.iterdir())}
+
+
+def test_report_without_tables_exits_4_and_sends_no_request(tmp_path: Path) -> None:
+    session = StreamSession()
+    assert _run(tmp_path, "report", session, env={}) == 4  # no email needed: nothing goes to the network
+    assert session.requests == []
+    assert not (tmp_path / "reports").exists() or not list((tmp_path / "reports").iterdir())
+
+
+def test_all_runs_download_panel_and_report_offline(tmp_path: Path) -> None:
+    cf, sub = _world()
+    session = _session(cf, sub)
+    assert _run(tmp_path, "all", session) == 0
+    assert len(session.requests) == 2
+    assert set(_report_files(tmp_path)) == REPORT_FILES
+    assert {p.name for p in (tmp_path / "out").iterdir()} == {"panel.csv.gz", "firms.csv.gz", "events.csv.gz"}
+    text = (tmp_path / "reports" / "data_shape.md").read_text()
+    assert "Data: SEC EDGAR. Not investment advice." in text and "Run date: 2026-11-20" in text
+    assert f"{len(cf):,} bytes" in text  # the source block comes from the download record
+    rep = _report(tmp_path)
+    assert rep["exit_code"] == 0 and rep["bulk"]["command"] == "all"
+    assert sorted(rep["bulk"]["report"]["files"]) == sorted(REPORT_FILES)
+    first = _report_files(tmp_path)
+    tables = {n: (tmp_path / "out" / n).read_bytes() for n in ("panel.csv.gz", "firms.csv.gz", "events.csv.gz")}
+
+    # A second run inside 24 hours: zero requests, byte-identical tables and report.
+    assert _run(tmp_path, "all", session) == 0
+    assert len(session.requests) == 2
+    assert _report_files(tmp_path) == first
+    assert tables == {n: (tmp_path / "out" / n).read_bytes() for n in tables}
+
+    # `report` alone on the same tables gives the same report.
+    for f in (tmp_path / "reports").iterdir():
+        f.unlink()
+    assert _run(tmp_path, "report", StreamSession(), env={}) == 0
+    assert _report_files(tmp_path) == first
+
+
+def test_all_stops_at_the_first_failing_step_with_its_exit_code(tmp_path: Path) -> None:
+    cf, sub = _world()
+    bad = StreamResponse(200, {"Content-Length": str(len(cf) + 1)}, cf)
+    session = StreamSession({COMPANYFACTS_URL: [bad], SUBMISSIONS_URL: [StreamResponse(200, {}, sub)]})
+    assert _run(tmp_path, "all", session) == 3
+    assert len(session.requests) == 1 and not (tmp_path / "out").exists() and not (tmp_path / "reports").exists()

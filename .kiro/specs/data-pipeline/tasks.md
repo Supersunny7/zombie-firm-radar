@@ -250,14 +250,14 @@ Shortest path to `pipeline/reports/data_shape.md`. Tasks 1 to 6 above are shared
     - **Property 37: Report output is deterministic**
     - **Validates: Requirements 26.13**
   - Commit message: `feat(data-pipeline): add data shape report`
-- [ ] 30. `report` and `all` commands, static checks and offline end-to-end test
-  - [ ] 30.1 Wire `report` and `all` into `pipeline/bulk/cli.py`
+- [x] 30. `report` and `all` commands, static checks and offline end-to-end test
+  - [x] 30.1 Wire `report` and `all` into `pipeline/bulk/cli.py`
     - `report` reads the three tables and writes `pipeline/reports/data_shape.md` and the section CSVs; it exits 4 when a table is missing; `all` runs download, panel, report in order and stops at the first failure with that step's exit code
     - _Requirements: 20.1, 20.3, 26.1, 29.3_
-  - [ ] 30.2 Write `pipeline/tests/test_bulk_static.py`
+  - [x] 30.2 Write `pipeline/tests/test_bulk_static.py`
     - `.gitignore` contains `pipeline/out/` and `pipeline/.cache/`; `ebit / interest` appears only in `pipeline/metrics.py`; no file under `pipeline/bulk` imports `react` or `three`, and `requests` is imported only in `download.py`; `pipeline/requirements.txt` is unchanged (five pinned lines); `extract` in `facts.py` and `icr` in `metrics.py` are still defined once; no Phase 1 code writes under `data/` or `web/`
     - _Requirements: 8.1, 19.1, 29.1, 29.3, 29.5, 29.6_
-  - [ ] 30.3 Write an offline end-to-end test in `pipeline/tests/test_bulk_cli.py`
+  - [x] 30.3 Write an offline end-to-end test in `pipeline/tests/test_bulk_cli.py`
     - `all` on the tiny two-zip fixture with a `StreamSession`: exit 0; two requests; zips, records, three tables and the report in temp folders; a second run with fresh records sends zero requests and gives byte-identical tables and report; `report` alone after a `panel` gives the same report; the repository's `pipeline/.cache`, `pipeline/out`, `pipeline/reports` and `data` are unchanged after the test
     - _Requirements: 20.1, 21.5, 26.13, 28.1, 28.11_
   - Commit message: `test(data-pipeline): add bulk report command, static checks and end-to-end test`

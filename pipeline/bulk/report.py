@@ -441,3 +441,10 @@ def source_info(zip_dir: Path, run_date: str) -> SourceInfo:
         p = zip_path(zip_dir, url)
         return read_record(p) if p.is_file() else None
     return SourceInfo(run_date, rec(COMPANYFACTS_URL), rec(SUBMISSIONS_URL))
+
+
+def run(out_dir: Path, zip_dir: Path, reports_dir: Path, run_date: str) -> list[str]:
+    """Load the three tables from ``out_dir`` and write the report into ``reports_dir``.
+    Raises MissingBulkFileError when a table is missing. Returns the file names written."""
+    tables = load_tables(out_dir)
+    return write_report(build_sections(tables), source_info(zip_dir, run_date), reports_dir)
