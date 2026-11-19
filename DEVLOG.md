@@ -418,3 +418,6 @@
 2026-11-16 | data-pipeline | 6.6 | Added Property 10 eligibility-flags hypothesis test. | pipeline/tests/test_metrics.py
 2026-11-16 | data-pipeline | 6.7 | Added Property 11 test for own-history rescue inputs against a reference computation. | pipeline/tests/test_metrics.py
 2026-11-18 | data-pipeline | 6.8 | Added Property 12 sector-medians hypothesis test. | pipeline/tests/test_metrics.py
+2026-11-18 | data-pipeline | 23.1 | Added Phase 1 paths, bulk exceptions and the bulk field of the run report. | pipeline/config.py, pipeline/run_report.py
+2026-11-18 | data-pipeline | 23.2 | Added make_zip, year_facts, submissions builders and StreamSession; tree-hash check now watches pipeline/out and pipeline/reports. | pipeline/tests/builders.py, pipeline/tests/conftest.py
+2026-11-18 | data-pipeline | 23.3 | Added 9 example tests for Phase 1 config, run report redaction and the helpers. | pipeline/tests/test_bulk_config.py

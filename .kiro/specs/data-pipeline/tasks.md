@@ -139,16 +139,16 @@ Rules for every task:
 
 Shortest path to `pipeline/reports/data_shape.md`. Tasks 1 to 6 above are shared and done. Tasks 23 to 32 are Phase 1 and touch only new files, plus additive lines in `config.py` and `run_report.py`. Do not edit `extract()`, `icr()`, `universe.py` or `HttpClient.get()` (Requirement 29.5). Task 32 is a manual step for Frank.
 
-- [ ] 23. Phase 1 config additions, run report field and test helpers
-  - [ ] 23.1 Add the Phase 1 constants and exceptions to `pipeline/config.py` and the `bulk` field to `pipeline/run_report.py`
+- [x] 23. Phase 1 config additions, run report field and test helpers
+  - [x] 23.1 Add the Phase 1 constants and exceptions to `pipeline/config.py` and the `bulk` field to `pipeline/run_report.py`
     - `config.py`: `BULK_CACHE_DIR` (`pipeline/.cache/bulk`), `PHASE1_OUT_DIR` (`pipeline/out`), `PHASE1_REPORTS_DIR` (`pipeline/reports`); `BulkDownloadError` and `MissingBulkFileError` (subclasses of `PipelineError`). Additive lines only; `Config` and existing exceptions unchanged.
     - `run_report.py`: one new field `bulk: dict | None = None`, serialised and redacted by the existing code
     - _Requirements: 20.5, 21.7, 27.1, 29.5_
-  - [ ] 23.2 Add Phase 1 helpers to `pipeline/tests/builders.py` and a streaming fake to `pipeline/tests/conftest.py`
+  - [x] 23.2 Add Phase 1 helpers to `pipeline/tests/builders.py` and a streaming fake to `pipeline/tests/conftest.py`
     - `make_zip(members: dict[str, bytes]) -> bytes` (in-memory `zipfile`), `make_companyfacts(...)` (tags, years, units, forms, filed dates, accession numbers), `make_submissions_main(...)`, `make_submissions_page(...)`
     - `StreamSession`: `get(url, headers, timeout, stream)` returns an object with `status_code`, `headers`, `iter_content(chunk_size)` and `close()`; it can cut the stream short and counts requests
     - _Requirements: 17.1, 28.1_
-  - [ ] 23.3 Write example tests `pipeline/tests/test_bulk_config.py`
+  - [x] 23.3 Write example tests `pipeline/tests/test_bulk_config.py`
     - New constants point inside `pipeline/`; `pipeline/out` and `pipeline/.cache` are git-ignored (read `.gitignore`); `RunReport.to_json` with a `bulk` section contains no secret and redacts `api_key`; a run report without `bulk` is unchanged from before
     - _Requirements: 20.5, 21.7, 27.1, 29.3_
   - Commit message: `feat(data-pipeline): add phase 1 config, run report field and test helpers`

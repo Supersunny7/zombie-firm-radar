@@ -171,6 +171,44 @@ class FakeSession:
         return FakeResponse(status, resp_headers, body, url)
 
 
+class StreamResponse:
+    """Streaming response for bulk downloads: iter_content, headers, close (Phase 1)."""
+    def __init__(
+        self,
+        status_code: int,
+        headers: dict[str, str],
+        content: bytes,
+        *,
+        cut_after: int | None = None,
+    ) -> None:
+        self.status_code = status_code
+        self.headers = headers
+        self._content = content
+        self._cut_after = cut_after  # deliver only this many bytes, then end the stream
+        self.closed = False
+    def iter_content(self, chunk_size: int = 1 << 20):
+        data = self._content if self._cut_after is None else self._content[: self._cut_after]
+        for i in range(0, len(data), chunk_size):
+            yield data[i : i + chunk_size]
+    def close(self) -> None:
+        self.closed = True
+class StreamSession:
+    """Offline stand-in for requests.Session.get(..., stream=True). Counts requests.
+    `responses` maps url -> a list of StreamResponse (served in order, the last one repeats)
+    so a test can script 429 then 200. An unknown URL raises AssertionError.
+    """
+    def __init__(self, responses: dict[str, list[StreamResponse]] | None = None) -> None:
+        self.responses = {u: list(r) for u, r in (responses or {}).items()}
+        self.requests: list[dict[str, Any]] = []
+    def get(self, url: str, headers: dict[str, str] | None = None, timeout: Any = None, stream: bool = False, **_: Any):
+        self.requests.append({"url": url, "headers": dict(headers or {}), "timeout": timeout, "stream": stream})
+        queue = self.responses.get(url)
+        if not queue:
+            raise AssertionError(f"unrecorded URL {url}")
+        return queue.pop(0) if len(queue) > 1 else queue[0]
+@pytest.fixture
+def stream_session() -> StreamSession:
+    return StreamSession()
 @pytest.fixture
 def fake_session() -> FakeSession:
     return FakeSession()
@@ -202,6 +240,8 @@ def tmp_config(tmp_path: Path) -> Config:
 
 _WATCHED: tuple[Path, ...] = (
     REPO_ROOT / "pipeline" / ".cache",
+    REPO_ROOT / "pipeline" / "out",
+    REPO_ROOT / "pipeline" / "reports",
     REPO_ROOT / "data",
     *PROTECTED_DIRS,
 )

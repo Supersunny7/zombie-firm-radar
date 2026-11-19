@@ -25,6 +25,10 @@ MINIMUM_DIVISIONS = (
     "Transportation, Communications, Electric, Gas and Sanitary Services",
 )
 REDACTED = "[REDACTED]"
+# Phase 1 (bulk data shape): all paths stay inside pipeline/ (Requirement 20.5).
+BULK_CACHE_DIR: Path = REPO_ROOT / "pipeline" / ".cache" / "bulk"  # git-ignored zips and records
+PHASE1_OUT_DIR: Path = REPO_ROOT / "pipeline" / "out"  # git-ignored panel, firms, events
+PHASE1_REPORTS_DIR: Path = REPO_ROOT / "pipeline" / "reports"  # committed report and CSVs
 
 
 # --- typed exceptions -------------------------------------------------------
@@ -81,6 +85,15 @@ class ReportStepError(PipelineError):
     exit_code = 11
 
 
+class BulkDownloadError(PipelineError):
+    """A bulk zip could not be downloaded or failed its size or zip check (Phase 1, 21.3)."""
+    exit_code = 3
+class MissingBulkFileError(PipelineError):
+    """A needed bulk zip or Phase 1 table is not available (Phase 1, 20.4)."""
+    exit_code = 4
+class BulkWriteError(PipelineError):
+    """A Phase 1 output file could not be written (Phase 1)."""
+    exit_code = 5
 # --- config -----------------------------------------------------------------
 
 

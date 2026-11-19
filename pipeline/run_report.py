@@ -53,6 +53,7 @@ class RunReport:
             "fred": {"sent": 0, "cache_hits": 0, "retried": 0},
         }
     )
+    bulk: dict | None = None  # Phase 1 bulk section (Requirement 27); None for pipeline.run
 
     # --- mutators ---
 
