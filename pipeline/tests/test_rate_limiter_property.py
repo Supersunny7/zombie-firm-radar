@@ -57,7 +57,7 @@ def test_rate_limiter_never_exceeds_rate_in_any_one_second_window(rate, gap_list
         assert clock.t >= before  # never goes back in time
     # No more than k sends in any half-open 1-second window.
     for i in range(len(sends) - k):
-        assert sends[i + k] - sends[i] >= 1.0
+        assert sends[i + k] - sends[i] >= 1.0 - 1e-9  # float rounding, 1 ulp
     assert sends == sorted(sends)
 
 

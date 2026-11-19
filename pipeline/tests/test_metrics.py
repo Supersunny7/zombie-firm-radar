@@ -342,7 +342,9 @@ def test_property_10_eligibility_flags_follow_the_contract(firm) -> None:
     interest, debt = latest.interest, latest.total_debt
     # 10.1: implied_rate is non-null exactly when both are present and debt > 0.
     if interest is not None and debt is not None and debt > 0:
-        assert firm.implied_rate == interest / debt
+        ratio = interest / debt
+        # A ratio that overflows to infinity is not a usable rate: null.
+        assert firm.implied_rate == (ratio if math.isfinite(ratio) else None)
     else:
         assert firm.implied_rate is None
     # 10.2: shock_eligible only for a non-null, positive implied rate.

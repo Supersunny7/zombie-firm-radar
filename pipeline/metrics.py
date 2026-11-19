@@ -170,7 +170,9 @@ def implied_rate(latest: YearValues) -> float | None:
     """Interest / total debt, only when total debt > 0 (10.1). icr() is the one division."""
     if latest.interest is None:
         return None
-    return icr(latest.interest, latest.total_debt)
+    rate = icr(latest.interest, latest.total_debt)
+    # A ratio that overflows to infinity is not a usable rate (10.1: finite only).
+    return rate if rate is not None and math.isfinite(rate) else None
 
 
 def shock_eligible(rate: float | None) -> bool:
