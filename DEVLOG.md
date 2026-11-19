@@ -439,3 +439,11 @@
 2026-11-18 | data-pipeline | 27.7 | Added Property 31 test for age at a fiscal year against an anniversary count. | pipeline/tests/test_bulk_panel.py
 2026-11-18 | data-pipeline | 28.1 | Added the pipeline.bulk CLI with download and panel commands, preflight checks, exit codes, run report bulk section and progress lines. | pipeline/bulk/cli.py, pipeline/bulk/__main__.py
 2026-11-18 | data-pipeline | 28.2 | Added 14 example tests for preflight failures, a tiny two-zip run, the run report section and byte-identical output. | pipeline/tests/test_bulk_cli.py
+2026-11-18 | data-pipeline | 29.1 | Added the report helpers and sections 1, 2 and 7: firm counts, zombie counts and shares, data quality. | pipeline/bulk/report.py
+2026-11-18 | data-pipeline | 29.2 | Added outcome classification and sections 3, 4 and 5 with CIK list CSVs. | pipeline/bulk/report.py
+2026-11-18 | data-pipeline | 29.3 | Added breaking rate, histogram, thresholds and the 200 largest firms. | pipeline/bulk/report.py
+2026-11-18 | data-pipeline | 29.4 | Added Markdown rendering with source block and atomic CSV and report writing. | pipeline/bulk/report.py
+2026-11-18 | data-pipeline | 29.5 | Added 15 example tests for each report section, outcome precedence, histogram edges and deterministic output. | pipeline/tests/test_bulk_report.py
+2026-11-18 | data-pipeline | 29.6 | Added Property 34 test that outcome categories partition the zombies. | pipeline/tests/test_bulk_report.py
+2026-11-18 | data-pipeline | 29.7 | Added Property 35 test for the breaking-rate histogram and thresholds against a brute force. | pipeline/tests/test_bulk_report.py
+2026-11-18 | data-pipeline | 29.8 | Added Property 37 test that report output is deterministic whatever the row order. | pipeline/tests/test_bulk_report.py

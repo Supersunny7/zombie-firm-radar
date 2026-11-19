@@ -223,30 +223,30 @@ Shortest path to `pipeline/reports/data_shape.md`. Tasks 1 to 6 above are shared
     - Missing `SEC_CONTACT_EMAIL` exits 2 with zero requests; `panel` and `report` send zero requests; `panel` without a zip exits 4; a tiny two-zip fixture (a December firm, a January firm, a bankrupt firm with its 8-K on an older page, a financial firm, a firm with no submissions) produces the three tables in a temp folder with the expected row counts, flags and one bankruptcy event; the Run_Report `bulk` section has the expected counts; nothing is written outside the temp folders
     - _Requirements: 20.2, 20.3, 20.4, 20.5, 27.x, 28.1, 28.11_
   - Commit message: `feat(data-pipeline): add bulk download and panel commands`
-- [ ] 29. Data shape report (`pipeline/bulk/report.py`)
-  - [ ] 29.1 Create the report helpers and sections 1, 2 and 7
+- [x] 29. Data shape report (`pipeline/bulk/report.py`)
+  - [x] 29.1 Create the report helpers and sections 1, 2 and 7
     - `core_mask`, `present_mask`, `s1_firm_counts`, `s2_zombies` (both shares), `s7_data_quality` (all firms and Core_Firm_Year; December test on `fye` month; Gap_Rows that have a balance-sheet fact)
     - Uses the panel column `gap_has_balance_sheet` written in task 27
     - _Requirements: 26.1, 26.3, 26.4, 26.5, 26.10, 24.3_
-  - [ ] 29.2 Add sections 3, 4 and 5
+  - [x] 29.2 Add sections 3, 4 and 5
     - `classify_outcome` (pure; precedence bankruptcy, delisted_or_deregistered, stopped_filing, recovered, still_zombie, other_alive; event window after the zombie year's `fye` up to 2024-12-31), `s3_outcomes` (counts, CIK-list CSV, "filed item 2.01" column), `s4_recoveries_reversed`, `s5_zombie_then_bankrupt`
     - _Requirements: 26.6, 26.7, 26.8_
-  - [ ] 29.3 Add sections 6 and 8
+  - [x] 29.3 Add sections 6 and 8
     - `breaking_rate_pp`, `s6_breaking_rate` (latest year per firm and fixed FY2024; 0.5 pp buckets from -10 to +20 with underflow and overflow; below 1 to 5 pp; count of firms left out), `s8_largest_firms` (200 by maximum annual revenue, ties by CIK, zombie string FY2017 to FY2025)
     - _Requirements: 26.9, 26.11_
-  - [ ] 29.4 Add `render_markdown` and the writer for `pipeline/reports`
+  - [x] 29.4 Add `render_markdown` and the writer for `pipeline/reports`
     - Source block from the download records (or "unknown, no download record"), definitions, "Data: SEC EDGAR. Not investment advice." and the age-proxy note, one section per requirement 26.4 to 26.11, links to the section CSVs, deterministic formats (counts as integers, shares to 6 decimals in CSV), rows sorted by natural key, no timestamps other than the source block
     - _Requirements: 26.1, 26.2, 26.12, 26.13_
-  - [ ] 29.5 Write example tests `pipeline/tests/test_bulk_report.py`
+  - [x] 29.5 Write example tests `pipeline/tests/test_bulk_report.py`
     - Each section on a small hand-built panel: counts per year; both shares; the outcome precedence (a firm with a bankruptcy event and a recovered FY2024 icr is `bankruptcy`); stopped filing; item 2.01 column; histogram edges (exactly 0.5, -10, 20); a firm with debt 0 or interest 0 is left out and counted; the 200-firm ranking with a tie; deterministic rendering twice
     - _Requirements: 26.x, 28.10_
-  - [ ]* 29.6 Write property test for outcome categories
+  - [x]* 29.6 Write property test for outcome categories
     - **Property 34: Outcome categories partition the zombies**
     - **Validates: Requirements 26.6**
-  - [ ]* 29.7 Write property test for the breaking-rate histogram
+  - [x]* 29.7 Write property test for the breaking-rate histogram
     - **Property 35: Breaking-rate histogram and thresholds match a brute force**
     - **Validates: Requirements 26.9**
-  - [ ]* 29.8 Write property test for report determinism
+  - [x]* 29.8 Write property test for report determinism
     - **Property 37: Report output is deterministic**
     - **Validates: Requirements 26.13**
   - Commit message: `feat(data-pipeline): add data shape report`
