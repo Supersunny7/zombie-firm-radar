@@ -187,28 +187,28 @@ Shortest path to `pipeline/reports/data_shape.md`. Tasks 1 to 6 above are shared
     - **Property 33: Member order does not change the result**
     - **Validates: Requirements 22.3, 25.1, 25.5, 28.6**
   - Commit message: `feat(data-pipeline): add submissions aggregate and events extractor`
-- [ ] 27. Panel extractor and tables (`pipeline/bulk/panel.py`, `pipeline/bulk/tables.py`)
-  - [ ] 27.1 Create `pipeline/bulk/panel.py`
+- [x] 27. Panel extractor and tables (`pipeline/bulk/panel.py`, `pipeline/bulk/tables.py`)
+  - [x] 27.1 Create `pipeline/bulk/panel.py`
     - `age_at_fy`, `zombie_flags`, `field_facts` (maps `YearValues.sources` to fields by tag; EBIT fallback lists the pretax tag then the interest tag; debt lists its parts), `panel_row`, `extract_panel` (calls `annual_facts`, `dedupe`, `flow_by_fy`, `fiscal_year_ends`, `build_year`, `pick_instant` for cash and `metrics.icr` for FY2013 to FY2025; writes only FY2015 to FY2025, exactly 11 rows; a year without a Fiscal_Year_End is a Gap_Row), `gap_panel`
     - `gap_has_balance_sheet`: true on a Gap_Row when an instant fact of `Assets`, `StockholdersEquity`, a debt tag or cash has `compustat_fy(end)` equal to that year (false on every other row)
     - Must not call or change `extract()`; `facts.py` stays unchanged
     - _Requirements: 24.1, 24.2, 24.3, 24.4, 24.5, 24.6, 24.7, 24.8, 24.9_
-  - [ ] 27.2 Create `pipeline/bulk/tables.py`
+  - [x] 27.2 Create `pipeline/bulk/tables.py`
     - `FIRM_COLUMNS`, `PANEL_COLUMNS`, `EVENT_COLUMNS`, `cell` (None is empty, 0 is "0", booleans `true`/`false`), `GzipCsvWriter` (`mtime=0`, UTF-8, header, temp file then `os.replace`), `read_table`, `build_firm_row` (flags from `universe.py` ranges and `parse_sic`; `age_under_10` true for null first filing; a firm without a submissions record is kept with `no_sic` true and `entityName`)
     - _Requirements: 23.2, 23.3, 23.4, 23.5, 23.6, 24.9, 24.10_
-  - [ ] 27.3 Write example tests `pipeline/tests/test_bulk_panel.py`
+  - [x] 27.3 Write example tests `pipeline/tests/test_bulk_panel.py`
     - Gap year in the middle; a firm that stops filing in 2019 keeps 11 rows; a January year end maps to the prior FY; the EBIT fallback and its tag column; cash within 7 days and absent cash is empty; FY2013 and FY2014 `icr` feed the FY2015 and FY2016 flags and have no rows; accession and URL columns for a multi-fact debt value; a 0 value is "0" and a missing value is empty; `age_at_fy` on anniversary boundaries and 29 February; flag is false when any of three icr values is null; firm table flags for a financial, a utility, a missing-SIC and a young firm; no row removed for any flag; byte-identical gzip output on two writes
     - _Requirements: 23.1 to 23.6, 24.1 to 24.10, 28.9_
-  - [ ]* 27.4 Write property test for missing values
+  - [x]* 27.4 Write property test for missing values
     - **Property 28: Missing is never written as 0**
     - **Validates: Requirements 7.11, 24.2, 24.9**
-  - [ ]* 27.5 Write property test for panel completeness
+  - [x]* 27.5 Write property test for panel completeness
     - **Property 29: Every firm keeps all 11 rows and stays in the Firm_Table**
     - **Validates: Requirements 23.1, 23.6, 24.1**
-  - [ ]* 27.6 Write property test for the zombie flag
+  - [x]* 27.6 Write property test for the zombie flag
     - **Property 30: The yearly zombie flag matches the definition**
     - **Validates: Requirements 24.8, 28.4**
-  - [ ]* 27.7 Write property test for age at a fiscal year
+  - [x]* 27.7 Write property test for age at a fiscal year
     - **Property 31: Age at a fiscal year**
     - **Validates: Requirements 24.6**
   - Commit message: `feat(data-pipeline): add firm-year panel extractor and tables`

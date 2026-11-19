@@ -430,3 +430,10 @@
 2026-11-18 | data-pipeline | 26.2 | Added 10 example tests for older-page bankruptcy, item splitting, form matching, dates and parse errors. | pipeline/tests/test_bulk_submissions.py
 2026-11-18 | data-pipeline | 26.3 | Added Property 32 test for event de-duplication by accession and type. | pipeline/tests/test_bulk_submissions.py
 2026-11-18 | data-pipeline | 26.4 | Added Property 33 test that member order does not change the result. | pipeline/tests/test_bulk_submissions.py
+2026-11-18 | data-pipeline | 27.1 | Added panel extractor: fixed FY2015 to FY2025 rows, age at fiscal year, yearly zombie flag and per-field tag, date, accession and URL. | pipeline/bulk/panel.py
+2026-11-18 | data-pipeline | 27.2 | Added deterministic gzip CSV writer, column lists and Firm_Table row builder with flags. | pipeline/bulk/tables.py
+2026-11-18 | data-pipeline | 27.3 | Added 17 example tests for gaps, fiscal year ends, EBIT fallback, cash, flag look-back, firm flags and byte-identical output. | pipeline/tests/test_bulk_panel.py
+2026-11-18 | data-pipeline | 27.4 | Added Property 28 test that missing values are never written as 0. | pipeline/tests/test_bulk_panel.py
+2026-11-18 | data-pipeline | 27.5 | Added Property 29 test that every firm keeps 11 rows and stays in the Firm_Table. | pipeline/tests/test_bulk_panel.py
+2026-11-18 | data-pipeline | 27.6 | Added Property 30 test that the yearly zombie flag matches the definition. | pipeline/tests/test_bulk_panel.py
+2026-11-18 | data-pipeline | 27.7 | Added Property 31 test for age at a fiscal year against an anniversary count. | pipeline/tests/test_bulk_panel.py
