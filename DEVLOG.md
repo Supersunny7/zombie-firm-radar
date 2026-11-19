@@ -424,3 +424,5 @@
 2026-11-18 | data-pipeline | 24.1 | Added streaming bulk download with .part file, size and zip check, SHA-256 record and 24 hour rule. | pipeline/bulk/__init__.py, pipeline/bulk/download.py
 2026-11-18 | data-pipeline | 24.2 | Added 18 example tests for download size checks, freshness, stale refetch, retries and email redaction. | pipeline/tests/test_bulk_download.py
 2026-11-18 | data-pipeline | 24.3 | Added Property 36 test that the streaming digest does not depend on chunking. | pipeline/tests/test_bulk_download.py
+2026-11-18 | data-pipeline | 25.1 | Added the streaming zip member reader: sorted order, one member at a time, per-member errors, ignored-name counts. | pipeline/bulk/reader.py
+2026-11-18 | data-pipeline | 25.2 | Added 7 example tests for order, ignored names, corrupt members and the one-member-alive check. | pipeline/tests/test_bulk_reader.py

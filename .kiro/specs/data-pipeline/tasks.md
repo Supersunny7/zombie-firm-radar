@@ -164,11 +164,11 @@ Shortest path to `pipeline/reports/data_shape.md`. Tasks 1 to 6 above are shared
     - **Property 36: Streaming digest does not depend on chunking**
     - **Validates: Requirements 21.2, 21.4**
   - Commit message: `feat(data-pipeline): add streaming bulk file download`
-- [ ] 25. Streaming reader (`pipeline/bulk/reader.py`)
-  - [ ] 25.1 Create `pipeline/bulk/reader.py`
+- [x] 25. Streaming reader (`pipeline/bulk/reader.py`)
+  - [x] 25.1 Create `pipeline/bulk/reader.py`
     - `CIK_MEMBER`, `PAGE_MEMBER`, `member_names` (sorted, central directory only), `classify_member`, `iter_members` (opens the zip once, yields one `(name, bytes)` at a time in sorted order, yields `(name, exception)` for a member that cannot be read, never extracts to disk)
     - _Requirements: 22.1, 22.2, 22.3, 22.4, 22.5_
-  - [ ] 25.2 Write example tests `pipeline/tests/test_bulk_reader.py`
+  - [x] 25.2 Write example tests `pipeline/tests/test_bulk_reader.py`
     - Sorted order whatever the zip order; names matching neither pattern are ignored and counted; a corrupt member is yielded as an error and the next member is still read; an instrumented reader proves no more than one member is alive at once on a tiny in-memory zip (22.6)
     - _Requirements: 22.1, 22.2, 22.4, 22.5, 22.6, 28.7_
   - Commit message: `feat(data-pipeline): add streaming zip member reader`
