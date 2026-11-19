@@ -71,8 +71,8 @@ def iter_members(zip_path: Path, stats: MemberStats | None = None) -> Iterator[M
                 stats.ignored += 1
                 continue
             try:
-                data = _read_member(zf, name)
-                member = Member(name=name, kind=kind[0], cik=kind[1], data=data)
+                # No local variable holds the bytes: only the Member does (22.2).
+                member = Member(name=name, kind=kind[0], cik=kind[1], data=_read_member(zf, name))
                 stats.read += 1
             except Exception as exc:  # noqa: BLE001 - any read failure is per-member (22.4)
                 member = Member(name=name, kind=kind[0], cik=kind[1], data=None, error=exc)
