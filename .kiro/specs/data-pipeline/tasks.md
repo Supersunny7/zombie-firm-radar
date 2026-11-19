@@ -152,15 +152,15 @@ Shortest path to `pipeline/reports/data_shape.md`. Tasks 1 to 6 above are shared
     - New constants point inside `pipeline/`; `pipeline/out` and `pipeline/.cache` are git-ignored (read `.gitignore`); `RunReport.to_json` with a `bulk` section contains no secret and redacts `api_key`; a run report without `bulk` is unchanged from before
     - _Requirements: 20.5, 21.7, 27.1, 29.3_
   - Commit message: `feat(data-pipeline): add phase 1 config, run report field and test helpers`
-- [ ] 24. Bulk download (`pipeline/bulk/download.py`)
-  - [ ] 24.1 Create `pipeline/bulk/__init__.py` and `pipeline/bulk/download.py`
+- [x] 24. Bulk download (`pipeline/bulk/download.py`)
+  - [x] 24.1 Create `pipeline/bulk/__init__.py` and `pipeline/bulk/download.py`
     - `BulkRecord`, `BulkFile`, `read_record` (None when missing, unreadable, or size differs from the file), `is_fresh` (age under 24 h), `stream_to_part` (writes in 1 MiB chunks, hashes while writing), `check_download` (bytes equal `Content-Length` when present and no `Content-Encoding`; the file opens as a zip with at least one member), `fetch_bulk`
     - `fetch_bulk`: fresh record or `--use-cached` returns the cached file with no request; `--use-cached` without a zip raises `MissingBulkFileError`; otherwise one limiter slot per attempt, User-Agent from `SEC_CONTACT_EMAIL`, retry only the connection phase on 429 and 5xx with the existing backoff, delete `.part` and keep the older zip on any failed check, `os.replace` then write the record (temp file plus `os.replace`); a failed refetch of a stale zip raises and never uses it; errors go through `redact()`
     - _Requirements: 4.1, 4.3, 4.7, 21.1, 21.2, 21.3, 21.4, 21.5, 21.6, 21.7, 21.8, 20.4_
-  - [ ] 24.2 Write example tests `pipeline/tests/test_bulk_download.py`
+  - [x] 24.2 Write example tests `pipeline/tests/test_bulk_download.py`
     - Size mismatch removes `.part`, keeps the older zip and raises; a stream cut short fails the same way; a body that is not a zip fails; a record younger than 24 h means zero requests; a stale record refetches; a stale zip with a failed refetch raises and is not used; `--use-cached` ignores age and, with no zip, raises `MissingBulkFileError` naming the file; the record holds size and SHA-256 equal to `hashlib` over the bytes and `Last-Modified` (or null); exactly one request per zip on a cold run; the contact email is absent from every message; 429 on connect retries with waits `[1, 2]` on a fake sleep
     - _Requirements: 21.1, 21.2, 21.3, 21.4, 21.5, 21.6, 21.8, 20.4_
-  - [ ]* 24.3 Write property test for the streaming digest
+  - [x]* 24.3 Write property test for the streaming digest
     - **Property 36: Streaming digest does not depend on chunking**
     - **Validates: Requirements 21.2, 21.4**
   - Commit message: `feat(data-pipeline): add streaming bulk file download`

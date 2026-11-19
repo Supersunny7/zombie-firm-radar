@@ -421,3 +421,6 @@
 2026-11-18 | data-pipeline | 23.1 | Added Phase 1 paths, bulk exceptions and the bulk field of the run report. | pipeline/config.py, pipeline/run_report.py
 2026-11-18 | data-pipeline | 23.2 | Added make_zip, year_facts, submissions builders and StreamSession; tree-hash check now watches pipeline/out and pipeline/reports. | pipeline/tests/builders.py, pipeline/tests/conftest.py
 2026-11-18 | data-pipeline | 23.3 | Added 9 example tests for Phase 1 config, run report redaction and the helpers. | pipeline/tests/test_bulk_config.py
+2026-11-18 | data-pipeline | 24.1 | Added streaming bulk download with .part file, size and zip check, SHA-256 record and 24 hour rule. | pipeline/bulk/__init__.py, pipeline/bulk/download.py
+2026-11-18 | data-pipeline | 24.2 | Added 18 example tests for download size checks, freshness, stale refetch, retries and email redaction. | pipeline/tests/test_bulk_download.py
+2026-11-18 | data-pipeline | 24.3 | Added Property 36 test that the streaming digest does not depend on chunking. | pipeline/tests/test_bulk_download.py
