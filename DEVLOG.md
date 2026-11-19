@@ -437,3 +437,5 @@
 2026-11-18 | data-pipeline | 27.5 | Added Property 29 test that every firm keeps 11 rows and stays in the Firm_Table. | pipeline/tests/test_bulk_panel.py
 2026-11-18 | data-pipeline | 27.6 | Added Property 30 test that the yearly zombie flag matches the definition. | pipeline/tests/test_bulk_panel.py
 2026-11-18 | data-pipeline | 27.7 | Added Property 31 test for age at a fiscal year against an anniversary count. | pipeline/tests/test_bulk_panel.py
+2026-11-18 | data-pipeline | 28.1 | Added the pipeline.bulk CLI with download and panel commands, preflight checks, exit codes, run report bulk section and progress lines. | pipeline/bulk/cli.py, pipeline/bulk/__main__.py
+2026-11-18 | data-pipeline | 28.2 | Added 14 example tests for preflight failures, a tiny two-zip run, the run report section and byte-identical output. | pipeline/tests/test_bulk_cli.py

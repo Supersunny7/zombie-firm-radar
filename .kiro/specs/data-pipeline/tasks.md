@@ -212,14 +212,14 @@ Shortest path to `pipeline/reports/data_shape.md`. Tasks 1 to 6 above are shared
     - **Property 31: Age at a fiscal year**
     - **Validates: Requirements 24.6**
   - Commit message: `feat(data-pipeline): add firm-year panel extractor and tables`
-- [ ] 28. CLI: `download` and `panel` commands (`pipeline/bulk/cli.py`, `pipeline/bulk/__main__.py`)
-  - [ ] 28.1 Create `pipeline/bulk/cli.py` and `pipeline/bulk/__main__.py` with `download` and `panel`
+- [x] 28. CLI: `download` and `panel` commands (`pipeline/bulk/cli.py`, `pipeline/bulk/__main__.py`)
+  - [x] 28.1 Create `pipeline/bulk/cli.py` and `pipeline/bulk/__main__.py` with `download` and `panel`
     - Sub-commands `download`, `panel`, `report`, `all`; `--use-cached`; `--rate`; preflight (email for `download` and `all`, rate, output paths outside Protected_Dirs) before any request; exit codes 0, 1, 2, 3, 4, 5 of the Phase 1 table
     - `panel`: submissions pass first (`aggregate`), then companyfacts pass in sorted order writing `panel.csv.gz` row by row; a companyfacts member with no Annual_Fact is not in Universe_P1; a parse failure gives 11 Gap_Rows with `parse_error`; then `firms.csv.gz` and `events.csv.gz` (events only for Universe_P1 CIKs, sorted by CIK, date, accession, type); progress line to stderr every 1,000 members
     - Run_Report `bulk` section (zips, members read, ignored, failed, Universe_P1 size, submissions-only CIKs, orphan pages, panel rows, Gap_Rows, events per type, request and cache counts), written in `finally`
     - `report` and `all` accept the sub-command but run only what exists; `report` is completed in task 30
     - _Requirements: 20.1 to 20.5, 21.x, 22.4, 23.1, 23.2, 25.7, 25.8, 27.1 to 27.4_
-  - [ ] 28.2 Write example tests `pipeline/tests/test_bulk_cli.py`
+  - [x] 28.2 Write example tests `pipeline/tests/test_bulk_cli.py`
     - Missing `SEC_CONTACT_EMAIL` exits 2 with zero requests; `panel` and `report` send zero requests; `panel` without a zip exits 4; a tiny two-zip fixture (a December firm, a January firm, a bankrupt firm with its 8-K on an older page, a financial firm, a firm with no submissions) produces the three tables in a temp folder with the expected row counts, flags and one bankruptcy event; the Run_Report `bulk` section has the expected counts; nothing is written outside the temp folders
     - _Requirements: 20.2, 20.3, 20.4, 20.5, 27.x, 28.1, 28.11_
   - Commit message: `feat(data-pipeline): add bulk download and panel commands`
