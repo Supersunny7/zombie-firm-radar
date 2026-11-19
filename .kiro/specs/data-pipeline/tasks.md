@@ -261,7 +261,7 @@ Shortest path to `pipeline/reports/data_shape.md`. Tasks 1 to 6 above are shared
     - `all` on the tiny two-zip fixture with a `StreamSession`: exit 0; two requests; zips, records, three tables and the report in temp folders; a second run with fresh records sends zero requests and gives byte-identical tables and report; `report` alone after a `panel` gives the same report; the repository's `pipeline/.cache`, `pipeline/out`, `pipeline/reports` and `data` are unchanged after the test
     - _Requirements: 20.1, 21.5, 26.13, 28.1, 28.11_
   - Commit message: `test(data-pipeline): add bulk report command, static checks and end-to-end test`
-- [ ] 31. Phase 1 checkpoint
+- [x] 31. Phase 1 checkpoint
   - Run `.venv/bin/python -m pytest pipeline/tests`. Ensure all tests pass, ask the user if questions arise.
 - [ ] 32. MANUAL (Frank): live bulk run and first look at the report
   - [ ] 32.1 Frank downloads and builds everything: `SEC_CONTACT_EMAIL=<email> .venv/bin/python -m pipeline.bulk all`. The agent must not run this. Needs several GB of free disk (two zips plus `pipeline/out`).
