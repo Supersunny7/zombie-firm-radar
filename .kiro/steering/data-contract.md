@@ -23,6 +23,8 @@ US filers with a ticker that file 10-Ks. These firms are excluded and do not app
 
 Only firms with `age_years >= 10` appear in any output file.
 
+These exclusions apply to the four contract-v2 files only. The phase 1 firm-year panel (`pipeline/out/`, git-ignored) is an internal analysis artifact, not a contract file. There, flags replace exclusions and no firm is dropped.
+
 ## File 1: `/data/firms_index.json`
 
 Loaded once by the graveyard. Schema: `/data/schema/firms_index.schema.json`.
@@ -105,6 +107,7 @@ In each `years` entry, every money field, `icr`, `ebit_tag` and `revenue_tag` is
 
 - Revenue: `Revenues`, then `RevenueFromContractWithCustomerExcludingAssessedTax`, then `SalesRevenueNet`.
 - Total debt: `LongTermDebtNoncurrent` + `LongTermDebtCurrent` + `ShortTermBorrowings` (missing parts count as 0 only if at least one part exists); if none exist, `LongTermDebt`.
+- Interest expense: `InterestExpense`, then `InterestExpenseNonoperating`, then `InterestExpenseDebt`, then `InterestAndDebtExpense`. Net interest tags are never used.
 - Assets: `Assets`.
 - Equity: `StockholdersEquity`.
 - Record which tags were used (`ebit_tag`, `revenue_tag`, `debt_tags`).

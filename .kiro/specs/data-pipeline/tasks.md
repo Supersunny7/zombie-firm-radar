@@ -14,62 +14,62 @@ Rules for every task:
 
 ## Tasks
 
-- [ ] 1. Package skeleton, config, run report and test harness
-  - [ ] 1.1 Create `pipeline/__init__.py`, `pipeline/config.py` and `pipeline/run_report.py`
+- [x] 1. Package skeleton, config, run report and test harness
+  - [x] 1.1 Create `pipeline/__init__.py`, `pipeline/config.py` and `pipeline/run_report.py`
     - `config.py`: constants (`DEFAULT_RATE`, `MAX_RATE`, `SAMPLE_SCAN_FACTOR`, `SAMPLE_SCAN_FLOOR`, `MIN_PER_DIVISION`, `MINIMUM_DIVISIONS`, `REDACTED`), `Config`, `resolve_out_dir`, `is_protected`, `read_env`, `secrets`, and the typed exceptions with exit codes (`PreflightError`, `CorruptPreviousError`, `TickerMapError`, `EmptySelectionError`, `FailureRateError`, `MacroError`, `NoSectorMedianError`, `OutputInvalidError`, `SwapError`, `ReportStepError`)
     - `run_report.py`: `RunReport` with `add_failed`, `add_skipped`, `add_excluded` (all six reasons listed with count 0), `to_json(secrets)` with sorted lists and redaction, `write_run_report` (temp file plus `os.replace`, stderr message on failure), `failure_pct`
     - _Requirements: 1.9, 1.10, 2.13, 4.2, 4.5, 13.5, 16.1, 16.2, 16.3, 16.4, 16.5, 16.6, 16.7, 16.8, 16.10, 19.2, 19.3_
-  - [ ] 1.2 Create `pipeline/tests/conftest.py`
+  - [x] 1.2 Create `pipeline/tests/conftest.py`
     - Autouse socket guard on `socket.socket.connect`, `connect_ex` and `create_connection`: allow localhost, raise `BlockedNetworkError("blocked network access to <host>")` otherwise
     - `FakeSession` (URL lookup in an in-memory dict or `fixtures/urls.json`, per-test overrides for status, headers and body, `AssertionError("unrecorded URL ...")` for unknown URLs), `tmp_config` fixture with `out_dir`, `cache_dir`, `reports_dir` under `tmp_path`, a `pipeline` hypothesis profile (`max_examples=200`, `deadline=None`), and a session-finish check that hashes `pipeline/.cache`, `data` and the Protected_Dirs before and after
     - Add small hand-written builders for companyfacts, submissions and `company_tickers.json` documents in `pipeline/tests/builders.py`
     - _Requirements: 17.1, 17.2, 17.3, 17.4, 17.10_
-  - [ ] 1.3 Write example tests `pipeline/tests/test_config.py`
+  - [x] 1.3 Write example tests `pipeline/tests/test_config.py`
     - `is_protected` for each Protected_Dir, a child, a symlink into one, and a non-protected path; `resolve_out_dir` relative to the repository root; `failure_pct` with 0 attempted firms; Run_Report contains no secret values and redacts `api_key`; socket guard blocks `example.com:443` with the host named and allows `localhost`
     - _Requirements: 1.10, 13.5, 16.7, 16.8, 17.2_
   - Commit message: `feat(data-pipeline): add config, run report and test harness`
 
-- [ ] 2. Shared `icr()` function
-  - [ ] 2.1 Create `pipeline/metrics.py` with `icr(ebit, interest)`
+- [x] 2. Shared `icr()` function
+  - [x] 2.1 Create `pipeline/metrics.py` with `icr(ebit, interest)`
     - Return None for None, bool, non-int/float, NaN or infinite inputs and for interest <= 0; otherwise `ebit / interest`. This is the only place that divides EBIT by interest.
     - _Requirements: 8.1, 8.2, 8.5, 8.6, 8.7_
-  - [ ] 2.2 Write `pipeline/tests/test_icr.py` fixture test
+  - [x] 2.2 Write `pipeline/tests/test_icr.py` fixture test
     - Parametrize one test per case in `data/fixtures/icr_cases.json`, asserting exact float equality and None where expected is null; fail (not skip) if the file is missing, unparseable or has zero cases
     - _Requirements: 8.3, 8.4, 17.5_
-  - [ ]* 2.3 Write property test for icr() totality and exactness
+  - [x] 2.3 Write property test for icr() totality and exactness
     - **Property 1: icr() is total and exact**
     - **Validates: Requirements 8.2, 8.5, 8.6, 8.7**
-  - [ ]* 2.4 Write property test for ICR monotonicity
+  - [x] 2.4 Write property test for ICR monotonicity
     - **Property 2: Higher EBIT never lowers ICR (zombie-definition property 1)**
     - **Validates: Requirements 8.8**
   - Commit message: `feat(data-pipeline): add shared icr() with fixture tests`
 
-- [ ] 3. HTTP layer: rate limiter, cache, SEC and FRED clients
-  - [ ] 3.1 Create `pipeline/http.py` building blocks
+- [x] 3. HTTP layer: rate limiter, cache, SEC and FRED clients
+  - [x] 3.1 Create `pipeline/http.py` building blocks
     - `RateLimiter` (injected clock and sleep, sliding window of floor(rate) sends, lock), `Cache` (sha256 key of the redacted URL, `.body` and `.meta.json`, atomic writes, 24 h freshness, rejects unreadable entries, entries without timestamp and bad JSON bodies), `redact`, `redact_url`, `parse_retry_after`
     - _Requirements: 4.3, 4.4, 4.6, 5.1, 5.2, 5.3, 5.8, 16.7, 19.3, 19.4, 19.5_
-  - [ ] 3.2 Add `HttpClient`, `SecClient`, `FredClient`, `FetchResult`, `RequestStats` to `pipeline/http.py`
+  - [x] 3.2 Add `HttpClient`, `SecClient`, `FredClient`, `FetchResult`, `RequestStats` to `pipeline/http.py`
     - Cache hit uses no limiter slot; up to 5 attempts waiting 1, 2, 4, 8 s or `max(backoff, Retry-After)` on 429, 5xx and connection errors or timeouts; other statuses not retried; companyfacts 404 not retried; failures never cached and a stale entry never returned; User-Agent `ZombieFirmRadar <email>` on every attempt; FRED without key uses the CSV URL, with key the API URL, cached under the redacted URL; all error strings redacted
     - _Requirements: 4.1, 4.3, 4.7, 4.8, 4.9, 4.11, 5.4, 5.5, 5.7, 12.1, 12.2, 12.5, 19.4, 19.5_
-  - [ ] 3.3 Write example tests `pipeline/tests/test_http.py`
+  - [x] 3.3 Write example tests `pipeline/tests/test_http.py`
     - Retry waits `[1, 2, 4, 8]` on a fake sleep; `Retry-After` larger than backoff wins; 403 not retried; companyfacts 404 returns without retry; failed fetch writes no cache entry; stale entry refetched and, when the refetch fails, not returned and left on disk; corrupt cache entry refetched; cache hit sends no request and uses no limiter slot; User-Agent present on retries and absent from `RequestStats` and error strings; FRED key never in cache file names or contents
     - _Requirements: 4.1, 4.3, 4.7, 4.8, 4.9, 4.11, 5.2, 5.3, 5.4, 5.7, 5.8, 19.3, 19.4_
-  - [ ]* 3.4 Write property test for the rate limiter
+  - [x] 3.4 Write property test for the rate limiter
     - **Property 14: Rate limiter never exceeds its rate in any 1-second window**
     - **Validates: Requirements 4.3, 4.6**
-  - [ ]* 3.5 Write property test for the cache
+  - [x] 3.5 Write property test for the cache
     - **Property 15: Cache round trip**
     - **Validates: Requirements 5.1, 5.2, 5.3, 19.4**
-  - [ ]* 3.6 Write property test for redaction
+  - [x] 3.6 Write property test for redaction
     - **Property 16: Redaction removes every secret**
     - **Validates: Requirements 16.7, 19.3, 19.5**
   - Commit message: `feat(data-pipeline): add rate-limited cached SEC and FRED clients`
 
-- [ ] 4. Fact extractor (`pipeline/facts.py`)
-  - [ ] 4.1 Create `pipeline/facts.py` and the data models (`Fact`, `YearValues`, `ExtractResult`)
+- [x] 4. Fact extractor (`pipeline/facts.py`)
+  - [x] 4.1 Create `pipeline/facts.py` and the data models (`Fact`, `YearValues`, `ExtractResult`)
     - `compustat_fy`, `annual_facts` (us-gaap, USD, 10-K and 10-K/A, `fp` FY, finite), `has_any_annual_fact`, `dedupe` (largest `(filed, accn)`), `flow_by_fy` (350 to 380 days inclusive), `fiscal_year_ends` (latest end per FY, other ends nulled), `pick_flow`, `pick_instant` (exact, else closest within 7 days, tie earlier), `build_year` (revenue, interest, EBIT with same-period fallback, debt sum or `LongTermDebt`, assets, equity, tags, `interest_tag`, `sources`), `extract` (Firm_Window of latest 5 FYs, gap rows, no window gives no result)
     - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 6.12, 6.13, 6.14, 6.15, 6.16, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 7.8, 7.9, 7.10, 7.11, 7.12_
-  - [ ] 4.2 Write required example tests `pipeline/tests/test_facts.py`
+  - [x] 4.2 Write required example tests `pipeline/tests/test_facts.py`
     - Duration rule: 349 and 381 days rejected, 350 and 380 accepted, missing start rejected
     - Instant window: exact date beats a fact 3 days off; 3 days off beats 6 days off; a fact 8 days off with no closer fact gives null; equal distance picks the earlier date; each debt part picks its own instant date
     - Latest-filed-wins, and larger accession number on equal filed dates
@@ -77,58 +77,58 @@ Rules for every task:
     - Debt sum with one part present counts the others as 0; `LongTermDebt` fallback; all missing gives null and `[]`
     - 10-Q, 10-KT and 10-K405 facts ignored; non-USD units ignored; comparative prior-year fact assigned by end date; gap year inside the window is a null row; January year end maps to FY = end year - 1
     - _Requirements: 6.1, 6.2, 6.4, 6.5, 6.6, 6.7, 6.8, 6.10, 6.12, 6.14, 6.15, 7.2, 7.3, 7.4, 7.5, 7.6, 7.8, 7.9, 7.11, 7.12, 17.11_
-  - [ ]* 4.3 Write property test for the Compustat mapping
+  - [x] 4.3 Write property test for the Compustat mapping
     - **Property 3: Compustat fiscal-year mapping**
     - **Validates: Requirements 6.3**
-  - [ ]* 4.4 Write property test for annual fact selection
+  - [x] 4.4 Write property test for annual fact selection
     - **Property 4: Annual fact selection is filtered, unique and order-independent**
     - **Validates: Requirements 6.1, 6.7, 6.8, 7.12**
-  - [ ]* 4.5 Write property test for instant date choice
+  - [x] 4.5 Write property test for instant date choice
     - **Property 5: Instant date choice matches a brute-force oracle**
     - **Validates: Requirements 6.5, 6.6, 6.14, 6.16**
-  - [ ]* 4.6 Write property test for the debt rule
+  - [x] 4.6 Write property test for the debt rule
     - **Property 6: Total debt rule never invents a zero**
     - **Validates: Requirements 7.8, 7.9, 7.11**
   - Commit message: `feat(data-pipeline): add companyfacts extractor`
 
-- [ ] 5. Universe: SIC divisions, ticker map, exclusions, firm fetcher
-  - [ ] 5.1 Create `pipeline/universe.py`
+- [x] 5. Universe: SIC divisions, ticker map, exclusions, firm fetcher
+  - [x] 5.1 Create `pipeline/universe.py`
     - `SIC_DIVISIONS`, `sic_division`, `parse_sic`, `match_sector`, `load_ticker_map` (first ticker per CIK, unique sorted CIKs), `read_ticker_file`, `read_cik_file` (1 to 10 digits, zero-pad, `invalid_cik` skips), `first_filing_year`, `has_recent_10k`, `classify` (order `no_sic`, `financial`, `utility`, `age_under_10`, `no_annual_facts`, `not_recent`, with `skip_recency`), `Submissions`, `TickerMap`, `FirmFetcher` (memoised per CIK, older `files` pages, Attempted_Firm and Failed_Firm counting, companyfacts 404 as no facts)
     - _Requirements: 1.2, 1.3, 1.6, 1.7, 1.11, 1.12, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 2.10, 2.11, 4.9, 4.10, 4.11_
-  - [ ] 5.2 Write example tests `pipeline/tests/test_universe.py`
+  - [x] 5.2 Write example tests `pipeline/tests/test_universe.py`
     - Ticker and CIK file parsing (blank lines, whitespace, case-insensitive tickers, two tickers on one CIK, `invalid_cik` and `ticker_not_found` recorded); SIC boundaries 4899/4900/4999/5000, 5999/6000/6799/6800, missing and empty SIC; Age_Years exactly 10 kept and 9 excluded; Latest_FY 2024 kept and 2023 excluded; `--ciks` skips recency; older pages change First_Filing_Year; failed older page makes a Failed_Firm; sector name matching ignores case and whitespace and rejects the finance division
     - _Requirements: 1.2, 1.3, 1.6, 1.7, 1.11, 1.12, 2.1, 2.2, 2.3, 2.4, 2.5, 2.7, 2.8, 2.9, 2.11_
-  - [ ]* 5.3 Write property test for exclusion order
+  - [x] 5.3 Write property test for exclusion order
     - **Property 7: Exclusion reason is the first matching rule**
     - **Validates: Requirements 2.3, 2.4, 2.5, 2.7, 2.8, 2.9, 2.11**
   - Commit message: `feat(data-pipeline): add universe selection and exclusions`
 
-- [ ] 6. Scorer: status, reasons, flags, rescue inputs, sector medians
-  - [ ] 6.1 Extend `pipeline/metrics.py` and update steering files in the same change
+- [x] 6. Scorer: status, reasons, flags, rescue inputs, sector medians
+  - [x] 6.1 Extend `pipeline/metrics.py` and update steering files in the same change
     - Add `status_and_reasons` (rules 2 to 8 in order, exact reason texts, gap years break streaks), `implied_rate`, `shock_eligible`, `rescue_eligible`, `own_history_stats`, `sector_medians` (own-history firms only, fallback to the global median, unrounded then rounded to 6 decimals), `finalize_rescue_inputs`, `score`, `ScoredFirm`, `RawStats`, `OwnHistory`, `RescueInputs`; every ratio via `icr()`; no shock function
     - Update `.kiro/steering/zombie-definition.md` with the zero-interest note of Requirement 9.13 and `.kiro/steering/data-contract.md` with the Interest_Tag_Priority line and the rule that net interest tags are never used (documentation only, version stays v2, no schema or `web/src/types` change)
     - _Requirements: 8.1, 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 9.10, 9.11, 9.13, 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 11.1, 11.2, 11.3, 11.4, 11.5, 11.6, 11.7, 11.8, 11.10, 11.11, 11.12, 19.6, 19.7_
-  - [ ] 6.2 Create `pipeline/tests/strategies.py` and `pipeline/tests/fixtures/status_cases.json`, and write `pipeline/tests/test_metrics.py` status cases
+  - [x] 6.2 Create `pipeline/tests/strategies.py` and `pipeline/tests/fixtures/status_cases.json`, and write `pipeline/tests/test_metrics.py` status cases
     - `strategies.py`: `st_money`, `st_window`, `st_fact`, `st_scored_firm` (built through `metrics.score`)
     - `status_cases.json`: per-year EBIT and interest, Age_Years, expected status and reasons; at least a missing year breaking the streak, Age_Years exactly 10, Reported_Zero_Interest inside the window, Reported_Zero_Interest in Latest_FY (healthy), Missing_Interest in Latest_FY (insufficient_data), negative EBIT, plus one case per status rule
     - One parametrized test per case asserting status and reasons
     - _Requirements: 9.1, 9.2, 9.3, 9.4, 9.5, 9.6, 9.7, 9.8, 9.9, 9.10, 17.6, 17.7_
-  - [ ] 6.3 Write example tests for flags and rescue inputs in `test_metrics.py`
+  - [x] 6.3 Write example tests for flags and rescue inputs in `test_metrics.py`
     - `implied_rate` with debt null, 0 and negative; `shock_eligible` false for zero and missing interest; `rescue_eligible` needs all six values and 3 window years; `total_debt_usd` null never 0; own history needs 4 usable years and 2 consecutive changes; sample standard deviation uses divisor n - 1; fallback copies sector medians; a sector with no own-history firm uses the global median; values rounded to 6 decimals while `icr` and `implied_rate` stay unrounded
     - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 11.1, 11.2, 11.3, 11.4, 11.5, 11.8, 11.11_
-  - [ ]* 6.4 Write property test for zombie status
+  - [x] 6.4 Write property test for zombie status
     - **Property 8: Every zombie meets the definition (zombie-definition property 5)**
     - **Validates: Requirements 9.5, 9.9, 9.10, 9.12**
-  - [ ]* 6.5 Write property test for the other status invariants
+  - [x] 6.5 Write property test for the other status invariants
     - **Property 9: Status invariants for the other statuses**
     - **Validates: Requirements 9.1, 9.11, 9.15**
-  - [ ]* 6.6 Write property test for eligibility flags
+  - [x] 6.6 Write property test for eligibility flags
     - **Property 10: Eligibility flags follow the contract**
     - **Validates: Requirements 10.1, 10.2, 10.3, 10.4, 10.5**
-  - [ ]* 6.7 Write property test for own-history rescue inputs
+  - [x] 6.7 Write property test for own-history rescue inputs
     - **Property 11: Own-history rescue inputs match a reference computation**
     - **Validates: Requirements 11.1, 11.2, 11.3, 11.4, 11.5**
-  - [ ]* 6.8 Write property test for sector medians
+  - [x] 6.8 Write property test for sector medians
     - **Property 12: Sector medians cover every output sector**
     - **Validates: Requirements 11.6, 11.7, 11.8, 11.10, 11.12**
   - Commit message: `feat(data-pipeline): add scorer with steering updates`

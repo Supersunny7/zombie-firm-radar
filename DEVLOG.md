@@ -388,3 +388,33 @@
 2026-11-13 | graveyard-horror-pass | 3.27 | Captured Batch 2b look screenshot and side-by-side with horror-direction.png | reference/progress/horror-batch2b-look*.png
 2026-11-13 | graveyard-horror-pass | 3.28 | Full check passed: typecheck, lint, format, 945 web tests, build with check-bundle, 379 tools tests | none
 2026-11-13 | graveyard-horror-pass | 3.29 | Wrote the Batch 2b report with checks, screenshots and unmatched look values | docs/reviews/horror-batch2b-report.md
+2026-11-16 | data-pipeline | 1.1 | Added config, typed exceptions and run report modules. | pipeline/__init__.py, pipeline/config.py, pipeline/run_report.py
+2026-11-16 | data-pipeline | 1.2 | Added pytest harness with socket guard, FakeSession, tmp_config and builders. | pipeline/tests/conftest.py, builders.py, __init__.py
+2026-11-16 | data-pipeline | 1.3 | Added example tests for config, protected dirs, run report redaction and socket guard. | pipeline/tests/test_config.py
+2026-11-16 | data-pipeline | 2.1 | Added shared icr() returning None for invalid input or interest <= 0. | pipeline/metrics.py
+2026-11-16 | data-pipeline | 2.2 | Added parametrized icr() fixture test that fails on a missing, bad or empty fixture file. | pipeline/tests/test_icr.py
+2026-11-16 | data-pipeline | 2.3 | Added hypothesis property test for icr() totality and exactness. | pipeline/tests/test_icr_properties.py
+2026-11-16 | data-pipeline | 2.4 | Added hypothesis property test that higher EBIT never lowers ICR. | pipeline/tests/test_icr_properties.py
+2026-11-16 | data-pipeline | 3.1 | Added RateLimiter, Cache, redact helpers and parse_retry_after. | pipeline/http.py
+2026-11-16 | data-pipeline | 3.2 | Added HttpClient, SecClient, FredClient, FetchResult and RequestStats with retry and cache logic. | pipeline/http.py
+2026-11-16 | data-pipeline | 3.3 | Added 19 offline example tests for retries, cache, redaction and rate limiting. | pipeline/tests/test_http.py
+2026-11-16 | data-pipeline | 3.4 | Added rate limiter property test with fake clock and cache-slot check. | pipeline/tests/test_rate_limiter_property.py
+2026-11-16 | data-pipeline | 3.5 | Added Property 15 cache round-trip hypothesis tests. | pipeline/tests/test_cache_property.py
+2026-11-16 | data-pipeline | 3.6 | Added property test that redact() removes all secrets. | pipeline/tests/test_redaction_property.py
+2026-11-16 | data-pipeline | 4.1 | Added companyfacts fact extractor module with data models. | pipeline/facts.py
+2026-11-16 | data-pipeline | 4.2 | Added 33 example tests for the fact extractor covering duration, instant, tag priority and debt rules. | pipeline/tests/test_facts.py
+2026-11-16 | data-pipeline | 4.3 | Added Compustat fiscal-year mapping property test with example cases. | pipeline/tests/test_compustat_property.py
+2026-11-16 | data-pipeline | 4.4 | Added Property 4 hypothesis test for annual fact selection. | pipeline/tests/test_facts_properties.py
+2026-11-16 | data-pipeline | 4.5 | Added property test comparing pick_instant to a brute-force oracle. | pipeline/tests/test_facts_properties.py
+2026-11-16 | data-pipeline | 4.6 | Added Property 6 hypothesis test for the total debt rule. | pipeline/tests/test_facts.py
+2026-11-16 | data-pipeline | 5.1 | Added universe.py with SIC divisions, ticker map, exclusions and firm fetcher. | pipeline/universe.py
+2026-11-16 | data-pipeline | 5.2 | Added 29 example tests for universe parsing, SIC boundaries, exclusions and fetcher. | pipeline/tests/test_universe.py
+2026-11-16 | data-pipeline | 5.3 | Added property test that classify() returns the first matching exclusion reason. | pipeline/tests/test_universe_props.py
+2026-11-16 | data-pipeline | 6.1 | Added scorer (status, flags, rescue inputs, sector medians) and steering notes. | pipeline/metrics.py, .kiro/steering/zombie-definition.md, data-contract.md
+2026-11-16 | data-pipeline | 6.2 | Added test strategies, status_cases fixture and parametrized status tests. | pipeline/tests/strategies.py, status_cases.json, test_metrics.py
+2026-11-16 | data-pipeline | 6.3 | Added example tests for implied rate, eligibility flags, own-history rescue inputs and sector medians. | pipeline/tests/test_metrics.py
+2026-11-16 | data-pipeline | 6.4 | Added hypothesis property test that every zombie meets the age and three-year ICR definition. | pipeline/tests/test_metrics.py
+2026-11-16 | data-pipeline | 6.5 | Added Property 9 hypothesis test for non-zombie status invariants. | pipeline/tests/test_metrics.py
+2026-11-16 | data-pipeline | 6.6 | Added Property 10 eligibility-flags hypothesis test. | pipeline/tests/test_metrics.py
+2026-11-16 | data-pipeline | 6.7 | Added Property 11 test for own-history rescue inputs against a reference computation. | pipeline/tests/test_metrics.py
+2026-11-18 | data-pipeline | 6.8 | Added Property 12 sector-medians hypothesis test. | pipeline/tests/test_metrics.py

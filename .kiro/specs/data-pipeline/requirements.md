@@ -10,6 +10,40 @@ Delivery date: 2026-11-16.
 
 Items marked **[Assumption]** are conservative defaults chosen where the brief is silent. Frank should confirm or change each one before design.
 
+## Phases
+
+Frank changed the goal of this spec on 2026-11-16. The game design is not decided and will be chosen after the real data has been seen. The work is split in two phases.
+
+- **Phase 1 (now)**: get the full raw dataset from the two SEC bulk files and produce a data shape report (`pipeline/reports/data_shape.md` plus small CSVs). The firm-year panel and the events table are internal analysis artifacts written to `pipeline/out/` (git-ignored). They are not data contract files. Requirements 20 to 29 define phase 1.
+- **Phase 2 (after the design is chosen)**: the four contract-v2 files, the Act 1 candidate report, `--sample` and `--sector`, fixtures and the full offline end-to-end test. Their requirements stay in this document unchanged and are marked "Phase 2".
+
+Phase 1 reuses, without changing behaviour, the config, the Run_Report, the test harness, `icr()`, the HTTP Rate_Limiter and Cache, and the Fact_Extractor rules. Phase 1 adds code next to them and does not edit `extract()`, `universe.py` or `icr()`.
+
+### Status of the existing requirements
+
+| Requirement | Status | Note |
+| --- | --- | --- |
+| 1 CLI | Phase 2 | Phase 1 has its own entry point (Requirement 20). |
+| 2 Universe and exclusions | Phase 2 | In phase 1, exclusions become flags (Requirement 23). |
+| 3 Seeded sample | Phase 2 | No sampling in phase 1. |
+| 4 SEC access rules | Kept, extended | 4.1 to 4.8 and 4.13 apply as written. 4.9 to 4.12 (failed firm, 2% rule) are Phase 2 only. The "one request per firm" wording also covers the two bulk files (Requirement 21). |
+| 5 Cache | Kept, extended | The 24-hour rule also covers the two bulk files. They use a streaming download path (Requirement 21) because Requirement 5.1 and 5.2 keep whole bodies in memory. The existing `HttpClient.get()` is unchanged. |
+| 6 Fiscal-year assignment | Kept, one part changed | 6.1 to 6.8 and 6.12 to 6.16 unchanged. 6.9, 6.10 and 6.13 (latest 5 years, no window means no file) are Phase 2 only. The panel uses a fixed FY range (Requirement 24). |
+| 7 Tag priority and missing values | Kept, extended | Unchanged. 7.7 (interest tag in the Run_Report) is replaced in phase 1 by panel columns. Cash is added as one more instant tag (Requirement 24). |
+| 8 icr() | Kept | Unchanged. |
+| 9 Status and reasons | Phase 2 | Phase 1 uses only the yearly zombie flag (Requirement 24). |
+| 10 Implied rate and flags | Phase 2 | |
+| 11 rescue_inputs and sector medians | Phase 2 | |
+| 12 Macro data | Phase 2 | |
+| 13 Output, validation and atomic replace | Phase 2 | |
+| 14 Keeper log | Phase 2 | |
+| 15 Reports | Phase 2 | Phase 1 report is Requirement 26. |
+| 16 Run report | Kept, extended | Requirement 27 adds the bulk fields. |
+| 17 Tests | Kept, extended | Requirement 28 adds phase 1 tests. 17.3, 17.12 to 17.14 (recorded fixtures) are Phase 2. |
+| 18 Performance | Phase 2 | |
+| 19 Dependencies, secrets and documentation | Kept, extended | Requirement 29. |
+| 20 to 29 | New, Phase 1 | |
+
 ## Glossary
 
 - **Pipeline**: the Python package under `/pipeline` started with `python -m pipeline.run`.
@@ -53,9 +87,35 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 - **Act1_Candidate**: a Manufacturing firm (SIC 2000-3999) in the output that matches one of the three Act 1 cases in Requirement 15.
 - **Provisional_Check**: the one-tool projection of `make_mock.py` `provisional_projection`, labeled PROVISIONAL until rescue-engine v2 can be called from Python.
 
+- **Phase 1 terms below** apply to Requirements 20 to 29 only.
+- **Bulk_Companyfacts**: the file `https://www.sec.gov/Archives/edgar/daily-index/xbrl/companyfacts.zip`. Each member is one firm's companyfacts JSON, with the same structure as the per-firm endpoint.
+- **Bulk_Submissions**: the file `https://www.sec.gov/Archives/edgar/daily-index/bulkdata/submissions.zip`. Per CIK it holds one main file `CIK##########.json` and zero or more older pages `CIK##########-submissions-NNN.json`.
+- **Bulk_Downloader**: the component that downloads the two bulk files to `pipeline/.cache`.
+- **Bulk_Reader**: the component that reads a bulk file one member at a time.
+- **Panel_Extractor**: the component that builds the Firm_Table and the Panel from Bulk_Companyfacts and Bulk_Submissions, reusing the Fact_Extractor rules.
+- **Events_Extractor**: the component that builds the Events_Table from Bulk_Submissions.
+- **Shape_Reporter**: the component that writes the Data_Shape_Report and its CSVs.
+- **Phase1_Out_Dir**: `pipeline/out` (git-ignored). **Reports_Dir**: `pipeline/reports` (committed).
+- **Universe_P1**: every CIK in Bulk_Companyfacts that has at least one Annual_Fact (form 10-K or 10-K/A, `fp` = FY) in any tag. No firm is dropped.
+- **Firm_Table**: one row per CIK of Universe_P1.
+- **Panel**: one row per CIK and Fiscal_Year for FY2015 to FY2025 inclusive (Panel_Years).
+- **Gap_Row**: a Panel row where every money field is null.
+- **Flags**: the four booleans `is_financial` (SIC 6000-6799), `is_utility` (SIC 4900-4999), `no_sic` (Requirement 2.5 rule) and `age_under_10`. Plus `parse_error` (Requirement 22.4).
+- **Age_Run**: Run_Year minus First_Filing_Year (the existing Age_Years). Only `age_under_10` uses it.
+- **Age_At_FY**: whole years from the firm's first filing date to the Fiscal_Year_End of a Panel row, by date arithmetic (a year is complete on the anniversary date). Null when the first filing date or the Fiscal_Year_End is null.
+- **Zombie_Flag**: for a Panel row of fiscal year Y, true when Age_At_FY >= 10 and icr() is non-null and below 1 in Y, Y-1 and Y-2. False otherwise, including when any of the three icr() values is null or Age_At_FY is null.
+- **Core_Firm_Year**: a Panel row where the firm has `is_financial` false, `is_utility` false and Age_At_FY >= 10.
+- **Present_Row**: a Panel row with at least one non-null money field.
+- **Event_Type**: `bankruptcy` (8-K or 8-K/A with item 1.03), `acquisition_disposition` (8-K or 8-K/A with item 2.01), `delisting` (form 25 or 25-NSE), `deregistration` (form 15-12B, 15-12G or 15-15D).
+- **Events_Table**: one row per (accession number, Event_Type).
+- **Breaking_Rate**: (EBIT - interest expense) / total debt, in percentage points. The rate rise at which interest equals EBIT.
+- **Data_Shape_Report**: `pipeline/reports/data_shape.md`.
+
 ## Requirements
 
 ### Requirement 1: Command-line interface
+
+**Phase:** Phase 2 (phase 1 has its own entry point, Requirement 20).
 
 **User Story:** As Frank, I want one command with clear firm-selection options, so that I can build real data for a ticker list, specific CIKs, a sample or one sector.
 
@@ -82,6 +142,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 
 ### Requirement 2: Firm universe and exclusions
 
+**Phase:** Phase 2 (phase 1 uses flags, Requirement 23).
+
 **User Story:** As Frank, I want the universe to follow the data contract exactly, so that banks, REITs, utilities and young firms never appear in the output.
 
 #### Acceptance Criteria
@@ -101,6 +163,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 13. THE Run_Report SHALL list every exclusion reason (`financial`, `utility`, `no_sic`, `age_under_10`, `not_recent`, `no_annual_facts`) with the number of excluded firms and their 10-digit zero-padded CIKs. A reason with no excluded firms is listed with count 0 and an empty CIK list, and each count equals the length of its CIK list. **[Assumption: reasons with count 0 are listed rather than left out.]**
 
 ### Requirement 3: Seeded random sample
+
+**Phase:** Phase 2.
 
 **User Story:** As Frank, I want `--sample N --seed S` to draw the same seeded random sample of firms each time, with a guaranteed minimum from Retail Trade and from Transportation, so that runs are reproducible, sectors appear in their natural proportions, and the game has firms for Acts 2 and 3.
 
@@ -125,6 +189,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 
 ### Requirement 4: SEC access rules
 
+**Phase:** Kept. 4.9 to 4.12 are Phase 2 only; the bulk downloads follow Requirement 21.
+
 **User Story:** As Frank, I want every SEC request to follow SEC fair-access rules, so that the pipeline is not blocked and stays a good citizen.
 
 #### Acceptance Criteria
@@ -145,6 +211,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 
 ### Requirement 5: Cache
 
+**Phase:** Kept; extended to the bulk files by Requirement 21.
+
 **User Story:** As Frank, I want raw responses cached, so that reruns are fast, deterministic and gentle on SEC.
 
 #### Acceptance Criteria
@@ -159,6 +227,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 8. IF a Cache entry for a requested URL cannot be read, has no fetch timestamp, or, for a JSON endpoint, has a body that does not parse as JSON, THEN THE SEC_Client SHALL treat the URL as having no Cache entry and fetch it through the Rate_Limiter. It SHALL replace the unreadable entry only after that fetch succeeds.
 
 ### Requirement 6: Fiscal-year assignment
+
+**Phase:** Kept. 6.9, 6.10 and 6.13 are Phase 2 only; the Panel uses Requirement 24.
 
 **User Story:** As Frank, I want every value assigned to the right fiscal year, so that ICR streaks reflect real consecutive years.
 
@@ -183,6 +253,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 
 ### Requirement 7: Tag priority and missing values
 
+**Phase:** Kept; 7.7 is replaced in phase 1 by panel columns.
+
 **User Story:** As Frank, I want a fixed tag order and recorded tags, so that every number is traceable to the filing.
 
 #### Acceptance Criteria
@@ -202,6 +274,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 
 ### Requirement 8: icr() function
 
+**Phase:** Kept, unchanged.
+
 **User Story:** As Frank, I want one ICR function that matches the shared fixtures, so that the pipeline, graveyard and rescue-engine agree.
 
 #### Acceptance Criteria
@@ -216,6 +290,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 8. FOR ALL finite interest values > 0 and finite EBIT values e1 <= e2, icr(e1, interest) SHALL be <= icr(e2, interest) (zombie-definition property 1). A hypothesis property-based test SHALL check this.
 
 ### Requirement 9: Status and reasons
+
+**Phase:** Phase 2.
 
 **User Story:** As Frank, I want exactly one status per firm with readable reasons, so that the graveyard shows the right tombstone and explains it.
 
@@ -239,6 +315,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 
 ### Requirement 10: Implied rate and eligibility flags
 
+**Phase:** Phase 2.
+
 **User Story:** As Frank, I want the pipeline to output only the fields the frontend rate shock needs (`latest_icr`, `total_debt_usd`, `implied_rate`, `shock_eligible`) plus `rescue_eligible`, computed by the contract rules, so that the graveyard slider and the lab only use firms they can model and `threshold_report.py` can compute critical points from those fields.
 
 #### Acceptance Criteria
@@ -251,6 +329,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 6. THE Pipeline SHALL NOT define or implement a rate-shock function. Rate-shock semantics belong to `web/src/engine/shock.ts`; the Pipeline only writes the input fields of criteria 1, 2, 4 and 5.
 
 ### Requirement 11: rescue_inputs and sector medians
+
+**Phase:** Phase 2.
 
 **User Story:** As Frank, I want rescue inputs from each firm's own history with a sector fallback, so that the rescue-engine has a projection basis for every firm.
 
@@ -271,6 +351,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 
 ### Requirement 12: Macro data
 
+**Phase:** Phase 2.
+
 **User Story:** As Frank, I want the 10-year Treasury yield in the contract format, so that refinance in the rescue-engine uses a real base rate.
 
 #### Acceptance Criteria
@@ -284,6 +366,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 7. IF a fetched or cached DGS10 response cannot be parsed, or contains no observation with a finite numeric value, THEN THE Pipeline SHALL exit with a non-zero code, record the failure reason in the Run_Report, and leave every file in Output_Dir unchanged. **[Assumption]**
 
 ### Requirement 13: Output, validation and atomic replace
+
+**Phase:** Phase 2.
 
 **User Story:** As Frank, I want output written only after it validates, so that the deployed app never reads a half-written or invalid file.
 
@@ -305,6 +389,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 
 ### Requirement 14: Keeper log
 
+**Phase:** Phase 2.
+
 **User Story:** As Frank, I want a short log line per run, so that the graveyard keeper can report what changed.
 
 #### Acceptance Criteria
@@ -321,6 +407,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 10. IF `keeper_log.json` or the previous `firms_index.json` exists in Output_Dir but cannot be parsed as JSON or fails its JSON Schema in `data/schema`, THEN THE Pipeline SHALL stop with an error message that names the file, exit with a non-zero code, and leave every file in Output_Dir unchanged. **[Assumption: a corrupt previous file stops the run rather than being overwritten or treated as missing.]**
 
 ### Requirement 15: Reports
+
+**Phase:** Phase 2.
 
 **User Story:** As Frank, I want a threshold report and a list of Act 1 candidates, so that I can choose real firms for the three Act 1 diagnoses.
 
@@ -343,6 +431,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 15. WHEN a firm matches more than one case, THE Report_Builder SHALL list the firm under each matching case and rank it within each case independently.
 
 ### Requirement 16: Run report
+
+**Phase:** Kept; extended by Requirement 27.
 
 **User Story:** As Frank, I want a run report every time, so that I can see what was skipped and why.
 
@@ -368,6 +458,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 
 ### Requirement 17: Tests
 
+**Phase:** Kept; extended by Requirement 28. 17.3 and 17.12 to 17.14 are Phase 2.
+
 **User Story:** As Frank, I want offline tests with examples and properties, so that the rules are checked without hitting SEC.
 
 #### Acceptance Criteria
@@ -389,6 +481,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 
 ### Requirement 18: Performance
 
+**Phase:** Phase 2.
+
 **User Story:** As Frank, I want a sample run to finish quickly, so that I can iterate on the day before delivery.
 
 #### Acceptance Criteria
@@ -400,6 +494,8 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 5. WHILE a run that includes `--sector NAME` is scanning submissions for the sector selection, THE CLI SHALL print a progress line after every 100 firms whose submissions request has completed or failed, and after the last firm. Each line SHALL show the number of firms processed so far and the total number of firms to scan. **[Assumption]**
 
 ### Requirement 19: Dependencies, secrets and documentation
+
+**Phase:** Kept; extended by Requirement 29.
 
 **User Story:** As Frank, I want the project rules kept in the same change, so that Sunny and the steering files stay in sync.
 
@@ -415,3 +511,174 @@ Items marked **[Assumption]** are conservative defaults chosen where the brief i
 8. THE Pipeline change SHALL leave `pipeline/scripts/make_mock.py`, `pipeline/scripts/threshold_report.py` and every file under `data/mock`, `data/schema` and `data/fixtures` byte-for-byte unchanged. A tester verifies this with an empty `git diff` for those paths against the commit before the change.
 9. THE Pipeline change SHALL use a conventional commit message for every commit: one of the types `feat`, `fix`, `test`, `chore` or `docs`, followed by the scope `(data-pipeline)`, a colon and a summary, for example `feat(data-pipeline): add companyfacts extractor`.
 10. THE Pipeline change SHALL add `pipeline/scripts/record_fixtures.py` (Requirement 17.12) as a new file, without changing `make_mock.py` or `threshold_report.py`.
+
+## Phase 1 requirements
+
+Items marked **[Assumption]** were proposed to Frank on 2026-11-16 and accepted as defaults.
+
+### Requirement 20: Phase 1 entry point
+
+**Phase:** Phase 1.
+
+**User Story:** As Frank, I want one command that downloads the bulk files, builds the panel and writes the report, so that I see the real data shape quickly.
+
+#### Acceptance Criteria
+
+1. THE Pipeline SHALL provide `python -m pipeline.bulk` with the sub-commands `download`, `panel`, `report` and `all`. `all` runs the other three in that order. The command SHALL not use the selection options of Requirement 1.
+2. THE CLI SHALL read `SEC_CONTACT_EMAIL` as in Requirement 4.1 and 4.2, and the rate as in Requirement 4.4 and 4.5. IF the variable is missing, THEN `download` and `all` SHALL exit non-zero before any request.
+3. THE `panel` and `report` sub-commands SHALL send no network request.
+4. THE CLI SHALL accept `--use-cached`. WHEN it is given, THE Bulk_Downloader SHALL not check cache age and SHALL use the cached zips whatever their age. IF a needed zip is not cached, THEN THE CLI SHALL exit non-zero and name the missing file. **[Assumption]**
+5. THE Panel_Extractor and Events_Extractor SHALL write only to Phase1_Out_Dir, and THE Shape_Reporter SHALL write only to Reports_Dir. THE CLI SHALL not write to `data`, Protected_Dirs or any path outside `pipeline/`.
+
+### Requirement 21: Bulk download
+
+**Phase:** Phase 1.
+
+**User Story:** As Frank, I want the two bulk files downloaded once, checked and recorded, so that the whole analysis is reproducible from a known file.
+
+#### Acceptance Criteria
+
+1. THE Bulk_Downloader SHALL download Bulk_Companyfacts and Bulk_Submissions from the two URLs in the Glossary, one request each, with the User-Agent of Requirement 4.1, through the Rate_Limiter.
+2. THE Bulk_Downloader SHALL stream each response to `pipeline/.cache/<file name>.part` in chunks, and SHALL never hold a whole archive in memory.
+3. WHEN the stream ends, THE Bulk_Downloader SHALL check that the number of bytes written equals the `Content-Length` header (when present) and that the file opens as a zip archive with a readable central directory. IF a check fails, THEN THE Bulk_Downloader SHALL delete the `.part` file, leave any earlier cached zip unchanged, exit non-zero and print a message naming the file, the expected size and the actual size. It SHALL not resume a partial download. **[Assumption]**
+4. WHEN both checks pass, THE Bulk_Downloader SHALL rename the `.part` file to its final name and compute its SHA-256.
+5. IF a cached zip exists and its recorded download time is less than 24 hours old, THEN THE Bulk_Downloader SHALL not send a request for it. WHEN the cached zip is 24 hours old or older, THE Bulk_Downloader SHALL refetch it. IF the refetch fails, THEN it SHALL fail and SHALL NOT use the stale zip (Requirement 5.4), unless `--use-cached` is given.
+6. THE Bulk_Downloader SHALL write, next to each zip, a small JSON record with the download time (UTC), size in bytes, SHA-256, source URL and the HTTP `Last-Modified` header (null if absent). The record is the source of the age in criterion 5.
+7. THE bulk zips, their `.part` files and their records SHALL stay under `pipeline/.cache`, which is git-ignored (Requirement 5.6). THE Pipeline SHALL never commit them.
+8. THE Bulk_Downloader SHALL redact the contact email from every message, as in Requirement 19.5.
+
+### Requirement 22: Streaming read
+
+**Phase:** Phase 1.
+
+**User Story:** As Frank, I want the multi-gigabyte archives read member by member, so that the run does not exhaust memory.
+
+#### Acceptance Criteria
+
+1. THE Bulk_Reader SHALL open each zip with `zipfile`, iterate the members, and read and parse one member at a time. It SHALL never extract the archive to disk and never hold more than one parsed member (plus the small aggregates of Requirements 23 to 25) in memory.
+2. THE Bulk_Reader SHALL release a parsed member before it reads the next one.
+3. THE Bulk_Reader SHALL accept members in any order. Every result that combines several members of one CIK SHALL be order-independent (Requirement 25.5).
+4. IF a member cannot be read or parsed as JSON, THEN THE Pipeline SHALL log the member name and the error in the Run_Report, set `parse_error` = true for that CIK in the Firm_Table when the CIK is known, and continue. The 2% rule of Requirement 4.12 SHALL NOT apply. **[Assumption]**
+5. THE Bulk_Reader SHALL ignore members whose names match neither `CIK##########.json` nor `CIK##########-submissions-NNN.json`, and SHALL count them in the Run_Report.
+6. A test SHALL process a tiny in-memory zip and verify that members are read one at a time (for example with an instrumented reader that fails if two parsed members are alive at once).
+
+### Requirement 23: Universe and Firm_Table
+
+**Phase:** Phase 1.
+
+**User Story:** As Frank, I want every filer kept and flagged, so that bankrupt, delisted and acquired firms stay visible.
+
+#### Acceptance Criteria
+
+1. THE Panel_Extractor SHALL include in Universe_P1 every CIK of Bulk_Companyfacts with at least one Annual_Fact in any tag (`has_any_annual_fact`). It SHALL NOT drop any such firm for sector, age, recency, missing SIC or missing submissions. The Recency_Rule SHALL NOT apply.
+2. A CIK that appears only in Bulk_Submissions SHALL NOT be in Universe_P1, and THE Run_Report SHALL record their number. A CIK in Universe_P1 without a submissions file SHALL be kept, with null SIC, division, first filing date, last filing date and tickers, `no_sic` true, and every Age_At_FY null. **[Assumption]**
+3. THE Firm_Table SHALL have one row per CIK with the columns `cik` (10 digits), `name`, `tickers` (the submissions `tickers` list, `;`-joined, empty if none), `sic` (string or null), `sic_division` (null when the SIC maps to no SIC_Division), `first_filing_date`, `last_10k_date`, `last_filing_date`, `is_financial`, `is_utility`, `no_sic`, `age_under_10` and `parse_error`. THE SIC parsing, ranges and division mapping SHALL reuse `universe.py`.
+4. `first_filing_date` SHALL be the earliest filing date of any form, including the older pages. `last_filing_date` SHALL be the latest filing date of any form. `last_10k_date` SHALL be the latest filing date of form `10-K` or `10-K/A`, null if none.
+5. `age_under_10` SHALL be true when Age_Run < 10, and also when the first filing date is null. `is_financial` and `is_utility` SHALL be false when the SIC is null.
+6. No Firm_Table row SHALL be removed because of a flag.
+
+### Requirement 24: Firm-year Panel
+
+**Phase:** Phase 1.
+
+**User Story:** As Frank, I want one row per firm and year with every value traceable to its filing, so that I can see gaps and check each number.
+
+#### Acceptance Criteria
+
+1. THE Panel_Extractor SHALL write, for every CIK in Universe_P1, exactly one row for each fiscal year FY2015 to FY2025 inclusive, sorted by CIK then fiscal year. A year with no usable data SHALL be a Gap_Row, so that gaps stay visible. A firm with a bankruptcy event, or whose last filing is before FY2025, SHALL keep all 11 rows.
+2. THE Panel_Extractor SHALL reuse the Fact_Extractor rules of Requirements 6 and 7 unchanged: Annual_Facts only, Compustat fiscal year by period end date (never the `fy` field alone), the 350 to 380 day Flow_Item rule, the 7-day Instant_Item window, latest-filed-wins, Interest_Tag_Priority, the revenue tag order, the debt rule, the EBIT fallback, USD only, and missing is null and never 0. It SHALL do this through a new function that reuses `build_year()` and the pick functions. It SHALL NOT change the behaviour of `extract()`.
+3. A fiscal year with balance-sheet facts but no usable Flow_Item has no Fiscal_Year_End and is a Gap_Row (Requirement 6.10 behaviour). THE Data_Shape_Report SHALL count such rows in the data-quality section so that the effect is visible. **[Assumption]**
+4. THE Panel SHALL have, for each of the money fields `operating_income` (EBIT), `interest_expense`, `revenue`, `total_debt`, `cash`, `total_assets` and `equity`, the columns `<field>` (value), `<field>_tag`, `<field>_end` (the period end date for a flow, the instant date used for a balance-sheet item), `<field>_accn` and `<field>_url`. WHERE a value is built from several facts (total debt parts, the EBIT fallback), the tag, accession and URL columns SHALL list every contributing fact in the order of Requirement 7, joined by `;`. **[Assumption]**
+5. `cash` SHALL be taken only from `CashAndCashEquivalentsAtCarryingValue`, as an Instant_Item under Requirements 6.5, 6.6 and 6.14, with no substitute tag.
+6. THE Panel SHALL also have `cik`, `fy`, `fye` (the Fiscal_Year_End, null for a Gap_Row), `age_at_fy`, `icr` and `zombie_flag`. `icr` SHALL be computed only by the shared `icr()` function of Requirement 8, from `operating_income` and `interest_expense`.
+7. `<field>_url` SHALL be `https://www.sec.gov/Archives/edgar/data/{cik without leading zeros}/{accession without dashes}/{accession}-index.htm`. **[Assumption]**
+8. `zombie_flag` SHALL follow the Zombie_Flag definition in the Glossary. For FY2015 and FY2016, THE Panel_Extractor SHALL compute `icr` for FY2013 and FY2014 internally for the flag only, and SHALL NOT write those years to the Panel. **[Assumption]**
+9. A null or missing value SHALL be written as an empty CSV cell, never as 0. A value is 0 only when the selected fact reports exactly 0.
+10. THE Panel and the Firm_Table SHALL be written as gzipped CSV (UTF-8, header row) in Phase1_Out_Dir, with no new dependency.
+
+### Requirement 25: Events table
+
+**Phase:** Phase 1.
+
+**User Story:** As Frank, I want bankruptcy, acquisition, delisting and deregistration events per firm, so that I can tell what happened to each zombie.
+
+#### Acceptance Criteria
+
+1. THE Events_Extractor SHALL read, for every CIK, the main submissions file and every older page of that CIK in Bulk_Submissions (members named `CIK##########-submissions-NNN.json`), in addition to `filings.recent`.
+2. THE Events_Extractor SHALL create one event for each filing that matches an Event_Type: `bankruptcy` for form `8-K` or `8-K/A` whose comma-separated `items` contain `1.03`; `acquisition_disposition` for the same forms with item `2.01`; `delisting` for form `25` or `25-NSE`; `deregistration` for form `15-12B`, `15-12G` or `15-15D`. Forms are matched exactly. **[Assumption]**
+3. THE Events_Table SHALL have the columns `cik`, `date` (filing date), `form`, `item` (the matching item, null for forms 25 and 15), `event_type`, `accession`, `url` (as in Requirement 24.7) and `source_member`. It SHALL hold events of every date.
+4. THE Events_Extractor SHALL de-duplicate on (accession number, Event_Type), so that one 8-K with items "1.03,2.01" gives two rows, and one accession never gives two rows of the same type. **[Assumption]**
+5. THE result for a CIK SHALL not depend on the order of its members: first filing date is the minimum, last filing date the maximum, `last_10k_date` the maximum, and events the union, over the main file and all older pages.
+6. IF an older page has no main file in the archive, THEN THE Events_Extractor SHALL skip it and list the member name in the Run_Report. **[Assumption]**
+7. THE Events_Extractor SHALL keep events only for CIKs in Universe_P1.
+8. THE Events_Extractor SHALL write `events.csv.gz` to Phase1_Out_Dir.
+
+### Requirement 26: Data shape report
+
+**Phase:** Phase 1.
+
+**User Story:** As Frank, I want a report on what the data looks like, so that I can choose the game design from facts.
+
+#### Acceptance Criteria
+
+1. THE Shape_Reporter SHALL write `pipeline/reports/data_shape.md` and one small CSV per section named `s<N>_<topic>.csv` in Reports_Dir, and SHALL read only the Panel, the Firm_Table and the Events_Table. THE panel itself SHALL NOT be written to Reports_Dir.
+2. THE report SHALL start with the source of the data: the download time, size, SHA-256 and `Last-Modified` of both zips, the run date and the definitions used (Glossary terms). Every figure in the report SHALL be reproducible from the committed CSVs and the panel.
+3. Unless a section says otherwise, sections 2 to 8 SHALL use Core_Firm_Year rows. **[Assumption]**
+4. **Section 1, firm counts.** For each FY2015 to FY2025: the number of firms with a Present_Row, and the number of those that are Core_Firm_Year rows.
+5. **Section 2, zombies.** For each FY2017 to FY2025: the number of rows with `zombie_flag` true among Core_Firm_Year rows, the share over Core_Firm_Year Present_Rows, and a second share over Core_Firm_Year rows with a non-null `icr`. **[Assumption]**
+6. **Section 3, outcomes.** For the zombies of FY2019 and, separately, of FY2020: the firms placed in exactly one category by the first match in this order: `bankruptcy` (a bankruptcy event dated after the end of the zombie year and up to 2024-12-31); `delisted_or_deregistered` (a delisting or deregistration event in the same window); `stopped_filing` (no such event and the latest Fiscal_Year_End with data is before FY2024); `recovered` (FY2024 `icr` >= 1); `still_zombie` (FY2024 `zombie_flag` true); `other_alive` (everything else). The report SHALL give the count of each category, and the CIK list of each in a CSV. It SHALL also give, as an extra column, how many firms in each category filed an `acquisition_disposition` event in the window, labelled "filed item 2.01", and SHALL state that this event is filed mostly by the acquirer. **[Assumption]**
+7. **Section 4.** The firms with `icr` >= 1.5 in FY2019 and `icr` < 1 in FY2020: count and CIK list.
+8. **Section 5.** The firms with `zombie_flag` true in at least one of FY2019, FY2020 and FY2021 and a bankruptcy event dated 2022-01-01 to 2023-12-31: count and CIK list. **[Assumption]**
+9. **Section 6, breaking rate.** For each firm's latest fiscal year with non-null `operating_income`, `interest_expense` > 0 and `total_debt` > 0: the Breaking_Rate in percentage points, a histogram in 0.5 pp buckets from -10 to +20 pp with one underflow and one overflow bucket, and the number of firms with a Breaking_Rate below 1, 2, 3, 4 and 5 pp (this includes firms already below 0). The same figures SHALL be given for fixed FY2024. The number of firms left out for null or non-positive interest or debt SHALL be stated. **[Assumption]**
+10. **Section 7, data quality.** For each FY2015 to FY2025, for all firms and for Core_Firm_Year rows: the number of Present_Rows missing `operating_income`, missing `interest_expense`, missing `total_debt`, with a `fye` whose month is not December, and Gap_Rows that have a balance-sheet fact (Requirement 24.3).
+11. **Section 8, largest firms.** The 200 firms with the highest maximum annual `revenue` over FY2015 to FY2025, with name, tickers, that revenue and its year, the sector, the flags, and the `zombie_flag` of FY2017 to FY2025 as a nine-character string (`1` true, `0` false). **[Assumption]**
+12. THE report SHALL show the text "Data: SEC EDGAR. Not investment advice." (product.md) and SHALL state that the age proxy is the first EDGAR filing, an approximation.
+13. THE report and CSVs SHALL be deterministic: the same Panel, Firm_Table and Events_Table SHALL give byte-identical files, with rows sorted by CIK and no timestamps other than those in criterion 2.
+
+### Requirement 27: Phase 1 run report
+
+**Phase:** Phase 1.
+
+**User Story:** As Frank, I want the run report to show what the bulk run read and skipped.
+
+#### Acceptance Criteria
+
+1. THE Pipeline SHALL write the bulk section into the Run_Report (`pipeline/.cache/run_report.json`) under Requirement 16.1, 16.7 and 16.10. **[Assumption: same file, new `bulk` section.]**
+2. THE `bulk` section SHALL contain, for each zip: URL, download time, size in bytes, SHA-256, `Last-Modified`, and whether the zip came from the cache.
+3. THE `bulk` section SHALL contain the number of members read, members ignored (Requirement 22.5), members that failed to parse with their names and errors, Universe_P1 size, the number of submissions-only CIKs, the number of orphan older pages with their names, Panel rows, Gap_Rows and Events_Table rows per Event_Type.
+4. THE Run_Report SHALL record the number of SEC requests (expected 2 for a cold run) and Cache hits.
+
+### Requirement 28: Phase 1 tests
+
+**Phase:** Phase 1.
+
+**User Story:** As Frank, I want offline tests for the bulk code, so that I trust the report before the live run.
+
+#### Acceptance Criteria
+
+1. THE existing hypothesis tests SHALL stay. THE phase 1 tests SHALL use no network (Requirement 17.1 and 17.2) and in-memory fixtures built in the test code, including tiny in-memory zips.
+2. A property test SHALL verify that a missing value is never written as 0 in the Panel (a null input gives an empty cell; 0 only when the fact is exactly 0).
+3. A property test SHALL verify that a firm with a bankruptcy event keeps all its 11 Panel rows, and that no firm is dropped from the Firm_Table whatever its flags.
+4. A property test SHALL verify that `zombie_flag` equals the definition in `zombie-definition.md` (Age_At_FY >= 10 and three non-null `icr` values below 1 ending at the row's year) on randomly generated panels, and is false when any of the three `icr` values is null.
+5. A property test SHALL verify that events are de-duplicated by (accession number, Event_Type), and an example test SHALL verify that one 8-K with items "1.03,2.01" gives two rows.
+6. An example test SHALL use a firm whose bankruptcy 8-K (item 1.03) exists only on an older submissions page and verify that the event is found.
+7. An example test SHALL process a tiny in-memory zip member by member (Requirement 22.6).
+8. Example tests SHALL cover the download rules with a fake HTTP source: size mismatch removes the `.part` file and fails; a cached zip younger than 24 hours is not downloaded again; a stale zip with a failed refetch is not used; SHA-256 and size are recorded.
+9. Example tests SHALL cover the Panel for FY2015 to FY2025 with a gap year, a firm that stops filing in 2019, a January fiscal year end (FY mapping), the EBIT fallback, a cash value, and Age_At_FY.
+10. Example tests SHALL cover each report section on a small hand-built panel, including the outcome precedence of Requirement 26.6 and the Breaking_Rate buckets.
+11. THE tests SHALL leave `pipeline/.cache`, `pipeline/out`, `pipeline/reports` and `data` unchanged and SHALL write to temporary folders only (Requirement 17.4).
+
+### Requirement 29: Phase 1 documentation, dependencies and commits
+
+**Phase:** Phase 1.
+
+**User Story:** As Frank, I want the project rules updated in the same change.
+
+#### Acceptance Criteria
+
+1. THE Pipeline change SHALL add no dependency. `pipeline/requirements.txt` stays as in Requirement 19.1. The bulk code uses `zipfile`, `hashlib`, `csv`, `gzip` and `json` from the standard library.
+2. THE Pipeline change SHALL update `edgar-rules.md` (bulk files allowed, Scope and failure rules marked phase 2), `data-contract.md` (the sentence that the phase 1 panel is an internal artifact), `zombie-definition.md` (the yearly flag), `structure.md` and `.gitignore` (`pipeline/out/`), in the same change as this spec. No contract field, JSON Schema or TypeScript type changes.
+3. THE committed outputs of phase 1 SHALL be `pipeline/reports/data_shape.md` and its CSVs only. `pipeline/out/` and the zips SHALL never be committed.
+4. THE Pipeline change SHALL use one commit per top-level task, with a conventional commit message and the scope `(data-pipeline)` (Requirement 19.9).
+5. THE Pipeline change SHALL leave `extract()`, `icr()`, `universe.py`, `http.py` `get()`, `make_mock.py`, `threshold_report.py` and every file under `data/mock`, `data/schema` and `data/fixtures` unchanged in behaviour. Additions to `facts.py` and `http.py` are new functions only.
+6. THE phase 1 code SHALL not import React or three.js, and SHALL not write to `/web`.
