@@ -356,3 +356,58 @@ def test_age_at_fy_counts_completed_anniversaries(first: date, gap1: int, gap2: 
         assert age_at_fy(first, fye) == k
     assert age_at_fy(first, fye1) <= age_at_fy(first, fye2)
     assert age_at_fy(None, fye1) is None and age_at_fy(first, None) is None
+
+
+# --- tag lists adopted on 2026-11-20 and likely_debt_free (Requirement 30.9) -----------------------
+def _flow_fact(val: float, end: str = "2020-12-31") -> dict:
+    return fact(val, end, start="2020-01-02", fy=2020, accn="0000000001-21-000005")
+
+
+def _row2020(extra: dict, **year) -> dict:
+    cf = merge_facts(year_facts(2020, **year), extra)
+    return {r["fy"]: r for r in extract_panel(CIK, companyfacts(CIK, cf), FIRST)}[2020]
+
+
+def test_likely_debt_free_needs_no_debt_value_and_interest_zero_or_missing() -> None:
+    assert _row2020({}, revenue=1.0, ebit=1.0)["likely_debt_free"] is True                       # no debt, interest missing
+    assert _row2020({}, revenue=1.0, ebit=1.0, interest=0.0)["likely_debt_free"] is True        # no debt, interest 0
+    assert _row2020({}, revenue=1.0, ebit=1.0, interest=2.0)["likely_debt_free"] is False       # interest is positive
+    assert _row2020({}, revenue=1.0, ebit=1.0, debt=5.0)["likely_debt_free"] is False           # a debt value exists
+    assert _row2020({"DebtCurrent": [fact(5.0, "2020-12-31", fy=2020)]}, revenue=1.0)["likely_debt_free"] is False  # stage 2 value
+    assert _row2020({}, revenue=1.0, ebit=1.0, interest=-1.0)["likely_debt_free"] is False      # negative interest is not zero
+    gap = {r["fy"]: r for r in extract_panel(CIK, companyfacts(CIK, year_facts(2016, revenue=1.0)), FIRST)}[2018]
+    assert gap["likely_debt_free"] is False                                                      # a Gap_Row is never flagged
+    assert all(r["likely_debt_free"] is False for r in gap_panel(CIK))
+
+
+def test_goods_and_services_revenue_columns_list_both_facts() -> None:
+    cf = {"SalesRevenueGoodsNet": [fact(60.0, "2020-12-31", start="2020-01-02", fy=2020, accn="0000000001-21-000001")],
+          "SalesRevenueServicesNet": [fact(40.0, "2020-12-31", start="2020-01-02", fy=2020, accn="0000000001-21-000002")]}
+    row = _row2020(cf, ebit=1.0, interest=1.0)
+    assert row["revenue"] == 100.0
+    assert row["revenue_tag"] == "SalesRevenueGoodsNet;SalesRevenueServicesNet"
+    assert row["revenue_accn"] == "0000000001-21-000001;0000000001-21-000002"
+    assert row["revenue_url"].count(";") == 1
+    only = _row2020({"SalesRevenueServicesNet": cf["SalesRevenueServicesNet"]}, ebit=1.0, interest=1.0)
+    assert (only["revenue"], only["revenue_tag"]) == (40.0, "SalesRevenueServicesNet")
+
+
+def test_stage_two_debt_columns_and_the_fourth_revenue_and_fifth_interest_tags() -> None:
+    end = "2020-12-31"
+    extra = {"LongTermDebtAndCapitalLeaseObligations": [fact(70.0, end, accn="0000000001-21-000011", fy=2020)],
+             "DebtCurrent": [fact(30.0, end, accn="0000000001-21-000012", fy=2020)],
+             "RevenueFromContractWithCustomerIncludingAssessedTax": [_flow_fact(88.0)],
+             "InterestExpenseOperating": [_flow_fact(9.0)]}
+    row = _row2020(extra, ebit=1.0)
+    assert row["total_debt"] == 100.0
+    assert row["total_debt_tag"] == "LongTermDebtAndCapitalLeaseObligations;DebtCurrent"
+    assert row["total_debt_accn"] == "0000000001-21-000011;0000000001-21-000012"
+    assert (row["revenue"], row["revenue_tag"]) == (88.0, "RevenueFromContractWithCustomerIncludingAssessedTax")
+    assert (row["interest_expense"], row["interest_expense_tag"], row["icr"]) == (9.0, "InterestExpenseOperating", 1.0 / 9.0)
+    assert row["likely_debt_free"] is False
+
+
+def test_gap_has_balance_sheet_counts_a_stage_two_debt_tag() -> None:
+    cf = merge_facts(year_facts(2016, revenue=1.0, ebit=1.0, interest=1.0), {"DebtCurrent": [fact(5.0, "2018-12-31", fy=2018)]})
+    rows = {r["fy"]: r for r in extract_panel(CIK, companyfacts(CIK, cf), FIRST)}
+    assert rows[2018]["gap_has_balance_sheet"] is True and rows[2018]["total_debt"] is None

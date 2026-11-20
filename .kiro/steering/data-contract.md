@@ -105,9 +105,9 @@ In each `years` entry, every money field, `icr`, `ebit_tag` and `revenue_tag` is
 
 ### XBRL tag priority
 
-- Revenue: `Revenues`, then `RevenueFromContractWithCustomerExcludingAssessedTax`, then `SalesRevenueNet`.
-- Total debt: `LongTermDebtNoncurrent` + `LongTermDebtCurrent` + `ShortTermBorrowings` (missing parts count as 0 only if at least one part exists); if none exist, `LongTermDebt`.
-- Interest expense: `InterestExpense`, then `InterestExpenseNonoperating`, then `InterestExpenseDebt`, then `InterestAndDebtExpense`. Net interest tags are never used.
+- Revenue: `Revenues`, then `RevenueFromContractWithCustomerExcludingAssessedTax`, then `SalesRevenueNet`, then `RevenueFromContractWithCustomerIncludingAssessedTax`. If none has a value: `SalesRevenueGoodsNet` + `SalesRevenueServicesNet` (the sum if both exist, the one that exists otherwise; `revenue_tag` lists the tag or both tags joined by `+`).
+- Total debt: `LongTermDebtNoncurrent` + `LongTermDebtCurrent` + `ShortTermBorrowings` (missing parts count as 0 only if at least one part exists); if none exist, `LongTermDebt`. Only if that gives nothing (stage 2): the first of `DebtLongtermAndShorttermCombinedAmount`, `DebtAndCapitalLeaseObligations`; else the sum of the first available of (`LongTermDebtAndCapitalLeaseObligations`, `LongTermNotesPayable`) and the first available of (`LongTermDebtAndCapitalLeaseObligationsCurrent`, `DebtCurrent`, `NotesPayableCurrent`); else `NotesPayable`. `debt_tags` lists the tags used.
+- Interest expense: `InterestExpense`, then `InterestExpenseNonoperating`, then `InterestExpenseDebt`, then `InterestAndDebtExpense`, then `InterestExpenseOperating`. Net interest tags and `InterestPaidNet` (cash flow) are never used.
 - Assets: `Assets`.
 - Equity: `StockholdersEquity`.
 - Record which tags were used (`ebit_tag`, `revenue_tag`, `debt_tags`).

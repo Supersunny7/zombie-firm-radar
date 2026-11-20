@@ -273,6 +273,18 @@ Shortest path to `pipeline/reports/data_shape.md`. Tasks 1 to 6 above are shared
   - [x] 33.4 Regenerate the report with `report` and write the census with `census` from the cached zips (no network); stop and show the summary
     - _Requirements: 30.x_
   - Commit message: `feat(data-pipeline): add zombie split, sanity flags and tag census`
+- [x] 34. Tag lists, likely_debt_free, sanity floor and outlier, census years (Frank's decisions of 2026-11-20)
+  - [x] 34.1 Census `--fy`, goods + services check and positive-interest list; run FY2016, FY2019 and FY2024 before any change
+    - _Requirements: 30.10_
+  - [x] 34.2 `facts.py`: revenue 4th tag and goods + services, interest 5th tag, debt stage 2; tests and Property 6a
+    - _Requirements: 7.2, 7.2a, 7.6, 7.9a_
+  - [x] 34.3 Panel `likely_debt_free`, revenue tag split, stage 2 in `gap_has_balance_sheet`; report section 7 columns and list; sanity floor 100,000 and `outlier`
+    - _Requirements: 30.3, 30.9_
+  - [x] 34.4 Update Requirement 7, design.md and the three tag lines of data-contract.md (documentation only)
+    - _Requirements: 7, 19.6_
+  - [x] 34.5 Re-run `panel` from the cached zips (no download), `report`, and write the before/after table
+    - _Requirements: 30.11_
+  - Commit messages: `feat(data-pipeline): adopt new tag lists and likely_debt_free` and `docs(data-pipeline): regenerate report after tag-list change`
 - [x] 32. MANUAL (Frank): live bulk run and first look at the report
   - [x] 32.1 Frank downloads and builds everything: `SEC_CONTACT_EMAIL=<email> .venv/bin/python -m pipeline.bulk all`. The agent must not run this. Needs several GB of free disk (two zips plus `pipeline/out`).
     - Read `pipeline/.cache/run_report.json` section `bulk`: zip sizes and SHA-256, members read, parse failures, Universe_P1 size, orphan pages, Gap_Rows, events per type. Note the wall-clock time of the companyfacts pass. If it is too slow (design: 10 to 30 minutes expected), ask for the worker-pool follow-up.

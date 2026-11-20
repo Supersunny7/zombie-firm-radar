@@ -73,6 +73,7 @@ def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="python -m pipeline.bulk", description="SEC bulk data shape report (Phase 1).")
     p.add_argument("command", choices=COMMANDS)
     p.add_argument("--use-cached", action="store_true", help="use cached zips whatever their age")
+    p.add_argument("--fy", type=int, default=2024, help="fiscal year for the census command (default 2024)")
     p.add_argument("--rate", type=float, default=DEFAULT_RATE, help="SEC requests per second (default 5, max 10)")
     return p
 
@@ -245,13 +246,13 @@ def run_report_step(paths: BulkPaths, bulk: dict[str, Any], now: datetime) -> No
     bulk["report"] = {"files": report_mod.run(paths.out_dir, paths.zip_dir, paths.reports_dir, now.date().isoformat())}
 
 
-def run_census_step(paths: BulkPaths, bulk: dict[str, Any], now: datetime) -> None:
+def run_census_step(paths: BulkPaths, bulk: dict[str, Any], now: datetime, fy: int = 2024) -> None:
     """Tag census of the core firms that miss a value in FY2024 (Requirement 30). No network."""
     def progress(done: int, total: int) -> None:
         if done % 250 == 0 or done == total:
             print(f"census: {done}/{total} firms", file=sys.stderr, flush=True)
 
-    files, summary = census_mod.run(paths.out_dir, paths.zip_dir, paths.reports_dir, now.date().isoformat(), progress)
+    files, summary = census_mod.run(paths.out_dir, paths.zip_dir, paths.reports_dir, now.date().isoformat(), progress, fy)
     bulk["census"] = {"files": files, **summary}
 
 
@@ -299,7 +300,7 @@ def main(
         if ns.command in ("report", "all"):
             run_report_step(paths, bulk, now)
         if ns.command == "census":
-            run_census_step(paths, bulk, now)
+            run_census_step(paths, bulk, now, ns.fy)
     except PipelineError as exc:
         code = exc.exit_code
         report.failure = {"requirement": exc.requirement, "message": redact(exc.message, secrets)}

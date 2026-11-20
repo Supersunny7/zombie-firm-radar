@@ -29,7 +29,7 @@ OUTCOME_CATEGORIES = (
 )
 SANITY_FIELDS = ("revenue", "total_debt", "interest_expense", "operating_income")
 SANITY_RATIO = 20.0
-SANITY_FLOOR_USD = 1_000_000.0
+SANITY_FLOOR_USD = 100_000.0  # both values of a pair must be at least this (Requirement 30.3)
 SANITY_TOP_N = 50
 DIVISION_NONE = "(none)"
 HIST_LOW, HIST_HIGH, HIST_STEP = -10.0, 20.0, 0.5
@@ -73,6 +73,7 @@ def load_tables(out_dir: Path) -> Tables:
     panel["icr"] = pd.to_numeric(p["icr"], errors="coerce")
     panel["zombie_flag"] = _flag(p["zombie_flag"])
     panel["gap_has_balance_sheet"] = _flag(p["gap_has_balance_sheet"])
+    panel["likely_debt_free"] = _flag(p["likely_debt_free"])
     f = read_table(out_dir / names[1])
     firms = f[["cik", "name", "tickers", "sic_division"]].copy()
     for c in ("is_financial", "is_utility", "no_sic", "age_under_10", "parse_error"):
@@ -161,21 +162,28 @@ def s7_data_quality(df: pd.DataFrame) -> Section:
         y = df[df["fy"] == fy]
         for pop, mask, gap_mask in (("all", y["present"], pd.Series(True, index=y.index)), ("core", y["present"] & y["core"], nonfin[y.index])):
             r = y[mask]
+            no_debt = r["total_debt"].isna()
             rows.append({
                 "fy": fy, "population": pop, "rows_present": len(r),
                 "missing_operating_income": int(r["operating_income"].isna().sum()),
                 "missing_interest_expense": int(r["interest_expense"].isna().sum()),
-                "missing_total_debt": int(r["total_debt"].isna().sum()),
+                "missing_total_debt": int((no_debt & ~r["likely_debt_free"]).sum()),
+                "likely_debt_free": int(r["likely_debt_free"].sum()),
+                "positive_interest_no_debt_value": int((no_debt & (r["interest_expense"] > 0)).sum()),
                 "fye_not_december": int((r["fye"].dt.month.ne(12) & r["fye"].notna()).sum()),
                 "gap_rows_with_balance_sheet": int((y["gap_has_balance_sheet"] & gap_mask).sum()),
             })
     t = pd.DataFrame(rows)
+    pos = df[df["core"] & df["present"] & df["total_debt"].isna() & (df["interest_expense"] > 0)]
+    pos = pos[["cik", "name", "tickers", "fy", "interest_expense"]].sort_values(["cik", "fy"], kind="mergesort").reset_index(drop=True)
     md = (
-        "Counts are over present rows. `gap_rows_with_balance_sheet` counts years that have no usable income-statement "
-        "value, so the panel row is empty, but the filing has a balance-sheet value for that year. For `core` it counts "
+        "Counts are over present rows. `likely_debt_free` rows have no value from any debt tag in the tag lists and interest expense of 0 or "
+        "missing: they are counted here and **not** in `missing_total_debt`. `positive_interest_no_debt_value` counts rows with positive interest "
+        "expense and no debt value (core firms: `s7_positive_interest_no_debt.csv`). `gap_rows_with_balance_sheet` counts years that have no usable "
+        "income-statement value, so the panel row is empty, but the filing has a balance-sheet value for that year. For `core` it counts "
         "non-financial, non-utility firms (age at a gap year is unknown).\n\n" + md_table(t)
     )
-    return Section("7. Data quality", md, {"s7_data_quality.csv": t})
+    return Section("7. Data quality", md, {"s7_data_quality.csv": t, "s7_positive_interest_no_debt.csv": pos})
 
 
 # --- sections 3, 4, 5 ---------------------------------------------------------------------
@@ -408,11 +416,43 @@ def _text_col(df: pd.DataFrame, name: str) -> pd.Series:
     return df[name].fillna("") if name in df.columns else pd.Series("", index=df.index)
 
 
+def _disagree(x: float, y: float, factor: float) -> bool:
+    """True when two values differ by more than ``factor`` times and both are at least the floor."""
+    ax, ay = abs(x), abs(y)
+    return ax >= SANITY_FLOOR_USD and ay >= SANITY_FLOOR_USD and max(ax, ay) / min(ax, ay) > factor
+
+
+def outlier_of(prev: float | None, a: float, b: float, nxt: float | None, factor: float = SANITY_RATIO) -> str:
+    """Which value of the flagged pair (a, b) is the outlier. ``prev`` is the year before a and ``nxt`` the year after b.
+
+    A value is the outlier when it disagrees with all of its neighbours (both of them, or the only one). If both
+    qualify, the one that disagrees with more neighbours wins. Result: ``a``, ``b``, ``undetermined`` (a tie, for
+    example a two-year series) or ``level_shift`` (neither disagrees with all its neighbours).
+    """
+    a_n = [v for v in (prev, b) if v is not None]
+    b_n = [v for v in (a, nxt) if v is not None]
+    a_dis = sum(_disagree(a, v, factor) for v in a_n)
+    b_dis = sum(_disagree(b, v, factor) for v in b_n)
+    a_all, b_all = a_dis == len(a_n), b_dis == len(b_n)
+    if a_all and not b_all:
+        return "a"
+    if b_all and not a_all:
+        return "b"
+    if a_all and b_all:
+        return "a" if a_dis > b_dis else "b" if b_dis > a_dis else "undetermined"
+    return "level_shift"
+
+
+_FLIP = {"a": "b", "b": "a", "undetermined": "undetermined", "level_shift": "level_shift"}
+_ROLE = {"a": "this", "b": "neighbor", "undetermined": "undetermined", "level_shift": "level_shift"}
+
+
 def ratio_flags(df: pd.DataFrame, factor: float = SANITY_RATIO) -> pd.DataFrame:
     """Firm-years whose value differs from the previous or the next fiscal year by more than ``factor``.
 
-    Values are compared by absolute value; a pair with a zero or an empty value, or with an empty
-    year in between, is not compared. Both rows of a flagged pair are listed. No value is changed.
+    Both values must be at least 100,000 USD (absolute) and non-zero; an empty year in between is not compared.
+    Both rows of a flagged pair are listed, each with ``outlier``: ``this``, ``neighbor``, ``undetermined`` or
+    ``level_shift``. No value is changed.
     """
     out = []
     for f in SANITY_FIELDS:
@@ -420,26 +460,29 @@ def ratio_flags(df: pd.DataFrame, factor: float = SANITY_RATIO) -> pd.DataFrame:
                           "accn": _text_col(df, f + "_accn"), "url": _text_col(df, f + "_url")})
         d = d[d["value"].notna()].sort_values(["cik", "fy"], kind="mergesort").reset_index(drop=True)
         nxt = d.groupby("cik")[["fy", "value", "accn", "url"]].shift(-1)
-        pair = nxt["fy"].eq(d["fy"] + 1) & d["value"].ne(0) & nxt["value"].ne(0) & nxt["value"].notna()
         a, b = d["value"].abs(), nxt["value"].abs()
-        ratio = pd.concat([a, b], axis=1).max(axis=1) / pd.concat([a, b], axis=1).min(axis=1)
-        hit = pair & (ratio > factor)
-        big = pd.concat([a, b], axis=1).max(axis=1)
-        for who in ("current", "next"):
-            sel = d[hit]
-            if who == "current":
-                row = pd.DataFrame({"cik": sel["cik"], "name": sel["name"], "fy": sel["fy"], "value": sel["value"],
-                                    "neighbor": "next", "neighbor_fy": nxt.loc[hit, "fy"], "neighbor_value": nxt.loc[hit, "value"],
-                                    "accession": sel["accn"], "url": sel["url"]})
-            else:
-                row = pd.DataFrame({"cik": sel["cik"], "name": sel["name"], "fy": nxt.loc[hit, "fy"], "value": nxt.loc[hit, "value"],
-                                    "neighbor": "previous", "neighbor_fy": sel["fy"], "neighbor_value": sel["value"],
-                                    "accession": nxt.loc[hit, "accn"], "url": nxt.loc[hit, "url"]})
+        lo, hi = pd.concat([a, b], axis=1).min(axis=1), pd.concat([a, b], axis=1).max(axis=1)
+        hit = nxt["fy"].eq(d["fy"] + 1) & (lo >= SANITY_FLOOR_USD) & (hi / lo > factor)
+        if not hit.any():
+            continue
+        series = {cik: dict(zip(g["fy"], g["value"])) for cik, g in d[d["cik"].isin(d.loc[hit, "cik"].unique())].groupby("cik")}
+        roles = []
+        for cik, fy, va, vb in zip(d.loc[hit, "cik"], d.loc[hit, "fy"], d.loc[hit, "value"], nxt.loc[hit, "value"]):
+            s_ = series[cik]
+            roles.append(outlier_of(s_.get(fy - 1), va, vb, s_.get(fy + 2), factor))
+        roles = pd.Series(roles, index=d.index[hit])
+        sel = d[hit]
+        cur = pd.DataFrame({"cik": sel["cik"], "name": sel["name"], "fy": sel["fy"], "value": sel["value"], "neighbor": "next",
+                            "neighbor_fy": nxt.loc[hit, "fy"], "neighbor_value": nxt.loc[hit, "value"],
+                            "outlier": roles.map(_ROLE), "accession": sel["accn"], "url": sel["url"]})
+        nx = pd.DataFrame({"cik": sel["cik"], "name": sel["name"], "fy": nxt.loc[hit, "fy"], "value": nxt.loc[hit, "value"], "neighbor": "previous",
+                           "neighbor_fy": sel["fy"], "neighbor_value": sel["value"],
+                           "outlier": roles.map(_FLIP).map(_ROLE), "accession": nxt.loc[hit, "accn"], "url": nxt.loc[hit, "url"]})
+        for row in (cur, nx):
             row["field"] = f
-            row["ratio"] = ratio[hit].round(6)
-            row["above_floor"] = (big[hit] >= SANITY_FLOOR_USD)
+            row["ratio"] = (hi / lo)[hit].round(6)
             out.append(row)
-    cols = ["cik", "name", "fy", "field", "value", "neighbor", "neighbor_fy", "neighbor_value", "ratio", "above_floor", "accession", "url"]
+    cols = ["cik", "name", "fy", "field", "value", "neighbor", "neighbor_fy", "neighbor_value", "ratio", "outlier", "accession", "url"]
     if not out:
         return pd.DataFrame(columns=cols)
     t = pd.concat(out, ignore_index=True)[cols]
@@ -452,23 +495,24 @@ def ratio_flags(df: pd.DataFrame, factor: float = SANITY_RATIO) -> pd.DataFrame:
 
 def s10_sanity(df: pd.DataFrame) -> Section:
     flags = ratio_flags(df)
-    shown = flags[flags["above_floor"]]
-    counts = (flags.assign(above=flags["above_floor"]).groupby("field")["above"].agg(above_floor="sum", total="size").reset_index()
-              if len(flags) else pd.DataFrame(columns=["field", "above_floor", "total"]))
-    counts["below_floor"] = counts["total"] - counts["above_floor"]
-    counts = counts.set_index("field").reindex(list(SANITY_FIELDS)).fillna(0).astype(int).reset_index()[["field", "above_floor", "below_floor"]]
-    top = shown.sort_values(["ratio", "cik", "fy"], ascending=[False, True, True], kind="mergesort").head(SANITY_TOP_N)
-    top = top[["cik", "name", "fy", "field", "value", "neighbor", "neighbor_fy", "neighbor_value", "ratio", "accession"]]
+    counts = flags.groupby("field").size().reindex(list(SANITY_FIELDS)).fillna(0).astype(int).rename("flag_rows").reset_index()
+    own = flags[flags["outlier"] == "this"].groupby("field").size().reindex(list(SANITY_FIELDS)).fillna(0).astype(int).rename("rows_that_are_the_outlier")
+    counts = counts.merge(own.reset_index(), on="field")
+    top = flags.sort_values(["ratio", "cik", "fy"], ascending=[False, True, True], kind="mergesort").head(SANITY_TOP_N)
+    top = top[["cik", "name", "fy", "field", "value", "neighbor", "neighbor_fy", "neighbor_value", "ratio", "outlier", "accession"]]
     md = (
         f"A firm-year is flagged when a value differs by more than {SANITY_RATIO:g} times from the same firm's value in the previous "
-        "or the next fiscal year (absolute values; zero or empty values and empty years in between are not compared). Both years of a "
-        f"flagged pair are listed. `above_floor` means the larger value is at least {SANITY_FLOOR_USD:,.0f} USD. "
+        f"or the next fiscal year and **both values are at least {SANITY_FLOOR_USD:,.0f} USD** (absolute values; zero or empty values and "
+        "empty years in between are not compared). Both years of a flagged pair are listed. "
+        "`outlier` says which value is the odd one out, from the row's point of view: `this` (the value of this row disagrees with all of its "
+        "neighbours, or with the only one), `neighbor`, `undetermined` (for example a two-year series: nothing says which is wrong) or `level_shift` "
+        "(neither value disagrees with all its neighbours, so the level changed and stayed changed). "
         "**No value is changed**: these are leads to check against the filing, not corrections.\n\n"
         "Flag rows by field (a pair gives two rows):\n\n" + md_table(counts)
-        + f"\nThe {SANITY_TOP_N} largest ratios above the floor (all of them, with URLs: `s10_sanity_flags.csv`):\n\n"
+        + f"\nThe {SANITY_TOP_N} largest ratios (all of them, with URLs: `s10_sanity_flags.csv`):\n\n"
         + md_table(top, {"value": "{:,.0f}", "neighbor_value": "{:,.0f}", "ratio": "{:,.1f}"})
     )
-    return Section("10. Year-over-year sanity flags", md, {"s10_sanity_flags.csv": shown.reset_index(drop=True)})
+    return Section("10. Year-over-year sanity flags", md, {"s10_sanity_flags.csv": flags})
 
 
 # --- rendering and writing ----------------------------------------------------------------

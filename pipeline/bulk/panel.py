@@ -17,8 +17,10 @@ from pipeline.facts import (
     ASSETS_TAG,
     DEBT_FALLBACK_TAG,
     DEBT_PART_TAGS,
+    DEBT_STAGE2_TAGS,
     EQUITY_TAG,
     FLOW_TAGS,
+    REVENUE_TAG_JOIN,
     Fact,
     YearValues,
     annual_facts,
@@ -48,7 +50,7 @@ FIELDS = (
     "equity",
 )
 FIELD_SUFFIXES = ("", "_tag", "_end", "_accn", "_url")
-_BALANCE_SHEET_TAGS = (*DEBT_PART_TAGS, DEBT_FALLBACK_TAG, ASSETS_TAG, EQUITY_TAG, CASH_TAG)
+_BALANCE_SHEET_TAGS = (*DEBT_PART_TAGS, DEBT_FALLBACK_TAG, *DEBT_STAGE2_TAGS, ASSETS_TAG, EQUITY_TAG, CASH_TAG)
 
 
 @dataclass(frozen=True)
@@ -104,7 +106,7 @@ def field_facts(y: YearValues, cash: Fact | None) -> dict[str, tuple[Fact, ...]]
     return {
         "operating_income": operating,
         "interest_expense": one(y.interest_tag),
-        "revenue": one(y.revenue_tag),
+        "revenue": tuple(f for t in (y.revenue_tag or "").split(REVENUE_TAG_JOIN) for f in one(t or None)),
         "total_debt": tuple(f for t in y.debt_tags for f in one(t)),
         "cash": (cash,) if cash is not None else (),
         "total_assets": one(ASSETS_TAG),
@@ -130,7 +132,7 @@ def blank_row(cik: str, fy: int) -> dict[str, object]:
     for f in FIELDS:
         for suffix in FIELD_SUFFIXES:
             row[f + suffix] = None
-    row.update({"icr": None, "zombie_flag": False, "gap_has_balance_sheet": False})
+    row.update({"icr": None, "zombie_flag": False, "gap_has_balance_sheet": False, "likely_debt_free": False})
     return row
 
 
@@ -159,6 +161,8 @@ def panel_row(
             row[f + "_url"] = ";".join(filing_url(cik, x.accn) for x in used)
     row["icr"] = icr_value
     row["zombie_flag"] = flag
+    # No value from any debt tag in the final lists, and interest expense is 0 or missing (Requirement 30.9).
+    row["likely_debt_free"] = y.total_debt is None and (y.interest is None or y.interest == 0)
     return row
 
 

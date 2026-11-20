@@ -16,7 +16,10 @@ FLOW_TAGS: dict[str, tuple[str, ...]] = {
         "Revenues",
         "RevenueFromContractWithCustomerExcludingAssessedTax",
         "SalesRevenueNet",
+        "RevenueFromContractWithCustomerIncludingAssessedTax",  # 4th choice (7.2)
     ),
+    # Used only when none of the four tags above has a value: goods + services (7.2a).
+    "revenue_components": ("SalesRevenueGoodsNet", "SalesRevenueServicesNet"),
     "ebit": ("OperatingIncomeLoss",),
     "pretax": (
         "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
@@ -26,14 +29,26 @@ FLOW_TAGS: dict[str, tuple[str, ...]] = {
         "InterestExpenseNonoperating",
         "InterestExpenseDebt",
         "InterestAndDebtExpense",
+        "InterestExpenseOperating",  # 5th choice (7.6)
     ),
 }
 DEBT_PART_TAGS = ("LongTermDebtNoncurrent", "LongTermDebtCurrent", "ShortTermBorrowings")
 DEBT_FALLBACK_TAG = "LongTermDebt"
+# Stage 2 of the total debt rule (7.9a): used only when stage 1 (parts, then LongTermDebt) gives nothing.
+DEBT_TOTAL_TAGS = ("DebtLongtermAndShorttermCombinedAmount", "DebtAndCapitalLeaseObligations")
+DEBT_NONCURRENT_ALT_TAGS = ("LongTermDebtAndCapitalLeaseObligations", "LongTermNotesPayable")
+DEBT_CURRENT_ALT_TAGS = (
+    "LongTermDebtAndCapitalLeaseObligationsCurrent",
+    "DebtCurrent",
+    "NotesPayableCurrent",
+)
+DEBT_LAST_TAG = "NotesPayable"
+DEBT_STAGE2_TAGS = DEBT_TOTAL_TAGS + DEBT_NONCURRENT_ALT_TAGS + DEBT_CURRENT_ALT_TAGS + (DEBT_LAST_TAG,)
 ASSETS_TAG = "Assets"
 EQUITY_TAG = "StockholdersEquity"
-INSTANT_TAGS = DEBT_PART_TAGS + (DEBT_FALLBACK_TAG, ASSETS_TAG, EQUITY_TAG)
+INSTANT_TAGS = DEBT_PART_TAGS + (DEBT_FALLBACK_TAG,) + DEBT_STAGE2_TAGS + (ASSETS_TAG, EQUITY_TAG)
 ALL_TAGS: tuple[str, ...] = tuple(t for tags in FLOW_TAGS.values() for t in tags) + INSTANT_TAGS
+REVENUE_TAG_JOIN = "+"  # revenue_tag of a goods + services year: "SalesRevenueGoodsNet+SalesRevenueServicesNet"
 ANNUAL_FORMS = frozenset({"10-K", "10-K/A"})
 INSTANT_WINDOW_DAYS = 7
 FLOW_MIN_DAYS, FLOW_MAX_DAYS = 350, 380
@@ -278,6 +293,18 @@ def build_year(fy: int, fye: date, tagged: TaggedFacts) -> YearValues:
         revenue = _flow_pick(tagged, tag, fy, fye)
         if revenue is not None:
             break
+    revenue_val: int | float | None = revenue.val if revenue else None
+    revenue_tag: str | None = revenue.tag if revenue else None
+    if revenue is None:
+        # 7.2a: no total-revenue tag has a value. Goods + services, or the one that is present.
+        goods = _flow_pick(tagged, FLOW_TAGS["revenue_components"][0], fy, fye)
+        services = _flow_pick(tagged, FLOW_TAGS["revenue_components"][1], fy, fye)
+        present = [f for f in (goods, services) if f is not None]
+        if present:
+            revenue_val = sum(f.val for f in present)
+            revenue_tag = REVENUE_TAG_JOIN.join(f.tag for f in present)
+            for f in present:
+                use(f)
     use(revenue)
 
     interest: Fact | None = None
@@ -321,20 +348,41 @@ def build_year(fy: int, fye: date, tagged: TaggedFacts) -> YearValues:
         if lt is not None:
             debt_val, debt_tags = lt.val, (lt.tag,)
             use(lt)
+    if debt_val is None:
+        # 7.9a, stage 2: only when stage 1 gave nothing, so no overlap with the stage 1 tags is possible.
+        # A total tag; else the first present tag of each bucket (never two of one bucket); else NotesPayable.
+        total = next((f for t in DEBT_TOTAL_TAGS if (f := _instant_pick(tagged, t, fye)) is not None), None)
+        if total is not None:
+            debt_val, debt_tags = total.val, (total.tag,)
+            use(total)
+        else:
+            buckets = (DEBT_NONCURRENT_ALT_TAGS, DEBT_CURRENT_ALT_TAGS)
+            chosen = [
+                f for tags in buckets
+                if (f := next((x for t in tags if (x := _instant_pick(tagged, t, fye)) is not None), None)) is not None
+            ]
+            if not chosen:
+                last = _instant_pick(tagged, DEBT_LAST_TAG, fye)
+                chosen = [last] if last is not None else []
+            if chosen:
+                debt_val = sum(f.val for f in chosen)
+                debt_tags = tuple(f.tag for f in chosen)
+                for f in chosen:
+                    use(f)
 
     assets = use(_instant_pick(tagged, ASSETS_TAG, fye))
     equity = use(_instant_pick(tagged, EQUITY_TAG, fye))
 
     return YearValues(
         fy=fy,
-        revenue=revenue.val if revenue else None,
+        revenue=revenue_val,
         ebit=ebit_val,
         interest=interest.val if interest else None,
         total_debt=debt_val,
         total_assets=assets.val if assets else None,
         equity=equity.val if equity else None,
         ebit_tag=ebit_tag,
-        revenue_tag=revenue.tag if revenue else None,
+        revenue_tag=revenue_tag,
         debt_tags=debt_tags,
         interest_tag=interest.tag if interest else None,
         sources=tuple(sources),

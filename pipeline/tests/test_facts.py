@@ -10,6 +10,8 @@ from datetime import date, timedelta
 from typing import Any
 
 import pytest
+from hypothesis import given, settings
+from hypothesis import strategies as st
 
 from pipeline.facts import compustat_fy, extract
 from pipeline.tests.builders import companyfacts, fact
@@ -337,3 +339,146 @@ def test_property_total_debt_never_invents_a_zero(spec: dict[str, tuple[int, int
     else:
         assert y.total_debt is None
         assert y.debt_tags == ()
+
+
+# ---- tag lists adopted on 2026-11-20 (Requirement 7.2, 7.2a, 7.6, 7.9a) --------------------
+INCL = "RevenueFromContractWithCustomerIncludingAssessedTax"
+GOODS, SERVICES = "SalesRevenueGoodsNet", "SalesRevenueServicesNet"
+
+
+def _only(facts: dict[str, list[dict[str, Any]]]):
+    """A year whose only flow tags are the given ones (no `Revenues`)."""
+    return row(run(facts))
+
+
+def test_revenue_fourth_choice_is_the_including_assessed_tax_tag() -> None:
+    y = _only({INCL: [flow(77)]})
+    assert (y.revenue, y.revenue_tag) == (77, INCL)
+    # every earlier tag wins over it
+    for earlier in ("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet"):
+        y = _only({INCL: [flow(77)], earlier: [flow(50)]})
+        assert (y.revenue, y.revenue_tag) == (50, earlier)
+
+
+def test_goods_and_services_are_used_only_when_no_total_tag_has_a_value() -> None:
+    y = _only({GOODS: [flow(60)], SERVICES: [flow(40)]})
+    assert y.revenue == 100 and y.revenue_tag == f"{GOODS}+{SERVICES}"
+    assert {f.tag for f in y.sources} == {GOODS, SERVICES}
+    y = _only({GOODS: [flow(60)]})
+    assert (y.revenue, y.revenue_tag) == (60, GOODS)
+    y = _only({SERVICES: [flow(40)]})
+    assert (y.revenue, y.revenue_tag) == (40, SERVICES)
+    # a total tag, even the 4th, wins: the components are never added to a total
+    y = _only({INCL: [flow(77)], GOODS: [flow(60)], SERVICES: [flow(40)]})
+    assert (y.revenue, y.revenue_tag) == (77, INCL)
+    y = _only({"Revenues": [flow(500)], GOODS: [flow(60)]})
+    assert (y.revenue, y.revenue_tag) == (500, "Revenues")
+
+
+def test_goods_plus_services_zero_is_kept_and_a_component_needs_the_annual_duration() -> None:
+    y = _only({GOODS: [flow(0)], SERVICES: [flow(40)]})
+    assert y.revenue == 40 and y.revenue_tag == f"{GOODS}+{SERVICES}"
+    assert _only({GOODS: [flow(60), flow(1, days=100)]}).revenue == 60
+    assert run({GOODS: [flow(60, days=100)]}).years == ()  # no annual flow at all: no window
+
+
+def test_interest_fifth_choice_is_expense_operating_and_net_tags_stay_out() -> None:
+    y = row(run(base(InterestExpenseOperating=[flow(8)])))
+    assert (y.interest, y.interest_tag) == (8, "InterestExpenseOperating")
+    y = row(run(base(InterestAndDebtExpense=[flow(9)], InterestExpenseOperating=[flow(8)])))
+    assert (y.interest, y.interest_tag) == (9, "InterestAndDebtExpense")  # the 4th choice wins
+    y = row(run(base(InterestIncomeExpenseNet=[flow(5)], InterestPaidNet=[flow(6)])))
+    assert y.interest is None and y.interest_tag is None
+
+
+def test_ebit_fallback_uses_the_fifth_interest_tag() -> None:
+    y = row(run(base(**{PRETAX: [flow(40)], "InterestExpenseOperating": [flow(10)]})))
+    assert y.ebit == 50 and y.ebit_tag == PRETAX and y.interest_tag == "InterestExpenseOperating"
+
+
+def _debt(**tags: float):
+    return row(run(base(**{t: [fact(v, FYE)] for t, v in tags.items()})))
+
+
+def test_debt_stage_two_total_tags_first() -> None:
+    y = _debt(DebtLongtermAndShorttermCombinedAmount=100, DebtAndCapitalLeaseObligations=90, NotesPayable=5)
+    assert (y.total_debt, y.debt_tags) == (100, ("DebtLongtermAndShorttermCombinedAmount",))
+    y = _debt(DebtAndCapitalLeaseObligations=90, LongTermNotesPayable=5)
+    assert (y.total_debt, y.debt_tags) == (90, ("DebtAndCapitalLeaseObligations",))
+
+
+def test_debt_stage_two_buckets_take_one_tag_each_in_priority_order() -> None:
+    y = _debt(LongTermDebtAndCapitalLeaseObligations=100, LongTermNotesPayable=999,
+              LongTermDebtAndCapitalLeaseObligationsCurrent=20, DebtCurrent=999, NotesPayableCurrent=999)
+    assert y.total_debt == 120 and y.debt_tags == ("LongTermDebtAndCapitalLeaseObligations", "LongTermDebtAndCapitalLeaseObligationsCurrent")
+    y = _debt(LongTermNotesPayable=60, DebtCurrent=15, NotesPayableCurrent=999)
+    assert y.total_debt == 75 and y.debt_tags == ("LongTermNotesPayable", "DebtCurrent")
+    y = _debt(NotesPayableCurrent=30)  # a missing bucket counts as 0 only when the other is present
+    assert (y.total_debt, y.debt_tags) == (30, ("NotesPayableCurrent",))
+    y = _debt(LongTermNotesPayable=60)
+    assert (y.total_debt, y.debt_tags) == (60, ("LongTermNotesPayable",))
+
+
+def test_debt_notes_payable_is_the_last_resort_and_other_tags_stay_out() -> None:
+    y = _debt(NotesPayable=40)
+    assert (y.total_debt, y.debt_tags) == (40, ("NotesPayable",))
+    y = _debt(NotesPayable=40, DebtCurrent=7)
+    assert (y.total_debt, y.debt_tags) == (7, ("DebtCurrent",))  # the bucket tag beats NotesPayable
+    y = _debt(ConvertibleNotesPayable=5, LinesOfCreditCurrent=5, SecuredDebt=5, DebtInstrumentCarryingAmount=5, CommercialPaper=5)
+    assert y.total_debt is None and y.debt_tags == ()  # variant B tags are not used
+
+
+def test_debt_stage_two_never_runs_when_stage_one_has_a_value() -> None:
+    """Stage 1 parts or LongTermDebt win, so no stage 2 tag can double count with them."""
+    y = _debt(ShortTermBorrowings=30, DebtCurrent=999, LongTermDebtAndCapitalLeaseObligations=999)
+    assert (y.total_debt, y.debt_tags) == (30, ("ShortTermBorrowings",))
+    y = _debt(LongTermDebt=70, DebtAndCapitalLeaseObligations=999)
+    assert (y.total_debt, y.debt_tags) == (70, ("LongTermDebt",))
+    y = _debt(LongTermDebtCurrent=5, DebtCurrent=999)
+    assert (y.total_debt, y.debt_tags) == (5, ("LongTermDebtCurrent",))
+
+
+def test_debt_stage_two_uses_the_seven_day_instant_window() -> None:
+    y = row(run(base(DebtCurrent=[fact(10, "2024-01-03")])))  # 3 days after the year end
+    assert y.total_debt == 10
+    y = row(run(base(DebtCurrent=[fact(10, "2024-01-10")])))  # 10 days after: outside
+    assert y.total_debt is None
+
+
+_STAGE1 = ("LongTermDebtNoncurrent", "LongTermDebtCurrent", "ShortTermBorrowings", "LongTermDebt")
+_TOTALS = ("DebtLongtermAndShorttermCombinedAmount", "DebtAndCapitalLeaseObligations")
+_NC = ("LongTermDebtAndCapitalLeaseObligations", "LongTermNotesPayable")
+_CU = ("LongTermDebtAndCapitalLeaseObligationsCurrent", "DebtCurrent", "NotesPayableCurrent")
+_ALL_DEBT = _STAGE1 + _TOTALS + _NC + _CU + ("NotesPayable", "ConvertibleNotesPayable", "SecuredDebt")
+
+
+# Feature: data-pipeline, Property 6a: Total debt, both stages, matches an oracle
+# Validates: Requirements 7.8, 7.9, 7.9a, 7.11
+@settings(max_examples=300, deadline=None)
+@given(st.fixed_dictionaries({t: st.one_of(st.none(), st.integers(min_value=0, max_value=10**6)) for t in _ALL_DEBT}))
+def test_property_total_debt_two_stages_match_an_oracle(spec: dict[str, int | None]) -> None:
+    y = row(run(base(**{t: [fact(v, FYE)] for t, v in spec.items() if v is not None})))
+    have = {t: v for t, v in spec.items() if v is not None}
+    parts = [t for t in _STAGE1[:3] if t in have]
+    if parts:
+        want, tags = sum(have[t] for t in parts), tuple(parts)
+    elif "LongTermDebt" in have:
+        want, tags = have["LongTermDebt"], ("LongTermDebt",)
+    else:
+        tot = next((t for t in _TOTALS if t in have), None)
+        if tot:
+            want, tags = have[tot], (tot,)
+        else:
+            picks = [next((t for t in group if t in have), None) for group in (_NC, _CU)]
+            picks = [t for t in picks if t]
+            if picks:
+                want, tags = sum(have[t] for t in picks), tuple(picks)
+            elif "NotesPayable" in have:
+                want, tags = have["NotesPayable"], ("NotesPayable",)
+            else:
+                want, tags = None, ()
+    assert y.total_debt == want and y.debt_tags == tags
+    # stage 1 results are never changed by the stage 2 tags
+    if parts or "LongTermDebt" in have:
+        stage1_only = row(run(base(**{t: [fact(have[t], FYE)] for t in have if t in _STAGE1})))
+        assert (y.total_debt, y.debt_tags) == (stage1_only.total_debt, stage1_only.debt_tags)

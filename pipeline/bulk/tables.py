@@ -25,7 +25,7 @@ FIRM_COLUMNS = (
 PANEL_COLUMNS = (
     ("cik", "fy", "fye", "age_at_fy")
     + tuple(f + s for f in FIELDS for s in FIELD_SUFFIXES)
-    + ("icr", "zombie_flag", "gap_has_balance_sheet")
+    + ("icr", "zombie_flag", "gap_has_balance_sheet", "likely_debt_free")
 )
 EVENT_COLUMNS = ("cik", "date", "form", "item", "event_type", "accession", "url", "source_member")
 

@@ -454,3 +454,8 @@
 2026-11-20 | data-pipeline | 33.2 | Added report section 9 (zombies by cause and SIC division) and section 10 (year-over-year sanity flags with accession numbers). | pipeline/bulk/report.py, pipeline/tests/test_bulk_report.py
 2026-11-20 | data-pipeline | 33.3 | Added the tag census module, the census command and a CIK filter in the reader. | pipeline/bulk/census.py, pipeline/bulk/reader.py, pipeline/bulk/cli.py, pipeline/tests/test_bulk_census.py
 2026-11-20 | data-pipeline | 33.4 | Regenerated the report and wrote the tag census from the cached zips, no network. | pipeline/reports
+2026-11-20 | data-pipeline | 34.1 | Census takes --fy, checks the goods + services revenue rule and lists firms with interest but no debt-like tag; ran FY2016, FY2019 and FY2024 before the change. | pipeline/bulk/census.py, pipeline/bulk/cli.py
+2026-11-20 | data-pipeline | 34.2 | Adopted the new tag lists: revenue 4th tag and goods + services, interest 5th tag, total debt stage 2. | pipeline/facts.py, pipeline/tests/test_facts.py
+2026-11-20 | data-pipeline | 34.3 | Added likely_debt_free to the panel, new section 7 columns and list, sanity floor of 100,000 and the outlier marker. | pipeline/bulk/panel.py, pipeline/bulk/tables.py, pipeline/bulk/report.py
+2026-11-20 | data-pipeline | 34.4 | Updated Requirement 7, design.md and the three tag lines of data-contract.md. | .kiro/specs/data-pipeline, .kiro/steering/data-contract.md
+2026-11-20 | data-pipeline | 34.5 | Rebuilt the panel from the cached zips with no download, regenerated the report and wrote the before and after table. | pipeline/reports

@@ -33,6 +33,7 @@ from pipeline.config import MissingBulkFileError
 from pipeline.facts import (
     DEBT_FALLBACK_TAG,
     DEBT_PART_TAGS,
+    DEBT_STAGE2_TAGS,
     FLOW_TAGS,
     annual_facts,
     compustat_fy,
@@ -42,7 +43,10 @@ from pipeline.facts import (
     pick_instant,
 )
 
-CENSUS_FY = 2024
+CENSUS_FY = 2024  # default year; --fy chooses another
+GOODS_TAG, SERVICES_TAG = "SalesRevenueGoodsNet", "SalesRevenueServicesNet"
+REVENUE_FOURTH_TAG = "RevenueFromContractWithCustomerIncludingAssessedTax"
+GOODS_SERVICES_MIN_FIRMS = 20  # adopt the goods + services rule if either census year recovers this many
 TOP_N = 30
 EVIDENCE_TOLERANCE = 0.01
 
@@ -61,7 +65,7 @@ class FieldSpec:
 
 DEBT = FieldSpec(
     "debt", "total_debt", "instant",
-    existing=(*DEBT_PART_TAGS, DEBT_FALLBACK_TAG),
+    existing=(*DEBT_PART_TAGS, DEBT_FALLBACK_TAG, *DEBT_STAGE2_TAGS),  # stage 1, then stage 2 (7.9, 7.9a)
     candidates=(
         "DebtCurrent", "LongTermDebtAndCapitalLeaseObligations", "LongTermDebtAndCapitalLeaseObligationsCurrent",
         "LongTermNotesPayable", "NotesPayable", "NotesPayableCurrent", "ConvertibleNotesPayable", "LinesOfCreditCurrent",
@@ -76,7 +80,7 @@ DEBT = FieldSpec(
 )
 REVENUE = FieldSpec(
     "revenue", "revenue", "flow",
-    existing=FLOW_TAGS["revenue"],
+    existing=(*FLOW_TAGS["revenue"], *FLOW_TAGS["revenue_components"]),  # 4 tags, then goods + services (7.2, 7.2a)
     candidates=(
         "RevenueFromContractWithCustomerIncludingAssessedTax", "SalesRevenueGoodsNet", "SalesRevenueServicesNet",
         "RevenuesNetOfInterestExpense",
@@ -105,7 +109,7 @@ NOTES: dict[str, str] = {
     "LongTermDebtCurrent": "Current portion of long-term debt. Part of today's sum.",
     "ShortTermBorrowings": "Bank loans, commercial paper and lines of credit due within a year. Part of today's sum.",
     "LongTermDebt": "Total long-term debt, usually including the current portion. Used only when no part exists, so it cannot double count.",
-    "DebtCurrent": "All debt due within a year (short-term borrowings plus the current portion of long-term debt). Overlaps LongTermDebtCurrent and ShortTermBorrowings: use instead of them, never on top.",
+    "DebtCurrent": "All debt due within a year (short-term borrowings plus the current portion of long-term debt). Overlaps LongTermDebtCurrent and ShortTermBorrowings: used only in stage 2, when neither exists.",
     "LongTermDebtAndCapitalLeaseObligations": "Noncurrent debt including finance leases. Same role as LongTermDebtNoncurrent: use instead of it, never both. May include leases that tag excludes.",
     "LongTermDebtAndCapitalLeaseObligationsCurrent": "Current debt including finance leases. Same role as LongTermDebtCurrent: instead of it, never both.",
     "LongTermNotesPayable": "Noncurrent notes payable. Same role as LongTermDebtNoncurrent when a filer lacks that tag; a component of it if both exist.",
@@ -154,6 +158,10 @@ class CensusResult:
     debt_buckets: Counter = field(default_factory=Counter)  # (any debt-like tag, interest state) -> firms missing debt
     debt_strict_buckets: Counter = field(default_factory=Counter)  # same, but only named tags
     members: MemberStats = field(default_factory=MemberStats)
+    fy: int = CENSUS_FY
+    # revenue rule check: firms with no revenue, none of the first four tags, and goods and/or services revenue
+    goods_services: Counter = field(default_factory=Counter)  # "both" | "goods_only" | "services_only"
+    positive_interest_no_debt_tag: list[tuple[str, float]] = field(default_factory=list)  # (cik, interest)
     parse_failed: list[dict[str, str]] = field(default_factory=list)
 
 
@@ -199,7 +207,7 @@ def _interest_state(v: float | None) -> str:
     return "missing" if v is None else "zero" if v == 0 else "negative" if v < 0 else "positive"
 
 
-def tally(result: CensusResult, reported: dict[str, dict[str, float]], panel: dict[str, float | None]) -> None:
+def tally(result: CensusResult, reported: dict[str, dict[str, float]], panel: dict[str, float | None], cik: str = "") -> None:
     """Add one firm to the census. ``panel`` has the firm's FY2024 panel values by panel column."""
     result.population += 1
     for spec in SPECS:
@@ -221,6 +229,14 @@ def tally(result: CensusResult, reported: dict[str, dict[str, float]], panel: di
                     st.below += 1
                 else:
                     st.above += 1
+    rev = reported["revenue"]
+    if panel["revenue"] is None and not any(t in rev for t in (*FLOW_TAGS["revenue"], REVENUE_FOURTH_TAG)):
+        g, sv = GOODS_TAG in rev, SERVICES_TAG in rev
+        if g or sv:
+            result.goods_services["both" if g and sv else "goods_only" if g else "services_only"] += 1
+    interest = panel["interest_expense"]
+    if interest is not None and interest > 0 and not reported["debt"]:
+        result.positive_interest_no_debt_tag.append((cik, interest))
     if panel["total_debt"] is None:
         debt_tags = reported["debt"]
         named = any(t in DEBT.existing or t in DEBT.candidates for t in debt_tags)
@@ -229,22 +245,22 @@ def tally(result: CensusResult, reported: dict[str, dict[str, float]], panel: di
         result.debt_strict_buckets[(named, state)] += 1
 
 
-def census_population(df: pd.DataFrame) -> pd.DataFrame:
-    """Core firms with a present FY2024 row, with their Fiscal_Year_End and panel values."""
-    rows = df[(df["fy"] == CENSUS_FY) & df["core"] & df["present"] & df["fye"].notna()]
+def census_population(df: pd.DataFrame, fy: int = CENSUS_FY) -> pd.DataFrame:
+    """Core firms with a present row for ``fy``, with their Fiscal_Year_End and panel values."""
+    rows = df[(df["fy"] == fy) & df["core"] & df["present"] & df["fye"].notna()]
     return rows[["cik", "fye", "total_debt", "revenue", "interest_expense"]].sort_values("cik", kind="mergesort").reset_index(drop=True)
 
 
 def run_census(
-    out_dir: Path, zip_dir: Path, progress: Callable[[int, int], None] | None = None,
+    out_dir: Path, zip_dir: Path, progress: Callable[[int, int], None] | None = None, fy: int = CENSUS_FY,
 ) -> CensusResult:
     tables = load_tables(out_dir)
-    pop = census_population(prepare(tables.panel, tables.firms))
+    pop = census_population(prepare(tables.panel, tables.firms), fy)
     cf_zip = zip_path(zip_dir, COMPANYFACTS_URL)
     if not cf_zip.is_file():
         raise MissingBulkFileError(f"{cf_zip.name} is not cached under {zip_dir}; run `download` first", "20.4")
     by_cik = {r.cik: r for r in pop.itertuples(index=False)}
-    result = CensusResult()
+    result = CensusResult(fy=fy)
     done = 0
     for member in iter_members(cf_zip, result.members, ciks=set(by_cik)):
         if member.kind != "main":
@@ -267,7 +283,8 @@ def run_census(
         if doc is None:
             continue
         tally(result, firm_reported(doc, row.fye.date()),
-              {"total_debt": _num(row.total_debt), "revenue": _num(row.revenue), "interest_expense": _num(row.interest_expense)})
+              {"total_debt": _num(row.total_debt), "revenue": _num(row.revenue), "interest_expense": _num(row.interest_expense)},
+              member.cik)
         del doc, member
     return result
 
@@ -280,7 +297,7 @@ def field_table(spec: FieldSpec, result: CensusResult) -> pd.DataFrame:
     rows = []
     for tag, st in stats.items():
         rows.append((tag, st))
-    named = [t for t in (*spec.existing, *spec.candidates)]
+    named = list(dict.fromkeys((*spec.existing, *spec.candidates)))
     for t in named:
         if t not in stats:
             rows.append((t, TagStat()))
@@ -315,20 +332,35 @@ def likely_debt_free(result: CensusResult) -> int:
     return sum(result.debt_buckets.get((False, s), 0) for s in ("zero", "missing"))
 
 
-def render_census(result: CensusResult, info) -> tuple[str, dict[str, pd.DataFrame]]:
-    frames = {f"tag_census_{s.name}.csv": field_table(s, result) for s in SPECS}
+def census_base(fy: int) -> str:
+    """File name stem: the FY2024 census keeps its first names, other years add ``_fy<year>``."""
+    return "tag_census" if fy == CENSUS_FY else f"tag_census_fy{fy}"
+
+
+def goods_services_total(result: CensusResult) -> int:
+    return sum(result.goods_services.values())
+
+
+def render_census(result: CensusResult, info, names: dict[str, str] | None = None) -> tuple[str, dict[str, pd.DataFrame]]:
+    fy, base = result.fy, census_base(result.fy)
+    names = names or {}
+    frames = {f"{base}_{s.name}.csv": field_table(s, result) for s in SPECS}
+    pos = pd.DataFrame(sorted(result.positive_interest_no_debt_tag), columns=["cik", "interest_expense_usd"])
+    pos.insert(1, "name", pos["cik"].map(names).fillna(""))
+    frames[f"{base}_positive_interest_no_debt_tag.csv"] = pos
     debt_free = _debt_free_table(result)
+    gs = result.goods_services
     md = (
-        "# Tag census\n\n" + DISCLAIMER + "\n\n"
-        "This file changes nothing. It shows which XBRL tags the core firms that miss a value in FY2024 do report, so the tag "
-        "lists can be chosen from facts.\n\n## Source\n\n" + _source_block(info) + "\n"
+        f"# Tag census FY{fy}\n\n" + DISCLAIMER + "\n\n"
+        "This file changes nothing. It shows which XBRL tags the core firms that miss a value in the year do report, so the tag "
+        "lists can be chosen from facts. It describes the panel as it was when the census ran.\n\n## Source\n\n" + _source_block(info) + "\n"
         "## Population and method\n\n"
-        f"- Census population: core firms (not financial, not utility, age at FY{CENSUS_FY} of 10 or more) with a present "
-        f"FY{CENSUS_FY} row: **{result.population}**.\n"
+        f"- Census population: core firms (not financial, not utility, age at FY{fy} of 10 or more) with a present "
+        f"FY{fy} row: **{result.population}**.\n"
         + "".join(f"- Missing {s.panel_col} in the panel: **{result.missing.get(s.name, 0)}**.\n" for s in SPECS)
         + "- A firm *reports* a tag when the tag has an annual-form (10-K, 10-K/A) USD value for the firm's fiscal year: a flow of "
         "350 to 380 days ending on the fiscal year end, or a balance-sheet value within 7 days of it. These are the extractor's rules.\n"
-        "- Tags are those on Frank's list (`candidate`), the tags in today's priority list (`existing`), and tags whose names match a keyword "
+        "- Tags are those on Frank's list (`candidate`), the tags in the priority list when the census ran (`existing`), and tags whose names match a keyword "
         "pattern and are not obviously something else (`found by name`). The keyword patterns are heuristics: expect some noise.\n"
         "- `firms_missing_field_reporting` counts firms that miss the field in the panel and report the tag. "
         "`both_reported`, `within_1pct`, `tag_below_panel` and `tag_above_panel` are measured on all census firms that have a panel value and "
@@ -337,21 +369,29 @@ def render_census(result: CensusResult, info) -> tuple[str, dict[str, pd.DataFra
         f"- Members read: {result.members.read}; not selected: {result.members.not_selected}; parse failures: {len(result.parse_failed)}.\n\n"
     )
     for spec, title in ((DEBT, "Total debt"), (REVENUE, "Revenue"), (INTEREST, "Interest expense")):
-        t = frames[f"tag_census_{spec.name}.csv"]
+        t = frames[f"{base}_{spec.name}.csv"]
         n = result.missing.get(spec.name, 0)
         shown = t[t["rank"].notna()].drop(columns=["double_count_note", "rank"])
         named = t[t["status"].str.startswith(("candidate", "existing"))][["tag", "status", "firms_missing_field_reporting", "firms_reporting_all", "double_count_note"]]
         md += (
             f"## {title}\n\n{n} census firms miss {spec.panel_col}.\n\n"
             f"### Top {TOP_N} tags reported by those firms\n\n" + md_table(shown, {"share_of_missing": "{:.1%}"})
-            + "\n### Named candidates and today's tags, with double-count notes\n\n" + md_table(named) + "\n"
+            + "\n### Named candidates and the tags in use, with double-count notes\n\n" + md_table(named) + "\n"
         )
         if spec is DEBT:
             md += (
                 "### Firms missing total debt that report no debt-like tag\n\n"
                 f"Of the {n} firms, **{likely_debt_free(result)}** report no debt-like tag at all (not on the list and no keyword match) and have "
-                "FY2024 interest expense of 0 or missing: these are **likely debt-free, not missing data**. The second pair of columns uses only "
-                "today's and Frank's named tags.\n\n" + md_table(debt_free) + "\n"
+                f"FY{fy} interest expense of 0 or missing: these are **likely debt-free, not missing data**. The second pair of columns uses only "
+                "the named tags.\n\n" + md_table(debt_free) + "\n"
+                f"Firms with **positive interest expense and no debt-like tag**: {len(pos)} (`{base}_positive_interest_no_debt_tag.csv`).\n\n"
+            )
+        if spec is REVENUE:
+            md += (
+                "### Check of the goods + services revenue rule\n\n"
+                f"Core firms with no revenue in the panel, none of the first four revenue tags, and `{GOODS_TAG}` and/or `{SERVICES_TAG}`: "
+                f"**{goods_services_total(result)}** (both tags: {gs.get('both', 0)}; goods only: {gs.get('goods_only', 0)}; "
+                f"services only: {gs.get('services_only', 0)}). The rule is adopted when either census year reaches {GOODS_SERVICES_MIN_FIRMS}.\n\n"
             )
     md += (
         "## What to read from this\n\n"
@@ -363,26 +403,30 @@ def render_census(result: CensusResult, info) -> tuple[str, dict[str, pd.DataFra
     return md, frames
 
 
-def write_census(result: CensusResult, info, reports_dir: Path) -> list[str]:
-    md, frames = render_census(result, info)
+def write_census(result: CensusResult, info, reports_dir: Path, names: dict[str, str] | None = None) -> list[str]:
+    md, frames = render_census(result, info, names)
     reports_dir.mkdir(parents=True, exist_ok=True)
-    names = []
+    out = []
     for name, frame in sorted(frames.items()):
         _atomic_write(reports_dir / name, csv_bytes(frame))
-        names.append(name)
-    _atomic_write(reports_dir / "tag_census.md", md.encode("utf-8"))
-    return names + ["tag_census.md"]
+        out.append(name)
+    md_name = f"{census_base(result.fy)}.md"
+    _atomic_write(reports_dir / md_name, md.encode("utf-8"))
+    return out + [md_name]
 
 
 def run(
     out_dir: Path, zip_dir: Path, reports_dir: Path, run_date: str,
-    progress: Callable[[int, int], None] | None = None,
+    progress: Callable[[int, int], None] | None = None, fy: int = CENSUS_FY,
 ) -> tuple[list[str], dict[str, Any]]:
-    result = run_census(out_dir, zip_dir, progress)
-    files = write_census(result, source_info(zip_dir, run_date), reports_dir)
+    result = run_census(out_dir, zip_dir, progress, fy)
+    names = dict(zip(load_tables(out_dir).firms["cik"], load_tables(out_dir).firms["name"]))
+    files = write_census(result, source_info(zip_dir, run_date), reports_dir, names)
     summary = {
-        "population": result.population, "missing": dict(sorted(result.missing.items())),
-        "likely_debt_free": likely_debt_free(result), "members": {"read": result.members.read, "not_selected": result.members.not_selected},
+        "fy": fy, "population": result.population, "missing": dict(sorted(result.missing.items())),
+        "likely_debt_free": likely_debt_free(result), "goods_services_firms": goods_services_total(result),
+        "positive_interest_no_debt_tag": len(result.positive_interest_no_debt_tag),
+        "members": {"read": result.members.read, "not_selected": result.members.not_selected},
         "parse_failed": result.parse_failed,
     }
     return files, summary

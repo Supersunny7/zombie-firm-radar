@@ -34,6 +34,7 @@ from pipeline.bulk.report import (
     s8_largest,
     s9_zombie_split,
     s10_sanity,
+    outlier_of,
     ratio_flags,
     write_report,
 )
@@ -43,7 +44,7 @@ NAN = float("nan")
 
 def _row(cik: str, fy: int, **kw) -> dict:
     row = {"cik": cik, "fy": fy, "fye": pd.Timestamp(fy, 12, 31), "age_at_fy": 15.0, "icr": NAN, "zombie_flag": False,
-           "gap_has_balance_sheet": False, **{f: NAN for f in FIELDS}}
+           "gap_has_balance_sheet": False, "likely_debt_free": False, **{f: NAN for f in FIELDS}}
     row.update(kw)
     return row
 
@@ -232,21 +233,28 @@ def test_s6_thresholds_and_left_out() -> None:
     assert hist.groupby("view")["firms"].sum().to_dict() == {"fy2024": 3, "latest_year": 4}
 
 
-def test_s7_data_quality_counts() -> None:
+def test_s7_data_quality_counts_and_likely_debt_free_are_separate() -> None:
     df, _ = _df([
         (_firm("0000000001"), {2018: dict(revenue=1.0, operating_income=1.0, interest_expense=1.0, total_debt=1.0)}),
-        (_firm("0000000002"), {2018: dict(revenue=1.0, fye=pd.Timestamp(2019, 1, 31))}),  # January year end
-        (_firm("0000000003", fin=True), {2018: dict(revenue=1.0)}),
+        (_firm("0000000002"), {2018: dict(revenue=1.0, fye=pd.Timestamp(2019, 1, 31), likely_debt_free=True)}),  # no debt, no interest
+        (_firm("0000000003", fin=True), {2018: dict(revenue=1.0)}),                 # not core, debt missing
+        (_firm("0000000004", "Four"), {2018: dict(revenue=1.0, interest_expense=5.0)}),  # interest but no debt value
     ])
     df.loc[(df.cik == "0000000001") & (df.fy == 2019), "gap_has_balance_sheet"] = True
-    t = s7_data_quality(df).frames["s7_data_quality.csv"]
+    sec = s7_data_quality(df)
+    t = sec.frames["s7_data_quality.csv"]
     a = t[(t.fy == 2018) & (t.population == "all")].iloc[0]
-    assert (a.rows_present, a.missing_operating_income, a.missing_interest_expense, a.missing_total_debt, a.fye_not_december) == (3, 2, 2, 2, 1)
+    assert (a.rows_present, a.missing_operating_income, a.missing_interest_expense, a.fye_not_december) == (4, 3, 2, 1)
+    assert (a.missing_total_debt, a.likely_debt_free, a.positive_interest_no_debt_value) == (2, 1, 1)  # firm 2 is not "missing"
     c = t[(t.fy == 2018) & (t.population == "core")].iloc[0]
-    assert (c.rows_present, c.missing_operating_income, c.fye_not_december) == (2, 1, 1)
+    assert (c.rows_present, c.missing_operating_income, c.missing_interest_expense, c.fye_not_december) == (3, 2, 1, 1)
+    assert (c.missing_total_debt, c.likely_debt_free, c.positive_interest_no_debt_value) == (1, 1, 1)
     g = t[(t.fy == 2019) & (t.population == "all")].iloc[0]
     assert g.gap_rows_with_balance_sheet == 1 and g.rows_present == 0
     assert len(t) == 22
+    pos = sec.frames["s7_positive_interest_no_debt.csv"]
+    assert [(r.cik, r.name, r.fy, r.interest_expense) for r in pos.itertuples()] == [("0000000004", "Four", 2018, 5.0)]
+    assert "not** in `missing_total_debt`" in sec.md
 
 
 def test_s8_largest_ranking_ties_and_zombie_history() -> None:
@@ -433,55 +441,85 @@ def _flag_df(field: str, series: dict[int, float | None]) -> pd.DataFrame:
     return df
 
 
-def test_ratio_flags_rpc_style_spike_lists_both_years_with_accession_and_changes_nothing() -> None:
+def _pairs(series: dict[int, float | None], field: str = "operating_income"):
+    t = ratio_flags(_flag_df(field, series))
+    return sorted({(r.fy, r.neighbor) for r in t.itertuples()}), t
+
+
+def test_ratio_flags_rpc_style_spike_marks_the_outlier_and_changes_nothing() -> None:
     df = _flag_df("revenue", {2015: 41_919_000_000.0, 2016: 728_974_000.0, 2017: 1_595_227_000.0})
     before = df.copy()
     t = ratio_flags(df)
     t = t[t.field == "revenue"]
-    assert [(r.fy, r.neighbor, r.neighbor_fy, r.accession, r.above_floor) for r in t.itertuples()] == [
-        (2015, "next", 2016, "A-2015", True), (2016, "previous", 2015, "A-2016", True)]
+    assert [(r.fy, r.neighbor, r.neighbor_fy, r.accession, r.outlier) for r in t.itertuples()] == [
+        (2015, "next", 2016, "A-2015", "this"), (2016, "previous", 2015, "A-2016", "neighbor")]
     assert round(t.iloc[0].ratio, 2) == round(41_919_000_000 / 728_974_000, 2)
     pd.testing.assert_frame_equal(df, before)  # no value is changed
 
 
-def test_ratio_flags_boundaries_gaps_zero_signs_and_floor() -> None:
-    def pairs(series):
-        t = ratio_flags(_flag_df("operating_income", series))
-        return sorted({(r.fy, r.neighbor) for r in t.itertuples()}), t
-    assert pairs({2015: 100e6, 2016: 5e6})[0] == []                      # exactly 20x is not more than 20x
-    assert pairs({2015: 100e6, 2016: 4.99e6})[0] == [(2015, "next"), (2016, "previous")]
-    assert pairs({2015: 100e6, 2016: -4.99e6})[0] == [(2015, "next"), (2016, "previous")]   # sign ignored
-    assert pairs({2015: 100e6, 2016: 0.0})[0] == []                      # zero is not compared
-    assert pairs({2015: 100e6, 2017: 1e6})[0] == []                      # an empty year in between is not compared
-    keys, t = pairs({2015: 10.0, 2016: 500.0})                           # big ratio, tiny amounts
-    assert keys == [(2015, "next"), (2016, "previous")] and not t.above_floor.any()
-    keys, t = pairs({2015: 1.0, 2016: 100e6, 2017: 1.0})                 # a one-year spike is flagged in all its neighbours
+def test_ratio_flags_boundaries_gaps_zero_signs_and_the_100k_floor() -> None:
+    assert _pairs({2015: 100e6, 2016: 5e6})[0] == []                                   # exactly 20x is not more than 20x
+    assert _pairs({2015: 100e6, 2016: 4.99e6})[0] == [(2015, "next"), (2016, "previous")]
+    assert _pairs({2015: 100e6, 2016: -4.99e6})[0] == [(2015, "next"), (2016, "previous")]   # sign ignored
+    assert _pairs({2015: 100e6, 2016: 0.0})[0] == []                                   # zero is not compared
+    assert _pairs({2015: 100e6, 2017: 1e6})[0] == []                                   # an empty year in between
+    assert _pairs({2015: 100_000.0, 2016: 2_100_000.0})[0] == [(2015, "next"), (2016, "previous")]   # both at the floor: 21x
+    assert _pairs({2015: 99_999.0, 2016: 5_000_000.0})[0] == []                        # one value under 100,000
+    assert _pairs({2015: 13.0, 2016: 9_066_000.0})[0] == []                            # a tiny value is not flagged any more
+
+
+def test_outlier_is_the_value_that_disagrees_with_all_its_neighbours() -> None:
+    # a one-year spike: the middle value disagrees with both neighbours
+    keys, t = _pairs({2015: 1e6, 2016: 100e6, 2017: 1e6})
     assert keys == [(2015, "next"), (2016, "next"), (2016, "previous"), (2017, "previous")]
+    assert {(r.fy, r.neighbor): r.outlier for r in t.itertuples()} == {
+        (2015, "next"): "neighbor", (2016, "previous"): "this", (2016, "next"): "this", (2017, "previous"): "neighbor"}
+    # a level shift that stays: nobody is the outlier
+    _, t = _pairs({2015: 1e6, 2016: 1e6, 2017: 100e6, 2018: 100e6})
+    assert set(t.outlier) == {"level_shift"}
+    # a two-year series: nothing says which value is wrong
+    _, t = _pairs({2015: 1e6, 2016: 100e6})
+    assert set(t.outlier) == {"undetermined"}
+    # only one neighbour: the edge value that disagrees is the outlier when the other agrees with its own neighbour
+    _, t = _pairs({2015: 100e6, 2016: 1e6, 2017: 1.1e6})
+    assert {(r.fy, r.outlier) for r in t.itertuples()} == {(2015, "this"), (2016, "neighbor")}
+    # the pure rule
+    assert outlier_of(None, 1e6, 100e6, 1e6) == "b" and outlier_of(1e6, 1e6, 100e6, 100e6) == "level_shift"
+    assert outlier_of(None, 1e6, 100e6, None) == "undetermined" and outlier_of(None, 100e6, 1e6, 1.1e6) == "a"
 
 
-def test_s10_csv_has_only_above_floor_flags_and_the_markdown_counts_both() -> None:
-    df = _flag_df("total_debt", {2015: 10.0, 2016: 500.0, 2017: 900e6, 2018: 1e6})
+def test_s10_csv_lists_every_flag_and_the_markdown_counts_them() -> None:
+    df = _flag_df("total_debt", {2015: 10.0, 2016: 500.0, 2017: 900e6, 2018: 1e6, 2019: 1.1e6})
     sec = s10_sanity(df)
     csv = sec.frames["s10_sanity_flags.csv"]
-    assert set(csv.field) == {"total_debt"} and csv.above_floor.all()
-    assert {(r.fy, r.neighbor) for r in csv.itertuples()} == {(2016, "next"), (2017, "previous"), (2017, "next"), (2018, "previous")}
-    assert "No value is changed" in sec.md and "| total_debt | 4 | 2 |" in sec.md
-    assert list(csv.columns)[-2:] == ["accession", "url"]
+    assert set(csv.field) == {"total_debt"}
+    # 500 vs 900M is not flagged (500 is under 100,000); 900M vs 1M is. Neither value disagrees with all its neighbours.
+    assert {(r.fy, r.neighbor, r.outlier) for r in csv.itertuples()} == {(2017, "next", "level_shift"), (2018, "previous", "level_shift")}
+    assert "No value is changed" in sec.md and "| total_debt | 2 | 0 |" in sec.md and "at least 100,000 USD" in sec.md
+    assert list(csv.columns)[-3:] == ["outlier", "accession", "url"]
     empty = s10_sanity(_flag_df("revenue", {2015: 1.0, 2016: 2.0}))
-    assert len(empty.frames["s10_sanity_flags.csv"]) == 0 and "_none_" in empty.md
+    assert len(empty.frames["s10_sanity_flags.csv"]) == 0 and "_none_" in empty.md or "| revenue | 0 | 0 |" in empty.md
+
+
+_VALUES = [None, 0.0, 99_999.0, 100_000.0, 2_000_000.0, 2_000_001.0, -50_000_000.0, 3e6, 9e7]
 
 
 # Feature: data-pipeline, Property 38: Sanity flags match a brute force
 # Validates: Requirements 30.3
-@given(series=st.dictionaries(st.integers(2015, 2025), st.sampled_from([None, 0.0, 1.0, -1.0, 5.0, 19.9, 20.1, 100.0, -400.0, 3e6, -9e7]), max_size=11))
+@given(series=st.dictionaries(st.integers(2015, 2025), st.sampled_from(_VALUES), max_size=11))
 def test_sanity_flags_match_a_brute_force(series) -> None:
-    df = _flag_df("interest_expense", series)
-    got = {(r.fy, r.neighbor) for r in ratio_flags(df).itertuples()}
+    got_rows = ratio_flags(_flag_df("interest_expense", series))
+    got = {(r.fy, r.neighbor) for r in got_rows.itertuples()}
     want = set()
     for fy, a in series.items():
         b = series.get(fy + 1)
-        if a is None or b is None or a == 0 or b == 0:
+        if a is None or b is None or abs(a) < 100_000 or abs(b) < 100_000:
             continue
         if max(abs(a), abs(b)) / min(abs(a), abs(b)) > 20:
             want |= {(fy, "next"), (fy + 1, "previous")}
     assert got == want
+    by = {(r.fy, r.neighbor): r.outlier for r in got_rows.itertuples()}
+    flip = {"this": "neighbor", "neighbor": "this", "undetermined": "undetermined", "level_shift": "level_shift"}
+    for fy, n in list(by):
+        if n == "next":
+            assert by[(fy + 1, "previous")] == flip[by[(fy, n)]]  # the two rows of a pair agree

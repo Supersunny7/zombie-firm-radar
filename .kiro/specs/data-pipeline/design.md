@@ -474,6 +474,26 @@ Atomicity: each output file is written to `<name>.tmp` and renamed with `os.repl
 | 28 Tests | `tests/test_bulk_*.py` |
 | 29 Docs, deps, commits | steering updates (done), no new dependency, `test_static.py` |
 
+### Tag-list change of 2026-11-20 (Requirement 7.2, 7.2a, 7.6, 7.9a; Requirement 30)
+
+Decided by Frank after the first real run and the tag census (FY2016, FY2019, FY2024). The data shape report had 45% of core firms without total debt, 32% without interest expense and 16% without revenue in FY2024.
+
+| Field | Rule now | Where in code |
+| --- | --- | --- |
+| Revenue | 4 tags in order; then goods + services (sum if both, else the one present) | `facts.FLOW_TAGS["revenue"]`, `["revenue_components"]`, `build_year` |
+| Interest expense | 5 tags in order; `InterestPaidNet` and net tags never | `facts.FLOW_TAGS["interest"]` |
+| Total debt | stage 1 unchanged; stage 2 only when stage 1 is empty | `facts.DEBT_*_TAGS`, `build_year` |
+
+Why stage 2 cannot double count: it runs only when none of `LongTermDebtNoncurrent`, `LongTermDebtCurrent`, `ShortTermBorrowings` and `LongTermDebt` has a value, and it takes at most one tag per bucket. Variant B (convertibles, lines of credit, loans, secured, other, `DebtInstrumentCarryingAmount`) is not used because those tags are parts of a total and would understate it.
+
+Other effects:
+- `facts.py` stays one set of rules for Phase 1 and Phase 2: `extract()` and `extract_panel()` both call `build_year`. `revenue_tag` is a string, so a goods + services year stores `SalesRevenueGoodsNet+SalesRevenueServicesNet`; the Panel's `_tag` column joins tags with `;`. The JSON Schemas and TypeScript types do not restrict tag names, so they do not change.
+- The Panel gets the column `likely_debt_free` (no value from any debt tag, interest 0 or missing). Section 7 reports it apart from `missing_total_debt`.
+- `ALL_TAGS` now has 27 entries. `gap_has_balance_sheet` also looks at the stage 2 debt tags.
+- Section 10 (sanity flags) needs both values at 100,000 USD or more and marks the outlier with `outlier_of(prev, a, b, next)`: the value that disagrees with all its neighbours.
+- The census takes `--fy`. In the census, "existing" means in the tag lists when the census runs, so the FY2024 census files of this date describe the lists before the change.
+- `pipeline/reports/tag_changes_before_after.md` is written once, from the old report CSVs (git history) and the new ones.
+
 ### What phase 1 leaves for phase 2
 
 Phase 2 keeps its design in the sections below. The pieces phase 1 builds that phase 2 can reuse: `age_at_fy`, `filing_url`, the member reader (a bulk-based universe could replace the per-firm fetcher), and the event rules (the Act 1 flags for 8-K item 1.03 and Form 25 in `reports.py`). Whether phase 2 reads from the bulk files or from per-firm requests is decided after the game design.
@@ -745,10 +765,10 @@ def extract(companyfacts: dict) -> ExtractResult: ...                     # pure
 
 Key rules inside `build_year`:
 
-- Revenue: first tag in priority whose `pick_flow` returns a fact (7.2).
+- Revenue: first of four tags whose `pick_flow` returns a fact (7.2); if none, goods + services, or the one present, with `revenue_tag` = `SalesRevenueGoodsNet+SalesRevenueServicesNet` when both are used (7.2a, `REVENUE_TAG_JOIN`).
 - Interest: first tag in Interest_Tag_Priority with a usable value, including 0 and negatives (7.6). The chosen tag name is kept for the Run_Report (7.7).
 - EBIT: `OperatingIncomeLoss` if usable (7.3). Otherwise, if pretax is usable and the chosen interest fact has the same `start` and `end`, EBIT = pretax + interest with `ebit_tag` set to the pretax tag (7.4). Otherwise null (7.5). The fallback never tries a lower-priority interest tag to find a matching period.
-- Debt: sum of usable parts, each matched to its own instant date (6.15, 7.8), else `LongTermDebt` (7.9), else null and `[]`.
+- Debt, stage 1: sum of usable parts, each matched to its own instant date (6.15, 7.8), else `LongTermDebt` (7.9). Stage 2, only when stage 1 is empty (7.9a): first total tag of `DEBT_TOTAL_TAGS`; else one tag from each of the noncurrent and current buckets (`DEBT_NONCURRENT_ALT_TAGS`, `DEBT_CURRENT_ALT_TAGS`), summed; else `NotesPayable`; else null and `[]`.
 - Assets and equity: only `Assets` and `StockholdersEquity` (7.10).
 - Values are copied as reported (`int` stays `int`, `float` stays `float`), never scaled or rounded (7.12).
 

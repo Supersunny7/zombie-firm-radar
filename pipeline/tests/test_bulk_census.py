@@ -31,23 +31,23 @@ def _world() -> tuple[bytes, bytes]:
         return companyfacts(f"{n:010d}", merge_facts(*parts))
 
     members = {
-        # F1: no debt value; reports DebtCurrent and NotesPayableCurrent; interest positive
-        "CIK0000000001.json": cf(1, year_facts(2024, revenue=100.0, ebit=-5.0, interest=2.0), _inst("DebtCurrent", 30.0), _inst("NotesPayableCurrent", 20.0)),
+        # F1: no debt value (these two tags are not in the lists); reports a candidate and a tag found by name; interest positive
+        "CIK0000000001.json": cf(1, year_facts(2024, revenue=100.0, ebit=-5.0, interest=2.0), _inst("LinesOfCreditCurrent", 30.0), _inst("ConvertibleNotesPayableCurrent", 20.0)),
         # F2: no debt, no debt-like tag, interest exactly 0: likely debt-free
         "CIK0000000002.json": cf(2, year_facts(2024, revenue=100.0, ebit=10.0, interest=0.0)),
         # F3: no debt, no debt-like tag, interest missing: likely debt-free
         "CIK0000000003.json": cf(3, year_facts(2024, revenue=100.0)),
         # F4: no debt, no debt-like tag, but interest is positive: odd, not debt-free
         "CIK0000000004.json": cf(4, year_facts(2024, revenue=100.0, ebit=1.0, interest=3.0)),
-        # F5: no revenue, reports the IncludingAssessedTax tag
-        "CIK0000000005.json": cf(5, year_facts(2024, ebit=1.0, interest=1.0, debt=10.0), _flow("RevenueFromContractWithCustomerIncludingAssessedTax", 77.0)),
+        # F5: no revenue; reports a revenue tag that is not in the lists
+        "CIK0000000005.json": cf(5, year_facts(2024, ebit=1.0, interest=1.0, debt=10.0), _flow("RevenueNotFromContractWithCustomer", 77.0)),
         # F6: has debt (100); another tag with the same number, a part, and a bigger one
         "CIK0000000006.json": cf(6, year_facts(2024, revenue=50.0, ebit=5.0, interest=1.0, debt=100.0),
                                  _inst("LongTermDebtAndCapitalLeaseObligations", 100.5), _inst("NotesPayable", 40.0), _inst("DebtInstrumentCarryingAmount", 250.0)),
         # F7: financial firm, excluded by the SIC rule
-        "CIK0000000007.json": cf(7, year_facts(2024, revenue=100.0, ebit=5.0, interest=1.0), _inst("DebtCurrent", 5.0)),
+        "CIK0000000007.json": cf(7, year_facts(2024, revenue=100.0, ebit=5.0, interest=1.0), _inst("LinesOfCreditCurrent", 5.0)),
         # F8: young firm, excluded by age
-        "CIK0000000008.json": cf(8, year_facts(2024, revenue=100.0, ebit=5.0, interest=1.0), _inst("DebtCurrent", 5.0)),
+        "CIK0000000008.json": cf(8, year_facts(2024, revenue=100.0, ebit=5.0, interest=1.0), _inst("LinesOfCreditCurrent", 5.0)),
         # F9: missing interest; reports a related-party and a cash-paid tag
         "CIK0000000009.json": cf(9, year_facts(2024, revenue=100.0, ebit=5.0, debt=3.0), _flow("InterestExpenseRelatedParty", 4.0), _flow("InterestPaidNet", 2.0)),
     }
@@ -68,13 +68,17 @@ def _prepare(tmp_path: Path) -> BulkPaths:
 
 
 def test_matches_and_status() -> None:
-    assert census.matches(census.DEBT, "DebtCurrent") and census.matches(census.DEBT, "SomeOddConvertibleNotesPayable")
+    assert census.matches(census.DEBT, "LinesOfCreditCurrent") and census.matches(census.DEBT, "SomeOddConvertibleNotesPayable")
     assert not census.matches(census.DEBT, "DebtInstrumentFairValue") and not census.matches(census.DEBT, "InterestExpenseDebt")
     assert census.matches(census.REVENUE, "RevenueFromContractWithCustomerIncludingAssessedTax")
     assert not census.matches(census.REVENUE, "CostOfRevenue") and not census.matches(census.REVENUE, "DeferredRevenue")
     assert census.matches(census.INTEREST, "InterestPaidNet") and census.matches(census.INTEREST, "InterestExpenseLongTermDebt")
     assert not census.matches(census.INTEREST, "InterestIncomeExpenseNet") and not census.matches(census.INTEREST, "NoncontrollingInterestExpense")
-    assert census.status_of(census.DEBT, "LongTermDebt") == "existing" and census.status_of(census.DEBT, "DebtCurrent") == "candidate"
+    # tags adopted on 2026-11-20 count as "existing"; tags still on the list of candidates stay "candidate"
+    assert census.status_of(census.DEBT, "LongTermDebt") == "existing" and census.status_of(census.DEBT, "DebtCurrent") == "existing"
+    assert census.status_of(census.DEBT, "LinesOfCreditCurrent") == "candidate"
+    assert census.status_of(census.REVENUE, "RevenueFromContractWithCustomerIncludingAssessedTax") == "existing"
+    assert census.status_of(census.REVENUE, "SalesRevenueGoodsNet") == "existing" and census.status_of(census.INTEREST, "InterestExpenseOperating") == "existing"
     assert census.status_of(census.DEBT, "TermLoan") == "found by name"
 
 
@@ -88,15 +92,15 @@ def test_census_counts_on_a_tiny_world(tmp_path: Path) -> None:
     assert result.members.read == 7 and result.members.not_selected == 2
 
     debt = result.stats["debt"]
-    assert debt["DebtCurrent"].missing == 1 and debt["DebtCurrent"].reporting == 1  # F7 is outside the population
-    assert debt["NotesPayableCurrent"].missing == 1
+    assert debt["LinesOfCreditCurrent"].missing == 1 and debt["LinesOfCreditCurrent"].reporting == 1  # F7 is outside the population
+    assert debt["ConvertibleNotesPayableCurrent"].missing == 1
     # F6: LongTermDebtAndCapitalLeaseObligations 100.5 vs panel 100 (within 1%), NotesPayable 40 below, carrying amount 250 above
     assert (debt["LongTermDebtAndCapitalLeaseObligations"].both, debt["LongTermDebtAndCapitalLeaseObligations"].within) == (1, 1)
     assert (debt["NotesPayable"].below, debt["NotesPayable"].above) == (1, 0)
     assert (debt["DebtInstrumentCarryingAmount"].above, debt["DebtInstrumentCarryingAmount"].missing) == (1, 0)
     assert debt["LongTermDebtNoncurrent"].reporting == 3 and debt["LongTermDebtNoncurrent"].within == 3  # F5, F6, F9: the same number
 
-    assert result.stats["revenue"]["RevenueFromContractWithCustomerIncludingAssessedTax"].missing == 1
+    assert result.stats["revenue"]["RevenueNotFromContractWithCustomer"].missing == 1
     interest = result.stats["interest"]
     assert interest["InterestExpenseRelatedParty"].missing == 1 and interest["InterestPaidNet"].missing == 1
 
@@ -108,15 +112,16 @@ def test_census_counts_on_a_tiny_world(tmp_path: Path) -> None:
 def test_tables_notes_and_files(tmp_path: Path) -> None:
     paths = _prepare(tmp_path)
     files, summary = census.run(paths.out_dir, paths.zip_dir, paths.reports_dir, "2026-11-20")
-    assert set(files) == {"tag_census.md", "tag_census_debt.csv", "tag_census_revenue.csv", "tag_census_interest.csv"}
+    assert set(files) == {"tag_census.md", "tag_census_debt.csv", "tag_census_revenue.csv", "tag_census_interest.csv",
+                          "tag_census_positive_interest_no_debt_tag.csv"}
     assert summary["population"] == 7 and summary["likely_debt_free"] == 2
     d = pd.read_csv(paths.reports_dir / "tag_census_debt.csv").set_index("tag")
     for tag in census.DEBT.candidates + census.DEBT.existing:  # every named tag is listed, even with zero firms
         assert tag in d.index and isinstance(d.loc[tag, "double_count_note"], str) and len(d.loc[tag, "double_count_note"]) > 20
-    assert d.loc["DebtCurrent", "firms_missing_field_reporting"] == 1 and d.loc["DebtCurrent", "status"] == "candidate"
-    assert d.loc["LongTermDebt", "status"] == "existing"
+    assert d.loc["LinesOfCreditCurrent", "firms_missing_field_reporting"] == 1 and d.loc["LinesOfCreditCurrent", "status"] == "candidate"
+    assert d.loc["LongTermDebt", "status"] == "existing" and d.loc["DebtCurrent", "status"] == "existing"
     i = pd.read_csv(paths.reports_dir / "tag_census_interest.csv").set_index("tag")
-    assert i.loc["InterestPaidNet", "status"] == "candidate (report only)"
+    assert i.loc["InterestPaidNet", "status"] == "candidate (report only)" and i.loc["InterestExpenseOperating", "status"] == "existing"
     assert "never proposed" in i.loc["InterestPaidNet", "double_count_note"]
     text = (paths.reports_dir / "tag_census.md").read_text()
     assert "likely debt-free" in text and "This file changes nothing" in text and "Data: SEC EDGAR. Not investment advice." in text
@@ -141,3 +146,29 @@ def test_census_command_needs_no_email_or_network_and_exit_4_without_tables(tmp_
     rep = json.loads(paths.run_report.read_text())
     assert rep["bulk"]["census"]["population"] == 7 and "tag_census.md" in rep["bulk"]["census"]["files"]
     assert rep["requests"]["sec"]["sent"] == 0
+
+
+def test_tally_counts_the_goods_services_check_and_the_positive_interest_list() -> None:
+    result = census.CensusResult()
+    none_rev = {"debt": {}, "interest": {}, "revenue": {}}
+    panel = lambda **kw: {"total_debt": None, "revenue": None, "interest_expense": None, **kw}  # noqa: E731
+    census.tally(result, {**none_rev, "revenue": {"SalesRevenueGoodsNet": 1.0, "SalesRevenueServicesNet": 2.0}}, panel(), "0000000001")
+    census.tally(result, {**none_rev, "revenue": {"SalesRevenueGoodsNet": 1.0}}, panel(), "0000000002")
+    census.tally(result, {**none_rev, "revenue": {"SalesRevenueServicesNet": 2.0}}, panel(), "0000000003")
+    # a firm with one of the first four tags, or with a revenue value in the panel, is not counted
+    census.tally(result, {**none_rev, "revenue": {"SalesRevenueGoodsNet": 1.0, census.REVENUE_FOURTH_TAG: 5.0}}, panel(), "0000000004")
+    census.tally(result, {**none_rev, "revenue": {"SalesRevenueGoodsNet": 1.0}}, panel(revenue=9.0), "0000000005")
+    assert dict(result.goods_services) == {"both": 1, "goods_only": 1, "services_only": 1} and census.goods_services_total(result) == 3
+    # positive interest and no debt-like tag at all
+    census.tally(result, {**none_rev}, panel(interest_expense=4.0), "0000000006")
+    census.tally(result, {**none_rev, "debt": {"LinesOfCreditCurrent": 1.0}}, panel(interest_expense=4.0), "0000000007")
+    census.tally(result, {**none_rev}, panel(interest_expense=0.0), "0000000008")
+    assert result.positive_interest_no_debt_tag == [("0000000006", 4.0)]
+
+
+def test_other_years_get_their_own_file_names(tmp_path: Path) -> None:
+    assert census.census_base(2024) == "tag_census" and census.census_base(2016) == "tag_census_fy2016"
+    paths = _prepare(tmp_path)
+    files, summary = census.run(paths.out_dir, paths.zip_dir, paths.reports_dir, "2026-11-20", fy=2016)
+    assert summary["fy"] == 2016 and summary["population"] == 0  # the tiny world has no FY2016 rows
+    assert "tag_census_fy2016.md" in files and "tag_census_fy2016_positive_interest_no_debt_tag.csv" in files
