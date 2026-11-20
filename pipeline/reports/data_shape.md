@@ -341,3 +341,108 @@ The 200 firms with the highest annual revenue in any year FY2015 to FY2025, over
 | 199 | 0000008858 | AVNET INC | AVT | 26,536,881,000 | 2023 | False | False | False | 000000000 |
 | 200 | 0001081316 | BERKSHIRE HATHAWAY ENERGY CO |  | 26,337,000,000 | 2022 | False | True | False | 000000000 |
 
+## 9. Zombies by cause and by SIC division
+
+Core zombies split by the sign of operating income. `negative_ebit`: operating income below 0, so ICR is negative. `nonneg_ebit`: operating income of 0 or more but below the interest expense.
+
+| fy | core_firms_present | zombies | negative_ebit | nonneg_ebit | share_negative |
+| --- | --- | --- | --- | --- | --- |
+| 2017 | 2820 | 534 | 485 | 49 | 90.8% |
+| 2018 | 2805 | 519 | 472 | 47 | 90.9% |
+| 2019 | 2736 | 532 | 489 | 43 | 91.9% |
+| 2020 | 2766 | 563 | 530 | 33 | 94.1% |
+| 2021 | 2801 | 562 | 540 | 22 | 96.1% |
+| 2022 | 2757 | 553 | 525 | 28 | 94.9% |
+| 2023 | 2638 | 486 | 463 | 23 | 95.3% |
+| 2024 | 2565 | 494 | 462 | 32 | 93.5% |
+| 2025 | 2472 | 482 | 437 | 45 | 90.7% |
+
+By SIC division for FY2019 and FY2024 (all years: `s9_zombies_by_division.csv`):
+
+| fy | sic_division | core_firms_present | zombies | zombies_negative_ebit | zombies_nonneg_ebit | share_of_present |
+| --- | --- | --- | --- | --- | --- | --- |
+| 2019 | Agriculture, Forestry and Fishing | 14 | 2 | 2 | 0 | 14.3% |
+| 2019 | Construction | 40 | 2 | 1 | 1 | 5.0% |
+| 2019 | Manufacturing | 1453 | 299 | 281 | 18 | 20.6% |
+| 2019 | Mining | 205 | 44 | 41 | 3 | 21.5% |
+| 2019 | Retail Trade | 166 | 18 | 15 | 3 | 10.8% |
+| 2019 | Services | 601 | 131 | 119 | 12 | 21.8% |
+| 2019 | Transportation, Communications, Electric, Gas and Sanitary Services | 156 | 21 | 16 | 5 | 13.5% |
+| 2019 | Wholesale Trade | 100 | 15 | 14 | 1 | 15.0% |
+| 2024 | Agriculture, Forestry and Fishing | 16 | 3 | 3 | 0 | 18.8% |
+| 2024 | Construction | 50 | 5 | 4 | 1 | 10.0% |
+| 2024 | Manufacturing | 1360 | 272 | 257 | 15 | 20.0% |
+| 2024 | Mining | 158 | 26 | 26 | 0 | 16.5% |
+| 2024 | Retail Trade | 164 | 18 | 18 | 0 | 11.0% |
+| 2024 | Services | 572 | 141 | 130 | 11 | 24.7% |
+| 2024 | Transportation, Communications, Electric, Gas and Sanitary Services | 130 | 25 | 20 | 5 | 19.2% |
+| 2024 | Wholesale Trade | 85 | 4 | 4 | 0 | 4.7% |
+
+## 10. Year-over-year sanity flags
+
+A firm-year is flagged when a value differs by more than 20 times from the same firm's value in the previous or the next fiscal year (absolute values; zero or empty values and empty years in between are not compared). Both years of a flagged pair are listed. `above_floor` means the larger value is at least 1,000,000 USD. **No value is changed**: these are leads to check against the filing, not corrections.
+
+Flag rows by field (a pair gives two rows):
+
+| field | above_floor | below_floor |
+| --- | --- | --- |
+| revenue | 942 | 368 |
+| total_debt | 1250 | 58 |
+| interest_expense | 974 | 1038 |
+| operating_income | 2650 | 434 |
+
+The 50 largest ratios above the floor (all of them, with URLs: `s10_sanity_flags.csv`):
+
+| cik | name | fy | field | value | neighbor | neighbor_fy | neighbor_value | ratio | accession |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0000047518 | Hill-Rom Holdings, Inc. | 2020 | total_debt | 1,928,100,000 | next | 2021 | 2,111 | 913,358.6 | 0000047518-21-000084;0000047518-21-000084;0000047518-21-000084 |
+| 0000047518 | Hill-Rom Holdings, Inc. | 2021 | total_debt | 2,111 | previous | 2020 | 1,928,100,000 | 913,358.6 | 0000047518-21-000084;0000047518-21-000084;0000047518-21-000084 |
+| 0001008586 | STREAMLINE HEALTH SOLUTIONS INC. | 2023 | total_debt | 9,066,000 | next | 2024 | 13 | 692,061.1 | 0001493152-24-017297;0001493152-24-017297 |
+| 0001008586 | STREAMLINE HEALTH SOLUTIONS INC. | 2024 | total_debt | 13 | previous | 2023 | 9,066,000 | 692,061.1 | 0001437749-25-014208 |
+| 0001117057 | Planet Green Holdings Corp. | 2017 | interest_expense | 4,076,495 | next | 2018 | 13 | 313,576.5 | 0001062993-19-001739 |
+| 0001117057 | Planet Green Holdings Corp. | 2018 | interest_expense | 13 | previous | 2017 | 4,076,495 | 313,576.5 | 0001213900-20-012050 |
+| 0001349706 | TurnOnGreen, Inc. | 2020 | revenue | 29 | next | 2021 | 5,346,000 | 184,344.8 | 0001214659-22-004941 |
+| 0001349706 | TurnOnGreen, Inc. | 2021 | revenue | 5,346,000 | previous | 2020 | 29 | 184,344.8 | 0001214659-23-004976 |
+| 0001019034 | BIO KEY INTERNATIONAL INC | 2017 | operating_income | -4,275,365 | next | 2018 | 80 | 53,442.1 | 0001437749-19-006677 |
+| 0001019034 | BIO KEY INTERNATIONAL INC | 2018 | operating_income | 80 | previous | 2017 | -4,275,365 | 53,442.1 | 0001437749-20-010796 |
+| 0001839412 | QualTek Services Inc. | 2020 | operating_income | -975 | next | 2021 | -49,249,000 | 50,511.8 | 0001410578-22-000957 |
+| 0001839412 | QualTek Services Inc. | 2021 | operating_income | -49,249,000 | previous | 2020 | -975 | 50,511.8 | 0001628280-23-014277 |
+| 0001818644 | AEye, Inc. | 2019 | operating_income | -548 | next | 2020 | -26,482,000 | 48,324.8 | 0001213900-21-024511 |
+| 0001818644 | AEye, Inc. | 2020 | operating_income | -26,482,000 | previous | 2019 | -548 | 48,324.8 | 0001818644-22-000008 |
+| 0000844856 | Healthier Choices Management Corp. | 2022 | revenue | 29,267,003 | next | 2023 | 617 | 47,434.4 | 0001493152-24-011537 |
+| 0000844856 | Healthier Choices Management Corp. | 2023 | revenue | 617 | previous | 2022 | 29,267,003 | 47,434.4 | 0001641172-25-004607 |
+| 0001911545 | Global Interactive Technologies, Inc. | 2024 | interest_expense | 16,179,823 | next | 2025 | 349 | 46,360.5 | 0001493152-26-025106 |
+| 0001911545 | Global Interactive Technologies, Inc. | 2025 | interest_expense | 349 | previous | 2024 | 16,179,823 | 46,360.5 | 0001493152-26-025106 |
+| 0001451448 | ESPORTS ENTERTAINMENT GROUP, INC. | 2018 | interest_expense | 121 | next | 2019 | 5,586,617 | 46,170.4 | 0001213900-19-019346 |
+| 0001451448 | ESPORTS ENTERTAINMENT GROUP, INC. | 2019 | interest_expense | 5,586,617 | previous | 2018 | 121 | 46,170.4 | 0001493152-20-018724 |
+| 0001819035 | Metromile, LLC | 2019 | operating_income | 976 | next | 2020 | -44,820,000 | 45,922.1 | 0001213900-21-030396 |
+| 0001819035 | Metromile, LLC | 2020 | operating_income | -44,820,000 | previous | 2019 | 976 | 45,922.1 | 0001628280-22-004241 |
+| 0001537258 | AIRBORNE WIRELESS NETWORK | 2017 | interest_expense | 150 | next | 2018 | 6,517,537 | 43,450.2 | 0001640334-18-002185 |
+| 0001537258 | AIRBORNE WIRELESS NETWORK | 2018 | interest_expense | 6,517,537 | previous | 2017 | 150 | 43,450.2 | 0001640334-18-002185 |
+| 0001068875 | AVANTAX, INC. | 2019 | operating_income | 9,000 | next | 2020 | -321,710,000 | 35,745.6 | 0001068875-22-000042 |
+| 0001068875 | AVANTAX, INC. | 2020 | operating_income | -321,710,000 | previous | 2019 | 9,000 | 35,745.6 | 0001068875-23-000055 |
+| 0001759824 | ALTA EQUIPMENT GROUP INC. | 2018 | operating_income | -342 | next | 2019 | 11,700,000 | 34,210.5 | 0001213900-20-007376 |
+| 0001759824 | ALTA EQUIPMENT GROUP INC. | 2019 | operating_income | 11,700,000 | previous | 2018 | -342 | 34,210.5 | 0001564590-21-014150 |
+| 0001419793 | ORIGINCLEAR, INC. | 2018 | total_debt | 110 | next | 2019 | 3,432,300 | 31,202.7 | 0001213900-19-007122 |
+| 0001419793 | ORIGINCLEAR, INC. | 2019 | total_debt | 3,432,300 | previous | 2018 | 110 | 31,202.7 | 0001213900-20-013726 |
+| 0001821175 | Motorsport Games Inc. | 2020 | operating_income | 1,147 | next | 2021 | -34,526,658 | 30,101.7 | 0001493152-22-008160 |
+| 0001821175 | Motorsport Games Inc. | 2021 | operating_income | -34,526,658 | previous | 2020 | 1,147 | 30,101.7 | 0001493152-23-008878 |
+| 0001353615 | Invesco CurrencyShares Swiss Franc Trust | 2022 | interest_expense | 1,328,169 | next | 2023 | 54 | 24,595.7 | 0000950170-24-019055 |
+| 0001353615 | Invesco CurrencyShares Swiss Franc Trust | 2023 | interest_expense | 54 | previous | 2022 | 1,328,169 | 24,595.7 | 0000950170-25-027267 |
+| 0001309057 | China Health Industries Holdings, Inc. | 2021 | revenue | 6,492,720 | next | 2022 | 267 | 24,317.3 | 0001213900-23-028586 |
+| 0001309057 | China Health Industries Holdings, Inc. | 2022 | revenue | 267 | previous | 2021 | 6,492,720 | 24,317.3 | 0001213900-23-085612 |
+| 0000926617 | Aspira Women's Health Inc. | 2023 | revenue | 87,000,000 | next | 2024 | 4,000 | 21,750.0 | 0001641172-25-000983 |
+| 0000926617 | Aspira Women's Health Inc. | 2024 | revenue | 4,000 | previous | 2023 | 87,000,000 | 21,750.0 | 0000926617-26-000020 |
+| 0001525852 | BOTS, Inc./PR | 2018 | revenue | 2,315,513 | next | 2019 | 115 | 20,134.9 | 0001477932-21-002729 |
+| 0001525852 | BOTS, Inc./PR | 2019 | revenue | 115 | previous | 2018 | 2,315,513 | 20,134.9 | 0001477932-21-008327 |
+| 0001397795 | MEDO Technologies, Inc. | 2021 | operating_income | -87,668,351 | next | 2022 | -4,752 | 18,448.7 | 0001213900-25-000675 |
+| 0001397795 | MEDO Technologies, Inc. | 2022 | operating_income | -4,752 | previous | 2021 | -87,668,351 | 18,448.7 | 0001213900-25-000956 |
+| 0001580149 | BIOVIE INC. | 2019 | interest_expense | 273 | next | 2020 | 4,772,429 | 17,481.4 | 0001520138-20-000360 |
+| 0001580149 | BIOVIE INC. | 2020 | interest_expense | 4,772,429 | previous | 2019 | 273 | 17,481.4 | 0001520138-21-000509 |
+| 0001462223 | Nixxy, Inc. | 2024 | revenue | 6,000 | next | 2025 | 97,906,000 | 16,317.7 | 0001683168-26-002951 |
+| 0001462223 | Nixxy, Inc. | 2025 | revenue | 97,906,000 | previous | 2024 | 6,000 | 16,317.7 | 0001683168-26-002951 |
+| 0000035214 | FERRO CORP | 2018 | total_debt | 50,000 | next | 2019 | 812,111,000 | 16,242.2 | 0000035214-20-000009 |
+| 0000035214 | FERRO CORP | 2019 | total_debt | 812,111,000 | previous | 2018 | 50,000 | 16,242.2 | 0000035214-20-000009 |
+| 0001853138 | Kodiak AI, Inc. | 2022 | operating_income | -3,542 | next | 2023 | -53,849,000 | 15,203.0 | 0001628280-24-007635 |
+| 0001853138 | Kodiak AI, Inc. | 2023 | operating_income | -53,849,000 | previous | 2022 | -3,542 | 15,203.0 | 0001628280-26-016910 |
+
