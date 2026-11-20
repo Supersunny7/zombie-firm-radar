@@ -1,0 +1,472 @@
+{
+  "pbtResults": {
+    "2.3 Write property test for icr() totality and exactness": {
+      "status": "passed",
+      "lastRunTimestamp": 1794879594094
+    },
+    "2.4 Write property test for ICR monotonicity": {
+      "status": "passed",
+      "lastRunTimestamp": 1794879784264
+    },
+    "3.5 Write property test for the cache": {
+      "status": "passed",
+      "lastRunTimestamp": 1794880105094
+    },
+    "3.6 Write property test for redaction": {
+      "status": "passed",
+      "lastRunTimestamp": 1794880170161
+    },
+    "4.3 Write property test for the Compustat mapping": {
+      "status": "passed",
+      "lastRunTimestamp": 1794880428124
+    },
+    "4.4 Write property test for annual fact selection": {
+      "status": "passed",
+      "lastRunTimestamp": 1794881460500
+    },
+    "4.5 Write property test for instant date choice": {
+      "status": "passed",
+      "lastRunTimestamp": 1794882902650
+    },
+    "4.6 Write property test for the debt rule": {
+      "status": "passed",
+      "lastRunTimestamp": 1794882942809
+    },
+    "5.3 Write property test for exclusion order": {
+      "status": "passed",
+      "lastRunTimestamp": 1794885575438
+    },
+    "6.4 Write property test for zombie status": {
+      "status": "passed",
+      "lastRunTimestamp": 1794886034871
+    },
+    "6.5 Write property test for the other status invariants": {
+      "status": "passed",
+      "lastRunTimestamp": 1794886198382
+    },
+    "6.6 Write property test for eligibility flags": {
+      "status": "passed",
+      "lastRunTimestamp": 1794886241086
+    },
+    "6.8 Write property test for sector medians": {
+      "status": "passed",
+      "lastRunTimestamp": 1795062351994
+    }
+  },
+  "executionHistory": {
+    "1.1 Create `pipeline/__init__.py`, `pipeline/config.py` and `pipeline/run_report.py`": [
+      {
+        "executionId": "3bf25c05-0601-41b5-bf89-6aed6d07374f",
+        "chatSessionId": "sess_f3744c75-e386-42d7-a3fd-ef26b15a4027",
+        "timestamp": 1794878672192
+      },
+      {
+        "executionId": "3bf25c05-0601-41b5-bf89-6aed6d07374f",
+        "chatSessionId": "sess_f3744c75-e386-42d7-a3fd-ef26b15a4027",
+        "timestamp": 1794878819620
+      }
+    ],
+    "1.2 Create `pipeline/tests/conftest.py`": [
+      {
+        "executionId": "7588cb80-6a5f-4172-b799-fd3f7c0d825d",
+        "chatSessionId": "sess_acbb9b88-0230-458a-90c5-2ae0b7fd39a8",
+        "timestamp": 1794878838618
+      },
+      {
+        "executionId": "7588cb80-6a5f-4172-b799-fd3f7c0d825d",
+        "chatSessionId": "sess_acbb9b88-0230-458a-90c5-2ae0b7fd39a8",
+        "timestamp": 1794878959908
+      }
+    ],
+    "1.3 Write example tests `pipeline/tests/test_config.py`": [
+      {
+        "executionId": "7588cb80-6a5f-4172-b799-fd3f7c0d825d",
+        "chatSessionId": "sess_acbb9b88-0230-458a-90c5-2ae0b7fd39a8",
+        "timestamp": 1794879005611
+      },
+      {
+        "executionId": "7588cb80-6a5f-4172-b799-fd3f7c0d825d",
+        "chatSessionId": "sess_acbb9b88-0230-458a-90c5-2ae0b7fd39a8",
+        "timestamp": 1794879233086
+      }
+    ],
+    "1. Package skeleton, config, run report and test harness": [
+      {
+        "executionId": "7588cb80-6a5f-4172-b799-fd3f7c0d825d",
+        "chatSessionId": "sess_acbb9b88-0230-458a-90c5-2ae0b7fd39a8",
+        "timestamp": 1794879233122
+      }
+    ],
+    "2.1 Create `pipeline/metrics.py` with `icr(ebit, interest)`": [
+      {
+        "executionId": "5da3b31d-d05c-4ff2-9bb0-eed88ed8e7d4",
+        "chatSessionId": "sess_fbffe8be-2c8a-42a7-bf71-2f0df236ad06",
+        "timestamp": 1794879263662
+      },
+      {
+        "executionId": "5da3b31d-d05c-4ff2-9bb0-eed88ed8e7d4",
+        "chatSessionId": "sess_fbffe8be-2c8a-42a7-bf71-2f0df236ad06",
+        "timestamp": 1794879300390
+      }
+    ],
+    "2.2 Write `pipeline/tests/test_icr.py` fixture test": [
+      {
+        "executionId": "5da3b31d-d05c-4ff2-9bb0-eed88ed8e7d4",
+        "chatSessionId": "sess_fbffe8be-2c8a-42a7-bf71-2f0df236ad06",
+        "timestamp": 1794879300899
+      },
+      {
+        "executionId": "5da3b31d-d05c-4ff2-9bb0-eed88ed8e7d4",
+        "chatSessionId": "sess_fbffe8be-2c8a-42a7-bf71-2f0df236ad06",
+        "timestamp": 1794879405597
+      }
+    ],
+    "2. Shared `icr()` function": [
+      {
+        "executionId": "5da3b31d-d05c-4ff2-9bb0-eed88ed8e7d4",
+        "chatSessionId": "sess_fbffe8be-2c8a-42a7-bf71-2f0df236ad06",
+        "timestamp": 1794879405646
+      }
+    ],
+    "2.3 Write property test for icr() totality and exactness": [
+      {
+        "executionId": "e91bf71e-7719-4dad-bdd2-6594be8b5a54",
+        "chatSessionId": "sess_cd09323f-a584-4a69-918f-28fa8bf757ea",
+        "timestamp": 1794879528737
+      },
+      {
+        "executionId": "e91bf71e-7719-4dad-bdd2-6594be8b5a54",
+        "chatSessionId": "sess_cd09323f-a584-4a69-918f-28fa8bf757ea",
+        "timestamp": 1794879599965
+      }
+    ],
+    "2.4 Write property test for ICR monotonicity": [
+      {
+        "executionId": "337a4cc9-0633-4476-9e5f-fef6be7575c7",
+        "chatSessionId": "sess_b4376fd3-b2a3-48d1-8772-9a6177be4adb",
+        "timestamp": 1794879610339
+      },
+      {
+        "executionId": "337a4cc9-0633-4476-9e5f-fef6be7575c7",
+        "chatSessionId": "sess_b4376fd3-b2a3-48d1-8772-9a6177be4adb",
+        "timestamp": 1794879789663
+      }
+    ],
+    "3.1 Create `pipeline/http.py` building blocks": [
+      {
+        "executionId": "b54e2d41-2bfa-4c1b-a6f9-070d0e8af96e",
+        "chatSessionId": "sess_0f291095-9846-46fe-add4-5da6406fb5a8",
+        "timestamp": 1794879813280
+      },
+      {
+        "executionId": "b54e2d41-2bfa-4c1b-a6f9-070d0e8af96e",
+        "chatSessionId": "sess_0f291095-9846-46fe-add4-5da6406fb5a8",
+        "timestamp": 1794879860494
+      }
+    ],
+    "3.2 Add `HttpClient`, `SecClient`, `FredClient`, `FetchResult`, `RequestStats` to `pipeline/http.py`": [
+      {
+        "executionId": "b54e2d41-2bfa-4c1b-a6f9-070d0e8af96e",
+        "chatSessionId": "sess_0f291095-9846-46fe-add4-5da6406fb5a8",
+        "timestamp": 1794879861144
+      },
+      {
+        "executionId": "b54e2d41-2bfa-4c1b-a6f9-070d0e8af96e",
+        "chatSessionId": "sess_0f291095-9846-46fe-add4-5da6406fb5a8",
+        "timestamp": 1794879936439
+      }
+    ],
+    "3.3 Write example tests `pipeline/tests/test_http.py`": [
+      {
+        "executionId": "b54e2d41-2bfa-4c1b-a6f9-070d0e8af96e",
+        "chatSessionId": "sess_0f291095-9846-46fe-add4-5da6406fb5a8",
+        "timestamp": 1794879936888
+      },
+      {
+        "executionId": "b54e2d41-2bfa-4c1b-a6f9-070d0e8af96e",
+        "chatSessionId": "sess_0f291095-9846-46fe-add4-5da6406fb5a8",
+        "timestamp": 1794879983856
+      }
+    ],
+    "3. HTTP layer: rate limiter, cache, SEC and FRED clients": [
+      {
+        "executionId": "b54e2d41-2bfa-4c1b-a6f9-070d0e8af96e",
+        "chatSessionId": "sess_0f291095-9846-46fe-add4-5da6406fb5a8",
+        "timestamp": 1794879983890
+      }
+    ],
+    "3.4 Write property test for the rate limiter": [
+      {
+        "executionId": "e33cdd04-f5df-44cf-abd1-b5f3558cbe17",
+        "chatSessionId": "sess_c325152c-b6bf-44e5-8b11-7d8b58ac5172",
+        "timestamp": 1794880024215
+      },
+      {
+        "executionId": "e33cdd04-f5df-44cf-abd1-b5f3558cbe17",
+        "chatSessionId": "sess_c325152c-b6bf-44e5-8b11-7d8b58ac5172",
+        "timestamp": 1794880056718
+      }
+    ],
+    "3.5 Write property test for the cache": [
+      {
+        "executionId": "960ca312-d043-4257-a6ed-806b894c7237",
+        "chatSessionId": "sess_67bbb7be-f10b-4f9f-ace1-6953cdc70afe",
+        "timestamp": 1794880070740
+      },
+      {
+        "executionId": "960ca312-d043-4257-a6ed-806b894c7237",
+        "chatSessionId": "sess_67bbb7be-f10b-4f9f-ace1-6953cdc70afe",
+        "timestamp": 1794880111852
+      }
+    ],
+    "3.6 Write property test for redaction": [
+      {
+        "executionId": "7ad5f31e-1314-48ec-8a2e-2dc72a03d0e6",
+        "chatSessionId": "sess_3c7daa89-acaf-46ae-8fb7-a30c3ded8001",
+        "timestamp": 1794880121007
+      },
+      {
+        "executionId": "7ad5f31e-1314-48ec-8a2e-2dc72a03d0e6",
+        "chatSessionId": "sess_3c7daa89-acaf-46ae-8fb7-a30c3ded8001",
+        "timestamp": 1794880176945
+      }
+    ],
+    "4.1 Create `pipeline/facts.py` and the data models (`Fact`, `YearValues`, `ExtractResult`)": [
+      {
+        "executionId": "5cb26261-98db-4de8-baf4-fe0c366fbdbf",
+        "chatSessionId": "sess_8f4bffb6-77d3-4868-92ab-b232cb20c591",
+        "timestamp": 1794880199974
+      },
+      {
+        "executionId": "5cb26261-98db-4de8-baf4-fe0c366fbdbf",
+        "chatSessionId": "sess_8f4bffb6-77d3-4868-92ab-b232cb20c591",
+        "timestamp": 1794880314200
+      }
+    ],
+    "4.2 Write required example tests `pipeline/tests/test_facts.py`": [
+      {
+        "executionId": "5cb26261-98db-4de8-baf4-fe0c366fbdbf",
+        "chatSessionId": "sess_8f4bffb6-77d3-4868-92ab-b232cb20c591",
+        "timestamp": 1794880317323
+      },
+      {
+        "executionId": "5cb26261-98db-4de8-baf4-fe0c366fbdbf",
+        "chatSessionId": "sess_8f4bffb6-77d3-4868-92ab-b232cb20c591",
+        "timestamp": 1794880392455
+      }
+    ],
+    "4. Fact extractor (`pipeline/facts.py`)": [
+      {
+        "executionId": "5cb26261-98db-4de8-baf4-fe0c366fbdbf",
+        "chatSessionId": "sess_8f4bffb6-77d3-4868-92ab-b232cb20c591",
+        "timestamp": 1794880392492
+      }
+    ],
+    "4.3 Write property test for the Compustat mapping": [
+      {
+        "executionId": "4b3f71e8-8c72-415d-ac8f-d260d372039d",
+        "chatSessionId": "sess_b8f64119-380b-4e27-a1a9-20a4a3319dbe",
+        "timestamp": 1794880414806
+      },
+      {
+        "executionId": "4b3f71e8-8c72-415d-ac8f-d260d372039d",
+        "chatSessionId": "sess_b8f64119-380b-4e27-a1a9-20a4a3319dbe",
+        "timestamp": 1794880437928
+      }
+    ],
+    "4.4 Write property test for annual fact selection": [
+      {
+        "executionId": "8feed4d5-f3b8-499e-bde7-d1d23286b7e4",
+        "chatSessionId": "sess_41fa47a5-f26e-412c-89dd-b5f1170bb75f",
+        "timestamp": 1794881423415
+      },
+      {
+        "executionId": "8feed4d5-f3b8-499e-bde7-d1d23286b7e4",
+        "chatSessionId": "sess_41fa47a5-f26e-412c-89dd-b5f1170bb75f",
+        "timestamp": 1794881468351
+      }
+    ],
+    "4.5 Write property test for instant date choice": [
+      {
+        "executionId": "d1fe2d39-634e-4a94-84e5-665dc1c7267f",
+        "chatSessionId": "sess_e17c66b1-0652-49c3-870e-0d68e2f83da1",
+        "timestamp": 1794881477590
+      },
+      {
+        "executionId": "d1fe2d39-634e-4a94-84e5-665dc1c7267f",
+        "chatSessionId": "sess_e17c66b1-0652-49c3-870e-0d68e2f83da1",
+        "timestamp": 1794882911803
+      }
+    ],
+    "4.6 Write property test for the debt rule": [
+      {
+        "executionId": "3c398e8b-4b65-4ecf-8241-08d0b65077c5",
+        "chatSessionId": "sess_768ce982-11d0-49e0-975a-3b38322cc623",
+        "timestamp": 1794882922544
+      },
+      {
+        "executionId": "3c398e8b-4b65-4ecf-8241-08d0b65077c5",
+        "chatSessionId": "sess_768ce982-11d0-49e0-975a-3b38322cc623",
+        "timestamp": 1794882948043
+      }
+    ],
+    "5.1 Create `pipeline/universe.py`": [
+      {
+        "executionId": "1c92921f-a90b-461e-9393-dbe37310bfa5",
+        "chatSessionId": "sess_2e77f926-9f1f-4e52-8f68-7e2aeb6479d4",
+        "timestamp": 1794883096451
+      },
+      {
+        "executionId": "1c92921f-a90b-461e-9393-dbe37310bfa5",
+        "chatSessionId": "sess_2e77f926-9f1f-4e52-8f68-7e2aeb6479d4",
+        "timestamp": 1794883523867
+      }
+    ],
+    "5.2 Write example tests `pipeline/tests/test_universe.py`": [
+      {
+        "executionId": "1c92921f-a90b-461e-9393-dbe37310bfa5",
+        "chatSessionId": "sess_2e77f926-9f1f-4e52-8f68-7e2aeb6479d4",
+        "timestamp": 1794883524428
+      },
+      {
+        "executionId": "1c92921f-a90b-461e-9393-dbe37310bfa5",
+        "chatSessionId": "sess_2e77f926-9f1f-4e52-8f68-7e2aeb6479d4",
+        "timestamp": 1794883616991
+      }
+    ],
+    "5. Universe: SIC divisions, ticker map, exclusions, firm fetcher": [
+      {
+        "executionId": "1c92921f-a90b-461e-9393-dbe37310bfa5",
+        "chatSessionId": "sess_2e77f926-9f1f-4e52-8f68-7e2aeb6479d4",
+        "timestamp": 1794883617025
+      }
+    ],
+    "5.3 Write property test for exclusion order": [
+      {
+        "executionId": "7404bd2e-50b6-4fc8-9bef-05c509ad5e05",
+        "chatSessionId": "sess_7f9e07b8-1947-4c6f-b741-f59fea463f0d",
+        "timestamp": 1794885539579
+      },
+      {
+        "executionId": "7404bd2e-50b6-4fc8-9bef-05c509ad5e05",
+        "chatSessionId": "sess_7f9e07b8-1947-4c6f-b741-f59fea463f0d",
+        "timestamp": 1794885582330
+      }
+    ],
+    "6.1 Extend `pipeline/metrics.py` and update steering files in the same change": [
+      {
+        "executionId": "6bdf4b56-2696-4fc5-9329-b09827e90f79",
+        "chatSessionId": "sess_b918ed96-bf32-46cc-ab77-87ea49e6bcd0",
+        "timestamp": 1794885608389
+      },
+      {
+        "executionId": "6bdf4b56-2696-4fc5-9329-b09827e90f79",
+        "chatSessionId": "sess_b918ed96-bf32-46cc-ab77-87ea49e6bcd0",
+        "timestamp": 1794885695947
+      }
+    ],
+    "6.2 Create `pipeline/tests/strategies.py` and `pipeline/tests/fixtures/status_cases.json`, and write `pipeline/tests/test_metrics.py` status cases": [
+      {
+        "executionId": "6bdf4b56-2696-4fc5-9329-b09827e90f79",
+        "chatSessionId": "sess_b918ed96-bf32-46cc-ab77-87ea49e6bcd0",
+        "timestamp": 1794885696665
+      },
+      {
+        "executionId": "6bdf4b56-2696-4fc5-9329-b09827e90f79",
+        "chatSessionId": "sess_b918ed96-bf32-46cc-ab77-87ea49e6bcd0",
+        "timestamp": 1794885845405
+      }
+    ],
+    "6.3 Write example tests for flags and rescue inputs in `test_metrics.py`": [
+      {
+        "executionId": "6bdf4b56-2696-4fc5-9329-b09827e90f79",
+        "chatSessionId": "sess_b918ed96-bf32-46cc-ab77-87ea49e6bcd0",
+        "timestamp": 1794885847651
+      },
+      {
+        "executionId": "6bdf4b56-2696-4fc5-9329-b09827e90f79",
+        "chatSessionId": "sess_b918ed96-bf32-46cc-ab77-87ea49e6bcd0",
+        "timestamp": 1794885899830
+      }
+    ],
+    "6. Scorer: status, reasons, flags, rescue inputs, sector medians": [
+      {
+        "executionId": "6bdf4b56-2696-4fc5-9329-b09827e90f79",
+        "chatSessionId": "sess_b918ed96-bf32-46cc-ab77-87ea49e6bcd0",
+        "timestamp": 1794885899869
+      }
+    ],
+    "6.4 Write property test for zombie status": [
+      {
+        "executionId": "13ffb46e-ceef-439f-9203-c389c8393ddf",
+        "chatSessionId": "sess_c42b9dd6-25b7-415e-8b1c-48f9e932d022",
+        "timestamp": 1794885933343
+      },
+      {
+        "executionId": "13ffb46e-ceef-439f-9203-c389c8393ddf",
+        "chatSessionId": "sess_c42b9dd6-25b7-415e-8b1c-48f9e932d022",
+        "timestamp": 1794886040702
+      }
+    ],
+    "6.5 Write property test for the other status invariants": [
+      {
+        "executionId": "68c5f392-cb68-4340-b023-d2b872e29ab0",
+        "chatSessionId": "sess_e6d04e86-e751-437f-a896-349c54b85447",
+        "timestamp": 1794886059394
+      },
+      {
+        "executionId": "68c5f392-cb68-4340-b023-d2b872e29ab0",
+        "chatSessionId": "sess_e6d04e86-e751-437f-a896-349c54b85447",
+        "timestamp": 1794886207173
+      }
+    ],
+    "6.6 Write property test for eligibility flags": [
+      {
+        "executionId": "f933a3a9-fa5e-415d-b402-8aff389b730f",
+        "chatSessionId": "sess_af73d691-885c-4662-914c-cc8529757433",
+        "timestamp": 1794886216171
+      },
+      {
+        "executionId": "f933a3a9-fa5e-415d-b402-8aff389b730f",
+        "chatSessionId": "sess_af73d691-885c-4662-914c-cc8529757433",
+        "timestamp": 1794886248491
+      }
+    ],
+    "6.7 Write property test for own-history rescue inputs": [
+      {
+        "executionId": "75869ae0-ccc3-4d55-9880-f0780faa462d",
+        "chatSessionId": "sess_2fbb5a2b-3d6f-4911-8245-7c2a814e30c6",
+        "timestamp": 1794886256710
+      },
+      {
+        "executionId": "75869ae0-ccc3-4d55-9880-f0780faa462d",
+        "chatSessionId": "sess_2fbb5a2b-3d6f-4911-8245-7c2a814e30c6",
+        "timestamp": 1794886294360
+      }
+    ],
+    "6.8 Write property test for sector medians": [
+      {
+        "executionId": "879d48a1-ccd4-427d-950d-b0262d1de06d",
+        "chatSessionId": "sess_eaa48e21-833f-4b8f-a90b-2a157e6ae955",
+        "timestamp": 1794886303242
+      },
+      {
+        "executionId": "f87adc69-a057-446f-bbb4-24b49c7a9013",
+        "chatSessionId": "sess_8dde2480-c1d2-4faf-84b8-22683780da8c",
+        "timestamp": 1795062330983
+      },
+      {
+        "executionId": "f87adc69-a057-446f-bbb4-24b49c7a9013",
+        "chatSessionId": "sess_8dde2480-c1d2-4faf-84b8-22683780da8c",
+        "timestamp": 1795062359241
+      }
+    ],
+    "8.1 Create `pipeline/macro.py`": [
+      {
+        "executionId": "fd046191-7fc9-460a-8252-1772eae0d089",
+        "chatSessionId": "sess_b07c97cb-22b7-42ec-98af-2aad14ab29f9",
+        "timestamp": 1795063492610
+      }
+    ]
+  }
+}

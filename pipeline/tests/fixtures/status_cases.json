@@ -1,0 +1,215 @@
+{
+  "latest_fy": 2024,
+  "cases": [
+    {
+      "id": "rule2-missing-interest-in-latest-fy",
+      "age_years": 15,
+      "years": [
+        {"fy": 2020, "ebit": 50, "interest": 100},
+        {"fy": 2021, "ebit": 50, "interest": 100},
+        {"fy": 2022, "ebit": 50, "interest": 100},
+        {"fy": 2023, "ebit": 50, "interest": 100},
+        {"fy": 2024, "ebit": 50, "interest": null}
+      ],
+      "expected_status": "insufficient_data",
+      "expected_reasons": ["Interest expense missing in FY2024"]
+    },
+    {
+      "id": "rule3-missing-ebit-in-latest-fy",
+      "age_years": 15,
+      "years": [
+        {"fy": 2020, "ebit": 50, "interest": 100},
+        {"fy": 2021, "ebit": 50, "interest": 100},
+        {"fy": 2022, "ebit": 50, "interest": 100},
+        {"fy": 2023, "ebit": 50, "interest": 100},
+        {"fy": 2024, "ebit": null, "interest": 100}
+      ],
+      "expected_status": "insufficient_data",
+      "expected_reasons": ["EBIT missing in FY2024"]
+    },
+    {
+      "id": "rule3-negative-interest-in-latest-fy",
+      "age_years": 15,
+      "years": [
+        {"fy": 2020, "ebit": 50, "interest": 100},
+        {"fy": 2021, "ebit": 50, "interest": 100},
+        {"fy": 2022, "ebit": 50, "interest": 100},
+        {"fy": 2023, "ebit": 50, "interest": 100},
+        {"fy": 2024, "ebit": 50, "interest": -5}
+      ],
+      "expected_status": "insufficient_data",
+      "expected_reasons": ["Interest expense negative in FY2024"]
+    },
+    {
+      "id": "rule3-missing-ebit-and-negative-interest-in-latest-fy",
+      "age_years": 15,
+      "years": [
+        {"fy": 2020, "ebit": 50, "interest": 100},
+        {"fy": 2021, "ebit": 50, "interest": 100},
+        {"fy": 2022, "ebit": 50, "interest": 100},
+        {"fy": 2023, "ebit": 50, "interest": 100},
+        {"fy": 2024, "ebit": null, "interest": -5}
+      ],
+      "expected_status": "insufficient_data",
+      "expected_reasons": ["EBIT missing in FY2024", "Interest expense negative in FY2024"]
+    },
+    {
+      "id": "rule4-missing-year-breaks-streak-no-three-consecutive",
+      "age_years": 15,
+      "years": [
+        {"fy": 2020, "ebit": 50, "interest": 100},
+        {"fy": 2021, "ebit": 50, "interest": 100},
+        {"fy": 2022, "ebit": null, "interest": null},
+        {"fy": 2023, "ebit": 50, "interest": 100},
+        {"fy": 2024, "ebit": 50, "interest": 100}
+      ],
+      "expected_status": "insufficient_data",
+      "expected_reasons": [
+        "Fewer than 3 consecutive fiscal years with both EBIT and interest expense available"
+      ]
+    },
+    {
+      "id": "missing-year-in-last-3-breaks-zombie-streak",
+      "age_years": 15,
+      "years": [
+        {"fy": 2020, "ebit": 50, "interest": 100},
+        {"fy": 2021, "ebit": 50, "interest": 100},
+        {"fy": 2022, "ebit": 50, "interest": 100},
+        {"fy": 2023, "ebit": null, "interest": null},
+        {"fy": 2024, "ebit": 50, "interest": 100}
+      ],
+      "expected_status": "endangered",
+      "expected_reasons": ["ICR below 1 in FY2022, FY2024"]
+    },
+    {
+      "id": "rule5-zombie",
+      "age_years": 15,
+      "years": [
+        {"fy": 2020, "ebit": 200, "interest": 100},
+        {"fy": 2021, "ebit": 200, "interest": 100},
+        {"fy": 2022, "ebit": 50, "interest": 100},
+        {"fy": 2023, "ebit": 50, "interest": 100},
+        {"fy": 2024, "ebit": 50, "interest": 100}
+      ],
+      "expected_status": "zombie",
+      "expected_reasons": ["ICR below 1 in FY2022, FY2023, FY2024"]
+    },
+    {
+      "id": "rule5-age-exactly-10-is-zombie",
+      "age_years": 10,
+      "years": [
+        {"fy": 2020, "ebit": 50, "interest": 100},
+        {"fy": 2021, "ebit": 50, "interest": 100},
+        {"fy": 2022, "ebit": 50, "interest": 100},
+        {"fy": 2023, "ebit": 50, "interest": 100},
+        {"fy": 2024, "ebit": 50, "interest": 100}
+      ],
+      "expected_status": "zombie",
+      "expected_reasons": ["ICR below 1 in FY2022, FY2023, FY2024"]
+    },
+    {
+      "id": "rule5-age-9-is-not-zombie",
+      "age_years": 9,
+      "years": [
+        {"fy": 2020, "ebit": 50, "interest": 100},
+        {"fy": 2021, "ebit": 50, "interest": 100},
+        {"fy": 2022, "ebit": 50, "interest": 100},
+        {"fy": 2023, "ebit": 50, "interest": 100},
+        {"fy": 2024, "ebit": 50, "interest": 100}
+      ],
+      "expected_status": "endangered",
+      "expected_reasons": ["ICR below 1 in FY2022, FY2023, FY2024"]
+    },
+    {
+      "id": "negative-ebit-counts-as-below-1-zombie",
+      "age_years": 20,
+      "years": [
+        {"fy": 2020, "ebit": -20, "interest": 100},
+        {"fy": 2021, "ebit": -20, "interest": 100},
+        {"fy": 2022, "ebit": -20, "interest": 100},
+        {"fy": 2023, "ebit": -20, "interest": 100},
+        {"fy": 2024, "ebit": -20, "interest": 100}
+      ],
+      "expected_status": "zombie",
+      "expected_reasons": ["ICR below 1 in FY2022, FY2023, FY2024"]
+    },
+    {
+      "id": "reported-zero-interest-inside-window-breaks-zombie-streak",
+      "age_years": 15,
+      "years": [
+        {"fy": 2020, "ebit": 50, "interest": 100},
+        {"fy": 2021, "ebit": 50, "interest": 100},
+        {"fy": 2022, "ebit": 50, "interest": 100},
+        {"fy": 2023, "ebit": -10, "interest": 0},
+        {"fy": 2024, "ebit": 50, "interest": 100}
+      ],
+      "expected_status": "endangered",
+      "expected_reasons": ["ICR below 1 in FY2022, FY2024"]
+    },
+    {
+      "id": "rule6-reported-zero-interest-in-latest-fy-is-healthy",
+      "age_years": 15,
+      "years": [
+        {"fy": 2020, "ebit": 50, "interest": 100},
+        {"fy": 2021, "ebit": 50, "interest": 100},
+        {"fy": 2022, "ebit": 50, "interest": 100},
+        {"fy": 2023, "ebit": 50, "interest": 100},
+        {"fy": 2024, "ebit": 50, "interest": 0}
+      ],
+      "expected_status": "healthy",
+      "expected_reasons": ["No interest expense in FY2024"]
+    },
+    {
+      "id": "rule7-endangered-latest-year-below-1",
+      "age_years": 15,
+      "years": [
+        {"fy": 2020, "ebit": 200, "interest": 100},
+        {"fy": 2021, "ebit": 200, "interest": 100},
+        {"fy": 2022, "ebit": 200, "interest": 100},
+        {"fy": 2023, "ebit": 200, "interest": 100},
+        {"fy": 2024, "ebit": 50, "interest": 100}
+      ],
+      "expected_status": "endangered",
+      "expected_reasons": ["ICR below 1 in FY2024"]
+    },
+    {
+      "id": "rule7-endangered-two-of-last-3-latest-ok",
+      "age_years": 15,
+      "years": [
+        {"fy": 2020, "ebit": 200, "interest": 100},
+        {"fy": 2021, "ebit": 200, "interest": 100},
+        {"fy": 2022, "ebit": 50, "interest": 100},
+        {"fy": 2023, "ebit": 50, "interest": 100},
+        {"fy": 2024, "ebit": 200, "interest": 100}
+      ],
+      "expected_status": "endangered",
+      "expected_reasons": ["ICR below 1 in FY2022, FY2023"]
+    },
+    {
+      "id": "rule8-healthy",
+      "age_years": 15,
+      "years": [
+        {"fy": 2020, "ebit": 200, "interest": 100},
+        {"fy": 2021, "ebit": 200, "interest": 100},
+        {"fy": 2022, "ebit": 200, "interest": 100},
+        {"fy": 2023, "ebit": 200, "interest": 100},
+        {"fy": 2024, "ebit": 200, "interest": 100}
+      ],
+      "expected_status": "healthy",
+      "expected_reasons": ["ICR 2.00 in FY2024, at least 1"]
+    },
+    {
+      "id": "rule8-healthy-icr-exactly-1",
+      "age_years": 15,
+      "years": [
+        {"fy": 2020, "ebit": 100, "interest": 100},
+        {"fy": 2021, "ebit": 100, "interest": 100},
+        {"fy": 2022, "ebit": 100, "interest": 100},
+        {"fy": 2023, "ebit": 100, "interest": 100},
+        {"fy": 2024, "ebit": 100, "interest": 100}
+      ],
+      "expected_status": "healthy",
+      "expected_reasons": ["ICR 1.00 in FY2024, at least 1"]
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 
 ## Overview
 
+**Phases.** On 2026-11-16 the goal changed. Phase 1 (section "Phase 1 design") downloads the two SEC bulk files and writes a data shape report. Phase 2 (all sections after the "Phase 2 design" marker) is the contract-v2 pipeline and stays as designed. Requirements 20 to 29 are phase 1; Requirements 1 to 19 are phase 2 except where the Phases table in `requirements.md` says Kept.
+
 The pipeline is a single-process, synchronous Python 3.11+ package under `/pipeline`. One command, `.venv/bin/python -m pipeline.run`, selects firms, fetches SEC EDGAR submissions and companyfacts plus FRED DGS10 through one cached, rate-limited HTTP layer, scores every firm with one shared `icr()`, writes the four data contract v2 files into a temporary folder, validates them against `data/schema`, and only then swaps them into the output folder. After the swap it runs the existing `pipeline/scripts/threshold_report.py` and writes `pipeline/reports/act1_candidates.md`. Every run that gets past argument checking writes `pipeline/.cache/run_report.json`.
 
 Design goals, in priority order:
@@ -37,6 +39,468 @@ The Scan_Limit, max(10 * N, 200) visited CIKs, and the overflow list are a backs
 | Which ticker an output firm gets when a CIK has several tickers. | The first `company_tickers.json` entry for that CIK in key order (`"0"`, `"1"`, ...), else the first entry of submissions `tickers`, else null. |
 | `--sample` together with `--ciks`: Requirement 2.9 and 3.7. | The Sampler judges recency on its own picks; the per-firm output check skips recency if `--ciks` selected the firm. Both use the same cached responses. |
 | `icr()` in `make_mock.py`. | `make_mock.py` keeps its own copy (it is frozen by Requirement 19.8 and is a standalone script, not a Pipeline module). The static check for Requirement 8.1 scans `pipeline/*.py` only, not `pipeline/scripts/`. |
+
+## Phase 1 design (current work): bulk data and data shape report
+
+Phase 1 answers one question quickly: what does the real data look like? It reads two SEC bulk archives once, builds an internal firm-year panel and an events table, and writes a report. It does not write any data contract file. Everything from `## Architecture` onward is the Phase 2 design (contract-v2 outputs, sampling, Act 1) and stays as written, except where a line says otherwise.
+
+### Design decisions
+
+| Decision | Reason |
+| --- | --- |
+| New package `pipeline/bulk/`, started with `python -m pipeline.bulk`. No edit to `extract()`, `icr()`, `universe.py` or `HttpClient.get()`. | Requirement 29.5. Phase 2 code keeps working and keeps its tests. |
+| `YearValues.sources` already holds every `Fact` behind a written value (tag, end, accn, filed). The panel maps facts to fields by tag, so `facts.py` needs no change. | Requirement 24.4 needs per-field accession, tag and date without touching the extractor. |
+| Cash is picked in the new module with the existing `pick_instant()`. | Requirement 24.5. `facts.py` has no cash tag, and adding one there would change `extract()` inputs. |
+| Members are read in sorted name order. | The panel is written row by row and is sorted by CIK (24.1) without holding it in memory. |
+| Submissions are aggregated first (small per-CIK records), companyfacts second. | Age_At_FY (24.6) needs the first filing date before the panel rows are written. |
+| The report is built with pandas from the three CSV files. | pandas is already a pinned dependency (19.1). The panel is about 200,000 rows, which fits in memory. The archives never do. |
+| CSV with gzip (`mtime=0`), not Parquet. | No new dependency (24.10, 29.1), and byte-identical output (26.13). |
+| Streaming download with `requests` `stream=True`, written to `.part`, then renamed. | `HttpClient.get()` reads the whole body (`resp.content`) and `Cache` keeps whole bodies, so they cannot hold a multi-GB archive. |
+| No resume. Fail clearly and delete the `.part` file. | Requirement 21.3. |
+
+### Phase 1 architecture
+
+```mermaid
+flowchart TD
+    CLI["bulk/cli.py<br/>download | panel | report | all"] --> CFG["config.py<br/>Config, env (unchanged)"]
+    CLI --> DL["bulk/download.py<br/>stream, .part, size, zip check, SHA-256, 24h rule"]
+    DL --> RL["http.RateLimiter + User-Agent (unchanged)"]
+    DL --> ZIPS[("pipeline/.cache/bulk/<br/>companyfacts.zip, submissions.zip + .json records<br/>git-ignored")]
+    CLI --> SUB["bulk/submissions.py<br/>merge main file + older pages per CIK,<br/>first/last dates, tickers, SIC, events"]
+    CLI --> PAN["bulk/panel.py<br/>extract_panel, age_at_fy, zombie_flags"]
+    ZIPS --> RD["bulk/reader.py<br/>one member at a time, sorted names"]
+    RD --> SUB
+    RD --> PAN
+    PAN --> FACTS["facts.py (unchanged)<br/>annual_facts, dedupe, flow_by_fy,<br/>fiscal_year_ends, build_year, pick_instant"]
+    PAN --> ICR["metrics.icr() (unchanged)"]
+    SUB --> UNI["universe.py (unchanged)<br/>parse_sic, sic_division, FINANCIAL_RANGE, UTILITY_RANGE"]
+    SUB --> TAB["bulk/tables.py<br/>gzip CSV writers, column lists"]
+    PAN --> TAB
+    TAB --> OUT[("pipeline/out/<br/>firms.csv.gz, panel.csv.gz, events.csv.gz<br/>git-ignored")]
+    OUT --> REP["bulk/report.py<br/>pandas, sections 1 to 8"]
+    REP --> RPT[("pipeline/reports/<br/>data_shape.md + s*.csv<br/>committed")]
+    CLI --> RR["run_report.py<br/>+ bulk section"]
+```
+
+### Phase 1 run sequence
+
+1. **Preflight (no network)**: parse the sub-command and `--use-cached`; for `download` and `all`, read `SEC_CONTACT_EMAIL` and the rate (4.1, 4.2, 4.5; 20.2). For `panel` and `report`, no email is needed because they send no request (20.3).
+2. **Download** (`download`, `all`): for each zip, decide from its record whether the cache is fresh (21.5). Fresh or `--use-cached`: no request. Otherwise stream to `.part`, check size and zip, hash, rename, write the record (21.2 to 21.6).
+3. **Submissions pass** (`panel`, `all`): iterate the members of `submissions.zip` in sorted order, merge each into a per-CIK `SubAgg` (23.3, 23.4, 25.1 to 25.5).
+4. **Companyfacts pass**: iterate the members of `companyfacts.zip` in sorted order. For each firm, `extract_panel()` returns 11 rows. Rows go straight to `panel.csv.gz`. Only a small `FirmFacts` record (CIK, entity name, `parse_error`) stays in memory.
+5. **Tables**: join `SubAgg` and `FirmFacts` into the Firm_Table (flags, ages), keep events of Universe_P1 CIKs only, write `firms.csv.gz` and `events.csv.gz`.
+6. **Report** (`report`, `all`): read the three files with pandas, compute sections 1 to 8, write `data_shape.md` and the CSVs (26.x).
+7. **Run_Report**: written in a `finally` block with the `bulk` section and the exit code (27.x).
+
+### Phase 1 module layout
+
+```
+pipeline/bulk/
+  __init__.py
+  __main__.py        # from pipeline.bulk.cli import main; raise SystemExit(main())
+  cli.py             # argument parsing, run sequence, exit codes, Run_Report
+  download.py        # BulkSource, download_if_needed, stream_to_part, read/write record
+  reader.py          # member_names, iter_members, classify_member
+  submissions.py     # SubAgg, merge_member, aggregate, event extraction
+  panel.py           # extract_panel, age_at_fy, zombie_flags, field mapping, URLs
+  tables.py          # column lists, deterministic gzip CSV writers/readers
+  report.py          # section functions, outcome classification, Markdown rendering
+pipeline/tests/
+  test_bulk_download.py  test_bulk_reader.py  test_bulk_submissions.py
+  test_bulk_panel.py  test_bulk_report.py  test_bulk_properties.py  test_bulk_cli.py  test_bulk_static.py
+```
+
+### Phase 1 components and interfaces
+
+#### `pipeline/bulk/download.py`
+
+```python
+COMPANYFACTS_URL = "https://www.sec.gov/Archives/edgar/daily-index/xbrl/companyfacts.zip"
+SUBMISSIONS_URL = "https://www.sec.gov/Archives/edgar/daily-index/bulkdata/submissions.zip"
+CHUNK_BYTES = 1 << 20
+MAX_AGE = timedelta(hours=24)
+
+@dataclass(frozen=True)
+class BulkRecord:                    # written as <zip>.json next to the zip (21.6)
+    url: str; downloaded_at: str     # ISO 8601 UTC
+    size_bytes: int; sha256: str; last_modified: str | None
+
+@dataclass(frozen=True)
+class BulkFile:
+    name: str                        # "companyfacts.zip" | "submissions.zip"
+    path: Path; record: BulkRecord; from_cache: bool
+
+def read_record(zip_path: Path) -> BulkRecord | None: ...        # None if missing, unreadable, or size differs from the file on disk
+def is_fresh(record: BulkRecord, now: datetime) -> bool: ...     # pure; age < 24 h (21.5)
+def stream_to_part(resp, part: Path, chunk: int = CHUNK_BYTES) -> tuple[int, str]: ...  # (bytes, sha256 hex); hashes while writing
+def check_download(part: Path, written: int, expected: int | None) -> None: ...         # raises BulkDownloadError (21.3)
+def fetch_bulk(cfg, session, limiter, stats, url: str, use_cached: bool, now: datetime) -> BulkFile: ...
+```
+
+`fetch_bulk` follows this order:
+1. If a record exists and is fresh, or `use_cached` is set and a zip exists: return it with `from_cache=True`, no request.
+2. With `use_cached` and no zip: raise `MissingBulkFileError` naming the file (20.4).
+3. Otherwise acquire one `RateLimiter` slot per attempt, send `session.get(url, headers={"User-Agent": ...}, stream=True, timeout=(10, 120))`. Retry only the connection phase on 429 and 5xx with the existing `BACKOFF_SECONDS` and `parse_retry_after()`. A failure while reading the stream is not retried.
+4. `stream_to_part` writes `<name>.part` and hashes as it writes. `check_download` compares the bytes written with `Content-Length` when that header is present and no `Content-Encoding` header is present. Then `zipfile.ZipFile(part)` must open and list at least one member. On any failure the `.part` file is deleted, the older zip and record stay unchanged, and `BulkDownloadError` carries the file, expected size and actual size (21.3).
+5. On success: `os.replace(part, zip)`, then write the record (temp file plus `os.replace`).
+6. A failed refetch of a stale zip raises; the stale zip is not used unless `use_cached` was given (21.5).
+
+The email never appears in any message: errors go through `http.redact()` (21.8).
+
+#### `pipeline/bulk/reader.py`
+
+```python
+CIK_MEMBER = re.compile(r"^CIK(\d{10})\.json$")
+PAGE_MEMBER = re.compile(r"^CIK(\d{10})-submissions-(\d{3})\.json$")
+
+def member_names(zf: zipfile.ZipFile) -> list[str]: ...        # sorted; central directory only, no data read
+def classify_member(name: str) -> tuple[str, str] | None: ...  # ("main"|"page", cik10) or None (22.5)
+def iter_members(zip_path: Path) -> Iterator[tuple[str, bytes | Exception]]: ...
+```
+
+`iter_members` opens the zip once and yields one member at a time in sorted name order. It reads a member with `zf.open(name)` and yields `(name, raw bytes)`. A `BadZipFile` or CRC error on one member is yielded as `(name, exception)` so the caller records it and continues (22.4). The previous member's bytes are not referenced by the iterator when it reads the next one (22.2). `zipfile` checks each member's CRC while reading, which is the integrity check for member contents (21.3).
+
+#### `pipeline/bulk/submissions.py`
+
+```python
+@dataclass
+class SubAgg:
+    cik: str
+    has_main: bool = False
+    name: str | None = None
+    tickers: tuple[str, ...] = ()
+    sic: object = None
+    first_filing: date | None = None        # min over every page
+    last_filing: date | None = None         # max over every page
+    last_10k: date | None = None            # max over 10-K / 10-K/A rows
+    events: dict[tuple[str, str], EventRow] = field(default_factory=dict)  # key (accession, event_type)
+    pages: list[str] = field(default_factory=list)
+    parse_error: bool = False
+
+EVENT_FORMS_8K = frozenset({"8-K", "8-K/A"})
+EVENT_RULES = ...   # (event_type, forms, item) table, one source of truth (25.2)
+
+def filing_rows(obj: dict, kind: str) -> Iterator[Filing]: ...   # kind "main" -> obj["filings"]["recent"], "page" -> obj itself
+def merge_member(agg: SubAgg, name: str, kind: str, obj: dict) -> None: ...
+def event_rows(cik: str, filings: Iterable[Filing], source_member: str) -> list[EventRow]: ...  # pure
+def aggregate(zip_path: Path, report: RunReport) -> dict[str, SubAgg]: ...
+def filing_url(cik: str, accession: str) -> str: ...
+```
+
+Details:
+- A main file has top-level `name`, `sic`, `tickers` and `filings.recent` (parallel arrays `accessionNumber`, `filingDate`, `form`, `items`). An older page has those arrays at the top level. `filing_rows` zips the arrays and skips rows with a missing accession or unparsable date for the event rules, but still counts a valid date for `first_filing` and `last_filing`.
+- `event_rows` splits `items` on commas, trims spaces, and applies `EVENT_RULES`. A row can yield several events (items "1.03,2.01" gives two). Rows are keyed `(accession, event_type)`, so merging the same filing twice (for example a page and the main file overlapping) keeps one row (25.4).
+- `merge_member` takes min and max of dates, unions events, and sets `has_main` for a main file. These operations are commutative, so any member order gives the same result (25.5).
+- `aggregate` ignores `SubAgg`s without `has_main` (orphan older pages) and lists their member names in the Run_Report (25.6). A member that fails to parse sets `parse_error` for its CIK and is logged (22.4).
+- `filing_url` builds `https://www.sec.gov/Archives/edgar/data/{int(cik)}/{accession without dashes}/{accession}-index.htm` (24.7). It lives here and is imported by `panel.py`.
+
+#### `pipeline/bulk/panel.py`
+
+```python
+PANEL_FIRST_FY, PANEL_LAST_FY = 2015, 2025
+FLAG_LOOKBACK = 2                       # icr of FY-1 and FY-2 are needed (Zombie_Flag)
+CASH_TAG = "CashAndCashEquivalentsAtCarryingValue"
+FIELDS = ("operating_income", "interest_expense", "revenue", "total_debt", "cash", "total_assets", "equity")
+
+def age_at_fy(first_filing: date | None, fye: date | None) -> int | None: ...   # pure; whole years by date arithmetic
+def zombie_flags(icr_by_fy: Mapping[int, float | None],
+                 age_by_fy: Mapping[int, int | None],
+                 years: Iterable[int]) -> dict[int, bool]: ...                  # pure (Zombie_Flag)
+def field_facts(y: YearValues, cash: Fact | None) -> dict[str, tuple[Fact, ...]]: ...   # field -> contributing facts, in Requirement 7 order
+def panel_row(cik: str, y: YearValues, cash: Fact | None, first_filing: date | None) -> dict[str, object]: ...  # pure
+def extract_panel(cik: str, companyfacts: Mapping[str, object], first_filing: date | None) -> list[dict[str, object]]: ...  # exactly 11 rows
+def gap_panel(cik: str) -> list[dict[str, object]]: ...                          # 11 Gap_Rows (parse error, 23.x)
+```
+
+`extract_panel` mirrors `extract()` but with a fixed range. It does not call `extract()`.
+1. `tagged[tag] = dedupe(annual_facts(cf, tag))` for `ALL_TAGS + (CASH_TAG,)`.
+2. `flows = {tag: flow_by_fy(tagged.get(tag, ())) for tag in all flow tags}`, `ends = fiscal_year_ends(flows)` (same calls as `extract()`).
+3. For `fy` in `2013 .. 2025`: if `fy in ends`, `y = build_year(fy, ends[fy], tagged)` and `cash = pick_instant(tagged.get(CASH_TAG, ()), ends[fy])`. Otherwise it is a Gap_Row (Requirement 6.10 behaviour, 24.3).
+4. `icr_by_fy[fy] = icr(y.ebit, y.interest)` for every year in 2013 to 2025. These are the only `icr()` calls.
+5. `zombie_flags` is computed on 2013 to 2025. Rows for 2013 and 2014 are dropped; rows for 2015 to 2025 are written (24.8).
+6. A Gap_Row has every money field, tag, end date, accession, URL, `fye`, `icr` and `age_at_fy` empty, and `zombie_flag` false. Its `fy` is always set. Gap_Rows keep the row count at 11 (24.1).
+
+`field_facts` mapping, by tag over `y.sources`:
+- `revenue`: the fact whose tag is `y.revenue_tag`.
+- `operating_income`: the fact with tag `y.ebit_tag` (`OperatingIncomeLoss`). For the fallback, the pretax fact first, then the interest fact (`y.interest_tag`), so the tag column reads `PretaxTag;InterestTag` (24.4).
+- `interest_expense`: the fact whose tag is `y.interest_tag`.
+- `total_debt`: facts whose tags are in `y.debt_tags`, in that order.
+- `total_assets`, `equity`: `Assets` and `StockholdersEquity` facts.
+- `cash`: the cash fact.
+
+For each field the tag, end date, accession and URL columns are the `;`-joined values of those facts. An empty field gives empty cells. `<field>_end` is `fact.end.isoformat()` (the period end for a flow, the instant date for a balance-sheet item) (24.4).
+
+`age_at_fy(first, fye)` returns `None` when either argument is `None`. Otherwise `fye.year - first.year - ((fye.month, fye.day) < (first.month, first.day))`. A first filing on 29 February completes its year on 1 March in non-leap years because the tuple comparison treats `(3, 1) > (2, 29)`.
+
+`zombie_flags` returns, for each year `Y` in `years`, `True` only if `age_by_fy[Y]` is not `None` and is at least 10, and the three values `icr_by_fy[Y]`, `icr_by_fy[Y-1]`, `icr_by_fy[Y-2]` are all not `None` and each below 1 (missing keys count as `None`).
+
+Per-firm cost: about 18 tags `annual_facts` scans plus `dedupe`. The existing `extract()` does the same work, so the panel costs about as much as running `extract()` once per firm.
+
+#### `pipeline/bulk/tables.py`
+
+```python
+FIRM_COLUMNS = ("cik","name","tickers","sic","sic_division","first_filing_date","last_10k_date","last_filing_date",
+                "is_financial","is_utility","no_sic","age_under_10","parse_error")
+PANEL_COLUMNS = ("cik","fy","fye","age_at_fy") + per-field ("<f>","<f>_tag","<f>_end","<f>_accn","<f>_url") + ("icr","zombie_flag","gap_has_balance_sheet")
+EVENT_COLUMNS = ("cik","date","form","item","event_type","accession","url","source_member")
+
+class GzipCsvWriter: ...     # context manager; gzip.GzipFile(mtime=0), newline="\n", UTF-8, header row, csv.QUOTE_MINIMAL
+def cell(value) -> str: ...  # None -> "" ; bool -> "true"/"false"; float -> repr; int -> str; date -> ISO
+def read_table(path, columns=None) -> pandas.DataFrame: ...   # dtype=str for ids, parse dates explicitly
+```
+
+`cell(None)` is `""`. A value of `0` is `"0"`, so 0 and missing differ in the file (24.9). Booleans use `true`/`false`.
+
+The Firm_Table is built by `build_firm_row(cik, agg: SubAgg | None, facts: FirmFacts, run_year)`:
+- `sic` is `str(agg.sic)` when parseable, else empty; `sic_division` comes from `universe.sic_division(parse_sic(...))`.
+- `is_financial` and `is_utility` use `FINANCIAL_RANGE` and `UTILITY_RANGE`; both are false when the SIC is null.
+- `no_sic` is true when `parse_sic` returns `None` or when there is no submissions record.
+- `age_under_10` is true when `first_filing_date` is null or `run_year - first.year < 10`.
+- With no submissions record, name falls back to `entityName` and tickers are empty (23.2).
+
+#### `pipeline/bulk/report.py`
+
+Each section is a pure function from DataFrames to a small result object (a DataFrame for the CSV plus the numbers used in the Markdown). The panel is read once with the needed columns only.
+
+```python
+def core_mask(panel, firms) -> Series: ...             # not financial, not utility, age_at_fy >= 10
+def present_mask(panel) -> Series: ...                  # any money field non-null
+def s1_firm_counts(panel, firms) -> Table: ...          # FY2015-2025: present firms, core present firms
+def s2_zombies(panel, firms) -> Table: ...              # FY2017-2025: count, share over present, share over non-null icr
+def classify_outcome(zombie_row_end: date, events: list[EventRow], last_fy_with_data: int | None, icr_2024: float | None, zombie_2024: bool) -> str: ...  # pure; precedence of 26.6
+def s3_outcomes(panel, firms, events) -> Table: ...     # for zombie FY2019 and FY2020; counts + CIK lists; "filed item 2.01" column
+def s4_recoveries_reversed(panel, firms) -> Table: ...  # icr >= 1.5 in FY2019 and icr < 1 in FY2020
+def s5_zombie_then_bankrupt(panel, firms, events) -> Table: ...
+def breaking_rate_pp(ebit, interest, debt) -> float | None: ...  # pure: (ebit - interest) / debt * 100; None unless interest > 0 and debt > 0 and ebit not None
+def s6_breaking_rate(panel, firms) -> Table: ...        # latest year per firm and fixed FY2024; histogram; below 1..5 pp
+def s7_data_quality(panel, firms) -> Table: ...         # per year; all firms and core
+def s8_largest_firms(panel, firms) -> Table: ...        # top 200 by max annual revenue, history string FY2017-FY2025
+def render_markdown(sections, meta) -> str: ...
+```
+
+Definitions fixed here so the numbers can be reproduced:
+- **Breaking rate** is `(EBIT - interest) / debt * 100`. It is not `icr()`, so it does not touch the one-ICR-function rule (8.1). It is the rate rise in percentage points that makes interest equal EBIT. `breaking_rate_pp` lives in `report.py`; the static check for 8.1 looks for `ebit / interest` and `ebit_usd / interest` only, and this formula divides by debt.
+- **Histogram**: left-closed buckets `[lo, lo + 0.5)` for `lo` from -10.0 to 19.5, plus `< -10` and `>= 20`. Bucket index is `floor((x + 10) / 0.5)` computed on the value rounded to 9 decimals, so edge values land in a defined bucket.
+- **Below +k pp** is `breaking_rate < k` for k = 1 to 5. Firms already below 0 count at every k.
+- **Latest year for section 6** is the highest `fy` of the firm with a computable breaking rate. The fixed-FY2024 variant uses only the FY2024 row.
+- **Section 3 window**: events with `date` after the `fye` of the zombie year and on or before 2024-12-31. Category order: `bankruptcy`, `delisted_or_deregistered`, `stopped_filing`, `recovered`, `still_zombie`, `other_alive`. Every zombie gets exactly one category (Property 35).
+- **Section 5** uses events of type `bankruptcy` with `date` from 2022-01-01 to 2023-12-31.
+- **Section 8** ranks by `max(revenue)` over FY2015 to FY2025 and breaks ties by CIK. The history string has one character per FY2017 to FY2025: `1` or `0`.
+- **Section 2 shares** use `round(x, 6)`. CSV and Markdown numbers use fixed formats (counts as integers, shares with 6 decimals in CSV and with 2 in the Markdown percent).
+- Rows in every CSV are sorted by their natural key (year, then CIK). The Markdown has no timestamps other than the source block (26.13).
+
+`render_markdown` starts with the source block (zip URLs, download time, size, SHA-256, `Last-Modified`, from the records in `pipeline/.cache/bulk/`), the definitions, and the text "Data: SEC EDGAR. Not investment advice." plus the age-proxy note (26.2, 26.12). The CIK lists go to CSVs (`s3_outcomes_cik.csv`, `s4_*.csv`, `s5_*.csv`). The Markdown links to them and shows counts.
+
+If the zip records are missing (report run without a download), the source block says "unknown, no download record" and does not fail.
+
+#### `pipeline/bulk/cli.py`
+
+```python
+def main(argv: list[str] | None = None) -> int: ...
+```
+
+- Sub-commands `download`, `panel`, `report`, `all`; flags `--use-cached`, `--rate R` (default 5, as Requirement 4.4).
+- Constants added to `config.py` as additive lines: `BULK_CACHE_DIR = CACHE_DIR / "bulk"`, `PHASE1_OUT_DIR = REPO_ROOT / "pipeline" / "out"`, `PHASE1_REPORTS_DIR = REPO_ROOT / "pipeline" / "reports"`. `Config` is unchanged; the bulk code takes these paths as parameters so tests pass temp folders.
+- New exceptions in `config.py`: `BulkDownloadError(PipelineError)` and `MissingBulkFileError(PipelineError)`.
+- Safety: the CLI refuses to write anywhere outside `pipeline/out` and `pipeline/reports` and never into `data` or a Protected_Dir (20.5, using `is_protected`).
+- Progress: one line to stderr every 1,000 members during each pass, with the count and total.
+
+#### `pipeline/run_report.py` (additive)
+
+One new field: `bulk: dict | None = None`. It is serialised by the existing `to_dict()` and redacted by the existing `_redact_obj`. The bulk section:
+
+```json
+"bulk": {
+  "command": "all", "use_cached": false,
+  "zips": {"companyfacts.zip": {"url": "...", "downloaded_at": "...", "size_bytes": 0, "sha256": "...", "last_modified": null, "from_cache": false}, "submissions.zip": {}},
+  "members": {"companyfacts": {"read": 0, "ignored": 0, "parse_failed": [{"member": "...", "error": "..."}]}, "submissions": {}},
+  "universe_p1": 0, "submissions_only_ciks": 0, "orphan_pages": [],
+  "panel_rows": 0, "gap_rows": 0, "events": {"bankruptcy": 0, "acquisition_disposition": 0, "delisting": 0, "deregistration": 0}
+}
+```
+
+### Phase 1 data models
+
+```python
+# bulk/submissions.py
+@dataclass(frozen=True)
+class Filing:       accession: str; filed: date | None; form: str; items: tuple[str, ...]
+@dataclass(frozen=True)
+class EventRow:     cik: str; date: date; form: str; item: str | None; event_type: str; accession: str; url: str; source_member: str
+
+# bulk/panel.py
+@dataclass(frozen=True)
+class FirmFacts:    cik: str; entity_name: str | None; has_annual: bool; parse_error: bool
+```
+
+#### On-disk formats (phase 1)
+
+| Path | Content | Git |
+| --- | --- | --- |
+| `pipeline/.cache/bulk/companyfacts.zip`, `submissions.zip` | the downloaded archives, unmodified | ignored |
+| `pipeline/.cache/bulk/<zip>.json` | `BulkRecord` | ignored |
+| `pipeline/.cache/bulk/<zip>.part` | partial download, deleted on failure | ignored |
+| `pipeline/.cache/run_report.json` | Run_Report with the `bulk` section | ignored |
+| `pipeline/out/firms.csv.gz`, `panel.csv.gz`, `events.csv.gz` | Firm_Table, Panel, Events_Table | ignored |
+| `pipeline/reports/data_shape.md`, `pipeline/reports/s<N>_<topic>.csv` | Data_Shape_Report and section CSVs | committed |
+
+### Phase 1 performance and size
+
+These are planning figures, not measurements. The manual live-run task records the real numbers.
+
+| Step | Expectation |
+| --- | --- |
+| Download | 2 requests. Time is set by bandwidth; each archive is on the order of 1 GB compressed. SEC rebuilds both files nightly. |
+| Submissions pass | Each member is small. About 10,000 to 20,000 main files plus older pages. Minutes. |
+| Companyfacts pass | About 18,000 members of 0.1 to 10 MB each, one JSON parse and one extraction per member. Roughly 10 to 30 minutes on one core. No multiprocessing in v1: the code stays simple and the order stays sorted. |
+| Memory | One parsed companyfacts member at a time (a large firm can be hundreds of MB of Python objects), plus `SubAgg` records (a few hundred bytes plus events). The report holds the panel with only the columns it needs. |
+| Disk | Both zips plus `pipeline/out` (a few hundred MB uncompressed CSV, much less gzipped). |
+
+If the first live run shows the companyfacts pass is too slow, the fallback is a worker pool that processes members in chunks and writes in sorted order. That is a Phase 1 follow-up, not part of this design.
+
+### Phase 1 correctness properties
+
+These continue the numbering of the Phase 2 properties (1 to 27). Each is one `@given` test on a pure function or an in-memory zip, offline.
+
+#### Property 28: Missing is never written as 0
+
+*For any* generated companyfacts document in which some tags are absent for some years, every panel cell for an absent value is empty, and a cell is `0` only when the chosen fact's value is exactly 0. The EBIT fallback with one missing part gives an empty `operating_income` and empty `operating_income_tag`.
+
+**Validates: Requirements 7.11, 24.2, 24.9**
+
+#### Property 29: Every firm keeps all 11 rows and stays in the Firm_Table
+
+*For any* set of generated firms, including firms with a bankruptcy event, firms whose last filing is before FY2025, firms with a parse error and firms with every flag set, the Panel has exactly 11 rows per firm for FY2015 to FY2025 in ascending order, and the Firm_Table has one row per firm of Universe_P1.
+
+**Validates: Requirements 23.1, 23.6, 24.1**
+
+#### Property 30: The yearly zombie flag matches the definition
+
+*For any* random `icr_by_fy` and `age_by_fy` maps, `zombie_flags` equals an independent oracle: true exactly when age at Y is not null and at least 10 and the icr values of Y, Y-1 and Y-2 are all not null and below 1. The flag is false when any of the three is null.
+
+**Validates: Requirements 24.8, 28.4, zombie-definition.md (yearly flag)**
+
+#### Property 31: Age at a fiscal year
+
+*For any* first-filing date and fiscal-year-end date, `age_at_fy` equals the number of completed anniversaries counted by an independent loop, is non-decreasing in `fye`, and is `None` when either date is `None`.
+
+**Validates: Requirements 24.6, Glossary (Age_At_FY)**
+
+#### Property 32: Events are de-duplicated by accession and type
+
+*For any* list of filings, with repeated accession numbers and several items per filing, `event_rows` followed by the merge gives at most one row per (accession, event type). The set of keys equals the set of (accession, type) pairs that match the rules in Requirement 25.2. A filing with items "1.03,2.01" gives exactly two rows.
+
+**Validates: Requirements 25.2, 25.4, 28.5**
+
+#### Property 33: Member order does not change the result
+
+*For any* generated set of submissions members for several CIKs, with the main file and older pages in any order, merging them gives the same `SubAgg` per CIK (first, last, last 10-K dates, tickers and events). An event present only on an older page is in the result.
+
+**Validates: Requirements 22.3, 25.1, 25.5, 28.6**
+
+#### Property 34: Outcome categories partition the zombies
+
+*For any* generated panel and events, every firm that is a zombie in FY2019 (and every one in FY2020) is in exactly one outcome category, and the category counts sum to the number of zombies. The precedence order of Requirement 26.6 holds: a firm with a bankruptcy event in the window is `bankruptcy` whatever else is true.
+
+**Validates: Requirements 26.6**
+
+#### Property 35: Breaking-rate histogram and thresholds match a brute force
+
+*For any* list of (EBIT, interest, debt) triples, the histogram counts sum to the number of firms with a computable breaking rate, the below-k counts are non-decreasing in k, and each below-k count equals a brute-force count of `breaking_rate_pp < k`.
+
+**Validates: Requirements 26.9**
+
+#### Property 36: Streaming digest does not depend on chunking
+
+*For any* byte string and any chunk size, `stream_to_part` writes the same file and returns the same SHA-256 as `hashlib.sha256` over the whole bytes, and the byte count equals the length.
+
+**Validates: Requirements 21.2, 21.4**
+
+#### Property 37: Report output is deterministic
+
+*For any* generated panel, firms and events, rendering the report twice, and after shuffling the input rows, gives byte-identical Markdown and CSV text.
+
+**Validates: Requirements 26.13**
+
+### Phase 1 error handling
+
+Exit codes for `python -m pipeline.bulk` only. The Phase 2 table (codes 1 to 12) belongs to `pipeline.run`.
+
+| Code | Failure | Requirements | Network before exit | Files |
+| --- | --- | --- | --- | --- |
+| 0 | success | | as needed | written |
+| 1 | unexpected exception (bug) | | maybe | whatever was reached; Run_Report written with a redacted traceback summary |
+| 2 | argument or environment error: unknown sub-command, bad `--rate`, missing `SEC_CONTACT_EMAIL` for `download` or `all`, output path in a Protected_Dir | 20.2, 20.5, 4.2, 4.5 | none | unchanged |
+| 3 | download failed: HTTP error after retries, size mismatch, not a zip, stream error | 21.3, 21.5 | yes | `.part` deleted, older zip and record unchanged |
+| 4 | a needed zip is not cached (`--use-cached`, or `panel` without a zip) | 20.4 | none | unchanged |
+| 5 | an output file could not be written | 20.5, 29.3 | no | partial output removed |
+
+Typed exceptions: `PreflightError` (existing), `BulkDownloadError`, `MissingBulkFileError`.
+
+Per-member problems never stop the run (22.4):
+- A member that cannot be read or parsed is logged in the Run_Report. If its CIK is known, the CIK's `parse_error` is true. In the Panel such a firm gets 11 Gap_Rows, so it stays visible (Property 29).
+- A member whose name matches no pattern is ignored and counted (22.5).
+- A companyfacts member with no Annual_Fact is not in Universe_P1 and is counted in the Run_Report (23.1).
+- The 2% rule does not apply (22.4).
+
+Atomicity: each output file is written to `<name>.tmp` and renamed with `os.replace`, so an interrupted run leaves either the old file or the new one. The three tables are written in the order panel, firms, events, and `report` refuses to run when one is missing (exit 4).
+
+### Phase 1 testing strategy
+
+- All tests are offline and use in-memory zips built with `zipfile.ZipFile(io.BytesIO())`, a fake streaming session and the existing socket guard (28.1). `tests/builders.py` gets small helpers: `make_zip(members: dict[str, bytes])`, `make_companyfacts(...)` (tags, years, units), `make_submissions_main(...)`, `make_submissions_page(...)`.
+- The existing `FakeSession` serves whole bodies. A second fake, `StreamSession`, implements `get(url, headers, timeout, stream)` and returns an object with `status_code`, `headers`, `iter_content(chunk_size)` and `close()`. It can cut the stream short to simulate a partial download.
+- Property tests use the existing `pipeline` hypothesis profile and carry the comment tag `# Feature: data-pipeline, Property N: ...`.
+- Example tests (28.8 to 28.10):
+  - download: size mismatch removes `.part` and keeps the older zip; a record younger than 24 hours means zero requests; a stale zip with a failed refetch raises and is not used; the record has size and SHA-256 equal to `hashlib` of the bytes; `use_cached` with no zip exits 4.
+  - reader: sorted order; names matching no pattern are ignored and counted; one corrupt member is yielded as an error and the next member is still read; the instrumented reader sees one live member at a time (22.6).
+  - submissions: bankruptcy 8-K only on an older page is found (28.6); items "1.03,2.01" give two rows; Form 25, 25-NSE, 15-12B, 15-12G and 15-15D give the right types; `25-NSE/A` and `15F-12B` give none; an orphan older page is skipped and listed; a CIK without a submissions file is kept with `no_sic` true.
+  - panel: a gap year; a firm that stops filing in 2019 still has 11 rows; a January year end maps to the prior FY; the EBIT fallback; cash picked within 7 days; the FY2013 and FY2014 `icr` feeding the FY2015 and FY2016 flags without rows for those years; accession and URL columns for multi-fact debt.
+  - report: each section on a hand-built panel; the outcome precedence; histogram edges (exactly 0.5, -10, 20); a firm with debt 0 or interest 0 is left out and counted.
+  - cli: preflight failures send zero requests; `panel` and `report` send zero requests; an end-to-end `all` run with fake sources writes the three tables and the report into temp folders and leaves the repository paths unchanged (28.11).
+- Static checks (new file `test_bulk_static.py`, so Phase 2 task 19 can still create `test_static.py`): `.gitignore` contains `pipeline/out/` and `pipeline/.cache/`; no file under `pipeline/bulk` imports `react`, `three` or `requests` outside `download.py`; `ebit / interest` appears only in `metrics.py`; `pipeline/requirements.txt` is unchanged.
+
+### Phase 1 requirement map
+
+| Requirement | Where |
+| --- | --- |
+| 20 Entry point | `bulk/cli.py`, exit codes 2 and 4 |
+| 21 Bulk download | `bulk/download.py`, Properties 36, exit code 3 |
+| 22 Streaming read | `bulk/reader.py`, 22.6 test |
+| 23 Universe and Firm_Table | `bulk/submissions.py`, `bulk/tables.py`, Property 29 |
+| 24 Panel | `bulk/panel.py`, Properties 28 to 31 |
+| 25 Events | `bulk/submissions.py`, Properties 32 and 33 |
+| 26 Report | `bulk/report.py`, Properties 34, 35, 37 |
+| 27 Run report | `run_report.py` (`bulk` field) |
+| 28 Tests | `tests/test_bulk_*.py` |
+| 29 Docs, deps, commits | steering updates (done), no new dependency, `test_static.py` |
+
+### Tag-list change of 2026-11-20 (Requirement 7.2, 7.2a, 7.6, 7.9a; Requirement 30)
+
+Decided by Frank after the first real run and the tag census (FY2016, FY2019, FY2024). The data shape report had 45% of core firms without total debt, 32% without interest expense and 16% without revenue in FY2024.
+
+| Field | Rule now | Where in code |
+| --- | --- | --- |
+| Revenue | 4 tags in order; then goods + services (sum if both, else the one present) | `facts.FLOW_TAGS["revenue"]`, `["revenue_components"]`, `build_year` |
+| Interest expense | 5 tags in order; `InterestPaidNet` and net tags never | `facts.FLOW_TAGS["interest"]` |
+| Total debt | stage 1 unchanged; stage 2 only when stage 1 is empty | `facts.DEBT_*_TAGS`, `build_year` |
+
+Why stage 2 cannot double count: it runs only when none of `LongTermDebtNoncurrent`, `LongTermDebtCurrent`, `ShortTermBorrowings` and `LongTermDebt` has a value, and it takes at most one tag per bucket. Variant B (convertibles, lines of credit, loans, secured, other, `DebtInstrumentCarryingAmount`) is not used because those tags are parts of a total and would understate it.
+
+Other effects:
+- `facts.py` stays one set of rules for Phase 1 and Phase 2: `extract()` and `extract_panel()` both call `build_year`. `revenue_tag` is a string, so a goods + services year stores `SalesRevenueGoodsNet+SalesRevenueServicesNet`; the Panel's `_tag` column joins tags with `;`. The JSON Schemas and TypeScript types do not restrict tag names, so they do not change.
+- The Panel gets the column `likely_debt_free` (no value from any debt tag, interest 0 or missing). Section 7 reports it apart from `missing_total_debt`.
+- `ALL_TAGS` now has 27 entries. `gap_has_balance_sheet` also looks at the stage 2 debt tags.
+- Section 10 (sanity flags) needs both values at 100,000 USD or more and marks the outlier with `outlier_of(prev, a, b, next)`: the value that disagrees with all its neighbours.
+- The census takes `--fy`. In the census, "existing" means in the tag lists when the census runs, so the FY2024 census files of this date describe the lists before the change.
+- `pipeline/reports/tag_changes_before_after.md` is written once, from the old report CSVs (git history) and the new ones.
+
+### What phase 1 leaves for phase 2
+
+Phase 2 keeps its design in the sections below. The pieces phase 1 builds that phase 2 can reuse: `age_at_fy`, `filing_url`, the member reader (a bulk-based universe could replace the per-firm fetcher), and the event rules (the Act 1 flags for 8-K item 1.03 and Form 25 in `reports.py`). Whether phase 2 reads from the bulk files or from per-firm requests is decided after the game design.
+
+---
+
+## Phase 2 design (unchanged below, built after the design is chosen)
 
 ## Architecture
 
@@ -301,10 +765,10 @@ def extract(companyfacts: dict) -> ExtractResult: ...                     # pure
 
 Key rules inside `build_year`:
 
-- Revenue: first tag in priority whose `pick_flow` returns a fact (7.2).
+- Revenue: first of four tags whose `pick_flow` returns a fact (7.2); if none, goods + services, or the one present, with `revenue_tag` = `SalesRevenueGoodsNet+SalesRevenueServicesNet` when both are used (7.2a, `REVENUE_TAG_JOIN`).
 - Interest: first tag in Interest_Tag_Priority with a usable value, including 0 and negatives (7.6). The chosen tag name is kept for the Run_Report (7.7).
 - EBIT: `OperatingIncomeLoss` if usable (7.3). Otherwise, if pretax is usable and the chosen interest fact has the same `start` and `end`, EBIT = pretax + interest with `ebit_tag` set to the pretax tag (7.4). Otherwise null (7.5). The fallback never tries a lower-priority interest tag to find a matching period.
-- Debt: sum of usable parts, each matched to its own instant date (6.15, 7.8), else `LongTermDebt` (7.9), else null and `[]`.
+- Debt, stage 1: sum of usable parts, each matched to its own instant date (6.15, 7.8), else `LongTermDebt` (7.9). Stage 2, only when stage 1 is empty (7.9a): first total tag of `DEBT_TOTAL_TAGS`; else one tag from each of the noncurrent and current buckets (`DEBT_NONCURRENT_ALT_TAGS`, `DEBT_CURRENT_ALT_TAGS`), summed; else `NotesPayable`; else null and `[]`.
 - Assets and equity: only `Assets` and `StockholdersEquity` (7.10).
 - Values are copied as reported (`int` stays `int`, `float` stays `float`), never scaled or rounded (7.12).
 

@@ -388,3 +388,74 @@
 2026-11-13 | graveyard-horror-pass | 3.27 | Captured Batch 2b look screenshot and side-by-side with horror-direction.png | reference/progress/horror-batch2b-look*.png
 2026-11-13 | graveyard-horror-pass | 3.28 | Full check passed: typecheck, lint, format, 945 web tests, build with check-bundle, 379 tools tests | none
 2026-11-13 | graveyard-horror-pass | 3.29 | Wrote the Batch 2b report with checks, screenshots and unmatched look values | docs/reviews/horror-batch2b-report.md
+2026-11-16 | data-pipeline | 1.1 | Added config, typed exceptions and run report modules. | pipeline/__init__.py, pipeline/config.py, pipeline/run_report.py
+2026-11-16 | data-pipeline | 1.2 | Added pytest harness with socket guard, FakeSession, tmp_config and builders. | pipeline/tests/conftest.py, builders.py, __init__.py
+2026-11-16 | data-pipeline | 1.3 | Added example tests for config, protected dirs, run report redaction and socket guard. | pipeline/tests/test_config.py
+2026-11-16 | data-pipeline | 2.1 | Added shared icr() returning None for invalid input or interest <= 0. | pipeline/metrics.py
+2026-11-16 | data-pipeline | 2.2 | Added parametrized icr() fixture test that fails on a missing, bad or empty fixture file. | pipeline/tests/test_icr.py
+2026-11-16 | data-pipeline | 2.3 | Added hypothesis property test for icr() totality and exactness. | pipeline/tests/test_icr_properties.py
+2026-11-16 | data-pipeline | 2.4 | Added hypothesis property test that higher EBIT never lowers ICR. | pipeline/tests/test_icr_properties.py
+2026-11-16 | data-pipeline | 3.1 | Added RateLimiter, Cache, redact helpers and parse_retry_after. | pipeline/http.py
+2026-11-16 | data-pipeline | 3.2 | Added HttpClient, SecClient, FredClient, FetchResult and RequestStats with retry and cache logic. | pipeline/http.py
+2026-11-16 | data-pipeline | 3.3 | Added 19 offline example tests for retries, cache, redaction and rate limiting. | pipeline/tests/test_http.py
+2026-11-16 | data-pipeline | 3.4 | Added rate limiter property test with fake clock and cache-slot check. | pipeline/tests/test_rate_limiter_property.py
+2026-11-16 | data-pipeline | 3.5 | Added Property 15 cache round-trip hypothesis tests. | pipeline/tests/test_cache_property.py
+2026-11-16 | data-pipeline | 3.6 | Added property test that redact() removes all secrets. | pipeline/tests/test_redaction_property.py
+2026-11-16 | data-pipeline | 4.1 | Added companyfacts fact extractor module with data models. | pipeline/facts.py
+2026-11-16 | data-pipeline | 4.2 | Added 33 example tests for the fact extractor covering duration, instant, tag priority and debt rules. | pipeline/tests/test_facts.py
+2026-11-16 | data-pipeline | 4.3 | Added Compustat fiscal-year mapping property test with example cases. | pipeline/tests/test_compustat_property.py
+2026-11-16 | data-pipeline | 4.4 | Added Property 4 hypothesis test for annual fact selection. | pipeline/tests/test_facts_properties.py
+2026-11-16 | data-pipeline | 4.5 | Added property test comparing pick_instant to a brute-force oracle. | pipeline/tests/test_facts_properties.py
+2026-11-16 | data-pipeline | 4.6 | Added Property 6 hypothesis test for the total debt rule. | pipeline/tests/test_facts.py
+2026-11-16 | data-pipeline | 5.1 | Added universe.py with SIC divisions, ticker map, exclusions and firm fetcher. | pipeline/universe.py
+2026-11-16 | data-pipeline | 5.2 | Added 29 example tests for universe parsing, SIC boundaries, exclusions and fetcher. | pipeline/tests/test_universe.py
+2026-11-16 | data-pipeline | 5.3 | Added property test that classify() returns the first matching exclusion reason. | pipeline/tests/test_universe_props.py
+2026-11-16 | data-pipeline | 6.1 | Added scorer (status, flags, rescue inputs, sector medians) and steering notes. | pipeline/metrics.py, .kiro/steering/zombie-definition.md, data-contract.md
+2026-11-16 | data-pipeline | 6.2 | Added test strategies, status_cases fixture and parametrized status tests. | pipeline/tests/strategies.py, status_cases.json, test_metrics.py
+2026-11-16 | data-pipeline | 6.3 | Added example tests for implied rate, eligibility flags, own-history rescue inputs and sector medians. | pipeline/tests/test_metrics.py
+2026-11-16 | data-pipeline | 6.4 | Added hypothesis property test that every zombie meets the age and three-year ICR definition. | pipeline/tests/test_metrics.py
+2026-11-16 | data-pipeline | 6.5 | Added Property 9 hypothesis test for non-zombie status invariants. | pipeline/tests/test_metrics.py
+2026-11-16 | data-pipeline | 6.6 | Added Property 10 eligibility-flags hypothesis test. | pipeline/tests/test_metrics.py
+2026-11-16 | data-pipeline | 6.7 | Added Property 11 test for own-history rescue inputs against a reference computation. | pipeline/tests/test_metrics.py
+2026-11-18 | data-pipeline | 6.8 | Added Property 12 sector-medians hypothesis test. | pipeline/tests/test_metrics.py
+2026-11-18 | data-pipeline | 23.1 | Added Phase 1 paths, bulk exceptions and the bulk field of the run report. | pipeline/config.py, pipeline/run_report.py
+2026-11-18 | data-pipeline | 23.2 | Added make_zip, year_facts, submissions builders and StreamSession; tree-hash check now watches pipeline/out and pipeline/reports. | pipeline/tests/builders.py, pipeline/tests/conftest.py
+2026-11-18 | data-pipeline | 23.3 | Added 9 example tests for Phase 1 config, run report redaction and the helpers. | pipeline/tests/test_bulk_config.py
+2026-11-18 | data-pipeline | 24.1 | Added streaming bulk download with .part file, size and zip check, SHA-256 record and 24 hour rule. | pipeline/bulk/__init__.py, pipeline/bulk/download.py
+2026-11-18 | data-pipeline | 24.2 | Added 18 example tests for download size checks, freshness, stale refetch, retries and email redaction. | pipeline/tests/test_bulk_download.py
+2026-11-18 | data-pipeline | 24.3 | Added Property 36 test that the streaming digest does not depend on chunking. | pipeline/tests/test_bulk_download.py
+2026-11-18 | data-pipeline | 25.1 | Added the streaming zip member reader: sorted order, one member at a time, per-member errors, ignored-name counts. | pipeline/bulk/reader.py
+2026-11-18 | data-pipeline | 25.2 | Added 7 example tests for order, ignored names, corrupt members and the one-member-alive check. | pipeline/tests/test_bulk_reader.py
+2026-11-18 | data-pipeline | 26.1 | Added submissions aggregate with order-independent merge, event rules, filing URLs and orphan page handling. | pipeline/bulk/submissions.py
+2026-11-18 | data-pipeline | 26.2 | Added 10 example tests for older-page bankruptcy, item splitting, form matching, dates and parse errors. | pipeline/tests/test_bulk_submissions.py
+2026-11-18 | data-pipeline | 26.3 | Added Property 32 test for event de-duplication by accession and type. | pipeline/tests/test_bulk_submissions.py
+2026-11-18 | data-pipeline | 26.4 | Added Property 33 test that member order does not change the result. | pipeline/tests/test_bulk_submissions.py
+2026-11-18 | data-pipeline | 27.1 | Added panel extractor: fixed FY2015 to FY2025 rows, age at fiscal year, yearly zombie flag and per-field tag, date, accession and URL. | pipeline/bulk/panel.py
+2026-11-18 | data-pipeline | 27.2 | Added deterministic gzip CSV writer, column lists and Firm_Table row builder with flags. | pipeline/bulk/tables.py
+2026-11-18 | data-pipeline | 27.3 | Added 17 example tests for gaps, fiscal year ends, EBIT fallback, cash, flag look-back, firm flags and byte-identical output. | pipeline/tests/test_bulk_panel.py
+2026-11-18 | data-pipeline | 27.4 | Added Property 28 test that missing values are never written as 0. | pipeline/tests/test_bulk_panel.py
+2026-11-18 | data-pipeline | 27.5 | Added Property 29 test that every firm keeps 11 rows and stays in the Firm_Table. | pipeline/tests/test_bulk_panel.py
+2026-11-18 | data-pipeline | 27.6 | Added Property 30 test that the yearly zombie flag matches the definition. | pipeline/tests/test_bulk_panel.py
+2026-11-18 | data-pipeline | 27.7 | Added Property 31 test for age at a fiscal year against an anniversary count. | pipeline/tests/test_bulk_panel.py
+2026-11-18 | data-pipeline | 28.1 | Added the pipeline.bulk CLI with download and panel commands, preflight checks, exit codes, run report bulk section and progress lines. | pipeline/bulk/cli.py, pipeline/bulk/__main__.py
+2026-11-18 | data-pipeline | 28.2 | Added 14 example tests for preflight failures, a tiny two-zip run, the run report section and byte-identical output. | pipeline/tests/test_bulk_cli.py
+2026-11-18 | data-pipeline | 29.1 | Added the report helpers and sections 1, 2 and 7: firm counts, zombie counts and shares, data quality. | pipeline/bulk/report.py
+2026-11-18 | data-pipeline | 29.2 | Added outcome classification and sections 3, 4 and 5 with CIK list CSVs. | pipeline/bulk/report.py
+2026-11-18 | data-pipeline | 29.3 | Added breaking rate, histogram, thresholds and the 200 largest firms. | pipeline/bulk/report.py
+2026-11-18 | data-pipeline | 29.4 | Added Markdown rendering with source block and atomic CSV and report writing. | pipeline/bulk/report.py
+2026-11-18 | data-pipeline | 29.5 | Added 15 example tests for each report section, outcome precedence, histogram edges and deterministic output. | pipeline/tests/test_bulk_report.py
+2026-11-18 | data-pipeline | 29.6 | Added Property 34 test that outcome categories partition the zombies. | pipeline/tests/test_bulk_report.py
+2026-11-18 | data-pipeline | 29.7 | Added Property 35 test for the breaking-rate histogram and thresholds against a brute force. | pipeline/tests/test_bulk_report.py
+2026-11-18 | data-pipeline | 29.8 | Added Property 37 test that report output is deterministic whatever the row order. | pipeline/tests/test_bulk_report.py
+2026-11-18 | data-pipeline | 30.1 | Wired the report and all commands into the bulk CLI; all stops at the first failing step. | pipeline/bulk/cli.py, pipeline/bulk/report.py, pipeline/bulk/download.py
+2026-11-18 | data-pipeline | 30.2 | Added static checks for the single icr and extract definitions, no frontend imports, no writes under data or web, and unchanged dependencies. | pipeline/tests/test_bulk_static.py
+2026-11-18 | data-pipeline | 30.3 | Added an offline end-to-end test of all, a second run with zero requests, and report alone. | pipeline/tests/test_bulk_cli.py
+2026-11-20 | data-pipeline | 33.1 | Download records now carry the time the download finished, not the run start. | pipeline/bulk/download.py, pipeline/bulk/cli.py, pipeline/tests/test_bulk_download.py
+2026-11-20 | data-pipeline | 33.2 | Added report section 9 (zombies by cause and SIC division) and section 10 (year-over-year sanity flags with accession numbers). | pipeline/bulk/report.py, pipeline/tests/test_bulk_report.py
+2026-11-20 | data-pipeline | 33.3 | Added the tag census module, the census command and a CIK filter in the reader. | pipeline/bulk/census.py, pipeline/bulk/reader.py, pipeline/bulk/cli.py, pipeline/tests/test_bulk_census.py
+2026-11-20 | data-pipeline | 33.4 | Regenerated the report and wrote the tag census from the cached zips, no network. | pipeline/reports
+2026-11-20 | data-pipeline | 34.1 | Census takes --fy, checks the goods + services revenue rule and lists firms with interest but no debt-like tag; ran FY2016, FY2019 and FY2024 before the change. | pipeline/bulk/census.py, pipeline/bulk/cli.py
+2026-11-20 | data-pipeline | 34.2 | Adopted the new tag lists: revenue 4th tag and goods + services, interest 5th tag, total debt stage 2. | pipeline/facts.py, pipeline/tests/test_facts.py
+2026-11-20 | data-pipeline | 34.3 | Added likely_debt_free to the panel, new section 7 columns and list, sanity floor of 100,000 and the outlier marker. | pipeline/bulk/panel.py, pipeline/bulk/tables.py, pipeline/bulk/report.py
+2026-11-20 | data-pipeline | 34.4 | Updated Requirement 7, design.md and the three tag lines of data-contract.md. | .kiro/specs/data-pipeline, .kiro/steering/data-contract.md
+2026-11-20 | data-pipeline | 34.5 | Rebuilt the panel from the cached zips with no download, regenerated the report and wrote the before and after table. | pipeline/reports

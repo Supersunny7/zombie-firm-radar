@@ -1,0 +1,13 @@
+zombie_year,category,firms,filed_item_2_01
+2019,bankruptcy,51,31
+2019,delisted_or_deregistered,152,102
+2019,stopped_filing,67,26
+2019,recovered,42,19
+2019,still_zombie,133,60
+2019,other_alive,87,41
+2020,bankruptcy,43,30
+2020,delisted_or_deregistered,142,95
+2020,stopped_filing,64,24
+2020,recovered,42,16
+2020,still_zombie,167,66
+2020,other_alive,105,39

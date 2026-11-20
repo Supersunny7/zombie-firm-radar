@@ -17,6 +17,7 @@ tools/output/
 
 # Pipeline raw-response cache and run report
 pipeline/.cache/
+pipeline/out/
 
 # Asset pipeline download cache (only the manual README is tracked)
 tools/cache/*
