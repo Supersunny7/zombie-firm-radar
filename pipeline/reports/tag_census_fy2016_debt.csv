@@ -1,0 +1,37 @@
+rank,tag,status,firms_missing_field_reporting,share_of_missing,firms_reporting_all,both_reported,within_1pct,tag_below_panel,tag_above_panel,double_count_note
+1,LongTermDebtAndCapitalLeaseObligations,candidate,164,0.132151,443,272,58,117,97,"Noncurrent debt including finance leases. Same role as LongTermDebtNoncurrent: use instead of it, never both. May include leases that tag excludes."
+2,NotesPayableCurrent,candidate,155,0.124899,287,130,8,97,25,"Current notes payable. Overlaps ShortTermBorrowings, DebtCurrent and LongTermDebtCurrent. Fallback only."
+3,LongTermDebtAndCapitalLeaseObligationsCurrent,candidate,133,0.107172,355,215,18,181,16,"Current debt including finance leases. Same role as LongTermDebtCurrent: instead of it, never both."
+4,LineOfCredit,found by name,97,0.078163,276,175,22,132,21,"Found by name, not assessed. See the evidence columns."
+5,NotesPayableRelatedPartiesClassifiedCurrent,found by name,96,0.077357,158,61,2,48,11,"Found by name, not assessed. See the evidence columns."
+6,ConvertibleNotesPayableCurrent,found by name,94,0.075745,125,30,0,23,7,"Found by name, not assessed. See the evidence columns."
+7,DebtAndCapitalLeaseObligations,found by name,92,0.074134,227,134,55,17,62,"Found by name, not assessed. See the evidence columns."
+8,LinesOfCreditCurrent,candidate,82,0.066076,189,99,4,75,20,Drawn lines of credit due within a year. A component of ShortTermBorrowings and DebtCurrent.
+9,LongTermNotesPayable,candidate,81,0.06527,175,91,11,62,18,Noncurrent notes payable. Same role as LongTermDebtNoncurrent when a filer lacks that tag; a component of it if both exist.
+10,NotesPayable,candidate,77,0.062047,164,86,24,39,23,"Notes payable, current and noncurrent as the filer shows them. Overlaps every other debt tag. Fallback only."
+11,DebtInstrumentCarryingAmount,candidate,75,0.060435,497,414,160,38,216,"Carrying amount of debt instruments, often one table of a note. May overlap every other tag. Last fallback only."
+12,LongTermLineOfCredit,found by name,62,0.04996,135,72,8,51,13,"Found by name, not assessed. See the evidence columns."
+13,ConvertibleLongTermNotesPayable,found by name,57,0.045931,96,37,4,25,8,"Found by name, not assessed. See the evidence columns."
+14,ConvertibleNotesPayable,candidate,56,0.045125,85,27,2,16,9,Convertible notes. A component of long-term debt: add only when no parent tag exists.
+15,DebtCurrent,candidate,49,0.039484,273,219,5,191,23,"All debt due within a year (short-term borrowings plus the current portion of long-term debt). Overlaps LongTermDebtCurrent and ShortTermBorrowings: use instead of them, never on top."
+16,NotesPayableRelatedPartiesNoncurrent,found by name,42,0.033844,92,47,1,34,12,"Found by name, not assessed. See the evidence columns."
+17,ConvertibleDebtCurrent,found by name,41,0.033038,67,24,0,12,12,"Found by name, not assessed. See the evidence columns."
+18,ConvertibleDebtNoncurrent,found by name,34,0.027397,66,27,3,17,7,"Found by name, not assessed. See the evidence columns."
+19,LoansPayableCurrent,found by name,34,0.027397,55,21,2,14,5,"Found by name, not assessed. See the evidence columns."
+20,ConvertibleDebt,found by name,33,0.026591,62,28,2,19,7,"Found by name, not assessed. See the evidence columns."
+21,LiabilitiesOtherThanLongtermDebtNoncurrent,found by name,29,0.023368,88,58,0,50,8,"Found by name, not assessed. See the evidence columns."
+22,LoansPayable,found by name,25,0.020145,38,13,1,8,4,"Found by name, not assessed. See the evidence columns."
+23,NotesPayableRelatedPartiesCurrentAndNoncurrent,found by name,24,0.019339,54,29,1,22,6,"Found by name, not assessed. See the evidence columns."
+24,DebtLongtermAndShorttermCombinedAmount,found by name,22,0.017728,138,113,65,12,36,"Found by name, not assessed. See the evidence columns."
+25,OtherLongTermDebt,candidate,21,0.016922,87,64,0,62,2,"Other long-term debt. A component when the filer shows classes, the whole amount for a small filer."
+26,SeniorNotes,candidate,20,0.016116,57,37,3,24,10,"Senior notes, one class of debt. A component of LongTermDebt: double counts if added to a parent."
+27,LongTermLoansPayable,found by name,17,0.013699,35,18,2,15,1,"Found by name, not assessed. See the evidence columns."
+28,OtherNotesPayableCurrent,found by name,17,0.013699,29,11,1,9,1,"Found by name, not assessed. See the evidence columns."
+29,SeniorLongTermNotes,found by name,16,0.012893,40,24,2,16,6,"Found by name, not assessed. See the evidence columns."
+30,OtherLongTermDebtNoncurrent,found by name,15,0.012087,61,45,3,36,6,"Found by name, not assessed. See the evidence columns."
+,CommercialPaper,candidate,8,0.006446,65,56,1,53,2,Commercial paper outstanding. A component of ShortTermBorrowings and DebtCurrent.
+,SecuredDebt,candidate,7,0.005641,51,44,6,33,5,"Secured debt, one class. A component of LongTermDebt: double counts if added to a parent."
+,LongTermDebtNoncurrent,existing,0,0.0,1123,1099,414,681,4,Long-term debt without the current portion. Part of today's sum.
+,LongTermDebt,existing,0,0.0,1048,1018,703,115,200,"Total long-term debt, usually including the current portion. Used only when no part exists, so it cannot double count."
+,LongTermDebtCurrent,existing,0,0.0,945,916,102,812,2,Current portion of long-term debt. Part of today's sum.
+,ShortTermBorrowings,existing,0,0.0,276,263,100,163,0,"Bank loans, commercial paper and lines of credit due within a year. Part of today's sum."

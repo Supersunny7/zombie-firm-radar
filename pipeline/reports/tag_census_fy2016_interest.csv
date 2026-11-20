@@ -1,0 +1,33 @@
+rank,tag,status,firms_missing_field_reporting,share_of_missing,firms_reporting_all,both_reported,within_1pct,tag_below_panel,tag_above_panel,double_count_note
+1,InterestPaid,found by name,346,0.460719,1671,1299,175,886,238,"Found by name, not assessed. See the evidence columns."
+2,InterestPaidNet,candidate (report only),272,0.362184,1397,1110,128,777,205,"Cash paid for interest (cash-flow statement), net of capitalised interest. Timing differs from expense. Reported only, never proposed."
+3,DefinedBenefitPlanInterestCost,found by name,45,0.05992,241,194,1,163,30,"Found by name, not assessed. See the evidence columns."
+4,InterestExpenseOther,found by name,34,0.045273,124,89,15,60,14,"Found by name, not assessed. See the evidence columns."
+5,InterestExpenseRelatedParty,candidate,21,0.027963,87,65,6,51,8,Interest paid to related parties. A component of total interest expense: alone it understates.
+6,InterestCostsIncurred,candidate,12,0.015979,66,51,5,2,44,"Interest cost before capitalising part of it, so at least the expense. Do not mix with expense tags."
+7,InterestExpenseLongTermDebt,found by name,11,0.014647,27,16,3,13,0,"Found by name, not assessed. See the evidence columns."
+8,FinancingInterestExpense,found by name,9,0.011984,21,12,0,5,7,"Found by name, not assessed. See the evidence columns."
+9,InterestExpenseLesseeAssetsUnderCapitalLease,found by name,6,0.007989,25,18,1,16,1,"Found by name, not assessed. See the evidence columns."
+10,InterestExpenseBorrowings,found by name,6,0.007989,21,15,4,8,3,"Found by name, not assessed. See the evidence columns."
+11,DisposalGroupIncludingDiscontinuedOperationInterestExpense,found by name,4,0.005326,43,39,1,33,5,"Found by name, not assessed. See the evidence columns."
+12,InterestPaidDiscontinuedOperations,found by name,4,0.005326,9,5,0,4,1,"Found by name, not assessed. See the evidence columns."
+13,InterestRevenueExpenseNet,found by name,3,0.003995,22,19,2,17,0,"Found by name, not assessed. See the evidence columns."
+14,InterestExpenseShortTermBorrowings,found by name,3,0.003995,6,3,1,2,0,"Found by name, not assessed. See the evidence columns."
+15,DividendsAndInterestPaid,found by name,2,0.002663,3,1,0,1,0,"Found by name, not assessed. See the evidence columns."
+16,FinanceLeaseInterestExpense,found by name,1,0.001332,6,5,1,4,0,"Found by name, not assessed. See the evidence columns."
+17,CostOfRealEstateSalesExcludingInterest,found by name,1,0.001332,1,0,0,0,0,"Found by name, not assessed. See the evidence columns."
+18,InterestExpenseBeneficialInterestsIssuedByConsolidatedVariableInterestEntities,found by name,1,0.001332,1,0,0,0,0,"Found by name, not assessed. See the evidence columns."
+19,InterestExpenseJuniorSubordinatedDebentures,found by name,1,0.001332,1,0,0,0,0,"Found by name, not assessed. See the evidence columns."
+20,InterestExpenseTrustPreferredSecurities,found by name,1,0.001332,1,0,0,0,0,"Found by name, not assessed. See the evidence columns."
+21,InterestExpense,existing,0,0.0,1824,1788,1788,0,0,Interest expense. First choice today.
+22,InterestExpenseDebt,existing,0,0.0,293,285,174,88,23,Interest on debt. Third choice today.
+23,InterestAndDebtExpense,existing,0,0.0,109,107,76,21,10,Interest and debt expense including fees. Fourth choice today.
+24,InterestExpenseSubordinatedNotesAndDebentures,found by name,0,0.0,5,5,1,4,0,"Found by name, not assessed. See the evidence columns."
+25,InterestExpenseOtherLongTermDebt,found by name,0,0.0,4,4,0,4,0,"Found by name, not assessed. See the evidence columns."
+26,InterestExpenseCustomerDeposits,found by name,0,0.0,2,2,0,2,0,"Found by name, not assessed. See the evidence columns."
+27,InterestExpenseDeposits,found by name,0,0.0,2,2,2,0,0,"Found by name, not assessed. See the evidence columns."
+28,ContractualInterestExpenseOnPrepetitionLiabilitiesNotRecognizedInStatementOfOperations,found by name,0,0.0,1,1,0,0,1,"Found by name, not assessed. See the evidence columns."
+29,CostOfRealEstateSalesInterest,found by name,0,0.0,1,0,0,0,0,"Found by name, not assessed. See the evidence columns."
+30,GrandfatheredESOPExpenseRecognitionActualInterestIncurredOnESOPDebt,found by name,0,0.0,1,1,0,1,0,"Found by name, not assessed. See the evidence columns."
+,InterestExpenseNonoperating,existing,0,0.0,0,0,0,0,0,Interest expense shown below operating income. Second choice today.
+,InterestExpenseOperating,candidate,0,0.0,0,0,0,0,0,"Interest expense inside operating costs (finance arms, banks). Overlaps InterestExpense: an alternative, never both."

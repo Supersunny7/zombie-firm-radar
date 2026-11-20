@@ -380,6 +380,7 @@ zombie_year,category,cik,name,tickers,filed_item_2_01
 2019,still_zombie,0001133416,GALECTIN THERAPEUTICS INC,GALT,False
 2019,still_zombie,0001138639,Infinera Corp,,False
 2019,still_zombie,0001138978,"Novo Integrated Sciences, Inc.",,True
+2019,still_zombie,0001162194,STANDARD BIOTOOLS INC.,LAB,True
 2019,still_zombie,0001172178,LIBERTY STAR URANIUM & METALS CORP.,LBSR,False
 2019,still_zombie,0001173313,"ABVC BIOPHARMA, INC.",ABVC;ECOC,True
 2019,still_zombie,0001173420,NOVAGOLD RESOURCES INC,NG,False
@@ -484,7 +485,6 @@ zombie_year,category,cik,name,tickers,filed_item_2_01
 2019,other_alive,0001121484,"OIL STATES INTERNATIONAL, INC",OIS,False
 2019,other_alive,0001138723,ACCURAY INC,ARAY,False
 2019,other_alive,0001141197,PEDEVCO CORP,PED,True
-2019,other_alive,0001162194,STANDARD BIOTOOLS INC.,LAB,True
 2019,other_alive,0001175680,CytoDyn Inc.,CYDY,False
 2019,other_alive,0001178253,SCYNEXIS INC,SCYX,False
 2019,other_alive,0001187953,"CREATIVE MEDICAL TECHNOLOGY HOLDINGS, INC.",CELZ,False
@@ -906,6 +906,7 @@ zombie_year,category,cik,name,tickers,filed_item_2_01
 2020,still_zombie,0001138639,Infinera Corp,,False
 2020,still_zombie,0001138978,"Novo Integrated Sciences, Inc.",,True
 2020,still_zombie,0001158114,"APPLIED OPTOELECTRONICS, INC.",AAOI,False
+2020,still_zombie,0001162194,STANDARD BIOTOOLS INC.,LAB,True
 2020,still_zombie,0001171759,RED ROBIN GOURMET BURGERS INC,RRGB,False
 2020,still_zombie,0001172178,LIBERTY STAR URANIUM & METALS CORP.,LBSR,False
 2020,still_zombie,0001173313,"ABVC BIOPHARMA, INC.",ABVC;ECOC,True
@@ -1038,7 +1039,6 @@ zombie_year,category,cik,name,tickers,filed_item_2_01
 2020,other_alive,0001138724,"Global Arena Holding, Inc.",,False
 2020,other_alive,0001141103,CROSS COUNTRY HEALTHCARE INC,,True
 2020,other_alive,0001141197,PEDEVCO CORP,PED,True
-2020,other_alive,0001162194,STANDARD BIOTOOLS INC.,LAB,True
 2020,other_alive,0001162896,Prairie Operating Co.,PROP,True
 2020,other_alive,0001175680,CytoDyn Inc.,CYDY,False
 2020,other_alive,0001178253,SCYNEXIS INC,SCYX,False

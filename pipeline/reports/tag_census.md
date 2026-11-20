@@ -1,8 +1,8 @@
-# Tag census
+# Tag census FY2024
 
 Data: SEC EDGAR. Not investment advice.
 
-This file changes nothing. It shows which XBRL tags the core firms that miss a value in FY2024 do report, so the tag lists can be chosen from facts.
+This file changes nothing. It shows which XBRL tags the core firms that miss a value in the year do report, so the tag lists can be chosen from facts. It describes the panel as it was when the census ran.
 
 ## Source
 
@@ -18,7 +18,7 @@ Run date: 2026-11-20
 - Missing revenue in the panel: **410**.
 - Missing interest_expense in the panel: **820**.
 - A firm *reports* a tag when the tag has an annual-form (10-K, 10-K/A) USD value for the firm's fiscal year: a flow of 350 to 380 days ending on the fiscal year end, or a balance-sheet value within 7 days of it. These are the extractor's rules.
-- Tags are those on Frank's list (`candidate`), the tags in today's priority list (`existing`), and tags whose names match a keyword pattern and are not obviously something else (`found by name`). The keyword patterns are heuristics: expect some noise.
+- Tags are those on Frank's list (`candidate`), the tags in the priority list when the census ran (`existing`), and tags whose names match a keyword pattern and are not obviously something else (`found by name`). The keyword patterns are heuristics: expect some noise.
 - `firms_missing_field_reporting` counts firms that miss the field in the panel and report the tag. `both_reported`, `within_1pct`, `tag_below_panel` and `tag_above_panel` are measured on all census firms that have a panel value and also report the tag: they show whether the tag is the same number as the existing value (within 1%), a part of it (below) or something larger (above).
 - `existing` tags can still show firms missing the field: their value was rejected by a rule (for example two different periods on the same end date).
 - Members read: 2565; not selected: 18041; parse failures: 0.
@@ -62,7 +62,7 @@ Run date: 2026-11-20
 | SeniorLongTermNotes | found by name | 14 | 1.2% | 27 | 13 | 2 | 10 | 1 |
 | LiabilitiesOtherThanLongtermDebtNoncurrent | found by name | 13 | 1.1% | 22 | 9 | 0 | 7 | 2 |
 
-### Named candidates and today's tags, with double-count notes
+### Named candidates and the tags in use, with double-count notes
 
 | tag | status | firms_missing_field_reporting | firms_reporting_all | double_count_note |
 | --- | --- | --- | --- | --- |
@@ -86,7 +86,7 @@ Run date: 2026-11-20
 
 ### Firms missing total debt that report no debt-like tag
 
-Of the 1148 firms, **383** report no debt-like tag at all (not on the list and no keyword match) and have FY2024 interest expense of 0 or missing: these are **likely debt-free, not missing data**. The second pair of columns uses only today's and Frank's named tags.
+Of the 1148 firms, **383** report no debt-like tag at all (not on the list and no keyword match) and have FY2024 interest expense of 0 or missing: these are **likely debt-free, not missing data**. The second pair of columns uses only the named tags.
 
 | interest_expense_fy2024 | no_debt_like_tag | reports_a_debt_like_tag | no_named_debt_tag | reports_a_named_debt_tag |
 | --- | --- | --- | --- | --- |
@@ -94,6 +94,8 @@ Of the 1148 firms, **383** report no debt-like tag at all (not on the list and n
 | missing | 362 | 176 | 428 | 110 |
 | positive | 144 | 415 | 269 | 290 |
 | negative | 13 | 6 | 15 | 4 |
+
+Firms with **positive interest expense and no debt-like tag**: 144 (`tag_census_positive_interest_no_debt_tag.csv`).
 
 ## Revenue
 
@@ -134,7 +136,7 @@ Of the 1148 firms, **383** report no debt-like tag at all (not on the list and n
 | PropertyManagementFeeRevenue | found by name | 0 | 0.0% | 1 | 1 | 0 | 1 | 0 |
 | RegulatedOperatingRevenueOther | found by name | 0 | 0.0% | 1 | 1 | 0 | 1 | 0 |
 
-### Named candidates and today's tags, with double-count notes
+### Named candidates and the tags in use, with double-count notes
 
 | tag | status | firms_missing_field_reporting | firms_reporting_all | double_count_note |
 | --- | --- | --- | --- | --- |
@@ -145,6 +147,10 @@ Of the 1148 firms, **383** report no debt-like tag at all (not on the list and n
 | SalesRevenueGoodsNet | candidate | 0 | 0 | Revenue from goods only. A component: the total is goods plus services (SalesRevenueServicesNet), so one alone understates. |
 | SalesRevenueNet | existing | 0 | 0 | Older total sales tag. Third choice today. |
 | SalesRevenueServicesNet | candidate | 0 | 0 | Revenue from services only. A component, see SalesRevenueGoodsNet. |
+
+### Check of the goods + services revenue rule
+
+Core firms with no revenue in the panel, none of the first four revenue tags, and `SalesRevenueGoodsNet` and/or `SalesRevenueServicesNet`: **0** (both tags: 0; goods only: 0; services only: 0). The rule is adopted when either census year reaches 20.
 
 ## Interest expense
 
@@ -185,7 +191,7 @@ Of the 1148 firms, **383** report no debt-like tag at all (not on the list and n
 | InterestExpenseTimeDepositsLessThan100000 | found by name | 0 | 0.0% | 1 | 1 | 0 | 1 | 0 |
 | InterestExpenseTradingLiabilities | found by name | 0 | 0.0% | 1 | 1 | 0 | 1 | 0 |
 
-### Named candidates and today's tags, with double-count notes
+### Named candidates and the tags in use, with double-count notes
 
 | tag | status | firms_missing_field_reporting | firms_reporting_all | double_count_note |
 | --- | --- | --- | --- | --- |
