@@ -25,6 +25,7 @@ from pipeline.bulk.download import (
     read_record,
     zip_path,
 )
+from pipeline.bulk import census as census_mod
 from pipeline.bulk import report as report_mod
 from pipeline.bulk.panel import FirmFacts, extract_panel, gap_panel
 from pipeline.bulk.reader import MemberStats, iter_members
@@ -52,7 +53,7 @@ from pipeline.facts import has_any_annual_fact
 from pipeline.http import RateLimiter, RequestStats, redact
 from pipeline.run_report import RunReport, write_run_report
 
-COMMANDS = ("download", "panel", "report", "all")
+COMMANDS = ("download", "panel", "report", "all", "census")  # census is not part of all
 PROGRESS_EVERY = 1000
 PANEL_FILE, FIRMS_FILE, EVENTS_FILE = "panel.csv.gz", "firms.csv.gz", "events.csv.gz"
 _FORBIDDEN_ROOTS = (REPO_ROOT / "data", REPO_ROOT / "web")
@@ -128,13 +129,14 @@ def _need(path: Path) -> Path:
 def run_download(
     paths: BulkPaths, *, email: str, rate: float, use_cached: bool, session: Any, now: datetime,
     sleep: Callable[[float], None], stats: RequestStats, bulk: dict[str, Any],
+    clock: Callable[[], datetime] | None = None,
 ) -> None:
     limiter = RateLimiter(rate)
     zips: dict[str, Any] = {}
     for url in (COMPANYFACTS_URL, SUBMISSIONS_URL):
         got = fetch_bulk(
             url=url, cache_dir=paths.zip_dir, session=session, limiter=limiter, email=email,
-            stats=stats, use_cached=use_cached, now=now, sleep=sleep,
+            stats=stats, use_cached=use_cached, now=now, sleep=sleep, clock=clock,
         )
         zips[got.name] = _zip_section(got)
     bulk["zips"] = zips
@@ -243,6 +245,16 @@ def run_report_step(paths: BulkPaths, bulk: dict[str, Any], now: datetime) -> No
     bulk["report"] = {"files": report_mod.run(paths.out_dir, paths.zip_dir, paths.reports_dir, now.date().isoformat())}
 
 
+def run_census_step(paths: BulkPaths, bulk: dict[str, Any], now: datetime) -> None:
+    """Tag census of the core firms that miss a value in FY2024 (Requirement 30). No network."""
+    def progress(done: int, total: int) -> None:
+        if done % 250 == 0 or done == total:
+            print(f"census: {done}/{total} firms", file=sys.stderr, flush=True)
+
+    files, summary = census_mod.run(paths.out_dir, paths.zip_dir, paths.reports_dir, now.date().isoformat(), progress)
+    bulk["census"] = {"files": files, **summary}
+
+
 def main(
     argv: Sequence[str] | None = None,
     *,
@@ -258,6 +270,7 @@ def main(
         return int(exc.code) if isinstance(exc.code, int) else 2
     paths = paths or BulkPaths()
     env = os.environ if env is None else env
+    clock = (lambda: now) if now is not None else (lambda: datetime.now(UTC))  # real time unless a test fixes it
     now = now or datetime.now(UTC)
     report = RunReport(started_at=_utc(now), argv=list(argv if argv is not None else sys.argv[1:]))
     bulk: dict[str, Any] = {"command": ns.command, "use_cached": bool(ns.use_cached)}
@@ -280,11 +293,13 @@ def main(
     try:
         if ns.command in ("download", "all"):
             run_download(paths, email=email, rate=ns.rate, use_cached=ns.use_cached,
-                         session=session or new_session(), now=now, sleep=sleep, stats=stats, bulk=bulk)
+                         session=session or new_session(), now=now, sleep=sleep, stats=stats, bulk=bulk, clock=clock)
         if ns.command in ("panel", "all"):
             run_panel(paths, now, bulk)
         if ns.command in ("report", "all"):
             run_report_step(paths, bulk, now)
+        if ns.command == "census":
+            run_census_step(paths, bulk, now)
     except PipelineError as exc:
         code = exc.exit_code
         report.failure = {"requirement": exc.requirement, "message": redact(exc.message, secrets)}

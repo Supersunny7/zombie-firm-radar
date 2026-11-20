@@ -263,13 +263,23 @@ Shortest path to `pipeline/reports/data_shape.md`. Tasks 1 to 6 above are shared
   - Commit message: `test(data-pipeline): add bulk report command, static checks and end-to-end test`
 - [x] 31. Phase 1 checkpoint
   - Run `.venv/bin/python -m pytest pipeline/tests`. Ensure all tests pass, ask the user if questions arise.
-- [ ] 32. MANUAL (Frank): live bulk run and first look at the report
-  - [ ] 32.1 Frank downloads and builds everything: `SEC_CONTACT_EMAIL=<email> .venv/bin/python -m pipeline.bulk all`. The agent must not run this. Needs several GB of free disk (two zips plus `pipeline/out`).
+- [x] 33. Phase 1 follow-up: timestamp fix, zombie split, sanity flags, tag census
+  - [x] 33.1 Fix the download timestamp in `pipeline/bulk/download.py` and `pipeline/bulk/cli.py`; add a test
+    - _Requirements: 30.1_
+  - [x] 33.2 Add report sections 9 (zombies by cause and SIC division) and 10 (year-over-year sanity flags) to `pipeline/bulk/report.py`; load the accession and URL columns in `load_tables`; add example tests and update the section-count test
+    - _Requirements: 30.2, 30.3_
+  - [x] 33.3 Add `pipeline/bulk/census.py`, a `members filter` in `reader.iter_members`, and the `census` command; add example tests on tiny in-memory zips
+    - _Requirements: 30.4, 30.5, 30.6, 30.7, 30.8_
+  - [x] 33.4 Regenerate the report with `report` and write the census with `census` from the cached zips (no network); stop and show the summary
+    - _Requirements: 30.x_
+  - Commit message: `feat(data-pipeline): add zombie split, sanity flags and tag census`
+- [x] 32. MANUAL (Frank): live bulk run and first look at the report
+  - [x] 32.1 Frank downloads and builds everything: `SEC_CONTACT_EMAIL=<email> .venv/bin/python -m pipeline.bulk all`. The agent must not run this. Needs several GB of free disk (two zips plus `pipeline/out`).
     - Read `pipeline/.cache/run_report.json` section `bulk`: zip sizes and SHA-256, members read, parse failures, Universe_P1 size, orphan pages, Gap_Rows, events per type. Note the wall-clock time of the companyfacts pass. If it is too slow (design: 10 to 30 minutes expected), ask for the worker-pool follow-up.
     - _Requirements: 20.1, 21.x, 27.x_
-  - [ ] 32.2 Frank reads `pipeline/reports/data_shape.md`, checks a few known names in section 8 and the zombie counts in section 2 against what he expects, and decides the game design from it
+  - [x] 32.2 Frank reads `pipeline/reports/data_shape.md`, checks a few known names in section 8 and the zombie counts in section 2 against what he expects, and decides the game design from it
     - _Requirements: 26.x_
-  - [ ] 32.3 Frank commits only the report and its CSVs: `git status` must show nothing under `pipeline/out` or `pipeline/.cache`; commit `docs(data-pipeline): add data shape report from the real bulk run`
+  - [x] 32.3 Frank commits only the report and its CSVs: `git status` must show nothing under `pipeline/out` or `pipeline/.cache`; commit `docs(data-pipeline): add data shape report from the real bulk run`
     - _Requirements: 29.3, 29.4_
 
 ## Phase 2 tasks (after the design is chosen)

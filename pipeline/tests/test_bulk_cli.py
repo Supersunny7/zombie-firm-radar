@@ -205,6 +205,7 @@ def test_panel_output_is_byte_identical_on_a_second_run(tmp_path: Path) -> None:
 REPORT_FILES = {
     "data_shape.md", "s1_firm_counts.csv", "s2_zombies.csv", "s3_outcomes.csv", "s3_outcomes_cik.csv", "s4_reversals.csv",
     "s5_zombie_then_bankrupt.csv", "s6_histogram.csv", "s6_thresholds.csv", "s7_data_quality.csv", "s8_largest_firms.csv",
+    "s9_zombies_by_cause.csv", "s9_zombies_by_division.csv", "s10_sanity_flags.csv",
 }
 
 

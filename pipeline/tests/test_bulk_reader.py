@@ -114,3 +114,14 @@ def test_the_archive_is_never_extracted_to_disk(tmp_path: Path) -> None:
     before = sorted(p.name for p in tmp_path.iterdir())
     list(iter_members(path))
     assert sorted(p.name for p in tmp_path.iterdir()) == before
+
+
+def test_ciks_filter_skips_other_members_without_reading_them(tmp_path: Path, monkeypatch) -> None:
+    path = _zip_file(tmp_path, {f"CIK{i:010d}.json": {"n": i} for i in range(1, 6)})
+    read: list[str] = []
+    real = reader._read_member
+    monkeypatch.setattr(reader, "_read_member", lambda zf, name: (read.append(name), real(zf, name))[1])
+    stats = MemberStats()
+    got = [m.cik for m in iter_members(path, stats, ciks={"0000000002", "0000000004"})]
+    assert got == ["0000000002", "0000000004"] and read == ["CIK0000000002.json", "CIK0000000004.json"]
+    assert stats.not_selected == 3 and stats.read == 2 and stats.ignored == 0

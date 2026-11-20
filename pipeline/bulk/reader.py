@@ -10,7 +10,7 @@ import re
 import zipfile
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Iterator
+from typing import Collection, Iterator
 
 CIK_MEMBER = re.compile(r"^CIK(\d{10})\.json$")
 PAGE_MEMBER = re.compile(r"^CIK(\d{10})-submissions-(\d{3})\.json$")
@@ -32,6 +32,7 @@ class MemberStats:
     total: int = 0  # file entries in the archive
     read: int = 0  # members handed to the caller with data
     ignored: int = 0  # names that match neither pattern
+    not_selected: int = 0  # recognised members skipped because their CIK was not asked for
     failed: list[dict[str, str]] = field(default_factory=list)  # {"member", "error"}
 
 
@@ -56,11 +57,12 @@ def _read_member(zf: zipfile.ZipFile, name: str) -> bytes:
         return fh.read()
 
 
-def iter_members(zip_path: Path, stats: MemberStats | None = None) -> Iterator[Member]:
+def iter_members(zip_path: Path, stats: MemberStats | None = None, ciks: Collection[str] | None = None) -> Iterator[Member]:
     """Yield one Member at a time in sorted name order.
 
     The previous member is released before the next one is read (22.2). zipfile checks each
     member's CRC while reading, so a damaged member comes back with ``error`` set.
+    When ``ciks`` is given, members of other CIKs are skipped without being read.
     """
     stats = stats if stats is not None else MemberStats()
     with zipfile.ZipFile(zip_path) as zf:
@@ -69,6 +71,9 @@ def iter_members(zip_path: Path, stats: MemberStats | None = None) -> Iterator[M
             kind = classify_member(name)
             if kind is None:
                 stats.ignored += 1
+                continue
+            if ciks is not None and kind[1] not in ciks:
+                stats.not_selected += 1
                 continue
             try:
                 # No local variable holds the bytes: only the Member does (22.2).

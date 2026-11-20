@@ -192,8 +192,13 @@ def fetch_bulk(
     use_cached: bool = False,
     now: datetime | None = None,
     sleep: Callable[[float], None] = time.sleep,
+    clock: Callable[[], datetime] | None = None,
 ) -> BulkFile:
-    """Return the bulk zip at ``url``, downloading it only when needed (21.1 to 21.8)."""
+    """Return the bulk zip at ``url``, downloading it only when needed (21.1 to 21.8).
+
+    ``now`` is when the run started (used for the 24 hour rule). ``clock`` gives the time the
+    download finished, which is what the record stores (30.1); it defaults to ``now``.
+    """
     now = now or datetime.now(UTC)
     path = zip_path(cache_dir, url)
     record = read_record(path) if path.is_file() else None
@@ -252,7 +257,7 @@ def fetch_bulk(
     last_modified = (getattr(resp, "headers", None) or {}).get("Last-Modified")
     new_record = BulkRecord(
         url=url,
-        downloaded_at=now.astimezone(UTC).isoformat(),
+        downloaded_at=(clock() if clock is not None else now).astimezone(UTC).isoformat(),
         size_bytes=written,
         sha256=digest,
         last_modified=last_modified or None,

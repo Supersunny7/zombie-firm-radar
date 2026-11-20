@@ -32,6 +32,9 @@ from pipeline.bulk.report import (
     s6_breaking_rate,
     s7_data_quality,
     s8_largest,
+    s9_zombie_split,
+    s10_sanity,
+    ratio_flags,
     write_report,
 )
 
@@ -274,7 +277,7 @@ def test_render_has_source_block_disclaimer_and_all_sections() -> None:
     assert "SHA-256 `" + "ab" * 32 + "`" in text and "1,234 bytes" in text
     assert "`submissions.zip`: unknown, no download record" in text
     assert "approximation of firm age" in text
-    for n in range(1, 9):
+    for n in range(1, 11):
         assert f"\n## {n}. " in text
 
 
@@ -392,3 +395,93 @@ def test_report_output_is_deterministic(firm_specs, events, seed) -> None:
         assert sa.frames.keys() == sb.frames.keys()
         for name in sa.frames:
             assert csv_bytes(sa.frames[name]) == csv_bytes(sb.frames[name])
+
+
+# --- sections 9 and 10 (Requirement 30) -------------------------------------------------------
+def test_s9_splits_zombies_by_sign_of_operating_income_and_by_division() -> None:
+    def f(n, div, **kw):
+        return ({**_firm(f"{n:010d}", **kw), "sic_division": div}, None)
+    firms = [
+        (f(1, "Manufacturing")[0], {2024: dict(Z, operating_income=-5.0)}),   # zombie, negative EBIT
+        (f(2, "Manufacturing")[0], {2024: dict(Z, operating_income=0.0)}),    # zombie, EBIT exactly 0: not negative
+        (f(3, "Services")[0], {2024: dict(Z, operating_income=3.0)}),         # zombie, positive EBIT below interest
+        (f(4, "Services")[0], {2024: dict(revenue=1.0, operating_income=9.0, icr=3.0)}),  # not a zombie
+        (f(5, None)[0], {2024: dict(Z, operating_income=-1.0)}),              # no division
+        (f(6, "Manufacturing", fin=True)[0], {2024: dict(Z, operating_income=-1.0)}),  # financial: not core
+    ]
+    df, _ = _df(firms)
+    sec = s9_zombie_split(df)
+    cause = sec.frames["s9_zombies_by_cause.csv"].set_index("fy").loc[2024]
+    assert (cause.core_firms_present, cause.zombies, cause.negative_ebit, cause.nonneg_ebit) == (5, 4, 2, 2)
+    assert cause.share_negative == 0.5
+    div = sec.frames["s9_zombies_by_division.csv"]
+    d24 = div[div.fy == 2024].set_index("sic_division")
+    assert d24.loc["Manufacturing", ["core_firms_present", "zombies", "zombies_negative_ebit", "zombies_nonneg_ebit"]].tolist() == [2, 2, 1, 1]
+    assert d24.loc["Services", ["core_firms_present", "zombies", "zombies_negative_ebit", "zombies_nonneg_ebit"]].tolist() == [2, 1, 0, 1]
+    assert d24.loc["(none)", "zombies_negative_ebit"] == 1
+    assert "## " not in sec.md and "FY2019 and FY2024" in sec.md
+
+
+def _flag_df(field: str, series: dict[int, float | None]) -> pd.DataFrame:
+    spec = {}
+    for fy, v in series.items():
+        row = {"revenue": 1.0, field + "_accn": f"A-{fy}", field + "_url": f"http://x/{fy}"}
+        if v is not None:
+            row[field] = v
+        spec[fy] = row
+    df, _ = _df([(_firm("0000000001", "Firm One"), spec)])
+    return df
+
+
+def test_ratio_flags_rpc_style_spike_lists_both_years_with_accession_and_changes_nothing() -> None:
+    df = _flag_df("revenue", {2015: 41_919_000_000.0, 2016: 728_974_000.0, 2017: 1_595_227_000.0})
+    before = df.copy()
+    t = ratio_flags(df)
+    t = t[t.field == "revenue"]
+    assert [(r.fy, r.neighbor, r.neighbor_fy, r.accession, r.above_floor) for r in t.itertuples()] == [
+        (2015, "next", 2016, "A-2015", True), (2016, "previous", 2015, "A-2016", True)]
+    assert round(t.iloc[0].ratio, 2) == round(41_919_000_000 / 728_974_000, 2)
+    pd.testing.assert_frame_equal(df, before)  # no value is changed
+
+
+def test_ratio_flags_boundaries_gaps_zero_signs_and_floor() -> None:
+    def pairs(series):
+        t = ratio_flags(_flag_df("operating_income", series))
+        return sorted({(r.fy, r.neighbor) for r in t.itertuples()}), t
+    assert pairs({2015: 100e6, 2016: 5e6})[0] == []                      # exactly 20x is not more than 20x
+    assert pairs({2015: 100e6, 2016: 4.99e6})[0] == [(2015, "next"), (2016, "previous")]
+    assert pairs({2015: 100e6, 2016: -4.99e6})[0] == [(2015, "next"), (2016, "previous")]   # sign ignored
+    assert pairs({2015: 100e6, 2016: 0.0})[0] == []                      # zero is not compared
+    assert pairs({2015: 100e6, 2017: 1e6})[0] == []                      # an empty year in between is not compared
+    keys, t = pairs({2015: 10.0, 2016: 500.0})                           # big ratio, tiny amounts
+    assert keys == [(2015, "next"), (2016, "previous")] and not t.above_floor.any()
+    keys, t = pairs({2015: 1.0, 2016: 100e6, 2017: 1.0})                 # a one-year spike is flagged in all its neighbours
+    assert keys == [(2015, "next"), (2016, "next"), (2016, "previous"), (2017, "previous")]
+
+
+def test_s10_csv_has_only_above_floor_flags_and_the_markdown_counts_both() -> None:
+    df = _flag_df("total_debt", {2015: 10.0, 2016: 500.0, 2017: 900e6, 2018: 1e6})
+    sec = s10_sanity(df)
+    csv = sec.frames["s10_sanity_flags.csv"]
+    assert set(csv.field) == {"total_debt"} and csv.above_floor.all()
+    assert {(r.fy, r.neighbor) for r in csv.itertuples()} == {(2016, "next"), (2017, "previous"), (2017, "next"), (2018, "previous")}
+    assert "No value is changed" in sec.md and "| total_debt | 4 | 2 |" in sec.md
+    assert list(csv.columns)[-2:] == ["accession", "url"]
+    empty = s10_sanity(_flag_df("revenue", {2015: 1.0, 2016: 2.0}))
+    assert len(empty.frames["s10_sanity_flags.csv"]) == 0 and "_none_" in empty.md
+
+
+# Feature: data-pipeline, Property 38: Sanity flags match a brute force
+# Validates: Requirements 30.3
+@given(series=st.dictionaries(st.integers(2015, 2025), st.sampled_from([None, 0.0, 1.0, -1.0, 5.0, 19.9, 20.1, 100.0, -400.0, 3e6, -9e7]), max_size=11))
+def test_sanity_flags_match_a_brute_force(series) -> None:
+    df = _flag_df("interest_expense", series)
+    got = {(r.fy, r.neighbor) for r in ratio_flags(df).itertuples()}
+    want = set()
+    for fy, a in series.items():
+        b = series.get(fy + 1)
+        if a is None or b is None or a == 0 or b == 0:
+            continue
+        if max(abs(a), abs(b)) / min(abs(a), abs(b)) > 20:
+            want |= {(fy, "next"), (fy + 1, "previous")}
+    assert got == want

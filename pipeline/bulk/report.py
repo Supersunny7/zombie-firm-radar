@@ -27,6 +27,11 @@ OUTCOME_END = date(2024, 12, 31)
 OUTCOME_CATEGORIES = (
     "bankruptcy", "delisted_or_deregistered", "stopped_filing", "recovered", "still_zombie", "other_alive",
 )
+SANITY_FIELDS = ("revenue", "total_debt", "interest_expense", "operating_income")
+SANITY_RATIO = 20.0
+SANITY_FLOOR_USD = 1_000_000.0
+SANITY_TOP_N = 50
+DIVISION_NONE = "(none)"
 HIST_LOW, HIST_HIGH, HIST_STEP = -10.0, 20.0, 0.5
 THRESHOLDS_PP = (1, 2, 3, 4, 5)
 LARGEST_N = 200
@@ -62,6 +67,9 @@ def load_tables(out_dir: Path) -> Tables:
     panel["age_at_fy"] = pd.to_numeric(p["age_at_fy"], errors="coerce")
     for f in FIELDS:
         panel[f] = pd.to_numeric(p[f], errors="coerce")
+    for f in SANITY_FIELDS:
+        for suffix in ("_accn", "_url"):
+            panel[f + suffix] = p[f + suffix]
     panel["icr"] = pd.to_numeric(p["icr"], errors="coerce")
     panel["zombie_flag"] = _flag(p["zombie_flag"])
     panel["gap_has_balance_sheet"] = _flag(p["gap_has_balance_sheet"])
@@ -366,6 +374,103 @@ def s8_largest(df: pd.DataFrame) -> Section:
     return Section("8. The 200 largest firms by revenue", md, {"s8_largest_firms.csv": top})
 
 
+# --- section 9: zombies by cause and SIC division (30.2) ------------------------------------
+def s9_zombie_split(df: pd.DataFrame) -> Section:
+    core = df[df["core"] & df["present"] & (df["fy"] >= ZOMBIE_YEARS[0])].copy()
+    core["division"] = core["sic_division"].fillna(DIVISION_NONE)
+    core["is_zombie"] = core["zombie_flag"]
+    core["neg"] = core["is_zombie"] & (core["operating_income"] < 0)
+    core["nonneg"] = core["is_zombie"] & (core["operating_income"] >= 0)
+    by_year = core.groupby("fy").agg(core_firms_present=("cik", "size"), zombies=("is_zombie", "sum"),
+                                     negative_ebit=("neg", "sum"), nonneg_ebit=("nonneg", "sum")).reset_index()
+    by_year = by_year.astype({c: int for c in by_year.columns if c != "fy"})
+    by_year["share_negative"] = [_share(n, z) for n, z in zip(by_year["negative_ebit"], by_year["zombies"])]
+    by_div = core.groupby(["fy", "division"]).agg(core_firms_present=("cik", "size"), zombies=("is_zombie", "sum"),
+                                                  zombies_negative_ebit=("neg", "sum"), zombies_nonneg_ebit=("nonneg", "sum")).reset_index()
+    by_div = by_div.rename(columns={"division": "sic_division"})
+    by_div = by_div.astype({c: int for c in by_div.columns if c not in ("fy", "sic_division")})
+    by_div["share_of_present"] = [_share(z, n) for z, n in zip(by_div["zombies"], by_div["core_firms_present"])]
+    by_div = by_div.sort_values(["fy", "sic_division"], kind="mergesort").reset_index(drop=True)
+    shown = by_div[by_div["fy"].isin((2019, 2024)) & (by_div["zombies"] > 0)]
+    md = (
+        "Core zombies split by the sign of operating income. `negative_ebit`: operating income below 0, so ICR is negative. "
+        "`nonneg_ebit`: operating income of 0 or more but below the interest expense.\n\n"
+        + md_table(by_year, {"share_negative": "{:.1%}"})
+        + "\nBy SIC division for FY2019 and FY2024 (all years: `s9_zombies_by_division.csv`):\n\n"
+        + md_table(shown, {"share_of_present": "{:.1%}"})
+    )
+    return Section("9. Zombies by cause and by SIC division", md,
+                   {"s9_zombies_by_cause.csv": by_year, "s9_zombies_by_division.csv": by_div})
+
+
+# --- section 10: year-over-year sanity flags (30.3) -----------------------------------------
+def _text_col(df: pd.DataFrame, name: str) -> pd.Series:
+    return df[name].fillna("") if name in df.columns else pd.Series("", index=df.index)
+
+
+def ratio_flags(df: pd.DataFrame, factor: float = SANITY_RATIO) -> pd.DataFrame:
+    """Firm-years whose value differs from the previous or the next fiscal year by more than ``factor``.
+
+    Values are compared by absolute value; a pair with a zero or an empty value, or with an empty
+    year in between, is not compared. Both rows of a flagged pair are listed. No value is changed.
+    """
+    out = []
+    for f in SANITY_FIELDS:
+        d = pd.DataFrame({"cik": df["cik"], "name": _text_col(df, "name"), "fy": df["fy"], "value": df[f],
+                          "accn": _text_col(df, f + "_accn"), "url": _text_col(df, f + "_url")})
+        d = d[d["value"].notna()].sort_values(["cik", "fy"], kind="mergesort").reset_index(drop=True)
+        nxt = d.groupby("cik")[["fy", "value", "accn", "url"]].shift(-1)
+        pair = nxt["fy"].eq(d["fy"] + 1) & d["value"].ne(0) & nxt["value"].ne(0) & nxt["value"].notna()
+        a, b = d["value"].abs(), nxt["value"].abs()
+        ratio = pd.concat([a, b], axis=1).max(axis=1) / pd.concat([a, b], axis=1).min(axis=1)
+        hit = pair & (ratio > factor)
+        big = pd.concat([a, b], axis=1).max(axis=1)
+        for who in ("current", "next"):
+            sel = d[hit]
+            if who == "current":
+                row = pd.DataFrame({"cik": sel["cik"], "name": sel["name"], "fy": sel["fy"], "value": sel["value"],
+                                    "neighbor": "next", "neighbor_fy": nxt.loc[hit, "fy"], "neighbor_value": nxt.loc[hit, "value"],
+                                    "accession": sel["accn"], "url": sel["url"]})
+            else:
+                row = pd.DataFrame({"cik": sel["cik"], "name": sel["name"], "fy": nxt.loc[hit, "fy"], "value": nxt.loc[hit, "value"],
+                                    "neighbor": "previous", "neighbor_fy": sel["fy"], "neighbor_value": sel["value"],
+                                    "accession": nxt.loc[hit, "accn"], "url": nxt.loc[hit, "url"]})
+            row["field"] = f
+            row["ratio"] = ratio[hit].round(6)
+            row["above_floor"] = (big[hit] >= SANITY_FLOOR_USD)
+            out.append(row)
+    cols = ["cik", "name", "fy", "field", "value", "neighbor", "neighbor_fy", "neighbor_value", "ratio", "above_floor", "accession", "url"]
+    if not out:
+        return pd.DataFrame(columns=cols)
+    t = pd.concat(out, ignore_index=True)[cols]
+    t["fy"] = t["fy"].astype(int)
+    t["neighbor_fy"] = t["neighbor_fy"].astype(int)
+    order = {f: i for i, f in enumerate(SANITY_FIELDS)}
+    t["_o"] = t["field"].map(order)
+    return t.sort_values(["_o", "cik", "fy", "neighbor"], kind="mergesort").drop(columns="_o").reset_index(drop=True)
+
+
+def s10_sanity(df: pd.DataFrame) -> Section:
+    flags = ratio_flags(df)
+    shown = flags[flags["above_floor"]]
+    counts = (flags.assign(above=flags["above_floor"]).groupby("field")["above"].agg(above_floor="sum", total="size").reset_index()
+              if len(flags) else pd.DataFrame(columns=["field", "above_floor", "total"]))
+    counts["below_floor"] = counts["total"] - counts["above_floor"]
+    counts = counts.set_index("field").reindex(list(SANITY_FIELDS)).fillna(0).astype(int).reset_index()[["field", "above_floor", "below_floor"]]
+    top = shown.sort_values(["ratio", "cik", "fy"], ascending=[False, True, True], kind="mergesort").head(SANITY_TOP_N)
+    top = top[["cik", "name", "fy", "field", "value", "neighbor", "neighbor_fy", "neighbor_value", "ratio", "accession"]]
+    md = (
+        f"A firm-year is flagged when a value differs by more than {SANITY_RATIO:g} times from the same firm's value in the previous "
+        "or the next fiscal year (absolute values; zero or empty values and empty years in between are not compared). Both years of a "
+        f"flagged pair are listed. `above_floor` means the larger value is at least {SANITY_FLOOR_USD:,.0f} USD. "
+        "**No value is changed**: these are leads to check against the filing, not corrections.\n\n"
+        "Flag rows by field (a pair gives two rows):\n\n" + md_table(counts)
+        + f"\nThe {SANITY_TOP_N} largest ratios above the floor (all of them, with URLs: `s10_sanity_flags.csv`):\n\n"
+        + md_table(top, {"value": "{:,.0f}", "neighbor_value": "{:,.0f}", "ratio": "{:,.1f}"})
+    )
+    return Section("10. Year-over-year sanity flags", md, {"s10_sanity_flags.csv": shown.reset_index(drop=True)})
+
+
 # --- rendering and writing ----------------------------------------------------------------
 @dataclass(frozen=True)
 class SourceInfo:
@@ -408,6 +513,7 @@ def build_sections(t: Tables) -> list[Section]:
     return [
         s1_firm_counts(df), s2_zombies(df), s3_outcomes(df, t.events), s4_reversals(df),
         s5_zombie_then_bankrupt(df, t.events), s6_breaking_rate(df), s7_data_quality(df), s8_largest(df),
+        s9_zombie_split(df), s10_sanity(df),
     ]
 
 

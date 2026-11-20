@@ -69,5 +69,5 @@ def test_requirements_txt_is_unchanged_five_exact_pins() -> None:
 
 def test_bulk_modules_stay_in_the_package_and_phase2_modules_are_untouched() -> None:
     assert sorted(p.name for p in BULK.glob("*.py")) == [
-        "__init__.py", "__main__.py", "cli.py", "download.py", "panel.py", "reader.py", "report.py", "submissions.py", "tables.py",
+        "__init__.py", "__main__.py", "census.py", "cli.py", "download.py", "panel.py", "reader.py", "report.py", "submissions.py", "tables.py",
     ]

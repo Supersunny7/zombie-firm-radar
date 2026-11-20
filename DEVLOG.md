@@ -450,3 +450,7 @@
 2026-11-18 | data-pipeline | 30.1 | Wired the report and all commands into the bulk CLI; all stops at the first failing step. | pipeline/bulk/cli.py, pipeline/bulk/report.py, pipeline/bulk/download.py
 2026-11-18 | data-pipeline | 30.2 | Added static checks for the single icr and extract definitions, no frontend imports, no writes under data or web, and unchanged dependencies. | pipeline/tests/test_bulk_static.py
 2026-11-18 | data-pipeline | 30.3 | Added an offline end-to-end test of all, a second run with zero requests, and report alone. | pipeline/tests/test_bulk_cli.py
+2026-11-20 | data-pipeline | 33.1 | Download records now carry the time the download finished, not the run start. | pipeline/bulk/download.py, pipeline/bulk/cli.py, pipeline/tests/test_bulk_download.py
+2026-11-20 | data-pipeline | 33.2 | Added report section 9 (zombies by cause and SIC division) and section 10 (year-over-year sanity flags with accession numbers). | pipeline/bulk/report.py, pipeline/tests/test_bulk_report.py
+2026-11-20 | data-pipeline | 33.3 | Added the tag census module, the census command and a CIK filter in the reader. | pipeline/bulk/census.py, pipeline/bulk/reader.py, pipeline/bulk/cli.py, pipeline/tests/test_bulk_census.py
+2026-11-20 | data-pipeline | 33.4 | Regenerated the report and wrote the tag census from the cached zips, no network. | pipeline/reports

@@ -225,3 +225,18 @@ def test_streaming_digest_does_not_depend_on_chunking(data: bytes, chunk: int, t
     assert written == len(data)
     assert digest == hashlib.sha256(data).hexdigest()
     assert part.read_bytes() == data
+
+
+def test_record_time_is_when_the_download_finished_not_when_the_run_started(tmp_path: Path) -> None:
+    """30.1: two zips downloaded minutes apart get different times."""
+    ticks = iter([NOW + timedelta(minutes=3), NOW + timedelta(minutes=6)])
+    first = fetch_bulk(url=COMPANYFACTS_URL, cache_dir=tmp_path, session=StreamSession({COMPANYFACTS_URL: [_ok()]}),
+                       limiter=RateLimiter(5.0), email=EMAIL, stats=RequestStats(), now=NOW, clock=lambda: next(ticks))
+    second = fetch_bulk(url=SUBMISSIONS_URL, cache_dir=tmp_path, session=StreamSession({SUBMISSIONS_URL: [_ok()]}),
+                        limiter=RateLimiter(5.0), email=EMAIL, stats=RequestStats(), now=NOW, clock=lambda: next(ticks))
+    assert first.record.downloaded_at == (NOW + timedelta(minutes=3)).isoformat()
+    assert second.record.downloaded_at == (NOW + timedelta(minutes=6)).isoformat()
+    assert read_record(first.path).downloaded_at != read_record(second.path).downloaded_at
+    # the 24 hour rule counts from the finish time
+    assert is_fresh(first.record, NOW + timedelta(hours=24, minutes=2))
+    assert not is_fresh(first.record, NOW + timedelta(hours=24, minutes=3))
